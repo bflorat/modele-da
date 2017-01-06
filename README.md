@@ -24,8 +24,8 @@ Ne pas s'inquiêter donc du nombre de pages du modèles, votre dossier sera prob
 
 
 ## Utilisation 
-* le fichier fourni est un template LibreOffice, le télécharger et l'ajouter dans sa collection de templates (File -> Templates -> Manage) ;
-* l'ouvrir créé une instance de nouveau Dossier d'Architecure Projet. Supprimer les explications et exemples en rouge et jaune ;
+* le fichier fourni est un template LibreOffice, le télécharger et l'ajouter dans sa collection de templates (File -> Templates -> Manage -> bouton 'Import') ;
+* en ouvrant l'ott, LibreOffice créé une instance de nouveau Dossier d'Architecure Projet. Supprimez les explications et exemples en rouge et jaune au fur et à mesure que vous remplissez votre dossier ;
 * le modèle est également disponible pour lecture seule en PDF ;
 * voir les explications générales d'utilisation du modèle sur la première page ;
 * tous les diagrammes de ce modèle ont été générés avec l'excellent outil [PlantUML](http://plantuml.com/). Les sources des diagrammes sont inclues dans le document et  visibles avec l'extension PlantUML pour LibreOffice.
