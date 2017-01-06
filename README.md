@@ -14,7 +14,7 @@ Ces modèles sont souvent (au choix) :
 
 De plus, les avancées technologiques, méthodologiques et juridiques impliquent des ajustements réguliers.
 
-Je m'étais promis depuis de nombreuses années de proposer mon propre modèle, c'est donc chose faite. Ce modèle est probalement très perfectible, c'est pourquoi tous les retours, critiques (constructives), contributions et suggestions sont appréciées (utiliser [les issues github](https://github.com/bflorat/modele-dap/issues). Je compte maintenir ce modèle.
+Je m'étais promis depuis de nombreuses années de proposer mon propre modèle, c'est donc chose faite. Ce modèle est probalement très perfectible, c'est pourquoi tous les retours, critiques (constructives), contributions et suggestions sont appréciées (utiliser [les issues github](https://github.com/bflorat/modele-dap/issues)). Je compte maintenir ce modèle.
 
 Ce modèle se veut le plus exhaustif possible pour couvrir la plupart des projets. Il est donc normal que de nombreux chapitres ne soient pas applicables dans leur contexte. 
 
