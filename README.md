@@ -2,7 +2,7 @@
 Modèle de Dossier d'Architecture Projet
 
 ## Motivation
-Restrospectivement, après dix-sept ans d'informatique en entreprise dont quatorze comme architecte (logiciel, technique, solution) au sein de grands comptes ou des SSII, j'ai dû me plier à de nombreux modèles de dossier d'architecture ou les faire évoluer. Ils étaient de qualité inégales bien que globalement satisfaisants mais aucun ne m'a jamais totalement convaincu.
+Restrospectivement, après dix-sept ans d'informatique en entreprise dont quatorze comme architecte (logiciel, technique, solution) au sein de grands comptes ou de SSII, j'ai dû me plier à de nombreux modèles de dossier d'architecture ou les faire évoluer. Ils étaient de qualité inégales bien que globalement satisfaisants mais aucun ne m'a jamais totalement convaincu.
 
 Ces modèles sont souvent (au choix) :
 * incomplets (des sujets ne sont pas abordés et risquent d'être oubliés par l'architecte qui rédige le dossier) ;
