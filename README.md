@@ -2,7 +2,7 @@
 Modèle de Dossier d'Architecture Projet
 
 ## Motivation
-Restrospectivement, après dix-sept ans d'informatique en entreprise dont quatorze comme architecte (logiciel, technique, solution), j'ai dû me plier ou faire évoluer de nombreux modèles de dossier d'architecture pour des grands comptes ou des SSII. Ils étaient de qualité inégales bien que globalement satisfaisants mais aucun ne m'a jamais totalement satisfait.
+Restrospectivement, après dix-sept ans d'informatique en entreprise dont quatorze comme architecte (logiciel, technique, solution) au sein de grands comptes ou de SSII, j'ai dû me plier à de nombreux modèles de dossier d'architecture ou les faire évoluer. Ils étaient de qualité inégales bien que globalement satisfaisants mais aucun ne m'a jamais totalement convaincu.
 
 Ces modèles sont souvent (au choix) :
 * incomplets (des sujets ne sont pas abordés et risquent d'être oubliés par l'architecte qui rédige le dossier) ;
@@ -24,8 +24,8 @@ Ne pas s'inquiêter donc du nombre de pages du modèles, votre dossier sera prob
 
 
 ## Utilisation 
-* le fichier fourni est un template LibreOffice, le télécharger et l'ajouter dans sa collection de templates (File -> Templates -> Manage) ;
-* l'ouvrir créé une instance de nouveau Dossier d'Architecure Projet. Supprimer les explications et exemples en rouge et jaune ;
+* le fichier fourni est un template LibreOffice, le télécharger et l'ajouter dans sa collection de templates (File -> Templates -> Manage -> bouton 'Import') ;
+* en ouvrant l'ott, LibreOffice créé une instance de nouveau Dossier d'Architecure Projet. Supprimez les explications et exemples en rouge et jaune au fur et à mesure que vous remplissez votre dossier ;
 * le modèle est également disponible pour lecture seule en PDF ;
 * voir les explications générales d'utilisation du modèle sur la première page ;
 * tous les diagrammes de ce modèle ont été générés avec l'excellent outil [PlantUML](http://plantuml.com/). Les sources des diagrammes sont inclues dans le document et  visibles avec l'extension PlantUML pour LibreOffice.
