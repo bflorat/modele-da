@@ -2,9 +2,7 @@
 Modèle de Dossier d'Architecture Projet
 
 ## Motivation
-Restrospectivement, après dix-huit ans d'informatique en entreprise dont quinze comme architecte (logiciel, technique, solution) au sein de grands comptes ou de SSII, j'ai dû me plier à de nombreux modèles de dossier d'architecture ou les faire évoluer. Ils étaient de qualité inégale bien que globalement satisfaisants mais aucun ne m'a jamais totalement convaincu.
-
-Ces modèles sont souvent (au choix) :
+Restrospectivement, les modèles des grands comptes ou SSII sont souvent (au choix) :
 * incomplets (des sujets ne sont pas abordés et risquent d'être oubliés par l'architecte qui rédige le dossier) ;
 * redondants ;
 * pas assez formels et utilisant de façon interchangeable des concepts distincts ("contrainte" pour "exigence", "non-repudiation" pour "preuve" etc...) ;
@@ -14,9 +12,9 @@ Ces modèles sont souvent (au choix) :
 
 De plus, les avancées technologiques, méthodologiques et juridiques impliquent des ajustements réguliers.
 
-Je m'étais promis depuis de nombreuses années de proposer mon propre modèle, c'est donc chose faite. Ce modèle est probalement très perfectible, c'est pourquoi tous les retours, critiques (constructives), contributions et suggestions sont appréciées (utiliser [les issues github](https://github.com/bflorat/modele-dap/issues)). Je compte maintenir ce modèle.
+Je m'étais promis depuis de nombreuses années de proposer mon propre modèle, c'est donc chose faite. Ce modèle est probablement très perfectible, c'est pourquoi tous les retours, critiques (constructives), contributions et suggestions sont appréciées (utiliser [les issues github](https://github.com/bflorat/modele-dap/issues)). Je compte maintenir ce modèle.
 
-Ce modèle se veut exhaustif pour couvrir la plupart des projets. Il est donc normal que de nombreux chapitres ne soient pas applicables dans votre contexte. 
+Il se veut le plus exhaustif possible pour couvrir la plupart des projets. Il est donc normal que de nombreux chapitres ne soient pas applicables dans votre contexte. 
 
 De plus, il est volontairement riche en explications et exemples car il a également une (modeste) prétention éducative à destination des jeunes architectes. 
 
