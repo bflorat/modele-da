@@ -1,4 +1,4 @@
-# modele-da
+﻿# modele-da
 Modèle de Dossier d'Architecture
 
 ## Motivation
@@ -22,11 +22,10 @@ Ne pas s'inquiêter donc du nombre de pages du modèles, votre dossier sera prob
 
 
 ## Utilisation 
-* le fichier fourni est un template LibreOffice, le télécharger et l'ajouter dans sa collection de templates (File -> Templates -> Manage -> bouton 'Import') ;
-* en ouvrant l'ott, LibreOffice créé une instance de nouveau Dossier d'Architecure. Supprimez les explications et exemples en violet et jaune au fur et à mesure que vous remplissez votre dossier ;
-* le modèle est également disponible pour lecture seule en PDF ;
-* voir les explications générales d'utilisation du modèle sur la première page ;
-* tous les diagrammes de ce modèle ont été générés avec l'excellent outil [PlantUML](http://plantuml.com/). Les sources des diagrammes sont inclues dans le document et  visibles avec l'extension PlantUML pour LibreOffice.
+* les fichiers fournis sont des templates LibreOffice, les télécharger et les ajouter dans sa collection de templates (File -> Templates -> Manage -> bouton 'Import') ;
+* en ouvrant les ott, LibreOffice créé une instance de nouveau Dossier d'Architecure. Supprimez les explications et exemples en violet et jaune au fur et à mesure que vous remplissez votre dossier ;
+* les modèles sont également disponibles pour lecture seule en PDF ;
+* voir les explications générales d'utilisation du modèle dans le guide fourni ;
 
 ## Licence
 * ce modèle est en licence [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/fr/) : Creative Commons Attribution - Partage à l'identique V3.0 ;
@@ -37,7 +36,7 @@ Ne pas s'inquiêter donc du nombre de pages du modèles, votre dossier sera prob
 * Relecture : Frédérique Lefranc
 * Retours : Antoine Parra Del Pozo, Pascal Bousquet, Philippe Mayjonade, Nicolas Chahwekilian
 
-## Bibliographie
+## Bibliographie partielle
 * Performance des architectures IT - 2e ed. - Pascal Grojean
 * [GOF] Design Patterns: Elements of Reusable Object-Oriented Software de Erich Gamma, Richard Helm, Ralph Johnson et John Vlissides
 * Christophe Longépé « Le projet d’Urbanisation du SI »
