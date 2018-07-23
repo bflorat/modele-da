@@ -14,7 +14,7 @@ Il se veut le plus exhaustif possible pour couvrir la plupart des projets. Il es
 
 De plus, il est volontairement riche en explications et exemples car il a également une (modeste) prétention éducative à destination des jeunes architectes. 
 
-Ne pas s'inquiêter donc du nombre de pages du modèles, votre dossier sera probalement plus court.
+Ne pas s'inquiêter donc du nombre de pages du modèle, votre dossier sera probalement plus court.
 
 
 ## Licence
