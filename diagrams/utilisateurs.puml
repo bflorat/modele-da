@@ -1,0 +1,15 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+LAYOUT_WITH_LEGEND()
+title  Liste des utilisateurs MIEL
+Person_Ext(entreprise, "Entreprise", "Client Web \n [~ 2M d'utilisateurs potentiels] \n [~ 3 appels par session, une session par jour]")
+Person_Ext(entreprise2, "Entreprise", "Client mobile\n [~ 1M d'utilisateurs potentiels] \n [~ 10 appels par session, une session par jour]")
+Person(agent, "Agent back-office", "Gère les réclamations envoyées par MIEL \n [~100 utilisateurs potentiels] \n [Plusieurs fois par minute sur les heures de bureau]")
+System(miel, "MIEL")
+System_Ext(administrationB, "Administration B \n [Appels en masse la nuit puis mise en cache]")
+Rel(entreprise, miel, "Demande de récupération des informations me concernant")
+Rel(entreprise2, miel, "Demande de récupération des informations me concernant")
+agent -> miel
+Rel(miel, administrationB, "récupération des informations comptables sur l'entreprise")
+
+@enduml

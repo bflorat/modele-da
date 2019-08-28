@@ -1,0 +1,38 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+title  Point de vue applicatif détaillé \n Projet Mes Infos En Ligne (MIEL)
+LAYOUT_WITH_LEGEND()
+
+Person_Ext(entreprise, "Entreprise","Client Web (PC, tablette, mobile)")
+
+System_Boundary(administration, "Système administration B") {
+    Container(scompta, "Système comptabilité","Service REST")       {
+      Component(p1, "service-complements", "Service REST")   
+    }
+
+}
+
+System_Boundary(si, "Système d'information"){
+  Container(ma, "MIEL","Module de service"){
+    Component(ihm, "ihm-miel", "application Web")
+    Component(batch, "batch-traiter-demandes", "Traite les demandes")
+    Component(file,"file-demandes","Stocke les demandes")
+    Component(bdd1,"bdd-ref-entreprises","Référentiel entreprises")
+    Component(bdd2,"bdd-miel","Base interne")
+    Component(sm,"service-miel","Lecture des données entreprise")
+    Component(compo,"service-compo-pdf","Produit les PDF")
+    Component(smails,"serveur-mail","Envoi les e-mails")
+  }
+
+  
+}
+
+Rel(entreprise, ihm, "[1] Récupération IHM (HTTPS)")
+Rel(entreprise, sm, "[2] Demande d'information (HTTPS)")
+Rel(sm, p1, "[3] Stockage de la demande (JMS)")
+Rel(ma, p1, "[2.2] Récupération informations comptables")
+Rel(ma, compo, "[3] Création PDF")
+
+@enduml
+
+
