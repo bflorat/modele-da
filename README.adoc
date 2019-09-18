@@ -22,8 +22,8 @@ Dans chaque volet, on retrouvera :
 
 ## Utilisation de ce modèle
 * Ce modèle est au format https://www.methods.co.nz/asciidoc/index.html[asciidoc]. Vous pouvez le convertir dans le format de votre choix pour vos DA même si nous préconisons un format textuel et lisible (type Markdown) facile à suivre et à modifier par merge requests dans un outil de gestion de version et ainsi transformer votre DA en une documentation vivante ;
-* Ce modèle est perfectible, c'est pourquoi tous les retours, critiques (constructives), contributions et suggestions sont appréciées (faire une https://gitlab.com/bflorat/modele-da/merge_requests[merge request]
-ou utiliser https://gitlab.com/bflorat/modele-da/issues)[les issues]) ;
+* Ce modèle est perfectible, c'est pourquoi tous les retours, critiques (constructives), contributions et suggestions sont appréciées (faire une https://github.com/bflorat/modele-da/pulls[pull request]
+ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * De plus, il est volontairement riche en explications et exemples car il a également une (modeste) prétention éducative à destination des jeunes architectes. Votre dossier sera probablement plus court ;
 * Le texte en italique contient des exemples (à supprimer) ;
 * Chaque chapitre dispose de notes aidant à le remplir (à supprimer) ;
