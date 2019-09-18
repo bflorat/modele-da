@@ -3,7 +3,7 @@
 :toc:
 :sectnumlevels: 3
 :sectnums:
-:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://gitlab.com/bflorat/modele-da/raw/develop/diagrams
+:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
 == Introduction
 

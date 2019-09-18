@@ -3,7 +3,7 @@
 :sectnumlevels: 3
 :sectnums:
 Ce document fournit le point de vue infrastructure de l’application. Se référer aux volets joints pour les points de vue applicatifs, sécurité et développement. 
-:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://gitlab.com/bflorat/modele-da/raw/develop/diagrams
+:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
 [TIP]
 ====

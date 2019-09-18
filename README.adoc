@@ -49,8 +49,8 @@ ou utiliser https://gitlab.com/bflorat/modele-da/issues)[les issues]) ;
 * Vous pouvez créer une version dérivée de ce modèle à condition qu'il conserve la licence CC BY-SA 3.0 et qu'il contienne donc ces trois éléments: 
 ** Le nom du créateur (Bertrand Florat) ;
 ** Un lien vers https://creativecommons.org/licenses/by-sa/3.0/fr/ ;
-** Une notice de non-responsabilité et un lien vers https://gitlab.com/bflorat/modele-da.
-* Les dossiers d'architecture issus de ce modèle n'ont pas à appliquer cette licence. Il est néanmoins recommandé d'y inclure un lien vers https://gitlab.com/bflorat/modele-da.
+** Une notice de non-responsabilité et un lien vers https://github.com/bflorat/modele-da.
+* Les dossiers d'architecture issus de ce modèle n'ont pas à appliquer cette licence. Il est néanmoins recommandé d'y inclure un lien vers https://github.com/bflorat/modele-da.
 
 ## Remerciements 
 * Relecture : Frédérique Lefranc
