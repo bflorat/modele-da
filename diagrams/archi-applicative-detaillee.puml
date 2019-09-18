@@ -1,0 +1,40 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+title  Diagramme de containeurs \nPoint de vue applicatif détaillé \n Projet Mes Infos En Ligne (MIEL)
+LAYOUT_WITH_LEGEND()
+'LAYOUT_LEFT_RIGHT
+Person_Ext(entreprise, "Entreprise","[person] \nClient Web (PC, tablette, mobile)")
+
+System_Boundary(administration, "Système administration B") {
+    Container(scompta, "Système comptabilité","Service REST") 
+}
+
+System_Boundary(si, "Système d'information"){
+    Container(resources_statiques, "Application Web ihm-miel", "Container: nginx","Délivre les ressources statiques (js, html, images...) de l'IHM MIEL")
+    Container(spa, "SPA ihm-miel", "Container: javascript, React.js","Interface graphique permettant de demander ses informations")
+    Container(mobile, "Application mobile MIEL", "Container: Android","Interface graphique permettant de demander ses informations")
+    Container(sm, "service-miel", "Container: Tomcat, Spring Boot","Service REST permettant de faire une demande d'informations")
+    Container(batch, "batch-traiter-demandes", "Container: groovy","Traite les demandes, lancé par cron toutes les minutes")
+    ContainerDb(file,"file-demandes","Container: RabbitMQ","Stocke les demandes")
+    ContainerDb(bdd,"bdd-miel","Container: PostgreSQL","Base interne")
+    Container(compo,"service-compo-pdf","Container: Wildfly, JasperReport", "Service REST de composition")
+    Container(smails,"serveur-mail","Container: Postfix","Envoi les e-mails")  
+}
+
+Rel(entreprise,resources_statiques,"Visite https://mesinfos.gouv.fr", "HTTPS, synchrone, lecture seule")
+Rel(entreprise,spa,"Récupère ses informations via")
+Rel(entreprise,mobile,"Récupère ses informations via")
+Rel(resources_statiques,spa,"Fournit au navigateur Web du client","HTTPS, synchrone, lecture seule")
+Rel(spa, sm, "[1.1] Demande d'information","HTTPS, synchrone, lecture seule")
+Rel(mobile, sm, "[1.1] Demande d'information","HTTPS, synchrone, lecture seule")
+Rel(sm, bdd, "[1.2] Historisation de la demande","JDBC, synchrone, écriture")
+Rel(sm, file, "[1.3] Stockage de la demande","JMS, synchrone, écriture")
+Rel(batch, file, "[2.1] Dépile les demandes","JMS, asynchrone, lecture puis suppression")
+Rel(batch, scompta, "[2.2] Récupération informations comptables","HTTPS, synchrone, lecture seule")
+Rel(batch, compo, "[2.3] Création PDF","HTTP, synchrone, lecture")
+Rel(batch, smails, "[2.4] Demande d'envoi mail avec PDF","SMTP, synchrone, exécution")
+Rel(smails, entreprise, "[2.5] Envoi mail avec PDF","SMTP, synchrone,exécution")
+
+@enduml
+
+

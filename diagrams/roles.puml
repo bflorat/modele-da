@@ -1,0 +1,11 @@
+@startuml
+title Modèle classique d'habilitations
+skinparam defaultFontName Liberation Sans
+scale 500*400
+Role "0..*"  o-- "0..*" Fonction: "contient"
+Groupe "0..*" o-- "0..*" Utilisateur : "contient"
+Utilisateur "0..*" --> "0..*" Role : "possède"
+Utilisateur "0..*" --> "0..*" Fonction : "dispose privilège sur"
+Groupe "1" -->"0..*" Role : "possède"
+
+@enduml

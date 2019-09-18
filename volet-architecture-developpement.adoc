@@ -1,0 +1,390 @@
+= Volet développement
+:toc:
+:sectnumlevels: 3
+:sectnums:
+:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://gitlab.com/bflorat/modele-da/raw/develop/diagrams
+
+== Introduction
+Ce document fournit le point de vue développement de l’application. Se référer aux volets joints pour les points de vue applicatifs, infrastructure et sécurité. 
+
+=== Documentation de Référence
+[TIP]
+Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
+
+.Références documentaires développement
+[cols="e,e,e,e"]
+|====
+|N°|Version|Titre/URL du document|Détail
+
+|1|1.0|https://references.modernisation.gouv.fr/rgaa-accessibilite/#menu
+|RGAA
+
+|====
+
+=== Glossaire
+[TIP]
+Par souci de concision, nous ne détaillons ici que les termes et acronymes spécifiques à l’application. Pour les définitions générales, veuillez vous référer au glossaire d’entreprise.
+
+.Glossaire sécurité spécifique projet
+[cols="e,e"]
+|====
+|Terme|Définition
+
+|partition|Pour un batch JSR352, une partition est l’exécution au sein d’un thread d’un sous ensemble des données d’entrée d’une étape du batch. La sélection des données se fait via une clé de partitionnement fournie par un PartitionMapper.
+
+|====
+
+== Non statué
+=== Points soumis à étude complémentaire
+.Points soumis à étude complémentaire
+[cols="e,e,e,e,e"]
+|====
+|ID|Détail|Statut|Porteur du sujet  | Échéance
+
+|ED1
+|EN_COURS
+|Le choix Angular ou React.JS pour le frontend est encore soumis à étude. Ceci n’impacte pas la partie back des services REST
+|Equipe méthodes et outils
+|AVANT 2040
+
+|====
+
+
+=== Hypothèses
+.Hypothèses
+[cols="e,e"]
+|====
+|ID|Détail
+
+|HD1
+|Même si ce point n’est pas encore totalement validé, l’application nécessitera un JRE 9 + pour tirer profil de librairies et frameworks Java indispensables au projet.
+|====
+
+== Contraintes
+[TIP]
+====
+Lister ici les contraintes relatives à l'architecture logicielle, ceci inclut par exemple mais pas seulement :
+
+* L'obligation d'utiliser un framework ou une filière technologique précise
+* Les budgets maximums de licence ou de développement
+* L'outillage (IDE, ...)
+* L'intégration continue
+* Les normes et seuils de qualité de code applicables
+* Les tests (taux de couverture, répartition par type de test, ...)
+
+====
+====
+Exemple 1 : La couverture de code devra être d'au moins 60%
+====
+====
+Exemple 2 : Le module devra se baser sur le framework Hibernate pour la persistance et CDI pour l'injection de dépendance
+====
+====
+Exemple 3 : l'application sera construite, testée et déployée en continu à chaque push via la plateforme Gitlab-ci
+====
+
+
+== Exigences non fonctionnelles
+
+[TIP]
+====
+Contrairement aux contraintes qui fixaient le cadre auquel toute application devait se conformer, les exigences non fonctionnelles sont données par les porteurs du projet (MOA en général). Prévoir des interviews pour les déterminer. Si certaines exigences ne sont pas réalistes, le mentionner dans le référentiel des points à statuer.
+====
+
+=== Accessibilité
+[TIP]
+====
+Cette application doit-elle être accessible aux non/mal voyants ? malentendants ? 
+
+Si oui, quelle niveau d’accessibilité ? 
+Se référer de préférence au Référentiel Général d’Accessibilité (https://references.modernisation.gouv.fr/rgaa-accessibilite/#menu[RGAA]) qui préconise un niveau WCAG 2.0 AA : 
+
+Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb …) . Attention à correctement évaluer le niveau visé (ni sur-qualité, ni sous-qualité) :
+
+* Atteindre un niveau d’accessibilité très élevé peut être coûteux et contraignant technologiquement. Il demande également de bonnes compétences (accessibilité, HTML5/CSS3 en particulier) et des profils rares.
+* La loi est de plus en plus stricte pour les administrations qui doivent respecter un niveau d’accessibilité suffisant (loi  n°2005-102 du 11 février 2005 pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées). « Tous les sites publics européens doivent atteindre le double A (AA) du W3C/WAI ».
+====
+
+=== Ergonomie
+
+====  Site Web adaptatif
+[TIP]
+====
+Lister les contraintes d’affichage multi-support. Utiliser quand c'est possible les frameworks modernes (type AngularJS ou React.js). Il existe plusieurs niveaux d’adaptation des pages Web :
+
+* Statique (largeur de page fixe).
+* Dynamique (redimensionnement automatique, les tailles sont exprimées en %).
+* Adaptatif (les distances sont exprimées en unités dont la taille dépend du support).
+* Responsive (le contenu et son agencement dépend du support).
+
+Attention, un design responsive vient avec ses contraintes (duplication de code, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir…). 
+====
+
+
+==== Charte ergonomique
+[TIP]
+====
+En général, on se réfère ici à la charte ergonomique de l’organisme. Lister néanmoins d’éventuelles spécificités. Ne pas reprendre les contraintes d’accessibilité listées plus haut.
+====
+ 
+==== Spécificités sur les widgets
+[TIP]
+====
+Des comportements ergonomiques très précis peuvent impacter assez fortement l’architecture et imposer une librairie de composants graphiques ou une autre. Il est fortement déconseillé de personnaliser des librairies existantes (coût de maintenance très élevé, grande complexité). Bien choisir sa librairie ou restreindre ses besoins.
+====
+====
+Exemple 1 : les tableaux devront être triables suivant plusieurs colonnes.
+====
+====
+Exemple 2 : de nombreux écrans seront pourvus d’accordéons
+====
+
+====  Progressive Web Apps (PWA)
+[TIP]
+====
+Spécifier si l'application est progressive. Les applications PWA sont des applications Web HTML5 possédant tous les attributs des applications natives (mode déconnecté, rapide, adaptatif, accessible depuis l'OS, ...) 
+====
+====
+Exemple : L'application X sera totalement PWA. Des tests devront démonter que le site continuer à fonctionner sans réseau et que les pages se chargent en moins de 5 secs en 4G. 
+====
+==== Navigateurs supportés
+[TIP]
+====
+Préciser quels sont les navigateurs supportés s’il s’agit d’une IHM Web. 
+
+Attention : supporter d’anciens navigateur (IE en particulier) peut engendrer des surcoûts rédhibitoires (sauf à utiliser une librairie qui masque cette complexité et en espérant qu’elle fonctionne correctement). 
+
+Dans tous les cas, il convient d’évaluer les surcoûts de tester sur plusieurs plate-formes. Il existe de bons outils (payants) comme Litmus ou EmailOnAcid permettant de générer un rendu des sites Web et des courriels HTML sur une combinatoire d’OS / type de lecteur (PC/tablette/mobile) /navigateur très vaste (de l’ordre de 50). 
+
+Ce type de site est incontournable pour une application grand public.
+====
+====
+Exemple 1 : L’application intranet X devra fonctionner sur les navigateurs qualifiés en interne (cf norme xyz)
+====
+====
+Exemple 2 : L’application Y étant une application internet visant le public le plus large possible, y compris des terminaux de pays en voie de développement. Il devra supporter Firefox 3+, IE 8+, Opera 6+.
+====
+====
+Exemple 3 : L’application Z vise le public le plus large et doté de systèmes raisonnablement anciens et devra donc supporter : Firefox 6+, Chrome 8+, Opera 8+, IE 10, Edge.
+====
+==== Internationalisation (i18n)
+[TIP]
+====
+Préciser les contraintes de l’ application en terme d’i18n : localisation des libellés, direction du texte, mise en page adaptable, code couleur spécifique, format de dates, devises, affichage des séparateurs décimaux, etc.
+====
+====
+Exemple 1 : L’IHM X sera traduite en 25 langues dont certaines langues asiatiques et l’arabe.
+====
+====
+Exemple 2 : les formats de dates et autres champs de saisie devront être parfaitement localisés pour un confort maximal de l’utilisateur.
+====
+==== Mode déconnecté
+[TIP]
+====
+Préciser si l'application doit pouvoir continuer à fonctionner sans accès à Internet ou au LAN (très courant pour les applications utilisées par les professionnels en déplacement par exemple). 
+
+Il peut s’agir de clients lourds classiques (Java, C, ...) possédant leur base locale pouvant être synchronisée de retour au bureau. Il peut également s'agir d'applications PWA (voir plus haut) utilisant un service worker pour les resources statiques et du stockage navigateur (local storage, base IndexedDB HTML5).
+====
+====
+Exemple 1 : L'application sera développée en Java Swing avec stockage local basé sur une base H2 synchronisées avec la base commune par appels REST.
+====
+====
+Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5 avec local storage pour stocker les données de la journée dans le navigateur.
+====
+
+== Pile logicielle
+
+=== Filière technique retenue
+[TIP]
+====
+Donner les technologies choisies parmi les technologies au catalogue de l’organisation. S’il existe des écarts avec le catalogue, le préciser et le justifier.
+====
+====
+Exemple : cette application est de profil P3 : "Application Web Spring" avec utilisation exceptionnelle de la librairie JasperReport.
+====
+====
+Exemple : Utilisation de Reacts.js à titre expérimental au sein de l'organisation. Validé en commité architecture le ...
+====
+==== Composants logiciels
+[TIP]
+====
+Lister ici pour chaque composant les principales librairies et frameworks utilisés ainsi que leur version. Ne pas lister les librairies fournies au runtime par les serveurs d'application ou les frameworks. Inutile de trop détailler, donner uniquement les composants structurants.
+====
+====
+Exemple :
+
+.Exemple de pile logicielle
+[cols="e,e,e"]
+|====
+|Librairie|Rôle|Version 
+
+|Framework Angular2
+|Framework JS de présentation
+|2.1.1 
+
+|JasperReport
+|Editique transactionnelle, composition des factures au format PDF
+|6.3.0
+|====
+====
+== Spécificités d’usine logicielle
+[TIP]
+====
+Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continue) de l'organisation, préciser si ce projet nécessite une configuration particulière.
+====
+====
+Exemple : Les jobs Jenkins produiront le logiciel sous forme de containers Docker si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce container. Si tous les tests d’intégration et BDD sont passants, l'image Docker est releasée dans Nexus.
+====
+
+== Spécificités des tests
+[TIP]
+====
+Une méthodologie ou une technologie particulière est-elle en jeu dans ce projet ?
+====
+====
+Exemple 1 : ce projet sera couvert en plus des TU et tests d’intégration car des tests d'acceptance BDD (Behavioral Driven Development) en technologie JBehave + Serenity.
+====
+====
+Exemple 2 : ce projet sera développé en TDD (test first)
+====
+
+=== Patterns notables
+[TIP]
+====
+Préciser si ce projet a mis en œuvre des patterns (GoF, JEE ou autre) structurants. Inutile de reprendre les patterns déjà supportés par les langages ou les serveurs d'application (par exemple, l'IoC avec CDI dans un serveur JEE 6).
+====
+====
+Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et éviter de multiplier les niveaux d'héritage, nous utiliserons massivement la pattern décorateur [GoF] dont voici un exemple d’utilisation : <schéma>.
+====
+
+== Éco-conception
+[TIP]
+====
+Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listée dans le volet infrastructure. Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
+Quelques pistes d’amélioration énergétique du projet :
+
+* Utiliser des profilers ou des outils de développement intégrés dans les navigateurs (comme Google Dev Tools) pour analyser la consommation de ressources (nombre, durée et taille des requêtes).
+* Pour les apps, utiliser des outils de supervision de la consommation de batterie comme Battery Historian.
+* Utiliser la suite d'analyse spécialisée Greenspector.
+* Mesurer la consommation électrique des systèmes avec les sondes PowerAPI2 (développé par l'INRIA et l'université Lille 1).
+* Mesurer la taille des images et les réduire (sans perte) avec des outils comme pngcrush, OptiPNG, pngrewrite ou ImageMagick.
+* Optimiser la consommation mémoire et CPU des applications, tuner le GC pour une application Java.
+* Faire du lazy loading pour le chargement des ressources occasionnelles.
+* Limiter les résultats retournés de la base de donnée (select) aux pages HTML retournées en passant par les données coté serveur.
+* Grouper les traitements de masse dans des batchs qui seront plus efficaces (lots).
+====
+====
+Exemple 1 : le processus gulp de construction de l'application appliquera une réduction de taille des images via le plugin imagemin-pngcrush.
+====
+====
+Exemple 2 : des tests de robustesse courant sur plusieurs jours seront effectués sur l’application mobile après chaque optimisation pour évaluer la consommation énergétique de l'application.
+====
+====
+Exemple 3 : Les campagnes de performance intégreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
+====
+
+
+== Gestion des transactions
+[TIP]
+====
+Lister ici les décisions prises concernant la gestion des transactions. Ceci est surtout utile pour un système distribué. Quelques exemples de problématiques : 
+
+* Autorise-t-on les mises jours sur de multiples composants lors d'une même requête ? 
+* Si oui, assurons nous le caractère ACID du tout (via le mode XA par exemple) ? 
+* Quel moteur transactionnel utilisons nous ? 
+* Quel niveau d'isolation transactionnelle (read commited, uncommited, repeatable read, serializable) ?
+* Si aucun moniteur transactionnel n'est utilisé (appel de plusieurs services REST en mise à jour par exemple), prévoit-t-on des transactions compensatoires en cas d'échec de l'une des mises à jours ?
+
+====
+====
+Exemple : nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file pour effectuer des mises à jour au fil de l'eau.
+====
+
+== Gestion des sessions
+[TIP]
+====
+Comment gère-t-on les sessions HTTP permettant de fournir un contexte d'exécution à un utilisateur (exemple: son panier d'achat) ? 
+
+Notez que ceci est une surtout un problème pour les applications Web classiques dont la présentation est générée sur le serveur, pas pour les applications SPA (Single Page Application) qui gèrent toute la présentation et leur état en local dans le navigateur.
+
+Les choix faits ici affecteront les link:volet-architecture-infrastructure[choix d'infrastructure]. Par exemple, si une session est requise et que l'infrastructure est en cluster, il faudra soit mettre en place de l'affinité de session sur les serveurs pour forcer chaque utilisateur à toujours arriver sur le même serveur disposant de ses données, soit de mettre en place un cache distribué permettant aux serveurs de partager les sessions de tous les utilisateurs (plus complexe).
+
+Exemples de points à traiter :
+
+* Quelles données doivent être conservées en session  ? (attention à la volumétrie, surtout si cache distribué)
+* Le code doit-il être thread-safe (si le même utilisateur ouvre un autre onglet dans son navigateur par exemple) ?
+
+====
+====
+Exemple : notre application JSF stockera en session HTTP uniquement son panier d'achat, pas les références produits
+====
+
+== Gestion des erreurs
+[TIP]
+====
+Comment gère-t-on erreurs ? Exemples de points à traiter :
+
+* Différencions-nous erreurs fonctionnelles (erreurs fonctionnelles prévues) et techniques ? Prévoir un diagramme de classe.
+* Comment logue t-on les erreurs ? quel niveau de log ? 
+* Où sont attrapées les exceptions ? au plus tôt ou en début d'appel de façon centralisée ?
+* Utilise-t-on les exceptions standards du langage (`IOException`,...) ou notre propre jeu d'exceptions ?
+* La liste des erreurs est-elle consolidée ? documentée ? 
+* Affecte-t-on des codes erreur ?
+* Affiche-on les stack-traces complètes ? si oui, coté serveur et coté client ?
+* Gère-t-on les rejeux ? si oui, espace-t-on les rejeux ?
+* Comment gère-t-on les timeouts ?
+
+====
+====
+Exemple (Spring) : les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
+====
+
+== Gestion de la configuration
+[TIP]
+====
+Comment configure-t-on l'application ? Exemples de points à traiter :
+
+* Quels sont les variables inclues dans le package final de façon statique ?
+* Quels sont les paramètres modifiables au runtime ? 
+* Mon application est-elle paramétrable via feature flags pour des raisons de canary testing par exemple ? si oui, comment je le gère dans le code ?
+* Sous quelle forme les paramètres sont-ils injectés dans l'application (variable d'environnement ? fichier .properties, base de donnée, ...) ? 
+* L'application accepte-elle une modification du paramètrage à chaud ?
+* Décrire le système de configuration
+
+====
+====
+Exemple (application déployées dans Kubernetes) : La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le décripteur de déploiement Kubernetes.
+====
+
+== Gestion de la concurrence
+[TIP]
+====
+Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
+
+* Quel scope pour les objets (si utilisation d'un moteur IoC) ?
+* Les objets doivent-il être sans état ?
+* Quels méthodes doivent-elles être synchronisées ?
+* Risques de race condition ? de starvation ? de dead locks ?
+
+====
+====
+Exemple  (Spring MVC) : Tous les controllers seront en scope singleton et ne doivent donc en aucun cas stocker d'état dans leurs attributs pour éviter des race conditions.
+====
+
+== Outils d'administration
+[TIP]
+====
+L'application doit-elle fournir des services d’administration ? Il est fortement conseillé (c'est le facteur 12 des https://12factor.net/[Twelve factors d'Heroku]) d'intégrer le code d'administration directement avec le code métier.
+
+Exemples de points à traiter :
+
+* Dois-je fournir un moyen de purger des données, logs, caches, ... ? 
+(on appelle quelque fois ce type de service un 'traitement interne')    
+* Dois-je fournir des indicateurs applicatifs de supervision ? (nombre de dossiers consultés, ...) ?
+* Dois-je fournir des outils de migration ?
+
+====
+====
+Exemple : Le service `/interne/maj_2` effectuera une montée de version du modèle de donnée vers la V2
+====
+
