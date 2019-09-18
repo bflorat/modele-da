@@ -1,0 +1,67 @@
+@startuml
+skinparam componentStyle uml2
+title Diagramme de déploiement \nArchitecture d'infrastucture \n Projet Mes Informations En Ligne
+
+cloud "Internet" as r0
+node "Routeur System 5500" as r1
+node "Firewall Cisco Firepower 4100" as r2
+node "LB Debian lb1"  as lb1 <<actif>> {
+ [HAProxy] as ha1
+}
+node "LB Debian lb2" <<passif>> as lb2
+node "Serveur Debian JEE host1" as host1 #42B5DB { 
+  [Instance Tomcat : ihms]  as ihms1
+  [Instance Tomcat : batchs]  as batchs1
+}
+node "Serveur Debian JEE host2" as host2  #42B5DB { 
+   [Instance Tomcat : ihms] as ihms2
+   [Instance Tomcat : batchs] as batchs2 
+}
+node "Serveur Debian JEE (x3) host3,host4,host5" as host3 #42B5DB { 
+  [Instance Wildfly : services1]  as services1 
+  [Instance Wildfly : services2]  as services2 
+}
+
+node "Serveur RHEL BDD : bdd1" as bdd1  #42B5DB { 
+   [Instance PG : pg1] as pg1
+   [Instance RabbitMQ : mq1] as mq1
+   [MTA Postfix : mail1] as mail1
+}
+node "Serveur RHEL Supervision : sup1" as sup1 {
+  [Centreon : ng1] as centreon
+}
+
+node "Serveur Echange : ech1" as ech1 {
+  [Axway API Gateway : gw1] as gw1
+}
+database "SAN EMC : baie 1" as baie1
+node "Switch FC QLogic :  s1" as san 
+node "<tous serveurs>" as  tous_serveurs
+
+r0 -> r1 : HTTPS
+r1->r2 : HTTPS
+r2 --> ha1 : HTTPS
+lb2 -> lb1 : Heartbeat VRRP
+ha1 --> ihms1 : HTTP
+ha1 --> ihms2 : HTTP
+ihms1 --> mq1 : produit\n JMS / RabbitMQ
+ihms2 --> mq1 : produit\n JMS / RabbitMQ
+services1 -->  mq1 : consomme\n JMS / RabbitMQ
+services1 -->  pg1 : JDBC / PG
+services1 -->  mail1 : SMTP
+services1 -->  gw1 : SOAP/HTTPS
+batchs1 --> ha1 : SOAP/HTTP
+batchs2 -> ha1 : SOAP/HTTP
+ha1 <-> services1 : SOAP et REST /HTTP
+ha1 --> services2 : REST/HTTP
+centreon --> tous_serveurs : SNMP
+bdd1 -> san : FC
+san -> baie1 : FC
+
+legend right
+   bleu : matériel à acheter
+  
+endlegend
+
+@enduml
+

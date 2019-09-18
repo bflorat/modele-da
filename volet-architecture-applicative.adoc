@@ -1,0 +1,204 @@
+
+= Volet architecture applicative
+:toc:
+:sectnumlevels: 3
+:sectnums:
+:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://gitlab.com/bflorat/modele-da/raw/develop/diagrams
+
+== Introduction
+
+Ce document fournit le point de vue applicatif. 
+Se référer aux volets joints pour les points de vue infrastructure, sécurité et développement. 
+
+=== Documentation de Référence
+Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
+
+.Références documentaires
+[cols="e,e,e,e"]
+|===
+|N°|Version|Titre/URL du document|Détail
+
+|1|2.0.4|XX_Urba_POS.pdf|POS du SI|
+|===
+
+== Non statué
+=== Points soumis à étude complémentaire
+.Points soumis à étude complémentaire
+[cols="e,e,e,e,e"]
+|====
+|ID|Détail|Statut|Porteur du sujet  | Échéance
+
+|EA1
+|EN_ATTENTE
+|En fonction de l’avancement du projet Y, ce composant pourrait appeler les services de ce dernier ou ceux de l’ancien composant Z
+|Projet Y
+|AVANT 2040
+
+|====
+
+
+=== Hypothèses
+.Hypothèses
+[cols="e,e"]
+|====
+|ID|Détail
+
+|HA1
+|Même si la décision de généralisation de l'annuaire centralisé n'est pas totalement entérinée, l’application s’appuiera dessus et non sur un annuaire local.
+|====
+
+== Contexte général
+
+=== Objectifs
+
+[TIP]
+Décrire succinctement le projet et en rappeler les objectifs. Mettre en évidence ceux qui sont structurants pour l’architecture.
+
+====
+Exemple 1 : Cette application doit permettre la dématérialisation des factures reçues de nos fournisseurs et une consultation aisée de ces documents par les services comptables.
+====
+====
+Exemple 2 : ce projet est la réécriture en technologies Web de l’application Cobol X.
+====
+====
+Exemple 3: l’ application X est l’un des composants principaux du programme Y. Il s’adosse sur les référentiels Personne et Facturation pour enrichir le CMS en données clients temps réel.
+====
+
+=== Existant
+[TIP]
+Si ce document présente un projet de refonte ou migration, décrire a minima l'application existante. Ne pas reprendre la documentation, y faire simplement référence et pointer vers son éventuel dossier d'architecture. Mentionner néanmoins toute information ayant un impact fort sur la migration ou la conception du nouveau projet.
+====
+Exemple 1 : L'application VENIR2 est une application Client-Server en FORMS 4 pointant vers une base Oracle 9i. Son dossier d'architecture est donné en [REFxyz].
+====
+====
+Exemple 2 : L'application existante se base et alimente un annuaire LDAP pour ses autorisations. Le nouveau projet devant fonctionner un temps avec l'ancienne, il convient de prendre en compte les accès concurrents et la cohérence du LDAP pendant la période de tuilage.
+====
+
+=== Positionnement dans le SI
+[TIP] 
+Si le SI est urbanisé, reprendre le plan d’occupation au sol et préciser le bloc concerné 
+
+=== Acteurs
+==== Acteurs internes 
+[TIP]
+On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peut s’agir d'humains ou de composants applicatifs.
+
+.Liste des acteurs internes
+[cols="e,e,e,e"]
+|===
+|Acteur|Description|Population|Fréquence d'appels 
+
+|Système de l'administration B
+|fournit les données comptables des entreprises
+|N/A
+|Appels en masse la nuit puis mise en cache
+
+|Agent
+|Agent back-office
+|100
+|Plusieurs fois par minute sur les heures de bureau
+
+|===
+
+==== Acteurs externes
+
+.Liste acteurs externes
+[cols="e,e,e,e"]
+|===
+|Acteur|Description|Population|Fréquence d'appels
+
+|Client Web
+|Une entreprise depuis un PC
+|Max 1M
+|10 appels à l’IHM par session, une session par jour et par acteur
+|Client mobile
+|Une entreprise depuis un mobile
+|Max 2M
+|5 appels de service par session, une session par jour et par acteur
+|===
+
+== Contraintes
+[TIP]
+====
+Lister ici les contraintes relatives à l'urbanisation, ceci inclut par exemple mais pas seulement :
+
+* Les règles applicables dans les appels entre composants (SOA)
+* Les règles concernant la localisation des données (MDM)
+* Les règles concernant la propagation des mises à jours par événements (EDA)
+
+====
+====
+Exemple 1 : les appels inter-services sont interdits sauf les appels de services à un service de nomenclature.
+====
+====
+Exemple 2 : pour en assurer la fraicheur, il est interdit de répliquer les données du référentiel PERSONNE. Ce dernier devra être interrogé au besoin en synchrone.
+====
+====
+Exemple 3 : Lors de la modification d'une commande, les zones comptabilité et facturation seront mises à jour de façon asynchrone via un événement.
+====
+====
+
+Exemple 4 : tous les batchs doivent pouvoir fonctionner en concurrence des IHM sans verrouillage des ressources.
+====
+
+====
+Exemple 5 : les services ne peuvent être appelés directement. Les appels se feront obligatoirement via une route exposée au niveau du bus d'entreprise qui appellera à son tour le service. Il est alors possible de contrôler, prioriser, orchestrer ou piloter les appels.
+====
+
+====
+Exemple 6 : Les composants de cette application suivent l'architecture SOA telle que définie dans le document de référence X.
+====
+
+== Architecture applicative générale
+[TIP]
+====
+Présenter ici l'application dans son ensemble (sans détailler ses sous-composants) en relation avec les autres applications du SI. Présenter également les macro-données échangées ou stockées. 
+
+Rappeler :
+
+ * Le type d'architecture (client-serveur, Web monolithique, SOA, micro-service...).
+ * Les grands flux entre les composants ou entre les applications dans le cas des monolithes.
+ * D'éventuelles dérogations.
+
+Le choix de la représentation est libre mais un diagramme C4 de System Landscape ou un diagramme de composant UML2 semble le plus adapté.
+
+Numéroter les étapes par ordre chronologique assure une meilleure compréhension du schéma. Grouper les sous étapes par la notation x, x.y, x.y.z, ...
+
+Ne pas faire figurer les nombreux systèmes d'infrastructure (serveur SMTP, dispositif de sécurité, reverse proxy, annuaires LDAP, ...) qui sont du domaine de l'architecture technique. Mentionner en revanche les éventuels bus d'entreprise qui ont un rôle applicatif (orchestration de service par exemple).
+====
+
+====
+Exemple 1 : MesInfosEnLigne permet à une entreprise de récupérer par mail un document récapitulant toutes les informations dont l’administration dispose sur elle. L'administration peut compléter ses données par celles d'une autre administration.
+====
+====
+Exemple 2 : MesInfosEnLigne est constituée de plusieurs microservices indépendants (composants IHM, batchs ou services REST)
+====
+====
+Exemple 3 : Suite à la déroguation du DSI du 03 aout 20xx, l'IHM sera en architecture SPA (Single Page Application)
+====
+
+image::{gitplant}/archi-applicative-generale.puml[Diagramme architecture applicative générale]
+
+== Architecture applicative détaillée
+[TIP]
+====
+Détailler ici tous les composants de l’application, leurs flux entre eux et avec les autres applications du SI.
+
+Proposer un ou plusieurs schémas (de préférence des diagrammes C4 de type containers ou diagramme UML2 de composant). 
+
+Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhensible par un non-technicien. Il devrait devenir l'un des artefacts documentaires les plus importants et figurer dans la war room d'un projet agile ou être imprimé par chaque développeur. 
+
+Si l'application est particulièrement complexe, faire un schéma par chaîne de liaison.
+
+Utiliser comme ID des flux une simple séquence non signifiante (1, 2, ..., n).
+Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux composants alors qu'en réalité, il passe par un répartiteur de charge intermédiaire). Ce niveau de détail sera donné dans le volet infrastructure. 
+
+Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.
+
+====
+
+====
+Exemple d'application :
+
+image::{gitplant}/archi-applicative-detaillee.puml[Diagramme architecture applicative détaillée]
+
