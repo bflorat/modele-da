@@ -5,7 +5,7 @@ Modèle de Dossier d'Architecture (DA) applicable à la plupart des projets d'in
 ## Principes du modèle
 Nous avons découpé l'architecture en quatre volets (applicatif, sécurité, infrastructure et développement), chaque volet étant auto-porteur. 
 
-L'idée est de proposer un ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquement dans les organisations et sur leurs préoccupations respectives. Par exemple, un architecte technique a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs par exemple). De même, un architecte fonctionnel ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
+L'idée est de proposer un ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquement dans les organisations et sur leurs préoccupations respectives. Par exemple, un architecte technique a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un architecte fonctionnel ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
 
 Un dossier suivant ce modèle sera ainsi constitué :
 
@@ -44,7 +44,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 
 
 ## Licence
-* Copyright (c) 2019 Bertrand Florat
+* Copyright (c) 2017-2019 Bertrand Florat
 * Ce modèle est en licence https://creativecommons.org/licenses/by-sa/3.0/fr/[CC BY-SA 3.0] : Creative Commons Attribution - Partage à l'identique V3.0
 * Vous pouvez créer une version dérivée de ce modèle à condition qu'il conserve la licence CC BY-SA 3.0 et qu'il contienne donc ces trois éléments: 
 ** Le nom du créateur (Bertrand Florat) ;
