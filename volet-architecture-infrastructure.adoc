@@ -29,7 +29,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 === Glossaire
 [TIP]
-Par souci de concision, nous ne détaillons ici que les termes et acronymes spécifiquement utilisés dans le contexte de l’application. Pour les définitions générales, veuillez vous référer au glossaire d’entreprise.
+Par souci de concision, nous ne détaillons ici que les termes et acronymes spécifiques à l’application. Pour les définitions générales, veuillez vous référer au glossaire d’entreprise.
 
 .Glossaire sécurité spécifique projet
 [cols="e,e"]
@@ -323,7 +323,7 @@ Nous listons ici les exigences de disponibilité. Les mesures techniques permett
 
 Les informations données ici serviront d'entrants au SLA de l’application.
 
-Attention à bien cadrer ces exigences car une MOA a en général tendance à demander une disponibilité très élevée sans toujours se rendre compte des implications. Le coût et la complexité de la solution augmente exponentiellement avec le niveau de disponibilité exigé. 
+Attention à bien cadrer ces exigences car un porteur de projet a souvent tendance à demander une disponibilité très élevée sans toujours se rendre compte des implications. Le coût et la complexité de la solution augmente exponentiellement avec le niveau de disponibilité exigé. 
 
 L’architecture physique, technique voire logicielle change complètement en fonction du besoin de disponibilité (clusters d’intergiciels voire de bases de données, redondances matériels coûteuses, architecture asynchrone, caches de session, failover ...). 
 
