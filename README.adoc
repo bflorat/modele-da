@@ -16,7 +16,7 @@ Un dossier suivant ce modèle sera ainsi constitué :
 
 Dans chaque volet, on retrouvera :
 
-* Les contraintes (légales, budgétaires, technologiques, normatives,...) pouvant s'appliquer ;
+* Les contraintes (légales, budgétaires, technologiques, normatives,...) applicables ;
 * Les exigences non fonctionnelles (ENF) exprimées par les porteurs du projet dans la limite des contraintes ;
 * La description de l'architecture retenue répondant aux ENF.
 
@@ -32,7 +32,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 ### Conseils sur la rédaction de votre dossier d'architecture 
 * Rester bref, chaque mot doit avoir son utilité. Pas d’explication bateau type ‘ceci est l’introduction’, pas de redites d’autres documents, de l’historique de l’entreprise ou de concepts vagues ;
 * Un lecteur doit comprendre le fonctionnement et les contraintes de l’application sans être noyé de détails. Le document doit rester maintenable et à jour ;
-* Si l’application suit une architecture standardisée par l’organisation, ne jamais la répéter (principe https://en.wikipedia.org/wiki/Don%27t_repeat_yourself[DRY]) et se référencer à un document commun (références à ajouter au début de chaque volet) ;
+* Si l’application suit une architecture standardisée par l’organisation, ne jamais la répéter (principe https://en.wikipedia.org/wiki/Don%27t_repeat_yourself[DRY]) et se référer à un document commun ;
 * Si un chapitre n’est pas applicable, ne pas le laisser vide mais simplement mentionner `N/A` pour que le lecteur sache que le sujet a été traité ou `TODO` s'il reste à compléter ;
 * Ce modèle se veut suffisamment complet pour couvrir la plupart des applications. Il est donc normal que de nombreux chapitres ne soient pas applicables dans votre contexte ; 
 * Lister les hypothèses d’architecture et études en cours dans le chapitre "Points non statués" de chaque volet (ils doivent être exceptionnels, sinon le DA est rédigé trop tôt) ;
