@@ -879,7 +879,7 @@ Identifier clairement le matériel dédié à l’application (et éventuellemen
 ====
 Exemple :
 
-image::{gitplant}/archi-infra.puml[Diagramme de déploiement MIEL]
+image::{gitplant}/archi-infra.puml?v=2[Diagramme de déploiement MIEL]
 ====
 == Versions des composants d'infrastructure
 [TIP]
