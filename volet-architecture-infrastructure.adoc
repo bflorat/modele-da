@@ -1241,7 +1241,7 @@ Ce chapitre sera instruit quand l’application arrive en fin de vie et devra ê
 * Les données à archiver ou au contraire à détruire avec un haut niveau de confiance.
 * Les composants physiques à évacuer ou à détruire.
 * Les procédures de désinstallation coté serveur et/ou client (il est courant de voir des composants obsolètes toujours s’exécuter sur des serveurs et occasionner des problèmes de performance et de sécurité passant sous le radar).
-* Les contraintes de sécurité associées au décommissionnement (c’est une étape sensible souvent négligée, on peut retrouver par exemple des disques durs remplis de données très sensibles suite à un don par exemple).
+* Les contraintes de sécurité associées au décommissionnement (c’est une étape sensible souvent négligée, on peut retrouver par exemple des disques durs remplis de données très sensibles suite à un don de matériel).
 ====
 
 ====
