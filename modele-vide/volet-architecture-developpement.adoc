@@ -1,0 +1,114 @@
+= Volet développement
+:toc:
+:sectnumlevels: 3
+:sectnums:
+
+== Introduction
+Ce document fournit le point de vue développement de l’application. Se référer aux volets joints pour les points de vue applicatifs, infrastructure et sécurité. 
+
+=== Documentation de Référence
+
+.Références documentaires développement
+[cols="e,e,e,e"]
+|====
+
+|
+|
+|
+
+|====
+
+=== Glossaire
+
+.Glossaire sécurité spécifique projet
+[cols="e,e"]
+|====
+|Terme|Définition
+
+|
+|
+
+|====
+
+== Non statué
+=== Points soumis à étude complémentaire
+.Points soumis à étude complémentaire
+[cols="e,e,e,e,e"]
+|====
+|ID|Détail|Statut|Porteur du sujet  | Échéance
+
+|
+|
+|
+|
+|
+
+|====
+
+
+=== Hypothèses
+.Hypothèses
+[cols="e,e"]
+|====
+|ID|Détail
+
+|
+|
+
+|====
+
+== Contraintes
+
+
+== Exigences non fonctionnelles
+
+
+=== Accessibilité
+
+=== Ergonomie
+
+
+==== Charte ergonomique
+ 
+==== Spécificités sur les widgets
+
+====  Progressive Web Apps (PWA)
+
+==== Navigateurs supportés
+
+==== Internationalisation (i18n)
+
+==== Mode déconnecté
+
+== Pile logicielle
+
+=== Filière technique retenue
+
+==== Composants logiciels
+
+[cols="e,e,e"]
+|====
+|Librairie|Rôle|Version 
+
+|====
+
+== Spécificités d’usine logicielle
+
+== Spécificités des tests
+
+== Patterns notables
+
+== Éco-conception
+
+== Gestion des transactions
+
+== Gestion des sessions
+
+== Gestion des erreurs
+
+== Gestion de la configuration
+
+== Gestion de la concurrence
+
+== Outils d'administration
+

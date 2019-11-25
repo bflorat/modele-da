@@ -1,0 +1,97 @@
+
+= Volet architecture applicative
+:toc:
+:sectnumlevels: 3
+:sectnums:
+
+== Introduction
+
+Ce document fournit le point de vue applicatif. 
+Se référer aux volets joints pour les points de vue infrastructure, sécurité et développement. 
+
+=== Documentation de Référence
+
+.Références documentaires
+[cols="e,e,e,e"]
+|===
+|N°|Version|Titre/URL du document|Détail
+
+|
+|
+|
+|
+
+|===
+
+== Non statué
+=== Points soumis à étude complémentaire
+.Points soumis à étude complémentaire
+[cols="e,e,e,e,e"]
+|====
+|ID|Détail|Statut|Porteur du sujet  | Échéance
+
+|
+|
+|
+|
+|
+
+|====
+
+
+=== Hypothèses
+.Hypothèses
+[cols="e,e"]
+|====
+|ID|Détail
+
+|
+|
+
+|====
+
+== Contexte général
+
+=== Objectifs
+
+
+=== Existant
+
+=== Positionnement dans le SI
+
+=== Acteurs
+==== Acteurs internes 
+
+.Liste des acteurs internes
+[cols="e,e,e,e"]
+|===
+|Acteur|Description|Population|Fréquence d'appels 
+
+|
+|
+|
+|
+
+|===
+
+==== Acteurs externes
+
+.Liste acteurs externes
+[cols="e,e,e,e"]
+|===
+|Acteur|Description|Population|Fréquence d'appels
+
+| 
+|
+|
+|
+
+|===
+
+== Contraintes
+
+== Architecture applicative générale
+
+== Architecture applicative détaillée
+
+
