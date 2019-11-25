@@ -248,7 +248,7 @@ Exemple 1 : ce projet sera couvert en plus des TU et tests d’intégration car 
 Exemple 2 : ce projet sera développé en TDD (test first)
 ====
 
-=== Patterns notables
+== Patterns notables
 [TIP]
 ====
 Préciser si ce projet a mis en œuvre des patterns (GoF, JEE ou autre) structurants. Inutile de reprendre les patterns déjà supportés par les langages ou les serveurs d'application (par exemple, l'IoC avec CDI dans un serveur JEE 6).
