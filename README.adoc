@@ -28,6 +28,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * De plus, il est volontairement riche en explications et exemples car il a également une (modeste) prétention éducative à destination des jeunes architectes. Votre dossier sera probablement plus court ;
 * Le texte en italique contient des exemples (à supprimer) ;
 * Chaque chapitre dispose de notes aidant à le remplir (à supprimer) ;
+* Des link:modeles-vierges[modèles vierges] (sans exemples) sont fournis pour votre confort ;
 
 ### Conseils sur la rédaction de votre dossier d'architecture 
 * Rester bref, chaque mot doit avoir son utilité. Pas d’explication bateau type ‘ceci est l’introduction’, pas de redites d’autres documents, de l’historique de l’entreprise ou de concepts vagues ;
