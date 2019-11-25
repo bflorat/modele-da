@@ -12,7 +12,6 @@ Se référer aux volets joints pour les points de vue infrastructure, sécurité
 === Documentation de Référence
 
 .Références documentaires
-[cols="e,e,e,e"]
 |===
 |N°|Version|Titre/URL du document|Détail
 
@@ -26,7 +25,6 @@ Se référer aux volets joints pour les points de vue infrastructure, sécurité
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
-[cols="e,e,e,e,e"]
 |====
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 
@@ -41,7 +39,6 @@ Se référer aux volets joints pour les points de vue infrastructure, sécurité
 
 === Hypothèses
 .Hypothèses
-[cols="e,e"]
 |====
 |ID|Détail
 
@@ -63,7 +60,6 @@ Se référer aux volets joints pour les points de vue infrastructure, sécurité
 ==== Acteurs internes 
 
 .Liste des acteurs internes
-[cols="e,e,e,e"]
 |===
 |Acteur|Description|Population|Fréquence d'appels 
 
@@ -77,7 +73,6 @@ Se référer aux volets joints pour les points de vue infrastructure, sécurité
 ==== Acteurs externes
 
 .Liste acteurs externes
-[cols="e,e,e,e"]
 |===
 |Acteur|Description|Population|Fréquence d'appels
 

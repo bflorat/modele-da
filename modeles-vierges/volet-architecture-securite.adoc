@@ -10,7 +10,6 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 === Documentation de Référence
 
 .Références documentaires sécurité
-[cols="e,e,e,e"]
 |====
 |N°|Version|Titre/URL du document|Détail
 
@@ -24,7 +23,6 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 === Glossaire
 
 .Glossaire sécurité spécifique projet
-[cols="e,e"]
 |====
 |Terme|Définition
 
@@ -36,7 +34,6 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
-[cols="e,e,e,e,e"]
 |====
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 
@@ -51,7 +48,6 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 
 === Hypothèses
 .Hypothèses
-[cols="e,e"]
 |====
 |ID|Détail
 
@@ -69,17 +65,9 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 
 .Niveau d'intégrité exigée par classe de données
 [options="header"]
-[cols="e,e,e,e,e"]
 |====
-|Classe de données
-|Niveau « Non intègre » + 
-[small]#La donnée peut ne pas être intègre#
-|Niveau « Détectable » + 
-[small]#La donnée peut ne pas être intègre si l'altération est identifiée#
-|Niveau « Maîtrisé » +
-[small]#La donnée peut ne pas être intègre si l'altération est identifiée et corrigée  en moins d'une heure#
-|Niveau « Intègre » +
-[small]#La donnée doit toujours être rigoureusement intègre#
+|Classe de données|Niveau « Non intègre » + 
+[small]#La donnée peut ne pas être intègre#|Niveau « Détectable » + [small]#La donnée peut ne pas être ntègre si l'altération est identifiée#|Niveau « Maîtrisé » +[small]#La donnée peut ne pas être intègre si l'altération est identifiée et corrigée  en moins d'une heure#|Niveau « Intègre » +[small]#La donnée doit toujours être rigoureusement intègre#
 
 |
 |
@@ -94,17 +82,8 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 
 .Niveau de confidentialité exigée par classe de données
 [options="header"]
-[cols="e,e,e,e,e"]
 |====
-|Classe de données
-|Niveau « Public » + 
-[small]#Tout le monde peut accéder à la donnée#
-|Niveau « Limité »  + 
-[small]#La donnée n’est accessible qu’aux personnes habilitées#
-|Niveau « Réservé » +
-[small]#La donnée n’est accessible qu’au personnel interne habilité#
-|Niveau « Privé » +
-[small]#La donnée n’est visible que par l’intéressé(e)#
+|Classe de données|Niveau « Public » + [small]#Tout le monde peut accéder à la donnée# |Niveau  Limité »  + [small]#La donnée n’est accessible qu’aux personnes habilitées# |Niveau « Réservé » + [small]#La donnée n’est accessible qu’au personnel interne habilité# |Niveau « Privé » + [small]#La donnée n’est visible que par l’intéressé(e)#
 
 |
 |
@@ -123,16 +102,8 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 
 .Exigence d'authentification par cas d'utilisation
 [options="header"]
-[cols="e,e,e,e,e,e,e,e"]
 |====
-|Cas d’authentification
-|Mot de passe respectant la politique de mot de passe P
-|Clé publique ssh connue
-|OTP par Token
-|Biométrie
-|Connaissance de données métier
-|E-mail d’activation
-|Délégation d’authentification
+|Cas d’authentification |Mot de passe respectant la politique de mot de passe |Clé publique ssh connue| OTP par Token |Biométrie |Connaissance de données métier |E-mail d’activation |Délégation authentification
 
 |
 |
@@ -157,7 +128,6 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 
 .Besoins de non-répudiation
 [options="header"]
-[cols="e,e,e"]
 |===
 |Donnée signée|Origine du certificat client|Origine du certificat serveur
 
@@ -174,10 +144,8 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 === Exigences d'autorisations
 
 .Matrice de rôles
-[options="header"]
-[cols="e,e,e,e"]
 |===
-|_Groupe ou utilisateur_|_Rôle_ `suppression`|_Rôle_ `administration`|_Rôle `_consultation données de base`
+|_Groupe ou utilisateur_|Rôle `x`|Rôle `y`|Rôle `z`
 
 |
 |
@@ -190,8 +158,6 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 === Exigences de traçabilité & auditabilité
 
 .Données à conserver pour preuves
-[options="header"]
-[cols="e,e,e"]
 |===
 |Donnée|Objectif|Durée de rétention
 
@@ -207,8 +173,6 @@ Ce document fournit le point de vue sécurité de l’application. Se référer 
 Dispositifs répondant aux exigences exprimées au chapitre <<exigence-integrite>> :
 
 .Mesures pour assurer le niveau d'intégrité demandée
-[options="header"]
-[cols="e,e,e"]
 |===
 |Classe de données|Niveau exigé|Mesures
 
@@ -222,8 +186,6 @@ Dispositifs répondant aux exigences exprimées au chapitre <<exigence-integrite
 Dispositifs répondant aux exigences exprimées au chapitre <<exigence-confidentialite>> :
 
 .Mesures pour assurer le niveau d'intégrité demandée
-[options="header"]
-[cols="e,e,e"]
 |===
 |Classe de données|Niveau exigé|Mesures
 
@@ -264,12 +226,8 @@ Dispositifs répondant aux exigences exprimées au chapitre <<exigence-tracabili
 === Auto-contrôle des vulnérabilités
 
 .Checklist d'auto-contrôle de prise en compte des vulnérabilités courantes
-[options="header"]
-[cols="e,e,e"]
 |===
-|Vulnérabilité
-|Pris en compte ?
-|Mesures techniques entreprises
+|Vulnérabilité |Pris en compte ? |Mesures techniques entreprises
 
 |
 |
@@ -281,12 +239,8 @@ Dispositifs répondant aux exigences exprimées au chapitre <<exigence-tracabili
 === Auto-contrôle RGPD
 
 .Checklist d'auto-contrôle de respect du RGPD
-[options="header"]
-[cols="e,e,e"]
 |===
-|Exigence RGPD
-|Prise en compte ?
-|Mesures techniques entreprises
+|Exigence RGPD |Prise en compte ? |Mesures techniques entreprises
 
 |
 |

@@ -9,8 +9,8 @@ Ce document fournit le point de vue développement de l’application. Se réfé
 === Documentation de Référence
 
 .Références documentaires développement
-[cols="e,e,e,e"]
 |====
+|N°|Version|Titre/URL du document|Détail
 
 |
 |
@@ -21,7 +21,6 @@ Ce document fournit le point de vue développement de l’application. Se réfé
 === Glossaire
 
 .Glossaire sécurité spécifique projet
-[cols="e,e"]
 |====
 |Terme|Définition
 
@@ -33,7 +32,6 @@ Ce document fournit le point de vue développement de l’application. Se réfé
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
-[cols="e,e,e,e,e"]
 |====
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 
@@ -48,7 +46,6 @@ Ce document fournit le point de vue développement de l’application. Se réfé
 
 === Hypothèses
 .Hypothèses
-[cols="e,e"]
 |====
 |ID|Détail
 
@@ -86,7 +83,6 @@ Ce document fournit le point de vue développement de l’application. Se réfé
 
 ==== Composants logiciels
 
-[cols="e,e,e"]
 |====
 |Librairie|Rôle|Version 
 
