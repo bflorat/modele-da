@@ -359,7 +359,7 @@ a|
 |0.28% (2 h/mois)
 |====
 
-=====  Mode dégradé acceptable
+===  Mode dégradé acceptable
 [TIP]
 ====
 Préciser l’impact maximal accepté sur les temps de réponse lors d'une panne.
