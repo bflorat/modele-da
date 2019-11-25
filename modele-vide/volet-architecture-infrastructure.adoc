@@ -2,10 +2,6 @@
 :toc:
 :sectnumlevels: 3
 :sectnums:
-:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
-
-== Introduction
-
 Ce document fournit le point de vue infrastructure de l’application. Se référer aux volets joints pour les points de vue applicatifs, sécurité et développement. 
 
 [TIP]
@@ -15,6 +11,7 @@ Ce point de vue est aussi souvent appelé « point de vue technique » et  con
 Bref, elle porte sur tout ce qui est externe à l'application et nécessaire à son exécution
 ====
 
+== Introduction
 === Documentation de Référence
 [TIP]
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
