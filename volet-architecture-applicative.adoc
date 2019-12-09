@@ -8,7 +8,7 @@
 == Introduction
 
 Ce document fournit le point de vue applicatif. 
-Se référer aux volets joints pour les points de vue infrastructure, sécurité et développement. 
+Se référer aux volets joints pour les points de vue infrastructure, sécurité, dimensionnement et développement. 
 
 === Documentation de Référence
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.

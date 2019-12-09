@@ -6,7 +6,7 @@
 
 == Introduction
 
-Ce document fournit le point de vue infrastructure de l’application. Se référer aux volets joints pour les points de vue applicatifs, sécurité et développement. 
+Ce document fournit le point de vue infrastructure de l’application. Se référer aux volets joints pour les points de vue applicatifs, sécurité, dimensionnement et développement. 
 
 [TIP]
 ====

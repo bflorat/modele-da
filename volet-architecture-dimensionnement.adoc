@@ -1,0 +1,161 @@
+= Volet infrastructure
+:toc:
+:sectnumlevels: 3
+:sectnums:
+
+== Introduction
+Ce document fournit le point de vue dimensionnement de l’application. Se référer aux volets joints pour les points de vue applicatifs, sécurité, infrastructure et développement. 
+
+=== Documentation de Référence
+
+.Références documentaires dimensionnement
+|====
+|N°|Version|Titre/URL du document|Détail
+
+|
+|
+|
+|
+
+|====
+
+
+== Non statué
+=== Points soumis à étude complémentaire
+.Points soumis à étude complémentaire
+|====
+|ID|Détail|Statut|Porteur du sujet  | Échéance
+
+|
+|
+|
+|
+|
+
+|====
+
+
+=== Hypothèses
+.Hypothèses
+|====
+|ID|Détail
+
+|
+|
+
+|====
+
+
+== Contraintes
+
+[[contrainte-dimensionnement]]
+=== Contraintes stockage
+TIP: Lister ici les éventuelles contraintes liées aux disques
+
+[Exemple]
+====
+L'espace disque maximal allouable à une VM est de 2 To.
+====
+
+=== Contraintes CPU
+TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul
+[Exemple]
+====
+Exemple : Une VM sera dotée au maximum de 10 VCPU
+====
+
+=== Contraintes mémoire
+TIP: Lister ici les éventuelles contraintes liées à la mémoire
+[Exemple]
+====
+Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM
+====
+
+=== Contraintes réseau
+TIP: Lister ici les éventuelles contraintes de volume réseau utilisé
+[Exemple]
+====
+Exemple 1 : La latence minimale des requêtes sur le WAN entre Londre et Tokyo est de 250 ms
+====
+
+[Exemple]
+====
+Exemple 2 : Le réseau ethernet du Datacenter dispose d'une bande passante de 40 Gbps.
+====
+
+== Exigences
+
+=== Exigences de temps de réponse
+
+====  Temps de Réponse des IHM
+
+.Types de sollicitation :
+|====
+|Type de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
+
+|
+|
+|
+|
+
+|====
+
+
+====  Durée d’exécution des batchs
+
+[[exigences-disponibilite]]
+=== Exigences de disponibilité
+
+=====  Disponibilité par plage de fonctionnent
+Voir le détail des <<plages>>.
+
+
+.Plages de fonctionnement
+|====
+|No Plage|Disponibilité attendue|Indisponibilité  programmée|Indisponibilité non programmée
+
+|
+|
+|
+|
+
+|====
+
+===  Mode dégradé acceptable
+
+
+[[exigences-robustesse]]
+=== Exigences de robustesse
+
+
+
+[[exigences-volumetrie]]
+=== Exigences de volumétrie
+
+====  Volumétrie statique
+
+.Volumétrie statique 
+|====
+|Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
+
+|
+|
+|
+|
+|
+|
+
+|====
+
+====  Volumétrie dynamique
+
+===== Coupe-circuits
+
+
+===== Qualité de Service 
+
+===== Augmentation prévisionnelle de la charge
+
+
+== Dimensionnement des machines
+
