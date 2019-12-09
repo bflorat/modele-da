@@ -402,11 +402,11 @@ Exemple 3 : le système devra pouvoir tenir une charge trois fois supérieure à
 === Exigences de volumétrie
 [TIP]
 ====
-La volumétrie ici décrite permettra le dimensionnement initial de la solution. 
+La volumétrie ici décrite permettra le dimensionnement initial de la solution en terme de volume de stockage, de bande passante réseau et (après benchmarks) de puissance de calcul et de mémoire nécessaire.
 
 Il est crucial de récupérer un maximum d'informations issues de la production plutôt que des estimations car ces dernières se révèlent souvent loin de la réalité. 
 
-C'est d'autant plus difficile s'il s'agit d'un nouveau projet, prévoir alors une marge importante.
+C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Prévoir alors une marge importante.
 
 Les informations données ici serviront d'entrants au SLA de l’application.
 ====
@@ -564,7 +564,7 @@ Il est également utile de prévoir des systèmes de régulation applicatifs dyn
 * Des systèmes de jetons (qui permettent en outre de favoriser tel ou tel client en leur accordant un quota de jetons différents).
 ====
 ====
-Exemple : Le nombre total de jetons d'appels aux opérations REST sur la ressource `DetailArticle` sera de 1000. Au delà de 1000 appels simultanés, les appelants obtiendront une erreur d'indisponibilité 429 qu'ils devront gérer (et faire éventuellement des rejeux à espacer progressivement dans le temps).  
+Exemple 1 : Le nombre total de jetons d'appels aux opérations REST sur la ressource `DetailArticle` sera de 1000. Au delà de 1000 appels simultanés, les appelants obtiendront une erreur d'indisponibilité 429 qu'ils devront gérer (et faire éventuellement des rejeux à espacer progressivement dans le temps).  
 
 .Exemple : répartition des jetons sera la suivante par défaut
 |====
