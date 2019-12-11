@@ -5,7 +5,7 @@
 :sectnums:
 
 == Introduction
-Ce document fournit le point de vue sécurité de l’application. Se référer aux volets joints pour les points de vue applicatifs, infrastructure et développement. 
+Ceci est le point de vue sécurité. Il décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
 
 === Documentation de Référence
 

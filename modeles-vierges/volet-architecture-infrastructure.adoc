@@ -4,7 +4,7 @@
 :sectnums:
 
 == Introduction
-Ce document fournit le point de vue infrastructure de l’application. Se référer aux volets joints pour les points de vue applicatifs, sécurité, dimensionnement et développement. 
+Ceci est le point de vue infrastructure de l’application. Il décrit le déploiement des modules applicatifs dans leur environnement d'execution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
 === Documentation de Référence
 

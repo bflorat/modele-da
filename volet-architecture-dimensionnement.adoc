@@ -4,7 +4,7 @@
 :sectnums:
 
 == Introduction
-Ce document fournit le point de vue dimensionnement de l’application. Se référer aux volets joints pour les points de vue applicatifs, sécurité, infrastructure et développement. 
+Ceci est le point de vue dimensionnement du projet. Il permet de déterminer la taille de l'infrastructure nécessaire au projet.
 
 === Documentation de Référence
 

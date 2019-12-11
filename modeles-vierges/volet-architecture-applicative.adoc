@@ -5,9 +5,7 @@
 :sectnums:
 
 == Introduction
-
-Ce document fournit le point de vue applicatif. 
-Se référer aux volets joints pour les points de vue infrastructure, sécurité, dimensionnement et développement. 
+Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
 
 === Documentation de Référence
 

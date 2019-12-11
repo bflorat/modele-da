@@ -4,7 +4,7 @@
 :sectnums:
 
 == Introduction
-Ce document fournit le point de vue développement de l’application. Se référer aux volets joints pour les points de vue applicatifs, infrastructure, dimensionnement et sécurité. 
+Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
 
 === Documentation de Référence
 

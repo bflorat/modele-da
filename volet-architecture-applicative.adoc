@@ -6,9 +6,7 @@
 :gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
 == Introduction
-
-Ce document fournit le point de vue applicatif. 
-Se référer aux volets joints pour les points de vue infrastructure, sécurité, dimensionnement et développement. 
+Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
 
 === Documentation de Référence
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
