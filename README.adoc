@@ -3,20 +3,21 @@
 Modèle de Dossier d'Architecture (DA) applicable à la plupart des projets d'informatique de gestion, indépendamment de l'architecture générale retenue (monolithe, SOA, micro-service, n-tiers, ...)
 
 ## Principes du modèle
-Nous avons découpé l'architecture en quatre volets (applicatif, sécurité, infrastructure et développement), chaque volet étant auto-porteur. 
+Nous avons découpé l'architecture en cinq volets (applicatif, sécurité, dimensionnement, infrastructure et développement), chaque volet étant auto-porteur. 
 
-L'idée est de proposer un ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquement dans les organisations et sur leurs préoccupations respectives. Par exemple, un architecte technique a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un architecte fonctionnel ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
+L'idée est de proposer un ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations et sur leurs préoccupations respectives. Par exemple, un architecte technique a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un architecte fonctionnel ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
 
 Un dossier suivant ce modèle sera ainsi constitué :
 
 * d’un link:volet-architecture-applicative.adoc[volet applicatif] présentant le contexte général et l’architecture applicative ;
 * d’un link:volet-architecture-developpement.adoc[volet développement] présentant l’architecture logicielle et son environnement ;
+* d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et aux charges ;
 * d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les aspects d’architecture technique ou physique ;
 * d’un link:volet-architecture-securite.adoc[volet sécurité] ;
 
 Dans chaque volet, on retrouvera :
 
-* Les contraintes (légales, budgétaires, technologiques, normatives,...) applicables ;
+* Les contraintes (légales, budgétaires, technologiques, normatives,...) applicables au projet;
 * Les exigences non fonctionnelles (ENF) exprimées par les porteurs du projet dans la limite des contraintes ;
 * La description de l'architecture retenue répondant aux ENF.
 

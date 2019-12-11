@@ -4,7 +4,7 @@
 :sectnums:
 
 == Introduction
-Ce document fournit le point de vue infrastructure de l’application. Se référer aux volets joints pour les points de vue applicatifs, sécurité et développement. 
+Ceci est le point de vue infrastructure de l’application. Il décrit le déploiement des modules applicatifs dans leur environnement d'exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
 === Documentation de Référence
 
@@ -89,28 +89,12 @@ Ce document fournit le point de vue infrastructure de l’application. Se réfé
 
 |====
 
-=== Exigences de temps de réponse
 
-====  Temps de Réponse des IHM
-
-.Types de sollicitation :
-|====
-|Type de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
-
-|
-|
-|
-|
-
-|====
-
-
-====  Durée d’exécution des batchs
 
 [[exigences-disponibilite]]
 === Exigences de disponibilité
 
-=====  Disponibilité par plage de fonctionnent
+=====  Disponibilité par plage de fonctionnement
 Voir le détail des <<plages>>.
 
 
@@ -125,40 +109,11 @@ Voir le détail des <<plages>>.
 
 |====
 
-===  Mode dégradé acceptable
+===  Mode dégradés
 
 
 [[exigences-robustesse]]
 === Exigences de robustesse
-
-
-
-[[exigences-volumetrie]]
-=== Exigences de volumétrie
-
-====  Volumétrie statique
-
-.Volumétrie statique 
-|====
-|Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
-
-|
-|
-|
-|
-|
-|
-
-|====
-
-====  Volumétrie dynamique
-
-===== Coupe-circuits
-
-
-===== Qualité de Service 
-
-===== Augmentation prévisionnelle de la charge
 
 
 [[exigences-sauvegarde]]
@@ -258,8 +213,6 @@ Matrice de flux techniques :
 ====  Outil de pilotage de la supervision
 
 ====  Suivi des opérations programmées
-
-==== Supervision des performances
 
 ==== Tests de vie
 
