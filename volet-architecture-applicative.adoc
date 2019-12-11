@@ -199,4 +199,20 @@ Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attr
 Exemple d'application :
 
 image::{gitplant}/archi-applicative-detaillee.puml[Diagramme architecture applicative détaillée]
+====
 
+
+== Matrice des flux applicatifs
+[TIP]
+====
+Lister ici les flux principaux de l'application. Ne pas détailler les flux techniques de supervision ou lié au clustering par exemple. Mentionner le type de réseau (LAN, WAN). Ne pas reprendre les ID de la matrice de flux du volet d'infrastructure.
+====
+
+.Exemple partiel de matrice de flux applicatifs
+[cols="e,e,e,e,e"]
+|====
+|ID|Source|Destination|Type de réseau|Protocole
+
+|1|Entreprise|PC/tablette/mobile externe| ihm-miel |WAN
+|2|batch-traiter-demandes | service-compo-pdf | HTTP |LAN
+|====
