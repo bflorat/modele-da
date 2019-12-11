@@ -28,19 +28,6 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
-=== Glossaire
-[TIP]
-Par souci de concision, nous ne détaillons ici que les termes et acronymes spécifiques à l’application. Pour les définitions générales, veuillez vous référer au glossaire d’entreprise.
-
-.Glossaire sécurité spécifique projet
-[cols="e,e"]
-|====
-|Terme|Définition
-
-|Replicat Set|Cluster actif/actif MongoDB
-
-|====
-
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
@@ -73,7 +60,7 @@ Par souci de concision, nous ne détaillons ici que les termes et acronymes spé
 ====
 Les contraintes sont les limites applicables aux exigences sur le projet. 
 
-Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par exemple, il ne serait pas valide d'exiger des temps de réponse d'un web service incompatibles avec le débit du réseau sous-jacent.
+Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par exemple, il ne serait pas valide d'exiger une disponibilité incompatible avec le niveau de sécurité Tier du datacenter qui l'hébergera.
 
 ====
 [[contrainte-disponibilite]]
@@ -82,7 +69,7 @@ Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par
 ====
 Les éléments ici fournis pourront servir de base à l'OLA (Operationnal Level Agreement). 
 
-Ce chapitre est assez pédagogique car il rappelle la disponibilité plafond envisageable : la disponibilité finale de l’application ne pourra être qu’inférieure.
+Ce chapitre a une vocation pédagogique car il rappelle la disponibilité plafond envisageable : la disponibilité finale de l’application ne pourra être qu’inférieure.
 ====
 ==== Présence nominale des exploitants et astreintes
 [TIP]
@@ -250,72 +237,6 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 |====
 ====
 
-=== Exigences de temps de réponse
-
-====  Temps de Réponse des IHM
-[TIP]
-====
-Si les clients accèdent au système en WAN (Internet, VPN, LS …), préciser que les exigences de TR sont données hors transit réseau car il est impossible de s’engager sur la latence et le débit de ce type de client. 
-
-Dans le cas d’accès LAN, il est préférable d’intégrer le temps réseau, d’autant que les outils de test de charge vont déjà le prendre en compte.
-
-Les objectifs de TR sont toujours donnés avec une tolérance statistique (90éme centile par exemple) car la réalité montre que le TR est très fluctuant car affecté par un grand nombre de facteurs.
-
-Inutile de multiplier les types de sollicitations (en fonction de la complexité de l’écran par exemple) car ce type de critère n’a plus grand sens aujourd’hui, particulièrement pour une application SPA).
-====
-====
-
-.Exemple de types de sollicitation :
-|====
-|Type de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
-
-|Chargement d’une page
-|< 0,5 s
-|< 1 s
-|> 2 s
-
-|Opération métier
-|< 2 s
-|< 4 s
-|> 6 s
-
-|Édition, Export, Génération
-|< 3 s
-|< 6 s
-|> 15 s
-|====
-
-Exemple d'acceptabilité des TR :
-
-Le niveau de respect des exigences de temps de réponse est bon si :
-
-* Au moins 90 % des temps de réponse sont bons.
-* Au plus 2% des temps de réponse sont insuffisants.
-
-Acceptable si :
-
-* Au moins 80 % des temps de réponse sont bons.
-* Au plus 5 % des temps de réponse sont insuffisants.
-      
-En dehors de ces valeurs, l’application devra être optimisée et repasser en recette puis être soumise à nouveau aux tests de charge.
-====
-
-====  Durée d’exécution des batchs
-[TIP]
-====
-Préciser ici dans quel intervalle de temps les traitements par lot doivent s’exécuter.
-====
-====
-Exemple 1 : La fin de l’exécution des batchs étant un pré-requis à l’ouverture du TP, ces premiers doivent impérativement se terminer avant la fin de la plage batch définie plus haut.
-====
-
-====
-Exemple 2 : le batch mensuel B1 de consolidation des comptes doit s’exécuter en moins de 4 J.
-====
-
-====
-Exemple 3 : les batchs et les IHM pouvant fonctionner en concurrence, il n’y a pas de contrainte stricte sur la durée d’exécution des batchs mais pour assurer une optimisation de l’infrastructure matérielle, on favorisera la nuit pendant laquelle les sollicitations IHM sont moins nombreuses.
-====
 [[exigences-disponibilite]]
 === Exigences de disponibilité
 [TIP]
@@ -331,13 +252,9 @@ L’architecture physique, technique voire logicielle change complètement en fo
 Ne pas oublier également les coûts d’astreinte très importants si les exigences sont très élevées. De la pédagogie et un devis permettent en général de modérer les exigences.
 
 On estime en général que la haute disponibilité (HA) commence à deux neufs (99%), c'est à dire environ 90h  d'indisponibilité par an.
-====
 
-=====  Disponibilité par plage de fonctionnement
-Voir le détail des <<plages>>.
+Donner la disponibilité demandé par plage (liste donnée dans <<plages>>)
 
-[TIP]
-====
 La disponibilité exigée ici devra être en cohérence avec les <<contrainte-disponibilite>> du SI.
 ====
 
@@ -359,22 +276,19 @@ a|
 |0.28% (2 h/mois)
 |====
 
-===  Mode dégradé acceptable
-[TIP]
-====
-Préciser l’impact maximal accepté sur les temps de réponse lors d'une panne.
-====
-====
-Exemple 1  (perte d’un nœud d’un cluster) : Les serveurs devront être dimensionnés pour être chacun en mesure d’assurer le fonctionnement de l’application tout en limitant l’augmentation des temps de réponse à 20 %.
-====
-
+===  Modes dégradés
 [TIP]
 ====
 Préciser les modes dégradés applicatifs envisagés.
 ====
 
 ====
-Exemple 2 (perte d’un service) : Le site _monsite.com_ devra pouvoir continuer à accepter les commandes en l’absence du service de logistique.
+Exemple 1 : Le site _monsite.com_ devra pouvoir continuer à accepter les commandes en l’absence du service de logistique.
+====
+
+
+====
+Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de donnée puis resoumis suite à une opération manuelle des exploitants.
 ====
 
 [[exigences-robustesse]]
@@ -396,198 +310,6 @@ Exemple 2 : l'utilisateur ne devra pas perdre son panier d'achat même en cas de
 ====
 ====
 Exemple 3 : le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95éme centile.
-====
-
-[[exigences-volumetrie]]
-=== Exigences de volumétrie
-[TIP]
-====
-La volumétrie ici décrite permettra le dimensionnement initial de la solution en terme de volume de stockage, de bande passante réseau et (après benchmarks) de puissance de calcul et de mémoire nécessaire.
-
-Il est crucial de récupérer un maximum d'informations issues de la production plutôt que des estimations car ces dernières se révèlent souvent loin de la réalité. 
-
-C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Prévoir alors une marge importante.
-
-Les informations données ici serviront d'entrants au SLA de l’application.
-====
-
-====  Volumétrie statique
-[TIP]
-====
-Lister ici les besoins en stockage de chaque composant une fois l’application arrivée à pleine charge (volumétrie à deux ans par exemple).
-
-Prendre en compte :
-
-* La taille des bases de données.
-* La taille des fichiers produits.
-* La taille des files.
-* La taille des logs.
-*  ...
-
-Ne pas prendre en compte :
-
-* Le volume lié à la sauvegarde : elle est gérée par les exploitants.
-* Le volume des binaires (OS, intergiciels...) qui est à considérer par les exploitants comme une volumétrie de base d'un serveur (le ticket d'entrée) et qui est de leur ressort.
-* Les données archivées qui ne sont donc plus en ligne.
-
-Fournir également une estimation de l'augmentation annuelle en % du volume pour permettre aux exploitants de commander ou réserver suffisamment de disque.
-
-Pour les calculs de volumétrie, penser à prendre en compte les spécificités de l'encodage (nombre d’octets par caractère, par date, par valeur numérique...). 
-
-Pour une base de donnée, prévoir l'espace occupé par les index et qui est très spécifique à chaque application. Une (très piètre) estimation préliminaire est de doubler l'espace disque (à affiner ensuite).
-
-N'estimer que les données dont la taille est non négligeable (plusieurs centaines de Mo minimum).
-====
-
-. Exemple de volumétrie statique du composant C :
-|====
-|Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
-
-|Table Article
-|Les articles du catalogue
-|2Ko
-|100K
-|200 Mo
-|5 %
-
-|Table Commande
-|Les commandes clients
-|10Ko
-|3M
-|26.6 Go
-|10 %
-
-|Logs 
-|Les logs applicatifs (niveau INFO)
-|200 o
-|300M
-|56 Go
-|0 % (archivage)
-|====
-
-====  Volumétrie dynamique
-[TIP]
-====
-Il s'agit ici d'estimer le nombre d'appels aux composants et donc le débit cible (en Tps = Transactions par seconde) que devra absorber chacun d'entre eux. Un système bien dimensionné devra présenter des temps de réponse moyen du même ordre en charge nominale et en pic.
-
-Toujours estimer le "pic du pic", c'est à dire le moment où la charge sera maximale suite au cumul de tous les facteurs (par exemple pour un système de comptabilité : entre 14 et 15h  un jour de semaine de fin décembre). 
-
-Ne pas considérer que la charge est constante mais prendre en compte :
-
-* Les variations journalières. Pour une application de gestion avec des utilisateurs travaillant sur des heures de bureau, on observe en général des pics du double de la charge moyenne à 8h-9h, 11h-12h et 14h-15h. Pour une application Internet grand public, ce sera plutôt en fin de soirée. Encore une fois, se baser sur des mesures d'applications similaires quand c'est possible plutôt que sur des estimations.
-* Les éléments de saisonnalité. La plupart des métiers en possèdent : Noël pour l'industrie du chocolat, le samedi soir pour les admissions aux urgences, juin pour les centrales de réservation de séjours etc. La charge peut alors doubler voire plus. Il ne faut donc pas négliger cette estimation.
-
-Si le calcul du pic pour un composant en bout de chaîne de liaison est complexe (par exemple, un service central du SI exposant des données référentiel et  appelé par de nombreux composants qui ont chacun leur pic), on tronçonnera la journée en intervalles de temps suffisamment fins (une heure par exemple) et on calculera sur chaque intervalle la somme mesurée ou estimée des appels de chaque appelant (batch ou transactionnel) pour ainsi déterminer la sollicitation cumulée la plus élevée.
-
-Si l'application tourne sur un cloud de type PaaS, la charge sera absorbée dynamiquement mais veiller à estimer le surcoût et à fixer des limites de consommation cohérentes pour respecter le budget tout en assurant un bon niveau de service.
-====
-
-.Exemple : estimation volumétrie dynamique de l'opération REST `GET DetailArticle` d'un site de e-commerce
-|====
-|Nombre d’utilisateurs potentiels|1M
-|Éléments de saisonnalité :
-a|
-* Pic journalier de 20h à 21h00 .
-* Pic annuel de décembre .
-|Taux maximal d’utilisateurs connectés en même temps de 20h00 à 21h00 en décembre| 5%
-|Nombre maximal d’utilisateurs connectés concurrents
-|50K
-|Durée moyenne d'une session utilisateur
-|15 mins
-|Nombre d'appel moyen du service par session
-|10
-|Charge (Transaction / seconde)
-|50K x 10/15 / 60 =  556 Tps
-|====
-
-
-[TIP]
-====
-Pour un composant technique (comme une instance de base de donnée) en bout de chaîne et sollicité par de nombreux services, il convient d'estimer le nombre de requêtes en pic en cumulant les appels de tous les clients et de préciser le ratio lecture /écriture quand cette information est pertinente (elle est très importante pour une base de donnée).
-
-Le niveau de détail de l'estimation dépend de l'avancement de la conception de l’application et de la fiabilité des hypothèses. 
-
-Dans l'exemple plus bas, nous avons déjà une idée du nombre de requêtes pour chaque opération. Dans d’autres cas, on devra se contenter d'une estimation très large sur le nombre de requêtes total à la base de données et un ratio lecture /écriture basée sur des abaques d'applications similaires. Inutile de détailler plus à ce stade.
-
-Enfin, garder en tête qu'il s'agit simplement d'estimation à valider lors de campagnes de performances puis en production. Prévoir un ajustement du dimensionnement peu après la MEP (relativement aisé si les ressources matérielles sont virtualisées et/ou si l'architecture est scalable horizontalement).
-====
-
-====
-Exemple : la base de donnée Oracle BD01 est utilisée en lecture par les appels REST `GET DetailArticle` fait depuis l'application end-user et en mise à jour par les appels POST et PUT sur `DetailArticle` issus du batch d'alimentation B03 la nuit entre 01:00 et 02:00.
-
-.Exemple estimations nombre de requêtes SQL en pic vers l'instance BD01 de 01:00 à 02:00 en décembre
-|====
-|Taux maximal d’utilisateurs connectés en même temps |0.5%
-|Nombre maximal d’utilisateurs connectés concurrents
-|5K
-|Durée moyenne d'une session utilisateur
-|15 mins
-|Nombre d'appel moyen du service `GET DetailArticle` par session
-|10
-|Charge usagers GET DetailArticle (Transaction / seconde)
-|(10/15) x 5K / 60 =  55 Tps
-|Nombre de requête en lecture et écriture par appel de service
-|2 et 0
-|Nombre d'appel journalier du service `POST DetailArticle` depuis le batch B03 
-|4K
-|Nombre de requêtes INSERT et SELECT par appel de service
-|3 et 2
-|Nombre journalier d'articles modifiés par le batch B03 
-|10K
-|Nombre de requêtes SELECT et UPDATE
-|1  et 3
-|Nombre de SELECT / sec
-|55x2 + 2 x 4K/3600 + 1 x 10K/3600=   115 Tps
-|Nombre de INSERT / sec
-|0 + 3 x 4K/3600 = 3.4 Tps
-|Nombre de UPDATE / sec
-|0 + 3 x 10K/3600 = 8.3 Tps
-|====
-====
-
-===== Coupe-circuits
-[TIP]
-====
-Dans certains cas, des pics extrêmes et imprévisibles sont possibles (effet Slashdot). 
-
-Si ce risque est identifié, prévoir un système de fusible avec déport de toute ou partie de la charge sur un site Web statique avec message d'erreur par exemple. 
-
-Ce dispositif peut également servir en cas d’attaque de type DDOS et permet de gèrer le problème et non de le subir car on assure un bon fonctionnement acceptable aux utilisateurs déjà connectés.
-====
-
-===== Qualité de Service 
-[TIP]
-====
-Il est également utile de prévoir des systèmes de régulation applicatifs dynamiques, par exemple :
-
-* Via du throttling (écrêtage du nombre de requêtes par origine et unité de temps). A mettre en amont de la chaîne de liaison.
-* Des systèmes de jetons (qui permettent en outre de favoriser tel ou tel client en leur accordant un quota de jetons différents).
-====
-====
-Exemple 1 : Le nombre total de jetons d'appels aux opérations REST sur la ressource `DetailArticle` sera de 1000. Au delà de 1000 appels simultanés, les appelants obtiendront une erreur d'indisponibilité 429 qu'ils devront gérer (et faire éventuellement des rejeux à espacer progressivement dans le temps).  
-
-.Exemple : répartition des jetons sera la suivante par défaut
-|====
-|Opération sur `DetailArticle`|Proportion des jetons
-
-|GET|80%
-|POST|5%
-|PUT|15%
-|====
-====
-====
-Exemple 2 : un throttling de 100 requêtes par source et par minute sera mis en place au niveau du reverse proxy.
-====
-
-===== Augmentation prévisionnelle de la charge
-[TIP]
-====
-Pour faciliter le dimensionnement et éviter d'avoir à redimensionner ses serveurs trop souvent, il est important de donner une estimation de l'augmentation annuelle de la charge. 
-
-Certaines organisations estiment la charge cible à cinq ans et choisissent le matériel en fonction puisqu'il s'agit de sa durée de vie moyenne.
-====
-====
-Exemple : la quantité moyenne d'appel devrait augmenter de 20% par an sur les 5 prochaines années
 ====
 
 [[exigences-sauvegarde]]
@@ -957,36 +679,6 @@ Les types de réseaux incluent  les informations utiles sur le réseau utilisé 
 |4|sup1|host[1-6]|LAN|SNMP|199
 |====
 
-
-== Dimensionnement des machines
-[TIP]
-====
-Donner ici RAM, disque et CPU de chaque nœud. 
-
-A affiner après campagne de performance ou MEP.
-
-Pour les VM, on considère le disque des partitions système comme internes même si elles sont physiquement sur un SAN. 
-
-Le disque SAN concerne des partitions montées sur SAN depuis un serveur physique ou virtuel.
-====
-====
-Exemple : 
-
-Machines virtuelles lb1, host2 (Reverse proxy)
-|====
-|CPU|Mémoire|Disque interne|Disque SAN
-
-|2 VCPU|4 GiO|20 GiO|Pas de SAN
-|====
-
-Machine physique bdd1  (BDD PostgreSQL)
-|====
-|CPU|Mémoire|Disque interne|Disque SAN
-
-|16 cœurs Xeon 3Ghz|24 GiO|20 GiO|3 TiO
-|====
-====
-
 == Éco-conception
 [TIP]
 ====
@@ -1110,6 +802,8 @@ Exemple de roulement : jeu de 21 sauvegardes sur un an :
 * 3 sauvegardes hebdomadaires correspondant aux 3 autres dimanches. Le support du dernier dimanche du mois devient le backup mensuel ;
 * 11 sauvegardes mensuelles correspondant aux 11 derniers mois.
 ====
+
+
 === Archivage
 [TIP]
 ====
@@ -1129,6 +823,8 @@ Donner ici les dispositifs techniques répondant aux <<exigences-purge>>.
 ====
 Exemple : l'historique des consultations sera archivé par un dump avec une requête SQL de la forme `COPY (SELECT * FROM matable WHERE ...) TO '/tmp/dump.tsv'` puis purgé par une requete SQL `DELETE` après validation par l'exploitant de la complétude du dump.
 ====
+
+
 === Logs
 [TIP]
 ====
@@ -1214,24 +910,7 @@ Exemple : les batchs seront ordonnancés par l'instance JobScheduler de l'organi
 * Leur exécution sera bornée aux périodes 23h00 - 06h00. Leur planification devra donc figurer dans cette plage ou ils ne seront pas lancés.
 * On ne lancera pas plus de cinq instances du batch B1 en parallèle.
 ====
-==== Supervision des performances
-[TIP]
-====
-Suit-on les performances de l'application en production ? Cela permet :
 
-* De disposer d'un retour factuel sur les performances _in vivo_ et d'améliorer la qualité des décisions d’éventuelles redimensionnement de la plate-forme matérielle.
-* De détecter les pannes de façon proactive (suite à une chute brutale du nombre de requêtes par exemple).
-* De faire de l'analyse statistique sur l’utilisation des composants ou des services afin de favoriser la prise de décision (pour le décommissionnement d'une application par exemple).
-
-Il existe trois grandes familles de solutions :
-
-* Les APM (Application Performance Monitoring) :  outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource ...). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met en péril la stabilité de l'application.
-* La métrologie «maison» par logs si le besoin est modeste.
-* Les sites de requêtage externes (voir aussi les tests de vie en 12.7.6) qui appellent périodiquement l'application et produisent des dashboards. Ils ont l'avantage de prendre en compte les temps WAN non disponibles via les outils internes. A utiliser couplés aux tests de vie (voir plus loin).
-====
-====
-Exemple : les performances du site seront supervisées en continu par `pingdom.com`. Des analyses de performances plus poussées seront mises en œuvre par Pinpoint en fonction des besoins.
-====
 ==== Tests de vie
 [TIP]
 ====
@@ -1260,7 +939,6 @@ Exemple 1 : Le composant X sera remplacé par les services Y. Ensuite les donn�
 ====
 Exemple 2 : en cas de problème sur le nouveau composant, un retour arrière sera prévu : les anciennes données seront restaurées dans les deux heures et les nouvelles données depuis la bascule seront reprise par le script S1.
 ====
-
 
 == Décommissionnement
 [TIP]

@@ -1,0 +1,113 @@
+= Volet infrastructure
+:toc:
+:sectnumlevels: 3
+:sectnums:
+
+== Introduction
+Ceci est le point de vue dimensionnement du projet. Il permet de déterminer la taille de l'infrastructure nécessaire au projet.
+
+=== Documentation de Référence
+
+.Références documentaires dimensionnement
+|====
+|N°|Version|Titre/URL du document|Détail
+
+||||
+
+|====
+
+
+== Non statué
+=== Points soumis à étude complémentaire
+
+.Points soumis à étude complémentaire
+|====
+|ID|Détail|Statut|Porteur du sujet  | Échéance
+|| | |  | 
+
+|====
+
+
+=== Hypothèses
+.Hypothèses
+|====
+|ID|Détail
+
+||
+
+|====
+
+
+== Contraintes
+
+
+[[contrainte-dimensionnement]]
+=== Contraintes stockage
+
+
+=== Contraintes CPU
+
+=== Contraintes mémoire
+
+=== Contraintes réseau
+
+== Exigences
+
+=== Volumétrie statique
+
+
+==== Métriques
+
+|====
+|Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) |  Source| Détail/hypothèses
+
+| | |  |   |  |    | 
+
+|====
+
+==== Estimation besoins de stockage
+
+=== Volumétrie dynamique
+
+==== Métriques
+
+|====
+|Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) | Saisonnalité|  Source| Détail/hypothèses 
+
+| | |  |   | |  | | 
+|====
+
+==== Estimation de la charge
+
+=== Exigences de temps de réponse
+
+====  Temps de Réponse des IHM
+
+
+.Types de sollicitation :
+|====
+|Type de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
+||||
+
+|====
+
+
+====  Durée d’exécution des batchs
+
+===  Performances dégradées acceptables
+
+== Dimensionnement des machines
+
+|====
+|Profil|CPU|Mémoire|Disque interne|Disque SAN
+
+|||||
+|====
+
+== Régulation de la charge
+=== Coupe-circuits
+
+=== Qualité de Service 
+
+
+== Supervision des performances
