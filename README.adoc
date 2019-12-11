@@ -16,7 +16,7 @@ Un dossier suivant ce modèle sera ainsi constitué :
 
 Dans chaque volet, on retrouvera :
 
-* Les contraintes (légales, budgétaires, technologiques, normatives,...) applicables ;
+* Les contraintes (légales, budgétaires, technologiques, normatives,...) applicables au projet;
 * Les exigences non fonctionnelles (ENF) exprimées par les porteurs du projet dans la limite des contraintes ;
 * La description de l'architecture retenue répondant aux ENF.
 
