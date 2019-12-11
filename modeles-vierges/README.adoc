@@ -1,0 +1,13 @@
+
+# Dossier d'architecture 
+
+*Etat* : 
+
+Ce dossier est constitué : 
+
+* d’un link:volet-architecture-applicative.adoc[volet applicatif] présentant le contexte général et l’architecture applicative ;
+* d’un link:volet-architecture-developpement.adoc[volet développement] présentant l’architecture logicielle et son environnement ;
+* d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et aux charges ;
+* d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les aspects d’architecture technique ou physique ;
+* d’un link:volet-architecture-securite.adoc[volet sécurité] ;
+
