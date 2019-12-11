@@ -110,7 +110,7 @@ Ceci est le point de vue infrastructure de l’application. Il décrit le déplo
 [[exigences-disponibilite]]
 === Exigences de disponibilité
 
-=====  Disponibilité par plage de fonctionnent
+=====  Disponibilité par plage de fonctionnement
 Voir le détail des <<plages>>.
 
 
