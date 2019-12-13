@@ -1,4 +1,4 @@
-= Volet infrastructure
+= Volet dimensionnement
 :toc:
 :sectnumlevels: 3
 :sectnums:
