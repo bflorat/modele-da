@@ -1,7 +1,7 @@
 
 # Dossier d'architecture 
 
-*Etat* : En cours
+*Etat* : _En cours_
 
 Ce dossier est constitué : 
 
