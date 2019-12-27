@@ -11,7 +11,7 @@ Un dossier suivant ce modèle sera ainsi constitué :
 
 * d’un link:volet-architecture-applicative.adoc[volet applicatif] présentant le contexte général et l’architecture applicative ;
 * d’un link:volet-architecture-developpement.adoc[volet développement] présentant l’architecture logicielle et son environnement ;
-* d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et aux charges ;
+* d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et aux dimensionnements de l'infrastructure ;
 * d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les aspects d’architecture technique ou physique ;
 * d’un link:volet-architecture-securite.adoc[volet sécurité] ;
 
@@ -69,3 +69,4 @@ Les https://c4model.com/[diagrammes C4] utilisent la personnalisation https://gi
 * _Performance des architectures IT - 2e ed._ - Pascal Grojean
 * _Design Patterns: Elements of Reusable Object-Oriented Software de Erich Gamma, Richard Helm, Ralph Johnson et John Vlissides_ (GOF)
 * _Le projet d’Urbanisation du SI_ - Christophe Longépé 
+* _Sécurité de la dématérialisation_ - Dimitri Mouton
