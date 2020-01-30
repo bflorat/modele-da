@@ -67,7 +67,7 @@ Ceci est le point de vue sécurité. Il décrit l'ensemble des dispositifs mis e
 [options="header"]
 |====
 |Classe de données|Niveau « Non intègre » + 
-[small]#La donnée peut ne pas être intègre#|Niveau « Détectable » + [small]#La donnée peut ne pas être ntègre si l'altération est identifiée#|Niveau « Maîtrisé » +[small]#La donnée peut ne pas être intègre si l'altération est identifiée et corrigée  en moins d'une heure#|Niveau « Intègre » +[small]#La donnée doit toujours être rigoureusement intègre#
+[small]#La donnée peut ne pas être intègre#|Niveau « Détectable » + [small]#La donnée peut ne pas être intègre si l'altération est identifiée#|Niveau « Maîtrisé » +[small]#La donnée peut ne pas être intègre si l'altération est identifiée et corrigée  en moins d'une heure#|Niveau « Intègre » +[small]#La donnée doit toujours être rigoureusement intègre#
 
 |
 |
