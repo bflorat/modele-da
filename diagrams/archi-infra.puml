@@ -3,52 +3,52 @@
 title Diagramme de déploiement \nArchitecture d'infrastucture \n Projet Mes Informations En Ligne \n (partiel)
 LAYOUT_WITH_LEGEND()
 
-Deployment_Node("client","Client","Desktop/mobile"){
-  Deployment_Node("nav1","Navigateur Web","Chrome/Firefox/Safari"){
-    ContainerInstance("spa","Application SPA MIEL","React.js")
+Node("client","Client","Desktop/mobile"){
+  Node("nav1","Navigateur Web","Chrome/Firefox/Safari"){
+    Container("spa","Application SPA MIEL","React.js")
   }
 }
 
-Deployment_Node("dc","Datacenter","Paris"){
-    Deployment_Node("r2","Firewall","Cisco Firepower 4100")
-    Deployment_Node("lb1","LB Debian lb1","<<actif>>")
-    Deployment_Node("lb2","LB Debian lb2","<<passif>>")
+Node("dc","Datacenter","Paris"){
+    Node("r2","Firewall","Cisco Firepower 4100")
+    Node("lb1","LB Debian lb1","<<actif>>")
+    Node("lb2","LB Debian lb2","<<passif>>")
 
-    Deployment_Node("rp1","Reverse Proxy","x2 Debian Buster <<actif/actif>>"){
-      ContainerInstance("ha1","Reverse Proxy","HaProxy")
+    Node("rp1","Reverse Proxy","x2 Debian Buster <<actif/actif>>"){
+      Container("ha1","Reverse Proxy","HaProxy")
     }
 
-    Deployment_Node("serveur_ihm", "Serveur IHM MIEL","x2 Debian Buster") { 
-      Deployment_Node("sw1","Serveur Web","Nginx"){
-        ContainerInstance("ihms1","Application Web SPA","React.js","Expose les resources statiques\n (.js, .html, images...)")
+    Node("serveur_ihm", "Serveur IHM MIEL","x2 Debian Buster") { 
+      Node("sw1","Serveur Web","Nginx"){
+        Container("ihms1","Application Web SPA","React.js","Expose les resources statiques\n (.js, .html, images...)")
       }
-      Deployment_Node("tomcat_batchs1","Serveur JEE","Tomcat 10"){
-        ContainerInstance("batch1","batch-traiter-demandes","Java","Traite les demandes\n scheduling: * * * * *")
-      }
-    }
-
-    Deployment_Node("serveur_api","Serveur API","x3, RHEL") { 
-      Deployment_Node("wilfly1","Serveur JEE","Wildfly") {
-        ContainerInstance("api1","API service-miel","Java")        
+      Node("tomcat_batchs1","Serveur JEE","Tomcat 10"){
+        Container("batch1","batch-traiter-demandes","Java","Traite les demandes\n scheduling: * * * * *")
       }
     }
 
-    Deployment_Node("bdd1", "Serveur BDD","RHEL")  { 
-      ContainerInstanceDb("pg1","PostgreSQL","PostgreSQL 12")
-      ContainerInstanceDb("mq1", "File de messages", "RabbitMQ")
-      ContainerInstance("mail1","MTA","Postfix")
+    Node("serveur_api","Serveur API","x3, RHEL") { 
+      Node("wilfly1","Serveur JEE","Wildfly") {
+        Container("api1","API service-miel","Java")        
+      }
     }
 
-    Deployment_Node("serveur_sup1", "Serveur Supervision","x1 Debian Stretch") {
-      ContainerInstance("sup1","Outil de supervision","Centreon")      
+    Node("bdd1", "Serveur BDD","RHEL")  { 
+      ContainerDb("pg1","PostgreSQL","PostgreSQL 12")
+      ContainerDb("mq1", "File de messages", "RabbitMQ")
+      Container("mail1","MTA","Postfix")
     }
 
-    Deployment_Node("ech1","Serveur Echange","x1 Windows Server") {
-      ContainerInstance("gw1","API Gateway","Axway API Gateway")    
+    Node("serveur_sup1", "Serveur Supervision","x1 Debian Stretch") {
+      Container("sup1","Outil de supervision","Centreon")      
     }
 
-    ContainerInstanceDb("baie1","SAN EMC","baie 1")
-    Deployment_Node("tous_serveurs","<tous serveurs>","Supervision")
+    Node("ech1","Serveur Echange","x1 Windows Server") {
+      Container("gw1","API Gateway","Axway API Gateway")    
+    }
+
+    ContainerDb("baie1","SAN EMC","baie 1")
+    Node("tous_serveurs","<tous serveurs>","Supervision")
 }
 
 spa -> r2 : HTTPS sur Internet
