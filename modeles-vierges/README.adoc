@@ -1,13 +1,32 @@
 
+:icons: font
+:lang: fr
+
 # Dossier d'architecture 
+Dernière modification : {localdate} {localtime}
 
 *Etat* : _En cours_
 
 Ce dossier est constitué : 
 
 * d’un link:volet-architecture-applicative.adoc[volet applicatif] présentant le contexte général et l’architecture applicative ;
-* d’un link:volet-architecture-developpement.adoc[volet développement] présentant l’architecture logicielle et son environnement ;
-* d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et au dimensionnement de l'infrastructure ;
-* d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les aspects d’architecture technique ou physique ;
-* d’un link:volet-architecture-securite.adoc[volet sécurité] ;
+* d’un link:volet-architecture-developpement.adoc[volet développement] présentant l’architecture logicielle ;
+* d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les aspects d’architecture techniques ou physiques ;
+* d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et aux solicitations ;
+* d’un link:volet-architecture-securite.adoc[volet sécurité].
 
+Chaque volet expose les contraintes, exigences puis solutions mises en oeuvre.
+
+[TIP]
+====
+A lire en priorité en fonction de votre point de vue :
+
+image:./resources/metiers.png[à lire en priorité]
+====
+
+
+## Reste à faire identifié sur l'architecture
+
+* Sujet 1
+* Sujet 2
+* ...
