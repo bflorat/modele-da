@@ -1,11 +1,21 @@
 
 = Volet architecture applicative
-:toc:
-:sectnumlevels: 3
+:toc: left
+:sectnumlevels: 4
+:toclevels: 4
 :sectnums:
+:icons: font
+:toc-title: Sommaire
+
+Dernière modification : {localdate} {localtime}
+
+Etat du document : *en cours*
+
 
 == Introduction
 Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
+
+Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 
 === Documentation de Référence
 
@@ -23,25 +33,18 @@ Ceci est le point de vue applicatif du projet. Il décrit les modules applicatif
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
-|====
-|ID|Détail|Statut|Porteur du sujet  | Échéance
+[cols="1,6,1,1,1"]
+|===
+|Sujet| Détail | Statut| Porteur du sujet  | Échéance
 
-|
-|
-|
-|
-|
-
-|====
+|===
 
 
 === Hypothèses
 .Hypothèses
+[cols="1,6"]
 |====
 |ID|Détail
-
-|
-|
 
 |====
 
@@ -83,8 +86,26 @@ Ceci est le point de vue applicatif du projet. Il décrit les modules applicatif
 
 == Contraintes
 
-== Architecture applicative générale
+=== Budget
 
-== Architecture applicative détaillée
+=== Planning
 
+=== Urbanisation
+
+
+
+== Solution proposée
+
+=== Architecture applicative générale
+
+
+=== Architecture applicative détaillée
+
+==== Principes ayant dicté les choix
+
+==== Vision statique
+
+==== Vision dynamique
+
+==== Matrice des flux applicatifs
 

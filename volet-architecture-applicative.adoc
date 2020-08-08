@@ -1,12 +1,16 @@
-
 = Volet architecture applicative
-:toc:
-:sectnumlevels: 3
+:toc: left
+:sectnumlevels: 4
+:toclevels: 4
 :sectnums:
-:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
+:icons: font
+:toc-title: Sommaire
 
 == Introduction
 Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
+
+Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
+
 
 === Documentation de Référence
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
@@ -14,7 +18,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 .Références documentaires
 [cols="e,e,e,e"]
 |===
-|N°|Version|Titre/URL du document|Détail
+|N°|Version|Titre/URL du document| Détail
 
 |1|2.0.4|XX_Urba_POS.pdf|POS du SI|
 |===
@@ -22,24 +26,23 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
-[cols="e,e,e,e,e"]
-|====
-|ID|Détail|Statut|Porteur du sujet  | Échéance
+[cols="1e,6e,1e,1e,1e"]
+|===
+|Sujet| Détail | Statut| Porteur du sujet  | Échéance
 
-|EA1
-|EN_ATTENTE
+|Utilisation des services Y
 |En fonction de l’avancement du projet Y, ce composant pourrait appeler les services de ce dernier ou ceux de l’ancien composant Z
+|EN_ATTENTE
 |Projet Y
 |AVANT 2040
-
-|====
+|===
 
 
 === Hypothèses
 .Hypothèses
-[cols="e,e"]
+[cols="1e,6e"]
 |====
-|ID|Détail
+|ID| Détail
 
 |HA1
 |Même si la décision de généralisation de l'annuaire centralisé n'est pas totalement entérinée, l’application s’appuiera dessus et non sur un annuaire local.
@@ -84,17 +87,17 @@ On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peu
 .Liste des acteurs internes
 [cols="e,e,e,e"]
 |===
-|Acteur|Description|Population|Fréquence d'appels 
+|Acteur|Description|Population|Localisation
 
 |Système de l'administration B
 |fournit les données comptables des entreprises
 |N/A
-|Appels en masse la nuit puis mise en cache
+|Site de Berlin
 
 |Agent
 |Agent back-office
 |100
-|Plusieurs fois par minute sur les heures de bureau
+|Site de Paris
 
 |===
 
@@ -103,7 +106,7 @@ On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peu
 .Liste acteurs externes
 [cols="e,e,e,e"]
 |===
-|Acteur|Description|Population|Fréquence d'appels
+|Acteur| Description| Population| Localisation
 
 |Client Web
 |Une entreprise depuis un PC
@@ -112,15 +115,33 @@ On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peu
 |Client mobile
 |Une entreprise depuis un mobile
 |Max 2M
-|5 appels de service par session, une session par jour et par acteur
+|Monde entier
 |===
 
 == Contraintes
+
+=== Budget
+TIP: Donner les contraintes budgétaires du projet
+====
+Exemple 1: Enveloppe globale de 1 M€
+====
+====
+Exemple 2: Coûts d'infrastructure cloud < 20K€ / mois
+====
+
+=== Planning
+TIP: Sans reprendre dans le détail les plannings du projet, donner les éléments intéressants pour l'architecture.
+====
+Exemple 1: MEP avant fev 2034, prérequis au programme HEAVY en mai 2034.
+====
+
+=== Urbanisation
 [TIP]
 ====
 Lister ici les contraintes relatives à l'urbanisation, ceci inclut par exemple mais pas seulement :
 
 * Les règles applicables dans les appels entre composants (SOA)
+* Les règles d'appels entre zones réseau
 * Les règles concernant la localisation des données (MDM)
 * Les règles concernant la propagation des mises à jours par événements (EDA)
 
@@ -135,19 +156,23 @@ Exemple 2 : pour en assurer la fraicheur, il est interdit de répliquer les donn
 Exemple 3 : Lors de la modification d'une commande, les zones comptabilité et facturation seront mises à jour de façon asynchrone via un événement.
 ====
 ====
-
 Exemple 4 : tous les batchs doivent pouvoir fonctionner en concurrence des IHM sans verrouillage des ressources.
 ====
-
 ====
 Exemple 5 : les services ne peuvent être appelés directement. Les appels se feront obligatoirement via une route exposée au niveau du bus d'entreprise qui appellera à son tour le service. Il est alors possible de contrôler, prioriser, orchestrer ou piloter les appels.
 ====
-
 ====
 Exemple 6 : Les composants de cette application suivent l'architecture SOA telle que définie dans le document de référence X.
 ====
+====
+Exemple 7 : Les composants en zone Internet ne peuvent appeler les composants en zone Intranet pour des raisons de sécurité.
+====
 
-== Architecture applicative générale
+
+
+== Solution proposée
+
+=== Architecture applicative générale
 [TIP]
 ====
 Présenter ici l'application dans son ensemble (sans détailler ses sous-composants) en relation avec les autres applications du SI. Présenter également les macro-données échangées ou stockées. 
@@ -172,12 +197,13 @@ Exemple 1 : MesInfosEnLigne permet à une entreprise de récupérer par mail un 
 Exemple 2 : MesInfosEnLigne est constituée de plusieurs microservices indépendants (composants IHM, batchs ou services REST)
 ====
 ====
-Exemple 3 : Suite à la déroguation du DSI du 03 aout 20xx, l'IHM sera en architecture SPA (Single Page Application)
+Exemple 3 : Suite à la dérogation du DSI le 03 aout 20xx, l'IHM sera en architecture SPA (Single Page Application)
 ====
 
 image::{gitplant}/archi-applicative-generale.puml[Diagramme architecture applicative générale]
 
-== Architecture applicative détaillée
+=== Architecture applicative détaillée
+
 [TIP]
 ====
 Détailler ici tous les composants de l’application, leurs flux entre eux et avec les autres applications du SI.
@@ -192,27 +218,60 @@ Utiliser comme ID des flux une simple séquence non signifiante (1, 2, ..., n).
 Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux composants alors qu'en réalité, il passe par un répartiteur de charge intermédiaire). Ce niveau de détail sera donné dans le volet infrastructure. 
 
 Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.
-
-====
-
-====
-Exemple d'application :
-
-image::{gitplant}/archi-applicative-detaillee.puml[Diagramme architecture applicative détaillée]
 ====
 
 
-== Matrice des flux applicatifs
+NOTE: Ce n'est qu'une suggestion car la rédaction de l'architecture applicative détaillée dépend beaucoup du projet et de sa complexité. Pour un projet relativement complexe, il peut être utile de le subdiviser dans les sous sections suivantes :
+
+
+==== Principes ayant dicté les choix
 [TIP]
 ====
-Lister ici les flux principaux de l'application. Ne pas détailler les flux techniques de supervision ou lié au clustering par exemple. Mentionner le type de réseau (LAN, WAN). Ne pas reprendre les ID de la matrice de flux du volet d'infrastructure.
+Donner ici l'intention dans la construction de l'architecture.
+====
+====
+Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise.
+====
+
+==== Vision statique
+[TIP]
+====
+Exposer les modules applicatifs dans leurs différentes zones ou domaines.
+====
+====
+Exemple: module X, Y et Z dans le domaine GED. Modules A, B dans le domaine PERSONNE.
+====
+
+==== Vision dynamique
+[TIP]
+====
+Exposer les modules applicatifs dans leurs différents zones ou domaines avec leurs flux applicatifs principaux.
+
+Ne pas détailler les flux techniques (comme les flux liés à la supervision ou au clustering).
+
+Si l'application est complexe, proposer un schéma global exposant tous les flux applicatifs puis un schéma par chaîne de liaison principale en numérotant les échanges (utiliser un diagramme de séquence ou (mieux) un Dynamic Diagram C4). Il est possible également de détailler les chaînes de liaison par fonctionnailité principale.
+====
+====
+Exemple: 
+
+image::{gitplant}/archi-applicative-detaillee.puml[Diagramme architecture applicative détaillée]
+
+====
+
+==== Matrice des flux applicatifs
+[TIP]
+====
+Lister ici les flux principaux de l'application. 
+
+Ne pas détailler les flux techniques de supervision ou lié au clustering par exemple. Mentionner le type de réseau (LAN, WAN). 
 ====
 
 .Exemple partiel de matrice de flux applicatifs
 [cols="e,e,e,e,e"]
 |====
-|ID|Source|Destination|Type de réseau|Protocole
+|Source|Destination|Type de réseau|Protocole| Mode.footnote:[(L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)]
 
-|1|Entreprise|PC/tablette/mobile externe| ihm-miel |WAN
-|2|batch-traiter-demandes | service-compo-pdf | HTTP |LAN
+|Entreprise|PC/tablette/mobile externe| ihm-miel |WAN | LE
+|batch-traiter-demandes | service-compo-pdf | HTTP |LAN | A
 |====
+
