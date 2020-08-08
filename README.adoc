@@ -64,6 +64,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 Les https://c4model.com/[diagrammes C4] utilisent la personnalisation https://github.com/RicardoNiepel/C4-PlantUML[C4 de plantuml]
 
 ## Bibliographie partielle
+* _Site Reliability Engineering_ - Google  
 * _Living documentation_ - Cyril Martraire
 * _Clean Code_ - Uncle Bob
 * _Performance des architectures IT - 2e ed._ - Pascal Grojean
