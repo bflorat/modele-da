@@ -911,18 +911,46 @@ Exemple : les batchs seront ordonnancés par l'instance JobScheduler de l'organi
 * On ne lancera pas plus de cinq instances du batch B1 en parallèle.
 ====
 
-==== Tests de vie
+==== Supervision boite noire
 [TIP]
 ====
-Il est également fortement souhaitable et peu coûteux de prévoir un système de tests de vie (via des scénarios déroulés automatiquement). 
+Il est également fortement souhaitable et peu coûteux de prévoir un système de tests de supervision boite-noire (via des scénarios déroulés automatiquement). L'idée est ici de tester un système dans son ensemble et avec une vue end-user la plus externe possible (à l'inverse d'une supervision whitebox pour laquelle on supervise des composants bien précis avec un comportement attendu).
 
 En général, ces tests sont simples (requêtes HTTP depuis un curl croné par exemple). Ils doivent être lancés depuis un ou plusieurs sites distants pour détecter les coupures réseaux. 
 
 Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si tel est le cas, il faudra être en mesure d'identifier dans tous les composants les données issues de ce type de requêtes pour ne pas polluer les données métier et les systèmes décisionnels.
 ====
 ====
-Exemple pour un site Internet : des tests de vie seront mis en œuvre via des requêtes HTTP lancées via l'outil uptrends.com. En cas de panne, un mail est envoyé aux exploitants.
+Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via l'outil uptrends.com. En cas de panne, un mail est envoyé aux exploitants.
 ====
+
+== Timeouts
+[TIP]
+====
+Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison. Garder en tête que dans une chaîne de liaison allant du client à la persistance, les timeouts devraient diminuer au fur et à mesure qu'on avance dans 
+la chaîne de liaison (exemple: 10 secs sur le Reverse proxy , 8 secs sur le endpoint REST, 5 secs sur la base de donnée). 
+
+En effet, dans le cas contraire, un composant technique peut continuer à traiter une requête alors que son composant appelant a déjà abandonné, ce qui pose à la fois des problèmes de gaspillage de ressource mais surtout des effets difficile à prévoir. 
+
+Éviter également d'utiliser la même valeur dans tous les composants techniques pour éviter les effets inattendus lié à la concomitance des timeouts.
+
+====
+
+====
+Exemple : 
+
+|===
+|Composant|Timeout (ms)
+
+|Client Rest JavaScript  | 5000
+|API Gateway | 4000
+|API Rest Node.js | 3500
+|Base de donnée PG | 3000
+
+|===
+
+====
+
 
 == Migration
 [TIP]
