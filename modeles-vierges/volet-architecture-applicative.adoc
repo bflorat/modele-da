@@ -94,10 +94,9 @@ Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 
 
 
-== Solution proposée
+== Solution
 
 === Architecture applicative générale
-
 
 === Architecture applicative détaillée
 

@@ -171,7 +171,7 @@ Exemple 7 : Les composants en zone Internet ne peuvent appeler les composants en
 
 
 
-== Solution proposée
+== Solution
 
 === Architecture applicative générale
 [TIP]
