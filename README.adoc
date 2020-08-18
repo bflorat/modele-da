@@ -21,6 +21,8 @@ Dans chaque volet, on retrouvera le triptyque :
 * Exigences non fonctionnelles (ENF) exprimées par les porteurs du projet dans la limite des contraintes ;
 * Solution (description de l'architecture retenue et répondant aux ENF).
 
+Le dossier comprend également un exemple de glossaire pouvant servir de support à l'https://martinfowler.com/bliki/UbiquitousLanguage.html[Ubiquitous Language], élément fondamental d'une architecture.
+
 ## Utilisation de ce modèle
 ### Présentation générale
 * Ce modèle est au format https://www.methods.co.nz/asciidoc/index.html[asciidoc]. Vous pouvez le convertir dans le format de votre choix pour vos DA même si nous préconisons un format textuel et lisible (type Markdown) facile à suivre et à modifier par merge requests dans un outil de gestion de version et ainsi transformer votre DA en une documentation vivante ;
