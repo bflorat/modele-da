@@ -2,10 +2,20 @@
 :toc:
 :sectnumlevels: 3
 :sectnums:
+:toc: left
+:icons: font
+:toc-title: Sommaire
+:lang: fr
 :gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
+
+Dernière modification : {doctime} 
+
+Etat du document : *à jour*
 
 == Introduction
 Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
+
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
 === Documentation de Référence
 [TIP]
@@ -18,19 +28,6 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |1|1.0|https://references.modernisation.gouv.fr/rgaa-accessibilite/#menu
 |RGAA
-
-|====
-
-=== Glossaire
-[TIP]
-Par souci de concision, nous ne détaillons ici que les termes et acronymes spécifiques à l’application. Pour les définitions générales, veuillez vous référer au glossaire d’entreprise.
-
-.Glossaire sécurité spécifique projet
-[cols="e,e"]
-|====
-|Terme|Définition
-
-|partition|Pour un batch JSR352, une partition est l’exécution au sein d’un thread d’un sous ensemble des données d’entrée d’une étape du batch. La sélection des données se fait via une clé de partitionnement fournie par un PartitionMapper.
 
 |====
 

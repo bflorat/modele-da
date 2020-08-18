@@ -1,0 +1,45 @@
+= Glossaire des termes utilisés
+
+WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
+
+
+== Termes en cours de discussion/à valider
+
+[cols="1,4,4"]
+|=======================================================================
+|Terme |Signification | Commentaire
+
+
+|=======================================================================
+
+== Termes métier et organisationnels
+
+[cols="1,4,4"]
+|=======================================================================
+|Terme |Signification |Commentaire
+
+
+
+|=======================================================================
+
+== Termes applicatifs
+
+[cols="1,4,4"]
+|=======================================================================
+|Terme |Signification | Commentaire
+
+
+|=======================================================================
+
+
+== Termes techniques 
+
+[cols="1,4,4"]
+|=======================================================================
+|Terme |Signification | Commentaire
+
+
+|=======================================================================
+
+== Sources
+

@@ -2,9 +2,19 @@
 :toc:
 :sectnumlevels: 3
 :sectnums:
+:toc: left
+:icons: font
+:toc-title: Sommaire
+:lang: fr
+
+Dernière modification : {doctime} 
+
+Etat du document : 
 
 == Introduction
 Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
+
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
 === Documentation de Référence
 
@@ -13,17 +23,6 @@ Ceci est le point de vue développement de l’application. Il décrit le code �
 |N°|Version|Titre/URL du document|Détail
 
 |
-|
-|
-
-|====
-
-=== Glossaire
-
-.Glossaire sécurité spécifique projet
-|====
-|Terme|Définition
-
 |
 |
 

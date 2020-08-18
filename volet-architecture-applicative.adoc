@@ -7,11 +7,16 @@
 :toc-title: Sommaire
 :gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
+Dernière modification : {doctime} 
+
+Etat du document : *à jour*
+
 == Introduction
 Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
 
 Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
 === Documentation de Référence
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.

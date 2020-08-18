@@ -1,0 +1,51 @@
+= Glossaire des termes utilisés
+
+WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
+
+== Termes en cours de discussion/à valider
+
+[cols="1,4,4"]
+|=======================================================================
+|Terme |Signification | Commentaire
+
+|Canal| Origine de la demande | Canal ou provenance ?
+|=======================================================================
+
+== Termes métier et organisationnels
+
+[cols="1,4,4"]
+|=======================================================================
+|Terme |Signification |Commentaire
+
+|CA |Cour d’appel | "Alors que les juridictions de première instance rendent un « jugement », une cour d’appel rend un « arrêt »" [Wikipedia]
+
+
+|=======================================================================
+
+== Termes applicatifs
+
+[cols="1,4,4"]
+|=======================================================================
+|Terme |Signification | Commentaire
+
+|EIDAS|Electronic IDentification Authentication and trust Services | Règlement européen sur la signature électronique
+
+|SPA| Single Page Application | Application Web dont les pages sont générées en javascript dans le navigateur
+
+|=======================================================================
+
+
+== Termes techniques 
+
+[cols="1,4,4"]
+|=======================================================================
+|Terme |Signification | Commentaire
+
+| RP| Reverse Proxy | Mantataire inverse effectuant des appels HTTP pour le compte d'un client (en général sur Internet). 
+Permet entre autres d'augmenter la sécurité par rupture protocolaire.
+
+|=======================================================================
+
+== Sources
+
+* http://km.mondomaine.fr
