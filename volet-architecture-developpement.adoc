@@ -136,6 +136,18 @@ Exemple 1 : les tableaux devront être triables suivant plusieurs colonnes.
 Exemple 2 : de nombreux écrans seront pourvus d’accordéons
 ====
 
+==== Polices de caractère
+[TIP]
+====
+Décrire ici les polices de caractère à utiliser pour les pages Web, les applications ou les documents composés.
+
+Le choix des polices suit des contraintes de licences. Afin d'assurer une sécurité juridique au projet, attention aux polices commerciales soumises à royalties (en particulier les polices appartement à Microsoft comme Times New Roman, Courier, Verdana, Arial) et qui ne permettent pas de produire gratuitement des documents sans passer par leurs éditeurs (Word, ...). 
+
+Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-les-fondamentaux/la-typographie[Marianne] préconisée par le gouvernenement en tant que police à chasse variable.
+
+Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberation_(police_d%27%C3%A9criture)[Liberation Mono] en licence Open Source sécurisante sur un plan juridique et compatible métriquement avec le Monotype, le Courrier New, l'Arial et le Times New Roman. 
+====
+
 ====  Progressive Web Apps (PWA)
 [TIP]
 ====
@@ -148,6 +160,8 @@ Exemple : L'application X sera totalement PWA. Des tests devront démonter que l
 [TIP]
 ====
 Préciser quels sont les navigateurs supportés s’il s’agit d’une IHM Web. 
+
+Lorsqu'on s'adresse à un public dont on ne gère pas le parc de navigateurs (comme un site Web sur Internet), la meilleure option pour rendre les choses intelligibles et expliciter les enjeux est de négocier avec les parties prenantes du projet un pourcentage de public supporté en se basant sur des https://gs.statcounter.com/[statistiques]. Par exemple : "Support de 95 % des navigateurs".
 
 Attention : supporter d’anciens navigateur (IE en particulier) peut engendrer des surcoûts rédhibitoires (sauf à utiliser une librairie qui masque cette complexité et en espérant qu’elle fonctionne correctement). 
 
