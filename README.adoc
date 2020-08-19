@@ -9,6 +9,8 @@ Nous avons découpé l'architecture en cinq volets (applicatif, sécurité, dime
 
 L'idée est de proposer un ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations et sur leurs préoccupations respectives. Par exemple, un(e) architecte d'infrastructure ou un(e) ingénieur DevOps a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un(e) PO ou un(e) architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
 
+image:modeles-vierges/resources/metiers.png[à lire en priorité]
+
 Un dossier suivant ce modèle sera ainsi constitué :
 
 * d’un link:volet-architecture-applicative.adoc[volet applicatif] présentant le contexte général et l’architecture applicative ;
@@ -24,6 +26,7 @@ Dans chaque volet, on retrouvera le triptyque :
 * Solution (description de l'architecture retenue et répondant aux ENF).
 
 Le dossier comprend également un exemple de glossaire pouvant servir de support à l'https://martinfowler.com/bliki/UbiquitousLanguage.html[Ubiquitous Language], élément fondamental d'une architecture.
+
 
 ## Utilisation de ce modèle
 ### Présentation générale
