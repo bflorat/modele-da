@@ -7,7 +7,7 @@ NOTE: Nous utilisons le terme 'DA' et pas 'DAT' ou terme similaire car chaque or
 ## Principes du modèle
 Nous avons découpé l'architecture en cinq volets (applicatif, sécurité, dimensionnement, infrastructure et développement), chaque volet étant auto-porteur. 
 
-L'idée est de proposer un ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations et sur leurs préoccupations respectives. Par exemple, un architecte d'infrastructure ou un ingénieur DevOps a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un PO ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
+L'idée est de proposer un ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations et sur leurs préoccupations respectives. Par exemple, un(e) architecte d'infrastructure ou un(e) ingénieur DevOps a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un(e) PO ou un(e) architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
 
 Un dossier suivant ce modèle sera ainsi constitué :
 
