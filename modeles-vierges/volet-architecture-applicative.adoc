@@ -1,9 +1,9 @@
 
 = Volet architecture applicative
-:toc: left
 :sectnumlevels: 4
 :toclevels: 4
-:sectnums:
+:sectnums: 4
+:toc: left
 :icons: font
 :toc-title: Sommaire
 

@@ -1,8 +1,10 @@
 = Volet infrastructure
-:toc:
-:sectnumlevels: 3
+:sectnumlevels: 4
 :toclevels: 4
-:sectnums:
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Sommaire
 :gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
 == Introduction

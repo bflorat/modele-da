@@ -1,12 +1,10 @@
 = Volet développement
-:toc:
-:sectnumlevels: 3
+:sectnumlevels: 4
 :toclevels: 4
-:sectnums:
+:sectnums: 4
 :toc: left
 :icons: font
 :toc-title: Sommaire
-:lang: fr
 
 Dernière modification : {doctime} 
 

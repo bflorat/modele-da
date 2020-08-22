@@ -1,8 +1,10 @@
 = Volet dimensionnement
-:toc:
-:sectnumlevels: 3
+:sectnumlevels: 4
 :toclevels: 4
-:sectnums:
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Sommaire
 
 == Introduction
 Ceci est le point de vue dimensionnement du projet. Il permet de déterminer la taille de l'infrastructure nécessaire au projet.
