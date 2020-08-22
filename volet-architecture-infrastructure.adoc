@@ -438,21 +438,6 @@ Exemple 1 :  La consommation électrique moyenne causée par l’affichage d'une
 Exemple 2 : La classe énergétique WEA2 du site devra être de C ou mieux.
 ====
 
-
-[[exigences-seo]]
-=== Exigences de SEO
-[TIP]
-====
-Le SEO (Search engine optimization) concerne la visibilité d'un site Web au travers des moteurs de recherches (comme Google ou Quant).
-====
-====
-Exemple 1 :  Aucune indexation nécessaire ni désirée (site interne)
-====
-====
-Exemple 2 : Les pages statiques du site devront suivre les bonnes pratiques SEO pour optimiser sa visibilité.
-====
-
-
 == Principes de l'architecture technique
 Quels sont les grands principes techniques de notre application ?
 
