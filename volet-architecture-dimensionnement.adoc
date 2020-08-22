@@ -1,6 +1,7 @@
 = Volet dimensionnement
 :toc:
 :sectnumlevels: 3
+:toclevels: 4
 :sectnums:
 
 == Introduction

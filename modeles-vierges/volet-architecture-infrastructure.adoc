@@ -1,6 +1,7 @@
 = Volet infrastructure
 :toc:
-:sectnumlevels: 3
+:sectnumlevels: 4
+:toclevels: 4
 :sectnums:
 
 == Introduction

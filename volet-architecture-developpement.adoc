@@ -1,6 +1,7 @@
 = Volet développement
 :toc:
 :sectnumlevels: 3
+:toclevels: 4
 :sectnums:
 :toc: left
 :icons: font
