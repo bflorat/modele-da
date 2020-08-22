@@ -701,3 +701,16 @@ Exemple 2 (Coté client)
 * Le tri doit s'appliquer sur l'ensemble des éléments en base, pas seulement sur les éléments de la dernière requête retournée par le serveur. 
 * Les éléments retournés seront affichés dans les tableaux par blocs (taille paramétrable d’une taille indicative de l'ordre de 20 éléments). 
 ====
+
+
+== Provisionning et mises à jour des données
+
+[TIP]
+====
+Décrire comment les DDL (structures de tables en base de données) et les données initiales (comme des nomenclatures) seront gérées puis mis à jour.
+====
+
+====
+Exemple : Nous utiliserons LiquiBase embarqué dans les war pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
+====
+
