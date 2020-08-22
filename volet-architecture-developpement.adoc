@@ -304,11 +304,11 @@ Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continu
 Exemple : Les jobs Jenkins produiront le logiciel sous forme de containers Docker si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce container. Si tous les tests d’intégration et BDD sont passants, l'image Docker est releasée dans Nexus.
 ====
 
-== Qualimétrie 
+== Normes de développement et qualimétrie 
 
 [TIP] 
 ==== 
-Rendre explicite le niveau de qualité requis pour le code 
+Rendre explicite les régles et le niveau de qualité requis pour le code 
 ==== 
 ==== 
 Exemple 1 : Les règles de qualité à utiliser pour le code seront (https://rules.sonarsource.com/java[les règles standards SonarQube pour Java]). 
@@ -319,8 +319,21 @@ Exemple 2 : Le niveau de qualité exigé correspond au https://docs.sonarqube.or
 * 80% de couverture de code minimum 
 * 3 % max de lignes dupliquées 
 * Niveau A en Maintenabily, Relability et Security 
-
 ==== 
+
+====
+Exemple 3 : Quelle langue utilisée pour le code ? français pour les termes fonctionnels (il est impératif d'utiliser les termes métiers comme préconisé par le DDD) et l'anglais pour les termes techniques génériques.
+====
+
+== Patterns notables
+[TIP]
+====
+Préciser si ce projet a mis en œuvre des patterns (GoF, JEE ou autre) structurants. Inutile de reprendre les patterns déjà supportés par les langages ou les serveurs d'application (par exemple, l'IoC avec CDI dans un serveur JEE 6).
+====
+====
+Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et éviter de multiplier les niveaux d'héritage, nous utiliserons massivement la pattern décorateur [GoF] dont voici un exemple d’utilisation : <schéma>.
+====
+
 
 == Spécificités des tests 
 
@@ -426,16 +439,6 @@ détecter un maximum de bugs avant les tests d'UAT.
 
 NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'objet d'un document propre. Une stratégie standard peut également être définie au niveau du SI. 
 
-
-== Patterns notables
-[TIP]
-====
-Préciser si ce projet a mis en œuvre des patterns (GoF, JEE ou autre) structurants. Inutile de reprendre les patterns déjà supportés par les langages ou les serveurs d'application (par exemple, l'IoC avec CDI dans un serveur JEE 6).
-====
-====
-Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et éviter de multiplier les niveaux d'héritage, nous utiliserons massivement la pattern décorateur [GoF] dont voici un exemple d’utilisation : <schéma>.
-====
-
 == Éco-conception
 [TIP]
 ====
@@ -462,8 +465,9 @@ Exemple 2 : des tests de robustesse courant sur plusieurs jours seront effectué
 Exemple 3 : Les campagnes de performance intégreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
 ====
 
+== Gestion de la robustesse
 
-== Gestion des transactions
+=== Gestion des transactions
 [TIP]
 ====
 Lister ici les décisions prises concernant la gestion des transactions. Ceci est surtout utile pour un système distribué. Quelques exemples de problématiques : 
@@ -479,7 +483,7 @@ Lister ici les décisions prises concernant la gestion des transactions. Ceci es
 Exemple : nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file pour effectuer des mises à jour au fil de l'eau.
 ====
 
-== Gestion des sessions
+=== Gestion des sessions
 [TIP]
 ====
 Comment gère-t-on les sessions HTTP permettant de fournir un contexte d'exécution à un utilisateur (exemple: son panier d'achat) ? 
@@ -498,7 +502,7 @@ Exemples de points à traiter :
 Exemple : notre application JSF stockera en session HTTP uniquement son panier d'achat, pas les références produits
 ====
 
-== Gestion des erreurs
+=== Gestion des erreurs
 [TIP]
 ====
 Comment gère-t-on erreurs ? Exemples de points à traiter :
@@ -588,6 +592,76 @@ Exemple 1 : Les heures ne seront jamais stockées sans fuseau horaire. En base, 
 ==== 
 Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera l'epoch millis à 12:00 UTC (et pas 00:00, trop proche du jour précédent, risque de bug). 
 ==== 
+
+== Gestion des logs
+NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./volet-architecture-infrastructure.adoc#_logs[le volet infrastructure].
+
+[TIP]
+====
+Donner ici les règles générales concernant les traces applicatives (logs), les niveaux et quantité de logs.
+Penser à l'exploitation des logs, surtout coté serveur. Se demander s'il sera possible d'en tirer profit en cas d'erreur en production au milieu de Mio voire Gio d'autres logs et de n threads loguant en parallèle.
+====
+
+
+=== Règles générales
+
+====
+Exemple 1 : 
+
+* Ne pas laisser de logs de développement dans le code (exemple : `console.out("entrée dans méthode x")` ou `e.printStackTrace()`)
+* 
+* Penser à utiliser des chaînes de caractère discriminantes (exemple : code erreur) pour faciliter le filtrage dans l'outil de recherche de logs.
+* Toujours fournir des identifiants d'entités permettant de retrouver l'objet concerné 
+* Utiliser des identifiant de corrélation entre tiers (exemple : id de traitement générée coté client en JS, passée au serveur)
+* Eviter les calculs coûteux (exemple: beaucoup de concaténations) et utiliser des blocs conditionnels (exemple en Java : 
+```java
+if (isDebugEnabled()){
+   logger.debug(a+b+c)
+}
+```
+====
+
+=== Niveaux et quantité de logs
+[TIP]
+====
+Expliquer quand et quoi loguer de sorte à produire des logs exploitables en production.
+====
+
+====
+Exemple :   
+
+.Niveaux logs
+[cols='1,3,1,1']
+|====
+|Niveau de gravité |Contexte d'utilisation | Volume indicatif | Environnent 
+
+|DEBUG
+|En environnement de développement, il permet d'afficher les valeurs de variables, E/S de méthodes etc.. 
+|Max quelques Mio / minute
+|DEV, Recette. Interdit en PROD sauf demande expresse du projet
+
+|INFO
+|Début/fin d'un batch ou d'un appel, chargement d'une nouvelle propriété. Peut être utilisé sous forme condensée pour les appels de service (logging d'un appel et de son contexte). C'est le niveau de prolixité utilisé pour la métrologie.
+|Max 10 logs / sec, quelques Kio / minute
+|Tous
+
+|WARN
+|Tous les messages d'avertissement sur les informations fonctionnelles inattendues
+|Pas de limites mais ne pas en abuser et y positionner un maximum de détail de contexte
+|Tous
+
+|ERROR
+|Toutes les erreurs qui n'empêchent pas à l'application de fonctionner.
+|Pas de limites. Positionner un maximum de détail de contexte
+|Tous
+
+|FATAL
+|Toutes les erreurs bloquantes pour l'application (problème d'accès BDD, HTTP  404 ou 500). Positionner un maximum de détail de contexte. Penser à bien logger ces erreurs sur un appender console au cas où l'écriture sur FS serait impossible (disque plein). Penser que lors d'une erreur fatale, l'écriture même du log est sujette à caution (par exemple en cas de dépassement mémoire).
+|Pas de limites. 
+|Tous
+|====
+
+====
  
 == Outils d'administration
 [TIP]

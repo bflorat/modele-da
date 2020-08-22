@@ -94,19 +94,18 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 == Spécificités d’usine logicielle
 
-== Qualimétrie
-
-== Spécificités des tests
+== Normes de développement et qualimétrie 
 
 == Patterns notables
 
+== Spécificités des tests
+
 == Éco-conception
 
-== Gestion des transactions
-
-== Gestion des sessions
-
-== Gestion des erreurs
+== Gestion de la robustesse
+=== Gestion des transactions
+=== Gestion des sessions
+=== Gestion des erreurs
 
 == Gestion de la configuration
 
@@ -115,6 +114,10 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 == Encodage
 
 == Fuseaux horaires
+
+== Gestion des logs
+=== Règles générales
+=== Niveaux et quantité de logs
 
 == Outils d'administration
 
