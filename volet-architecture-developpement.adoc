@@ -382,6 +382,45 @@ Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
 Exemple  (Spring MVC) : Tous les controllers seront en scope singleton et ne doivent donc en aucun cas stocker d'état dans leurs attributs pour éviter des race conditions.
 ====
 
+== Encodage 
+
+[TIP] 
+==== 
+Quelles sont les règles concernant l'encodage des chaînes de caractère ? Ceci est un problème récurrant dans les SI (qui n'a jamais observé d'accents corrompus sous forme de carrés ?). Ce problème est pourtant relativement simple à résoudre et n'exige que de la rigueur. Voir les exemples ci-dessous pour des exemples de dispositifs effectifs. 
+==== 
+
+==== 
+Exemple 1 : Le seul encodage autorisé dans tous les modules et composants techniques est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat...), des sources, des bases de données et des fichiers. 
+
+Même les `.properties` lus en Java doivent être écrits en UTF-8. Il faut alors préciser l'encodage lors du parsing : 
+
+``` 
+FileInputStream input = new FileInputStream(new File("monfichier.properties")); 
+props.load(new InputStreamReader(input, Charset.forName("UTF-8"))); 
+``` 
+
+Note: Dans certains cas, nous n’avons pas la main sur la lecture des  .properties (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en UTF-8. 
+
+==== 
+==== 
+Exemple 2 : Si un système externe impose d'envoyer ou de recevoir des chaînes de caractères dans un encodage autre que le UTF-8 (exemple : un service REST qui renvoi des données en ISO-8859-1) et qu’il n’est pas possible de modifier le contrat, il est impératif de traduire au sein d'une couche anti-corruption les chaînes de caractères et ceci au plus tôt, dès l'appel. De plus, il ne faut jamais persister dans nos systèmes une donnée dans un encodage non UTF-8. 
+==== 
+ 
+
+== Fuseaux horaires 
+
+[TIP] 
+==== 
+Comment gère-t-on le stockage des dates ? Ceci, comme la gestion de l'encodage est un problème récurrant (décalage d'un jour, bugs lors des changements d'heure d'été/hiver, etc.) et pourtant simple à résoudre : suivre la norme https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] ("Time zones in ISO 8601 are represented as local time (with the location unspecified), as UTC, or as an offset from UTC." [Wikipedia]). 
+==== 
+
+==== 
+Exemple 1 : Les heures ne seront jamais stockées sans fuseau horaire. En base, on utilisera des timestamps avec timezone (`timestamptz`) et en Java ou JS, des objets intégrant le fuseau horaire de façon explicite (ex: `Instant` et pas `LocalDateTime` en java) ou des epochs. La précision sera au moins de la milliseconde. 
+==== 
+==== 
+Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera l'epoch millis à 12:00 UTC (et pas 00:00, trop proche du jour précédent, risque de bug). 
+==== 
+ 
 == Outils d'administration
 [TIP]
 ====
