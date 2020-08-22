@@ -14,7 +14,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Documentation de Référence
 
 .Références documentaires dimensionnement
-[cols="e,e,e,e"]
+[cols="1e,1e,4e,4e"]
 |====
 |N°|Version|Titre/URL du document|Détail
 
@@ -29,7 +29,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Points soumis à étude complémentaire
 
 .Points soumis à étude complémentaire
-[cols="e,e,e,e,e"]
+[cols="1e,1e,1e,2e,2e"]
 |====
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 |1|EN_COURS |Capacité disques SSD | XYZ | 01/01/2022
@@ -38,15 +38,25 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 
 === Hypothèses
+
+[TIP]
+====
+Donner ici les hypothèses structurantes prises pour le dimensionnement
+====
+
+====
+Exemple: 
+
 .Hypothèses
-[cols="e,e"]
+[cols="1e,4e"]
 |====
 |ID|Détail
 
-|1|L'API management Gravitee sera disponible pour les API Front Office
+|1|Nous estimons que 10M de personnes téléchagerons l'application StopCovid
 
 |====
 
+====
 
 == Contraintes
 [TIP]
@@ -102,6 +112,12 @@ Exemple 2 : Le réseau Ethernet du Datacenter dispose d'une bande passante de 40
 [TIP]
 ====
 Il est crucial de récupérer un maximum d'informations issues de la production plutôt que des estimations car ces dernières se révèlent souvent loin de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Prévoir alors une marge importante. Les informations données ici serviront d'entrants au SLA de l’application.
+====
+
+[TIP]
+====
+Les sections suivantes portant sur les calculs de volumétrie statiques et dynamiques donnent des exemples de calculs et d'élements à prendre en compte. Sur le plan de la forme, il est souvent plus simple de remplacer le texte par des feuilles de calculs dans un tableur. Pour un projet complexe ou aux hypothèses mouvantes, c'est indispensable.
+
 ====
 
 === Volumétrie statique
@@ -178,10 +194,10 @@ N'estimer que les données dont la taille est non négligeable (plusieurs centai
 
 === Volumétrie dynamique
 
-TIP: il s'agit des métriques par durée (année, mois, heure,...) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
+TIP: Il s'agit des métriques par durée (année, mois, heure,...) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
 
 ==== Métriques
-TIP: ce sont les données métier mesurées ou estimées qui serviront d'entrants au calcul de la charge.
+TIP: Ce sont les données métier mesurées ou estimées qui serviront d'entrants au calcul de la charge.
 
 [cols="e,e,e,e,e,e,e,e"]
 |====
@@ -287,6 +303,7 @@ Inutile de multiplier les types de sollicitations (en fonction de la complexité
 ====
 ====
 .Exemple de types de sollicitation :
+[cols='3e,1e,1e,1e']
 |====
 |Type de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
 
@@ -338,95 +355,76 @@ Exemple 2 : le batch mensuel B1 de consolidation des comptes doit s’exécuter
 Exemple 3 : les batchs et les IHM pouvant fonctionner en concurrence, il n’y a pas de contrainte stricte sur la durée d’exécution des batchs mais pour assurer une optimisation de l’infrastructure matérielle, on favorisera la nuit pendant laquelle les sollicitations IHM sont moins nombreuses.
 ====
 
-===  Performances dégradées acceptables
+
+== Dimensionnement cible
+
+=== Estimation des besoins en ressources par unité déployable
 [TIP]
 ====
-Préciser l’impact maximal accepté sur les temps de réponse lors d'une panne.
-====
-====
-Exemple 1  (perte d’un nœud d’un cluster) : Les serveurs devront être dimensionnés pour être chacun en mesure d’assurer le fonctionnement de l’application tout en limitant l’augmentation des temps de réponse à 20 %.
-====
+Donner ici RAM, disque et CPU par instance d'unité déployable (à affiner après campagne de performance ou MEP).
 
-== Dimensionnement des machines
-[TIP]
-====
-Donner ici RAM, disque et CPU de chaque nœud. 
-
-A affiner après campagne de performance ou MEP.
-
-Pour les VM, on considère le disque des partitions système comme internes même si elles sont physiquement sur un SAN. 
-
-Le disque SAN concerne des partitions montées sur SAN depuis un serveur physique ou virtuel.
 ====
 ====
 Exemple : 
-
-Machines virtuelles lb1, host2 (Reverse proxy)
+.Estimation des besoins en ressources par unité déployable
+[cols="2e,1e,1e,3e,2e"]
 |====
-|CPU|Mémoire|Disque interne|Disque SAN
+| Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires
 
-|2 VCPU|4 GiO|20 GiO|Pas de SAN
-|====
+| `tomcat-batchs1`
+| <négligeable>
+| 1024
+| Toutes les heures, 24/7/365
+| Le serveur d'application reste démarré même en dehors de l'exécution des jobs
 
-Machine physique bdd1  (BDD PostgreSQL)
-|====
-|CPU|Mémoire|Disque interne|Disque SAN
+| `spa` 
+| <négligeable>
+| 50
+| 24/6, activité principale 8-17h Europe/Paris lun-ven
+|Appli Web SPA, s'exécute dans le navigateur
 
-|16 cœurs Xeon 3Ghz|24 GiO|20 GiO|3 TiO
-|====
+| `bdd-postgresql` 
+| 2
+| 2024
+| 24/7, activité principale 8-17h Europe/Paris lun-ven
+| Instance Postgresql
 ====
 
-== Régulation de la charge
-=== Coupe-circuits
+
+=== Dimensionnement des machines
+
+Voir le link:./volet-architecture-infrastructure.adoc#_déploiement_en_production[modèle de déploiement].
+
 [TIP]
 ====
-Dans certains cas, des pics extrêmes et imprévisibles sont possibles (effet Slashdot). 
 
-Si ce risque est identifié, prévoir un système de fusible avec déport de toute ou partie de la charge sur un site Web statique avec message d'erreur par exemple. 
+Cette section fournit le dimensionnement final des machines necessaires
 
-Ce dispositif peut également servir en cas d’attaque de type DDOS et permet de gèrer le problème et non de le subir car on assure un bon fonctionnement acceptable aux utilisateurs déjà connectés.
+* Pour les VM, attention à vérifier qu'un VCPU = 1 cœur physique (et non un thread si hyperthreading activé)
+* Le disque interne concerne le disque necessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique executant la VM ou d'un SAN.
+* Le disque externe concerne du stockage sur une baie de disque (SAN) ou sur un filesystème distribué (NFS, CIFS, WebDav...)
 ====
 
-=== Qualité de Service 
-[TIP]
-====
-Il est également utile de prévoir des systèmes de régulation applicatifs dynamiques, par exemple :
-
-* Via du throttling (écrêtage du nombre de requêtes par origine et unité de temps). A mettre en amont de la chaîne de liaison.
-* Des systèmes de jetons (qui permettent en outre de favoriser tel ou tel client en leur accordant un quota de jetons différents).
-====
-====
-Exemple 1 : Le nombre total de jetons d'appels aux opérations REST sur la ressource `DetailArticle` sera de 1000. Au delà de 1000 appels simultanés, les appelants obtiendront une erreur d'indisponibilité 429 qu'ils devront gérer (et faire éventuellement des rejeux à espacer progressivement dans le temps).  
-
-.Exemple : répartition des jetons sera la suivante par défaut
+.Dimensionnement des machines
+[cols='1e,3e,1e,1e,1e,1e,1e']
 |====
-|Opération sur `DetailArticle`|Proportion des jetons
+|Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque externe  (Gio)
 
-|GET|80%
-|POST|5%
-|PUT|15%
+|DMZ 01 
+|VM serveur applicatif
+|3
+|2 
+|4
+|100
+|0
+
+|DMZ 02
+|Machine physique Base de données
+|1
+|2
+|6
+|50
+|1024 (SAN)
+
+
 |====
-====
-====
-Exemple 2 : un throttling de 100 requêtes par source et par minute sera mis en place au niveau du reverse proxy.
-====
-
-
-== Supervision des performances
-[TIP]
-====
-Suit-on les performances de l'application en production ? Cela permet :
-
-* De disposer d'un retour factuel sur les performances _in vivo_ et d'améliorer la qualité des décisions d’éventuelles redimensionnement de la plate-forme matérielle.
-* De détecter les pannes de façon proactive (suite à une chute brutale du nombre de requêtes par exemple).
-* De faire de l'analyse statistique sur l’utilisation des composants ou des services afin de favoriser la prise de décision (pour le décommissionnement d'une application par exemple).
-
-Il existe trois grandes familles de solutions :
-
-* Les APM (Application Performance Monitoring) :  outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource ...). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met en péril la stabilité de l'application.
-* La métrologie «maison» par logs si le besoin est modeste.
-* Les sites de requêtage externes (voir aussi les tests de vie en 12.7.6) qui appellent périodiquement l'application et produisent des dashboards. Ils ont l'avantage de prendre en compte les temps WAN non disponibles via les outils internes. A utiliser couplés aux tests de vie (voir plus loin).
-====
-====
-Exemple : les performances du site seront supervisées en continu par `pingdom.com`. Des analyses de performances plus poussées seront mises en œuvre par Pinpoint en fonction des besoins.
-====

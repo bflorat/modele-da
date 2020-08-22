@@ -427,7 +427,7 @@ Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé
 ====
 
 [[exigences-eco]]
-=== Exigences d'éco-conception
+=== Ecoconception
 [TIP]
 ====
 L'écoconception consiste à limiter l'impact environnemental des logiciels et matériels utilisés par l’application. Les exigences dans ce domaine s'expriment généralement en WH ou équivalent CO2.
@@ -440,6 +440,42 @@ Exemple 1 :  La consommation électrique moyenne causée par l’affichage d'une
 ====
 Exemple 2 : La classe énergétique WEA2 du site devra être de C ou mieux.
 ====
+
+== Régulation de la charge
+=== Coupe-circuits
+[TIP]
+====
+Dans certains cas, des pics extrêmes et imprévisibles sont possibles (effet Slashdot). 
+
+Si ce risque est identifié, prévoir un système de fusible avec déport de toute ou partie de la charge sur un site Web statique avec message d'erreur par exemple. 
+
+Ce dispositif peut également servir en cas d’attaque de type DDOS et permet de gèrer le problème et non de le subir car on assure un bon fonctionnement acceptable aux utilisateurs déjà connectés.
+====
+
+=== Qualité de Service 
+[TIP]
+====
+Il est également utile de prévoir des systèmes de régulation applicatifs dynamiques, par exemple :
+
+* Via du throttling (écrêtage du nombre de requêtes par origine et unité de temps). A mettre en amont de la chaîne de liaison.
+* Des systèmes de jetons (qui permettent en outre de favoriser tel ou tel client en leur accordant un quota de jetons différents).
+====
+====
+Exemple 1 : Le nombre total de jetons d'appels aux opérations REST sur la ressource `DetailArticle` sera de 1000. Au delà de 1000 appels simultanés, les appelants obtiendront une erreur d'indisponibilité 429 qu'ils devront gérer (et faire éventuellement des rejeux à espacer progressivement dans le temps).  
+
+.Exemple : répartition des jetons sera la suivante par défaut
+|====
+|Opération sur `DetailArticle`|Proportion des jetons
+
+|GET|80%
+|POST|5%
+|PUT|15%
+|====
+====
+====
+Exemple 2 : un throttling de 100 requêtes par source et par minute sera mis en place au niveau du reverse proxy.
+====
+
 
 == Principes de l'architecture technique
 Quels sont les grands principes techniques de notre application ?
@@ -912,6 +948,25 @@ Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si te
 ====
 ====
 Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via l'outil uptrends.com. En cas de panne, un mail est envoyé aux exploitants.
+====
+
+==== Métrologie
+[TIP]
+====
+Suit-on les performances de l'application en production ? Cela permet :
+
+* De disposer d'un retour factuel sur les performances _in vivo_ et d'améliorer la qualité des décisions d’éventuelles redimensionnement de la plate-forme matérielle.
+* De détecter les pannes de façon proactive (suite à une chute brutale du nombre de requêtes par exemple).
+* De faire de l'analyse statistique sur l’utilisation des composants ou des services afin de favoriser la prise de décision (pour le décommissionnement d'une application par exemple).
+
+Il existe trois grandes familles de solutions :
+
+* Les APM (Application Performance Monitoring) :  outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource ...). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met en péril la stabilité de l'application.
+* La métrologie «maison» par logs si le besoin est modeste.
+* Les sites de requêtage externes (voir aussi les tests de vie en 12.7.6) qui appellent périodiquement l'application et produisent des dashboards. Ils ont l'avantage de prendre en compte les temps WAN non disponibles via les outils internes. A utiliser couplés aux tests de vie (voir plus loin).
+====
+====
+Exemple : les performances du site seront supervisées en continu par `pingdom.com`. Des analyses de performances plus poussées seront mises en œuvre par Pinpoint en fonction des besoins.
 ====
 
 == Timeouts

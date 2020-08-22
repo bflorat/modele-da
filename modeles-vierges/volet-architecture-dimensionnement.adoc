@@ -14,6 +14,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Documentation de Référence
 
 .Références documentaires dimensionnement
+[cols="1,1,4,4"]
 |====
 |N°|Version|Titre/URL du document|Détail
 
@@ -26,6 +27,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Points soumis à étude complémentaire
 
 .Points soumis à étude complémentaire
+[cols="1,1,1,2,2"]
 |====
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 || | |  | 
@@ -35,6 +37,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 === Hypothèses
 .Hypothèses
+[cols="1,4"]
 |====
 |ID|Détail
 
@@ -90,8 +93,10 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 
 .Types de sollicitation :
+[cols='3,1,1,1']
 |====
 |Type de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
+
 ||||
 
 |====
@@ -99,20 +104,25 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 ====  Durée d’exécution des batchs
 
-===  Performances dégradées acceptables
+== Dimensionnement cible
 
-== Dimensionnement des machines
+=== Estimation des besoins en ressources par unité déployable
 
+.Estimation des besoins en ressources par unité déployable
+[cols="2,1,1,3,2"]
 |====
 |Profil|CPU|Mémoire|Disque interne|Disque SAN
 
 |||||
 |====
 
-== Régulation de la charge
-=== Coupe-circuits
+=== Dimensionnement des machines
 
-=== Qualité de Service 
+.Dimensionnement des machines
+[cols='1,3,1,1,1,1,1']
+|====
+|Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque externe  (Gio)
 
+|||||||
 
-== Supervision des performances
+|====
