@@ -57,15 +57,19 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 == Exigences non fonctionnelles
 
-
 === Accessibilité
 
 === Ergonomie
 
+==== Charte ergonomique
+
+==== Site Web adaptatif
 
 ==== Charte ergonomique
  
 ==== Spécificités sur les widgets
+
+==== Polices de caractère
 
 ====  Progressive Web Apps (PWA)
 
@@ -76,6 +80,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 ==== Mode déconnecté
 
 === Exigences de SEO
+
 
 == Pile logicielle
 

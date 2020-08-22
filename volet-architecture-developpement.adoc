@@ -116,7 +116,6 @@ Lister les contraintes d’affichage multi-support. Utiliser quand c'est possibl
 Attention, un design responsive vient avec ses contraintes (duplication de code, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir…). 
 ====
 
-
 ==== Charte ergonomique
 [TIP]
 ====
@@ -255,23 +254,22 @@ Exemple :
 
 IMPORTANT: Voir les exigences MOA dans le link:./volet-architecture-dimensionnement.adoc[volet dimmensionnement].
 
+
 [TIP]
-===
+====
 Même si des campagnes de performance sont prévues et que des analyses de performances seront intégrées à la CI/CD, l'expérience montre que 50% des problèmes de performance auraient pu être détectés dès le développement.
 Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, ...) mais la plupart des problèmes de temps de réponse. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
-===
 
-WARNING: Ne pas tomber non plus dans l'optimisation prématurée "source de tous les problèmes" selon Donald Knuth. Ecire le code le plus simple possible et suivre un bon design, ne l'optimiser qu’ensuite. 
-N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimisations les plus significatives et ne pas perdre son temps à grappiller des microsecondes voire nanosecondes.
 
-=== Coté Frontend
+Coté Frontend :
+
 * Limiter la complexité des CSS (sélecteurs ou fonctions en particulier)
 * Utiliser un profiler (comme celui de Chrome)
 * Privilégier les appels asynchrones
+* ...
 
-NOTE: La probabilité d'avoir des problèmes de performance sur une application SPA est très faible puisque chaque client produit le rendu en local. La charge de travail sur les performances en développement est donc bien moindre que sur les modules backend.
+Coté Backend :
 
-=== Coté Backend
 * S'assurer que la pagination serveur va bien jusqu'à la base de donnée (`LIMIT`, `OFFSET`).
 * Ne pas mettre en place de contraintes inutiles en base de données.
 * Limiter le nombre de jointures et les relations many-to-many.
@@ -284,13 +282,20 @@ NOTE: La probabilité d'avoir des problèmes de performance sur une application 
 * Vérifier qu'il n'y a pas de fuite de threads ou de deadlocks en comptant le nombre de threads actifs.
 * Stresser les API _a minima_ (avec des injecteurs comme Jmeter ou K6) et via une rampe progressive.
 * Traquer les IO (des millions de fois plus lents que des accès mémoire).
+* ...
 
-=== Commun
+Frontend et backend : 
+
 * Toute ressource (taille de chaine, nombre d'appel sur une durée, ...) doit systématiquement être bornée par une limite (pas d'open bar).
 * Vérifier que la taille des requêtes HTTP reste en dessous de quelques dizaines de Kio (hors GET sur fichiers). Utiliser la <<Tri et Pagination,pagination cliente et serveur>>.
 * Traquer le bavardage réseau : grouper les requêtes quand possible (il faut trouver un compromis avec la règle précédente). S'aider de la règle ‘S’ de SOLID (Segregation Interface).
 * Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2,...`) pour récupérer plusieurs éléments à la fois
 (doit se concrétiser par un seul `SELECT WHERE .. IN` dans la requête finale, pas une boucle dans le code !)
+
+====
+
+WARNING: Ne pas tomber à l'inverse dans l'optimisation prématurée "source de tous les problèmes" selon Donald Knuth. Ecrire le code le plus simple possible et suivre un bon design, ne l'optimiser qu’ensuite. 
+N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimisations les plus significatives et ne pas perdre son temps à grappiller des microsecondes voire nanosecondes.
 
 
 == Spécificités d’usine logicielle
