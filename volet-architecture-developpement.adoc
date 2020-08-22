@@ -571,7 +571,7 @@ FileInputStream input = new FileInputStream(new File("monfichier.properties"));
 props.load(new InputStreamReader(input, Charset.forName("UTF-8"))); 
 ``` 
 
-Note: Dans certains cas, nous n’avons pas la main sur la lecture des  .properties (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en UTF-8. 
+NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des  .properties (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en UTF-8. 
 
 ==== 
 ==== 
@@ -609,7 +609,6 @@ Penser à l'exploitation des logs, surtout coté serveur. Se demander s'il sera 
 Exemple 1 : 
 
 * Ne pas laisser de logs de développement dans le code (exemple : `console.out("entrée dans méthode x")` ou `e.printStackTrace()`)
-* 
 * Penser à utiliser des chaînes de caractère discriminantes (exemple : code erreur) pour faciliter le filtrage dans l'outil de recherche de logs.
 * Toujours fournir des identifiants d'entités permettant de retrouver l'objet concerné 
 * Utiliser des identifiant de corrélation entre tiers (exemple : id de traitement générée coté client en JS, passée au serveur)
