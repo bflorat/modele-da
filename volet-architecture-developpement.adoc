@@ -303,17 +303,128 @@ Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continu
 Exemple : Les jobs Jenkins produiront le logiciel sous forme de containers Docker si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce container. Si tous les tests d’intégration et BDD sont passants, l'image Docker est releasée dans Nexus.
 ====
 
-== Spécificités des tests
-[TIP]
-====
-Une méthodologie ou une technologie particulière est-elle en jeu dans ce projet ?
-====
-====
-Exemple 1 : ce projet sera couvert en plus des TU et tests d’intégration car des tests d'acceptance BDD (Behavioral Driven Development) en technologie JBehave + Serenity.
-====
-====
-Exemple 2 : ce projet sera développé en TDD (test first)
-====
+== Qualimétrie 
+
+[TIP] 
+==== 
+Rendre explicite le niveau de qualité requis pour le code 
+==== 
+==== 
+Exemple 1 : Les règles de qualité à utiliser pour le code seront (https://rules.sonarsource.com/java[les règles standards SonarQube pour Java]). 
+==== 
+==== 
+Exemple 2 : Le niveau de qualité exigé correspond au https://docs.sonarqube.org/6.7/QualityGates.html[Quality Gate SonarQube] recommandé : 
+
+* 80% de couverture de code minimum 
+* 3 % max de lignes dupliquées 
+* Niveau A en Maintenabily, Relability et Security 
+
+==== 
+
+== Spécificités des tests 
+
+[TIP] 
+==== 
+Une méthodologie ou une technologie particulière est-elle en jeu dans ce projet ? Quelle est la stratégie de tests ? 
+==== 
+==== 
+Exemple 1 : ce projet sera couvert en plus des TU et tests d’intégration car des tests d'acceptance BDD (Behavioral Driven Development) en technologie JBehave + Serenity. 
+==== 
+==== 
+Exemple 2 : ce projet sera développé en TDD (test first) 
+==== 
+==== 
+
+Exemple 3 : Types de tests 
+
+.Types de tests 
+[cols='2s,1,1,1,1,4a'] 
+|==== 
+|Type de test | Temps à investir | Manuel ou automatisé ? | Type de module ciblé | Taux de Couverture visée | Détail 
+
+|TU 
+|Très élevé 
+|Automatisé 
+|Backend et Frontend  
+|env. 80% 
+|Format BDD : spécifications de comportements des classes et méthodes 
+
+|Spécifications exécutables 
+|Très élevé 
+|Automatisé 
+|Api  
+|env. 100% pour les classes du domaine 
+|Mode bouchonné.  
+
+|Tests de contrats 
+|Faible 
+|Automatisé 
+|Liens UI/API 
+|env. 100% du code appelant coté UI et des contrôleurs Spring coté API 
+|Teste la non régression des échanges lors de l'appel des opérations des API REST (principe CDC=Consumer-Driven Contract) via les outils Pact et pact-react-consumer. 
+
+|Tests d'architecture 
+|Très faible 
+|Automatisé 
+|API et batchs 
+|N/A, 100% du code est validé par l'outil 
+|En particulier, ces tests simples à écrire vérifieront le respect des règles de l'architecture hexagonale. Utilisation du framework de test ArchUnit. 
+
+|TI (tests d'intégration) 
+|Faible 
+|Automatisé 
+|Composants appelant des systèmes externes (bases de données, API...) 
+|50 à 60% 
+|Chaque TI ne doit tester qu'un seul système externe à la fois 
+
+|E2E (tests bout en bout) 
+|Faible 
+|Automatisé 
+|UI 
+|30%, cas nominaux (happy path) 
+|Ecrits en CodeceptJS, Selenium ou technologie similaire. Ils seront limités à un rôle de smoke tests (détection de problèmes grossiers). Ces tests ne seront pas bouchonnés mais seront effectués sur chaîne de liaison instanciée de bout en bout. Pour éviter le travail inutile, ces tests seront faits au niveau de features entières, pas forcément à chaque sprint. Ces tests feront office également de tests système puisqu'ils solliciteront un maximum de modules débouchonnés. 
+
+|Tests de performance 
+|Faible (hors campagnes de performance dédiées) 
+|Automatisé 
+|API critiques 
+|20% 
+|Possiblement automatisés en CI en DEV mais également lancé manuellement par les développeurs 
+
+|Tests d'accessibilité 
+|Moyenne 
+|Automatisé + manuel 
+|UI 
+|50%  
+|Tests Axe-Core lancés en CI à compléter d'un audit manuel 
+
+|Tests de sécurité 
+|Moyenne 
+|Manuel 
+|Tous 
+|Faible, uniquement sur les fonctions sensibles 
+|Audit à prévoir 
+
+|Tests système 
+|Faible 
+|Manuels 
+|UI et batchs 
+|10%  
+|Tests menés par l'équipe de développement couvrant des scénarios fonctionnels complets. Le but  
+est ici de tester le fonctionnement de l'ensemble des modules (ce qui n'est pas automatisable) et de  
+détecter un maximum de bugs avant les tests d'UAT. 
+
+|Tests UAT (acceptance) 
+|Moyenne 
+|Manuels 
+|UI, batchs lancé à la main 
+|de 30% à 80% selon le nombre de scénarios prévus  
+|Tests menés en recette par la MOA sur environnement non bouchonné avec des cahiers de tests. Tests d'acceptance de bout n bout (on suit un cahier de tests avec les cas nominaux), Tests exploratoires (on tente toutes les combinatoires possibles avec un guidage minimal dans le cahier de test) 
+|==== 
+==== 
+
+NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'objet d'un document propre. Une stratégie standard peut également être définie au niveau du SI. 
+
 
 == Patterns notables
 [TIP]
