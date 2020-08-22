@@ -22,7 +22,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
 
 .Références documentaires
-[cols="e,e,e,e"]
+[cols="1e,1e,4e,4e"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
@@ -91,7 +91,7 @@ Si le SI est urbanisé, reprendre le plan d’occupation au sol et préciser le 
 On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peut s’agir d'humains ou de composants applicatifs.
 
 .Liste des acteurs internes
-[cols="e,e,e,e"]
+[cols="1e,1e,4e,4e"]
 |===
 |Acteur|Description|Population|Localisation
 
@@ -173,8 +173,6 @@ Exemple 6 : Les composants de cette application suivent l'architecture SOA telle
 ====
 Exemple 7 : Les composants en zone Internet ne peuvent appeler les composants en zone Intranet pour des raisons de sécurité.
 ====
-
-
 
 == Solution
 
@@ -273,7 +271,7 @@ Ne pas détailler les flux techniques de supervision ou lié au clustering par e
 ====
 
 .Exemple partiel de matrice de flux applicatifs
-[cols="e,e,e,e,e"]
+[cols='1e,3e,1e,1e,1e']
 |====
 |Source|Destination|Type de réseau|Protocole| Mode.footnote:[(L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)]
 

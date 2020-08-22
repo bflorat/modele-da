@@ -21,7 +21,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
 
 .Références documentaires développement
-[cols="e,e,e,e"]
+[cols="1e,1e,4e,4e"]
 |====
 |N°|Version|Titre/URL du document|Détail
 
@@ -48,7 +48,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 === Hypothèses
 .Hypothèses
-[cols="e,e"]
+[cols="1e,4e"]
 |====
 |ID|Détail
 
@@ -236,7 +236,7 @@ Lister ici pour chaque composant les principales librairies et frameworks utilis
 Exemple :
 
 .Exemple de pile logicielle
-[cols="e,e,e"]
+[cols="1e,4e,1e"]
 |====
 |Librairie|Rôle|Version 
 

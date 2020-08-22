@@ -22,6 +22,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Documentation de Référence
 
 .Références documentaires
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document|Détail
 
@@ -63,6 +64,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 ==== Acteurs internes 
 
 .Liste des acteurs internes
+[cols="1,1,4,4"]
 |===
 |Acteur|Description|Population|Fréquence d'appels 
 
@@ -76,6 +78,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 ==== Acteurs externes
 
 .Liste acteurs externes
+[cols="1,1,4,4"]
 |===
 |Acteur|Description|Population|Fréquence d'appels
 
@@ -110,3 +113,10 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 ==== Matrice des flux applicatifs
 
+.Matrice de flux applicatifs
+[cols='1e,3e,1e,1e,1e']
+|====
+|Source|Destination|Type de réseau|Protocole| Mode.footnote:[(L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)]
+
+
+|====
