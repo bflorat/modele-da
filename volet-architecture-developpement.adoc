@@ -680,3 +680,24 @@ Exemples de points à traiter :
 Exemple : Le service `/interne/maj_2` effectuera une montée de version du modèle de donnée vers la V2
 ====
 
+== Tri et Pagination
+
+[TIP]
+====
+Il est nécessaire de conserver une bonne fluidité de récupération des données en lot. La pagination permet de limiter le bavardage entre les clients (IHM et batchs) et les API. Décrire ici les dispositifs de pagination mis en ouvre coté client et coté serveur.
+====
+
+
+====
+Exemple 1 (Coté serveur) 
+
+* Les requêtes en sortie de l'api sont systématiquement triées selon un ordre ascendant (le défaut) ou descendant. De plus, il sera possible de choisir le champ sur lequel se fait le tri via un autre query param.
+* Afin de limiter le nombre de requêtes à destination de l'api, celle-ci retourne un nombre limité d'éléments (ce nombre sera paramétrable suivant la taille des éléments individuels). Il s'agit du query param `range` contenant le numéro de la page à récupérer + le nombre d'éléments de la page. Chaque API proposera une valeur par défaut (de l'ordre d'une centaine).
+====
+
+====
+Exemple 2 (Coté client) 
+
+* Le tri doit s'appliquer sur l'ensemble des éléments en base, pas seulement sur les éléments de la dernière requête retournée par le serveur. 
+* Les éléments retournés seront affichés dans les tableaux par blocs (taille paramétrable d’une taille indicative de l'ordre de 20 éléments). 
+====

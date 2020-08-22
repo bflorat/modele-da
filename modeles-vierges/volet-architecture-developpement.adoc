@@ -121,3 +121,5 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 == Outils d'administration
 
+== Tri et Pagination
+
