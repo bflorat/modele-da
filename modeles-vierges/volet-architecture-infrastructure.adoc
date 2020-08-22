@@ -143,10 +143,6 @@ Voir le détail des <<plages>>.
 [[exigences-eco]]
 === Exigences d'éco-conception
 
-[[exigences-seo]]
-=== Exigences de SEO
-
-
 == Principes de l'architecture technique
 Quels sont les grands principes techniques de notre application ?
 
