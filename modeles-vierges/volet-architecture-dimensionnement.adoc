@@ -106,9 +106,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 == Dimensionnement cible
 
-=== Estimation des besoins en ressources par unité déployable
+=== Estimation des besoins en ressources par composant technique
 
-.Estimation des besoins en ressources par unité déployable
+.Estimation des besoins en ressources par composant technique
 [cols="2,1,1,3,2"]
 |====
 |Profil|CPU|Mémoire|Disque interne|Disque SAN

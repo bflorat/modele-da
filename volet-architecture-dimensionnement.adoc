@@ -52,7 +52,7 @@ Exemple:
 |====
 |ID|Détail
 
-|1|Nous estimons que 10M de personnes téléchagerons l'application StopCovid
+|1|Nous estimons que 10M de personnes téléchargeront l'application StopCovid
 
 |====
 
@@ -63,7 +63,7 @@ Exemple:
 ====
 Les contraintes sont les limites applicables aux exigences sur le projet. 
 
-Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par exemple, il ne serait pas valide d'exiger des temps de réponse d'un web service incompatibles avec le débit du réseau sous-jacent.
+Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par exemple, il ne serait pas réaliste d'exiger des temps de réponse d'un web service incompatibles avec le débit du réseau sous-jacent.
 
 ====
 
@@ -111,12 +111,12 @@ Exemple 2 : Le réseau Ethernet du Datacenter dispose d'une bande passante de 40
 
 [TIP]
 ====
-Il est crucial de récupérer un maximum d'informations issues de la production plutôt que des estimations car ces dernières se révèlent souvent loin de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Prévoir alors une marge importante. Les informations données ici serviront d'entrants au SLA de l’application.
+Il est crucial de récupérer un maximum d'informations issues de la production plutôt que des estimations car ces dernières se révèlent souvent loin de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Prévoir alors une marge importante. Les informations données ici pourront serviront d'entrants au SLO (Objectif de Service fixé par les exploitants).
 ====
 
 [TIP]
 ====
-Les sections suivantes portant sur les calculs de volumétrie statiques et dynamiques donnent des exemples de calculs et d'élements à prendre en compte. Sur le plan de la forme, il est souvent plus simple de remplacer le texte par des feuilles de calculs dans un tableur. Pour un projet complexe ou aux hypothèses mouvantes, c'est indispensable.
+Les sections suivantes portant sur les calculs de volumétrie statiques et dynamiques donnent des exemples de calculs et d'élements à prendre en compte. Sur le plan de la forme, il peut être préférable de remplacer le texte par des feuilles de calculs dans un tableur. Pour un projet complexe ou aux hypothèses mouvantes, c'est indispensable.
 
 ====
 
@@ -125,7 +125,7 @@ Les sections suivantes portant sur les calculs de volumétrie statiques et dynam
 TIP: Il s'agit des métriques permettant de déterminer le volume de stockage *cumulé* du projet. Penser à bien préciser les hypothèses prises pour les métriques estimées. Il sera ainsi possible de les revoir si de nouveaux éléments métier apparaissent.
 
 ==== Métriques
-TIP: ce sont les données métier mesurées ou estimées qui serviront d'entrants au calcul des besoins techniques de stockage.
+TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entrants au calcul des besoins techniques de stockage.
 
 [cols="e,e,e,e,e,e,e"]
 |====
@@ -358,15 +358,20 @@ Exemple 3 : les batchs et les IHM pouvant fonctionner en concurrence, il n’y 
 
 == Dimensionnement cible
 
-=== Estimation des besoins en ressources par unité déployable
 [TIP]
 ====
-Donner ici RAM, disque et CPU par instance d'unité déployable (à affiner après campagne de performance ou MEP).
+Nous donnons un dimensionnement final devant supporter la volumétrie statique et dynamique et respecter les exigences.
+====
+
+=== Estimation des besoins en ressources par composant technique
+[TIP]
+====
+Donner ici RAM, disque et CPU par instance de composant technique déployé (à affiner après campagne de performance ou MEP). 
 
 ====
 ====
 Exemple : 
-.Estimation des besoins en ressources par unité déployable
+.Estimation des besoins en ressources par composant technique
 [cols="2e,1e,1e,3e,2e"]
 |====
 | Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires
