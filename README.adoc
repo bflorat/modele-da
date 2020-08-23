@@ -1,9 +1,9 @@
 # modele-da
 
 Modèle de Dossier d'Architecture (DA) applicable à la plupart des projets d'informatique de gestion, indépendamment de l'architecture générale retenue (monolithe, SOA, micro-service, n-tiers, ...).
-Ce modèle a déjà été utilisé sur plusieurs projets importants dont au sein de grandes organisations. Il s'enrichit régulierement.
+Ce modèle a déjà été utilisé sur plusieurs projets importants y compris au sein de grandes organisations. Il s'enrichit régulierement.
 
-NOTE: Nous utilisons le terme 'DA' et pas 'DAT' ou terme similaire car chaque organisation possède sa terminologie mais surtout, 'technique' (comme 'fonctionnel' d'ailleurs) est un terme équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
+NOTE: Nous utilisons le terme 'DA' et pas 'DAT' ou termes similaires car chaque organisation possède sa terminologie mais surtout le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
 
 ## Principes du modèle
 Nous avons découpé l'architecture en cinq volets (applicatif, sécurité, dimensionnement, infrastructure et développement), chaque volet étant auto-porteur. 
