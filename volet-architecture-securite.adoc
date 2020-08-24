@@ -565,6 +565,22 @@ Exemple 3 : lors de la création d’un nouveau bénéficiaire de virement dans
 Exemple 4 : Les mots de passe ne seront en aucun cas conservés mais stockés sous la forme de digest bcrypt.
 ====
 
+==== Comptes de service
+[TIP]
+====
+Les comptes de service sont utilisés pour l'authentification à un composant technique depuis un batch ou une API.
+====
+
+.Comptes de service
+[cols='1,2,2']
+|====
+|Compte | Ressource requérant authentification | mode de stockage des credentials
+
+|Comptes JDBC (un compte par base de données) | Instances PG et SqlServer. 
+| Stockage en clair dans la configuration des datasources. Valorisé à partir des pilars Salt des API.
+|====
+
+
 === Fédération d’identité
 Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
 
@@ -621,24 +637,8 @@ Exemple 1 : la gestion des autorisations sera gérée applicativement et stock�
 Exemple 2 : L’obtention du carnet d’adresse Facebook sera en OAuth2. On utilisera l’API Java Google Oauth2.
 ====
 
-=== Comptes de service
-
-[TIP]
-====
-Les comptes de service sont utilisés pour l'authentification à un composant technique depuis un batch ou une API.
-====
-
-.Comptes de service
-[cols='1,2,2']
-|====
-|Compte | Ressource requérant authentification | mode de stockage des credentials
-
-|Comptes JDBC (un compte par base de données) | Instances PG et SqlServer. 
-| Stockage en clair dans la configuration des datasources. Valorisé à partir des pilars Salt des API.
-|====
-
 === Tracabilité, auditabilité
-Dispositifs répondant aux <<Exigences de traçabilité et d'auditabilité>> :
+Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 ====
 Exemple 1 : à la fin de chaque action métier, l’application ReactJS appellera dans une action asynchrone un service REST de trace métier. Ce service stockera les traces dans une base Elastic Search pour consultation en Kibana. <schéma>
@@ -655,6 +655,7 @@ Exemple 4 : tous les documents servant de preuve seront archivés dans la GED.
 ====
 Exemple 5 : Les logs contenant le terme [PREUVE] et issu de l’ensemble des composants seront centralisés via le système de centralisation de log Elastic Search puis insérés avec traitement Logstash de façon journalière vers la base MongoDB « preuves ».
 ====
+
 
 == Auto-contrôles
 === Auto-contrôle des vulnérabilités

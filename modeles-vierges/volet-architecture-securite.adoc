@@ -142,6 +142,16 @@ Dispositifs répondant aux <<exigences-identification,exigences d'identification
 === Authentification
 Dispositifs répondant aux <<exigences-authentification,exigences d'authentification>> :
 
+
+==== Comptes de service
+.Comptes de service
+[cols='1,2,2']
+|====
+|Compte | Ressource requérant authentification | mode de stockage des credentials
+
+|====
+
+
 === Fédération d’identité
 Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
 
@@ -157,17 +167,8 @@ Dispositifs répondant aux <<exigence-anonymat,exigences d'anonymat et de respec
 === Habilitations
 Dispositifs répondant aux <<Exigences sur les habilitations>> :
 
-==== Comptes de service
-.Comptes de service
-[cols='1,2,2']
-|====
-|Compte | Ressource requérant authentification | mode de stockage des credentials
-
-|====
-
 === Tracabilité, auditabilité
-Dispositifs répondant aux <<Exigences de traçabilité et d'auditabilité>> :
-
+Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 == Auto-contrôles
 === Auto-contrôle des vulnérabilités
