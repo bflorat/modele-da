@@ -23,7 +23,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 ====
 
 .Références documentaires sécurité
-[cols="e,e,e,e"]
+[cols="1e,1e,3e,3e"]
 |====
 |N°|Version|Titre/URL du document|Détail
 
@@ -31,22 +31,11 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |2|latest|Normes sécurité société|http://masociete/monurl
 |====
 
-=== Glossaire
-[TIP]
-Par souci de concision, nous ne détaillons ici que les termes et acronymes spécifiques à l’application. Pour les définitions générales, veuillez vous référer au glossaire d’entreprise.
-
-.Glossaire sécurité spécifique projet
-[cols="e,e"]
-|====
-|Terme|Définition
-
-|CustomSSO|Système interne de SSO
-|====
 
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
-[cols="e,e,e,e,e"]
+[cols="1e,3e,1e,1e,2e"]
 |====
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 
@@ -89,7 +78,7 @@ Exemple 2 : il est formellement interdit à un composant de la zone internet d'a
 Exemple 3 : en application du RGPD, les données utilisateur devront être chiffrées
 ====
 
-== Exigences de sécurité
+== Exigences
 [TIP]
 ====
 Présenter ici les exigences, *pas les dispositifs y répondant*. Ceux-ci seront détaillées au chapitre 3. 
@@ -97,7 +86,6 @@ Présenter ici les exigences, *pas les dispositifs y répondant*. Ceux-ci seront
 Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de risque. Pour cela, utiliser par exemple la méthode  https://www.ssi.gouv.fr/guide/ebios-2010-expression-des-besoins-et-identification-des-objectifs-de-securite/[EBIOS] (Expression des Besoins et Identification des Objectifs de Sécurité).
 ====
 
-[[exigence-integrite]]
 === Exigences d'intégrité
 
 [TIP]
@@ -110,18 +98,13 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 ====
 
 .Niveau d'intégrité exigée par classe de données
-[options="header"]
-[cols="e,e,e,e,e"]
+[cols='2e,1e,1e,1e,1e']
 |====
 |Classe de données
-|Niveau « Non intègre » + 
-[small]#La donnée peut ne pas être intègre#
-|Niveau « Détectable » + 
-[small]#La donnée peut ne pas être intègre si l'altération est identifiée#
-|Niveau « Maîtrisé » +
-[small]#La donnée peut ne pas être intègre si l'altération est identifiée et corrigée  en moins d'une heure#
-|Niveau « Intègre » +
-[small]#La donnée doit toujours être rigoureusement intègre#
+|Niveau « Non intègre » ([small]#La donnée peut ne pas être intègre)#
+|Niveau « Détectable » ([small]#La donnée peut ne pas être intègre si l'altération est identifiée dans un délai raisonnable)#
+|Niveau « Maîtrisé » ([small]#La donnée peut ne pas être intègre, si l'altération est identifiée et l'intégrité du bien essentiel retrouvée)#
+|Niveau « Intègre » ([small]#La donnée doit toujours être rigoureusement intègre)#
 
 |Données de la base métier
 |
@@ -160,7 +143,6 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 |X
 |====
 
-[[exigence-confidentialite]]
 ===  Exigences de confidentialité
 
 [TIP]
@@ -172,18 +154,12 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 ====
 
 .Niveau de confidentialité exigée par classe de données
-[options="header"]
 [cols="e,e,e,e,e"]
 |====
-|Classe de données
-|Niveau « Public » + 
-[small]#Tout le monde peut accéder à la donnée#
-|Niveau « Limité »  + 
-[small]#La donnée n’est accessible qu’aux personnes habilitées#
-|Niveau « Réservé » +
-[small]#La donnée n’est accessible qu’au personnel interne habilité#
-|Niveau « Privé » +
-[small]#La donnée n’est visible que par l’intéressé(e)#
+|Classe de données | Niveau « Public » ([small]#Tout le monde peut accéder à la donnée)# 
+|Niveau  Limité » ([small]#La donnée n’est accessible qu’aux personnes habilitées)# 
+|Niveau « Réservé » ([small]#La donnée n’est accessible qu’au personnel interne habilité)# 
+|Niveau « Privé » ([small]#La donnée n’est visible que par l’intéressé(e))#
 
 |Contenu éditorial 
 |X
@@ -216,7 +192,6 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 |X
 |====
 
-[[exigence-identification]]
 === Exigences d'identification
 
 [TIP]
@@ -234,7 +209,6 @@ Exemple 2 : l’identité d’un internaute fera l’objet d’un test d’exis
 Exemple 3 : un ID est non supprimable, non modifiable et non réutilisable
 ====
 
-[[exigence-authentification]]
 === Exigences d'authentification
 [TIP]
 ====
@@ -258,7 +232,6 @@ Il est bien sûr possible d’ajouter au besoin dans le tableau ci-dessous des f
 Les facteurs d’authentification requis en fonction des situations sont (on peut exiger plusieurs occurrences du même facteur, utiliser autant de croix) :
 
 .Exigence d'authentification par cas d'utilisation
-[options="header"]
 [cols="e,e,e,e,e,e,e,e"]
 |====
 |Cas d’authentification
@@ -289,7 +262,6 @@ Les facteurs d’authentification requis en fonction des situations sont (on peu
 |||||||X
 |====
 
-[[exigence-federation-identite]]
 === Exigences de fédération d’identité
 [TIP]
 ====
@@ -304,8 +276,7 @@ Voir aussi les « Connect with [Google|Twitter|...] » en technologie OpenId C
 Exemple  : L’identification et l’authentification seront externalisés au fournisseur d’identité Auth0 pour simplifier la gestion de la sécurité et réduire les coûts de développement et d’exploitation.
 ====
 
-[[exigence-sso]]
-===  Exigences de SSO & SLO
+===  Exigences de SSO et SLO
 
 [TIP]
 ====
@@ -333,7 +304,6 @@ Exemple 2 : aucun besoin de SSO ou SLO n’est identifié
 Exemple 3 : cette application Web métier devra fournir une authentification unique mutualisée avec celle des autres applications de l’intranet : une fois authentifié sur l’une des applications, l’agent ne doit pas avoir à se reconnecter (jusqu'à expiration de sa session). De même, une déconnexion depuis l’une des applications doit assurer la déconnexion de toutes les applications de l’intranet.
 ====
 
-[[exigence-non-repudiation]]
 === Exigences de non répudiation
 [TIP]
 ====
@@ -341,7 +311,6 @@ Lister ici les actions métiers possédant une exigence de non-répudiation, c�
 ====
 
 .Besoins de non-répudiation
-[options="header"]
 [cols="e,e,e"]
 |===
 |Donnée signée|Origine du certificat client|Origine du certificat serveur
@@ -351,7 +320,6 @@ Lister ici les actions métiers possédant une exigence de non-répudiation, c�
 |Verisign
 |===
 
-[[exigence-anonymat]]
 === Exigences d'anonymat et de respect de la vie privée
 [TIP]
 Lister les contraintes d’anonymat et de vie privée légale (exigée par le RGPD). Voir https://www.cnil.fr/fr/rgpd-par-ou-commencer.
@@ -375,22 +343,21 @@ Exemple 5 : En application de la directive européenne « paquet telecom », 
 Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs dans la conservation de leurs données personnelles de santé sera proposé.
 ====
 
-[[exigence-autorisations]]
-=== Exigences d'autorisations
+=== Exigences sur les habilitations
 [TIP]
 ====
-Une autorisation (ou habilitation) permet de donner l’accès à une fonction applicative  (ou « privilège » ou « permission ») à un utilisateur ou un groupe d’utilisateur.  
+Une habilitation (ou autorisation) permet de donner l’accès à une fonction applicative  (ou « privilège » ou « permission ») à un utilisateur ou un groupe d’utilisateur.  
 
 Exemples de fonctions : 'faire un virement inter-bancaire', 'voir l’historique de son compte', 'supprimer un utilisateur'
 
 Attention à ne pas multiplier le nombre de fonctions et de rôles pour éviter une explosion  combinatoire et des coûts de gestion associés.
 
-Pour simplifier la gestion des autorisations par factorisation, on peut :
+Pour simplifier la gestion des habilitations par factorisation, on peut :
 
 * Regrouper les utilisateurs dans des groupes (comme `G_chef_service`).
 * Associer une liste de fonctions à un rôle (comme `R_Administrateur`, `R_banquier_niv1`, `R_chef_service`) qu’on peut affecter à une personne ou à un groupe.
 
-Exemple de modèle classique de gestion des autorisations :
+Exemple de modèle classique de gestion des habilitations :
 
 image::{gitplant}/roles.puml[Gestion classique des rôles]
 
@@ -411,7 +378,6 @@ Exemple 2 :  l’application s’appuiera sur une gestion des autorisations mat
 
 ====
 .Exemple de matrice de rôles
-[options="header"]
 [cols="e,e,e,e"]
 |===
 |_Groupe ou utilisateur_|_Rôle_ `suppression`|_Rôle_ `administration`|_Rôle `_consultation données de base`
@@ -439,8 +405,7 @@ Exemple 2 :  l’application s’appuiera sur une gestion des autorisations mat
 
 ====
 
-[[exigence-tracabilite]]
-=== Exigences de traçabilité & auditabilité
+=== Exigences de traçabilité et d'auditabilité
 [TIP]
 ====
 Lister ici les besoins en traces permettant de détecter par exemple :
@@ -474,7 +439,6 @@ Exemple 3 : nous devons pouvoir reconstituer l’historique du dossier de tout 
 ====
 
 .Données à conserver pour preuves
-[options="header"]
 [cols="e,e,e"]
 |===
 |Donnée|Objectif|Durée de rétention
@@ -497,12 +461,11 @@ Exemple 3 : nous devons pouvoir reconstituer l’historique du dossier de tout 
 |===
 
 
-== Moyens mis en œuvre
+== Mesures de sécurité
 === Intégrité
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-integrite>> :
+Dispositifs répondant aux <<Exigences d'intégrité>> :
 
 .Mesures pour assurer le niveau d'intégrité demandée
-[options="header"]
 [cols="e,e,e"]
 |===
 |Classe de données|Niveau exigé|Mesures
@@ -536,10 +499,9 @@ La signature résultante sera intégrée a posteriori au format hexadecimal en p
 |===
 
 === Confidentialité
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-confidentialite>> :
+Dispositifs répondant aux <<Exigences de confidentialité>> :
 
-.Mesures pour assurer le niveau d'intégrité demandée
-[options="header"]
+.Mesures pour assurer le niveau de confidentialité demandé
 [cols="e,e,e"]
 |===
 |Classe de données|Niveau exigé|Mesures
@@ -575,14 +537,14 @@ Penser aussi à la confidentialité des données dérivées :
 ====
 
 === Identification
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-identification>> :
+Dispositifs répondant aux <<Exigences d'identification>> :
 
 _Exemple 1  : L’Id des usagers de l’application sera l’attribut uid des DN `cn=XXX,ou=service1,dc=entreprise,dc=com` dans l’annuaire LDAP central. Un filtre sera également appliqué sur l’appartenance au groupe `ou=monapplication,dc=entreprise,dc=com`._
 
 _Exemple 2  : Pour assurer la non réutilisation des ID des comptes supprimés, une table d’historique sera ajoutée dans l’application et requêtée avant toute création de nouveau compte._
 
 === Authentification
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-authentification>> :
+Dispositifs répondant aux <Exigences d'authentification>>:
 [TIP]
 ====
 Pour les authentifications par mot de passe, décrire le mode de stockage et de vérification. Penser également à décrire les solutions de changement de mot de passe.
@@ -601,7 +563,7 @@ Exemple 4 : Les mots de passe ne seront en aucun cas conservés mais stockés s
 ====
 
 === Fédération d’identité
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-federation-identite>> :
+Dispositifs répondant aux <<Exigences de fédération d’identité>> :
 
 [TIP]
 ====
@@ -615,7 +577,7 @@ Exemple  : L’IHM grand public permettra une identification et authentificatio
 ====
 
 === SSO, SLO
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-sso>> :
+Dispositifs répondant aux <<Exigences de SSO et SLO> :
 [TIP]
 ====
 Détailler la technologie choisie et son intégration. Quelques solutions  courantes : CAS, OpenAM, LemonLDAP::NG. Pour les applications Web, préciser les contraintes navigateur (activation des cookies en particulier).
@@ -628,14 +590,14 @@ Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra g
 ====
 
 === Non-répudiation
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-non-repudiation>> :
+Dispositifs répondant aux <<Exigences de non répudiation>> :
 
 ====
 Exemple  : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X suivant l’architecture suivante :  <schéma>.
 ====
 
 === Anonymat et vie privée
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-anonymat>> :
+Dispositifs répondant aux <<Exigences d'anonymat et de respect de la vie privée>> :
 
 ====
 Exemple 1 : un audit interne sera mené une fois par an sur le contenu des données en base et les extractions à destination des partenaires.
@@ -648,8 +610,8 @@ Exemple 3 : le bandeau d’acceptation des cookies sera mis en ouvre sur toutes
 ====
 
 
-=== Autorisations
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-autorisations>> :
+=== Habilitations
+Dispositifs répondant aux <<Exigences sur les habilitations>> :
 ====
 Exemple 1 : la gestion des autorisations sera gérée applicativement et stockée dans la base applicative PostgreSQL. Ces tables seront décrites dans le dossier de spécification.
 ====
@@ -657,8 +619,24 @@ Exemple 1 : la gestion des autorisations sera gérée applicativement et stock�
 Exemple 2 : L’obtention du carnet d’adresse Facebook sera en OAuth2. On utilisera l’API Java Google Oauth2.
 ====
 
+==== Comptes de service
+
+[TIP]
+====
+Les comptes de service sont utilisés pour l'authentification à un composant technique depuis un batch ou une API.
+====
+
+.Comptes de service
+[cols='1,2,2']
+|====
+|Compte | Ressource requérant authentification | mode de stockage des credentials
+
+|Comptes JDBC (un compte par base de données)  | Instances PG et SqlServer. 
+| Stockage en clair dans la configuration des datasources. Valorisé à partir des pilars Salt des API.
+|====
+
 === Tracabilité, auditabilité
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-tracabilite>> :
+Dispositifs répondant aux <<Exigences de traçabilité et d'auditabilité>> :
 
 ====
 Exemple 1 : à la fin de chaque action métier, l’application ReactJS appellera dans une action asynchrone un service REST de trace métier. Ce service stockera les traces dans une base Elastic Search pour consultation en Kibana. <schéma>
@@ -686,7 +664,6 @@ Bien entendu, il existe de nombreux autres points de contrôle dépendants du co
 ====
 
 .Checklist d'auto-contrôle de prise en compte des vulnérabilités courantes
-[options="header"]
 [cols="e,e,e"]
 |===
 |Vulnérabilité
@@ -794,7 +771,6 @@ Cette liste n'est qu'un exemple partiel, faire valider votre projet par votre se
 ====
 
 .Checklist d'auto-contrôle de respect du RGPD
-[options="header"]
 [cols="e,e,e"]
 |===
 |Exigence RGPD
