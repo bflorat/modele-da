@@ -19,7 +19,7 @@ La disponibilité est traitée dans le volet infrastructure.
 === Documentation de Référence
 [TIP]
 ====
-Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
+Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
 ====
 
 .Références documentaires sécurité
@@ -31,13 +31,12 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |2|latest|Normes sécurité société|http://masociete/monurl
 |====
 
-
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
 [cols="1e,3e,1e,1e,2e"]
 |====
-|ID|Détail|Statut|Porteur du sujet  | Échéance
+|ID|Détail|Statut|Porteur du sujet | Échéance
 
 |ES1
 |Il conviendra de valider que les dispositifs anti-CSRF mis en place résolvent également les failles liées au couplage TLS + compression (type CRIME ou BREACH). 
@@ -46,7 +45,6 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |AVANT 2040
 
 |====
-
 
 === Hypothèses
 .Hypothèses
@@ -83,7 +81,7 @@ Exemple 3 : en application du RGPD, les données utilisateur devront être chiff
 ====
 Présenter ici les exigences, *pas les dispositifs y répondant*. Ceux-ci seront détaillées au chapitre 3. 
 
-Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de risque. Pour cela, utiliser par exemple la méthode  https://www.ssi.gouv.fr/guide/ebios-2010-expression-des-besoins-et-identification-des-objectifs-de-securite/[EBIOS] (Expression des Besoins et Identification des Objectifs de Sécurité).
+Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de risque. Pour cela, utiliser par exemple la méthode https://www.ssi.gouv.fr/guide/ebios-2010-expression-des-besoins-et-identification-des-objectifs-de-securite/[EBIOS] (Expression des Besoins et Identification des Objectifs de Sécurité).
 ====
 
 === Exigences d'intégrité
@@ -92,7 +90,7 @@ Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de
 ====
 L’intégrité concerne la durabilité, la justesse et le niveau de confiance dans les données de l’application. 
 
-Gérer l’intégrité des données consiste à vérifier qu’elle ne peuvent être altérées ou supprimées  (involontairement, suite à un crash disque par exemple) ou volontairement, par exemple dans le cadre d’une attaque de type "man in the middle" ou par une personne s’étant octroyé des droits indus.
+Gérer l’intégrité des données consiste à vérifier qu’elle ne peuvent être altérées ou supprimées (involontairement, suite à un crash disque par exemple) ou volontairement, par exemple dans le cadre d’une attaque de type "man in the middle" ou par une personne s’étant octroyé des droits indus.
 
 Attention à ne pas multiplier les classes de données. Il est possible de ne définir qu’une seule classe de donnée pour l’ensemble de l’application (cas courant). 
 ====
@@ -143,7 +141,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 |X
 |====
 
-===  Exigences de confidentialité
+=== Exigences de confidentialité
 
 [TIP]
 ====
@@ -157,7 +155,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 [cols="e,e,e,e,e"]
 |====
 |Classe de données | Niveau « Public » ([small]#Tout le monde peut accéder à la donnée)# 
-|Niveau  Limité » ([small]#La donnée n’est accessible qu’aux personnes habilitées)# 
+|Niveau Limité » ([small]#La donnée n’est accessible qu’aux personnes habilitées)# 
 |Niveau « Réservé » ([small]#La donnée n’est accessible qu’au personnel interne habilité)# 
 |Niveau « Privé » ([small]#La donnée n’est visible que par l’intéressé(e))#
 
@@ -265,7 +263,7 @@ Les facteurs d’authentification requis en fonction des situations sont (on peu
 === Exigences de fédération d’identité
 [TIP]
 ====
-La fédération d’identité est l’utilisation d’une même identité gérée par un identity provider (IdP) depuis  plusieurs entités différentes. 
+La fédération d’identité est l’utilisation d’une même identité gérée par un identity provider (IdP) depuis plusieurs entités différentes. 
 
 Par exemple, France Connect très utilisé par les administrations et basé sur OpenId Connect permet de réutiliser le compte d’une administration pour se loguer sur le compte d’une autre (DGFiP et CNAM par exemple). 
 
@@ -276,7 +274,7 @@ Voir aussi les « Connect with [Google|Twitter|...] » en technologie OpenId C
 Exemple  : L’identification et l’authentification seront externalisés au fournisseur d’identité Auth0 pour simplifier la gestion de la sécurité et réduire les coûts de développement et d’exploitation.
 ====
 
-===  Exigences de SSO et SLO
+=== Exigences de SSO et SLO
 
 [TIP]
 ====
@@ -346,11 +344,11 @@ Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs 
 === Exigences sur les habilitations
 [TIP]
 ====
-Une habilitation (ou autorisation) permet de donner l’accès à une fonction applicative  (ou « privilège » ou « permission ») à un utilisateur ou un groupe d’utilisateur.  
+Une habilitation (ou autorisation) permet de donner l’accès à une fonction applicative (ou « privilège » ou « permission ») à un utilisateur ou un groupe d’utilisateur. 
 
 Exemples de fonctions : 'faire un virement inter-bancaire', 'voir l’historique de son compte', 'supprimer un utilisateur'
 
-Attention à ne pas multiplier le nombre de fonctions et de rôles pour éviter une explosion  combinatoire et des coûts de gestion associés.
+Attention à ne pas multiplier le nombre de fonctions et de rôles pour éviter une explosion combinatoire et des coûts de gestion associés.
 
 Pour simplifier la gestion des habilitations par factorisation, on peut :
 
@@ -373,7 +371,7 @@ Préciser si l’application doit utiliser de la délégation d’autorisation (
 Exemple 1  : les personnes non connectées auront accès à tous les privilèges en lecture seule
 ====
 ====
-Exemple 2 :  l’application s’appuiera sur une gestion des autorisations matricielle de type [rôles] -> [groupes ou utilisateurs] comme décrit plus bas. Le détail des autorisations sera donnée dans les SFD.
+Exemple 2 : l’application s’appuiera sur une gestion des autorisations matricielle de type [rôles] -> [groupes ou utilisateurs] comme décrit plus bas. Le détail des autorisations sera donnée dans les SFD.
 ====
 
 ====
@@ -451,7 +449,7 @@ Exemple 3 : nous devons pouvoir reconstituer l’historique du dossier de tout 
 |Prouver que le mail de confirmation a bien été envoyé 
 |2 ans
 
-|Contrat d’assurance signé et numérisé  en PDF
+|Contrat d’assurance signé et numérisé en PDF
 |Prouver que le contrat a bien été signé
 |5 ans
 
@@ -459,7 +457,6 @@ Exemple 3 : nous devons pouvoir reconstituer l’historique du dossier de tout 
 |Conserver le montant et de l’impôt.
 |5 ans
 |===
-
 
 == Mesures de sécurité
 === Intégrité
@@ -473,7 +470,7 @@ Dispositifs répondant aux <<Exigences d'intégrité>> :
 |Données de la base métier
 |Intègre
 a|
-* Utilisation du SGBDR  SGBD PostgreSQL avec un niveau d’isolation transactionnelle  SERIALIZABLE 
+* Utilisation du SGBDR SGBD PostgreSQL avec un niveau d’isolation transactionnelle SERIALIZABLE 
 * Les entités seront référencées uniquement par des ID techniques issues de séquences PostgreSQL
 
 |Données archivées
@@ -494,8 +491,8 @@ a|
 
 |Avis d’imposition PDF
 |Intègre
-|Signature numérique par la clé privée de l’administration  des données D de l’avis  au format PKCS#7 (RSA, SHA256) avec horodatage. D= base64(montant net + date+nom). +
-La signature résultante sera intégrée a posteriori au format hexadecimal en pied de page du PDF
+|Signature numérique par la clé privée de l’administration des données D de l’avis au format PKCS#7 (RSA, SHA256) avec horodatage. D= base64(montant net + date+nom). +
+La signature résultante sera intégrée a posteriori au format hexadécimal en pied de page du PDF
 |===
 
 === Confidentialité
@@ -522,7 +519,7 @@ Dispositifs répondant aux <<Exigences de confidentialité>> :
 |Réservé
 |L’accès aux fichiers de log est réservé aux exploitants habilités (accès SSH à la machine M et mot de passe Unix)
 
-|Données  RH  aides sociales aux employés
+|Données RH aides sociales aux employés
 |Privé
 |Ces données sont chiffrées en AES 256 sous forme d’un BLOB en base, remontées au client Web via le service REST Y puis déchiffrées au sein du navigateur dans l’application Angular (librairie forge.js) via un mot de passe complémentaire de l’utilisateur (non stocké coté serveur). +
 Il s’agit donc d’un chiffrement client uniquement. Une perte de mot de passe rend les données irrécupérables. Les données modifiées sur le client sont chiffrées et enregistrées à nouveau dans le BLOB via le service REST X.
@@ -567,7 +564,7 @@ Dispositifs répondant aux <<Exigences de fédération d’identité>> :
 
 [TIP]
 ====
-Les solutions les plus courantes sont actuellement : OpenId Connect (OIDC), SAML ou Oauth 2.0 (pseudo-authentification seulement pour cette dernière).  
+Les solutions les plus courantes sont actuellement : OpenId Connect (OIDC), SAML ou Oauth 2.0 (pseudo-authentification seulement pour cette dernière). 
 
 Pour les applications Web, préciser les contraintes navigateur (activation des cookies en particulier).
 ====
@@ -580,10 +577,10 @@ Exemple  : L’IHM grand public permettra une identification et authentificatio
 Dispositifs répondant aux <<Exigences de SSO et SLO> :
 [TIP]
 ====
-Détailler la technologie choisie et son intégration. Quelques solutions  courantes : CAS, OpenAM, LemonLDAP::NG. Pour les applications Web, préciser les contraintes navigateur (activation des cookies en particulier).
+Détailler la technologie choisie et son intégration. Quelques solutions courantes : CAS, OpenAM, LemonLDAP::NG. Pour les applications Web, préciser les contraintes navigateur (activation des cookies en particulier).
 ====
 ====
-Exemple 1 : L’IHM X intégrera un client CAS spring-security pour le SSO. Le serveur CAS utilisé sera YYY. Son royaume d'authentification  (realm) sera l’annuaire AD Y.
+Exemple 1 : L’IHM X intégrera un client CAS spring-security pour le SSO. Le serveur CAS utilisé sera YYY. Son royaume d'authentification (realm) sera l’annuaire AD Y.
 ====
 ====
 Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra gérer les callbacks de déconnexion provenant du serveur CAS suite à une demande de SLO. 
@@ -593,7 +590,7 @@ Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra g
 Dispositifs répondant aux <<Exigences de non répudiation>> :
 
 ====
-Exemple  : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X suivant l’architecture suivante :  <schéma>.
+Exemple  : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X suivant l’architecture suivante : <schéma>.
 ====
 
 === Anonymat et vie privée
@@ -608,7 +605,6 @@ Exemple 2 : les données à destination de la zone publique seront exportées p
 ====
 Exemple 3 : le bandeau d’acceptation des cookies sera mis en ouvre sur toutes les pages de l’application Angular via le module `angular-cookie-law`.
 ====
-
 
 === Habilitations
 Dispositifs répondant aux <<Exigences sur les habilitations>> :
@@ -631,7 +627,7 @@ Les comptes de service sont utilisés pour l'authentification à un composant te
 |====
 |Compte | Ressource requérant authentification | mode de stockage des credentials
 
-|Comptes JDBC (un compte par base de données)  | Instances PG et SqlServer. 
+|Comptes JDBC (un compte par base de données) | Instances PG et SqlServer. 
 | Stockage en clair dans la configuration des datasources. Valorisé à partir des pilars Salt des API.
 |====
 
@@ -658,7 +654,7 @@ Exemple 5 : Les logs contenant le terme [PREUVE] et issu de l’ensemble des co
 === Auto-contrôle des vulnérabilités
 [TIP]
 ====
-La gestion des vulnérabilités dépasse largement le cadre de ce document mais il est bon de s’auto-contrôler pour s’assurer que les failles les plus courantes sont bien prises en compte et comment. Cette liste est en partie basée sur le TOP 10 OWASP. Pour le TOP 10 des application mobiles,  adapter cette liste avec le TOP 10 mobile. 
+La gestion des vulnérabilités dépasse largement le cadre de ce document mais il est bon de s’auto-contrôler pour s’assurer que les failles les plus courantes sont bien prises en compte et comment. Cette liste est en partie basée sur le TOP 10 OWASP. Pour le TOP 10 des application mobiles, adapter cette liste avec le TOP 10 mobile. 
 
 Bien entendu, il existe de nombreux autres points de contrôle dépendants du contexte de l’application
 ====
@@ -672,7 +668,7 @@ Bien entendu, il existe de nombreux autres points de contrôle dépendants du co
 
 |Accès à des ports privés
 |X
-|Configuration du pare-feu iptables sur la machine exposée à  Internet. Seul les ports 80 et 443 sont ouverts. Le pare-feu sera configuré en mode stateful (avec extension conntrack)
+|Configuration du pare-feu iptables sur la machine exposée à Internet. Seul les ports 80 et 443 sont ouverts. Le pare-feu sera configuré en mode stateful (avec extension conntrack)
 
 |Attaque de mot de passe par force brute
 |X
@@ -700,14 +696,14 @@ Bien entendu, il existe de nombreux autres points de contrôle dépendants du co
 
 |Violation de gestion d’authentification et de session
 |X
-|Traité avec le dispositif anti-CSRF, voir plus bas. On logue  l’IP à fin d’audit.
+|Traité avec le dispositif anti-CSRF, voir plus bas. On logue l’IP à fin d’audit.
 
 |XSS
 |X
 a|
 * _Utilisation de librairie d’échappement. Pour les modules Java, nous utiliserons StringEscapeUtils.escapeHtml4() de commons-lang_
 * __Utilisation des headers HTTP : X-Frame-Options SAMEORIGIN, X-XSS-Protection 1;mode=block, X-Content-Type-Options nosniff, Content-Security-Policy, X-XSS-PROTECTION (pour parer les détournements de dispositifs anti-XSS des navigateurs)__
-* __Spécification systématique de l’encoding dans le header de réponse Content-Type (ex :  text/html;charset=UTF-8) pour parer les attaques basées sur des caractères spéciaux contournant l'anti-XSS__
+* __Spécification systématique de l’encoding dans le header de réponse Content-Type (ex : text/html;charset=UTF-8) pour parer les attaques basées sur des caractères spéciaux contournant l'anti-XSS__
 
 |ReDOS
 |X
@@ -738,13 +734,13 @@ a|
 |Manque de contrôle d’accès au niveau fonctionnel
 |X
 a|
-*  __Mise en place de la politique d’autorisation décrite au chapitre 2__
-*  __Campagne de tests fonctionnels__
+* __Mise en place de la politique d’autorisation décrite au chapitre 2__
+* __Campagne de tests fonctionnels__
 
 |Log injection
 |X
 a|
-* __Échappement des logs avant de les transmettre à  log4j__
+* __Échappement des logs avant de les transmettre à log4j__
 * __Vérification des outils de consultation de logs__
 
 |Attaques HTTPS + compression CRIME/BREACH 
@@ -758,7 +754,6 @@ a|
 | Validation des pièces jointes par l'anti-virus clamav
 
 |===
-
 
 === Auto-contrôle RGPD
 [TIP]
@@ -785,7 +780,7 @@ Cette liste n'est qu'un exemple partiel, faire valider votre projet par votre se
 |X
 |Vérifié, la rétention de numéro de CB a été supprimée car inutile.
 
-|Droits des personnes (information, accès,  rectification, opposition, effacement, portabilité et  limitation du traitement.)
+|Droits des personnes (information, accès, rectification, opposition, effacement, portabilité et limitation du traitement.)
 |X
 |Oui, traitement manuel sur demande depuis le formulaire situé à http://xyz, traitement en 1 mois max
 
