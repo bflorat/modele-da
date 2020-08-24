@@ -619,7 +619,7 @@ Exemple 1 : la gestion des autorisations sera gérée applicativement et stock�
 Exemple 2 : L’obtention du carnet d’adresse Facebook sera en OAuth2. On utilisera l’API Java Google Oauth2.
 ====
 
-==== Comptes de service
+=== Comptes de service
 
 [TIP]
 ====
