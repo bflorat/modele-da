@@ -347,7 +347,7 @@ Ne pas oublier également les coûts d’astreinte très importants si les exige
 
 On estime en général que la haute disponibilité (HA) commence à deux neufs (99%), c'est à dire environ 90h d'indisponibilité par an.
 
-Donner la disponibilité demandé par plage (liste donnée dans <<Plages>>)
+Donner la disponibilité demandé par plage.
 
 La disponibilité exigée ici devra être en cohérence avec les <<Contraintes sur la disponibilité>> du SI.
 ====
@@ -431,7 +431,7 @@ Préciser si des dispositifs spécifiques de protection de l'intégrité (pour e
 Exemple 1: comme exigé par l'article L.123-22 du code de commerce, les données comptables devront être conservées au moins dix ans. 
 ====
 ====
-Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte sha256 sera calculée au moment de l'archivage et stockée séparément pour vérification éventuelle de l'intégrité des documents.
+Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte SHA256 sera calculée au moment de l'archivage et stockée séparément pour vérification de l'intégrité des documents en cas de besoin.
 ====
 
 === Exigences de purges
@@ -505,7 +505,7 @@ Exemple 1  : Tous les composants de cette application doivent pouvoir fonctionn
 Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé correctement sous peine de corruption de données.
 ====
 
-=== Exigences d'Ecoconception
+=== Exigences d'écoconception
 [TIP]
 ====
 L'écoconception consiste à limiter l'impact environnemental des logiciels et matériels utilisés par l’application. Les exigences dans ce domaine s'expriment généralement en WH ou équivalent CO2.
@@ -769,20 +769,20 @@ Les 'couloirs' sont des ‘sous-environnements’ constitués d'un ensemble de c
 |Environnement| Rôle| Contenu | Couloir
 
 |Développement
-|Déploiement continu (CD) pour les développeurs, donne une vision de la dernière version de l'ensemble des modules une fois les merge requests acceptés. Modules existants bouchonnés.
+|Déploiement continu (CD) pour les développeurs
 |Branche `develop` déployée à chaque commit
 |Un seul
 
 |Recette 
-|Recette fonctionnelle car les testeurs
+|Recette fonctionnelle par les testeurs
 |Tag déployé à la fin de chaque Sprint
 |UAT1 et UAT2
 ====
 
-== Éco-conception
+== Écoconception
 [TIP]
 ====
-Lister ici les mesures d'infrastructure permettant de répondre aux exigences d'<<Ecoconception>>. 
+Lister ici les mesures d'infrastructure permettant de répondre aux <<Exigences d'écoconception>>. 
 
 Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier) et à celles des coûts (achat de matériel). Dans ce cas, y faire simplement référence. 
 
@@ -926,7 +926,7 @@ Exemple : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponibil
 === Sauvegardes et restaurations
 [TIP]
 ====
-Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<exigences-disponibilite>> :
+Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<Exigences de disponibilité>> :
 
 * Quels sont les backups à chaud ? à froid ? 
 * Que sauvegarde-t-on ? (bien sélectionner les données à sauvegarder car le volume total du jeu de sauvegardes peut facilement atteindre dix fois le volume sauvegardé).
@@ -1073,14 +1073,13 @@ Indiquer l’ordonnanceur ou le planificateur utilisé pour piloter les batchs e
 Les batchs doivent-ils produire un rapport d'exécution ? sous quelle forme et avec quel contenu ?
 ====
 ====
-Exemple : les batchs seront ordonnancés par l'instance JobScheduler de l'organisation. 
+Exemple 1 : les batchs seront ordonnancés par l'instance JobScheduler de l'organisation. 
 
 * Les batchs ne devront jamais tourner les jours féries.
 * Leur exécution sera bornée aux périodes 23h00 - 06h00. Leur planification devra donc figurer dans cette plage ou ils ne seront pas lancés.
 * On ne lancera pas plus de cinq instances du batch B1 en parallèle.
-====
-====
-Exemple : Les batchs devront produire un rapport d'exécution à chaque lancement (avec des données de base comme le nombre d'éléments traités, la durée du traitement et tout indicateur pertinent).
+
+Exemple 2 : Les batchs devront produire un rapport d'exécution à chaque lancement (avec des données de base comme le nombre d'éléments traités, la durée du traitement et tout indicateur pertinent).
 ====
 
 ==== Supervision boite noire

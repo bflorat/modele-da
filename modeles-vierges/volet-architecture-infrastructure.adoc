@@ -125,7 +125,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 === Exigences de gestion de la concurrence
 
-=== Exigences d'éco-conception
+=== Exigences d'écoconception
 
 == Principes de l'architecture technique
 Quels sont les grands principes techniques de notre application ?
@@ -154,7 +154,7 @@ Quels sont les grands principes techniques de notre application ?
 
 == Environnements
 
-== Éco-conception
+== Écoconception
 
 == Régulation de la charge
 
