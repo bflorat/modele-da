@@ -46,6 +46,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 == Exigences
 
+[[exigences-integrite]]
 === Exigences d'intégrité
 
 .Niveau d'intégrité exigée par classe de données
@@ -70,9 +71,10 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 |====
 
+[[exigences-identification]]
 === Exigences d'identification
 
-
+[[exigences-authentification]]
 === Exigences d'authentification
 
 .Exigence d'authentification par cas d'utilisation
@@ -81,10 +83,10 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 |====
 
+[[exigence-federation-identite]]
 === Exigences de fédération d’identité
 
 ===  Exigences de SSO et SLO
-
 
 === Exigences de non répudiation
 
@@ -94,8 +96,8 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 |===
 
+[[exigence-anonymat]]
 === Exigences d'anonymat et de respect de la vie privée
-
 
 === Exigences sur les habilitations
 
@@ -117,7 +119,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 == Mesures de sécurité
 === Intégrité
-Dispositifs répondant aux <<Exigences d'intégrité>> :
+Dispositifs répondant aux <<exigences-integrite,exigences d'intégrité>> :
 
 .Mesures pour assurer le niveau d'intégrité demandé
 |===
@@ -135,13 +137,13 @@ Dispositifs répondant aux <<Exigences de confidentialité>> :
 |===
 
 === Identification
-Dispositifs répondant aux <<Exigences d'identification>> :
+Dispositifs répondant aux <<exigences-identification,exigences d'identification>> :
 
 === Authentification
-Dispositifs répondant aux <Exigences d'authentification>>:
+Dispositifs répondant aux <<exigences-authentification,exigences d'authentification>> :
 
 === Fédération d’identité
-Dispositifs répondant aux <<Exigences de fédération d’identité>> :
+Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
 
 === SSO, SLO
 Dispositifs répondant aux <<Exigences de SSO et SLO> :
@@ -150,7 +152,7 @@ Dispositifs répondant aux <<Exigences de SSO et SLO> :
 Dispositifs répondant aux <<Exigences de non répudiation>> :
 
 === Anonymat et vie privée
-Dispositifs répondant aux <<Exigences d'anonymat et de respect de la vie privée>> :
+Dispositifs répondant aux <<exigence-anonymat,exigences d'anonymat et de respect de la vie privée>> :
 
 === Habilitations
 Dispositifs répondant aux <<Exigences sur les habilitations>> :

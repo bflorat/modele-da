@@ -84,6 +84,7 @@ Présenter ici les exigences, *pas les dispositifs y répondant*. Ceux-ci seront
 Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de risque. Pour cela, utiliser par exemple la méthode https://www.ssi.gouv.fr/guide/ebios-2010-expression-des-besoins-et-identification-des-objectifs-de-securite/[EBIOS] (Expression des Besoins et Identification des Objectifs de Sécurité).
 ====
 
+[[exigences-integrite]]
 === Exigences d'intégrité
 
 [TIP]
@@ -208,6 +209,7 @@ Exemple 2 : l’identité d’un internaute fera l’objet d’un test d’exis
 Exemple 3 : un ID est non supprimable, non modifiable et non réutilisable
 ====
 
+[[exigences-authentification]]
 === Exigences d'authentification
 [TIP]
 ====
@@ -261,6 +263,7 @@ Les facteurs d’authentification requis en fonction des situations sont (on peu
 |||||||X
 |====
 
+[[exigence-federation-identite]]
 === Exigences de fédération d’identité
 [TIP]
 ====
@@ -319,6 +322,7 @@ Lister ici les actions métiers possédant une exigence de non-répudiation, c�
 |Verisign
 |===
 
+[[exigence-anonymat]]
 === Exigences d'anonymat et de respect de la vie privée
 [TIP]
 Lister les contraintes d’anonymat et de vie privée légale (exigée par le RGPD). Voir https://www.cnil.fr/fr/rgpd-par-ou-commencer.
@@ -404,6 +408,7 @@ Exemple 2 : l’application s’appuiera sur une gestion des autorisations matr
 
 ====
 
+[[exigences-tracabilite]]
 === Exigences de traçabilité et d'auditabilité
 [TIP]
 ====
@@ -461,7 +466,7 @@ Exemple 3 : nous devons pouvoir reconstituer l’historique du dossier de tout 
 
 == Mesures de sécurité
 === Intégrité
-Dispositifs répondant aux <<Exigences d'intégrité>> :
+Dispositifs répondant aux <<exigences-integrite,exigences d'intégrité>> :
 
 .Mesures pour assurer le niveau d'intégrité demandée
 [cols="e,e,e"]
@@ -542,7 +547,7 @@ _Exemple 1  : L’Id des usagers de l’application sera l’attribut uid des D
 _Exemple 2  : Pour assurer la non réutilisation des ID des comptes supprimés, une table d’historique sera ajoutée dans l’application et requêtée avant toute création de nouveau compte._
 
 === Authentification
-Dispositifs répondant aux <Exigences d'authentification>>:
+Dispositifs répondant aux <<exigences-authentification,exigences d'authentification>> :
 [TIP]
 ====
 Pour les authentifications par mot de passe, décrire le mode de stockage et de vérification. Penser également à décrire les solutions de changement de mot de passe.
@@ -561,7 +566,7 @@ Exemple 4 : Les mots de passe ne seront en aucun cas conservés mais stockés s
 ====
 
 === Fédération d’identité
-Dispositifs répondant aux <<Exigences de fédération d’identité>> :
+Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
 
 [TIP]
 ====
@@ -595,7 +600,7 @@ Exemple  : La déclaration d’impôt sera signée par le certificat client de 
 ====
 
 === Anonymat et vie privée
-Dispositifs répondant aux <<Exigences d'anonymat et de respect de la vie privée>> :
+Dispositifs répondant aux <<exigence-anonymat,exigences d'anonymat et de respect de la vie privée>> :
 
 ====
 Exemple 1 : un audit interne sera mené une fois par an sur le contenu des données en base et les extractions à destination des partenaires.
