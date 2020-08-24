@@ -140,7 +140,6 @@ Donner ici le niveau de sécurité du datacenter selon l’échelle Uptime Insti
 La plupart des datacenters sont de niveau I ou II.
 
 .niveaux Tier des datacenters (Source : Wikipedia)
-[options="header"]
 |====
 Tier|Caractéristiques|Taux de disponibilité| Indisponibilité statistique annuelle |Maintenance à chaud possible ? | Tolérance
 aux pannes ?
