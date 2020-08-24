@@ -68,7 +68,6 @@ Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par
 ====
 
 
-[[contrainte-dimensionnement]]
 === Contraintes stockage
 TIP: Lister ici les éventuelles contraintes liées aux disques
 

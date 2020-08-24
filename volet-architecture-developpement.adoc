@@ -146,7 +146,7 @@ Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-l
 Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberation_(police_d%27%C3%A9criture)[Liberation Mono] en licence Open Source sécurisante sur un plan juridique et compatible métriquement avec le Monotype, le Courrier New, l'Arial et le Times New Roman. 
 ====
 
-====  Progressive Web Apps (PWA)
+==== Progressive Web Apps (PWA)
 [TIP]
 ====
 Spécifier si l'application est progressive. Les applications PWA sont des applications Web HTML5 possédant tous les attributs des applications natives (mode déconnecté, rapide, adaptatif, accessible depuis l'OS, ...) 
@@ -201,7 +201,6 @@ Exemple 1 : L'application sera développée en Java Swing avec stockage local ba
 Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5 avec local storage pour stocker les données de la journée dans le navigateur.
 ====
 
-[[exigences-seo]]
 === Exigences de SEO
 [TIP]
 ====

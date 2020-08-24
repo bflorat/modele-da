@@ -49,7 +49,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 == Contraintes
 
 
-[[contrainte-dimensionnement]]
 === Contraintes stockage
 
 
