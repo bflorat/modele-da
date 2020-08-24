@@ -190,6 +190,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 |X
 |====
 
+[[exigences-identification]]
 === Exigences d'identification
 
 [TIP]
@@ -534,7 +535,7 @@ Penser aussi à la confidentialité des données dérivées :
 ====
 
 === Identification
-Dispositifs répondant aux <<Exigences d'identification>> :
+Dispositifs répondant aux <<exigences-identification,exigences d'identification>> :
 
 _Exemple 1  : L’Id des usagers de l’application sera l’attribut uid des DN `cn=XXX,ou=service1,dc=entreprise,dc=com` dans l’annuaire LDAP central. Un filtre sera également appliqué sur l’appartenance au groupe `ou=monapplication,dc=entreprise,dc=com`._
 
