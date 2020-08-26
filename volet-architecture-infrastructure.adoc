@@ -523,7 +523,9 @@ Exemple 2 : La classe énergétique WEA2 du site devra être de C ou mieux.
 Exemple 3 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2020.
 ====
 
-== Principes de l'architecture technique
+== Architecture cible
+
+=== Principes de l'architecture technique
 
 [TIP]
 ====
@@ -537,7 +539,7 @@ Exemples :
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
-== Disponibilité
+=== Disponibilité
 [TIP]
 ====
 Donner ici les dispositifs permettant d'atteindre les <<Exigences de disponibilité>>.
@@ -675,7 +677,7 @@ Exemple 2 : Pour atteindre la disponibilité de 99.97% exigée, les dispositifs 
 
 ====
 
-== Déploiement en production
+=== Déploiement en production
 [TIP]
 ====
 Fournir ici le modèle de déploiement des composants en environnement cible sur les différents intergiciels et nœuds physiques (serveurs). 
@@ -695,7 +697,7 @@ Exemple :
 
 image::{gitplant}/archi-infra.puml?v=2[Diagramme de déploiement MIEL]
 ====
-== Versions des composants d'infrastructure
+=== Versions des composants d'infrastructure
 [TIP]
 ====
 Lister ici OS, bases de données, MOM, serveurs d'application, etc...
@@ -731,7 +733,7 @@ Lister ici OS, bases de données, MOM, serveurs d'application, etc...
 |CentOS 7
 |====
 
-== Matrice des flux techniques
+=== Matrice des flux techniques
 [TIP]
 ====
 Lister ici l'intégralité des flux techniques utilisés par l'application. Les ports d’écoute sont précisés. On détaille aussi les protocoles d'exploitation (JMX ou SNMP par exemple). 
@@ -754,7 +756,7 @@ Les types de réseaux incluent les informations utiles sur le réseau utilisé a
 |4|sup1|host[1-6]|LAN|SNMP|199
 |====
 
-== Environnements
+=== Environnements
 
 [TIP]
 ====
@@ -778,7 +780,7 @@ Les 'couloirs' sont des ‘sous-environnements’ constitués d'un ensemble de c
 |UAT1 et UAT2
 ====
 
-== Écoconception
+=== Écoconception
 [TIP]
 ====
 Lister ici les mesures d'infrastructure permettant de répondre aux <<Exigences d'écoconception>>. 
@@ -802,8 +804,8 @@ Exemple 1 : la mise en place d'un cache Varnish devant notre CMS reduira de 50% 
 Exemple 2 : L'application sera hébergée sur un cloud avec un PUE de 1.2 et une origine à 80 % renouvelable de l’énergie électrique.
 ====
 
-== Régulation de la charge
-=== Coupe-circuits
+=== Régulation de la charge
+==== Coupe-circuits
 [TIP]
 ====
 Dans certains cas, des pics extrêmes et imprévisibles sont possibles (effet Slashdot). 
@@ -813,7 +815,7 @@ Si ce risque est identifié, prévoir un système de fusible avec déport de tou
 Ce dispositif peut également servir en cas d’attaque de type DDOS et permet de gèrer le problème et non de le subir car on assure un bon fonctionnement acceptable aux utilisateurs déjà connectés.
 ====
 
-=== Qualité de Service
+==== Qualité de Service
 [TIP]
 ====
 Il est également utile de prévoir des systèmes de régulation applicatifs dynamiques, par exemple :
@@ -837,7 +839,7 @@ Exemple 1 : Le nombre total de jetons d'appels aux opérations REST sur la resso
 Exemple 2 : un throttling de 100 requêtes par source et par minute sera mis en place au niveau du reverse proxy.
 ====
 
-== Gestion des timeouts
+=== Gestion des timeouts
 [TIP]
 ====
 Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison. Garder en tête que dans une chaîne de liaison allant du client à la persistance, les timeouts devraient diminuer au fur et à mesure qu'on avance dans 
@@ -864,7 +866,7 @@ Exemple :
 
 ====
 
-== Exploitation
+=== Exploitation
 [TIP]
 ====
 Lister ici les grands principes d’exploitation de la solution. Les détails (filesystems sauvegardés, plan de production, planification des traitements...) seront consigné dans un DEX (Dossier d’EXploitation) séparé. 
@@ -872,7 +874,7 @@ Lister ici les grands principes d’exploitation de la solution. Les détails (f
 Si cette application reste dans le standard de l’organisation, se référer simplement à un dossier commun.
 ====
 
-=== Ordre d’arrêt/démarrage
+==== Ordre d’arrêt/démarrage
 [TIP]
 ====
 Préciser ici l’ordre de démarrage des machines et composants entre eux ainsi que l’ordre d’arrêt. En fonction des situations, on peut faire figurer les composants externes ou non. 
@@ -898,7 +900,7 @@ Exemple d'ordre d'arrêt :
 Inverse exact du démarrage
 ====
 
-=== Opérations programmées
+==== Opérations programmées
 [TIP]
 ====
 Lister de façon macroscopique (le DEX détaillera le plan de production précis) :
@@ -913,7 +915,7 @@ Exemple 1 : le batch `traiter-demande` fonctionnera au fil de l'eau. Il sera lan
 Exemple 2 : le traitement interne `ti_index` est une classe Java appelant des commandes `REINDEX` en JDBC lancées depuis un scheduler Quartz une fois par mois.
 ====
 
-=== Mise en maintenance
+==== Mise en maintenance
 [TIP]
 ====
 Expliquer (si besoin) les dispositifs et procédures permettant de mettre l'application 'offline' de façon explicite pour les utilisateurs.
@@ -922,7 +924,7 @@ Expliquer (si besoin) les dispositifs et procédures permettant de mettre l'appl
 Exemple : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponibilité.
 ====
 
-=== Sauvegardes et restaurations
+==== Sauvegardes et restaurations
 [TIP]
 ====
 Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<Exigences de disponibilité>> :
@@ -962,7 +964,7 @@ Exemple de roulement : jeu de 21 sauvegardes sur un an :
 * 11 sauvegardes mensuelles correspondant aux 11 derniers mois.
 ====
 
-=== Archivage
+==== Archivage
 [TIP]
 ====
 Décrire ici les dispositifs permettant de répondre aux <<exigences-archivage>> avec les modalités de stockage suivantes :
@@ -973,7 +975,7 @@ Décrire ici les dispositifs permettant de répondre aux <<exigences-archivage>>
 ====
 Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LTO et disque dur. Les deux supports seront stockés en coffre dans deux banques différentes.
 ====
-=== Purges
+==== Purges
 [TIP]
 ====
 Donner ici les dispositifs techniques répondant aux <<exigences-purge>>.
@@ -982,7 +984,7 @@ Donner ici les dispositifs techniques répondant aux <<exigences-purge>>.
 Exemple : l'historique des consultations sera archivé par un dump avec une requête SQL de la forme `COPY (SELECT * FROM matable WHERE ...) TO '/tmp/dump.tsv'` puis purgé par une requete SQL `DELETE` après validation par l'exploitant de la complétude du dump.
 ====
 
-=== Logs
+==== Logs
 [TIP]
 ====
 Sans être exhaustif sur les fichiers de logs (à prévoir dans le DEX), présenter la politique générale de production et de gestion des logs :
@@ -999,7 +1001,7 @@ Exemple 1 : les logs applicatifs du composant service-miel seront en production 
 ====
 Exemple 2 : les logs seront échappés à leur création via la méthode `StringEscapeUtils.escapeHtml()` de Jakarta commons-lang.
 ====
-=== Supervision
+==== Supervision
 [TIP]
 ====
 La supervision est un pilier central de la disponibilité en faisant diminuer drastiquement le MTTD (temps moyen de détection de la panne). 
@@ -1011,7 +1013,7 @@ Les métriques sont des mesures brutes (% CPU, taille FS, taille d'un pool...) i
 Les indicateurs sont des combinaisons logiques de plusieurs métriques disposant de seuils (ex : niveau critique si l'utilisation de CPU sur le serveur s1 reste au delà de 95% pendant plus de 5 minutes).
 ====
 
-==== Supervision technique
+===== Supervision technique
 [TIP]
 ====
 Lister les métriques :
@@ -1022,7 +1024,8 @@ Lister les métriques :
 ====
 Exemple : on mesura le % de wait io et la charge serveur.
 ====
-==== Supervision applicative
+
+===== Supervision applicative
 [TIP]
 ====
 Lister les métriques applicatives (développés en interne). lls peuvent être techniques ou fonctionnels :
@@ -1035,7 +1038,7 @@ Il est également possible de mettre en place des outils de BAM (Business Activi
 ====
 Exemple : l'API REST de supervision applicative proposera une ressource Metrique contenant les métriques métier principaux : nombre de colis à envoyer, nombre de préparateurs actifs...
 ====
-==== Outil de pilotage de la supervision
+===== Outil de pilotage de la supervision
 [TIP]
 ====
 Un tel outil (comme Nagios, Hyperic HQ dans le monde Open Source) :
@@ -1050,7 +1053,7 @@ Un tel outil (comme Nagios, Hyperic HQ dans le monde Open Source) :
 Exemple : la pilotage de la supervision se basera sur la plate-forme Nagios.
 ====
 
-==== Alerting
+===== Alerting
 [TIP]
 ====
 Préciser ici les conditions d'alertes et le canal utilisé
@@ -1059,7 +1062,7 @@ Préciser ici les conditions d'alertes et le canal utilisé
 Exemple : SMS si aucune demande depuis les 4 dernières heures ou si le nombre d'erreurs techniques d'un composant dépasse 10/h.
 ====
 
-==== Suivi des opérations programmées
+===== Suivi des opérations programmées
 [TIP]
 ====
 Indiquer l’ordonnanceur ou le planificateur utilisé pour piloter les batchs et consolider le plan de production (exemple : VTOM, JobScheduler, Dollar Universe, Control-M,...). Détailler les éventuelles spécificités de l’application :
@@ -1081,7 +1084,7 @@ Exemple 1 : les batchs seront ordonnancés par l'instance JobScheduler de l'orga
 Exemple 2 : Les batchs devront produire un rapport d'exécution à chaque lancement (avec des données de base comme le nombre d'éléments traités, la durée du traitement et tout indicateur pertinent).
 ====
 
-==== Supervision boite noire
+===== Supervision boite noire
 [TIP]
 ====
 Il est également fortement souhaitable et peu coûteux de prévoir un système de tests de supervision boite-noire (via des scénarios déroulés automatiquement). L'idée est ici de tester un système dans son ensemble et avec une vue end-user la plus externe possible (à l'inverse d'une supervision whitebox pour laquelle on supervise des composants bien précis avec un comportement attendu).
@@ -1094,7 +1097,7 @@ Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si te
 Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via l'outil uptrends.com. En cas de panne, un mail est envoyé aux exploitants.
 ====
 
-==== Métrologie
+===== Métrologie
 [TIP]
 ====
 Suit-on les performances de l'application en production ? Cela permet :
@@ -1113,7 +1116,7 @@ Il existe trois grandes familles de solutions :
 Exemple : les performances du site seront supervisées en continu par `pingdom.com`. Des analyses de performances plus poussées seront mises en œuvre par Pinpoint en fonction des besoins.
 ====
 
-== Migration
+=== Migration
 [TIP]
 ====
 Ce chapitre permet de décrire une éventuelle migration depuis un ancien système. 
@@ -1129,7 +1132,7 @@ Exemple 1 : Le composant X sera remplacé par les services Y. Ensuite les donn�
 Exemple 2 : en cas de problème sur le nouveau composant, un retour arrière sera prévu : les anciennes données seront restaurées dans les deux heures et les nouvelles données depuis la bascule seront reprise par le script S1.
 ====
 
-== Décommissionnement
+=== Décommissionnement
 [TIP]
 ====
 Ce chapitre sera instruit quand l’application arrive en fin de vie et devra être supprimée ou remplacée. Il décrit entre autres :
