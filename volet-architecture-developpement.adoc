@@ -213,9 +213,11 @@ Exemple 1 :  Aucune indexation nécessaire ni désirée (site interne)
 Exemple 2 : Les pages statiques du site devront suivre les bonnes pratiques SEO pour optimiser sa visibilité.
 ====
 
-== Pile logicielle
+== Architecture cible
 
-=== Filière technique retenue
+=== Pile logicielle
+
+==== Filière technique retenue
 [TIP]
 ====
 Donner les technologies choisies parmi les technologies au catalogue de l’organisation. S’il existe des écarts avec le catalogue, le préciser et le justifier.
@@ -226,6 +228,7 @@ Exemple : cette application est de profil P3 : "Application Web Spring" avec uti
 ====
 Exemple : Utilisation de Reacts.js à titre expérimental au sein de l'organisation. Validé en commité architecture le ...
 ====
+
 ==== Composants logiciels
 [TIP]
 ====
@@ -249,7 +252,7 @@ Exemple :
 |====
 ====
 
-== Performances
+=== Performances
 
 IMPORTANT: Voir les exigences MOA dans le link:./volet-architecture-dimensionnement.adoc[volet dimmensionnement].
 
@@ -297,7 +300,7 @@ WARNING: Ne pas tomber à l'inverse dans l'optimisation prématurée "source de 
 N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimisations les plus significatives et ne pas perdre son temps à grappiller des microsecondes voire nanosecondes.
 
 
-== Spécificités d’usine logicielle
+=== Spécificités d’usine logicielle
 [TIP]
 ====
 Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continue) de l'organisation, préciser si ce projet nécessite une configuration particulière.
@@ -306,7 +309,7 @@ Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continu
 Exemple : Les jobs Jenkins produiront le logiciel sous forme de containers Docker si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce container. Si tous les tests d’intégration et BDD sont passants, l'image Docker est releasée dans Nexus.
 ====
 
-== Normes de développement et qualimétrie 
+=== Normes de développement et qualimétrie 
 
 [TIP] 
 ==== 
@@ -327,7 +330,7 @@ Exemple 2 : Le niveau de qualité exigé correspond au https://docs.sonarqube.or
 Exemple 3 : Quelle langue utilisée pour le code ? français pour les termes fonctionnels (il est impératif d'utiliser les termes métiers comme préconisé par le DDD) et l'anglais pour les termes techniques génériques.
 ====
 
-== Patterns notables
+=== Patterns notables
 [TIP]
 ====
 Préciser si ce projet a mis en œuvre des patterns (GoF, JEE ou autre) structurants. Inutile de reprendre les patterns déjà supportés par les langages ou les serveurs d'application (par exemple, l'IoC avec CDI dans un serveur JEE 6).
@@ -337,7 +340,7 @@ Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et évi
 ====
 
 
-== Spécificités des tests 
+=== Spécificités des tests 
 
 [TIP] 
 ==== 
@@ -441,7 +444,7 @@ détecter un maximum de bugs avant les tests d'UAT.
 
 NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'objet d'un document propre. Une stratégie standard peut également être définie au niveau du SI. 
 
-== Éco-conception
+=== Éco-conception
 [TIP]
 ====
 Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listée dans le volet infrastructure. Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
@@ -467,9 +470,9 @@ Exemple 2 : des tests de robustesse courant sur plusieurs jours seront effectué
 Exemple 3 : Les campagnes de performance intégreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
 ====
 
-== Gestion de la robustesse
+=== Gestion de la robustesse
 
-=== Gestion des transactions
+==== Gestion des transactions
 [TIP]
 ====
 Lister ici les décisions prises concernant la gestion des transactions. Ceci est surtout utile pour un système distribué. Quelques exemples de problématiques : 
@@ -485,7 +488,7 @@ Lister ici les décisions prises concernant la gestion des transactions. Ceci es
 Exemple : nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file pour effectuer des mises à jour au fil de l'eau.
 ====
 
-=== Gestion des sessions
+==== Gestion des sessions
 [TIP]
 ====
 Comment gère-t-on les sessions HTTP permettant de fournir un contexte d'exécution à un utilisateur (exemple: son panier d'achat) ? 
@@ -504,7 +507,7 @@ Exemples de points à traiter :
 Exemple : notre application JSF stockera en session HTTP uniquement son panier d'achat, pas les références produits
 ====
 
-=== Gestion des erreurs
+==== Gestion des erreurs
 [TIP]
 ====
 Comment gère-t-on erreurs ? Exemples de points à traiter :
@@ -524,7 +527,7 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 Exemple (Spring) : les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
 ====
 
-== Gestion de la configuration
+=== Gestion de la configuration
 [TIP]
 ====
 Comment configure-t-on l'application ? Exemples de points à traiter :
@@ -541,7 +544,7 @@ Comment configure-t-on l'application ? Exemples de points à traiter :
 Exemple (application déployées dans Kubernetes) : La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le décripteur de déploiement Kubernetes.
 ====
 
-== Gestion de la concurrence
+=== Gestion de la concurrence
 [TIP]
 ====
 Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
@@ -556,7 +559,7 @@ Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
 Exemple  (Spring MVC) : Tous les controllers seront en scope singleton et ne doivent donc en aucun cas stocker d'état dans leurs attributs pour éviter des race conditions.
 ====
 
-== Encodage 
+=== Encodage 
 
 [TIP] 
 ==== 
@@ -580,8 +583,7 @@ NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des  .propert
 Exemple 2 : Si un système externe impose d'envoyer ou de recevoir des chaînes de caractères dans un encodage autre que le UTF-8 (exemple : un service REST qui renvoi des données en ISO-8859-1) et qu’il n’est pas possible de modifier le contrat, il est impératif de traduire au sein d'une couche anti-corruption les chaînes de caractères et ceci au plus tôt, dès l'appel. De plus, il ne faut jamais persister dans nos systèmes une donnée dans un encodage non UTF-8. 
 ==== 
  
-
-== Fuseaux horaires 
+=== Fuseaux horaires 
 
 [TIP] 
 ==== 
@@ -595,7 +597,7 @@ Exemple 1 : Les heures ne seront jamais stockées sans fuseau horaire. En base, 
 Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera l'epoch millis à 12:00 UTC (et pas 00:00, trop proche du jour précédent, risque de bug). 
 ==== 
 
-== Gestion des logs
+=== Gestion des logs
 NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./volet-architecture-infrastructure.adoc#_logs[le volet infrastructure].
 
 [TIP]
@@ -605,7 +607,7 @@ Penser à l'exploitation des logs, surtout coté serveur. Se demander s'il sera 
 ====
 
 
-=== Règles générales
+==== Règles générales
 
 ====
 Exemple 1 : 
@@ -622,7 +624,7 @@ if (isDebugEnabled()){
 ```
 ====
 
-=== Niveaux et quantité de logs
+==== Niveaux et quantité de logs
 [TIP]
 ====
 Expliquer quand et quoi loguer de sorte à produire des logs exploitables en production.
@@ -664,7 +666,7 @@ Exemple :
 
 ====
  
-== Outils d'administration
+=== Outils d'administration
 [TIP]
 ====
 L'application doit-elle fournir des services d’administration ? Il est fortement conseillé (c'est le facteur 12 des https://12factor.net/[Twelve factors d'Heroku]) d'intégrer le code d'administration directement avec le code métier.
@@ -681,13 +683,12 @@ Exemples de points à traiter :
 Exemple : Le service `/interne/maj_2` effectuera une montée de version du modèle de donnée vers la V2
 ====
 
-== Tri et Pagination
+=== Tri et Pagination
 
 [TIP]
 ====
 Il est nécessaire de conserver une bonne fluidité de récupération des données en lot. La pagination permet de limiter le bavardage entre les clients (IHM et batchs) et les API. Décrire ici les dispositifs de pagination mis en ouvre coté client et coté serveur.
 ====
-
 
 ====
 Exemple 1 (Coté serveur) 
@@ -704,7 +705,7 @@ Exemple 2 (Coté client)
 ====
 
 
-== Provisionning et mises à jour des données
+=== Provisionning et mises à jour des données
 
 [TIP]
 ====
