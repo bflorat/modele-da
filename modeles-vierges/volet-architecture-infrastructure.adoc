@@ -127,15 +127,15 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 === Exigences d'écoconception
 
-== Principes de l'architecture technique
-Quels sont les grands principes techniques de notre application ?
+== Architecture cible
 
+=== Principes de l'architecture technique
 
-== Disponibilité
+=== Disponibilité
 
-== Déploiement en production
+=== Déploiement en production
 
-== Versions des composants d'infrastructure
+=== Versions des composants d'infrastructure
 .Composants d'infrastructure
 [cols="1,2,1,2"]
 |====
@@ -143,7 +143,7 @@ Quels sont les grands principes techniques de notre application ?
 
 |====
 
-== Matrice des flux techniques
+=== Matrice des flux techniques
 
 .Matrice de flux techniques
 [cols="1,2,2,2,1,1"]
@@ -152,52 +152,52 @@ Quels sont les grands principes techniques de notre application ?
 
 |====
 
-== Environnements
+=== Environnements
 
-== Écoconception
+=== Écoconception
 
-== Régulation de la charge
+=== Régulation de la charge
 
-=== Coupe-circuits
+==== Coupe-circuits
 
-=== Qualité de Service
+==== Qualité de Service
 
-== Gestion des timeouts
+=== Gestion des timeouts
 
-== Exploitation
+=== Exploitation
 
-=== Ordre d’arrêt/démarrage
+==== Ordre d’arrêt/démarrage
 
-=== Opérations programmées
+==== Opérations programmées
 
-=== Mise en maintenance
+==== Mise en maintenance
 
-=== Sauvegardes et restaurations
+==== Sauvegardes et restaurations
 
-=== Archivage
+==== Archivage
 
-=== Purges
+==== Purges
 
-=== Logs
+==== Logs
 
-=== Supervision
+==== Supervision
 
-====  Supervision technique
+=====  Supervision technique
 
-====  Supervision applicative
+=====  Supervision applicative
 
-====  Outil de pilotage de la supervision
+=====  Outil de pilotage de la supervision
 
-==== Alerting
+===== Alerting
 
-====  Suivi des opérations programmées
+=====  Suivi des opérations programmées
 
-==== Rapports d’exécution des batchs
+===== Rapports d’exécution des batchs
 
-==== Supervision boite noire
+===== Supervision boite noire
 
-==== Métrologie
+===== Métrologie
 
-== Migration
+=== Migration
 
-== Décommissionnement
+=== Décommissionnement
