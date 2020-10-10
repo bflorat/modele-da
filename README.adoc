@@ -22,7 +22,7 @@ Un dossier suivant ce modèle sera ainsi constitué :
 
 Dans chaque volet, on retrouvera le triptyque :
 
-* Contraintes (légales, budgétaires, technologiques, normatives,...) applicables au projet;
+* Contraintes (juridiques, budgétaires, technologiques, normatives,...) applicables au projet;
 * Exigences non fonctionnelles (ENF) exprimées par les porteurs du projet dans la limite des contraintes ;
 * Solution (description de l'architecture retenue et répondant aux ENF).
 
