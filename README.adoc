@@ -17,7 +17,7 @@ Un dossier suivant ce modèle sera ainsi constitué :
 * d’un link:volet-architecture-applicative.adoc[volet applicatif] présentant le contexte général et l’architecture applicative ;
 * d’un link:volet-architecture-developpement.adoc[volet développement] présentant l’architecture logicielle et son environnement ;
 * d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et au dimensionnement de l'infrastructure ;
-* d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les aspects d’architecture dite 'technique' ;
+* d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les serveurs, les middlewares, l'exploitation, etc. ;
 * d’un link:volet-architecture-securite.adoc[volet sécurité] ;
 
 Dans chaque volet, on retrouvera le triptyque :
