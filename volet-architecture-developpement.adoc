@@ -103,19 +103,6 @@ Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb …) . Attentio
 
 === Ergonomie
 
-====  Site Web adaptatif
-[TIP]
-====
-Lister les contraintes d’affichage multi-support. Utiliser quand c'est possible les frameworks modernes (type AngularJS ou React.js). Il existe plusieurs niveaux d’adaptation des pages Web :
-
-* Statique (largeur de page fixe).
-* Dynamique (redimensionnement automatique, les tailles sont exprimées en %).
-* Adaptatif (les distances sont exprimées en unités dont la taille dépend du support).
-* Responsive (le contenu et son agencement dépend du support).
-
-Attention, un design responsive vient avec ses contraintes (duplication de code, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir…). 
-====
-
 ==== Charte ergonomique
 [TIP]
 ====
@@ -144,6 +131,19 @@ Le choix des polices suit des contraintes de licences. Afin d'assurer une sécur
 Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-les-fondamentaux/la-typographie[Marianne] préconisée par le gouvernenement en tant que police à chasse variable.
 
 Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberation_(police_d%27%C3%A9criture)[Liberation Mono] en licence Open Source sécurisante sur un plan juridique et compatible métriquement avec le Monotype, le Courrier New, l'Arial et le Times New Roman. 
+====
+
+====  Site Web adaptatif
+[TIP]
+====
+Lister les contraintes d’affichage multi-support. Utiliser quand c'est possible les frameworks modernes (type AngularJS ou React.js). Il existe plusieurs niveaux d’adaptation des pages Web :
+
+* Statique (largeur de page fixe).
+* Dynamique (redimensionnement automatique, les tailles sont exprimées en %).
+* Adaptatif (les distances sont exprimées en unités dont la taille dépend du support).
+* Responsive (le contenu et son agencement dépend du support).
+
+Attention, un design responsive vient avec ses contraintes (duplication de code, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir…). 
 ====
 
 ==== Progressive Web Apps (PWA)
