@@ -197,7 +197,9 @@ Un PCA permet de poursuivre les activités critiques de l’organisation (en gé
 
 Le PRI (ce qui intéresse l'architecte) est Plan de Reprise Informatique. Il définit les moyens techniques et procédures permettant de restaurer les données et les services dans le cadre d'un PRA ou d'un PCA. Le PRI n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou un PCA. Par exemple, si on vise un PCA, il faut prévoir des clusters actifs-actifs multi-zonaux (situés dans des datacenters distants géographiquement) alors que pour un PRA, l'important est la qualité et la vitesse de sauvegarde/restauration des données dans le datacenter de secours. 
 
-NOTE: Dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, des deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
+Note: dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, des deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
+
+Note 2: la gestion des catastrophes est un sujet très complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS...) que de gérer cette complexité pour vous.
 
 Décrire entre autres :
 
@@ -210,6 +212,8 @@ Décrire entre autres :
 ====
 ====
 Exemple : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le datacenter de secours via la technologie vSphere Metro Storage Cluster utilisant SRDF en mode asynhrone pour la réplication inter-baies. En cas de catastrophe, la VM répliquée sur le site de secours est à jour et prête à démarrer.
+
+Exemple 2 (PME avec son propre datacenter à Paris en zone inondable Seine) : Stockage de deux serveurs de spare dans les locaux de Lille. Sauvegarde à chaud toutes les 4 heures des données principales de l'entreprise et envoi (avec chiffrement client) sur BackBlaze.com. RPO de 4h, RTO de 2H.
 ====
 
 
