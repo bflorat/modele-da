@@ -188,13 +188,16 @@ Exemple : <disponibilité datacenter> x <plage de fonctionnement effective> x <d
 
 
 ==== Gestion des catastrophes
+
 [TIP]
 ====
-PRA (Plkan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie...). 
+PRA (Plan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie...). Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il exige au minium un doublement du datacenter. 
 
-Un PCA permet de poursuivre les activités critiques de l’organisation (en général dans un mode dégradé) sans interruption notable, voir la norme ISO 22301. Ce principe est réservé aux organisations très matures car il exige des dispositifs techniques coûteux et complexes (réplication des données au fil de l’eau par exemple).
+Un PCA permet de poursuivre les activités critiques de l’organisation (en général dans un mode dégradé) sans interruption notable, voir la norme ISO 22301. Ce principe est réservé aux organisations très matures car il exige des dispositifs techniques coûteux et complexes (filesystems distribués et concurrents par exemple).
 
-Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il exige au minium un doublement du datacenter.
+Le PRI (ce qui intéresse l'architecte) est Plan de Reprise Informatique. Il définit les moyens techniques et procédures permettant de restaurer les données et les services dans le cadre d'un PRA ou d'un PCA. Le PRI n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou un PCA. Par exemple, si on vise un PCA, il faut prévoir des clusters actifs-actifs multi-zonaux (situés dans des datacenters distants géographiquement) alors que pour un PRA, l'important est la qualité et la vitesse de sauvegarde/restauration des données dans le datacenter de secours. 
+
+NOTE: Dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, des deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
 
 Décrire entre autres :
 
@@ -206,7 +209,7 @@ Décrire entre autres :
 * Comment sont organisés les tests de bascule à blanc ? Avec quelle fréquence ?
 ====
 ====
-Exemple : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le PRA via la technologie vSphere Metro Storage Cluster utilisant SRDF en mode asynhrone pour la réplication inter-baies. En cas de catastrophe, la VM répliquée sur le site de secours est à jour et prête à démarrer.
+Exemple : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le datacenter de secours via la technologie vSphere Metro Storage Cluster utilisant SRDF en mode asynhrone pour la réplication inter-baies. En cas de catastrophe, la VM répliquée sur le site de secours est à jour et prête à démarrer.
 ====
 
 
