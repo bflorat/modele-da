@@ -41,8 +41,8 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |ID|Détail|Statut|Porteur du sujet | Échéance
 
 |EI1
-|EN_COURS
 |Le choix technique de la solution d’API Management reste soumise à étude complémentaires
+|EN_COURS
 |Equipe Archi Technique
 |AVANT 2040
 

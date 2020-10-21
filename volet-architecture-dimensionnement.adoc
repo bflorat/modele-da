@@ -31,8 +31,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 .Points soumis à étude complémentaire
 [cols="1e,1e,1e,2e,2e"]
 |====
-|ID|Détail|Statut|Porteur du sujet  | Échéance
-|1|EN_COURS |Capacité disques SSD | XYZ | 01/01/2022
+|ID| Détail |Statut |Porteur du sujet  | Échéance
+
+|1| Capacité disques SSD |EN_COURS | XYZ | 01/01/2022
 
 |====
 

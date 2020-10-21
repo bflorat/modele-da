@@ -38,8 +38,8 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 
 |ED1
-|EN_COURS
 |Le choix Angular ou React.JS pour le frontend est encore soumis à étude. Ceci n’impacte pas la partie back des services REST
+|EN_COURS
 |Equipe méthodes et outils
 |AVANT 2040
 
