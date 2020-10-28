@@ -650,7 +650,7 @@ Attention à bien qualifier les exigences avant de construire une architecture F
 
 .Quelques solutions de disponibilité (hors disponibilité du datacenter)
 |====
-|Solution|Coût |Complexité de mise en œuvre|Amélioration de la disponibilité
+|Solution|Coût |Complexité de mise en œuvre indicative |Amélioration de la disponibilité indicative
 
 |Disques en RAID 1 |XXX|X|XXX
 |Disques en RAID 5 |X|X|XX
@@ -658,7 +658,7 @@ Attention à bien qualifier les exigences avant de construire une architecture F
 |Bonding des cartes Ethernet|XX|X|X
 |Cluster actif/passif|XX|XX|XX
 |Cluster actif/actif (donc avec LB)|XXX|XXX|XXX
-|Serveurs de spare|XX|X|X
+|Serveurs/matériels de spare|XX|X|XX
 |Bonne supervision système|X|X|XX
 |Bonne supervision applicative|XX|XX|XX
 |Systèmes de test de vie depuis un site distant|X|X|XX
