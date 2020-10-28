@@ -81,7 +81,7 @@ Exemple 3 : en application du RGPD, les données utilisateur devront être chiff
 ====
 Présenter ici les exigences, *pas les dispositifs y répondant*. Ceux-ci seront détaillées au chapitre 3. 
 
-Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de risque. Pour cela, utiliser par exemple la méthode https://www.ssi.gouv.fr/guide/ebios-2010-expression-des-besoins-et-identification-des-objectifs-de-securite/[EBIOS] (Expression des Besoins et Identification des Objectifs de Sécurité).
+Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de risque. Pour cela, utiliser par exemple la méthode https://www.ssi.gouv.fr/guide/la-methode-ebios-risk-manager-le-guide/[EBIOS Risk Manager] (Expression des Besoins et Identification des Objectifs de Sécurité).
 ====
 
 [[exigences-integrite]]
