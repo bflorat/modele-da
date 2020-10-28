@@ -249,7 +249,7 @@ Exemple: module X, Y et Z dans le domaine GED. Modules A, B dans le domaine PERS
 ==== Vision dynamique
 [TIP]
 ====
-Exposer les modules applicatifs dans leurs différents zones ou domaines avec leurs flux applicatifs principaux.
+Exposer les modules applicatifs dans leurs différentes zones ou domaines avec leurs flux applicatifs principaux.
 
 Ne pas détailler les flux techniques (comme les flux liés à la supervision ou au clustering).
 
@@ -267,7 +267,7 @@ image::{gitplant}/archi-applicative-detaillee.puml[Diagramme architecture applic
 ====
 Lister ici les flux principaux de l'application. 
 
-Ne pas détailler les flux techniques de supervision ou lié au clustering par exemple. Mentionner le type de réseau (LAN, WAN). 
+Ne pas détailler les flux techniques de supervision ou liés au clustering par exemple. Mentionner le type de réseau (LAN, WAN). 
 ====
 
 .Exemple partiel de matrice de flux applicatifs
