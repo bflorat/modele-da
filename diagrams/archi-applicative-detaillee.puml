@@ -1,5 +1,5 @@
 @startuml
-!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+!include C4/C4_Component.puml
 title  Diagramme de containeurs \nPoint de vue applicatif détaillé \n Projet Mes Infos En Ligne (MIEL)
 LAYOUT_WITH_LEGEND()
 'LAYOUT_LEFT_RIGHT
@@ -18,7 +18,7 @@ System_Boundary(si, "Système d'information"){
     ContainerDb(file,"file-demandes","Container: RabbitMQ","Stocke les demandes")
     ContainerDb(bdd,"bdd-miel","Container: PostgreSQL","Base interne")
     Container(compo,"service-compo-pdf","Container: Wildfly, JasperReport", "Service REST de composition")
-    Container(smails,"serveur-mail","Container: Postfix","Envoi les e-mails")  
+    Container(smails,"serveur-mail","Container: Postfix","Envoi les e-mails")     
 }
 
 Rel(entreprise,resources_statiques,"Visite https://mesinfos.gouv.fr", "HTTPS, synchrone, lecture seule")

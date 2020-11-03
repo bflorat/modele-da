@@ -1,5 +1,5 @@
 @startuml
-!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+!include C4/C4_Container.puml
 title  Diagramme de contexte système \nPoint de vue applicatif général \ndu projet Mes Infos En Ligne (MIEL)
 LAYOUT_WITH_LEGEND()
 Person_Ext(entreprise, "Entreprise","[Personne]")
