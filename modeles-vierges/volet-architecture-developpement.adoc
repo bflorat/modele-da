@@ -6,7 +6,7 @@
 :icons: font
 :toc-title: Sommaire
 
-Dernière modification : {doctime} 
+Dernière modification : {docdate} 
 
 Etat du document : 
 

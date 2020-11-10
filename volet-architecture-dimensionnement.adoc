@@ -6,6 +6,8 @@
 :icons: font
 :toc-title: Sommaire
 
+Dernière modification : {docdate}
+
 == Introduction
 Ceci est le point de vue dimensionnement du projet. Il permet de déterminer la taille de l'infrastructure nécessaire au projet.
 

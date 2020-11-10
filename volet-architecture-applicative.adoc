@@ -7,9 +7,7 @@
 :toc-title: Sommaire
 :gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
-Dernière modification : {doctime} 
-
-Etat du document : *à jour*
+Dernière modification : {docdate} 
 
 == Introduction
 Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
