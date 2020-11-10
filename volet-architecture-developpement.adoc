@@ -524,7 +524,9 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 
 ====
 ====
-Exemple (Spring) : les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
+Exemple (Spring) : 
+
+les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
 ====
 
 === Gestion de la configuration
@@ -541,7 +543,9 @@ Comment configure-t-on l'application ? Exemples de points à traiter :
 
 ====
 ====
-Exemple (application déployées dans Kubernetes) : La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le décripteur de déploiement Kubernetes.
+Exemple (application déployées dans Kubernetes) : 
+
+La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le décripteur de déploiement Kubernetes.
 ====
 
 === Politique de gestion des branches
@@ -555,10 +559,28 @@ Exemple :
 
 * La politique générale adoptée est la https://trunkbaseddevelopment.com/[TBD] (Trunk-Based Development)
 * La branche principale est `develop`. Il s'agit d'une branche protégée vers laquelle il n'est pas possible pousser de commits.
-* Tout commit devra faire l'objet d'une Merge Request avant intégration dans `develop`. Les critères de qualité (exécuté de façon automatique lors de l'intégration continue) devront être atteints pour que le commit soit intégré.
+* Tout commit devra faire l'objet d'une Merge Request avant intégration dans `develop`. Les critères de qualité (évalués de façon automatique lors de l'intégration continue) devront être atteints pour que le commit soit intégré.
 * Chaque fonctionnalité, refactoring significatif ou bugfix sera donc réalisé sur une branche topic dédiée.
 * Une branche de maintenance sera tirée sur chaque tag de version x.y. Seuls les bugfixs seront mergés dans les branches de maintenance depuis `develop` via des `cherry-pick`.
 ====
+
+
+=== Versioning
+[TIP]
+====
+Que versionne-t-on et quel système de version utilise-t-on ?
+====
+
+====
+Exemple: 
+
+* D'une façon générale, toute ressource non dérivée (source, outil, script de ci-cd, template, DDL de base de données, ...) doit être versionnée.
+* Les modules seront versionnés suivant la numérotation `x.y.z` (`<majeur).<évolution>.<fix>`)
+* Les librairies seront versionnées suivant la même numérotation que les modules mais la valeur `x` sera incrémentée lors de toute montée de version cassant la compatibilité ascendante (principe du Semantic Versioning).
+* La version logique globale du projet sera : `<lot>.<no sprint>.<déploiement>`
+
+====
+
 
 
 === Gestion de la concurrence
