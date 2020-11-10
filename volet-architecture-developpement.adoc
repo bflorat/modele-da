@@ -544,6 +544,23 @@ Comment configure-t-on l'application ? Exemples de points à traiter :
 Exemple (application déployées dans Kubernetes) : La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le décripteur de déploiement Kubernetes.
 ====
 
+=== Politique de gestion des branches
+[TIP]
+====
+Quels sont des workflows de branche à prévoir ? git-flow ? TBD (Trunked-based Development) ? autre ?
+====
+
+====
+Exemple : 
+
+* La politique générale adoptée est la https://trunkbaseddevelopment.com/[TBD] (Trunk-Based Development)
+* La branche principale est `develop`. Il s'agit d'une branche protégée vers laquelle il n'est pas possible pousser de commits.
+* Tout commit devra faire l'objet d'une Merge Request avant intégration dans `develop`. Les critères de qualité (exécuté de façon automatique lors de l'intégration continue) devront être atteints pour que le commit soit intégré.
+* Chaque fonctionnalité, refactoring significatif ou bugfix sera donc réalisé sur une branche topic dédiée.
+* Une branche de maintenance sera tirée sur chaque tag de version x.y. Seuls les bugfixs seront mergés dans les branches de maintenance depuis `develop` via des `cherry-pick`.
+====
+
+
 === Gestion de la concurrence
 [TIP]
 ====
@@ -715,4 +732,6 @@ Décrire comment les DDL (structures de tables en base de données) et les donn�
 ====
 Exemple : Nous utiliserons LiquiBase embarqué dans les war pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
 ====
+
+
 
