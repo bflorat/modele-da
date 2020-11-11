@@ -5,7 +5,7 @@
 :toc: left
 :icons: font
 :toc-title: Sommaire
-:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
+:gitplant: https://florat.net/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
 Dernière modification : {docdate} 
 
