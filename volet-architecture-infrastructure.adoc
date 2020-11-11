@@ -5,7 +5,6 @@
 :toc: left
 :icons: font
 :toc-title: Sommaire
-:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
 Dernière modification : {docdate}
 
@@ -704,7 +703,7 @@ Identifier clairement le matériel dédié à l’application (et éventuellemen
 ====
 Exemple :
 
-image::{gitplant}/archi-infra.puml?v=2[Diagramme de déploiement MIEL]
+image::diagrams/archi-infra.svg[Diagramme de déploiement MIEL]
 ====
 === Versions des composants d'infrastructure
 [TIP]

@@ -5,7 +5,6 @@
 :toc: left
 :icons: font
 :toc-title: Sommaire
-:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
 Dernière modification : {docdate} 
 
@@ -202,7 +201,7 @@ Exemple 2 : MesInfosEnLigne est constituée de plusieurs microservices indépend
 Exemple 3 : Suite à la dérogation du DSI le 03 aout 20xx, l'IHM sera en architecture SPA (Single Page Application)
 ====
 
-image::{gitplant}/archi-applicative-generale.puml[Diagramme architecture applicative générale]
+image::diagrams/archi-applicative-generale.svg[Diagramme architecture applicative générale]
 
 === Architecture applicative détaillée
 
@@ -256,7 +255,7 @@ Si l'application est complexe, proposer un schéma global exposant tous les flux
 ====
 Exemple: 
 
-image::{gitplant}/archi-applicative-detaillee.puml[Diagramme architecture applicative détaillée]
+image::diagrams/archi-applicative-detaillee.svg[Diagramme architecture applicative détaillée]
 
 ====
 

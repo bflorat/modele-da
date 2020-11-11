@@ -1,6 +1,7 @@
 @startuml
-!includeurl https://raw.githubusercontent.com/kirchsth/C4-PlantUML/master/C4_Deployment.puml
-title Diagramme de déploiement \nArchitecture d'infrastucture \n Projet Mes Informations En Ligne \n (partiel)
+!include C4/C4_Deployment.puml
+title archi-infra
+header Diagramme de déploiement \nArchitecture d'infrastucture \n Projet Mes Informations En Ligne \n (partiel)
 LAYOUT_WITH_LEGEND()
 
 Node("client","Client","Desktop/mobile"){

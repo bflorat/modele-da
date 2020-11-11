@@ -1,8 +1,8 @@
 @startuml
-!include C4/C4_Component.puml
-title  Diagramme de containeurs \nPoint de vue applicatif détaillé \n Projet Mes Infos En Ligne (MIEL)
+!include C4/C4_Container.puml
+title  archi-applicative-detaillee
+header Diagramme de containeurs \nPoint de vue applicatif détaillé \n Projet Mes Infos En Ligne (MIEL)
 LAYOUT_WITH_LEGEND()
-'LAYOUT_LEFT_RIGHT
 Person_Ext(entreprise, "Entreprise","[person] \nClient Web (PC, tablette, mobile)")
 
 System_Boundary(administration, "Système administration B") {

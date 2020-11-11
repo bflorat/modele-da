@@ -6,7 +6,6 @@
 :toc: left
 :icons: font
 :toc-title: Sommaire
-:gitplant: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/bflorat/modele-da/master/diagrams/
 
 Dernière modification : {docdate}
 
@@ -364,7 +363,7 @@ Pour simplifier la gestion des habilitations par factorisation, on peut :
 
 Exemple de modèle classique de gestion des habilitations :
 
-image::{gitplant}/roles.puml[Gestion classique des rôles]
+image::diagrams/roles.svg[Gestion classique des rôles]
 
 Penser à spécifier les éventuels pseudos-utilisateurs et leurs rôles comme :
 
