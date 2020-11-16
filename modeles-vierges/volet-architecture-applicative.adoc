@@ -98,20 +98,22 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Urbanisation
 
 
+== Exigences
 
-== Solution
+
+== Architecture cible
 
 === Architecture applicative générale
 
 === Architecture applicative détaillée
 
-==== Principes ayant dicté les choix
+=== Principes ayant dicté les choix
 
-==== Vision statique
+=== Vision statique
 
-==== Vision dynamique
+=== Vision dynamique
 
-==== Matrice des flux applicatifs
+=== Matrice des flux applicatifs
 
 .Matrice de flux applicatifs
 [cols='1,3,1,1,1']

@@ -171,7 +171,24 @@ Exemple 6 : Les composants de cette application suivent l'architecture SOA telle
 Exemple 7 : Les composants en zone Internet ne peuvent appeler les composants en zone Intranet pour des raisons de sécurité.
 ====
 
-== Solution
+== Exigences
+
+TIP: Donner ici les exigences d'architecture applicative pouvant s'appliquer au projet.
+
+====
+Exemple 1 (projet de migration) : Les modules legacy devront faire l'objet d'aussi peu d'adaptations que possible. 
+====
+
+====
+Exemple 2 : Les modules devront pouvoir s'interfacer avec le partenaire XYZ via leurs API.
+====
+
+====
+Exemple 2 : Le développement devra pouvoir se faire au sein d'équipes distribuées, chacune travaillant sur des modules distincts.
+====
+
+
+== Architecture cible
 
 === Architecture applicative générale
 [TIP]
@@ -225,7 +242,7 @@ Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attr
 NOTE: Ce n'est qu'une suggestion car la rédaction de l'architecture applicative détaillée dépend beaucoup du projet et de sa complexité. Pour un projet relativement complexe, il peut être utile de le subdiviser dans les sous sections suivantes :
 
 
-==== Principes ayant dicté les choix
+=== Principes ayant dicté les choix
 [TIP]
 ====
 Donner ici l'intention dans la construction de l'architecture.
@@ -234,7 +251,7 @@ Donner ici l'intention dans la construction de l'architecture.
 Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise.
 ====
 
-==== Vision statique
+=== Vision statique
 [TIP]
 ====
 Exposer les modules applicatifs dans leurs différentes zones ou domaines.
@@ -243,7 +260,7 @@ Exposer les modules applicatifs dans leurs différentes zones ou domaines.
 Exemple: module X, Y et Z dans le domaine GED. Modules A, B dans le domaine PERSONNE.
 ====
 
-==== Vision dynamique
+=== Vision dynamique
 [TIP]
 ====
 Exposer les modules applicatifs dans leurs différentes zones ou domaines avec leurs flux applicatifs principaux.
@@ -259,7 +276,7 @@ image::diagrams/archi-applicative-detaillee.svg[Diagramme architecture applicati
 
 ====
 
-==== Matrice des flux applicatifs
+=== Matrice des flux applicatifs
 [TIP]
 ====
 Lister ici les flux principaux de l'application. 
