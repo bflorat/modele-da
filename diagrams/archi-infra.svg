@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1098px" preserveAspectRatio="none" style="width:1171px;height:1098px;" version="1.1" viewBox="0 0 1171 1098" width="1171px" zoomAndPan="magnify"><defs/><g><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="136" x="1019" y="9.2822">Diagramme de déploiement</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="133" x="1022" y="20.9229">Architecture d'infrastucture</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="162" x="993" y="32.5635">Projet Mes Informations En Ligne</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="38" x="1120" y="44.2041">(partiel)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="90" x="534" y="63.2705">archi-infra</text><!--MD5=[aa2f05b2676d7d34ffa7e771fb7634f3]
+cluster client--><rect fill="#FFFFFF" height="155" style="stroke: #000000; stroke-width: 1.5;" width="236" x="7" y="74.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="50" x="100" y="91.3672">Client</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="120" x="65" y="106.2793">[Desktop/mobile]</text><!--MD5=[633fb7825fae851bee0f05932b747d69]
+cluster nav1--><rect fill="#FFFFFF" height="104" style="stroke: #000000; stroke-width: 1.5;" width="220" x="15" y="117.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="142" x="54" y="134.3672">Navigateur Web</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="162" x="44" y="149.2793">[Chrome/Firefox/Safari]</text><!--MD5=[dcf9d23a479b6f5be5f2cd2f538bf578]
+cluster dc--><rect fill="#FFFFFF" height="932" style="stroke: #000000; stroke-width: 1.5;" width="914" x="251" y="74.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="100" x="658" y="91.3672">Datacenter</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="46" x="685" y="106.2793">[Paris]</text><!--MD5=[055f8d928468d5ee47912ab3392f306c]
+cluster rp1--><rect fill="#FFFFFF" height="104" style="stroke: #000000; stroke-width: 1.5;" width="256" x="901" y="331.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="130" x="964" y="348.3672">Reverse Proxy</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="240" x="909" y="363.2793">[x2 Debian Buster &lt;&lt;actif/actif&gt;&gt;]</text><!--MD5=[8ff4396602d070838c9bd134df71b6f1]
+cluster serveur_ihm--><rect fill="#FFFFFF" height="222" style="stroke: #000000; stroke-width: 1.5;" width="435" x="463" y="545.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="158" x="601.5" y="562.3672">Serveur IHM MIEL</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="130" x="615.5" y="577.2793">[x2 Debian Buster]</text><!--MD5=[f217dde53d0f6df02d6d8a2648a2c4d6]
+cluster sw1--><rect fill="#FFFFFF" height="169" style="stroke: #000000; stroke-width: 1.5;" width="218" x="672" y="589.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="116" x="723" y="606.3672">Serveur Web</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="49" x="756.5" y="621.2793">[Nginx]</text><!--MD5=[370fc723dcc71ff2416a72075e7ea309]
+cluster tomcat_batchs1--><rect fill="#FFFFFF" height="171" style="stroke: #000000; stroke-width: 1.5;" width="182" x="471" y="588.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="102" x="511" y="605.3672">Serveur JEE</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="81" x="521.5" y="620.2793">[Tomcat 10]</text><!--MD5=[7d3503eef35f2b251bd4df9c23ea00e1]
+cluster serveur_api--><rect fill="#FFFFFF" height="155" style="stroke: #000000; stroke-width: 1.5;" width="194" x="906" y="579.0156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="106" x="950" y="595.8672">Serveur API</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="69" x="968.5" y="610.7793">[x3, RHEL]</text><!--MD5=[fc957f8bf8adafd4952fb52d9ba77f73]
+cluster wilfly1--><rect fill="#FFFFFF" height="104" style="stroke: #000000; stroke-width: 1.5;" width="178" x="914" y="622.0156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="102" x="952" y="638.8672">Serveur JEE</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="58" x="974" y="653.7793">[Wildfly]</text><!--MD5=[d00fc2baadf01bd66ad11f10bf19f061]
+cluster bdd1--><rect fill="#FFFFFF" height="113" style="stroke: #000000; stroke-width: 1.5;" width="491" x="442" y="885.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="114" x="630.5" y="902.3672">Serveur BDD</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="45" x="665" y="917.2793">[RHEL]</text><!--MD5=[60e42aeba2869df57588502bd4075f0d]
+cluster serveur_sup1--><rect fill="#FFFFFF" height="104" style="stroke: #000000; stroke-width: 1.5;" width="212" x="701" y="117.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="178" x="718" y="134.3672">Serveur Supervision</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="135" x="739.5" y="149.2793">[x1 Debian Stretch]</text><!--MD5=[4227f5d58943708b70f3d215ef85b45a]
+cluster ech1--><rect fill="#FFFFFF" height="104" style="stroke: #000000; stroke-width: 1.5;" width="166" x="983" y="890.0156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="150" x="991" y="906.8672">Serveur Echange</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="144" x="994" y="921.7793">[x1 Windows Server]</text><!--MD5=[33573e971ff506c0f246109ca3fd77bd]
+entity spa--><rect fill="#438DD5" height="52.5938" style="stroke: #3C7FC0; stroke-width: 1.5;" width="205" x="22.5" y="160.5156"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="185" x="32.5" y="185.3672">Application SPA MIEL</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="60" x="95" y="200.2793">[React.js]</text><!--MD5=[2d034b0875f5e28a2e66ba2265252e77]
+entity r2--><rect fill="#FEFECE" height="52.5938" style="stroke: #000000; stroke-width: 1.5;" width="164" x="452" y="160.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="66" x="501" y="185.3672">Firewall</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="144" x="462" y="200.2793">[Cisco Firepower 4100]</text><!--MD5=[4fc6c3b5a1fba55664248d096da24559]
+entity lb1--><rect fill="#FEFECE" height="52.5938" style="stroke: #000000; stroke-width: 1.5;" width="140" x="546" y="374.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="120" x="556" y="399.3672">LB Debian lb1</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="51" x="590.5" y="414.2793">[«actif»]</text><!--MD5=[775c34017581a5522a6f6586a118dcb1]
+entity lb2--><rect fill="#FEFECE" height="52.5938" style="stroke: #000000; stroke-width: 1.5;" width="140" x="259" y="374.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="120" x="269" y="399.3672">LB Debian lb2</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="61" x="298.5" y="414.2793">[«passif»]</text><!--MD5=[13e83dc1471c2b56ed23aea5d3447ba5]
+entity baie1--><path d="M292,938.5156 C292,928.5156 342,928.5156 342,928.5156 C342,928.5156 392,928.5156 392,938.5156 L392,980.1094 C392,990.1094 342,990.1094 342,990.1094 C342,990.1094 292,990.1094 292,980.1094 L292,938.5156 " fill="#438DD5" style="stroke: #3C7FC0; stroke-width: 1.5;"/><path d="M292,938.5156 C292,948.5156 342,948.5156 342,948.5156 C342,948.5156 392,948.5156 392,938.5156 " fill="none" style="stroke: #3C7FC0; stroke-width: 1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="80" x="302" y="967.3672">SAN EMC</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="49" x="317.5" y="982.2793">[baie 1]</text><!--MD5=[cf1939a6d037fdc7e48ba6fad249093b]
+entity tous_serveurs--><rect fill="#FEFECE" height="52.5938" style="stroke: #000000; stroke-width: 1.5;" width="171" x="721.5" y="374.5156"/><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="151" x="731.5" y="399.3672">&lt;tous serveurs&gt;</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="82" x="766" y="414.2793">[Supervision]</text><!--MD5=[a9d05f7f70b84ddb3c2779d8f2bc364a]
+entity ha1--><rect fill="#438DD5" height="52.5938" style="stroke: #3C7FC0; stroke-width: 1.5;" width="150" x="928" y="374.5156"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="130" x="938" y="399.3672">Reverse Proxy</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="60" x="973" y="414.2793">[HaProxy]</text><!--MD5=[70a1b81d520fd1adeafa2831833ecec2]
+entity ihms1--><rect fill="#438DD5" height="117.7813" style="stroke: #3C7FC0; stroke-width: 1.5;" width="203" x="679.5" y="632.5156"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="183" x="689.5" y="657.3672">Application Web SPA</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="60" x="751" y="672.2793">[React.js]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="783" y="688.1045"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="149" x="706.5" y="704.4014">Expose les resources</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="64" x="749" y="720.6982">statiques</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="137" x="714.5" y="736.9951">(.js, .html, images...)</text><!--MD5=[1efad2a5399e22ca699c44f97cb39c39]
+entity batch1--><rect fill="#438DD5" height="120.1094" style="stroke: #3C7FC0; stroke-width: 1.5;" width="165" x="479.5" y="631.5156"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="121" x="501.5" y="656.3672">batch-traiter-</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="91" x="516.5" y="674.9922">demandes</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="35" x="544.5" y="689.9043">[Java]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="564" y="705.7295"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="141" x="493.5" y="722.0264">Traite les demandes</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="136" x="496" y="738.3232">scheduling: * * * * *</text><!--MD5=[292e5a3114c0f5c68837ca2833dd9f72]
+entity api1--><rect fill="#438DD5" height="52.5938" style="stroke: #3C7FC0; stroke-width: 1.5;" width="162" x="922" y="665.0156"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="142" x="932" y="689.8672">API service-miel</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="35" x="985.5" y="704.7793">[Java]</text><!--MD5=[358e89297f090aa598af710b97232d4f]
+entity pg1--><path d="M799,938.5156 C799,928.5156 862,928.5156 862,928.5156 C862,928.5156 925,928.5156 925,938.5156 L925,980.1094 C925,990.1094 862,990.1094 862,990.1094 C862,990.1094 799,990.1094 799,980.1094 L799,938.5156 " fill="#438DD5" style="stroke: #3C7FC0; stroke-width: 1.5;"/><path d="M799,938.5156 C799,948.5156 862,948.5156 862,948.5156 C862,948.5156 925,948.5156 925,938.5156 " fill="none" style="stroke: #3C7FC0; stroke-width: 1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="106" x="809" y="967.3672">PostgreSQL</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="102" x="811" y="982.2793">[PostgreSQL 12]</text><!--MD5=[b715e21e4b36457c82624b259f0e13ea]
+entity mq1--><path d="M592,938.5156 C592,928.5156 678,928.5156 678,928.5156 C678,928.5156 764,928.5156 764,938.5156 L764,980.1094 C764,990.1094 678,990.1094 678,990.1094 C678,990.1094 592,990.1094 592,980.1094 L592,938.5156 " fill="#438DD5" style="stroke: #3C7FC0; stroke-width: 1.5;"/><path d="M592,938.5156 C592,948.5156 678,948.5156 678,948.5156 C678,948.5156 764,948.5156 764,938.5156 " fill="none" style="stroke: #3C7FC0; stroke-width: 1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="152" x="602" y="967.3672">File de messages</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="69" x="643.5" y="982.2793">[RabbitMQ]</text><!--MD5=[75764623d0425db6e25f21048e113307]
+entity mail1--><rect fill="#438DD5" height="52.5938" style="stroke: #3C7FC0; stroke-width: 1.5;" width="71" x="485.5" y="933.0156"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="39" x="501.5" y="957.8672">MTA</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="51" x="495.5" y="972.7793">[Postfix]</text><!--MD5=[b9a7eeff770a3fcd3efe9c0d6a637854]
+entity sup1--><rect fill="#438DD5" height="52.5938" style="stroke: #3C7FC0; stroke-width: 1.5;" width="196" x="709" y="160.5156"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="176" x="719" y="185.3672">Outil de supervision</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="68" x="773" y="200.2793">[Centreon]</text><!--MD5=[018d2d8d50435b42cec2b4140d57d7e0]
+entity gw1--><rect fill="#438DD5" height="52.5938" style="stroke: #3C7FC0; stroke-width: 1.5;" width="147" x="992.5" y="933.0156"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="113" x="1009.5" y="957.8672">API Gateway</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="127" x="1002.5" y="972.7793">[Axway API Gateway]</text><!--MD5=[41e2cdb76a5e93c488fe1edb692e6813]
+link spa to r2--><path d="M227.68,187.0156 C295.1163,187.0156 382.3852,187.0156 446.515,187.0156 " fill="none" id="spa-to-r2" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="451.8677,187.0156,442.8677,183.0156,446.8677,187.0156,442.8677,191.0156,451.8677,187.0156" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="130" x="274.75" y="180.0107">HTTPS sur Internet</text><!--MD5=[b37f33b0adf6ddf8df37898ea1b4d81f]
+link r2 to lb1--><path d="M544.2196,213.6862 C559.3912,253.2803 587.8142,327.4574 603.9691,369.6178 " fill="none" id="r2-to-lb1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="605.7808,374.3459,606.2955,364.5105,603.9917,369.677,598.8252,367.3731,605.7808,374.3459" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="46" x="575" y="288.5107">HTTPS</text><!--MD5=[25e79779583fe1397abae1cbf5041f3a]
+link lb2 to lb1--><path d="M399.2081,401.0156 C442.032,401.0156 496.7598,401.0156 540.5135,401.0156 " fill="none" id="lb2-to-lb1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="545.522,401.0156,536.522,397.0156,540.522,401.0156,536.522,405.0156,545.522,401.0156" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="110" x="417.5" y="394.0107">Heartbeat VRRP</text><!--MD5=[f6908ca845453f8da6b8af004b80a660]
+link lb1 to ha1--><path d="M637.9199,374.2214 C657.3216,352.7889 687.7396,324.3538 721.5,312.0156 C760.1132,297.9039 868.2082,297.0536 906.5,312.0156 C936.3518,323.6798 962.5262,349.3849 980.0555,370.1855 " fill="none" id="lb1-to-ha1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="983.4446,374.2746,980.781,364.7928,980.2539,370.425,974.6216,369.898,983.4446,374.2746" style="stroke: #666666; stroke-width: 2.0;"/><!--MD5=[b919f988c4bce1e880e64d49f95b4af9]
+link ha1 to ihms1--><path d="M982.7105,427.5656 C948.1993,472.7255 877.1636,565.6799 829.2901,628.3252 " fill="none" id="ha1-to-ihms1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="826.1709,632.4068,834.8138,627.6846,829.2068,628.434,828.4574,622.8271,826.1709,632.4068" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="37" x="936" y="502.5107">HTTP</text><!--MD5=[cc2c3c92d98e429caea85a93febf697b]
+link api1 to mq1--><path d="M969.5594,718.153 C949.4476,733.5465 922.981,752.729 898,767.5156 C857.7956,791.3131 840.0725,784.0841 803,812.5156 C761.6591,844.2206 724.416,891.6542 701.5486,924.0059 " fill="none" id="api1-to-mq1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="698.5564,928.2695,707.0006,923.2005,701.4287,924.1768,700.4523,918.6049,698.5564,928.2695" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="833.5" y="826.5107">produit</text><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="104" x="808" y="842.8076">JMS / RabbitMQ</text><!--MD5=[09082bc8e5792c6c41b711aecd7ba620]
+link batch1 to mq1--><path d="M568.1931,751.5406 C572.7699,781.0881 580.6248,816.6784 594,846.5156 C606.802,875.0743 627.8092,903.3311 645.6122,924.4448 " fill="none" id="batch1-to-mq1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="648.8965,928.3026,646.1079,918.8568,645.6552,924.4955,640.0165,924.0428,648.8965,928.3026" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="78" x="610" y="826.5107">consomme</text><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="104" x="599" y="842.8076">JMS / RabbitMQ</text><!--MD5=[7b1baacdd1b512b0b5526a0821eb1c32]
+link api1 to pg1--><path d="M988.9649,718.1923 C963.4223,766.7412 909.342,869.5322 880.7027,923.9671 " fill="none" id="api1-to-pg1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="878.3489,928.4411,886.0795,922.3388,880.6771,924.0162,878.9997,918.6138,878.3489,928.4411" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="67" x="939" y="834.5107">JDBC / PG</text><!--MD5=[64c0ccfecd872af91c7d9f9c4e978a76]
+link batch1 to mail1--><path d="M479.1352,731.7132 C448.0831,751.4163 416.1853,778.3557 399,812.5156 C392.2088,826.0147 391.3847,833.4637 399,846.5156 C416.7525,876.9416 441.794,861.9755 468,885.5156 C481.7434,897.861 493.9873,914.3631 503.2352,928.651 " fill="none" id="batch1-to-mail1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="506.0074,933.007,504.5497,923.2666,503.3228,928.7889,497.8006,927.562,506.0074,933.007" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="119" x="400" y="826.5107">SMTP / envoi des</text><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="35" x="444" y="842.8076">mails</text><!--MD5=[8fcf5976a98e3bca57aeefbb1aee650b]
+link api1 to gw1--><path d="M1009.271,718.1923 C1020.9695,767.9571 1046.0655,874.7149 1058.5831,927.9644 " fill="none" id="api1-to-gw1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="1059.7544,932.9468,1061.5886,923.2703,1058.6101,928.0795,1053.8009,925.1011,1059.7544,932.9468" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="89" x="1040" y="834.5107">SOAP/HTTPS</text><!--MD5=[f34dc1f3b1c6ff82a7e06f995e1d7775]
+link ha1 to api1--><path d="M1003,427.5656 C1003,481.1345 1003,601.954 1003,659.6627 " fill="none" id="ha1-to-api1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="1003,664.7118,1007,655.7118,1003,659.7118,999,655.7118,1003,664.7118" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="83" x="1004" y="502.5107">REST /HTTP</text><!--MD5=[550caef32d717bac0ebe69f734e3a92e]
+link sup1 to tous_serveurs--><path d="M807,213.6862 C807,253.1197 807,326.8561 807,369.1031 " fill="none" id="sup1-to-tous_serveurs" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="807,374.3459,811,365.3459,807,369.3459,803,365.3459,807,374.3459" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="808" y="288.5107">SNMP</text><!--MD5=[4c876d55682c34b2c4c4855a39e4821d]
+reverse link baie1 to bdd1--><path d="M397.3061,959.5156 C409.2604,959.5156 421.1292,959.5156 430.5675,959.5156 C432.927,959.5156 435.1347,959.5156 437.1538,959.5156 C438.1633,959.5156 439.1257,959.5156 440.0364,959.5156 C440.4918,959.5156 440.9342,959.5156 441.3631,959.5156 C441.5776,959.5156 441.7886,959.5156 441.9963,959.5156 " fill="none" id="baie1-backto-bdd1" style="stroke: #666666; stroke-width: 2.0;"/><polygon fill="#666666" points="392.2059,959.5156,401.2059,963.5156,397.2059,959.5156,401.2059,955.5156,392.2059,959.5156" style="stroke: #666666; stroke-width: 2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="21" x="410.32" y="952.439">FC</text><rect fill="#DDDDDD" height="62.8906" rx="5" ry="5" style="stroke: #000000; stroke-width: 1.0;" width="265" x="884" y="1019.5156"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="0" x="990" y="1039.5107"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="39" x="995" y="1039.5107">Type</text><rect fill="#FFFFFF" height="16.2969" style="stroke: none; stroke-width: 1.0;" width="100" x="890" y="1042.8125"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="914" y="1055.8076"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="122" x="994" y="1055.8076">deployment node</text><rect fill="#438DD5" height="16.2969" style="stroke: none; stroke-width: 1.0;" width="100" x="890" y="1059.1094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="898" y="1072.1045"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="145" x="994" y="1072.1045">deployment instance</text><line style="stroke: #000000; stroke-width: 1.0;" x1="890" x2="1143" y1="1026.5156" y2="1026.5156"/><line style="stroke: #000000; stroke-width: 1.0;" x1="890" x2="1143" y1="1042.8125" y2="1042.8125"/><line style="stroke: #000000; stroke-width: 1.0;" x1="890" x2="1143" y1="1059.1094" y2="1059.1094"/><line style="stroke: #000000; stroke-width: 1.0;" x1="890" x2="1143" y1="1075.4063" y2="1075.4063"/><line style="stroke: #000000; stroke-width: 1.0;" x1="890" x2="890" y1="1026.5156" y2="1075.4063"/><line style="stroke: #000000; stroke-width: 1.0;" x1="990" x2="990" y1="1026.5156" y2="1075.4063"/><line style="stroke: #000000; stroke-width: 1.0;" x1="1143" x2="1143" y1="1026.5156" y2="1075.4063"/><!--MD5=[3e2a0b3ef632e15eeea759305f4d949e]
+@startuml
+' C4-PlantUML, version 1.0.0
+' https://github.com/RicardoNiepel/C4-PlantUML
+
+' Colors
+' ##################################
+
+!define ELEMENT_FONT_COLOR #FFFFFF
+
+' Styling
+' ##################################
+
+!define TECHN_FONT_SIZE 12
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 14
+    Thickness 2
+}
+
+skinparam rectangle<<zone>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+
+' Layout
+' ##################################
+
+!definelong LAYOUT_AS_SKETCH
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+skinparam defaultFontName "Comic Sans MS"
+center footer <font color=red>Warning:</font> Created for discussion, needs to be validated
+!enddefinelong
+
+!define LAYOUT_TOP_DOWN top to bottom direction
+!define LAYOUT_LEFT_RIGHT left to right direction
+
+' Boundaries
+' ##################################
+
+!define Boundary(e_alias, e_label) rectangle "==e_label" <<zone>> as e_alias
+!define Boundary(e_alias, e_label, e_type) rectangle "==e_label\n<size:TECHN_FONT_SIZE>[e_type]</size>" <<zone>> as e_alias
+
+' Relationship
+' ##################################
+
+!define Rel_(e_alias1, e_alias2, e_label, e_direction="") e_alias1 e_direction e_alias2 : "===e_label"
+!define Rel_(e_alias1, e_alias2, e_label, e_techn, e_direction="") e_alias1 e_direction e_alias2 : "===e_label\n//<size:TECHN_FONT_SIZE>[e_techn]</size>//"
+
+!define Rel(e_from,e_to, e_label) Rel_(e_from,e_to, e_label, "- ->")
+!define Rel(e_from,e_to, e_label, e_techn) Rel_(e_from,e_to, e_label, e_techn, "- ->")
+
+!define Rel_Back(e_to, e_from, e_label) Rel_(e_to, e_from, e_label, "<- -")
+!define Rel_Back(e_to, e_from, e_label, e_techn) Rel_(e_to, e_from, e_label, e_techn, "<- -")
+
+!define Rel_Neighbor(e_from,e_to, e_label) Rel_(e_from,e_to, e_label, "->")
+!define Rel_Neighbor(e_from,e_to, e_label, e_techn) Rel_(e_from,e_to, e_label, e_techn, "->")
+
+!define Rel_Back_Neighbor(e_to, e_from, e_label) Rel_(e_to, e_from, e_label, "<-")
+!define Rel_Back_Neighbor(e_to, e_from, e_label, e_techn) Rel_(e_to, e_from, e_label, e_techn, "<-")
+
+!define Rel_D(e_from,e_to, e_label) Rel_(e_from,e_to, e_label, "-DOWN->")
+!define Rel_D(e_from,e_to, e_label, e_techn) Rel_(e_from,e_to, e_label, e_techn, "-DOWN->")
+!define Rel_Down(e_from,e_to, e_label) Rel_D(e_from,e_to, e_label)
+!define Rel_Down(e_from,e_to, e_label, e_techn) Rel_D(e_from,e_to, e_label, e_techn)
+
+!define Rel_U(e_from,e_to, e_label) Rel_(e_from,e_to, e_label, "-UP->")
+!define Rel_U(e_from,e_to, e_label, e_techn) Rel_(e_from,e_to, e_label, e_techn, "-UP->")
+!define Rel_Up(e_from,e_to, e_label) Rel_U(e_from,e_to, e_label)
+!define Rel_Up(e_from,e_to, e_label, e_techn) Rel_U(e_from,e_to, e_label, e_techn)
+
+!define Rel_L(e_from,e_to, e_label) Rel_(e_from,e_to, e_label, "-LEFT->")
+!define Rel_L(e_from,e_to, e_label, e_techn) Rel_(e_from,e_to, e_label, e_techn, "-LEFT->")
+!define Rel_Left(e_from,e_to, e_label) Rel_L(e_from,e_to, e_label)
+!define Rel_Left(e_from,e_to, e_label, e_techn) Rel_L(e_from,e_to, e_label, e_techn)
+
+!define Rel_R(e_from,e_to, e_label) Rel_(e_from,e_to, e_label, "-RIGHT->")
+!define Rel_R(e_from,e_to, e_label, e_techn) Rel_(e_from,e_to, e_label, e_techn, "-RIGHT->")
+!define Rel_Right(e_from,e_to, e_label) Rel_R(e_from,e_to, e_label)
+!define Rel_Right(e_from,e_to, e_label, e_techn) Rel_R(e_from,e_to, e_label, e_techn)
+
+' Layout Helpers
+' ##################################
+
+!define Lay_D(e_from, e_to) e_from -[hidden]D- e_to
+!define Lay_U(e_from, e_to) e_from -[hidden]U- e_to
+!define Lay_R(e_from, e_to) e_from -[hidden]R- e_to
+!define Lay_L(e_from, e_to) e_from -[hidden]L- e_to
+
+' Scope: A single software system.
+' Primary elements: The software system in scope.
+' Supporting elements: People and software systems directly connected to the software system in scope.
+' Intended audience: Everybody, both technical and non-technical people, inside and outside of the software development team.
+
+' Colors
+' ##################################
+
+!define PERSON_BG_COLOR #08427B
+!define EXTERNAL_PERSON_BG_COLOR #686868
+!define SYSTEM_BG_COLOR #1168BD
+!define EXTERNAL_SYSTEM_BG_COLOR #999999
+
+' Styling
+' ##################################
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor PERSON_BG_COLOR
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor EXTERNAL_PERSON_BG_COLOR
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor SYSTEM_BG_COLOR
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor EXTERNAL_SYSTEM_BG_COLOR
+    BorderColor #8A8A8A
+}
+
+skinparam database<<system>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor SYSTEM_BG_COLOR
+    BorderColor #3C7FC0
+}
+
+skinparam database<<external_system>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor EXTERNAL_SYSTEM_BG_COLOR
+    BorderColor #8A8A8A
+}
+
+' Layout
+' ##################################
+
+!definelong LAYOUT_WITH_LEGEND
+hide stereotype
+legend right
+|=              |= Type |
+|<PERSON_BG_COLOR>      | person |
+|<EXTERNAL_PERSON_BG_COLOR>      | external person |
+|<SYSTEM_BG_COLOR>   | system |
+|<EXTERNAL_SYSTEM_BG_COLOR>      | external system |
+endlegend
+!enddefinelong
+
+' Elements
+' ##################################
+
+!define Person(e_alias, e_label) rectangle "==e_label" <<person>> as e_alias
+!define Person(e_alias, e_label, e_descr) rectangle "==e_label\n\n e_descr" <<person>> as e_alias
+
+!define Person_Ext(e_alias, e_label) rectangle "==e_label" <<external_person>> as e_alias
+!define Person_Ext(e_alias, e_label, e_descr) rectangle "==e_label\n\n e_descr" <<external_person>> as e_alias
+
+!define System(e_alias, e_label) rectangle "==e_label" <<system>> as e_alias
+!define System(e_alias, e_label, e_descr) rectangle "==e_label\n\n e_descr" <<system>> as e_alias
+
+!define System_Ext(e_alias, e_label) rectangle "==e_label" <<external_system>> as e_alias
+!define System_Ext(e_alias, e_label, e_descr) rectangle "==e_label\n\n e_descr" <<external_system>> as e_alias
+
+!define SystemDb(e_alias, e_label) database "==e_label" <<system>> as e_alias
+!define SystemDb(e_alias, e_label, e_descr) database "==e_label\n\n e_descr" <<system>> as e_alias
+
+!define SystemDb_Ext(e_alias, e_label) database "==e_label" <<external_system>> as e_alias
+!define SystemDb_Ext(e_alias, e_label, e_descr) database "==e_label\n\n e_descr" <<external_system>> as e_alias
+
+' Boundaries
+' ##################################
+
+!define Enterprise_Boundary(e_alias, e_label) Boundary(e_alias, e_label, "Enterprise")
+!define System_Boundary(e_alias, e_label) Boundary(e_alias, e_label, "System")
+
+' Scope: A single software system.
+' Primary elements: Containers within the software system in scope.
+' Supporting elements: People and software systems directly connected to the containers.
+' Intended audience: Technical people inside and outside of the software development team; including software architects, developers and operations/support staff.
+
+' Colors
+' ##################################
+
+!define CONTAINER_BG_COLOR #438DD5
+
+' Styling
+' ##################################
+
+skinparam rectangle<<unité déployable>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor CONTAINER_BG_COLOR
+    BorderColor #3C7FC0
+}
+
+skinparam database<<unité déployable>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor CONTAINER_BG_COLOR
+    BorderColor #3C7FC0
+}
+
+' Layout
+' ##################################
+
+!definelong LAYOUT_WITH_LEGEND
+hide stereotype
+legend right
+|=              |= Type |
+|<PERSON_BG_COLOR>      | person |
+|<EXTERNAL_PERSON_BG_COLOR>      | external person |
+|<SYSTEM_BG_COLOR>   | system |
+|<EXTERNAL_SYSTEM_BG_COLOR>      | external system |
+|<CONTAINER_BG_COLOR>   | container |
+endlegend
+!enddefinelong
+
+' Elements
+' ##################################
+
+!define Container(e_alias, e_label) rectangle "==e_label" <<unité déployable>> as e_alias
+!define Container(e_alias, e_label, e_techn) rectangle "==e_label\n//<size:TECHN_FONT_SIZE>[e_techn]</size>//" <<unité déployable>> as e_alias
+!define Container(e_alias, e_label, e_techn, e_descr) rectangle "==e_label\n//<size:TECHN_FONT_SIZE>[e_techn]</size>//\n\n e_descr" <<unité déployable>> as e_alias
+
+!define ContainerDb(e_alias, e_label, e_techn) database "==e_label\n//<size:TECHN_FONT_SIZE>[e_techn]</size>//" <<unité déployable>> as e_alias
+!define ContainerDb(e_alias, e_label, e_techn, e_descr) database "==e_label\n//<size:TECHN_FONT_SIZE>[e_techn]</size>//\n\n e_descr" <<unité déployable>> as e_alias
+
+' Boundaries
+' ##################################
+
+!define Container_Boundary(e_alias, e_label) Boundary(e_alias, e_label, "Container")
+
+' Scope: A single container.
+' Primary elements: Components within the container in scope.
+' Supporting elements: Containers (within the software system in scope) plus people and software systems directly connected to the components.
+' Intended audience: Software architects and developers.
+
+' Colors
+' ##################################
+
+!define COMPONENT_BG_COLOR #85BBF0
+
+' Styling
+' ##################################
+
+skinparam rectangle<<component>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor #000000
+    BackgroundColor COMPONENT_BG_COLOR
+    BorderColor #78A8D8
+}
+
+skinparam database<<component>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor #000000
+    BackgroundColor COMPONENT_BG_COLOR
+    BorderColor #78A8D8
+}
+
+' Layout
+' ##################################
+
+!definelong LAYOUT_WITH_LEGEND
+hide stereotype
+legend right
+|=              |= Type |
+|<PERSON_BG_COLOR>      | person |
+|<EXTERNAL_PERSON_BG_COLOR>      | external person |
+|<SYSTEM_BG_COLOR>   | system |
+|<EXTERNAL_SYSTEM_BG_COLOR>      | external system |
+|<CONTAINER_BG_COLOR>   | container |
+|<COMPONENT_BG_COLOR>   | component |
+endlegend
+!enddefinelong
+
+' Elements
+' ##################################
+
+!define Component(e_alias, e_label, e_techn) rectangle "==e_label\n//<size:TECHN_FONT_SIZE>[e_techn]</size>//" <<component>> as e_alias
+!define Component(e_alias, e_label, e_techn, e_descr) rectangle "==e_label\n//<size:TECHN_FONT_SIZE>[e_techn]</size>//\n\n e_descr" <<component>> as e_alias
+
+!define ComponentDb(e_alias, e_label, e_techn) database "==e_label\n//<size:TECHN_FONT_SIZE>[e_techn]</size>//" <<component>> as e_alias
+!define ComponentDb(e_alias, e_label, e_techn, e_descr) database "==e_label\n//<size:TECHN_FONT_SIZE>[e_techn]</size>//\n\n e_descr" <<component>> as e_alias
+
+
+' Scope: A single software system.
+' Primary elements: Deployment nodes and containers within the software system in scope.
+' Intended audience: Technical people inside and outside of the software development team; including software architects, developers and operations/support staff.
+
+' Colors
+' ##################################
+
+!define INSTANCE_BG_COLOR  #438DD5
+
+!define NODE_FONT_COLOR    #444444
+!define NODE_BG_COLOR      #FFFFFF
+
+' Styling
+' ##################################
+
+skinparam rectangle<<instance>> {
+  roundCorner 8
+  Shadowing false
+  StereotypeFontColor ELEMENT_FONT_COLOR
+  FontColor ELEMENT_FONT_COLOR
+  BackgroundColor INSTANCE_BG_COLOR
+  BorderColor #3C7FC0
+}
+
+skinparam database<<instance>> {
+  roundCorner 8
+  Shadowing false
+  StereotypeFontColor ELEMENT_FONT_COLOR
+  FontColor ELEMENT_FONT_COLOR
+  BackgroundColor INSTANCE_BG_COLOR
+  BorderColor #3C7FC0
+}
+
+skinparam rectangle<<node>> {
+  roundCorner 8
+  Shadowing false
+  StereotypeFontSize 0
+  FontColor NODE_FONT_COLOR
+  BackgroundColor NODE_BG_COLOR
+  BorderColor #444444
+}
+
+' Layout
+' ##################################
+
+!definelong LAYOUT_WITH_LEGEND
+hide stereotype
+legend right
+|=                    |= Type               |
+|<NODE_BG_COLOR>      | deployment node     |
+|<INSTANCE_BG_COLOR>  | deployment instance |
+endlegend
+!enddefinelong
+
+' Instances
+' ##################################
+!define ContainerInstance(e_alias, e_label, e_techn) rectangle "==e_label\n<size:TECHN_FONT_SIZE>[e_techn]</size>" <<instance>> as e_alias
+!define ContainerInstance(e_alias, e_label, e_techn, e_descr) rectangle "==e_label\n<size:TECHN_FONT_SIZE>[e_techn]</size>\n e_descr" <<instance>> as e_alias
+!define ContainerInstanceDb(e_alias, e_label, e_techn) database "==e_label\n<size:TECHN_FONT_SIZE>[e_techn]</size>" <<instance>> as e_alias
+!define ContainerInstanceDb(e_alias, e_label, e_techn, e_descr) database "==e_label\n<size:TECHN_FONT_SIZE>[e_techn]</size>\n e_descr" <<instance>> as e_alias
+
+!define ContainerInstance2(e_alias, e_instance, e_label, e_techn) rectangle "==e_label\n<size:TECHN_FONT_SIZE>Instance: e_instance</size>\n<size:TECHN_FONT_SIZE>[e_techn]</size>" <<instance>> as e_alias
+!define ContainerInstance2(e_alias, e_instance, e_label, e_techn, e_descr) rectangle "==e_label\n<size:TECHN_FONT_SIZE>Instance: e_instance</size>\n<size:TECHN_FONT_SIZE>[e_techn]</size>\n e_descr" <<instance>> as e_alias
+!define ContainerInstanceDb2(e_alias, e_instance, e_label, e_techn) database "==e_label\n<size:TECHN_FONT_SIZE>Instance: e_instance</size>\n<size:TECHN_FONT_SIZE>[e_techn]</size>" <<instance>> as e_alias
+!define ContainerInstanceDb2(e_alias, e_instance, e_label, e_techn, e_descr) database "==e_label\n<size:TECHN_FONT_SIZE>Instance: e_instance</size>\n<size:TECHN_FONT_SIZE>[e_techn]</size>\n e_descr" <<instance>> as e_alias
+
+' Nodes
+' ##################################
+' PlantUML does not support automatic line breaks of container, if e_techn is very long insert line breaks with 
+' "</size>\n<size:TECHN_FONT_SIZE>"
+!define Node(e_alias, e_label, e_techn) rectangle "==e_label\n<size:TECHN_FONT_SIZE>[e_techn]</size>" as e_alias
+
+title archi-infra
+header Diagramme de déploiement \nArchitecture d'infrastucture \n Projet Mes Informations En Ligne \n (partiel)
+LAYOUT_WITH_LEGEND()
+
+Node("client","Client","Desktop/mobile"){
+  Node("nav1","Navigateur Web","Chrome/Firefox/Safari"){
+    Container("spa","Application SPA MIEL","React.js")
+  }
+}
+
+Node("dc","Datacenter","Paris"){
+    Node("r2","Firewall","Cisco Firepower 4100")
+    Node("lb1","LB Debian lb1","<<actif>>")
+    Node("lb2","LB Debian lb2","<<passif>>")
+
+    Node("rp1","Reverse Proxy","x2 Debian Buster <<actif/actif>>"){
+      Container("ha1","Reverse Proxy","HaProxy")
+    }
+
+    Node("serveur_ihm", "Serveur IHM MIEL","x2 Debian Buster") { 
+      Node("sw1","Serveur Web","Nginx"){
+        Container("ihms1","Application Web SPA","React.js","Expose les resources statiques\n (.js, .html, images...)")
+      }
+      Node("tomcat_batchs1","Serveur JEE","Tomcat 10"){
+        Container("batch1","batch-traiter-demandes","Java","Traite les demandes\n scheduling: * * * * *")
+      }
+    }
+
+    Node("serveur_api","Serveur API","x3, RHEL") { 
+      Node("wilfly1","Serveur JEE","Wildfly") {
+        Container("api1","API service-miel","Java")        
+      }
+    }
+
+    Node("bdd1", "Serveur BDD","RHEL")  { 
+      ContainerDb("pg1","PostgreSQL","PostgreSQL 12")
+      ContainerDb("mq1", "File de messages", "RabbitMQ")
+      Container("mail1","MTA","Postfix")
+    }
+
+    Node("serveur_sup1", "Serveur Supervision","x1 Debian Stretch") {
+      Container("sup1","Outil de supervision","Centreon")      
+    }
+
+    Node("ech1","Serveur Echange","x1 Windows Server") {
+      Container("gw1","API Gateway","Axway API Gateway")    
+    }
+
+    ContainerDb("baie1","SAN EMC","baie 1")
+    Node("tous_serveurs","<tous serveurs>","Supervision")
+}
+
+spa -> r2 : HTTPS sur Internet
+r2 - -> lb1 : HTTPS
+lb2 -> lb1 : Heartbeat VRRP
+lb1 -> ha1
+ha1 - -> ihms1 : HTTP
+api1 - -> mq1 : produit\n JMS / RabbitMQ
+batch1 - ->  mq1 : consomme\n JMS / RabbitMQ
+api1 - ->  pg1 : JDBC / PG
+batch1 - ->  mail1 : SMTP / envoi des mails
+api1 - ->  gw1 : SOAP/HTTPS
+ha1 - -> api1 : REST /HTTP
+sup1 - -> tous_serveurs : SNMP
+
+Rel_Left("bdd1","baie1","FC")
+
+@enduml
+
+@startuml
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 14
+    Thickness 2
+}
+
+skinparam rectangle<<zone>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<unité déployable>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+skinparam database<<unité déployable>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<component>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+
+skinparam database<<component>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<instance>> {
+  roundCorner 8
+  Shadowing false
+  StereotypeFontColor #FFFFFF
+  FontColor #FFFFFF
+  BackgroundColor #438DD5
+  BorderColor #3C7FC0
+}
+
+skinparam database<<instance>> {
+  roundCorner 8
+  Shadowing false
+  StereotypeFontColor #FFFFFF
+  FontColor #FFFFFF
+  BackgroundColor #438DD5
+  BorderColor #3C7FC0
+}
+
+skinparam rectangle<<node>> {
+  roundCorner 8
+  Shadowing false
+  StereotypeFontSize 0
+  FontColor #444444
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+}
+
+
+
+
+
+
+title archi-infra
+header Diagramme de déploiement \nArchitecture d'infrastucture \n Projet Mes Informations En Ligne \n (partiel)
+hide stereotype
+legend right
+|=                    |= Type               |
+|<#FFFFFF>      | deployment node     |
+|<#438DD5>  | deployment instance |
+endlegend
+
+rectangle "==Client\n<size:12>[Desktop/mobile]</size>" as client{
+  rectangle "==Navigateur Web\n<size:12>[Chrome/Firefox/Safari]</size>" as nav1{
+    rectangle "==Application SPA MIEL\n//<size:12>[React.js]</size>//" <<unité déployable>> as spa
+  }
+}
+
+rectangle "==Datacenter\n<size:12>[Paris]</size>" as dc{
+    rectangle "==Firewall\n<size:12>[Cisco Firepower 4100]</size>" as r2
+    rectangle "==LB Debian lb1\n<size:12>[<<actif>>]</size>" as lb1
+    rectangle "==LB Debian lb2\n<size:12>[<<passif>>]</size>" as lb2
+
+    rectangle "==Reverse Proxy\n<size:12>[x2 Debian Buster <<actif/actif>>]</size>" as rp1{
+      rectangle "==Reverse Proxy\n//<size:12>[HaProxy]</size>//" <<unité déployable>> as ha1
+    }
+
+    rectangle "==Serveur IHM MIEL\n<size:12>[x2 Debian Buster]</size>" as serveur_ihm { 
+      rectangle "==Serveur Web\n<size:12>[Nginx]</size>" as sw1{
+        rectangle "==Application Web SPA\n//<size:12>[React.js]</size>//\n\n Expose les resources statiques\n (.js, .html, images...)" <<unité déployable>> as ihms1
+      }
+      rectangle "==Serveur JEE\n<size:12>[Tomcat 10]</size>" as tomcat_batchs1{
+        rectangle "==batch-traiter-demandes\n//<size:12>[Java]</size>//\n\n Traite les demandes\n scheduling: * * * * *" <<unité déployable>> as batch1
+      }
+    }
+
+    rectangle "==Serveur API\n<size:12>[x3, RHEL]</size>" as serveur_api { 
+      rectangle "==Serveur JEE\n<size:12>[Wildfly]</size>" as wilfly1 {
+        rectangle "==API service-miel\n//<size:12>[Java]</size>//" <<unité déployable>> as api1        
+      }
+    }
+
+    rectangle "==Serveur BDD\n<size:12>[RHEL]</size>" as bdd1  { 
+      database "==PostgreSQL\n//<size:12>[PostgreSQL 12]</size>//" <<unité déployable>> as pg1
+      database "==File de messages\n//<size:12>[RabbitMQ]</size>//" <<unité déployable>> as mq1
+      rectangle "==MTA\n//<size:12>[Postfix]</size>//" <<unité déployable>> as mail1
+    }
+
+    rectangle "==Serveur Supervision\n<size:12>[x1 Debian Stretch]</size>" as serveur_sup1 {
+      rectangle "==Outil de supervision\n//<size:12>[Centreon]</size>//" <<unité déployable>> as sup1      
+    }
+
+    rectangle "==Serveur Echange\n<size:12>[x1 Windows Server]</size>" as ech1 {
+      rectangle "==API Gateway\n//<size:12>[Axway API Gateway]</size>//" <<unité déployable>> as gw1    
+    }
+
+    database "==SAN EMC\n//<size:12>[baie 1]</size>//" <<unité déployable>> as baie1
+    rectangle "==<tous serveurs>\n<size:12>[Supervision]</size>" as tous_serveurs
+}
+
+spa -> r2 : HTTPS sur Internet
+r2 - -> lb1 : HTTPS
+lb2 -> lb1 : Heartbeat VRRP
+lb1 -> ha1
+ha1 - -> ihms1 : HTTP
+api1 - -> mq1 : produit\n JMS / RabbitMQ
+batch1 - ->  mq1 : consomme\n JMS / RabbitMQ
+api1 - ->  pg1 : JDBC / PG
+batch1 - ->  mail1 : SMTP / envoi des mails
+api1 - ->  gw1 : SOAP/HTTPS
+ha1 - -> api1 : REST /HTTP
+sup1 - -> tous_serveurs : SNMP
+
+bdd1 -LEFT-> baie1 : "===FC"
+
+@enduml
+
+PlantUML version 1.2020.19(Mon Oct 12 15:10:01 UTC 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

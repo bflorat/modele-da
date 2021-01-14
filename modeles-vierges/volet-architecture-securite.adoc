@@ -1,48 +1,38 @@
 
 = Volet architecture sécurité
-:toc:
-:sectnumlevels: 3
-:sectnums:
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Sommaire
+
+Dernière modification : {docdate}
 
 == Introduction
 Ceci est le point de vue sécurité. Il décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
 
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+
 === Documentation de Référence
 
 .Références documentaires sécurité
+[cols="1,1,3,3"]
 |====
 |N°|Version|Titre/URL du document|Détail
 
-|
-|
-|
-|
-
+||||
 |====
 
-=== Glossaire
-
-.Glossaire sécurité spécifique projet
-|====
-|Terme|Définition
-
-|
-|
-
-|====
 
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
+[cols="1,3,1,1,2"]
 |====
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 
-|
-|
-|
-|
-|
-
+|||||
 |====
 
 
@@ -51,176 +41,136 @@ Ceci est le point de vue sécurité. Il décrit l'ensemble des dispositifs mis e
 |====
 |ID|Détail
 
-|
-|
-
+||
 |====
 
 == Contraintes
 
-== Exigences de sécurité
+== Exigences
 
-[[exigence-integrite]]
+[[exigences-integrite]]
 === Exigences d'intégrité
 
 .Niveau d'intégrité exigée par classe de données
-[options="header"]
+[cols='2,1,1,1,1']
 |====
-|Classe de données|Niveau « Non intègre » + 
-[small]#La donnée peut ne pas être intègre#|Niveau « Détectable » + [small]#La donnée peut ne pas être intègre si l'altération est identifiée#|Niveau « Maîtrisé » +[small]#La donnée peut ne pas être intègre si l'altération est identifiée et corrigée  en moins d'une heure#|Niveau « Intègre » +[small]#La donnée doit toujours être rigoureusement intègre#
-
-|
-|
-|
-|
-|
+|Classe de données
+|Niveau « Non intègre » ([small]#La donnée peut ne pas être intègre)#
+|Niveau « Détectable » ([small]#La donnée peut ne pas être intègre si l'altération est identifiée dans un délai raisonnable)#
+|Niveau « Maîtrisé » ([small]#La donnée peut ne pas être intègre, si l'altération est identifiée et l'intégrité du bien essentiel retrouvée)#
+|Niveau « Intègre » ([small]#La donnée doit toujours être rigoureusement intègre)#
 
 |====
 
-[[exigence-confidentialite]]
 ===  Exigences de confidentialité
 
 .Niveau de confidentialité exigée par classe de données
-[options="header"]
 |====
-|Classe de données|Niveau « Public » + [small]#Tout le monde peut accéder à la donnée# |Niveau  Limité »  + [small]#La donnée n’est accessible qu’aux personnes habilitées# |Niveau « Réservé » + [small]#La donnée n’est accessible qu’au personnel interne habilité# |Niveau « Privé » + [small]#La donnée n’est visible que par l’intéressé(e)#
-
-|
-|
-|
-|
-|
+|Classe de données | Niveau « Public » ([small]#Tout le monde peut accéder à la donnée)# 
+|Niveau  Limité » ([small]#La donnée n’est accessible qu’aux personnes habilitées)# 
+|Niveau « Réservé » ([small]#La donnée n’est accessible qu’au personnel interne habilité)# 
+|Niveau « Privé » ([small]#La donnée n’est visible que par l’intéressé(e))#
 
 |====
 
-[[exigence-identification]]
+[[exigences-identification]]
 === Exigences d'identification
 
-
-[[exigence-authentification]]
+[[exigences-authentification]]
 === Exigences d'authentification
 
 .Exigence d'authentification par cas d'utilisation
-[options="header"]
 |====
 |Cas d’authentification |Mot de passe respectant la politique de mot de passe |Clé publique ssh connue| OTP par Token |Biométrie |Connaissance de données métier |E-mail d’activation |Délégation authentification
-
-|
-|
-|
-|
-|
-|
-|
-|
 
 |====
 
 [[exigence-federation-identite]]
 === Exigences de fédération d’identité
 
-[[exigence-sso]]
-===  Exigences de SSO & SLO
+===  Exigences de SSO et SLO
 
-
-[[exigence-non-repudiation]]
 === Exigences de non répudiation
 
 .Besoins de non-répudiation
-[options="header"]
 |===
 |Donnée signée|Origine du certificat client|Origine du certificat serveur
 
-|
-|
-|
 |===
 
 [[exigence-anonymat]]
 === Exigences d'anonymat et de respect de la vie privée
 
-
-[[exigence-autorisations]]
-=== Exigences d'autorisations
+=== Exigences sur les habilitations
 
 .Matrice de rôles
 |===
 |_Groupe ou utilisateur_|Rôle `x`|Rôle `y`|Rôle `z`
 
-|
-|
-|
-|
-
 |===
 
-[[exigence-tracabilite]]
-=== Exigences de traçabilité & auditabilité
+=== Exigences de traçabilité et d'auditabilité
 
 .Données à conserver pour preuves
 |===
 |Donnée|Objectif|Durée de rétention
 
-|
-|
-|
 
 |===
 
 
-== Moyens mis en œuvre
+== Mesures de sécurité
 === Intégrité
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-integrite>> :
+Dispositifs répondant aux <<exigences-integrite,exigences d'intégrité>> :
 
-.Mesures pour assurer le niveau d'intégrité demandée
+.Mesures pour assurer le niveau d'intégrité demandé
 |===
 |Classe de données|Niveau exigé|Mesures
-
-|
-|
-|
 
 |===
 
 === Confidentialité
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-confidentialite>> :
+Dispositifs répondant aux <<Exigences de confidentialité>> :
 
-.Mesures pour assurer le niveau d'intégrité demandée
+.Mesures pour assurer le niveau de confidentialité demandé
 |===
 |Classe de données|Niveau exigé|Mesures
-
-|
-|
-|
 
 |===
 
 === Identification
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-identification>> :
-
+Dispositifs répondant aux <<exigences-identification,exigences d'identification>> :
 
 === Authentification
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-authentification>> :
+Dispositifs répondant aux <<exigences-authentification,exigences d'authentification>> :
+
+
+==== Comptes de service
+.Comptes de service
+[cols='1,2,2']
+|====
+|Compte | Ressource requérant authentification | mode de stockage des credentials
+
+|====
+
 
 === Fédération d’identité
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-federation-identite>> :
+Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
 
 === SSO, SLO
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-sso>> :
+Dispositifs répondant aux <<Exigences de SSO et SLO> :
 
 === Non-répudiation
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-non-repudiation>> :
+Dispositifs répondant aux <<Exigences de non répudiation>> :
 
 === Anonymat et vie privée
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-anonymat>> :
+Dispositifs répondant aux <<exigence-anonymat,exigences d'anonymat et de respect de la vie privée>> :
 
-
-=== Autorisations
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-autorisations>> :
+=== Habilitations
+Dispositifs répondant aux <<Exigences sur les habilitations>> :
 
 === Tracabilité, auditabilité
-Dispositifs répondant aux exigences exprimées au chapitre <<exigence-tracabilite>> :
-
+Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 == Auto-contrôles
 === Auto-contrôle des vulnérabilités
@@ -228,10 +178,6 @@ Dispositifs répondant aux exigences exprimées au chapitre <<exigence-tracabili
 .Checklist d'auto-contrôle de prise en compte des vulnérabilités courantes
 |===
 |Vulnérabilité |Pris en compte ? |Mesures techniques entreprises
-
-|
-|
-|
 
 |===
 
@@ -241,9 +187,5 @@ Dispositifs répondant aux exigences exprimées au chapitre <<exigence-tracabili
 .Checklist d'auto-contrôle de respect du RGPD
 |===
 |Exigence RGPD |Prise en compte ? |Mesures techniques entreprises
-
-|
-|
-|
 
 |===

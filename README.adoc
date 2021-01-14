@@ -1,35 +1,43 @@
 # modele-da
 
-Modèle de Dossier d'Architecture (DA) applicable à la plupart des projets d'informatique de gestion, indépendamment de l'architecture générale retenue (monolithe, SOA, micro-service, n-tiers, ...)
+Modèle de Dossier d'Architecture (DA) applicable à la plupart des projets d'informatique de gestion, indépendamment de l'architecture générale retenue (monolithe, SOA, micro-service, n-tiers, ...).
+Ce modèle a déjà été utilisé sur plusieurs projets importants y compris au sein de grandes organisations. Il s'enrichit régulierement.
+
+NOTE: Nous utilisons le terme 'DA' et pas 'DAT' ou termes similaires car chaque organisation possède sa terminologie mais surtout le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
 
 ## Principes du modèle
 Nous avons découpé l'architecture en cinq volets (applicatif, sécurité, dimensionnement, infrastructure et développement), chaque volet étant auto-porteur. 
 
-L'idée est de proposer un ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations et sur leurs préoccupations respectives. Par exemple, un architecte technique a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un architecte fonctionnel ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
+L'idée est de proposer un ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations et sur leurs préoccupations respectives. Par exemple, un(e) architecte d'infrastructure ou un(e) ingénieur DevOps a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un(e) PO ou un(e) architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
+
+image:modeles-vierges/resources/metiers.png[à lire en priorité]
 
 Un dossier suivant ce modèle sera ainsi constitué :
 
 * d’un link:volet-architecture-applicative.adoc[volet applicatif] présentant le contexte général et l’architecture applicative ;
 * d’un link:volet-architecture-developpement.adoc[volet développement] présentant l’architecture logicielle et son environnement ;
 * d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et au dimensionnement de l'infrastructure ;
-* d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les aspects d’architecture technique ou physique ;
+* d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les serveurs, les middlewares, l'exploitation, etc. ;
 * d’un link:volet-architecture-securite.adoc[volet sécurité] ;
 
 Dans chaque volet, on retrouvera le triptyque :
 
-* Contraintes (légales, budgétaires, technologiques, normatives,...) applicables au projet;
+* Contraintes (juridiques, budgétaires, technologiques, normatives,...) applicables au projet;
 * Exigences non fonctionnelles (ENF) exprimées par les porteurs du projet dans la limite des contraintes ;
 * Solution (description de l'architecture retenue et répondant aux ENF).
+
+Le dossier comprend également un exemple de glossaire pouvant servir de support à l'https://martinfowler.com/bliki/UbiquitousLanguage.html[Ubiquitous Language], élément fondamental d'une architecture.
+
 
 ## Utilisation de ce modèle
 ### Présentation générale
 * Ce modèle est au format https://www.methods.co.nz/asciidoc/index.html[asciidoc]. Vous pouvez le convertir dans le format de votre choix pour vos DA même si nous préconisons un format textuel et lisible (type Markdown) facile à suivre et à modifier par merge requests dans un outil de gestion de version et ainsi transformer votre DA en une documentation vivante ;
 * Ce modèle est perfectible, c'est pourquoi tous les retours, critiques (constructives), contributions et suggestions sont appréciés (faire une https://github.com/bflorat/modele-da/pulls[pull request] 
 ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
-* De plus, il est volontairement riche en explications et exemples car il a également une (modeste) prétention éducative à destination des étudiants et jeunes architectes. Votre dossier sera probablement plus court ;
+* De plus, il est volontairement riche en explications et exemples car il a également une (modeste) prétention éducative à destination des étudiants et jeunes architectes.
 * Le texte en italique contient des exemples ;
 * Chaque chapitre dispose de notes aidant à le remplir ;
-* Des link:modeles-vierges[modèles vierges] (sans exemples) sont fournis pour votre confort. *Partez donc des modèles vierges tout en ayant dans une autre fenêtre le modèle avec exemples et explications sous les yeux* ;
+* Des link:modeles-vierges[modèles vierges] (sans exemples) sont fournis pour votre confort. *Il est fortement préconisé de partir des modèles vierges tout en ayant dans une autre fenêtre le modèle avec exemples et explications sous les yeux* ;
 
 ### Conseils sur la rédaction de votre dossier d'architecture 
 * Rester bref, chaque mot doit avoir son utilité. Pas d’explication bateau type ‘ceci est l’introduction’, pas de redites d’autres documents, de l’historique de l’entreprise ou de concepts vagues ;
@@ -46,6 +54,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 ** l’urbanisation du SI (nous nous positionnons ici au niveau d’une application ou d’un ensemble de composants cohérents) ;
 ** les règles d'architecture de référence (communes à toutes les applications) ;
 ** des détails techniques (IP, logins) pouvant compromettre la sécurité ;
+** l'architecture physique (détails des serveurs et datacenters, architecture réseau, architecture de stockage, provisioning...). Il s'agit de sujets très pointus et en général traités par les architectes d'infrastructure à un niveau SI ;
 ** le détail des environnements autres que la production (recette, développement...). Ces derniers sont en général trop fluctuants pour figurer dans ce dossier et gagneront à plutôt être documentés par l'intégrateur dans d'autres dossiers, fiches, wikis ou outils de CMDB.
 
 ## Licence
@@ -59,7 +68,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 
 ## Remerciements 
 * Relecture : Frédérique Lefranc
-* Retours : Antoine Parra Del Pozo, Pascal Bousquet, Philippe Mayjonade, Nicolas Chahwekilian
+* Retours : Antoine Parra Del Pozo, Pascal Bousquet, Philippe Mayjonade, Nicolas Chahwekilian, Steven Morvan, Dr. Christophe Gaie
 * Tous les diagrammes de ce modèle ont été générés avec l'excellent outil http://plantuml.com/[PlantUML]
 Les https://c4model.com/[diagrammes C4] utilisent la personnalisation https://github.com/RicardoNiepel/C4-PlantUML[C4 de plantuml].
 

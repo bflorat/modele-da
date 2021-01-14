@@ -1,15 +1,15 @@
 
 = Volet architecture applicative
-:toc: left
 :sectnumlevels: 4
 :toclevels: 4
-:sectnums:
+:sectnums: 4
+:toc: left
 :icons: font
 :toc-title: Sommaire
 
-Dernière modification : {localdate} {localtime}
+Dernière modification : {docdate} 
 
-Etat du document : *en cours*
+Etat du document : 
 
 
 == Introduction
@@ -17,9 +17,12 @@ Ceci est le point de vue applicatif du projet. Il décrit les modules applicatif
 
 Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+
 === Documentation de Référence
 
 .Références documentaires
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document|Détail
 
@@ -61,6 +64,7 @@ Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 ==== Acteurs internes 
 
 .Liste des acteurs internes
+[cols="1,1,4,4"]
 |===
 |Acteur|Description|Population|Fréquence d'appels 
 
@@ -74,6 +78,7 @@ Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 ==== Acteurs externes
 
 .Liste acteurs externes
+[cols="1,1,4,4"]
 |===
 |Acteur|Description|Population|Fréquence d'appels
 
@@ -93,19 +98,27 @@ Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 === Urbanisation
 
 
+== Exigences
 
-== Solution proposée
+
+== Architecture cible
 
 === Architecture applicative générale
 
-
 === Architecture applicative détaillée
 
-==== Principes ayant dicté les choix
+=== Principes ayant dicté les choix
 
-==== Vision statique
+=== Vision statique
 
-==== Vision dynamique
+=== Vision dynamique
 
-==== Matrice des flux applicatifs
+=== Matrice des flux applicatifs
 
+.Matrice de flux applicatifs
+[cols='1,3,1,1,1']
+|====
+|Source|Destination|Type de réseau|Protocole| Mode.footnote:[(L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)]
+
+
+|====

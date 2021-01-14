@@ -1,14 +1,24 @@
 = Volet développement
-:toc:
-:sectnumlevels: 3
-:sectnums:
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Sommaire
+
+Dernière modification : {docdate} 
+
+Etat du document : 
 
 == Introduction
 Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
 
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+
 === Documentation de Référence
 
 .Références documentaires développement
+[cols="1,1,4,4"]
 |====
 |N°|Version|Titre/URL du document|Détail
 
@@ -18,20 +28,10 @@ Ceci est le point de vue développement de l’application. Il décrit le code �
 
 |====
 
-=== Glossaire
-
-.Glossaire sécurité spécifique projet
-|====
-|Terme|Définition
-
-|
-|
-
-|====
-
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
+[cols="1,6,1,1,1"]
 |====
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 
@@ -46,6 +46,7 @@ Ceci est le point de vue développement de l’application. Il décrit le code �
 
 === Hypothèses
 .Hypothèses
+[cols="1,4"]
 |====
 |ID|Détail
 
@@ -59,15 +60,19 @@ Ceci est le point de vue développement de l’application. Il décrit le code �
 
 == Exigences non fonctionnelles
 
-
 === Accessibilité
 
 === Ergonomie
 
+==== Charte ergonomique
+
+==== Site Web adaptatif
 
 ==== Charte ergonomique
  
 ==== Spécificités sur les widgets
+
+==== Polices de caractère
 
 ====  Progressive Web Apps (PWA)
 
@@ -77,34 +82,54 @@ Ceci est le point de vue développement de l’application. Il décrit le code �
 
 ==== Mode déconnecté
 
-== Pile logicielle
+=== Exigences de SEO
 
-=== Filière technique retenue
+== Architecture cible
+
+=== Pile logicielle
+
+==== Filière technique retenue
 
 ==== Composants logiciels
 
+.Pile logicielle
+[cols="1,4,1"]
 |====
 |Librairie|Rôle|Version 
 
 |====
 
-== Spécificités d’usine logicielle
+=== Performances
 
-== Spécificités des tests
+=== Spécificités d’usine logicielle
 
-== Patterns notables
+=== Normes de développement et qualimétrie 
 
-== Éco-conception
+=== Patterns notables
 
-== Gestion des transactions
+=== Spécificités des tests
 
-== Gestion des sessions
+=== Éco-conception
 
-== Gestion des erreurs
+=== Gestion de la robustesse
+==== Gestion des transactions
+==== Gestion des sessions
+==== Gestion des erreurs
 
-== Gestion de la configuration
+=== Gestion de la configuration
 
-== Gestion de la concurrence
+=== Gestion de la concurrence
 
-== Outils d'administration
+=== Encodage
 
+=== Fuseaux horaires
+
+=== Gestion des logs
+==== Règles générales
+==== Niveaux et quantité de logs
+
+=== Outils d'administration
+
+=== Tri et Pagination
+
+=== Provisionning et mises à jour des données

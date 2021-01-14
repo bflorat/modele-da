@@ -1,14 +1,22 @@
 = Volet infrastructure
-:toc:
-:sectnumlevels: 3
-:sectnums:
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Sommaire
+
+Dernière modification : {docdate}
 
 == Introduction
 Ceci est le point de vue infrastructure de l’application. Il décrit le déploiement des modules applicatifs dans leur environnement d'exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+
 === Documentation de Référence
 
 .Références documentaires développement
+[cols="1,2,5,4"]
 |====
 |N°|Version|Titre/URL du document|Détail
 
@@ -19,20 +27,10 @@ Ceci est le point de vue infrastructure de l’application. Il décrit le déplo
 
 |====
 
-=== Glossaire
-
-.Glossaire sécurité spécifique projet
-|====
-|Terme|Définition
-
-|
-|
-
-|====
-
 == Non statué
 === Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
+[cols="1,5,2,2,2"]
 |====
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 
@@ -47,6 +45,7 @@ Ceci est le point de vue infrastructure de l’application. Il décrit le déplo
 
 === Hypothèses
 .Hypothèses
+[cols="1e,5e"]
 |====
 |ID|Détail
 
@@ -58,20 +57,33 @@ Ceci est le point de vue infrastructure de l’application. Il décrit le déplo
 
 == Contraintes
 
-[[contrainte-disponibilite]]
 === Contraintes sur la disponibilité
 
-==== Présence nominale des exploitants et astreintes
+==== MTTD
 
-==== Durées d’intervention externes 
+==== GTR
+
+==== Outils et normes de supervision
 
 ==== Interruptions programmées
 
-====  Plan de Reprise ou de Continuité d’Activité (PRA / PCA)
+==== Niveau de service du datacenter
+
+==== Synthèse de la disponibilité plancher
+
+==== Gestion des catastrophes
 
 === Hébergement
 
 === Contraintes réseau
+
+=== Contraintes de déploiement
+
+=== Contraintes de logs
+
+=== Contraintes de sauvegardes et restaurations
+
+=== Coûts
 
 == Exigences
 
@@ -79,55 +91,33 @@ Ceci est le point de vue infrastructure de l’application. Il décrit le déplo
 === Plages de fonctionnement
 
 .Plages de fonctionnement
+[cols="1,2,4"]
 |====
-|No plage|Détail|Heures
-
-|
-|
-|
-|
+|No plage| Heures | Détail
 
 |====
 
-
-
-[[exigences-disponibilite]]
 === Exigences de disponibilité
 
 =====  Disponibilité par plage de fonctionnement
-Voir le détail des <<plages>>.
 
-
-.Plages de fonctionnement
+.Durée d’indisponibilité maximale admissible par plage
+[cols="1,5"]
 |====
-|No Plage|Disponibilité attendue|Indisponibilité  programmée|Indisponibilité non programmée
-
-|
-|
-|
-|
+|No Plage| Indisponibilité maximale
 
 |====
 
 ===  Mode dégradés
 
-
-[[exigences-robustesse]]
 === Exigences de robustesse
 
+=== Exigences de RPO
 
-[[exigences-sauvegarde]]
-=== Exigences de sauvegardes
-
-
-[[exigences-archivage]]
 === Exigences d'archivage
 
-
-[[exigences-purge]]
 === Exigences de purges
 
-[[exigences-deploiement]]
 === Exigences de déploiements et de mise à jour
 ==== Coté serveur
 
@@ -135,89 +125,81 @@ Voir le détail des <<plages>>.
 
 ==== Stratégie de déploiement spécifiques
 
-[[exigences-concurrence]]
 === Exigences de gestion de la concurrence
 
-[[exigences-eco]]
-=== Exigences d'éco-conception
+=== Exigences d'écoconception
 
-[[exigences-seo]]
-=== Exigences de SEO
+== Architecture cible
 
+=== Principes de l'architecture technique
 
-== Principes de l'architecture technique
-Quels sont les grands principes techniques de notre application ?
+=== Disponibilité
 
+=== Déploiement en production
 
-[[disponbilite]]
-== Disponibilité
-
-== Déploiement en production
-
-== Versions des composants d'infrastructure
+=== Versions des composants d'infrastructure
 .Composants d'infrastructure
+[cols="1,2,1,2"]
 |====
 |Composant|Rôle|Version |Environnement technique
 
-|
-|
-|
-|
-|
-
 |====
 
-== Matrice des flux techniques
+=== Matrice des flux techniques
 
-Matrice de flux techniques :
-
+.Matrice de flux techniques
+[cols="1,2,2,2,1,1"]
 |====
 |ID|Source|Destination|Type de réseau|Protocole|Port d'écoute
 
-|
-|
-|
-|
-|
-|
-
 |====
 
+=== Environnements
 
-== Dimensionnement des machines
+=== Écoconception
 
-== Éco-conception
+=== Régulation de la charge
 
-== SEO
+==== Coupe-circuits
 
-== Exploitation
+==== Qualité de Service
 
-=== Ordre d’arrêt/démarrage
+=== Gestion des timeouts
 
-=== Opérations programmées
+=== Exploitation
 
-=== Sauvegardes et restaurations
+==== Ordre d’arrêt/démarrage
 
-=== Archivage
+==== Opérations programmées
 
-=== Purges
+==== Mise en maintenance
 
-=== Logs
+==== Sauvegardes et restaurations
 
-=== Supervision
+==== Archivage
 
-====  Supervision technique
+==== Purges
 
-====  Supervision applicative
+==== Logs
 
-====  Outil de pilotage de la supervision
+==== Supervision
 
-====  Suivi des opérations programmées
+=====  Supervision technique
 
-====  Supervision boite noire
+=====  Supervision applicative
 
-== Timeouts
+=====  Outil de pilotage de la supervision
 
-== Migration
+===== Alerting
 
-== Décommissionnement
+=====  Suivi des opérations programmées
+
+===== Rapports d’exécution des batchs
+
+===== Supervision boite noire
+
+===== Métrologie
+
+=== Migration
+
+=== Décommissionnement
