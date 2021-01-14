@@ -9,11 +9,15 @@
 Dernière modification : {docdate}
 
 == Introduction
+
 Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
 
-Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
+
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
 === Documentation de Référence
+
 [TIP]
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
 
@@ -28,7 +32,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |====
 
 == Non statué
+
 === Points soumis à étude complémentaire
+
 .Points soumis à étude complémentaire
 [cols="e,e,e,e,e"]
 |====
@@ -44,6 +50,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 
 === Hypothèses
+
 .Hypothèses
 [cols="1e,4e"]
 |====
@@ -54,6 +61,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |====
 
 == Contraintes
+
 [TIP]
 ====
 Lister ici les contraintes relatives à l'architecture logicielle, ceci inclut par exemple mais pas seulement :
@@ -76,7 +84,6 @@ Exemple 2 : Le module devra se baser sur le framework Hibernate pour la persista
 Exemple 3 : l'application sera construite, testée et déployée en continu à chaque push via la plateforme Gitlab-ci
 ====
 
-
 == Exigences non fonctionnelles
 
 [TIP]
@@ -85,6 +92,7 @@ Contrairement aux contraintes qui fixaient le cadre auquel toute application dev
 ====
 
 === Accessibilité
+
 [TIP]
 ====
 Cette application doit-elle être accessible aux non/mal voyants ? malentendants ? 
@@ -101,12 +109,14 @@ Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb …) . Attentio
 === Ergonomie
 
 ==== Charte ergonomique
+
 [TIP]
 ====
 En général, on se réfère ici à la charte ergonomique de l’organisme. Lister néanmoins d’éventuelles spécificités. Ne pas reprendre les contraintes d’accessibilité listées plus haut.
 ====
  
 ==== Spécificités sur les widgets
+
 [TIP]
 ====
 Des comportements ergonomiques très précis peuvent impacter assez fortement l’architecture et imposer une librairie de composants graphiques ou une autre. Il est fortement déconseillé de personnaliser des librairies existantes (coût de maintenance très élevé, grande complexité). Bien choisir sa librairie ou restreindre ses besoins.
@@ -119,6 +129,7 @@ Exemple 2 : de nombreux écrans seront pourvus d’accordéons
 ====
 
 ==== Polices de caractère
+
 [TIP]
 ====
 Décrire ici les polices de caractère à utiliser pour les pages Web, les applications ou les documents composés.
@@ -130,7 +141,8 @@ Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-l
 Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberation_(police_d%27%C3%A9criture)[Liberation Mono] en licence Open Source sécurisante sur un plan juridique et compatible métriquement avec le Monotype, le Courrier New, l'Arial et le Times New Roman. 
 ====
 
-====  Site Web adaptatif
+==== Site Web adaptatif
+
 [TIP]
 ====
 Lister les contraintes d’affichage multi-support. Utiliser quand c'est possible les frameworks modernes (type AngularJS ou React.js). Il existe plusieurs niveaux d’adaptation des pages Web :
@@ -144,6 +156,7 @@ Attention, un design responsive vient avec ses contraintes (duplication de code,
 ====
 
 ==== Progressive Web Apps (PWA)
+
 [TIP]
 ====
 Spécifier si l'application est progressive. Les applications PWA sont des applications Web HTML5 possédant tous les attributs des applications natives (mode déconnecté, rapide, adaptatif, accessible depuis l'OS, ...) 
@@ -151,7 +164,9 @@ Spécifier si l'application est progressive. Les applications PWA sont des appli
 ====
 Exemple : L'application X sera totalement PWA. Des tests devront démonter que le site continuer à fonctionner sans réseau et que les pages se chargent en moins de 5 secs en 4G. 
 ====
+
 ==== Navigateurs supportés
+
 [TIP]
 ====
 Préciser quels sont les navigateurs supportés s’il s’agit d’une IHM Web. 
@@ -173,7 +188,9 @@ Exemple 2 : L’application Y étant une application internet visant le public 
 ====
 Exemple 3 : L’application Z vise le public le plus large et doté de systèmes raisonnablement anciens et devra donc supporter : Firefox 6+, Chrome 8+, Opera 8+, IE 10, Edge.
 ====
+
 ==== Internationalisation (i18n)
+
 [TIP]
 ====
 Préciser les contraintes de l’ application en terme d’i18n : localisation des libellés, direction du texte, mise en page adaptable, code couleur spécifique, format de dates, devises, affichage des séparateurs décimaux, etc.
@@ -184,7 +201,9 @@ Exemple 1 : L’IHM X sera traduite en 25 langues dont certaines langues asiati
 ====
 Exemple 2 : les formats de dates et autres champs de saisie devront être parfaitement localisés pour un confort maximal de l’utilisateur.
 ====
+
 ==== Mode déconnecté
+
 [TIP]
 ====
 Préciser si l'application doit pouvoir continuer à fonctionner sans accès à Internet ou au LAN (très courant pour les applications utilisées par les professionnels en déplacement par exemple). 
@@ -199,6 +218,7 @@ Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5
 ====
 
 === Exigences de SEO
+
 [TIP]
 ====
 Le SEO (Search engine optimization) concerne la visibilité d'un site Web au travers des moteurs de recherches (comme Google ou Quant).
@@ -215,6 +235,7 @@ Exemple 2 : Les pages statiques du site devront suivre les bonnes pratiques SEO 
 === Pile logicielle
 
 ==== Filière technique retenue
+
 [TIP]
 ====
 Donner les technologies choisies parmi les technologies au catalogue de l’organisation. S’il existe des écarts avec le catalogue, le préciser et le justifier.
@@ -227,6 +248,7 @@ Exemple : Utilisation de Reacts.js à titre expérimental au sein de l'organisat
 ====
 
 ==== Composants logiciels
+
 [TIP]
 ====
 Lister ici pour chaque composant les principales librairies et frameworks utilisés ainsi que leur version. Ne pas lister les librairies fournies au runtime par les serveurs d'application ou les frameworks. Inutile de trop détailler, donner uniquement les composants structurants.
@@ -298,6 +320,7 @@ N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimis
 
 
 === Spécificités d’usine logicielle
+
 [TIP]
 ====
 Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continue) de l'organisation, préciser si ce projet nécessite une configuration particulière.
@@ -328,6 +351,7 @@ Exemple 3 : Quelle langue utilisée pour le code ? français pour les termes fon
 ====
 
 === Patterns notables
+
 [TIP]
 ====
 Préciser si ce projet a mis en œuvre des patterns (GoF, JEE ou autre) structurants. Inutile de reprendre les patterns déjà supportés par les langages ou les serveurs d'application (par exemple, l'IoC avec CDI dans un serveur JEE 6).
@@ -335,7 +359,6 @@ Préciser si ce projet a mis en œuvre des patterns (GoF, JEE ou autre) structur
 ====
 Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et éviter de multiplier les niveaux d'héritage, nous utiliserons massivement la pattern décorateur [GoF] dont voici un exemple d’utilisation : <schéma>.
 ====
-
 
 === Spécificités des tests 
 
@@ -442,6 +465,7 @@ détecter un maximum de bugs avant les tests d'UAT.
 NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'objet d'un document propre. Une stratégie standard peut également être définie au niveau du SI. 
 
 === Éco-conception
+
 [TIP]
 ====
 Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listée dans le volet infrastructure. Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
@@ -470,6 +494,7 @@ Exemple 3 : Les campagnes de performance intégreront une analyse fine de la con
 === Gestion de la robustesse
 
 ==== Gestion des transactions
+
 [TIP]
 ====
 Lister ici les décisions prises concernant la gestion des transactions. Ceci est surtout utile pour un système distribué. Quelques exemples de problématiques : 
@@ -486,6 +511,7 @@ Exemple : nos ressources n'étant pas transactionnelles (services REST), et voul
 ====
 
 ==== Gestion des sessions
+
 [TIP]
 ====
 Comment gère-t-on les sessions HTTP permettant de fournir un contexte d'exécution à un utilisateur (exemple: son panier d'achat) ? 
@@ -505,6 +531,7 @@ Exemple : notre application JSF stockera en session HTTP uniquement son panier d
 ====
 
 ==== Gestion des erreurs
+
 [TIP]
 ====
 Comment gère-t-on erreurs ? Exemples de points à traiter :
@@ -527,6 +554,7 @@ les erreurs techniques (imprévues) comme le timeout à un appel de service REST
 ====
 
 === Gestion de la configuration
+
 [TIP]
 ====
 Comment configure-t-on l'application ? Exemples de points à traiter :
@@ -546,6 +574,7 @@ La configuration sera injectée au lancement (non modifiable à chaud) via des v
 ====
 
 === Politique de gestion des branches
+
 [TIP]
 ====
 Quels sont des workflows de branche à prévoir ? git-flow ? TBD (Trunked-based Development) ? autre ?
@@ -563,6 +592,7 @@ Exemple :
 
 
 === Versioning
+
 [TIP]
 ====
 Que versionne-t-on et quel système de version utilise-t-on ?
@@ -578,9 +608,8 @@ Exemple:
 
 ====
 
-
-
 === Gestion de la concurrence
+
 [TIP]
 ====
 Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
@@ -634,6 +663,7 @@ Exemple 2 : Les dates et date-heures seront stockées en base de données comme 
 ==== 
 
 === Gestion des logs
+
 NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./volet-architecture-infrastructure.adoc#_logs[le volet infrastructure].
 
 [TIP]
@@ -641,7 +671,6 @@ NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./volet-ar
 Donner ici les règles générales concernant les traces applicatives (logs), les niveaux et quantité de logs.
 Penser à l'exploitation des logs, surtout coté serveur. Se demander s'il sera possible d'en tirer profit en cas d'erreur en production au milieu de Mio voire Gio d'autres logs et de n threads loguant en parallèle.
 ====
-
 
 ==== Règles générales
 
@@ -703,6 +732,7 @@ Exemple :
 ====
  
 === Outils d'administration
+
 [TIP]
 ====
 L'application doit-elle fournir des services d’administration ? Il est fortement conseillé (c'est le facteur 12 des https://12factor.net/[Twelve factors d'Heroku]) d'intégrer le code d'administration directement avec le code métier.
@@ -740,7 +770,6 @@ Exemple 2 (Coté client)
 * Les éléments retournés seront affichés dans les tableaux par blocs (taille paramétrable d’une taille indicative de l'ordre de 20 éléments). 
 ====
 
-
 === Provisionning et mises à jour des données
 
 [TIP]
@@ -751,6 +780,3 @@ Décrire comment les DDL (structures de tables en base de données) et les donn�
 ====
 Exemple : Nous utiliserons LiquiBase embarqué dans les war pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
 ====
-
-
-

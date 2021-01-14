@@ -13,7 +13,9 @@ Etat du document :
 == Introduction
 Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
 
-Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
+
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
 === Documentation de Référence
 
@@ -29,7 +31,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 |====
 
 == Non statué
+
 === Points soumis à étude complémentaire
+
 .Points soumis à étude complémentaire
 [cols="1,6,1,1,1"]
 |====
@@ -43,8 +47,8 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 |====
 
-
 === Hypothèses
+
 .Hypothèses
 [cols="1,4"]
 |====
@@ -56,7 +60,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 |====
 
 == Contraintes
-
 
 == Exigences non fonctionnelles
 
@@ -74,7 +77,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 ==== Polices de caractère
 
-====  Progressive Web Apps (PWA)
+==== Progressive Web Apps (PWA)
 
 ==== Navigateurs supportés
 
@@ -112,8 +115,11 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Éco-conception
 
 === Gestion de la robustesse
+
 ==== Gestion des transactions
+
 ==== Gestion des sessions
+
 ==== Gestion des erreurs
 
 === Gestion de la configuration
@@ -125,7 +131,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Fuseaux horaires
 
 === Gestion des logs
+
 ==== Règles générales
+
 ==== Niveaux et quantité de logs
 
 === Outils d'administration

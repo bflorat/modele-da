@@ -9,13 +9,15 @@
 Dernière modification : {docdate} 
 
 == Introduction
+
 Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
 
 Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 
-Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
 === Documentation de Référence
+
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
 
 .Références documentaires
@@ -27,7 +29,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |===
 
 == Non statué
+
 === Points soumis à étude complémentaire
+
 .Points soumis à étude complémentaire
 [cols="1e,6e,1e,1e,1e"]
 |===
@@ -40,8 +44,8 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |AVANT 2040
 |===
 
-
 === Hypothèses
+
 .Hypothèses
 [cols="1e,6e"]
 |====
@@ -69,6 +73,7 @@ Exemple 3: l’ application X est l’un des composants principaux du programme 
 ====
 
 === Existant
+
 [TIP]
 Si ce document présente un projet de refonte ou migration, décrire a minima l'application existante. Ne pas reprendre la documentation, y faire simplement référence et pointer vers son éventuel dossier d'architecture. Mentionner néanmoins toute information ayant un impact fort sur la migration ou la conception du nouveau projet.
 ====
@@ -79,11 +84,14 @@ Exemple 2 : L'application existante se base et alimente un annuaire LDAP pour se
 ====
 
 === Positionnement dans le SI
+
 [TIP] 
 Si le SI est urbanisé, reprendre le plan d’occupation au sol et préciser le bloc concerné 
 
 === Acteurs
+
 ==== Acteurs internes 
+
 [TIP]
 On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peut s’agir d'humains ou de composants applicatifs.
 
@@ -124,6 +132,7 @@ On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peu
 == Contraintes
 
 === Budget
+
 TIP: Donner les contraintes budgétaires du projet
 ====
 Exemple 1: Enveloppe globale de 1 M€
@@ -133,12 +142,14 @@ Exemple 2: Coûts d'infrastructure cloud < 20K€ / mois
 ====
 
 === Planning
+
 TIP: Sans reprendre dans le détail les plannings du projet, donner les éléments intéressants pour l'architecture.
 ====
 Exemple 1: MEP avant fev 2034, prérequis au programme HEAVY en mai 2034.
 ====
 
 === Urbanisation
+
 [TIP]
 ====
 Lister ici les contraintes relatives à l'urbanisation, ceci inclut par exemple mais pas seulement :
@@ -191,6 +202,7 @@ Exemple 2 : Le développement devra pouvoir se faire au sein d'équipes distribu
 == Architecture cible
 
 === Architecture applicative générale
+
 [TIP]
 ====
 Présenter ici l'application dans son ensemble (sans détailler ses sous-composants) en relation avec les autres applications du SI. Présenter également les macro-données échangées ou stockées. 
@@ -243,6 +255,7 @@ NOTE: Ce n'est qu'une suggestion car la rédaction de l'architecture applicative
 
 
 === Principes ayant dicté les choix
+
 [TIP]
 ====
 Donner ici l'intention dans la construction de l'architecture.
@@ -252,6 +265,7 @@ Exemple : nous utiliserons une approche monolithique et non micro-service par ma
 ====
 
 === Vision statique
+
 [TIP]
 ====
 Exposer les modules applicatifs dans leurs différentes zones ou domaines.
@@ -261,6 +275,7 @@ Exemple: module X, Y et Z dans le domaine GED. Modules A, B dans le domaine PERS
 ====
 
 === Vision dynamique
+
 [TIP]
 ====
 Exposer les modules applicatifs dans leurs différentes zones ou domaines avec leurs flux applicatifs principaux.
@@ -277,6 +292,7 @@ image::diagrams/archi-applicative-detaillee.svg[Diagramme architecture applicati
 ====
 
 === Matrice des flux applicatifs
+
 [TIP]
 ====
 Lister ici les flux principaux de l'application. 

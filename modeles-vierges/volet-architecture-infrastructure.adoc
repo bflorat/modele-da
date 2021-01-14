@@ -11,7 +11,9 @@ Dernière modification : {docdate}
 == Introduction
 Ceci est le point de vue infrastructure de l’application. Il décrit le déploiement des modules applicatifs dans leur environnement d'exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
-Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
+
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
 === Documentation de Référence
 
@@ -99,7 +101,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 === Exigences de disponibilité
 
-=====  Disponibilité par plage de fonctionnement
+==== Disponibilité par plage de fonctionnement
 
 .Durée d’indisponibilité maximale admissible par plage
 [cols="1,5"]
@@ -108,7 +110,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 |====
 
-===  Mode dégradés
+=== Mode dégradés
 
 === Exigences de robustesse
 
@@ -119,9 +121,10 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Exigences de purges
 
 === Exigences de déploiements et de mise à jour
+
 ==== Coté serveur
 
-====  Coté client
+==== Coté client
 
 ==== Stratégie de déploiement spécifiques
 
@@ -138,6 +141,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 === Déploiement en production
 
 === Versions des composants d'infrastructure
+
 .Composants d'infrastructure
 [cols="1,2,1,2"]
 |====
@@ -184,15 +188,15 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 ==== Supervision
 
-=====  Supervision technique
+===== Supervision technique
 
-=====  Supervision applicative
+===== Supervision applicative
 
-=====  Outil de pilotage de la supervision
+===== Outil de pilotage de la supervision
 
 ===== Alerting
 
-=====  Suivi des opérations programmées
+===== Suivi des opérations programmées
 
 ===== Rapports d’exécution des batchs
 
