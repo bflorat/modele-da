@@ -62,6 +62,8 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 == Contraintes
 
+=== Contraintes réseau
+=== Contraintes réseau
 [TIP]
 ====
 Lister ici les contraintes relatives à l'architecture logicielle, ceci inclut par exemple mais pas seulement :

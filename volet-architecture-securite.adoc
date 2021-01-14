@@ -10,6 +10,7 @@
 Dernière modification : {docdate}
 
 == Introduction
+
 Ceci est le point de vue sécurité. Il décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
 
 Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
@@ -20,6 +21,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 La disponibilité est traitée dans le volet infrastructure.
 
 === Documentation de Référence
+
 [TIP]
 ====
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
@@ -35,7 +37,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |====
 
 == Non statué
+
 === Points soumis à étude complémentaire
+
 .Points soumis à étude complémentaire
 [cols="1e,3e,1e,1e,2e"]
 |====
@@ -50,6 +54,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |====
 
 === Hypothèses
+
 .Hypothèses
 [cols="e,e"]
 |====
@@ -60,6 +65,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |====
 
 == Contraintes
+
 [TIP]
 ====
 Lister ici les contraintes relatives à la sécurité, ceci inclut par exemple mais pas seulement :
@@ -80,6 +86,7 @@ Exemple 3 : en application du RGPD, les données utilisateur devront être chiff
 ====
 
 == Exigences
+
 [TIP]
 ====
 Présenter ici les exigences, *pas les dispositifs y répondant*. Ceux-ci seront détaillées au chapitre 3. 
@@ -214,6 +221,7 @@ Exemple 3 : un ID est non supprimable, non modifiable et non réutilisable
 
 [[exigences-authentification]]
 === Exigences d'authentification
+
 [TIP]
 ====
 L’authentification permet de vérifier la cohérence entre l’identité d'un utilisateur et une personne physique se connectant. 
@@ -268,6 +276,7 @@ Les facteurs d’authentification requis en fonction des situations sont (on peu
 
 [[exigence-federation-identite]]
 === Exigences de fédération d’identité
+
 [TIP]
 ====
 La fédération d’identité est l’utilisation d’une même identité gérée par un identity provider (IdP) depuis plusieurs entités différentes. 
@@ -310,6 +319,7 @@ Exemple 3 : cette application Web métier devra fournir une authentification un
 ====
 
 === Exigences de non répudiation
+
 [TIP]
 ====
 Lister ici les actions métiers possédant une exigence de non-répudiation, c’est à dire un dispositif permettant de rendre impossible la remise en cause d’un contrat en prouvant l’identité des deux parties et l’intégrité du document par signature numérique comme décrit dans le texte n°2000-230 du 13 mars 2000 du code civil.
@@ -327,6 +337,7 @@ Lister ici les actions métiers possédant une exigence de non-répudiation, c�
 
 [[exigence-anonymat]]
 === Exigences d'anonymat et de respect de la vie privée
+
 [TIP]
 Lister les contraintes d’anonymat et de vie privée légale (exigée par le RGPD). Voir https://www.cnil.fr/fr/rgpd-par-ou-commencer.
 
@@ -350,6 +361,7 @@ Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs 
 ====
 
 === Exigences sur les habilitations
+
 [TIP]
 ====
 Une habilitation (ou autorisation) permet de donner l’accès à une fonction applicative (ou « privilège » ou « permission ») à un utilisateur ou un groupe d’utilisateur. 
@@ -413,6 +425,7 @@ Exemple 2 : l’application s’appuiera sur une gestion des autorisations matr
 
 [[exigences-tracabilite]]
 === Exigences de traçabilité et d'auditabilité
+
 [TIP]
 ====
 Lister ici les besoins en traces permettant de détecter par exemple :
@@ -468,7 +481,9 @@ Exemple 3 : nous devons pouvoir reconstituer l’historique du dossier de tout 
 |===
 
 == Mesures de sécurité
+
 === Intégrité
+
 Dispositifs répondant aux <<exigences-integrite,exigences d'intégrité>> :
 
 .Mesures pour assurer le niveau d'intégrité demandée
@@ -505,6 +520,7 @@ La signature résultante sera intégrée a posteriori au format hexadécimal en 
 |===
 
 === Confidentialité
+
 Dispositifs répondant aux <<Exigences de confidentialité>> :
 
 .Mesures pour assurer le niveau de confidentialité demandé
@@ -543,6 +559,7 @@ Penser aussi à la confidentialité des données dérivées :
 ====
 
 === Identification
+
 Dispositifs répondant aux <<exigences-identification,exigences d'identification>> :
 
 _Exemple 1  : L’Id des usagers de l’application sera l’attribut uid des DN `cn=XXX,ou=service1,dc=entreprise,dc=com` dans l’annuaire LDAP central. Un filtre sera également appliqué sur l’appartenance au groupe `ou=monapplication,dc=entreprise,dc=com`._
@@ -550,6 +567,7 @@ _Exemple 1  : L’Id des usagers de l’application sera l’attribut uid des D
 _Exemple 2  : Pour assurer la non réutilisation des ID des comptes supprimés, une table d’historique sera ajoutée dans l’application et requêtée avant toute création de nouveau compte._
 
 === Authentification
+
 Dispositifs répondant aux <<exigences-authentification,exigences d'authentification>> :
 [TIP]
 ====
@@ -569,6 +587,7 @@ Exemple 4 : Les mots de passe ne seront en aucun cas conservés mais stockés s
 ====
 
 ==== Comptes de service
+
 [TIP]
 ====
 Les comptes de service sont utilisés pour l'authentification à un composant technique depuis un batch ou une API.
@@ -585,6 +604,7 @@ Les comptes de service sont utilisés pour l'authentification à un composant te
 
 
 === Fédération d’identité
+
 Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
 
 [TIP]
@@ -599,6 +619,7 @@ Exemple  : L’IHM grand public permettra une identification et authentificatio
 ====
 
 === SSO, SLO
+
 Dispositifs répondant aux <<Exigences de SSO et SLO> :
 [TIP]
 ====
@@ -612,6 +633,7 @@ Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra g
 ====
 
 === Non-répudiation
+
 Dispositifs répondant aux <<Exigences de non répudiation>> :
 
 ====
@@ -619,6 +641,7 @@ Exemple  : La déclaration d’impôt sera signée par le certificat client de 
 ====
 
 === Anonymat et vie privée
+
 Dispositifs répondant aux <<exigence-anonymat,exigences d'anonymat et de respect de la vie privée>> :
 
 ====
@@ -632,6 +655,7 @@ Exemple 3 : le bandeau d’acceptation des cookies sera mis en ouvre sur toutes
 ====
 
 === Habilitations
+
 Dispositifs répondant aux <<Exigences sur les habilitations>> :
 ====
 Exemple 1 : la gestion des autorisations sera gérée applicativement et stockée dans la base applicative PostgreSQL. Ces tables seront décrites dans le dossier de spécification.
@@ -641,6 +665,7 @@ Exemple 2 : L’obtention du carnet d’adresse Facebook sera en OAuth2. On uti
 ====
 
 === Tracabilité, auditabilité
+
 Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 ====
@@ -661,7 +686,9 @@ Exemple 5 : Les logs contenant le terme [PREUVE] et issu de l’ensemble des co
 
 
 == Auto-contrôles
+
 === Auto-contrôle des vulnérabilités
+
 [TIP]
 ====
 La gestion des vulnérabilités dépasse largement le cadre de ce document mais il est bon de s’auto-contrôler pour s’assurer que les failles les plus courantes sont bien prises en compte et comment. Cette liste est en partie basée sur le TOP 10 OWASP. Pour le TOP 10 des application mobiles, adapter cette liste avec le TOP 10 mobile. 
@@ -766,6 +793,7 @@ a|
 |===
 
 === Auto-contrôle RGPD
+
 [TIP]
 ====
 Cette section aide à vérifier la prise en compte des exigences du https://www.cnil.fr/fr/rgpd-par-ou-commencer[RGPD].
