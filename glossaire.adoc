@@ -2,9 +2,9 @@
 
 WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
 
-== Termes en cours de discussion/à valider
+== Termes en cours de discussion / à valider
 
-[cols="1,4,4"]
+[cols="1e,4e,4e"]
 |=======================================================================
 |Terme |Signification | Commentaire
 
@@ -13,7 +13,7 @@ WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
 
 == Termes métier et organisationnels
 
-[cols="1,4,4"]
+[cols="1e,4e,4e"]
 |=======================================================================
 |Terme |Signification |Commentaire
 
@@ -24,7 +24,7 @@ WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
 
 == Termes applicatifs
 
-[cols="1,4,4"]
+[cols="1e,4e,4e"]
 |=======================================================================
 |Terme |Signification | Commentaire
 
@@ -37,7 +37,7 @@ WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
 
 == Termes techniques 
 
-[cols="1,4,4"]
+[cols="1e,4e,4e"]
 |=======================================================================
 |Terme |Signification | Commentaire
 
@@ -48,4 +48,4 @@ Permet entre autres d'augmenter la sécurité par rupture protocolaire.
 
 == Sources
 
-* http://km.mondomaine.fr
+* _http://km.mondomaine.fr_

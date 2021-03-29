@@ -60,7 +60,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 ** le détail des *environnements* autres que la production (recette, développement...). Ces derniers sont en général trop fluctuants pour figurer dans ce dossier et gagneront à plutôt être documentés par l'intégrateur dans d'autres dossiers, fiches, wikis ou outils de CMDB.
 
 ## Licence
-* Copyright (c) 2017-2020 Bertrand Florat
+* Copyright (c) 2017-2021 Bertrand Florat et contributeurs
 * Ce modèle est en licence https://creativecommons.org/licenses/by-sa/4.0/[CC BY-SA 4.0] : Creative Commons Attribution - Partage à l'identique V4.0
 * Vous pouvez créer votre propre modèle à condition qu'il conserve la licence CC BY-SA 4.0 et qu'il contienne donc ces trois éléments: 
 ** Le nom du créateur (Bertrand Florat) ;
@@ -77,7 +77,7 @@ Les https://c4model.com/[diagrammes C4] utilisent la personnalisation https://gi
 ## Bibliographie partielle
 * _Site Reliability Engineering_ - Google  
 * _Living documentation_ - Cyril Martraire
-* _Clean Code_ - Uncle Bob
+* _Clean Code_ - Robert Martin
 * _Performance des architectures IT - 2e ed._ - Pascal Grojean
 * _Design Patterns: Elements of Reusable Object-Oriented Software de Erich Gamma, Richard Helm, Ralph Johnson et John Vlissides_ (GOF)
 * _Le projet d’Urbanisation du SI_ - Christophe Longépé 
