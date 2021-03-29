@@ -9,9 +9,12 @@
 Dernière modification : {docdate}
 
 == Introduction
+
 Ceci est le point de vue dimensionnement du projet. Il permet de déterminer la taille de l'infrastructure nécessaire au projet.
 
-Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
+
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
 === Documentation de Référence
 
@@ -24,8 +27,8 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 |====
 
-
 == Non statué
+
 === Points soumis à étude complémentaire
 
 .Points soumis à étude complémentaire
@@ -38,6 +41,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 
 === Hypothèses
+
 .Hypothèses
 [cols="1,4"]
 |====
@@ -47,12 +51,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 |====
 
-
 == Contraintes
 
-
 === Contraintes stockage
-
 
 === Contraintes CPU
 
@@ -63,7 +64,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 == Exigences
 
 === Volumétrie statique
-
 
 ==== Métriques
 
@@ -90,8 +90,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 === Exigences de temps de réponse
 
-====  Temps de Réponse des IHM
-
+==== Temps de Réponse des IHM
 
 .Types de sollicitation :
 [cols='3,1,1,1']
@@ -102,8 +101,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous redéfiniro
 
 |====
 
-
-====  Durée d’exécution des batchs
+==== Durée d’exécution des batchs
 
 == Dimensionnement cible
 
