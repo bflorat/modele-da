@@ -62,8 +62,6 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 == Contraintes
 
-=== Contraintes réseau
-=== Contraintes réseau
 [TIP]
 ====
 Lister ici les contraintes relatives à l'architecture logicielle, ceci inclut par exemple mais pas seulement :
@@ -154,7 +152,7 @@ Lister les contraintes d’affichage multi-support. Utiliser quand c'est possibl
 * Adaptatif (les distances sont exprimées en unités dont la taille dépend du support).
 * Responsive (le contenu et son agencement dépend du support).
 
-Attention, un design responsive vient avec ses contraintes (duplication de code, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir…). 
+WARNING: Un design responsive vient avec ses contraintes (duplication de code, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir…). 
 ====
 
 ==== Progressive Web Apps (PWA)
@@ -171,15 +169,11 @@ Exemple : L'application X sera totalement PWA. Des tests devront démonter que l
 
 [TIP]
 ====
-Préciser quels sont les navigateurs supportés s’il s’agit d’une IHM Web. 
+Préciser quels sont les navigateurs supportés si votre projet contient une IHM Web. 
 
 Lorsqu'on s'adresse à un public dont on ne gère pas le parc de navigateurs (comme un site Web sur Internet), la meilleure option pour rendre les choses intelligibles et expliciter les enjeux est de négocier avec les parties prenantes du projet un pourcentage de public supporté en se basant sur des https://gs.statcounter.com/[statistiques]. Par exemple : "Support de 95 % des navigateurs".
 
-Attention : supporter d’anciens navigateur (IE en particulier) peut engendrer des surcoûts rédhibitoires (sauf à utiliser une librairie qui masque cette complexité et en espérant qu’elle fonctionne correctement). 
-
-Dans tous les cas, il convient d’évaluer les surcoûts de tester sur plusieurs plate-formes. Il existe de bons outils (payants) comme Litmus ou EmailOnAcid permettant de générer un rendu des sites Web et des courriels HTML sur une combinatoire d’OS / type de lecteur (PC/tablette/mobile) /navigateur très vaste (de l’ordre de 50). 
-
-Ce type de site est incontournable pour une application grand public.
+WARNING: Supporter d’anciens navigateur (IE en particulier) peut engendrer des surcoûts rédhibitoires (sauf à utiliser une librairie qui masque cette complexité et en espérant qu’elle fonctionne correctement). Dans tous les cas, il convient d’évaluer les surcoûts de tester sur plusieurs plate-formes. Il existe de bons outils (payants) comme Litmus ou EmailOnAcid permettant de générer un rendu des sites Web et des courriels HTML sur une combinatoire d’OS / type de lecteur (PC/tablette/mobile) /navigateur très vaste (de l’ordre de 50).  Ce type de site est incontournable pour une application grand public.
 ====
 ====
 Exemple 1 : L’application intranet X devra fonctionner sur les navigateurs qualifiés en interne (cf norme xyz)
@@ -280,8 +274,8 @@ IMPORTANT: Voir les exigences MOA dans le link:./volet-architecture-dimensionnem
 
 [TIP]
 ====
-Même si des campagnes de performance sont prévues et que des analyses de performances seront intégrées à la CI/CD, l'expérience montre que 50% des problèmes de performance auraient pu être détectés dès le développement.
-Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, ...) mais la plupart des problèmes de temps de réponse. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
+Même si des campagnes de performance sont prévues et que des analyses de performances seront intégrées à la CI/CD, l'expérience montre que la plupart des problèmes de performance auraient pu être détectés dès le développement.
+Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, ...) mais la plupart des problèmes de temps de réponse. Il est également souvent possible de simuler de la concurrence et de la charge. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
 
 
 Coté Frontend :

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1223px" preserveAspectRatio="none" style="width:1154px;height:1223px;" version="1.1" viewBox="0 0 1154 1223" width="1154px" zoomAndPan="magnify"><defs/><g><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="132" x="1006" y="9.2822">Diagramme de containeurs</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="222" x="919" y="20.9229">Point de vue applicatif détaillé vue dynamique</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="160" x="981" y="32.5635">Projet Mes Infos En Ligne (MIEL)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="333" x="404" y="51.6299">archi-applicative-detaillee-dynamique</text><!--MD5=[e99ca9b13c2b777bb8efeefc4b66ab37]
+cluster company_system--><rect fill="#FFFFFF" height="356" style="stroke:#444444;stroke-width:1.0;stroke-dasharray:7.0,7.0;" width="709.5" x="7" y="62.875"/><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="171" x="276.25" y="79.7266">SI d'une entreprise</text><text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="62" x="330.75" y="94.6387">[System]</text><!--MD5=[0b1e1d5afbe222e194d3592c757a343c]
+cluster administration--><rect fill="#FFFFFF" height="121" style="stroke:#444444;stroke-width:1.0;stroke-dasharray:7.0,7.0;" width="243" x="905" y="323.875"/><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="227" x="913" y="340.7266">Système administration B</text><text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="62" x="995.5" y="355.6387">[System]</text><!--MD5=[62fb3842b33c0a138932b21a359a9115]
+cluster si--><rect fill="#FFFFFF" height="614" style="stroke:#444444;stroke-width:1.0;stroke-dasharray:7.0,7.0;" width="674.5" x="461" y="468.875"/><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="200" x="698.25" y="485.7266">Système d'information</text><text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="62" x="767.25" y="500.6387">[System]</text><!--MD5=[f38b7e6393ba0664c21da62e7868947a]
+entity entreprise--><rect fill="#686868" height="103.8125" style="stroke:#8A8A8A;stroke-width:1.5;" width="191" x="23" y="295.875"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="92" x="72.5" y="320.7266">Entreprise</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="120.5" y="337.4951"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="89" y="353.792">[person]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="33" y="370.0889">Client Web (PC, tablette,</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51" x="93" y="386.3857">mobile)</text><!--MD5=[33573e971ff506c0f246109ca3fd77bd]
+entity spa--><rect fill="#438DD5" height="117.7813" style="stroke:#3C7FC0;stroke-width:1.5;" width="215" x="485.5" y="284.875"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="114" x="536" y="309.7266">SPA ihm-miel</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="195" x="495.5" y="324.6387">[Container: javascript, React.js]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="595" y="340.4639"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="526" y="356.7607">Interface graphique</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="174" x="504" y="373.0576">permettant de demander</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="536" y="389.3545">ses informations</text><!--MD5=[870e13a82a9bc0252b17e3ad6e742bb1]
+entity mobile--><rect fill="#438DD5" height="136.4063" style="stroke:#3C7FC0;stroke-width:1.5;" width="198" x="494" y="113.875"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="159" x="510.5" y="138.7266">Application mobile</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="42" x="572" y="157.3516">MIEL</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="127" x="529.5" y="172.2637">[Container: Android]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="595" y="188.0889"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="526" y="204.3857">Interface graphique</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="174" x="504" y="220.6826">permettant de demander</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="536" y="236.9795">ses informations</text><!--MD5=[1cf0bab96cde2dfe8ffc5dec0b758635]
+entity scompta--><rect fill="#438DD5" height="52.5938" style="stroke:#3C7FC0;stroke-width:1.5;" width="211" x="921" y="375.375"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="191" x="931" y="400.2266">Système comptabilité</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="90" x="981.5" y="415.1387">[Service REST]</text><!--MD5=[e6bafd685c02e51020f4eb4aafdbb7c4]
+entity resources_statiques--><rect fill="#438DD5" height="136.4063" style="stroke:#3C7FC0;stroke-width:1.5;" width="217" x="484.5" y="519.875"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="142" x="519" y="544.7266">Application Web</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="73" x="556.5" y="563.3516">ihm-miel</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="113" x="536.5" y="578.2637">[Container: nginx]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="595" y="594.0889"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="516.5" y="610.3857">Délivre les ressources</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="197" x="494.5" y="626.6826">statiques (js, html, images...)</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="549" y="642.9795">de l'IHM MIEL</text><!--MD5=[31b50539c062e48f418cd0b43b66a14f]
+entity sm--><rect fill="#438DD5" height="131.75" style="stroke:#3C7FC0;stroke-width:1.5;" width="218" x="484" y="690.875"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="106" x="540" y="715.7266">service-miel</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="168" x="507" y="730.6387">[Container: Tomcat, Spring</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="34" x="576" y="744.6074">Boot]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="595" y="760.4326"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="194" x="498" y="776.7295">Service REST permettant de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="526" y="793.0264">faire une demande</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="544.5" y="809.3232">d'informations</text><!--MD5=[81eb248ad19e595af57658e74548f0fb]
+entity batch--><rect fill="#438DD5" height="101.4844" style="stroke:#3C7FC0;stroke-width:1.5;" width="232" x="477" y="859.375"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="212" x="487" y="884.2266">batch-traiter-demandes</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="121" x="532.5" y="899.1387">[Container: groovy]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="595" y="914.9639"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="186" x="500" y="931.2607">Traite les demandes, lancé</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190" x="498" y="947.5576">par cron toutes les minutes</text><!--MD5=[7edcefaa406c65155265f04249a95b70]
+entity file--><path d="M939.5,693.875 C939.5,683.875 1026.5,683.875 1026.5,683.875 C1026.5,683.875 1113.5,683.875 1113.5,693.875 L1113.5,768.0625 C1113.5,778.0625 1026.5,778.0625 1026.5,778.0625 C1026.5,778.0625 939.5,778.0625 939.5,768.0625 L939.5,693.875 " fill="#438DD5" style="stroke:#3C7FC0;stroke-width:1.5;"/><path d="M939.5,693.875 C939.5,703.875 1026.5,703.875 1026.5,703.875 C1026.5,703.875 1113.5,703.875 1113.5,693.875 " fill="none" style="stroke:#3C7FC0;stroke-width:1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="124" x="964.5" y="722.7266">file-demandes</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="137" x="958" y="737.6387">[Container: RabbitMQ]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="1028.5" y="753.4639"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="953.5" y="769.7607">Stocke les demandes</text><!--MD5=[603ca9136f074a8ec06a33b8559706d8]
+entity bdd--><path d="M942,546.875 C942,536.875 1026.5,536.875 1026.5,536.875 C1026.5,536.875 1111,536.875 1111,546.875 L1111,621.0625 C1111,631.0625 1026.5,631.0625 1026.5,631.0625 C1026.5,631.0625 942,631.0625 942,621.0625 L942,546.875 " fill="#438DD5" style="stroke:#3C7FC0;stroke-width:1.5;"/><path d="M942,546.875 C942,556.875 1026.5,556.875 1026.5,556.875 C1026.5,556.875 1111,556.875 1111,546.875 " fill="none" style="stroke:#3C7FC0;stroke-width:1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="75" x="989" y="575.7266">bdd-miel</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="149" x="952" y="590.6387">[Container: PostgreSQL]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="1028.5" y="606.4639"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="984.5" y="622.7607">Base interne</text><!--MD5=[1d51138b063b4ea7af95f6dcbfdcef50]
+entity compo--><rect fill="#438DD5" height="115.4531" style="stroke:#3C7FC0;stroke-width:1.5;" width="186" x="933.5" y="831.375"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="166" x="943.5" y="856.2266">service-compo-pdf</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="118" x="965.5" y="871.1387">[Container: Wildfly,</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="86" x="983.5" y="885.1074">JasperReport]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="1028.5" y="900.9326"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="970" y="917.2295">Service REST de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="984" y="933.5264">composition</text><!--MD5=[22dcd1ec1e070222742b64049a14c569]
+entity smails--><rect fill="#438DD5" height="85.1875" style="stroke:#3C7FC0;stroke-width:1.5;" width="139" x="957" y="981.375"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="110" x="971.5" y="1006.2266">serveur-mail</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="119" x="967" y="1021.1387">[Container: Postfix]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="1028.5" y="1036.9639"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="971.5" y="1053.2607">Envoi les e-mails</text><!--MD5=[6df9ccaa30d1c2ff96f927482853b615]
+link entreprise to resources_statiques--><path d="M146.36,400.085 C182.96,471.225 244,589.875 244,589.875 C244,589.875 445,589.875 445,589.875 C445,589.875 459.43,589.675 479.24,589.405 " fill="none" id="entreprise-to-resources_statiques" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="484.39,589.335,475.3338,585.464,479.3905,589.4064,475.4481,593.4632,484.39,589.335" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="46" x="319" y="540.7983">Visite</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="199" x="245" y="558.2593">https://mesinfos.gouv.fr</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="120" x="282.5" y="572.9355">[HTTPS, synchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="86" x="301.5" y="586.9043">lecture seule]</text><!--MD5=[c85d957bcccc526a44b132698103e2d3]
+link entreprise to spa--><path d="M214.27,347.075 C290.98,346.425 399.2,345.505 480.15,344.825 " fill="none" id="entreprise-to-spa" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="485.44,344.775,476.406,340.8523,480.4402,344.8179,476.4746,348.852,485.44,344.775" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="110" x="287" y="324.7983">Récupère ses</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="132" x="278.5" y="342.2593">informations via</text><!--MD5=[7cc37134ef9f7b5ae48cead6a6dd65ec]
+link entreprise to mobile--><path d="M214.18,312.895 C231.38,306.535 244,301.875 244,301.875 C244,301.875 386.21,252.835 488.82,217.455 " fill="none" id="entreprise-to-mobile" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="493.67,215.785,483.858,214.9338,488.9425,217.4132,486.4631,222.4977,493.67,215.785" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="110" x="287" y="213.7983">Récupère ses</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="132" x="278.5" y="231.2593">informations via</text><!--MD5=[fcd1bc53a8ff8bb13dd8dccc110d26b9]
+link resources_statiques to spa--><path d="M593,519.585 C593,484.645 593,442.365 593,408.035 " fill="none" id="resources_statiques-to-spa" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="593,403.035,589,412.035,593,408.035,597,412.035,593,403.035" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="83" x="505" y="435.2983">Fournit au</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="129" x="482" y="452.7593">navigateur Web</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="69" x="514.5" y="470.2202">du client</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="120" x="487" y="484.8965">[HTTPS, synchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="86" x="506" y="498.8652">lecture seule]</text><!--MD5=[51f10525928d26d969720f56dab3cbdb]
+link spa to sm--><path d="M485.31,387.505 C409.5,418.215 321.5,453.875 321.5,453.875 C321.5,453.875 321.5,517.875 321.5,517.875 C321.5,517.875 453,673.875 453,673.875 C453,673.875 463.72,680.235 479.23,689.425 " fill="none" id="spa-to-sm" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="483.72,692.085,478.029,684.0468,479.4225,689.5293,473.94,690.9228,483.72,692.085" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="123" x="280.5" y="468.7983">[1.1] Demande</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="110" x="289.5" y="486.2593">d'information</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="120" x="282.5" y="500.9355">[HTTPS, synchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="86" x="301.5" y="514.9043">lecture seule]</text><!--MD5=[4d4e51ad28c3b1d3829418ccf63938ce]
+link mobile to sm--><path d="M493.87,242.065 C470.89,256.015 453,266.875 453,266.875 C453,266.875 321.5,384.875 321.5,384.875 C321.5,384.875 321.5,448.875 321.5,448.875 C321.5,448.875 453,673.875 453,673.875 C453,673.875 463.72,680.235 479.23,689.425 " fill="none" id="mobile-to-sm" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="483.72,692.085,478.029,684.0468,479.4225,689.5293,473.94,690.9228,483.72,692.085" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="123" x="280.5" y="399.7983">[1.1] Demande</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="110" x="289.5" y="417.2593">d'information</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="120" x="282.5" y="431.9355">[HTTPS, synchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="86" x="301.5" y="445.9043">lecture seule]</text><!--MD5=[e3894eb214d4b9c2246af59a1a5733d7]
+link sm to bdd--><path d="M697.78,690.875 C713.45,680.905 724.5,673.875 724.5,673.875 C724.5,673.875 739,654.875 739,654.875 C739,654.875 852.72,626.695 936.87,605.835 " fill="none" id="sm-to-bdd" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="941.86,604.605,932.1633,602.8804,937.0059,605.8042,934.0821,610.6469,941.86,604.605" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="148" x="740" y="569.7983">[1.2] Historisation</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="120" x="754" y="587.2593">de la demande</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="111" x="756.5" y="601.9355">[JDBC, synchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="54" x="787" y="615.9043">écriture]</text><!--MD5=[a5948cf7f25e2a8d21066f6adcc7c959]
+link sm to file--><path d="M702.04,734.525 C723.2,730.145 739,726.875 739,726.875 C739,726.875 889,726.875 889,726.875 C889,726.875 909.38,727.475 934.38,728.205 " fill="none" id="sm-to-file" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="939.44,728.355,930.5579,724.0996,934.442,728.2122,930.3294,732.0963,939.44,728.355" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="147" x="740.5" y="677.7983">[1.3] Stockage de</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="95" x="766.5" y="695.2593">la demande</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="104" x="760" y="709.9355">[JMS, synchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="54" x="787" y="723.9043">écriture]</text><!--MD5=[9d6d2a40b7c8fff5f50dc87e6a05f1e3]
+link batch to file--><path d="M706.82,859.305 C725.54,850.905 739,844.875 739,844.875 C739,844.875 889,812.875 889,812.875 C889,812.875 913.82,797.965 942.29,780.865 " fill="none" id="batch-to-file" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="946.89,778.095,937.1146,779.2955,942.6025,780.6675,941.2305,786.1554,946.89,778.095" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="123" x="750" y="749.7983">[2.1] Dépile les</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="85" x="771.5" y="767.2593">demandes</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="112" x="756" y="781.9355">[JMS, asynchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="73" x="775.5" y="795.9043">lecture puis</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="79" x="774.5" y="809.873">suppression]</text><!--MD5=[be00085091a1bc3d162589b5e3176d1b]
+link batch to scompta--><path d="M689.53,859.365 C709.43,848.845 724.5,840.875 724.5,840.875 C724.5,840.875 739,546.875 739,546.875 C739,546.875 884.39,473.295 968.03,430.965 " fill="none" id="batch-to-scompta" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="972.95,428.475,963.1137,428.9725,968.4894,430.7339,966.728,436.1096,972.95,428.475" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="40" x="791.5" y="389.7983">[2.2]</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="108" x="757.5" y="407.2593">Récupération</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="104" x="759.5" y="424.7202">informations</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="95" x="766.5" y="442.1812">comptables</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="120" x="752" y="456.8574">[HTTPS, synchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="86" x="771" y="470.8262">lecture seule]</text><!--MD5=[cd9a58046204cef197a2f3a62a4a6dee]
+link batch to compo--><path d="M709.31,912.265 C726.72,912.625 739,912.875 739,912.875 C739,912.875 889,912.875 889,912.875 C889,912.875 906.11,909.865 928.22,905.975 " fill="none" id="batch-to-compo" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="933.32,905.085,923.761,902.7131,928.3964,905.9556,925.1539,910.5909,933.32,905.085" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="114" x="754.5" y="863.7983">[2.3] Création</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="33" x="797.5" y="881.2593">PDF</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="112" x="756" y="895.9355">[HTTP, synchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="49" x="789.5" y="909.9043">lecture]</text><!--MD5=[eaaeaa2406bfbada0033e97717f8f7df]
+link batch to smails--><path d="M672.86,960.455 C706.87,982.265 739,1002.875 739,1002.875 C739,1002.875 866.97,1012.255 951.86,1018.475 " fill="none" id="batch-to-smails" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="956.88,1018.845,948.202,1014.1874,951.8938,1018.4735,947.6077,1022.1653,956.88,1018.845" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="123" x="750" y="935.7983">[2.4] Demande</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="140" x="741.5" y="953.2593">d'envoi mail avec</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="33" x="797.5" y="970.7202">PDF</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="114" x="755" y="985.3965">[SMTP, synchrone,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="67" x="780.5" y="999.3652">exécution]</text><!--MD5=[bcad36a888d9298dca6dce4e4e3fdc11]
+link smails to entreprise--><path d="M956.82,1027.985 C867.98,1033.295 724.5,1041.875 724.5,1041.875 C724.5,1041.875 453,1041.875 453,1041.875 C453,1041.875 226.61,570.775 146.88,404.855 " fill="none" id="smails-to-entreprise" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="144.57,400.035,144.8788,409.879,146.7429,404.5381,152.0838,406.4023,144.57,400.035" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="127" x="527" y="992.7983">[2.5] Envoi mail</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="76" x="555" y="1010.2593">avec PDF</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="41" x="570.5" y="1024.9355">[SMTP,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="136" x="525" y="1038.9043">synchrone,exécution]</text><rect fill="#DDDDDD" height="111.7813" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="199" x="933" y="1095.875"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="0" x="1009" y="1115.8701"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="39" x="1014" y="1115.8701">Type</text><rect fill="#08427B" height="16.2969" style="stroke:none;stroke-width:1.0;" width="70" x="939" y="1119.1719"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="963" y="1132.167"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="1013" y="1132.167">person</text><rect fill="#686868" height="16.2969" style="stroke:none;stroke-width:1.0;" width="70" x="939" y="1135.4688"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="963" y="1148.4639"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108" x="1013" y="1148.4639">external person</text><rect fill="#1168BD" height="16.2969" style="stroke:none;stroke-width:1.0;" width="70" x="939" y="1151.7656"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="951" y="1164.7607"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="1013" y="1164.7607">system</text><rect fill="#999999" height="16.2969" style="stroke:none;stroke-width:1.0;" width="70" x="939" y="1168.0625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="963" y="1181.0576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="1013" y="1181.0576">external system</text><rect fill="#438DD5" height="16.2969" style="stroke:none;stroke-width:1.0;" width="70" x="939" y="1184.3594"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="951" y="1197.3545"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="1013" y="1197.3545">container</text><line style="stroke:#000000;stroke-width:1.0;" x1="939" x2="1126" y1="1102.875" y2="1102.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="939" x2="1126" y1="1119.1719" y2="1119.1719"/><line style="stroke:#000000;stroke-width:1.0;" x1="939" x2="1126" y1="1135.4688" y2="1135.4688"/><line style="stroke:#000000;stroke-width:1.0;" x1="939" x2="1126" y1="1151.7656" y2="1151.7656"/><line style="stroke:#000000;stroke-width:1.0;" x1="939" x2="1126" y1="1168.0625" y2="1168.0625"/><line style="stroke:#000000;stroke-width:1.0;" x1="939" x2="1126" y1="1184.3594" y2="1184.3594"/><line style="stroke:#000000;stroke-width:1.0;" x1="939" x2="1126" y1="1200.6563" y2="1200.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="939" x2="939" y1="1102.875" y2="1200.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="1009" x2="1009" y1="1102.875" y2="1200.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="1126" x2="1126" y1="1102.875" y2="1200.6563"/><!--MD5=[86c5d6b1bf5d495841b231cf4e27955c]
+@startuml
+!include archi-applicative-detaillee-statique.puml
+title  archi-applicative-detaillee-dynamique
+header Diagramme de containeurs \nPoint de vue applicatif détaillé vue dynamique\n Projet Mes Infos En Ligne (MIEL)
+Rel(entreprise,resources_statiques,"Visite https://mesinfos.gouv.fr", "HTTPS, synchrone, lecture seule")
+Rel(entreprise,spa,"Récupère ses informations via")
+Rel(entreprise,mobile,"Récupère ses informations via")
+Rel(resources_statiques,spa,"Fournit au navigateur Web du client","HTTPS, synchrone, lecture seule")
+Rel(spa, sm, "[1.1] Demande d'information","HTTPS, synchrone, lecture seule")
+Rel(mobile, sm, "[1.1] Demande d'information","HTTPS, synchrone, lecture seule")
+Rel(sm, bdd, "[1.2] Historisation de la demande","JDBC, synchrone, écriture")
+Rel(sm, file, "[1.3] Stockage de la demande","JMS, synchrone, écriture")
+Rel(batch, file, "[2.1] Dépile les demandes","JMS, asynchrone, lecture puis suppression")
+Rel(batch, scompta, "[2.2] Récupération informations comptables","HTTPS, synchrone, lecture seule")
+Rel(batch, compo, "[2.3] Création PDF","HTTP, synchrone, lecture")
+Rel(batch, smails, "[2.4] Demande d'envoi mail avec PDF","SMTP, synchrone, exécution")
+Rel(smails, entreprise, "[2.5] Envoi mail avec PDF","SMTP, synchrone,exécution")
+
+@enduml
+
+@startuml
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 14
+    Thickness 2
+}
+
+skinparam rectangle<<zone>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<unité déployable>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+skinparam database<<unité déployable>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+
+
+
+
+
+
+title  archi-applicative-detaillee-statique
+header Diagramme de containeurs \nPoint de vue applicatif détaillé vue statique \n Projet Mes Infos En Ligne (MIEL)
+left to right direction
+hide stereotype
+legend right
+|=              |= Type |
+|<#08427B>      | person |
+|<#686868>      | external person |
+|<#1168BD>   | system |
+|<#999999>      | external system |
+|<#438DD5>   | container |
+endlegend
+skinparam linetype polyline
+rectangle "==SI d'une entreprise\n<size:12>[System]</size>" <<zone>> as company_system {
+  rectangle "==Entreprise\n\n [person] \nClient Web (PC, tablette, mobile)" <<external_person>> as entreprise
+  rectangle "==SPA ihm-miel\n//<size:12>[Container: javascript, React.js]</size>//\n\n Interface graphique permettant de demander ses informations" <<unité déployable>> as spa
+  rectangle "==Application mobile MIEL\n//<size:12>[Container: Android]</size>//\n\n Interface graphique permettant de demander ses informations" <<unité déployable>> as mobile
+}
+
+rectangle "==Système administration B\n<size:12>[System]</size>" <<zone>> as administration {
+    rectangle "==Système comptabilité\n//<size:12>[Service REST]</size>//" <<unité déployable>> as scompta 
+}
+
+rectangle "==Système d'information\n<size:12>[System]</size>" <<zone>> as si{
+    rectangle "==Application Web ihm-miel\n//<size:12>[Container: nginx]</size>//\n\n Délivre les ressources statiques (js, html, images...) de l'IHM MIEL" <<unité déployable>> as resources_statiques
+    rectangle "==service-miel\n//<size:12>[Container: Tomcat, Spring Boot]</size>//\n\n Service REST permettant de faire une demande d'informations" <<unité déployable>> as sm
+    rectangle "==batch-traiter-demandes\n//<size:12>[Container: groovy]</size>//\n\n Traite les demandes, lancé par cron toutes les minutes" <<unité déployable>> as batch
+    database "==file-demandes\n//<size:12>[Container: RabbitMQ]</size>//\n\n Stocke les demandes" <<unité déployable>> as file
+    database "==bdd-miel\n//<size:12>[Container: PostgreSQL]</size>//\n\n Base interne" <<unité déployable>> as bdd
+    rectangle "==service-compo-pdf\n//<size:12>[Container: Wildfly, JasperReport]</size>//\n\n Service REST de composition" <<unité déployable>> as compo
+    rectangle "==serveur-mail\n//<size:12>[Container: Postfix]</size>//\n\n Envoi les e-mails" <<unité déployable>> as smails     
+}
+title  archi-applicative-detaillee-dynamique
+header Diagramme de containeurs \nPoint de vue applicatif détaillé vue dynamique\n Projet Mes Infos En Ligne (MIEL)
+entreprise - -> resources_statiques : "===Visite https://mesinfos.gouv.fr\n//<size:12>[HTTPS, synchrone, lecture seule]</size>//"
+entreprise - -> spa : "===Récupère ses informations via"
+entreprise - -> mobile : "===Récupère ses informations via"
+resources_statiques - -> spa : "===Fournit au navigateur Web du client\n//<size:12>[HTTPS, synchrone, lecture seule]</size>//"
+spa - -> sm : "===[1.1] Demande d'information\n//<size:12>[HTTPS, synchrone, lecture seule]</size>//"
+mobile - -> sm : "===[1.1] Demande d'information\n//<size:12>[HTTPS, synchrone, lecture seule]</size>//"
+sm - -> bdd : "===[1.2] Historisation de la demande\n//<size:12>[JDBC, synchrone, écriture]</size>//"
+sm - -> file : "===[1.3] Stockage de la demande\n//<size:12>[JMS, synchrone, écriture]</size>//"
+batch - -> file : "===[2.1] Dépile les demandes\n//<size:12>[JMS, asynchrone, lecture puis suppression]</size>//"
+batch - -> scompta : "===[2.2] Récupération informations comptables\n//<size:12>[HTTPS, synchrone, lecture seule]</size>//"
+batch - -> compo : "===[2.3] Création PDF\n//<size:12>[HTTP, synchrone, lecture]</size>//"
+batch - -> smails : "===[2.4] Demande d'envoi mail avec PDF\n//<size:12>[SMTP, synchrone, exécution]</size>//"
+smails - -> entreprise : "===[2.5] Envoi mail avec PDF\n//<size:12>[SMTP, synchrone,exécution]</size>//"
+
+@enduml
+
+PlantUML version 1.2021.00(Sun Jan 10 11:25:05 CET 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

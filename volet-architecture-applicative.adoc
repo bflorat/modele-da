@@ -245,7 +245,7 @@ Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhens
 Si l'application est particulièrement complexe, faire un schéma par chaîne de liaison.
 
 Utiliser comme ID des flux une simple séquence non signifiante (1, 2, ..., n).
-Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux composants alors qu'en réalité, il passe par un répartiteur de charge intermédiaire). Ce niveau de détail sera donné dans le volet infrastructure. 
+Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux composants alors qu'en réalité, il passe par un répartiteur de charge intermédiaire : ce niveau de détail sera donné dans le volet infrastructure). 
 
 Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.
 ====
@@ -274,6 +274,8 @@ Exposer les modules applicatifs dans leurs différentes zones ou domaines.
 Exemple: module X, Y et Z dans le domaine GED. Modules A, B dans le domaine PERSONNE.
 ====
 
+image:diagrams/archi-applicative-detaillee-statique.svg[Diagramme d'Architecture applicative détaillée (vue statique)] 
+
 === Vision dynamique
 
 [TIP]
@@ -282,12 +284,13 @@ Exposer les modules applicatifs dans leurs différentes zones ou domaines avec l
 
 Ne pas détailler les flux techniques (comme les flux liés à la supervision ou au clustering).
 
-Si l'application est complexe, proposer un schéma global exposant tous les flux applicatifs puis un schéma par chaîne de liaison principale en numérotant les échanges (utiliser un diagramme de séquence ou (mieux) un Dynamic Diagram C4). Il est possible également de détailler les chaînes de liaison par fonctionnailité principale.
+Si l'application est complexe, proposer un schéma global exposant tous les flux applicatifs puis un schéma par chaîne de liaison principale en numérotant les échanges (utiliser un diagramme de séquence ou (mieux) un Dynamic Diagram C4). 
+Il est possible également de détailler les chaînes de liaison par fonctionnailité principale.
 ====
 ====
 Exemple: 
 
-image::diagrams/archi-applicative-detaillee.svg[Diagramme architecture applicative détaillée]
+image:diagrams/archi-applicative-detaillee-dynamique.svg[Diagramme architecture applicative détaillée (vue dynamique)] 
 
 ====
 

@@ -19,14 +19,11 @@ Chaque volet expose les contraintes, exigences puis solutions mises en oeuvre.
 
 [TIP]
 ====
-A lire en priorité en fonction de votre point de vue :
+A lire en priorité en fonction de votre rôle :
 
 image:./resources/metiers.png[à lire en priorité]
 ====
 
 
-## Reste à faire identifié sur l'architecture
+## Reste à faire identifié
 
-* Sujet 1
-* Sujet 2
-* ...
