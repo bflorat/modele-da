@@ -544,9 +544,7 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 
 ====
 ====
-Exemple (Spring) : 
-
-les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
+Exemple : les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
 ====
 
 === Gestion de la configuration
@@ -585,7 +583,6 @@ Exemple :
 * Chaque fonctionnalité, refactoring significatif ou bugfix sera donc réalisé sur une branche topic dédiée.
 * Une branche de maintenance sera tirée sur chaque tag de version x.y. Seuls les bugfixs seront mergés dans les branches de maintenance depuis `develop` via des `cherry-pick`.
 ====
-
 
 === Versioning
 
@@ -628,14 +625,7 @@ Quelles sont les règles concernant l'encodage des chaînes de caractère ? Ceci
 ==== 
 
 ==== 
-Exemple 1 : Le seul encodage autorisé dans tous les modules et composants techniques est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat...), des sources, des bases de données et des fichiers. 
-
-Même les `.properties` lus en Java doivent être écrits en UTF-8. Il faut alors préciser l'encodage lors du parsing : 
-
-``` 
-FileInputStream input = new FileInputStream(new File("monfichier.properties")); 
-props.load(new InputStreamReader(input, Charset.forName("UTF-8"))); 
-``` 
+Exemple 1 : Le seul encodage autorisé dans tous les modules et composants techniques est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat...), des sources, des fichiers de configuration, des bases de données et des fichiers. 
 
 NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des  .properties (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en UTF-8. 
 
