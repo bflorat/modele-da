@@ -93,11 +93,11 @@ Exemple 1 : l'hypervision se fait 24/7/365
 Exemple 2 : le service support production est disponible durant les heures de bureau mais une astreinte est mise en place avec alerting par e-mail et SMS en 24/7 du lundi au vendredi.
 ====
 
-==== GTR
+==== MTTR
 
 [TIP]
 ====
-Donner les éléments permettant d'estimer la garantie de temps de rétablissement. A noter qu'il est important de distinguer le MTTD du GTR (ou MTTR en anglais) car ce n'est pas parce qu'une panne est détectée que les compétences ou ressources nécessaires à sa correction sont disponibles.
+Donner les éléments permettant d'estimer le temps moyen de réparation (Mean Time To Repair en anglais). A noter qu'il est important de distinguer le MTTD du MTTR. En effet, ce n'est pas parce qu'une panne est détectée que les compétences ou ressources nécessaires à sa correction sont disponibles.
 
 Préciser les plages de présence des exploitants en journée et les possibilités d'astreintes.
 
@@ -150,10 +150,11 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 Donner ici le niveau de sécurité du datacenter selon l’échelle Uptime Institute (Tier de I à IV). 
 La plupart des datacenters sont de niveau I ou II.
 
-.niveaux Tier des datacenters (Source : Wikipedia)
+
+.Niveaux Tier des datacenters (source : Wikipedia)
+[cols="1,5,2,2,2"]
 |====
-Tier|Caractéristiques|Taux de disponibilité| Indisponibilité statistique annuelle |Maintenance à chaud possible ? | Tolérance
-aux pannes ?
+|Niveau Tier|Caractéristiques|Taux de disponibilité|Indisponibilité statistique annuelle| Maintenance à chaud possible ?| Tolérance aux pannes ?
 
 |Tier I
 |Non redondant
@@ -161,24 +162,28 @@ aux pannes ?
 |28,8 h
 |Non
 |Non
+
 |Tier II
 |Redondance partielle
 |99,749 %
 |22 h
 |Non
 |Non
+
 |Tier III
 |Maintenabilité
 |99,982 %
 |1,6 h
 |Oui
 |Non
+
 |Tier IV
 |Tolérance aux pannes
 |99,995 %
 |0,4 h
 |Oui
 |Oui
+
 |====
 ====
 
@@ -194,36 +199,45 @@ En prenant en compte les éléments précédents, estimer la disponibilité plan
 ====
 
 ====
-Exemple : <disponibilité datacenter> x <plage de fonctionnement effective> x <disponibilité système > x <disponibilité hardware> = 99.8 x 99.99 x 99.6 x 99.99 =~ *99.4%*.
+Exemple : <disponibilité datacenter> * <plage de fonctionnement effective> * <disponibilité système > * <disponibilité hardware> = 99.8 x 99.99 x 99.6 x 99.99 =~ *99.4%*.
 ====
 
 ==== Gestion des catastrophes
 
 [TIP]
 ====
+
+Les catastrophes peuvent être classées en trois catégories:
+
+* Naturelle (tremblements de terre, inondations, ouragans, canicules...).
+* Incident sur l'infrastructure du datacenter (accidentel comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, les erreurs critiques d'administrateurs ou intentionnelles: militaire, terroriste, sabotage ...).
+* Cyber (DDOS, virus, Ransomware ... )
+
 PRA (Plan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie...). Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il exige au minium un doublement du datacenter. 
 
-Un PCA permet de poursuivre les activités critiques de l’organisation (en général dans un mode dégradé) sans interruption notable, voir la norme ISO 22301. Ce principe est réservé aux organisations très matures car il exige des dispositifs techniques coûteux et complexes (filesystems distribués et concurrents par exemple).
+Un PCA permet de poursuivre les activités critiques de l’organisation (en général dans un mode dégradé) sans interruption notable. Ce principe est réservé aux organisations assez matures car il exige des dispositifs techniques coûteux et complexes (filesystems distribués et concurrents par exemple).
 
-Le PRI (ce qui intéresse l'architecte) est Plan de Reprise Informatique. Il définit les moyens techniques et procédures permettant de restaurer les données et les services dans le cadre d'un PRA ou d'un PCA. Le PRI n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou un PCA. Par exemple, si on vise un PCA, il faut prévoir des clusters actifs-actifs multi-zonaux (situés dans des datacenters distants géographiquement) alors que pour un PRA, l'important est la qualité et la vitesse de sauvegarde/restauration des données dans le datacenter de secours. 
+Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou un PCA. Par exemple, si on vise un PCA, il faut prévoir des clusters actifs-actifs multi-zonaux (situés dans des datacenters distants géographiquement) alors que pour un PRA, l'important est la qualité et la vitesse de sauvegarde/restauration des données dans le datacenter de secours. 
 
-Note: dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, des deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
+NOTE: Dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, des deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
 
-Note 2: la gestion des catastrophes est un sujet très complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS...) que de gérer cette complexité pour vous.
+NOTE: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS...) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
 
 Décrire entre autres :
 
 * Les matériels redondés dans le second datacenter, nombre de serveurs de spare, capacité du datacenter de secours par rapport au datacenter nominal.
 * Pour un PRA, les dispositifs de restauration (OS, données, applications) prévues.
-* Pour un PRA, donner le Recovery Time Objective (durée maximale admissible de rétablissement en heures) et le Recovery Point Objective  (durée maximale admissible de données perdues en heures) de l’organisation.
+* Pour un PRA, donner le *Recovery Time Objective* (durée maximale admissible de rétablissement en heures) et le *Recovery Point Objective*  (durée maximale admissible de données perdues en heures depuis la dernière sauvegarde).
 * Pour un PCA les dispositifs de réplication de données (synchrone ? fil de l’eau ? Combien de transactions peuvent-être perdues ?).
 * Présenter la politique de failback (réversibilité) : doit-on rebasculer vers le premier datacenter ? Comment ?
 * Comment sont organisés les tests de bascule à blanc ? Avec quelle fréquence ?
 ====
 ====
-Exemple : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le datacenter de secours via la technologie vSphere Metro Storage Cluster utilisant SRDF en mode asynhrone pour la réplication inter-baies. En cas de catastrophe, la VM répliquée sur le site de secours est à jour et prête à démarrer.
+Exemple de PRA : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le datacenter de secours via la technologie vSphere Metro Storage Cluster utilisant SRDF en mode asynchrone pour la réplication inter-baies. En cas de catastrophe, la VM répliquée sur le site de secours est à jour et prête à démarrer. Le RPO est de ~0 secs et le RTO de 30 mins.
 
-Exemple 2 (PME avec son propre datacenter à Paris en zone inondable Seine) : Stockage de deux serveurs de spare dans les locaux de Lille. Sauvegarde à chaud toutes les 4 heures des données principales de l'entreprise et envoi (avec chiffrement client) sur BackBlaze.com. RPO de 4h, RTO de 2H.
+Autre exemple de PRA (PME avec son propre datacenter à Paris) : Stockage de deux serveurs de spare dans les locaux de Lille. Sauvegarde à chaud toutes les quatre heures des données principales de l'entreprise et envoi (avec chiffrement client) sur BackBlaze.com. Le RPO est de 4h, le RTO de 2H.
+
+Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de Replicat Set. Le système est auto-regulé par Kubernetes et tout plantage d'un DC sera compencé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. Le RTO est de 0, le RPO est ~0 (zéro strict est impossible, voir le théorème de CAP).
 ====
 
 
