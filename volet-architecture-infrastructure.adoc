@@ -569,7 +569,7 @@ Selon l'ADEME (estimation 2014), les émissions équivalent CO2 d'un KWH en Fran
 Exemple 1 : La consommation électrique moyenne causée par l’affichage d'une page Web ne devra pas dépasser 10mWH, soit pour 10K utilisateurs qui affichent en moyenne 100 pages 200 J par an : 50 g/KWH x 10mWH x 100 x 10K x 200 = 100 Kg équivalent CO2 / an.
 ====
 ====
-Exemple 2 : La classe énergétique WEA2 du site devra être de C ou mieux.
+Exemple 2 : Le Power usage effectiveness (PUE) du site devra être de 1.5 ou moins.
 ====
 ====
 Exemple 3 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2020.
@@ -577,11 +577,11 @@ Exemple 3 : La consommation d'encre et de papier devra être réduite de 10% par
 
 == Architecture cible
 
-=== Principes de l'architecture technique
+=== Principes
 
 [TIP]
 ====
-Quels sont les grands principes techniques de notre application ?
+Quels sont les grands principes d'infrastructure de notre application ?
 ====
 ====
 Exemples :
@@ -591,144 +591,199 @@ Exemples :
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
-=== Disponibilité
-
-[TIP]
-====
-Donner ici les dispositifs permettant d'atteindre les <<Exigences de disponibilité>>.
-
-Les mesures permettant d’atteindre la disponibilité exigée sont très nombreuses et devront être choisies par l’architecte en fonction de leur apport et de leur coût (financier, en complexité, …). 
-
-Nous regroupons les dispositifs de disponibilité en quatre grandes catégories :
-
-* Dispositifs de supervision (technique et applicative) permettant de détecter au plus tôt les pannes et donc de limiter le MTDT (temps moyen de détection).
-* Dispositifs organisationnels : 
-** la présence humaine (astreintes, heures de support étendues...) qui permet d'améliorer le MTTR (temps moyen de résolution) et sans laquelle la supervision est inefficiente ;
-** La qualité de la gestion des incidents (voir les bonnes pratiques ITIL), par exemple un workflow de résolution d'incident est-il prévu ? si oui, quel est sa complexité ? sa durée de mise en œuvre ? si elle nécessite par exemple plusieurs validations hiérarchiques, la présence de nombreux exploitants n'améliore pas forcement le MTTR.
-* Dispositifs de redondance technique (clusters, RAID...) qu'il ne faut pas surestimer si les dispositifs précédents sont insuffisants.
-* Dispositifs de restauration de données : la procédure de restauration est-t-elle bien définie ? testée ? d'une durée compatible avec les exigences de disponibilité ? C'est typiquement utile dans le cas de perte de données causée par une fausse manipulation ou bug dans le code : il faut alors arrêter l'application et dans cette situation, pouvoir restaurer rapidement la dernière sauvegarde améliore grandement le MTTR.
-
-====
-[TIP]
-====
-Rappels sur les principes de disponibilité :
-
-* La disponibilité d’un ensemble de composants en série : `D = D1 * D2 * … * Dn`. Exemple : la disponibilité d’une application utilisant un serveur Tomcat à 98 % et une base Oracle à 99 % sera de 97.02 %.
-* La disponibilité d’un ensemble de composants en parallèle : `D = 1 – (1-D1) * (1- D2) * ..* (1-Dn)`. Exemple : la disponibilité de trois serveurs Nginx en cluster dont chacun possède une disponibilité de 98 % est de 99.999 %.
-* Il convient d'être cohérent sur la disponibilité de chaque maillon de la chaîne de liaison : rien ne sert d'avoir un cluster actif/actif de serveurs d'application JEE si tous ces serveurs attaquent une base de donnée localisée sur un unique serveur physique avec disques sans RAID.
-* On estime un système comme hautement disponible (HA) à partir de 99 % de disponibilité.
-* On désigne par «spare» un dispositif (serveur, disque, carte électronique...) de rechange qui est dédié au besoin de disponibilité mais qui n'est pas activé en dehors des pannes. En fonction du niveau de disponibilité recherché, il peut être dédié à l’application ou mutualisé au niveau SI. 
-* Le niveau de redondance d'un dispositif peut s'exprimer avec la notion suivante (avec N, le nombre de dispositifs assurant un fonctionnement correct en charge) : 
-
-** N : aucune redondance (exemple : il faut deux alimentation pour le serveur, si une tombe, le serveur s'arrête)
-** N+1 : un composant de rechange est disponible (mais pas forcement actif), on peut supporter la panne d'un matériel (exemple : on a une alimentation de spare disponible).
-** 2N : le système est entièrement redondé (mais les composants de remplacement ne sont pas forcement actifs) et peut supporter la perte de la moitié des composants (exemple : on dispose de quatre alimentations)
-====
-[TIP]
+=== Disponibilité 
+ 
+[TIP] 
 ==== 
-Clustering:
+Donner ici les dispositifs permettant d'atteindre les <<Exigences de disponibilité>>. 
 
-* Un cluster est un ensemble de nœuds (machines) hébergeant la même application.
-* Le failover (bascule) est la capacité d'un cluster de s'assurer qu'en cas de panne, les requêtes ne sont plus envoyées vers le nœud défectueux mais vers un nœud opérationnel.
-* En fonction du niveau de disponibilité recherché, chaque nœud peut être :
+Les mesures permettant d’atteindre la disponibilité exigée sont très nombreuses et devront être choisies par l’architecte en fonction de leur apport et de leur coût (financier, en complexité, …).  
 
-** actif : le nœud traite les requêtes (exemple: un serveur Apache parmi dix et derrière un répartiteur de charge). Temps de failover : nul ;
-** passif en mode «hot standby» : le nœud est installé et démarré mais ne traite pas les requêtes (exemple: une base MySql slave qui devient master en cas de panne de ce dernier via l'outil mysqlfailover). Temps de failover : de l'ordre de quelques secondes (temps de la détection de la panne) ;
-** passif en mode «warm standby» : le nœud est démarré et l'application est installée mais n'est pas démarrée (exemple: un serveur avec une instance Tomcat éteinte hébergeant notre application). En cas de panne, notre application est démarrée automatiquement. Temps de failover : de l'ordre de la minute (temps de la détection de la panne et d'activation de l'application) ;
-** passif en mode «cold standby» : le nœud est un simple spare. Pour l'utiliser, il faut installer l'application et la démarrer. Temps de failover : de l'ordre de dizaines de minutes avec solutions de virtualisation (ex : KVM live migration) et/ou de containers (Docker) à une journée lorsqu'il faut installer/restaurer et démarrer l'application.
-* Il existe deux architectures de clusters actif/actif : 
-** Les clusters actifs/actifs à couplage faible dans lesquels un nœud est totalement indépendant des autres, soit parce que l'applicatif est stateless (le meilleur cas), soit parce que les données de contexte (typiquement une session HTTP) sont gérées isolément par chaque nœud. Dans le dernier cas, le répartiteur de charge devra assurer une affinité de session, c'est à dire toujours router les requêtes d'un client vers le même nœud et en cas de panne de ce nœud, les utilisateurs qui y sont routés perdent leurs données de session et doivent se reconnecter. Note: bien entendu, les nœuds partagent tous les mêmes données persistées en base, les données de contexte sont uniquement des données transitoires en mémoire.
-** Les clusters actifs/actifs à couplage fort (clusters à tolérance de panne) dans lesquels tous les nœuds forment en quelque sorte une super-machine logique partageant les mêmes données. Dans cette architecture, toute donnée de contexte doit être répliquée dans tous les nœuds (ex : cache distribué de sessions HTTP répliqué avec JGroups). 
-====
-[TIP]
-====
-Failover:
+Nous regroupons les dispositifs de disponibilité en quatre grandes catégories : 
 
-Le failover (bascule) est la capacité d'un cluster à basculer un flux de requêtes d'un nœud vers un autre en cas de panne.
+* Dispositifs de *supervision* (technique et applicative) permettant de détecter au plus tôt les pannes et donc de limiter le MTDT (temps moyen de détection). 
 
-Sans failover, c'est au client de détecter la panne et de rejouer sa requête sur un autre nœud. Dans les faits, ceci est rarement praticable et les clusters disposent presque toujours de dispositifs de failover.
+* *Dispositifs organisationnels* :  
 
-Une solution de failover peut être décrite par les attributs suivants :
+** la présence humaine (astreintes, heures de support étendues...) qui permet d'améliorer le MTTR (temps moyen de résolution) et sans laquelle la supervision est inefficiente ; 
 
-* Automatique ou manuelle ? (dans une solution HA, le failover est en général automatique à moins de disposer d’astreintes, d'un bon système d'alertes et d'une exploitation extrêmement organisée).
-* Quelle stratégie de failover et de failback ? 
-** dans un cluster dit "N+1", on bascule vers un nœud passif qui devient actif et le restera (le nœud en panne une fois réparé pourra devenir le nouveau serveur de secours). Si un serveur cible ne tiendrait pas seul la charge, on prévoit plusieurs serveurs passifs (cluster dit "N+M") ;
-** dans un cluster "N-to-1", on rebasculera (failback) sur le serveur qui était tombé en panne une fois réparé et le serveur basculé redeviendra le serveur de secours ;
-** dans un cluster N-to-N (architecture en voie de démocratisation avec le cloud de type PaaS comme App-Engine ou CaaS comme Kubernetes ou Rancher) : on distribue les applications du nœud en panne vers d'autres nœuds actifs (le cluster ayant été dimensionné en prévision de cette éventuelle surcharge).
-* Transparent via à vis de l’appelant ou pas ? En général, les requêtes pointant vers un serveur dont la panne n'a pas encore été détectée tombent en erreur (en timeout la plupart du temps). Certains dispositifs ou architectures de FT (tolérance de panne) permettent d'assurer que le client n'en aura pas conscience ;
-* Quelle solution de détection de panne ? 
-** les répartiteurs de charge utilisent des sondes (health check) très variées (requêtes bouchonnées, analyse du CPU, des logs, etc...) vers les nœuds qu'ils contrôlent ; 
-** les détections de panne des clusters actifs/passifs fonctionnent la plupart du temps par écoute des palpitations (heartbeat) du serveur actif par le serveur passif, par exemple via des requêtes multicast UDP dans le protocole VRRP utilisé par keepalived.
-* Quelle délai de détection de la panne ? il convient de paramétrer correctement (le plus court possible sans dégradation de performance) les solutions de détection de panne pour limiter la durée de failover.
-* Quelle pertinence de la détection ? le serveur en panne est-il *vraiment* en panne ? un mauvais paramétrage peut provoquer une indisponibilité totale d'un cluster alors que les nœuds sont sains. 
-====
-[TIP]
-====
-Quelques mots sur les répartiteurs de charge :
+** La qualité de la gestion des incidents (voir les bonnes pratiques ITIL), par exemple un workflow de résolution d'incident est-il prévu ? si oui, quel est sa complexité ? sa durée de mise en œuvre ? si elle nécessite par exemple plusieurs validations hiérarchiques, la présence de nombreux exploitants affecte le MTTR. 
 
-* Un répartiteur de charge (Load Balancer = LB) est une brique obligatoire pour un cluster actif/actif.
-* Dans le cas des clusters, une erreur classique est de créer un SPOF au niveau du répartiteur de charge. On va alors diminuer la disponibilité totale du système au lieu de l'améliorer. Dans la plupart des clusters à vocation de disponibilité (et pas seulement de performance), il faut redonder le répartiteur lui-même en mode actif/passif (et évidemment pas actif/actif sinon, il faudrait un "répartiteur de répartiteurs"). Le répartiteur passif doit surveiller à fréquence élevée le répartiteur actif et le replacer dès qu'il tombe (les requêtes arrivant au LB en panne avant la bascule sont en erreur).
-* Il est crucial de configurer correctement et à fréquence suffisante les tests de vie (heathcheck) des nœuds vers lesquels le répartiteur distribue la charge car sinon, le répartiteur va continuer à envoyer des requêtes vers des nœuds tombés ou en surcharge.
-* Certains LB avancés (exemple: option redispatch de HAProxy) permettent la transparence vis à vis de l'appelant en configurant des rejeux vers d'autres nœuds en cas d'erreur ou timeout et donc d'améliorer la tolérance de panne puisqu'on évite de retourner une erreur à l'appelant pendant la période de pré-détection de la panne.
-* Lisser la charge entre les nœuds et ne pas forcement se contenter de round robin. Un algorithme simple est le LC (Least Connection) permettant au répartiteur de privilégier les nœuds les moins chargés, mais il existe bien d'autres algorithmes plus ou moins complexes (systèmes de poids par nœud ou de combinaison charge + poids par exemple).
-* Dans le monde Open Source, voir par exemple LVS + keepalived ou HAProxy + keepalived.
+* Dispositifs de *haute disponibilité (HA)* (clusters, RAID...) qu'il ne faut pas surestimer si les dispositifs précédents sont insuffisants. 
 
-====
+* Dispositifs de *restauration de données* : la procédure de restauration est-t-elle bien définie ? testée ? d'une durée compatible avec les exigences de disponibilité ? C'est typiquement utile dans le cas de perte de données causée par une fausse manipulation ou bug dans le code : il faut alors arrêter l'application et dans cette situation, pouvoir restaurer rapidement la dernière sauvegarde améliore grandement le MTTR. 
+ 
 
-[TIP]
-====
-La tolérance de panne :
+==== 
+[TIP] 
+==== 
 
-La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la disponibilité, elle concerne la capacité d'un système à passer outre les pannes sans perte de données. 
+*Principes de disponibilité et de redondance*: 
 
-Par exemple, un disque RAID 1 assure une tolérance de panne transparente ; en cas de panne, le processus écrit ou lit sans erreur après le failover automatique vers le disque sain. 
+* La *disponibilité d’un ensemble de composants en série* : `D = D1 * D2 * … * Dn`. Exemple : la disponibilité d’une application utilisant un serveur Tomcat à 98 % et une base Oracle à 99 % sera de 97.02 %. 
 
-Pour permettre la tolérance de panne d'un cluster, il faut obligatoirement disposer d'un cluster actif/actif avec fort couplage dans lequel les données de contexte sont répliquées à tout moment. Une autre solution (bien meilleure) est d’éviter tout simplement les données de contexte (en gardant les données de session dans la navigateur via un client JavaScript par exemple) ou de les stocker en base (SQL/NoSQL) ou en cache distribué (mais attention aux performances). 
+* La *disponibilité d’un ensemble de composants en parallèle* : `D = 1 – (1-D1) * (1- D2) * ..* (1-Dn)`. Exemple : la disponibilité de trois serveurs Nginx en cluster dont chacun possède une disponibilité de 98 % est de 99.999 %. 
 
-Pour disposer d'une tolérance de panne transparente (le niveau de disponibilité le plus élevé), il faut en plus prévoir un répartiteur de charge assurant les rejeux.
+* Il convient d'être cohérent sur la *disponibilité de chaque maillon de la chaîne de liaison* : rien ne sert d'avoir un cluster actif/actif de serveurs d'application JEE si tous ces serveurs attaquent une base de donnée localisée sur un unique serveur physique avec disques sans RAID. 
 
-Attention à bien qualifier les exigences avant de construire une architecture FT car en général ces solutions :
+* On estime un système comme hautement disponible *(HA) à partir de 99%* de disponibilité. 
 
-* Complexifient l'architecture et la rendent donc moins robuste et plus coûteuse à construire, tester, exploiter.
-* Peuvent dégrader les performances : les solutions de disponibilité et de performance vont en général dans le même sens (par exemple, un cluster de machines stateless va diviser la charge par le nombre de nœuds et dans le même temps, la disponibilité augmente), mais quelque fois, disponibilité et performance peuvent être antagonistes : dans le cas d'une architecture stateful, typiquement gérant les sessions HTTP avec un cache distribué (type Infinispan répliqué en mode synchrone ou un REDIS avec persistance sur le master), toute mise à jour transactionnelle de la session ajoute un surcoût lié à la mise à jour et la réplication des caches, ceci pour assurer le failover. En cas de plantage d'un des nœuds, l'utilisateur conserve sa session à la requête suivante et n'a pas à se reconnecter, mais à quel coût ? 
-* Peuvent même dégrader la disponibilité car tous les nœuds sont fortement couplés. Une mise à jour logicielle par exemple peut imposer l'arrêt de l'ensemble du cluster.
-====
+* On désigne par *«spare»* un dispositif (serveur, disque, carte électronique...) de rechange qui est dédié au besoin de disponibilité mais qui n'est pas activé en dehors des pannes. En fonction du niveau de disponibilité recherché, il peut être dédié à l’application ou mutualisé au niveau SI.  
 
-.Quelques solutions de disponibilité (hors disponibilité du datacenter)
-|====
-|Solution|Coût |Complexité de mise en œuvre indicative |Amélioration de la disponibilité indicative
+* Les *niveaux de redondance* d'un système (modèle NMR = N-Modular Redundancy) les plus courants sont les suivants (avec N, le nombre de dispositifs assurant un fonctionnement correct en charge) :  
 
-|Disques en RAID 1 |XXX|X|XXX
-|Disques en RAID 5 |X|X|XX
-|Redondance des alimentations et autres composants |XX|X|XX
-|Bonding des cartes Ethernet|XX|X|X
-|Cluster actif/passif|XX|XX|XX
-|Cluster actif/actif (donc avec LB)|XXX|XXX|XXX
-|Serveurs/matériels de spare|XX|X|XX
-|Bonne supervision système|X|X|XX
-|Bonne supervision applicative|XX|XX|XX
-|Systèmes de test de vie depuis un site distant|X|X|XX
-|Astreintes dédiées à l’application, 24/7/365|XXX|XX|XXX
-|Copie du backup du dernier dump de base métier sur baie SAN (pour restauration express)|XX|X|XX
-|====
+** *N* : aucune redondance (exemple : si l'alimentation unique d'un serveur tombe, le serveur s'arrête) 
 
-====
-Exemple 1 : Pour atteindre la disponibilité de 98 % exigée, les dispositifs de disponibilité envisagés sont les suivants :
+** *N+1* : un composant de rechange est disponible, on peut supporter la panne d'un matériel (exemple : on a une alimentation de spare disponible). 
 
-* Tous les serveurs en RAID 5 + alimentations redondées.
-* Répartiteur HAProxy + keepalived actif/passif mutualisé avec les autres applications.
-* Cluster actif /actif de deux serveurs Apache + mod_php.
-* Serveur de spare pouvant servir à remonter la base MariaDB depuis le backup de la veille en moins de 2h.
-====
-====
-Exemple 2 : Pour atteindre la disponibilité de 99.97% exigée, les dispositifs de disponibilité envisagés sont les suivants (pour rappel, l'application sera hébergée dans un datacenter de niveau tiers III) :
+** *N+M*: Un seul spare n'est pas suffisant pour tenir la charge, on prévoit au moins M spares. 
 
-* Tous les serveurs en RAID 1 + alimentations redondées + interfaces en bonding.
-* Répartiteur HAProxy + keepalived actif/passif dédié à l’application.
-* Cluster actif /actif de 4 serveurs (soit une redondance 2N) Apache + mod_php.
-* Instance Oracle en RAC sur deux machines (avec interconnexion FC dédiée).
+** *2N* : le système est entièrement redondé et peut supporter la perte de la moitié des composants (exemple : on dispose de deux alimentations actives en même temps dont chacune suffit à alimenter le serveur). Ce système est tolèrant aux pannes (Fault-tolerent). 
 
-====
+** *2N+1*: En plus d'un système entièrement redondé, un système de secours est disponible (pour les opérations de maintenance par exemple). 
+
+==== 
+[TIP] 
+====  
+
+*Clustering*: 
+
+* Un cluster est un *ensemble de nœuds (machines) hébergeant le même module applicatif*. 
+* En fonction du niveau de disponibilité recherché, chaque nœud peut être : 
+
+** *actif* : le nœud traite les requêtes (exemple : un serveur Apache parmi dix et derrière un répartiteur de charge). Temps de failover : nul ; 
+
+** *passif en mode «hot standby»* : le nœud est installé et démarré mais ne traite pas les requêtes (exemple: une base MySQL slave qui devient master en cas de panne de ce dernier via l'outil mysqlfailover). MTTR de l'ordre de la seconde (temps de la détection de la panne) ; 
+
+** *passif en mode «warm standby»* : le nœud est démarré et l'application est installée mais n'est pas démarrée (exemple : un serveur avec une instance Tomcat éteinte hébergeant notre application). En cas de panne, notre application est démarrée automatiquement. MTTR : de l'ordre de la minute (temps de la détection de la panne et d'activation de l'application) ; 
+
+** passif en mode «cold standby» : le nœud est un simple spare. Pour l'utiliser, il faut installer l'application et la démarrer. MTTR : de l'ordre de dizaines de minutes avec solutions de virtualisation (ex : KVM live migration) et/ou de containers (Docker) à une journée lorsqu'il faut installer/restaurer et démarrer l'application. 
+
+* On peut classer les architectures de clusters actif/actif en deux catégories :  
+
+** Les *clusters actifs/actifs à couplage faible* dans lesquels un nœud est totalement indépendant des autres, soit parce que l'applicatif est stateless (le meilleur cas), soit parce que les données de contexte (typiquement une session HTTP) sont gérées isolément par chaque nœud. Dans le dernier cas, le répartiteur de charge devra assurer une affinité de session, c'est à dire toujours router les requêtes d'un client vers le même nœud et en cas de panne de ce nœud, les utilisateurs qui y sont routés perdent leurs données de session et doivent se reconnecter. Note : Les nœuds partagent tous les mêmes données persistées en base, les données de contexte sont uniquement des données transitoires en mémoire. 
+
+** Les *clusters actifs/actifs à couplage fort* dans lesquels tous les nœuds partageant les mêmes données en mémoire. Dans cette architecture, toute donnée de contexte doit être répliquée dans tous les nœuds (ex : cache distribué de sessions HTTP répliqué avec JGroups).  
+
+
+==== 
+[TIP] 
+==== 
+*Failover:* 
+
+Le failover (bascule) est la capacité d'un cluster de s'assurer qu'en cas de panne, les requêtes ne sont plus envoyées vers le nœud défectueux mais vers un nœud opérationnel. Ce *processus est automatique*. 
+
+Sans failover, c'est au client de détecter la panne et de se reconfigurer pour rejouer sa requête vers un nœud actif. Dans les faits, ceci est rarement praticable et les *clusters disposent presque toujours de capacités de failover*. 
+
+Une solution de failover peut être décrite par les attributs suivants : 
+
+* Quelle *stratégie de failback* ? Par exemple: "Fail fast" (un nœud est noté comme tombé dès le premier échec); "On fail, try next one" ; "On fail, try all"... 
+
+* Quelle *solution de détection des pannes* ?  
+
+** les répartiteurs de charge utilisent des *sondes* (health check) très variées (requêtes fictives, analyse du CPU, des logs, etc.…) vers les nœuds ;  
+
+** les détections de panne des clusters actifs/passifs fonctionnent la plupart du temps par écoute des palpitations (*heartbeat*) du serveur actif par le serveur passif, par exemple via des requêtes multicast UDP dans le protocole VRRP utilisé par keepalived. 
+
+* Quel *délai de détection* de la panne ? il convient de paramétrer correctement les solutions de détection de panne (le plus court possible sans dégradation de performance). 
+
+* Quelle *pertinence de la détection* ? le serveur en panne est-il *vraiment* en panne ? un mauvais paramétrage ou une microcoupure réseau ne doit pas provoquer une indisponibilité totale d'un cluster alors que les nœuds sont sains.  
+
+* Quelle stratégie de failback ? 
+
+** dans un cluster "N-to-1", on rebasculera (failback) sur le serveur qui était tombé en panne une fois réparé et le serveur basculé redeviendra le serveur de secours ; 
+
+** dans un cluster N-to-N (architecture en voie de démocratisation avec le cloud de type PaaS comme AWS Lambda ou CaaS comme Kubernetes) : on distribue les applications du nœud en panne vers d'autres nœuds actifs (le cluster ayant été dimensionné en prévision de cette éventuelle surcharge). 
+
+* *Transparent via à vis de l’appelant* ou pas ? En général, les requêtes pointant vers un serveur dont la panne n'a pas encore été détectée tombent en erreur (en timeout la plupart du temps). Certains dispositifs ou architectures de FT (tolérance de panne) permettent de le rendre transparent pour le client. 
+
+==== 
+[TIP] 
+==== 
+Quelques mots sur les *répartiteurs de charge* : 
+
+* Un répartiteur de charge (Load Balancer = LB) est une *brique obligatoire pour un cluster actif/actif*. 
+
+* Dans le cas des clusters, une erreur classique est de créer un *SPOF* au niveau du répartiteur de charge. On va alors diminuer la disponibilité totale du système au lieu de l'améliorer. Dans la plupart des clusters à vocation de disponibilité (et pas seulement de performance), il faut redonder le répartiteur lui-même en mode actif/passif (et pas actif/actif sinon on ne fait que déplacer le problème et il faudrait un "répartiteur de répartiteurs"). Le répartiteur passif doit surveiller à fréquence élevée le répartiteur actif et le replacer dès qu'il tombe. 
+
+* Il est crucial de configurer correctement et à fréquence suffisante les tests de vie (*heathcheck*) des nœuds vers lesquels le répartiteur distribue la charge car sinon, le répartiteur va continuer à envoyer des requêtes vers des nœuds tombés ou en surcharge. 
+
+* Certains LB avancés (exemple : option redispatch de HAProxy) permettent la transparence vis à vis de l'appelant en configurant des rejeux vers d'autres nœuds en cas d'erreur ou timeout et donc d'améliorer la tolérance de panne puisqu'on évite de retourner une erreur à l'appelant pendant la période de pré-détection de la panne. 
+
+* Lisser la charge entre les nœuds et ne pas forcement se contenter de round robin. Un algorithme simple est le LC (Least Connection) permettant au répartiteur de privilégier les nœuds les moins chargés, mais il existe bien d'autres algorithmes plus ou moins complexes (systèmes de poids par nœud ou de combinaison charge + poids par exemple). Attention néanmoins à bien les tester et en maitriser les implications pour éviter les catastrophes. 
+
+* Dans le monde Open Source, voir par exemple LVS + keepalived ou HAProxy + keepalived. 
+
+==== 
+[TIP] 
+==== 
+
+La *tolérance de panne* : 
+
+La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la Haute Disponibilité. Il s'agit d'une version plus stricte de HA où la *disponibilité est de 100% et aucune donnée ne peut être perdue* (Wikipédia: "La tolérance aux pannes est la propriété qui permet à un système de continuer à fonctionner correctement en cas de défaillance d'un ou de certains de ses composants"). Seuls les systèmes critiques (santé, militaires, transport, industrie...) ont en général besoin d'un tel niveau de disponbilité.
+
+Historiquement, cela signifiait une redondance matérielle complète. Dans un monde de micro-services, cela peut également être réalisé au niveau logiciel avec des clusters actifs-actifs. De plus, un véritable système de tolérance aux pannes devrait éviter une dégradation significative des performances vue par les utilisateurs finaux. 
+
+Par exemple, un lecteur RAID 1 offre une tolérance aux pannes transparente : en cas de panne, le processus écrit ou lit sans erreur après le basculement automatique sur le disque sain. Un cluster Kubernetes peut également atteindre la tolérance aux pannes en démarrant de nouveaux POD. Ou encore, un cache distribué en mémoire en cluster peut éviter de perdre une session HTTP. 
+ 
+Pour permettre la tolérance de panne d'un cluster, il faut obligatoirement *disposer d'un cluster actif/actif avec fort couplage* dans lequel les données de contexte sont répliquées à tout moment. Une autre solution (bien meilleure) est d’éviter tout simplement les données de contexte (en gardant les données de session dans le navigateur via un client JavaScript par exemple) ou de les stocker en base (SQL/NoSQL) ou en cache distribué (mais attention aux performances).  
+ 
+Pour disposer d'une tolérance de panne totalement transparente, il faut en plus prévoir un répartiteur de charge assurant les rejeux lui-même. 
+
+Attention à *bien qualifier les exigences* avant de construire une architecture FT car en général ces solutions : 
+
+* *Complexifient l'architecture* et la rendent donc moins robuste et plus coûteuse à construire, tester, exploiter. 
+
+* *Peuvent dégrader les performances* : les solutions de disponibilité et de performance vont en général dans le même sens (par exemple, un cluster de machines stateless va diviser la charge par le nombre de nœuds et dans le même temps, la disponibilité augmente), mais quelque fois, disponibilité et performance peuvent être antagonistes : dans le cas d'une architecture stateful, typiquement gérant les sessions HTTP avec un cache distribué (type Infinispan répliqué en mode synchrone ou un REDIS avec persistance sur le master), toute mise à jour transactionnelle de la session ajoute un surcoût lié à la mise à jour et la réplication des caches, ceci pour assurer le failover. En cas de plantage d'un des nœuds, l'utilisateur conserve sa session à la requête suivante et n'a pas à se reconnecter, mais à quel coût ?  
+
+* *Peuvent même dégrader la disponibilité* car tous les nœuds sont fortement couplés. Une mise à jour logicielle par exemple peut imposer l'arrêt de l'ensemble du cluster. 
+
+==== 
+
+.Quelques solutions de disponibilité 
+
+|==== 
+|Solution|Coût |Complexité de mise en œuvre indicative |Amélioration de la disponibilité indicative 
+
+|Disques en RAID 1 |XXX|X|XXX 
+|Disques en RAID 5 |X|X|XX 
+|Redondance des alimentations et autres composants |XX|X|XX 
+|Bonding des cartes Ethernet|XX|X|X 
+|Cluster actif/passif|XX|XX|XX 
+|Cluster actif/actif (donc avec LB)|XXX|XXX|XXX 
+|Serveurs/matériels de spare|XX|X|XX 
+|Bonne supervision système|X|X|XX 
+|Bonne supervision applicative|XX|XX|XX 
+|Systèmes de test de vie depuis un site distant|X|X|XX 
+|Astreintes dédiées à l’application, 24/7/365|XXX|XX|XXX 
+|Copie du backup du dernier dump de base métier sur baie SAN (pour restauration expresse) |XX|X|XX 
+|==== 
+
+
+==== 
+Exemple 1 : Pour atteindre la disponibilité de 98 % exigée, les dispositifs de disponibilité envisagés sont les suivants : 
+
+* Tous les serveurs en RAID 5 + alimentations redondées. 
+
+* Répartiteur HAProxy + keepalived actif/passif mutualisé avec les autres applications. 
+
+* Cluster actif /actif de deux serveurs Apache + mod_php. 
+
+* Serveur de spare pouvant servir à remonter la base MariaDB depuis le backup de la veille en moins de 2h. 
+==== 
+
+==== 
+Exemple 2 : Pour atteindre la disponibilité de 99.97% exigée, les dispositifs de disponibilité envisagés sont les suivants (pour rappel, l'application sera hébergée dans un DC de niveau tier 3) : 
+
+* Tous les serveurs en RAID 1 + alimentations redondées + interfaces en bonding. 
+
+* Répartiteur HAProxy + keepalived actif/passif dédié à l’application. 
+
+* Cluster actif /actif de 4 serveurs (soit une redondance 2N) Apache + mod_php. 
+
+* Instance Oracle en RAC sur deux machines (avec interconnexion FC dédiée). 
+==== 
+
 
 === Déploiement en production
 
