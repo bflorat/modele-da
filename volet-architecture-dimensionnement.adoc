@@ -173,7 +173,7 @@ Pour les calculs de volumétrie, penser à prendre en compte les spécificités 
 
 Pour une base de donnée, prévoir l'espace occupé par les index et qui est très spécifique à chaque application. Une (très piètre) estimation préliminaire est de doubler l'espace disque (à affiner ensuite).
 
-N'estimer que les données dont la taille est non négligeable (plusieurs centaines de Mo minimum).
+N'estimer que les données dont la taille est non négligeable (plusieurs Gio minimum).
 ====
 
 ====
@@ -264,7 +264,7 @@ Le niveau de détail de l'estimation dépend de l'avancement de la conception de
 
 Dans l'exemple plus bas, nous avons déjà une idée du nombre de requêtes pour chaque opération. Dans d’autres cas, on devra se contenter d'une estimation très large sur le nombre de requêtes total à la base de données et un ratio lecture /écriture basée sur des abaques d'applications similaires. Inutile de détailler plus à ce stade.
 
-Enfin, garder en tête qu'il s'agit simplement d'estimation à valider lors de campagnes de performances puis en production. Prévoir un ajustement du dimensionnement peu après la MEP (relativement aisé si les ressources matérielles sont virtualisées et/ou si l'architecture est scalable horizontalement).
+Enfin, garder en tête qu'il s'agit simplement d'estimation à valider lors de campagnes de performances puis en production. Prévoir un ajustement du dimensionnement peu après la MEP.
 ====
 
 ====
@@ -312,7 +312,7 @@ Dans le cas d’accès LAN, il est préférable d’intégrer le temps réseau, 
 
 Les objectifs de TR sont toujours donnés avec une tolérance statistique (90éme centile par exemple) car la réalité montre que le TR est très fluctuant car affecté par un grand nombre de facteurs.
 
-Inutile de multiplier les types de sollicitations (en fonction de la complexité de l’écran par exemple) car ce type de critère n’a plus grand sens aujourd’hui, particulièrement pour une application SPA).
+Inutile de multiplier les types de sollicitations (en fonction de la complexité de l’écran par exemple) car ce type de critère n’a plus grand sens aujourd'hui, particulièrement pour une application SPA).
 ====
 ====
 .Exemple de types de sollicitation :
@@ -358,7 +358,7 @@ En dehors de ces valeurs, l’application devra être optimisée et repasser en 
 Préciser ici dans quel intervalle de temps les traitements par lot doivent s’exécuter.
 ====
 ====
-Exemple 1 : La fin de l’exécution des batchs étant un pré-requis à l’ouverture du TP, ces premiers doivent impérativement se terminer avant la fin de la plage batch définie plus haut.
+Exemple 1 : La fin de l’exécution des batchs étant un pré-requis à l’ouverture aux usagers, ces premiers doivent impérativement se terminer avant la fin de la plage batch définie plus haut.
 ====
 
 ====
@@ -386,6 +386,7 @@ Donner ici RAM, disque et CPU par instance de composant technique déployé (à 
 ====
 ====
 Exemple : 
+
 .Estimation des besoins en ressources par composant technique
 [cols="2e,1e,1e,3e,2e"]
 |====

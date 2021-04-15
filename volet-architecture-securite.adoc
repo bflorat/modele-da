@@ -110,7 +110,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 [cols='2e,1e,1e,1e,1e']
 |====
 |Classe de données
-|Niveau « Non intègre » ([small]#La donnée peut ne pas être intègre)#
+|Niveau « Non intègre » ([small]#La donnée peut ne pas être totalement intègre)#
 |Niveau « Détectable » ([small]#La donnée peut ne pas être intègre si l'altération est identifiée dans un délai raisonnable)#
 |Niveau « Maîtrisé » ([small]#La donnée peut ne pas être intègre, si l'altération est identifiée et l'intégrité du bien essentiel retrouvée)#
 |Niveau « Intègre » ([small]#La donnée doit toujours être rigoureusement intègre)#
@@ -287,7 +287,7 @@ Voir aussi les « Connect with [Google|Twitter|...] » en technologie OpenId C
 ====
 
 ====
-Exemple  : L’identification et l’authentification seront externalisés au fournisseur d’identité Auth0 pour simplifier la gestion de la sécurité et réduire les coûts de développement et d’exploitation.
+Exemple : L’identification et l’authentification seront externalisés au fournisseur d’identité Auth0 pour simplifier la gestion de la sécurité et réduire les coûts de développement et d’exploitation.
 ====
 
 === Exigences de SSO et SLO
@@ -434,7 +434,7 @@ Lister ici les besoins en traces permettant de détecter par exemple :
 * Des intrusions informatiques
 * Des modifications de données
 
-Les traces sont des données nominatives et complètes pour permettre l’audit. Elles sont donc elles-mêmes sensibles et nécessitent souvent un bon niveau de confidentialité (voir 2.2).
+Les traces sont des données nominatives et complètes pour permettre l’audit. Elles sont donc elles-mêmes sensibles et nécessitent souvent un bon niveau de confidentialité.
 
 Différentier :
 
@@ -681,7 +681,7 @@ Exemple 3 : Les  tables X, Y, .. seront historisées suivant le principe suiva
 Exemple 4 : tous les documents servant de preuve seront archivés dans la GED.
 ====
 ====
-Exemple 5 : Les logs contenant le terme [PREUVE] et issu de l’ensemble des composants seront centralisés via le système de centralisation de log Elastic Search puis insérés avec traitement Logstash de façon journalière vers la base MongoDB « preuves ».
+Exemple 5 : Les logs contenant le tag `[PREUVE]` et issu de l’ensemble des composants seront centralisés via le système de centralisation de log Elastic Search puis insérés avec traitement Logstash de façon journalière vers l'index Elastic `preuves`.
 ====
 
 
@@ -697,7 +697,7 @@ Bien entendu, il existe de nombreux autres points de contrôle dépendants du co
 ====
 
 .Checklist d'auto-contrôle de prise en compte des vulnérabilités courantes
-[cols="e,e,e"]
+[cols="e,e,3e"]
 |===
 |Vulnérabilité
 |Pris en compte ?
@@ -739,7 +739,7 @@ Bien entendu, il existe de nombreux autres points de contrôle dépendants du co
 |X
 a|
 * _Utilisation de librairie d’échappement. Pour les modules Java, nous utiliserons StringEscapeUtils.escapeHtml4() de commons-lang_
-* __Utilisation des headers HTTP : X-Frame-Options SAMEORIGIN, X-XSS-Protection 1;mode=block, X-Content-Type-Options nosniff, Content-Security-Policy, X-XSS-PROTECTION (pour parer les détournements de dispositifs anti-XSS des navigateurs)__
+* __Utilisation des headers HTTP : X-Frame-Options SAMEORIGIN, Content-Security-Policy__
 * __Spécification systématique de l’encoding dans le header de réponse Content-Type (ex : text/html;charset=UTF-8) pour parer les attaques basées sur des caractères spéciaux contournant l'anti-XSS__
 
 |ReDOS
@@ -788,7 +788,7 @@ a|
 
 |Upload de fichiers malicieux
 |X
-| Validation des pièces jointes par l'anti-virus clamav
+| Validation des pièces jointes par l'anti-virus ClamAV
 
 |===
 

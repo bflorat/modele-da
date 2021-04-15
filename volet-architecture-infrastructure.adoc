@@ -32,7 +32,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |N°|Version|Titre/URL du document|Détail
 
 |1||Regles_sauvegardes.pdf
-|Régles concernant les sauvegardes
+|Règles concernant les sauvegardes
 
 |====
 
@@ -46,7 +46,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |EI1
 |Le choix technique de la solution d’API Management reste soumise à étude complémentaires
 |EN_COURS
-|Equipe Archi Technique
+|Équipe Archi Technique
 |AVANT 2040
 
 |====
@@ -237,7 +237,7 @@ Exemple de PRA : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le 
 
 Autre exemple de PRA (PME avec son propre datacenter à Paris) : Stockage de deux serveurs de spare dans les locaux de Lille. Sauvegarde à chaud toutes les quatre heures des données principales de l'entreprise et envoi (avec chiffrement client) sur BackBlaze.com. Le RPO est de 4h, le RTO de 2H.
 
-Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de Replicat Set. Le système est auto-regulé par Kubernetes et tout plantage d'un DC sera compencé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. Le RTO est de 0, le RPO est ~0 (zéro strict est impossible, voir le théorème de CAP).
+Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. Le RTO est de 0, le RPO est ~0 (zéro strict est impossible, voir le théorème de CAP).
 ====
 
 
@@ -451,7 +451,7 @@ Donner ici le Recovery Point Objective (RPO) de l’application. Il peut être u
 * Une perte de données matérielle (peu probable avec des systèmes de redondance).
 * Une fausse manipulation d'un power-user ou d'un administrateur (assez courant).
 * Un bug applicatif.
-* Une destruction de donnée volontaire (attaque de type ransomware comme wannacry par exemple)...
+* Une destruction de donnée volontaire (attaque de type ransomware)...
 
 ====
 ====
@@ -595,6 +595,9 @@ Exemples :
  
 [TIP] 
 ==== 
+
+La disponibilité est le pourcentage de temps minimal sur une année pendant lequel un système doit être utilisable dans des conditions acceptables. Il est exprimé en % (exemple: 99.9%).
+
 Donner ici les dispositifs permettant d'atteindre les <<Exigences de disponibilité>>. 
 
 Les mesures permettant d’atteindre la disponibilité exigée sont très nombreuses et devront être choisies par l’architecte en fonction de leur apport et de leur coût (financier, en complexité, …).  
@@ -638,7 +641,7 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 ** *N+M*: Un seul spare n'est pas suffisant pour tenir la charge, on prévoit au moins M spares. 
 
-** *2N* : le système est entièrement redondé et peut supporter la perte de la moitié des composants (exemple : on dispose de deux alimentations actives en même temps dont chacune suffit à alimenter le serveur). Ce système est tolèrant aux pannes (Fault-tolerent). 
+** *2N* : le système est entièrement redondé et peut supporter la perte de la moitié des composants (exemple : on dispose de deux alimentations actives en même temps dont chacune suffit à alimenter le serveur). Ce système est tolèrant aux pannes (Fault-tolerant). 
 
 ** *2N+1*: En plus d'un système entièrement redondé, un système de secours est disponible (pour les opérations de maintenance par exemple). 
 
@@ -710,7 +713,7 @@ Quelques mots sur les *répartiteurs de charge* :
 
 * Certains LB avancés (exemple : option redispatch de HAProxy) permettent la transparence vis à vis de l'appelant en configurant des rejeux vers d'autres nœuds en cas d'erreur ou timeout et donc d'améliorer la tolérance de panne puisqu'on évite de retourner une erreur à l'appelant pendant la période de pré-détection de la panne. 
 
-* Lisser la charge entre les nœuds et ne pas forcement se contenter de round robin. Un algorithme simple est le LC (Least Connection) permettant au répartiteur de privilégier les nœuds les moins chargés, mais il existe bien d'autres algorithmes plus ou moins complexes (systèmes de poids par nœud ou de combinaison charge + poids par exemple). Attention néanmoins à bien les tester et en maitriser les implications pour éviter les catastrophes. 
+* Lisser la charge entre les nœuds et ne pas forcement se contenter de round robin. Un algorithme simple est le LC (Least Connection) permettant au répartiteur de privilégier les nœuds les moins chargés, mais il existe bien d'autres algorithmes plus ou moins complexes (systèmes de poids par nœud ou de combinaison charge + poids par exemple). Attention néanmoins à bien les tester et en maîtriser les implications pour éviter les catastrophes. 
 
 * Dans le monde Open Source, voir par exemple LVS + keepalived ou HAProxy + keepalived. 
 
@@ -720,7 +723,7 @@ Quelques mots sur les *répartiteurs de charge* :
 
 La *tolérance de panne* : 
 
-La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la Haute Disponibilité. Il s'agit d'une version plus stricte de HA où la *disponibilité est de 100% et aucune donnée ne peut être perdue* (Wikipédia: "La tolérance aux pannes est la propriété qui permet à un système de continuer à fonctionner correctement en cas de défaillance d'un ou de certains de ses composants"). Seuls les systèmes critiques (santé, militaires, transport, industrie...) ont en général besoin d'un tel niveau de disponbilité.
+La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la Haute Disponibilité. Il s'agit d'une version plus stricte de HA où la *disponibilité est de 100% et aucune donnée ne peut être perdue* (Wikipédia: "La tolérance aux pannes est la propriété qui permet à un système de continuer à fonctionner correctement en cas de défaillance d'un ou de certains de ses composants"). Seuls les systèmes critiques (santé, militaires, transport, industrie...) ont en général besoin d'un tel niveau de disponibilité.
 
 Historiquement, cela signifiait une redondance matérielle complète. Dans un monde de micro-services, cela peut également être réalisé au niveau logiciel avec des clusters actifs-actifs. De plus, un véritable système de tolérance aux pannes devrait éviter une dégradation significative des performances vue par les utilisateurs finaux. 
 
@@ -850,7 +853,7 @@ Lister ici OS, bases de données, MOM, serveurs d'application, etc...
 ====
 Lister ici l'intégralité des flux techniques utilisés par l'application. Les ports d’écoute sont précisés. On détaille aussi les protocoles d'exploitation (JMX ou SNMP par exemple). 
 
-Dans certaines organisions, cette matrice sera trop détaillée pour un dossier d'architecture et sera maintenue dans un document géré par les intégrateurs ou les exploitants.
+Dans certaines organisations, cette matrice sera trop détaillée pour un dossier d'architecture et sera maintenue dans un document géré par les intégrateurs ou les exploitants.
 
 Il n'est pas nécessaire de faire référence aux flux applicatifs car les lecteurs ne recherchent pas les mêmes informations. Ici, les exploitants ou les intégrateurs recherchent l’exhaustivité des flux à fin d'installation et de configuration des pare-feu par exemple.
 
@@ -874,7 +877,7 @@ Les types de réseaux incluent les informations utiles sur le réseau utilisé a
 ====
 Donner ici une vision générale des environnements utilisés par l'application. Les environnements les plus communs sont : développement, recette, pré-production/benchmarks, production, formation.
 
-Les 'couloirs' sont des ‘sous-environnements’ constitués d'un ensemble de composants techniques isolés les uns des autres (même s'il ils peuvent partager des ressources communes). Par exemple, un environnement de recette peut être constitué des couloirs `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
+Il est souvent utile de subdiviser les environnements en 'plateformes' constituées d'un ensemble de composants techniques isolés les uns des autres (même s'il peuvent partager des ressources communes). Par exemple, un environnement de recette peut être constitué des couloirs `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
 
 .Environnements
 [cols='1,2,2,2']
@@ -1056,10 +1059,9 @@ Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigence
 ** des images/snapshots systèmes pour restauration de serveur ou de VM ? 
 ** des systèmes de fichiers ou des répertoires ?
 ** des bases de données sous forme de dump ? sous forme binaire ?
-** le contenu de files ?
 ** les logs ? les traces ?
-* Les sauvegardes sont-elles chiffrées ? si oui, préciser l'algorithme de chiffrement symétrique utilisé et comment sera gérée la clé.
-* Les sauvegardes sont-elles compressées ? si oui, avec quel algorithme ? (gzip, bz2, lzma ? xv ? ...) quel paramétrage (indice de compression) ? attention à trouver le compromis entre durée de compression / décompression et gain de stockage.
+* Les sauvegardes sont-elles chiffrées ? si oui, préciser l'algorithme de chiffrement utilisé et comment seront gérés les clés.
+* Les sauvegardes sont-elles compressées ? si oui, avec quel algorithme ? (lzw, deflate, lzma?, ...), avec quel niveau de compression ? attention à trouver le compromis entre durée de compression / décompression et gain de stockage.
 * Quel outillage est mis en œuvre ? (simple cron ? outil « backup-manager » ? IBM TSM ?).
 * Quelle technologie est utilisée pour les sauvegardes ? (bandes magnétiques type LTO ou DLT ? disques externes ? cartouches RDX ? cloud de stockage comme Amazon S3 ? support optique ? NAS ? ...)
 * Quelle est la périodicité de chaque type de sauvegarde ? (ne pas trop détailler ici, ceci sera dans le DEX)
@@ -1119,7 +1121,7 @@ Sans être exhaustif sur les fichiers de logs (à prévoir dans le DEX), présen
 * Une centralisation de logs est-elle prévue ? (indispensable pour les architectures SOA ou micro-services). Voir par exemple la stack ELK.
 * Quel est le niveau de prolixité prévu par type de composant ? le débat en production est en général entre les niveaux WARN et INFO. Si les développeurs ont bien utilisé le niveau INFO pour des informations pertinentes (environnement au démarrage par exemple) et pas du DEBUG, fixer le niveau INFO.
 * Des mesures anti-injection de logs sont-elles prévues (échappement XSS) ?
-* Penser aux sauvegardes des logs au chapitre 12.3.
+
 ====
 ====
 Exemple 1 : les logs applicatifs du composant service-miel seront en production de niveau INFO avec roulement journalier et conservation deux mois.
@@ -1134,11 +1136,11 @@ Exemple 2 : les logs seront échappés à leur création via la méthode `String
 ====
 La supervision est un pilier central de la disponibilité en faisant diminuer drastiquement le MTTD (temps moyen de détection de la panne). 
 
-Idéalement, elle ne sera pas uniquement réactive mais également proactive (detection des prémices).
+Idéalement, elle ne sera pas uniquement réactive mais également proactive (detection des signaux faibles).
 
 Les métriques sont des mesures brutes (% CPU, taille FS, taille d'un pool...) issues de sondes système, middleware ou applicatives. 
 
-Les indicateurs sont des combinaisons logiques de plusieurs métriques disposant de seuils (ex : niveau critique si l'utilisation de CPU sur le serveur s1 reste au delà de 95% pendant plus de 5 minutes).
+Les indicateurs sont des combinaisons logiques de plusieurs métriques disposant de seuils (ex : 'niveau critique si l'utilisation de CPU sur le serveur s1 reste au delà de 95% pendant plus de 5 minutes').
 ====
 
 ===== Supervision technique
@@ -1199,23 +1201,23 @@ Exemple : SMS si aucune demande depuis les 4 dernières heures ou si le nombre d
 
 [TIP]
 ====
-Indiquer l’ordonnanceur ou le planificateur utilisé pour piloter les batchs et consolider le plan de production (exemple : VTOM, JobScheduler, Dollar Universe, Control-M,...). Détailler les éventuelles spécificités de l’application :
+Indiquer l’ordonnanceur ou le planificateur utilisé pour piloter les jobs et consolider le plan de production (exemple : VTOM, JobScheduler, Dollar Universe, Control-M,...). Détailler les éventuelles spécificités de l’application :
 
-* Degré de parallélisme des batchs
+* Degré de parallélisme des jobs
 * Plages de temps obligatoires
 * Rejeux en cas d'erreur
 * ...
 
-Les batchs doivent-ils produire un rapport d'exécution ? sous quelle forme et avec quel contenu ?
+Les jobs doivent-ils produire un rapport d'exécution ? sous quelle forme et avec quel contenu ?
 ====
 ====
-Exemple 1 : les batchs seront ordonnancés par l'instance JobScheduler de l'organisation. 
+Exemple 1 : les jobs seront ordonnancés par l'instance JobScheduler de l'organisation. 
 
-* Les batchs ne devront jamais tourner les jours féries.
+* Les jobs ne devront jamais tourner les jours féries.
 * Leur exécution sera bornée aux périodes 23h00 - 06h00. Leur planification devra donc figurer dans cette plage ou ils ne seront pas lancés.
-* On ne lancera pas plus de cinq instances du batch B1 en parallèle.
+* On ne lancera pas plus de cinq instances du job J1 en parallèle.
 
-Exemple 2 : Les batchs devront produire un rapport d'exécution à chaque lancement (avec des données de base comme le nombre d'éléments traités, la durée du traitement et tout indicateur pertinent).
+Exemple 2 : Les jobs devront produire un rapport d'exécution à chaque lancement (avec des données de base comme le nombre d'éléments traités, la durée du traitement et tout indicateur pertinent).
 ====
 
 ===== Supervision boite noire
@@ -1246,7 +1248,7 @@ Il existe trois grandes familles de solutions :
 
 * Les APM (Application Performance Monitoring) : outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource ...). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met en péril la stabilité de l'application.
 * La métrologie «maison» par logs si le besoin est modeste.
-* Les sites de requêtage externes (voir aussi les tests de vie en 12.7.6) qui appellent périodiquement l'application et produisent des dashboards. Ils ont l'avantage de prendre en compte les temps WAN non disponibles via les outils internes. A utiliser couplés aux tests de vie (voir plus loin).
+* Les sites de requêtage externes qui appellent périodiquement l'application et produisent des dashboards. Ils ont l'avantage de prendre en compte les temps WAN non disponibles via les outils internes. A utiliser couplés à la supervision boite noire (voir plus haut).
 ====
 ====
 Exemple : les performances du site seront supervisées en continu par `pingdom.com`. Des analyses de performances plus poussées seront mises en œuvre par Pinpoint en fonction des besoins.

@@ -66,7 +66,7 @@ Décrire succinctement le projet et en rappeler les objectifs. Mettre en éviden
 Exemple 1 : Cette application doit permettre la dématérialisation des factures reçues de nos fournisseurs et une consultation aisée de ces documents par les services comptables.
 ====
 ====
-Exemple 2 : ce projet est la réécriture en technologies Web de l’application Cobol X.
+Exemple 2 : ce projet est la réécriture en technologies Web de l’application Cobol X. Elle doit en faciliter la maintenance.
 ====
 ====
 Exemple 3: l’ application X est l’un des composants principaux du programme Y. Il s’adosse sur les référentiels Personne et Facturation pour enrichir le CMS en données clients temps réel.

@@ -191,6 +191,7 @@ Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et 
 === Auto-contrôle des vulnérabilités
 
 .Checklist d'auto-contrôle de prise en compte des vulnérabilités courantes
+[cols="1,1,3"]
 |===
 |Vulnérabilité |Pris en compte ? |Mesures techniques entreprises
 

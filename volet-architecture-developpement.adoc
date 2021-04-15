@@ -541,6 +541,7 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 * Affiche-on les stack-traces complètes ? si oui, coté serveur et coté client ?
 * Gère-t-on les rejeux ? si oui, espace-t-on les rejeux ?
 * Comment gère-t-on les timeouts ?
+* Comment gérons-nous les rejets fonctionnels? (c.-à-d. que faire des demandes partielles ou erronées?) 
 
 ====
 ====
@@ -756,7 +757,7 @@ Exemple 2 (Coté client)
 * Les éléments retournés seront affichés dans les tableaux par blocs (taille paramétrable d’une taille indicative de l'ordre de 20 éléments). 
 ====
 
-=== Provisionning et mises à jour des données
+=== Provisioning et mises à jour des DDL
 
 [TIP]
 ====
@@ -764,5 +765,5 @@ Décrire comment les DDL (structures de tables en base de données) et les donn�
 ====
 
 ====
-Exemple : Nous utiliserons LiquiBase embarqué dans les war pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
+Exemple : Nous utiliserons Liquibase embarqué dans les war pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
 ====
