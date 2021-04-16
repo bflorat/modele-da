@@ -211,7 +211,7 @@ Rappeler :
 
  * Le type d'architecture (client-serveur, Web monolithique, SOA, micro-service...).
  * Les grands flux entre les composants ou entre les applications dans le cas des monolithes.
- * D'éventuelles dérogations.
+ * D'éventuelles dérogations aux règles d'architecture du SI.
 
 Le choix de la représentation est libre mais un diagramme C4 de System Landscape ou un diagramme de composant UML2 semble le plus adapté.
 
@@ -249,10 +249,6 @@ Les flux sont logiques et non techniques (par exemple, on peut représenter un f
 
 Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.
 ====
-
-
-NOTE: Ce n'est qu'une suggestion car la rédaction de l'architecture applicative détaillée dépend beaucoup du projet et de sa complexité. Pour un projet relativement complexe, il peut être utile de le subdiviser dans les sous sections suivantes :
-
 
 === Principes ayant dicté les choix
 

@@ -147,37 +147,35 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 
 [TIP]
 ====
-Donner ici le niveau de sécurité du datacenter selon l’échelle Uptime Institute (Tier de I à IV). 
-La plupart des datacenters sont de niveau I ou II.
-
+Donner ici le niveau de sécurité du datacenter selon l’échelle Uptime Institute (Tier de 1 à 4). 
 
 .Niveaux Tier des datacenters (source : Wikipedia)
 [cols="1,5,2,2,2"]
 |====
 |Niveau Tier|Caractéristiques|Taux de disponibilité|Indisponibilité statistique annuelle| Maintenance à chaud possible ?| Tolérance aux pannes ?
 
-|Tier I
+|Tier 1
 |Non redondant
 |99,671 %
 |28,8 h
 |Non
 |Non
 
-|Tier II
+|Tier 2
 |Redondance partielle
 |99,749 %
 |22 h
 |Non
 |Non
 
-|Tier III
+|Tier 3
 |Maintenabilité
 |99,982 %
 |1,6 h
 |Oui
 |Non
 
-|Tier IV
+|Tier 4
 |Tolérance aux pannes
 |99,995 %
 |0,4 h
@@ -219,9 +217,9 @@ Un PCA permet de poursuivre les activités critiques de l’organisation (en gé
 
 Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou un PCA. Par exemple, si on vise un PCA, il faut prévoir des clusters actifs-actifs multi-zonaux (situés dans des datacenters distants géographiquement) alors que pour un PRA, l'important est la qualité et la vitesse de sauvegarde/restauration des données dans le datacenter de secours. 
 
-NOTE: Dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, des deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
+Note: Dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, des deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
 
-NOTE: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS...) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
+Note: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS...) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
 
 Décrire entre autres :
 
@@ -1161,6 +1159,7 @@ Exemple : on mesura le % de wait io et la charge serveur.
 [TIP]
 ====
 Lister les métriques applicatives (développés en interne). lls peuvent être techniques ou fonctionnels :
+
 * Nombre de requêtes d'accès à un écran.
 * Nombre de contrats traités dans l'heure.
 * ...
@@ -1184,7 +1183,7 @@ Un tel outil (comme Nagios, Hyperic HQ dans le monde Open Source) :
 * Permet de fixer des seuils d’alerte basés sur les indicateurs et de notifier les exploitants en cas de dépassement.
 ====
 ==== 
-Exemple : la pilotage de la supervision se basera sur la plate-forme Nagios.
+Exemple : la pilotage de la supervision se basera sur la plate-forme Grafana.
 ====
 
 ===== Alerting
