@@ -304,7 +304,7 @@ Elle nécessite souvent une adaptation des applications.
 
 Le SSO est souvent demandé par les métiers mais cette exigence doit être justifiée. 
 
-Une application périphérique ou un outil rarement utilisé n’a en général pas besoin de SSO (une simple authentification centralisée au sein d’un annuaire LDAP suffit souvent). 
+Une application périphérique ou un outil rarement utilisé n’a en général pas besoin de SSO (une simple authentification centralisée au sein d’un annuaire peut suffire). 
 
 Attention également à évaluer l’impact qu’aurait une authentification faible (mauvais mot de passe par exemple) sur la sécurité de l’ensemble du SI.
 ====
@@ -379,7 +379,7 @@ Exemple de modèle classique de gestion des habilitations :
 
 image::diagrams/roles.svg[Gestion classique des rôles]
 
-Penser à spécifier les éventuels pseudos-utilisateurs et leurs rôles comme :
+Penser à spécifier les éventuels pseudo-utilisateurs et leurs rôles comme :
 
 * `@anonyme` : les personnes non connectées
 * `@connecte` : les personnes connectées
@@ -515,8 +515,7 @@ a|
 
 |Avis d’imposition PDF
 |Intègre
-|Signature numérique par la clé privée de l’administration des données D de l’avis au format PKCS#7 (RSA, SHA256) avec horodatage. D= base64(montant net + date+nom). +
-La signature résultante sera intégrée a posteriori au format hexadécimal en pied de page du PDF
+|Signature numérique du montant net + date + nom au format PKCS#7 (RSA, SHA256) avec horodatage. La signature résultante sera intégrée a posteriori au format hexadécimal en pied de page du PDF.
 |===
 
 === Confidentialité
@@ -530,7 +529,7 @@ Dispositifs répondant aux <<Exigences de confidentialité>> :
 
 |Contenu éditorial
 |Public
-|Aucune, contenu en HTTP et HTTPS, pas d’authentification
+|Échanges en HTTPS, pas d’authentification
 
 |Profil du compte du site Web
 |Limité
@@ -637,7 +636,7 @@ Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra g
 Dispositifs répondant aux <<Exigences de non répudiation>> :
 
 ====
-Exemple  : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X suivant l’architecture suivante : <schéma>.
+Exemple  : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X.
 ====
 
 === Anonymat et vie privée
@@ -669,7 +668,7 @@ Exemple 2 : L’obtention du carnet d’adresse Facebook sera en OAuth2. On uti
 Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 ====
-Exemple 1 : à la fin de chaque action métier, l’application ReactJS appellera dans une action asynchrone un service REST de trace métier. Ce service stockera les traces dans une base Elastic Search pour consultation en Kibana. <schéma>
+Exemple 1 : à la fin de chaque action métier, l’application ReactJS appellera dans une action asynchrone un service REST de trace métier. Ce service stockera les traces dans une base Elastic Search pour consultation en Kibana.
 ====
 ====
 Exemple 2 : l’outil d’IDS hybride (réseau + host) OSSEC sera installé sur l’ensemble des machines utilisées par l’application.
@@ -691,7 +690,7 @@ Exemple 5 : Les logs contenant le tag `[PREUVE]` et issu de l’ensemble des co
 
 [TIP]
 ====
-La gestion des vulnérabilités dépasse largement le cadre de ce document mais il est bon de s’auto-contrôler pour s’assurer que les failles les plus courantes sont bien prises en compte et comment. Cette liste est en partie basée sur le TOP 10 OWASP. Pour le TOP 10 des application mobiles, adapter cette liste avec le TOP 10 mobile. 
+La gestion des vulnérabilités dépasse largement le cadre de ce document mais il est bon de s’auto-contrôler pour s’assurer que les failles les plus courantes sont bien prises en compte et comment. Cette liste est en partie basée sur le TOP 10 OWASP. 
 
 Bien entendu, il existe de nombreux autres points de contrôle dépendants du contexte de l’application
 ====

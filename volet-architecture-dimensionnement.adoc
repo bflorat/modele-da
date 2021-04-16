@@ -183,23 +183,23 @@ N'estimer que les données dont la taille est non négligeable (plusieurs Gio mi
 
 |Table Article
 |Les articles du catalogue
-|2Ko
+|2Kio
 |100K
-|200 Mo
+|200 Mio
 |5 %
 
 |Table Commande
 |Les commandes clients
 |10Ko
 |3M
-|26.6 Go
+|26.6 Gio
 |10 %
 
 |Logs 
 |Les logs applicatifs (niveau INFO)
 |200 o
 |300M
-|56 Go
+|56 Gio
 |0 % (archivage)
 |====
 ====
@@ -421,7 +421,7 @@ Voir le link:./volet-architecture-infrastructure.adoc#_déploiement_en_productio
 Cette section fournit le dimensionnement final des machines necessaires
 
 * Pour les VM, attention à vérifier qu'un VCPU = 1 cœur physique (et non un thread si hyperthreading activé)
-* Le disque interne concerne le disque necessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique executant la VM ou d'un SAN.
+* Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique executant la VM ou d'un SAN.
 * Le disque externe concerne du stockage sur une baie de disque (SAN) ou sur un filesystème distribué (NFS, CIFS, WebDav...)
 ====
 
@@ -430,7 +430,7 @@ Cette section fournit le dimensionnement final des machines necessaires
 |====
 |Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque externe  (Gio)
 
-|DMZ 01 
+|Zone 01 
 |VM serveur applicatif
 |3
 |2 
@@ -438,7 +438,7 @@ Cette section fournit le dimensionnement final des machines necessaires
 |100
 |0
 
-|DMZ 02
+|Zone 02
 |Machine physique Base de données
 |1
 |2
