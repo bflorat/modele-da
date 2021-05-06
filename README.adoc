@@ -5,7 +5,7 @@ Ce modèle a déjà été utilisé sur plusieurs projets importants y compris au
 
 NOTE: Nous utilisons le terme 'DA' et pas 'DAT' ou termes similaires car chaque organisation possède sa terminologie mais surtout le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
 
-Autres langues : https://github.com/bflorat/architecture-document-template[Anglais] (WIP).
+Autres langues : https://github.com/bflorat/architecture-document-template[Anglais].
 
 ## Principes du modèle
 Nous avons découpé l'architecture en cinq volets (applicatif, sécurité, dimensionnement, infrastructure et développement), *chaque volet étant auto-porteur*. 
