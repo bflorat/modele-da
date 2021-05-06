@@ -602,7 +602,7 @@ Les mesures permettant d’atteindre la disponibilité exigée sont très nombre
 
 Nous regroupons les dispositifs de disponibilité en quatre grandes catégories : 
 
-* Dispositifs de *supervision* (technique et applicative) permettant de détecter au plus tôt les pannes et donc de limiter le MTDT (temps moyen de détection). 
+* Dispositifs de *supervision* (technique et applicative) permettant de détecter au plus tôt les pannes et donc de limiter le MTTD (temps moyen de détection). 
 
 * *Dispositifs organisationnels* :  
 
