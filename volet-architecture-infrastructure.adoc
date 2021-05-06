@@ -561,7 +561,7 @@ L'écoconception consiste à limiter l'impact environnemental des logiciels et m
 
 Prendre également en compte les impressions et courriers.
 
-Selon l'ADEME (estimation 2014), les émissions équivalent CO2 d'un KWH en France continentale pour le tertiaire est de 50g/KWH1.
+Selon l'ADEME (estimation 2014), les émissions équivalent CO2 d'un KWH en France continentale pour le tertiaire est de 50g/KWH.
 ====
 ====
 Exemple 1 : La consommation électrique moyenne causée par l’affichage d'une page Web ne devra pas dépasser 10mWH, soit pour 10K utilisateurs qui affichent en moyenne 100 pages 200 J par an : 50 g/KWH x 10mWH x 100 x 10K x 200 = 100 Kg équivalent CO2 / an.
