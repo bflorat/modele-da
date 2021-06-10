@@ -432,7 +432,7 @@ Exemple 1 : pas plus de 0.001% de requêtes en erreur
 ====
 ====
 Exemple 2 : l'utilisateur ne devra pas perdre son panier d'achat même en cas de panne
--> attention, ce type d'exigence impacte l'architecture en profondeur, voir la section <<Disponbilite>>.
+-> attention, ce type d'exigence impacte l'architecture en profondeur, voir la section <<Disponibilite>>.
 ====
 ====
 Exemple 3 : le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95éme centile.
