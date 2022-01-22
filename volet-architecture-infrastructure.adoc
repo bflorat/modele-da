@@ -299,7 +299,7 @@ Exemple 2 : la durée de rétention maximale des logs est de 3 mois
 
 [TIP]
 ====
-Lister les contraintes liées aux sauvegardes
+Lister les contraintes liées aux sauvegardes. 
 ====
 ====
 Exemple 1 : L'espace disque maximal pouvant être provisionné par un projet pour les backups est de 100 Tio sur HDD.
@@ -1069,7 +1069,6 @@ Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigence
 * Comment se fait le bilan de la sauvegarde ? par courriel ? où sont les logs ?
 * Où sont stockées les sauvegardes ? (idéalement le plus loin possible du système sauvegardé tout en permettant une restauration dans un temps compatible avec les exigences de disponibilité).
 * Qui accède physiquement aux sauvegardes et à ses logs ? à la clé de chiffrement ? (penser aux exigences de confidentialité).
-* Des procédures de contrôle de sauvegarde et de test de restauration sont-il prévus ? (prévoir un test de restauration une fois par an minimum).
 
 Il est conseillé : 
 
@@ -1085,6 +1084,15 @@ Exemple de roulement : jeu de 21 sauvegardes sur un an :
 * 3 sauvegardes hebdomadaires correspondant aux 3 autres dimanches. Le support du dernier dimanche du mois devient le backup mensuel ;
 * 11 sauvegardes mensuelles correspondant aux 11 derniers mois.
 ====
+
+Enfin, il est important de garder à l'esprit que ce que nous voulons _vraiment_, ce sont des restaurations, pas des sauvegardes. Il est crucial de s'assurer que la restauration sera fonctionnelle :
+
+* Les sauvegardes sont-elles correctes et complètes ? 
+* Quels tests de restauration sont prévus ? à quelle fréquence (une fois par an est un minium) ?
+* Combien de temps va prendre une restauration (benchmarks) ? Est-ce compatible avec le RTO ?
+* Avons nous des dépendances externes pouvant nous ralentir (coffre accessible en journée uniquement par exemple) ?
+* Avons nous suffisamment de ressources pour la restauration (stockage intermédiaires, CPU et mémoire pour la décompression/déchiffrement , etc...) ?
+
 
 ==== Archivage
 
