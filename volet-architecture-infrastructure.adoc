@@ -432,7 +432,7 @@ Exemple 1 : pas plus de 0.001% de requêtes en erreur
 ====
 ====
 Exemple 2 : l'utilisateur ne devra pas perdre son panier d'achat même en cas de panne
--> attention, ce type d'exigence impacte l'architecture en profondeur, voir la section <<Disponbilite>>.
+-> attention, ce type d'exigence impacte l'architecture en profondeur, voir la section <<Disponibilite>>.
 ====
 ====
 Exemple 3 : le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95éme centile.
@@ -561,7 +561,7 @@ L'écoconception consiste à limiter l'impact environnemental des logiciels et m
 
 Prendre également en compte les impressions et courriers.
 
-Selon l'ADEME (estimation 2014), les émissions équivalent CO2 d'un KWH en France continentale pour le tertiaire est de 50g/KWH1.
+Selon l'ADEME (estimation 2014), les émissions équivalent CO2 d'un KWH en France continentale pour le tertiaire est de 50g/KWH.
 ====
 ====
 Exemple 1 : La consommation électrique moyenne causée par l’affichage d'une page Web ne devra pas dépasser 10mWH, soit pour 10K utilisateurs qui affichent en moyenne 100 pages 200 J par an : 50 g/KWH x 10mWH x 100 x 10K x 200 = 100 Kg équivalent CO2 / an.
@@ -602,7 +602,7 @@ Les mesures permettant d’atteindre la disponibilité exigée sont très nombre
 
 Nous regroupons les dispositifs de disponibilité en quatre grandes catégories : 
 
-* Dispositifs de *supervision* (technique et applicative) permettant de détecter au plus tôt les pannes et donc de limiter le MTDT (temps moyen de détection). 
+* Dispositifs de *supervision* (technique et applicative) permettant de détecter au plus tôt les pannes et donc de limiter le MTTD (temps moyen de détection). 
 
 * *Dispositifs organisationnels* :  
 
