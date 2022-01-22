@@ -541,7 +541,7 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 * La liste des erreurs est-elle consolidée ? documentée ? 
 * Affecte-t-on des codes erreur ?
 * Affiche-on les stack-traces complètes ? si oui, coté serveur et coté client ?
-* Gère-t-on les rejeux ? si oui, espace-t-on les rejeux ?
+* Gère-t-on les rejeux ? si oui, espace-t-on les rejeux ? de façon aléatoire (jitter) ? exponentielle (exponential backoff) ?
 * Comment gère-t-on les timeouts ?
 * Comment gérons-nous les rejets fonctionnels? (c.-à-d. que faire des demandes partielles ou erronées?) 
 
