@@ -289,7 +289,7 @@ Coté Frontend :
 
 Coté Backend :
 
-* S'assurer que la pagination serveur va bien jusqu'à la base de donnée (`LIMIT`, `OFFSET`).
+* S'assurer que la pagination serveur va bien jusqu'à la base de donnée (utiliser `FETCH FIRST x ROWS ONLY` mais https://www.postgresqltutorial.com/postgresql-fetch/[pas `LIMIT` and `OFFSET`]).
 * Ne pas mettre en place de contraintes inutiles en base de données.
 * Limiter le nombre de jointures et les relations many-to-many.
 * Dans des cas de grosses volumétries, étudier les solutions de partitionnement de tables.
