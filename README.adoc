@@ -48,7 +48,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * Si l’application suit une architecture standardisée par l’organisation, *ne jamais la répéter* (principe https://en.wikipedia.org/wiki/Don%27t_repeat_yourself[DRY]) et se référer à un document commun ;
 * Si un chapitre n’est pas applicable, ne pas le laisser vide mais simplement mentionner `N/A` pour que le lecteur sache que le sujet a été traité ou `TODO` s'il reste à compléter ;
 * Ce modèle se veut *suffisamment complet pour couvrir la plupart des applications*. Il est donc normal que de nombreux chapitres ne soient pas applicables dans votre contexte ; 
-* Lister les *hypothèses d’architecture* et études en cours dans le chapitre "Points non statués" de chaque volet (ils doivent être exceptionnels, sinon le DA est rédigé trop tôt) ;
+* Lister les *hypothèses d’architecture* et études en cours dans le chapitre "Points non statués" de chaque volet (leur nombre doit être limité, sinon c'est le signe que le DA est rédigé trop tôt) ;
 * *Isoler dans des annexes* en fin de document les informations d'architecture importantes mais concernant des points précis n’intéressant que peu de lecteurs ;
 
 ### Que ne trouve-t-on *PAS* dans ce document ?
