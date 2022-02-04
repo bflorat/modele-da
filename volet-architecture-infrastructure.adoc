@@ -875,12 +875,12 @@ Les types de réseaux incluent les informations utiles sur le réseau utilisé a
 ====
 Donner ici une vision générale des environnements utilisés par l'application. Les environnements les plus communs sont : développement, recette, pré-production/benchmarks, production, formation.
 
-Il est souvent utile de subdiviser les environnements en 'plateformes' constituées d'un ensemble de composants techniques isolés les uns des autres (même s'il peuvent partager des ressources communes). Par exemple, un environnement de recette peut être constitué des couloirs `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
+Dans les gros SI, il est souvent utile de segmenter les environnements en 'plateformes' (ou 'couloirs') constituées d'un ensemble de composants techniques isolés les uns des autres (même s'il peuvent partager des ressources communes comme des VM suivant la politique de l'organisation). Par exemple, un environnement de recette peut être constitué des plateformes `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
 
 .Environnements
 [cols='1,2,2,2']
 |====
-|Environnement| Rôle| Contenu | Couloir
+|Environnement| Rôle| Contenu | Plateforme
 
 |Développement
 |Déploiement continu (CD) pour les développeurs
