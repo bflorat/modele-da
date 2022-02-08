@@ -53,7 +53,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 
 ### Que ne trouve-t-on *PAS* dans ce document ?
 ** la *conception détaillée* du projet (diagrammes UML de classes, de séquences ...) sauf pour présenter un pattern général spécifique à l’application ;
-** des éléments d’*études* (SWOT, scénarios…) : les choix doivent déjà avoir été faits (en revanche, nous préconisons à cette fin l'écriture d'https://florat.net/comment-faire-de-bons-adr-(decisions-d'architecture)/[ADRs] en annexe du DA);
+** des éléments d’*études* (SWOT, scénarios…) : les choix doivent déjà avoir été faits (en revanche, nous préconisons à cette fin l'écriture d'https://florat.net/comment-faire-de-bons-adr/[ADRs] en annexe du DA);
 ** l’*urbanisation du SI* (nous nous positionnons ici au niveau d’une application ou d’un ensemble de composants cohérents) ;
 ** les *règles d'architecture de référence* (communes à toutes les applications) ;
 ** des détails techniques (IP, logins) pouvant compromettre la sécurité ;
