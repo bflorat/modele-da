@@ -40,7 +40,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * De plus, il est volontairement riche en *explications et exemples* car il a également une (modeste) prétention éducative à destination des étudiants et jeunes architectes.
 * Le texte en italique contient des exemples ;
 * Chaque chapitre dispose de notes aidant à le remplir ;
-* Des link:modeles-vierges[modèles vierges] (sans exemples) sont fournis pour votre confort. *Il est fortement préconisé de partir des modèles vierges tout en ayant dans une autre fenêtre le modèle avec exemples et explications sous les yeux* ;
+* Des link:modeles-vierges[modèles vierges] (sans exemples) sont fournis pour votre confort. *Il est fortement préconisé de partir des modèles vierges tout en ayant dans une autre fenêtre le modèle avec exemples et explications sous les yeux*.
 
 ### Conseils sur la rédaction de votre dossier d'architecture 
 * *Rester bref*, chaque mot doit avoir son utilité. Pas d’explication bateau type ‘ceci est l’introduction’, pas de redites d’autres documents, de l’historique de l’entreprise ou de concepts vagues ;
@@ -53,7 +53,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 
 ### Que ne trouve-t-on *PAS* dans ce document ?
 ** la *conception détaillée* du projet (diagrammes UML de classes, de séquences ...) sauf pour présenter un pattern général spécifique à l’application ;
-** des éléments d’*études* (SWOT, scénarios…) : les choix doivent déjà avoir été faits ;
+** des éléments d’*études* (SWOT, scénarios…) : les choix doivent déjà avoir été faits (en revanche, nous préconisons à cette fin l'écriture d'https://florat.net/comment-faire-de-bons-adr-(decisions-d'architecture)/[ADRs] en annexe du DA);
 ** l’*urbanisation du SI* (nous nous positionnons ici au niveau d’une application ou d’un ensemble de composants cohérents) ;
 ** les *règles d'architecture de référence* (communes à toutes les applications) ;
 ** des détails techniques (IP, logins) pouvant compromettre la sécurité ;
