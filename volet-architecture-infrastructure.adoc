@@ -553,6 +553,7 @@ Exemple 1  : Tous les composants de cette application doivent pouvoir fonctionn
 Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé correctement sous peine de corruption de données.
 ====
 
+[[exigences_ecoconception]]
 === Exigences d'écoconception
 
 [TIP]
@@ -897,7 +898,7 @@ Dans les gros SI, il est souvent utile de segmenter les environnements en 'plate
 
 [TIP]
 ====
-Lister ici les mesures d'infrastructure permettant de répondre aux <<Exigences d'écoconception>>. 
+Lister ici les mesures d'infrastructure permettant de répondre aux <<exigences_ecoconception,Exigences d'écoconception>>. 
 
 Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier) et à celles des coûts (achat de matériel). Dans ce cas, y faire simplement référence. 
 
