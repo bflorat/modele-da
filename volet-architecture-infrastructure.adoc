@@ -1059,16 +1059,16 @@ Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigence
 ** des systèmes de fichiers ou des répertoires ?
 ** des bases de données sous forme de dump ? sous forme binaire ?
 ** les logs ? les traces ?
-* Les sauvegardes sont-elles chiffrées ? si oui, préciser l'algorithme de chiffrement utilisé et comment seront gérés les clés.
+* Les sauvegardes sont-elles chiffrées ? si oui, chiffrement de la partition toute entière, fichier par fichier, les deux ? Faut-il chiffrer également le nom des répertoires et fichiers sauvegardés ? Préciser l'algorithme de chiffrement utilisé et comment seront gérées les clés.
 * Les sauvegardes sont-elles compressées ? si oui, avec quel algorithme ? (lzw, deflate, lzma?, ...), avec quel niveau de compression ? attention à trouver le compromis entre durée de compression / décompression et gain de stockage.
-* Quel outillage est mis en œuvre ? (simple cron ? outil « backup-manager » ? IBM TSM ?).
+* Quel outillage est mis en œuvre ? Simple cron ? Outil Open Source comme « backup-manager » ? IBM TSM ? Outil orienté Cloud comme « Duplicity » ou « Restic » ?, etc.
 * Quelle technologie est utilisée pour les sauvegardes ? (bandes magnétiques type LTO ou DLT ? disques externes ? cartouches RDX ? cloud de stockage comme Amazon S3 ? support optique ? NAS ? ...)
 * Quelle est la périodicité de chaque type de sauvegarde ? (ne pas trop détailler ici, ceci sera dans le DEX)
 * Quelle est la stratégie de sauvegarde ?
 ** complètes ? incrémentales ? différentielles ? (prendre en compte les exigences en disponibilité. La restauration d'une sauvegarde incrémentale sera plus longue qu'une restauration de sauvegarde différentielle, elle-même plus longue qu'une restauration de sauvegarde complète) ;
 ** quel roulement ? (si les supports de sauvegarde sont écrasés périodiquement).
-* Comment se fait le bilan de la sauvegarde ? par courriel ? où sont les logs ?
-* Où sont stockées les sauvegardes ? (idéalement le plus loin possible du système sauvegardé tout en permettant une restauration dans un temps compatible avec les exigences de disponibilité).
+* Comment se fait le bilan de la sauvegarde ? par courriel ? où sont les logs ? Sont-ils facilement accessibles ? Contiennent-ils des informations sensibles ?
+* Où sont stockées les sauvegardes ? (idéalement le plus loin possible du système sauvegardé tout en permettant une restauration dans un temps compatible avec le RTO).
 * Qui accède physiquement aux sauvegardes et à ses logs ? à la clé de chiffrement ? (penser aux exigences de confidentialité).
 
 Il est conseillé : 
