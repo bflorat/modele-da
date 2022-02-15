@@ -1061,7 +1061,7 @@ Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigence
 ** les logs ? les traces ?
 * Les sauvegardes sont-elles chiffrées ? si oui, chiffrement de la partition toute entière, fichier par fichier, les deux ? Faut-il chiffrer également le nom des répertoires et fichiers sauvegardés ? Préciser l'algorithme de chiffrement utilisé et comment seront gérées les clés.
 * Les sauvegardes sont-elles compressées ? si oui, avec quel algorithme ? (lzw, deflate, lzma?, ...), avec quel niveau de compression ? attention à trouver le compromis entre durée de compression / décompression et gain de stockage.
-* Quel outillage est mis en œuvre ? Simple cron ? Outil Open Source comme « backup-manager » ? IBM TSM ? Outil orienté Cloud comme « Duplicity » ou « Restic » ?, etc.
+* Quel outillage est mis en œuvre ? Simple cron + tar/rsync ? Outil Open Source comme « backup-manager » ? IBM TSM ? Outil orienté Cloud comme « Duplicity » ou « Restic » ?, etc.
 * Quelle technologie est utilisée pour les sauvegardes ? (bandes magnétiques type LTO ou DLT ? disques externes ? cartouches RDX ? cloud de stockage comme Amazon S3 ? support optique ? NAS ? ...)
 * Quelle est la périodicité de chaque type de sauvegarde ? (ne pas trop détailler ici, ceci sera dans le DEX)
 * Quelle est la stratégie de sauvegarde ?
