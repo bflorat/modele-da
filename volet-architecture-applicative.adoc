@@ -195,7 +195,7 @@ Exemple 2 : Les modules devront pouvoir s'interfacer avec le partenaire XYZ via 
 ====
 
 ====
-Exemple 2 : Le développement devra pouvoir se faire au sein d'équipes distribuées, chacune travaillant sur des modules distincts.
+Exemple 3 : Le développement devra pouvoir se faire au sein d'équipes distribuées, chacune travaillant sur des modules distincts.
 ====
 
 
