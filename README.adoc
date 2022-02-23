@@ -61,6 +61,11 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 ** l'*architecture physique* (détails des serveurs et datacenters, architecture réseau, architecture de stockage, provisioning...). Il s'agit de sujets très pointus et en général traités par les architectes d'infrastructure à un niveau SI ;
 ** le détail des *environnements* autres que la production (recette, développement...). Ces derniers sont en général trop fluctuants pour figurer dans ce dossier et gagneront à plutôt être documentés par l'intégrateur dans d'autres dossiers, fiches, wikis ou outils de CMDB.
 
+## FAQ
+* **A partir de quelle taille de projet ce modèle est-il éligible ?** Ce modèle a été utilisé avec succès sur un projet d'une seule personne. Il peut être utilisé pour toute taille de projet. Un grand projet remplira probablement plus de rubriques mais la plupart concernent tous les projets. Par exemple, les questions de disponibilité ou d’internationalisation ne sont pas liées à la taille d'un projet nous semble-il.
+* **Ce modèle peut-t-il servir de base à un référentiel d'architecture ?** Même si ne nombreuses idées peuvent être reprise, non, ce n'est pas l'objet de ce modèle.
+* **Ce modèle convient-il à un programme complet ?** Nous préconisons pour un programme complet une approche type TOGAF avec les livrables associés. En revanche, les phases C et D pourront être documentées par un DA au sein de chaque projet de ce programme.
+
 ## Licence
 * Copyright (c) 2017-2021 Bertrand Florat et contributeurs
 * Ce modèle est en licence https://creativecommons.org/licenses/by-sa/4.0/[CC BY-SA 4.0] : Creative Commons Attribution - Partage à l'identique V4.0
