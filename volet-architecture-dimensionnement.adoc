@@ -419,17 +419,18 @@ Voir le link:./volet-architecture-infrastructure.adoc#_déploiement_en_productio
 [TIP]
 ====
 
-Cette section fournit le dimensionnement final des machines necessaires
+Cette section fournit le dimensionnement final des machines nécessaires
 
 * Pour les VM, attention à vérifier qu'un VCPU = 1 cœur physique (et non un thread si hyperthreading activé)
-* Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique executant la VM ou d'un SAN.
-* Le disque externe concerne du stockage sur une baie de disque (SAN) ou sur un filesystème distribué (NFS, CIFS, WebDav...)
+* Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique exécutant la VM ou d'un SAN.
+* Le disque distant concerne du stockage sur une baie de disque (SAN)
+* Le stockage externe concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, ...) ou un stockage objet (Swift, S3, ...)
 ====
 
 .Dimensionnement des machines
 [cols='1e,3e,1e,1e,1e,1e,1e']
 |====
-|Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque externe  (Gio)
+|Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque distant SAN (Gio)
 
 |Zone 01 
 |VM serveur applicatif
@@ -445,7 +446,21 @@ Cette section fournit le dimensionnement final des machines necessaires
 |2
 |6
 |50
-|1024 (SAN)
+|1024
 
+|====
+
+.Dimensionnement du stockage externe
+[cols='1e,3e,3e']
+|====
+|Nature|Taille (Gio)|Type(s) de machine utilisant ce partage
+
+|NFS (montage NAS)
+|248
+|Machine physique Base de données
+
+|OpenStack Object Storage ("Swift")
+|20
+|VM serveur applicatif
 
 |====

@@ -120,8 +120,17 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 .Dimensionnement des machines
 [cols='1,3,1,1,1,1,1']
 |====
-|Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque externe  (Gio)
+|Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque distant SAN (Gio)
 
 |||||||
+
+|====
+
+.Dimensionnement du stockage externe
+[cols='1,3,3']
+|====
+|Nature|Taille (Gio)|Type(s) de machine utilisant ce partage
+
+|||
 
 |====
