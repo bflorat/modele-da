@@ -424,7 +424,7 @@ Cette section fournit le dimensionnement final des machines nécessaires
 * Pour les VM, attention à vérifier qu'un VCPU = 1 cœur physique (et non un thread si hyperthreading activé)
 * Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique exécutant la VM ou d'un SAN.
 * Le disque distant concerne du stockage sur une baie de disque (SAN)
-* Le stockage externe concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, ...) ou un stockage objet (Swift, S3, ...)
+* Le stockage externe hors SAN concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, ...) ou un stockage objet (Swift, S3, ...)
 ====
 
 .Dimensionnement des machines
@@ -450,7 +450,7 @@ Cette section fournit le dimensionnement final des machines nécessaires
 
 |====
 
-.Dimensionnement du stockage externe
+.Dimensionnement du stockage externe hors SAN
 [cols='1e,3e,3e']
 |====
 |Nature|Taille (Gio)|Type(s) de machine utilisant ce partage
