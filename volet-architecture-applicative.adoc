@@ -1,4 +1,4 @@
-= Volet architecture applicative
+# Volet architecture applicative
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -8,7 +8,7 @@
 
 Dernière modification : {docdate} 
 
-== Introduction
+## Introduction
 
 Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
 
@@ -16,7 +16,7 @@ Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
-=== Documentation de Référence
+### Documentation de Référence
 
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
 
@@ -28,9 +28,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |1|2.0.4|XX_Urba_POS.pdf|POS du SI|
 |===
 
-== Non statué
+## Non statué
 
-=== Points soumis à étude complémentaire
+### Points soumis à étude complémentaire
 
 .Points soumis à étude complémentaire
 [cols="1e,6e,1e,1e,1e"]
@@ -44,7 +44,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |AVANT 2040
 |===
 
-=== Hypothèses
+### Hypothèses
 
 .Hypothèses
 [cols="1e,6e"]
@@ -55,9 +55,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |Même si la décision de généralisation de l'annuaire centralisé n'est pas totalement entérinée, l’application s’appuiera dessus et non sur un annuaire local.
 |====
 
-== Contexte général
+## Contexte général
 
-=== Objectifs
+### Objectifs
 
 [TIP]
 Décrire succinctement le projet et en rappeler les objectifs. Mettre en évidence ceux qui sont structurants pour l’architecture.
@@ -72,7 +72,7 @@ Exemple 2 : ce projet est la réécriture en technologies Web de l’applicatio
 Exemple 3: l’ application X est l’un des composants principaux du programme Y. Il s’adosse sur les référentiels Personne et Facturation pour enrichir le CMS en données clients temps réel.
 ====
 
-=== Existant
+### Existant
 
 [TIP]
 Si ce document présente un projet de refonte ou migration, décrire a minima l'application existante. Ne pas reprendre la documentation, y faire simplement référence et pointer vers son éventuel dossier d'architecture. Mentionner néanmoins toute information ayant un impact fort sur la migration ou la conception du nouveau projet.
@@ -83,14 +83,14 @@ Exemple 1 : L'application VENIR2 est une application Client-Server en FORMS 4 po
 Exemple 2 : L'application existante se base et alimente un annuaire LDAP pour ses autorisations. Le nouveau projet devant fonctionner un temps avec l'ancienne, il convient de prendre en compte les accès concurrents et la cohérence du LDAP pendant la période de tuilage.
 ====
 
-=== Positionnement dans le SI
+### Positionnement dans le SI
 
 [TIP] 
 Si le SI est urbanisé, reprendre le plan d’occupation au sol et préciser le bloc concerné 
 
-=== Acteurs
+### Acteurs
 
-==== Acteurs internes 
+#### Acteurs internes 
 
 [TIP]
 On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peut s’agir d'humains ou de composants applicatifs.
@@ -112,7 +112,7 @@ On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peu
 
 |===
 
-==== Acteurs externes
+#### Acteurs externes
 
 .Liste acteurs externes
 [cols="e,e,e,e"]
@@ -129,9 +129,9 @@ On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peu
 |Monde entier
 |===
 
-== Contraintes
+## Contraintes
 
-=== Budget
+### Budget
 
 TIP: Donner les contraintes budgétaires du projet
 ====
@@ -141,14 +141,14 @@ Exemple 1: Enveloppe globale de 1 M€
 Exemple 2: Coûts d'infrastructure cloud < 20K€ / mois
 ====
 
-=== Planning
+### Planning
 
 TIP: Sans reprendre dans le détail les plannings du projet, donner les éléments intéressants pour l'architecture.
 ====
 Exemple 1: MEP avant fev 2034, prérequis au programme HEAVY en mai 2034.
 ====
 
-=== Urbanisation
+### Urbanisation
 
 [TIP]
 ====
@@ -182,7 +182,7 @@ Exemple 6 : Les composants de cette application suivent l'architecture SOA telle
 Exemple 7 : Les composants en zone Internet ne peuvent appeler les composants en zone Intranet pour des raisons de sécurité.
 ====
 
-== Exigences
+## Exigences
 
 TIP: Donner ici les exigences d'architecture applicative pouvant s'appliquer au projet.
 
@@ -199,9 +199,9 @@ Exemple 3 : Le développement devra pouvoir se faire au sein d'équipes distribu
 ====
 
 
-== Architecture cible
+## Architecture cible
 
-=== Architecture applicative générale
+### Architecture applicative générale
 
 [TIP]
 ====
@@ -232,7 +232,7 @@ Exemple 3 : Suite à la dérogation du DSI le 03 aout 20xx, l'IHM sera en archit
 
 image::diagrams/archi-applicative-generale.svg[Diagramme architecture applicative générale]
 
-=== Architecture applicative détaillée
+### Architecture applicative détaillée
 
 [TIP]
 ====
@@ -250,7 +250,7 @@ Les flux sont logiques et non techniques (par exemple, on peut représenter un f
 Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.
 ====
 
-=== Principes ayant dicté les choix
+### Principes ayant dicté les choix
 
 [TIP]
 ====
@@ -260,7 +260,7 @@ Donner ici l'intention dans la construction de l'architecture.
 Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise.
 ====
 
-=== Vision statique
+### Vision statique
 
 [TIP]
 ====
@@ -272,7 +272,7 @@ Exemple: module X, Y et Z dans le domaine GED. Modules A, B dans le domaine PERS
 
 image:diagrams/archi-applicative-detaillee-statique.svg[Diagramme d'Architecture applicative détaillée (vue statique)] 
 
-=== Vision dynamique
+### Vision dynamique
 
 [TIP]
 ====
@@ -290,7 +290,7 @@ image:diagrams/archi-applicative-detaillee-dynamique.svg[Diagramme architecture 
 
 ====
 
-=== Matrice des flux applicatifs
+### Matrice des flux applicatifs
 
 [TIP]
 ====

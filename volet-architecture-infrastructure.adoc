@@ -1,4 +1,4 @@
-= Volet infrastructure
+# Volet infrastructure
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -8,7 +8,7 @@
 
 Dernière modification : {docdate}
 
-== Introduction
+## Introduction
 Ceci est le point de vue infrastructure de l’application. Il décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
 Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
@@ -22,7 +22,7 @@ Ce point de vue est aussi souvent appelé « point de vue technique » et conc
 Bref, elle porte sur tout ce qui est externe à l'application et nécessaire à son exécution
 ====
 
-=== Documentation de Référence
+### Documentation de Référence
 [TIP]
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
 
@@ -36,8 +36,8 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
-== Non statué
-=== Points soumis à étude complémentaire
+## Non statué
+### Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
 [cols="1e,5e,2e,2e,2e"]
 |====
@@ -51,7 +51,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
-=== Hypothèses
+### Hypothèses
 
 .Hypothèses
 [cols="1e,5e"]
@@ -62,7 +62,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Nous prenons l'hypothèse que d'ici à la MEP du projet, PostgreSQL 11 sera validé en interne.
 |====
 
-== Contraintes
+## Contraintes
 
 [TIP]
 ====
@@ -72,7 +72,7 @@ Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par
 
 ====
 
-=== Contraintes sur la disponibilité
+### Contraintes sur la disponibilité
 
 [TIP]
 ====
@@ -81,7 +81,7 @@ Les éléments ici fournis pourront servir de base au SLO (Service Level Objecti
 Ce chapitre a une vocation pédagogique car il rappelle la disponibilité plafond envisageable : la disponibilité finale de l’application ne pourra être qu’inférieure.
 ====
 
-==== MTTD
+#### MTTD
 
 [TIP]
 ====
@@ -93,7 +93,7 @@ Exemple 1 : l'hypervision se fait 24/7/365
 Exemple 2 : le service support production est disponible durant les heures de bureau mais une astreinte est mise en place avec alerting par e-mail et SMS en 24/7 du lundi au vendredi.
 ====
 
-==== MTTR
+#### MTTR
 
 [TIP]
 ====
@@ -115,7 +115,7 @@ Exemple 4 : Comme toute application hébergée au datacenter X, l’application 
 Exemple 5 : le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
 ====
 
-==== Outils et normes de supervision
+#### Outils et normes de supervision
 
 [TIP]
 ====
@@ -129,7 +129,7 @@ Exemple 2 : Les batchs doivent pouvoir se lancer sur un endpoint REST
 Exemple 3 : un batch en erreur ne doit pas pouvoir se relancer sans un acquittement humain
 ====
 
-==== Interruptions programmées
+#### Interruptions programmées
 
 [TIP]
 ====
@@ -143,7 +143,7 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 
 ====
 
-==== Niveau de service du datacenter
+#### Niveau de service du datacenter
 
 [TIP]
 ====
@@ -189,7 +189,7 @@ Donner ici le niveau de sécurité du datacenter selon l’échelle Uptime Insti
 Exemple : le datacenter de Paris est de niveau Tier III et celui de Toulouse Tier II.
 ====
 
-==== Synthèse de la disponibilité plancher
+#### Synthèse de la disponibilité plancher
 
 [TIP]
 ====
@@ -200,7 +200,7 @@ En prenant en compte les éléments précédents, estimer la disponibilité plan
 Exemple : <disponibilité datacenter> * <plage de fonctionnement effective> * <disponibilité système > * <disponibilité hardware> = 99.8 x 99.99 x 99.6 x 99.99 =~ *99.4%*.
 ====
 
-==== Gestion des catastrophes
+#### Gestion des catastrophes
 
 [TIP]
 ====
@@ -239,7 +239,7 @@ Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de 
 ====
 
 
-=== Hébergement
+### Hébergement
 
 * Où sera hébergée cette application ? datacenter "on premises" ? Cloud interne ? Cloud IaaS ? PaaS ? autre ?
 * Qui administrera cette application ? en interne ? Sous-traité ? Pas d’administration (PaaS) … ?
@@ -255,7 +255,7 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel PERSONNE, elle sera colocalisée avec le composant PERSONNE dans le VLAN XYZ.
 ====
 
-=== Contraintes réseau
+### Contraintes réseau
 
 [TIP]
 ====
@@ -268,7 +268,7 @@ Exemple 1 : le LAN dispose d'un débit maximal de 10 Gbps
 Exemple 2 : les composants applicatifs des applications intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
 ====
 
-=== Contraintes de déploiement
+### Contraintes de déploiement
 
 [TIP]
 ====
@@ -283,7 +283,7 @@ Exemple 3 : Toute application doit être packagées sous forme d'image OCI et d�
 
 ====
 
-=== Contraintes de logs
+### Contraintes de logs
 
 [TIP]
 ====
@@ -295,7 +295,7 @@ Exemple 1 : une application ne doit pas produire plus de 1Tio de logs / mois.
 Exemple 2 : la durée de rétention maximale des logs est de 3 mois
 ====
 
-=== Contraintes de sauvegardes et restaurations
+### Contraintes de sauvegardes et restaurations
 
 [TIP]
 ====
@@ -309,7 +309,7 @@ Exemple 2 : la durée de retentions maximale des sauvegardes est de deux ans
 Exemple 3 : Compter 1 min / Gio pour une restauration NetBackup.
 ====
 
-=== Coûts
+### Coûts
 
 [TIP]
 ====
@@ -319,7 +319,7 @@ Lister les limites budgétaires.
 Exemple 1 : les frais de services Cloud AWS ne devront pas dépasser 5K€/ an pour ce projet.
 ====
 
-== Exigences
+## Exigences
 
 [TIP]
 ====
@@ -333,7 +333,7 @@ Les exigences liées à la disponibilité devraient être précisées via une é
 
 ====
 
-=== Plages de fonctionnement
+### Plages de fonctionnement
 
 [TIP]
 ====
@@ -368,7 +368,7 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 |====
 ====
 
-=== Exigences de disponibilité
+### Exigences de disponibilité
 
 [TIP]
 ====
@@ -404,7 +404,7 @@ La disponibilité exigée ici devra être en cohérence avec les <<Contraintes s
 |4h, 8 fois dans l'année
 |====
 
-=== Modes dégradés
+### Modes dégradés
 [TIP]
 ====
 Préciser les modes dégradés applicatifs envisagés.
@@ -417,7 +417,7 @@ Exemple 1 : Le site _monsite.com_ devra pouvoir continuer à accepter les comman
 Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de donnée puis soumis à nouveau suite à une opération manuelle des exploitants.
 ====
 
-=== Exigences de robustesse
+### Exigences de robustesse
 
 [TIP]
 ====
@@ -438,7 +438,7 @@ Exemple 2 : l'utilisateur ne devra pas perdre son panier d'achat même en cas de
 Exemple 3 : le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95éme centile.
 ====
 
-=== Exigences de RPO
+### Exigences de RPO
 
 [TIP]
 ====
@@ -456,7 +456,7 @@ Donner ici le Recovery Point Objective (RPO) de l’application. Il peut être u
 Exemple : on ne doit pas pouvoir perdre plus d'une journée de données applicatives
 ====
 
-=== Exigences d'archivage
+### Exigences d'archivage
 
 [TIP]
 ====
@@ -474,7 +474,7 @@ Exemple 1: comme exigé par l'article L.123-22 du code de commerce, les données
 Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte SHA256 sera calculée au moment de l'archivage et stockée séparément pour vérification de l'intégrité des documents en cas de besoin.
 ====
 
-=== Exigences de purges
+### Exigences de purges
 
 [TIP]
 ====
@@ -490,9 +490,9 @@ Il est souvent judicieux d'attendre la MEP voire plusieurs mois d'exploitation p
 Exemple 1 : les dossiers de plus de six mois seront purgées (après archivage)
 ====
 
-=== Exigences de déploiements et de mise à jour
+### Exigences de déploiements et de mise à jour
 
-==== Coté serveur
+#### Coté serveur
 
 [TIP]
 ====
@@ -505,7 +505,7 @@ Par exemple :
 * Comment sont appliquées les mises jour ?
 ====
 
-==== Coté client
+#### Coté client
 
 [TIP]
 ====
@@ -527,7 +527,7 @@ Coté client, pour une application client lourd :
 * Comment sont appliquées les mises jour ?
 ====
 
-==== Stratégie de déploiement spécifiques
+#### Stratégie de déploiement spécifiques
 
 [TIP]
 ====
@@ -540,7 +540,7 @@ Coté client, pour une application client lourd :
 Exemple: L'application sera déployée sur un mode blue/green, c'est à dire complètement installée sur des machines initialement inaccessibles puis une bascule DNS permettra de pointer vers les machines disposant de la dernière version.
 ====
 
-=== Exigences de gestion de la concurrence
+### Exigences de gestion de la concurrence
 
 [TIP]
 ====
@@ -554,7 +554,7 @@ Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé
 ====
 
 [[exigences_ecoconception]]
-=== Exigences d'écoconception
+### Exigences d'écoconception
 
 [TIP]
 ====
@@ -574,9 +574,9 @@ Exemple 2 : Le Power usage effectiveness (PUE) du site devra être de 1.5 ou moi
 Exemple 3 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2020.
 ====
 
-== Architecture cible
+## Architecture cible
 
-=== Principes
+### Principes
 
 [TIP]
 ====
@@ -590,7 +590,7 @@ Exemples :
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
-=== Disponibilité 
+### Disponibilité 
  
 [TIP] 
 ==== 
@@ -787,7 +787,7 @@ Exemple 2 : Pour atteindre la disponibilité de 99.97% exigée, les dispositifs 
 ==== 
 
 
-=== Déploiement en production
+### Déploiement en production
 
 [TIP]
 ====
@@ -809,7 +809,7 @@ Exemple :
 image::diagrams/archi-infra.svg[Diagramme de déploiement MIEL]
 ====
 
-=== Versions des composants d'infrastructure
+### Versions des composants d'infrastructure
 
 [TIP]
 ====
@@ -846,7 +846,7 @@ Lister ici OS, bases de données, MOM, serveurs d'application, etc...
 |CentOS 7
 |====
 
-=== Matrice des flux techniques
+### Matrice des flux techniques
 
 [TIP]
 ====
@@ -870,7 +870,7 @@ Les types de réseaux incluent les informations utiles sur le réseau utilisé a
 |4|sup1|host[1-6]|LAN|SNMP|199
 |====
 
-=== Environnements
+### Environnements
 
 [TIP]
 ====
@@ -919,9 +919,9 @@ Exemple 1 : la mise en place d'un cache Varnish devant notre CMS reduira de 50% 
 Exemple 2 : L'application sera hébergée sur un cloud avec un PUE de 1.2 et une origine à 80 % renouvelable de l’énergie électrique.
 ====
 
-=== Régulation de la charge
+### Régulation de la charge
 
-==== Coupe-circuits
+#### Coupe-circuits
 
 [TIP]
 ====
@@ -932,7 +932,7 @@ Si ce risque est identifié, prévoir un système de fusible avec déport de tou
 Ce dispositif peut également servir en cas d’attaque de type DDOS et permet de gèrer le problème et non de le subir car on assure un bon fonctionnement acceptable aux utilisateurs déjà connectés.
 ====
 
-==== Qualité de Service
+#### Qualité de Service
 
 [TIP]
 ====
@@ -957,7 +957,7 @@ Exemple 1 : Le nombre total de jetons d'appels aux opérations REST sur la resso
 Exemple 2 : un throttling de 100 requêtes par source et par minute sera mis en place au niveau du reverse proxy.
 ====
 
-=== Gestion des timeouts
+### Gestion des timeouts
 
 [TIP]
 ====
@@ -985,7 +985,7 @@ Exemple :
 
 ====
 
-=== Exploitation
+### Exploitation
 
 [TIP]
 ====
@@ -994,7 +994,7 @@ Lister ici les grands principes d’exploitation de la solution. Les détails (f
 Si cette application reste dans le standard de l’organisation, se référer simplement à un dossier commun.
 ====
 
-==== Ordre d’arrêt/démarrage
+#### Ordre d’arrêt/démarrage
 
 [TIP]
 ====
@@ -1021,7 +1021,7 @@ Exemple d'ordre d'arrêt :
 Inverse exact du démarrage
 ====
 
-==== Opérations programmées
+#### Opérations programmées
 
 [TIP]
 ====
@@ -1037,7 +1037,7 @@ Exemple 1 : le batch `traiter-demande` fonctionnera au fil de l'eau. Il sera lan
 Exemple 2 : le traitement interne `ti_index` est une classe Java appelant des commandes `REINDEX` en JDBC lancées depuis un scheduler Quartz une fois par mois.
 ====
 
-==== Mise en maintenance
+#### Mise en maintenance
 
 [TIP]
 ====
@@ -1047,7 +1047,7 @@ Expliquer (si besoin) les dispositifs et procédures permettant de mettre l'appl
 Exemple : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponibilité.
 ====
 
-==== Sauvegardes et restaurations
+#### Sauvegardes et restaurations
 
 [TIP]
 ====
@@ -1095,7 +1095,7 @@ Enfin, il est important de garder à l'esprit que ce que nous voulons _vraiment_
 * Avons nous suffisamment de ressources pour la restauration (stockage intermédiaires, CPU et mémoire pour la décompression/déchiffrement , etc...) ?
 
 
-==== Archivage
+#### Archivage
 
 [TIP]
 ====
@@ -1108,7 +1108,7 @@ Décrire ici les dispositifs permettant de répondre aux <<exigences-archivage>>
 Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LTO et disque dur. Les deux supports seront stockés en coffre dans deux banques différentes.
 ====
 
-==== Purges
+#### Purges
 
 [TIP]
 ====
@@ -1118,7 +1118,7 @@ Donner ici les dispositifs techniques répondant aux <<exigences-purge>>.
 Exemple : l'historique des consultations sera archivé par un dump avec une requête SQL de la forme `COPY (SELECT * FROM matable WHERE ...) TO '/tmp/dump.tsv'` puis purgé par une requete SQL `DELETE` après validation par l'exploitant de la complétude du dump.
 ====
 
-==== Logs
+#### Logs
 
 [TIP]
 ====
@@ -1137,7 +1137,7 @@ Exemple 1 : les logs applicatifs du composant service-miel seront en production 
 Exemple 2 : les logs seront échappés à leur création via la méthode `StringEscapeUtils.escapeHtml()` de Jakarta commons-lang.
 ====
 
-==== Supervision
+#### Supervision
 
 [TIP]
 ====
@@ -1150,7 +1150,7 @@ Les métriques sont des mesures brutes (% CPU, taille FS, taille d'un pool...) i
 Les indicateurs sont des combinaisons logiques de plusieurs métriques disposant de seuils (ex : 'niveau critique si l'utilisation de CPU sur le serveur s1 reste au delà de 95% pendant plus de 5 minutes').
 ====
 
-===== Supervision technique
+##### Supervision technique
 
 [TIP]
 ====
@@ -1163,7 +1163,7 @@ Lister les métriques :
 Exemple : on mesura le % de wait io et la charge serveur.
 ====
 
-===== Supervision applicative
+##### Supervision applicative
 
 [TIP]
 ====
@@ -1179,7 +1179,7 @@ Il est également possible de mettre en place des outils de BAM (Business Activi
 Exemple : l'API REST de supervision applicative proposera une ressource Metrique contenant les métriques métier principaux : nombre de colis à envoyer, nombre de préparateurs actifs...
 ====
 
-===== Outil de pilotage de la supervision
+##### Outil de pilotage de la supervision
 
 [TIP]
 ====
@@ -1195,7 +1195,7 @@ Un tel outil (comme Nagios, Hyperic HQ dans le monde Open Source) :
 Exemple : la pilotage de la supervision se basera sur la plate-forme Grafana.
 ====
 
-===== Alerting
+##### Alerting
 
 [TIP]
 ====
@@ -1205,7 +1205,7 @@ Préciser ici les conditions d'alertes et le canal utilisé
 Exemple : SMS si aucune demande depuis les 4 dernières heures ou si le nombre d'erreurs techniques d'un composant dépasse 10/h.
 ====
 
-===== Suivi des opérations programmées
+##### Suivi des opérations programmées
 
 [TIP]
 ====
@@ -1228,7 +1228,7 @@ Exemple 1 : les jobs seront ordonnancés par l'instance JobScheduler de l'organi
 Exemple 2 : Les jobs devront produire un rapport d'exécution à chaque lancement (avec des données de base comme le nombre d'éléments traités, la durée du traitement et tout indicateur pertinent).
 ====
 
-===== Supervision boite noire
+##### Supervision boite noire
 
 [TIP]
 ====
@@ -1242,7 +1242,7 @@ Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si te
 Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via l'outil uptrends.com. En cas de panne, un mail est envoyé aux exploitants.
 ====
 
-===== Métrologie
+##### Métrologie
 
 [TIP]
 ====
@@ -1262,7 +1262,7 @@ Il existe trois grandes familles de solutions :
 Exemple : les performances du site seront supervisées en continu par `pingdom.com`. Des analyses de performances plus poussées seront mises en œuvre par Pinpoint en fonction des besoins.
 ====
 
-=== Migration
+### Migration
 
 [TIP]
 ====
@@ -1279,7 +1279,7 @@ Exemple 1 : Le composant X sera remplacé par les services Y. Ensuite les donn�
 Exemple 2 : en cas de problème sur le nouveau composant, un retour arrière sera prévu : les anciennes données seront restaurées dans les deux heures et les nouvelles données depuis la bascule seront reprise par le script S1.
 ====
 
-=== Décommissionnement
+### Décommissionnement
 
 [TIP]
 ====
