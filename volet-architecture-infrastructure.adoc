@@ -856,7 +856,7 @@ Dans certaines organisations, cette matrice sera trop détaillée pour un dossie
 
 Il n'est pas nécessaire de faire référence aux flux applicatifs car les lecteurs ne recherchent pas les mêmes informations. Ici, les exploitants ou les intégrateurs recherchent l’exhaustivité des flux à fin d'installation et de configuration des pare-feu par exemple.
 
-Les types de réseaux incluent les informations utiles sur le réseau utilisé afin d'apprécier les performances (TR, latence) et la sécurité: LAN, VLAN, Internet, LS, WAN,…)
+Les types de réseaux incluent les informations utiles sur le réseau utilisé afin d'apprécier les performances (TR, latence) et la sécurité: LAN, VLAN, Internet, LS, WAN…)
 ====
 
 .Exemple partiel de matrice de flux techniques
@@ -1210,7 +1210,7 @@ Exemple : SMS si aucune demande depuis les 4 dernières heures ou si le nombre d
 
 [TIP]
 ====
-Indiquer l’ordonnanceur ou le planificateur utilisé pour piloter les jobs et consolider le plan de production (exemple : VTOM, JobScheduler, Dollar Universe, Control-M,…). Détailler les éventuelles spécificités de l’application :
+Indiquer l’ordonnanceur ou le planificateur utilisé pour piloter les jobs et consolider le plan de production (exemple : VTOM, JobScheduler, Dollar Universe, Control-M…). Détailler les éventuelles spécificités de l’application :
 
 * Degré de parallélisme des jobs
 * Plages de temps obligatoires

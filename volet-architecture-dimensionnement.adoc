@@ -159,7 +159,7 @@ Prendre en compte :
 * La taille des fichiers produits.
 * La taille des files.
 * La taille des logs.
-* L'espace nécessaire dans un éventuel stockage objet (S3, Swift, Ceph,…)
+* L'espace nécessaire dans un éventuel stockage objet (S3, Swift, Ceph…)
 *  …
 
 Ne pas prendre en compte :
@@ -207,7 +207,7 @@ N'estimer que les données dont la taille est non négligeable (plusieurs Gio mi
 
 ### Volumétrie dynamique
 
-TIP: Il s'agit des métriques par durée (année, mois, heure,…) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
+TIP: Il s'agit des métriques par durée (année, mois, heure…) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
 
 #### Métriques
 

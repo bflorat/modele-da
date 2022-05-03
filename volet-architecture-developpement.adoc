@@ -308,7 +308,7 @@ Frontend et backend :
 * Toute ressource (taille de chaîne, nombre d'appel sur une durée, …) doit systématiquement être bornée par une limite (pas d'open bar).
 * Vérifier que la taille des requêtes HTTP reste en dessous de quelques dizaines de Kio (hors GET sur fichiers). Utiliser la <<Tri et Pagination,pagination cliente et serveur>>.
 * Traquer le bavardage réseau : grouper les requêtes quand possible (il faut trouver un compromis avec la règle précédente). S'aider de la règle ‘I’ de SOLID (Interface Segregation).
-* Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2,…`) pour récupérer plusieurs éléments à la fois
+* Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2…`) pour récupérer plusieurs éléments à la fois
 (doit se concrétiser par un seul `SELECT WHERE .. IN` dans la requête finale, pas une boucle dans le code !)
 
 ====
@@ -537,7 +537,7 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 * Différencions-nous erreurs fonctionnelles (erreurs fonctionnelles prévues) et techniques ? Prévoir un diagramme de classe.
 * Comment logue t-on les erreurs ? quel niveau de log ? 
 * Où sont attrapées les exceptions ? au plus tôt ou en début d'appel de façon centralisée ?
-* Utilise-t-on les exceptions standards du langage (`IOException`,…) ou notre propre jeu d'exceptions ?
+* Utilise-t-on les exceptions standards du langage (`IOException`…) ou notre propre jeu d'exceptions ?
 * La liste des erreurs est-elle consolidée ? documentée ? 
 * Affecte-t-on des codes erreur ?
 * Affiche-on les stack-traces complètes ? si oui, coté serveur et coté client ?

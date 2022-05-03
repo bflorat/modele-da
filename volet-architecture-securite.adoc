@@ -554,7 +554,7 @@ Il s’agit donc d’un chiffrement client uniquement. Une perte de mot de passe
 Penser aussi à la confidentialité des données dérivées :
 
 * chiffrement des backups ;
-* chiffrement des données clientes pour les applications lourdes. Cela peut être un chiffrement matériel en SED (Self Encryption Disk), un chiffrement logiciel de niveau partition (SafeGuard, dm-crypt) ou de niveau fichier (encfs, TrueCrypt,…)
+* chiffrement des données clientes pour les applications lourdes. Cela peut être un chiffrement matériel en SED (Self Encryption Disk), un chiffrement logiciel de niveau partition (SafeGuard, dm-crypt) ou de niveau fichier (encfs, TrueCrypt…)
 ====
 
 ### Identification
