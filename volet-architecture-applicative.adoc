@@ -209,15 +209,15 @@ Présenter ici l'application dans son ensemble (sans détailler ses sous-composa
 
 Rappeler :
 
- * Le type d'architecture (client-serveur, Web monolithique, SOA, micro-service...).
+ * Le type d'architecture (client-serveur, Web monolithique, SOA, micro-service…).
  * Les grands flux entre les composants ou entre les applications dans le cas des monolithes.
  * D'éventuelles dérogations aux règles d'architecture du SI.
 
 Le choix de la représentation est libre mais un diagramme C4 de System Landscape ou un diagramme de composant UML2 semble le plus adapté.
 
-Numéroter les étapes par ordre chronologique assure une meilleure compréhension du schéma. Grouper les sous étapes par la notation x, x.y, x.y.z, ...
+Numéroter les étapes par ordre chronologique assure une meilleure compréhension du schéma. Grouper les sous étapes par la notation x, x.y, x.y.z, …
 
-Ne pas faire figurer les nombreux systèmes d'infrastructure (serveur SMTP, dispositif de sécurité, reverse proxy, annuaires LDAP, ...) qui sont du domaine de l'architecture technique. Mentionner en revanche les éventuels bus d'entreprise qui ont un rôle applicatif (orchestration de service par exemple).
+Ne pas faire figurer les nombreux systèmes d'infrastructure (serveur SMTP, dispositif de sécurité, reverse proxy, annuaires LDAP, …) qui sont du domaine de l'architecture technique. Mentionner en revanche les éventuels bus d'entreprise qui ont un rôle applicatif (orchestration de service par exemple).
 ====
 
 ====
@@ -244,7 +244,7 @@ Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhens
 
 Si l'application est particulièrement complexe, faire un schéma par chaîne de liaison.
 
-Utiliser comme ID des flux une simple séquence non signifiante (1, 2, ..., n).
+Utiliser comme ID des flux une simple séquence non signifiante (1, 2, …, n).
 Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux composants alors qu'en réalité, il passe par un répartiteur de charge intermédiaire : ce niveau de détail sera donné dans le volet infrastructure). 
 
 Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.

@@ -1,6 +1,6 @@
 # Modèle de dossier d'architecture
 
-Ce modèle de Dossier d'Architecture (DA) est applicable à la plupart des projets d'informatique de gestion, indépendamment de l'architecture générale retenue (monolithe, SOA, micro-service, n-tiers, ...).
+Ce modèle de Dossier d'Architecture (DA) est applicable à la plupart des projets d'informatique de gestion, indépendamment de l'architecture générale retenue (monolithe, SOA, micro-service, n-tiers, …).
 Ce modèle a déjà été utilisé sur plusieurs projets importants y compris au sein de grandes organisations. Il s'enrichit régulierement.
 
 NOTE: Nous utilisons le terme 'DA' et pas 'DAT' ou termes similaires car chaque organisation possède sa terminologie mais surtout le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
@@ -10,7 +10,7 @@ Autres langues : https://github.com/bflorat/architecture-document-template[Angla
 ## Principes du modèle
 Nous avons découpé l'architecture en cinq volets (applicatif, sécurité, dimensionnement, infrastructure et développement), *chaque volet étant auto-porteur*. 
 
-L'idée est de proposer un *ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations* et sur leurs préoccupations respectives. Par exemple, un⸱e architecte d'infrastructure ou un⸱e ingénieur DevOps a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un⸱e PO ou un⸱e architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, ...).
+L'idée est de proposer un *ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations* et sur leurs préoccupations respectives. Par exemple, un architecte d'infrastructure ou un ingénieur DevOps a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un PO ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, …).
 
 image:modeles-vierges/resources/metiers.png[à lire en priorité]
 
@@ -24,7 +24,7 @@ Un dossier suivant ce modèle sera ainsi constitué :
 
 Dans chaque volet, on retrouvera le triptyque :
 
-* *Contraintes* (juridiques, budgétaires, technologiques, normatives,...) applicables au projet;
+* *Contraintes* (juridiques, budgétaires, technologiques, normatives…) applicables au projet;
 * *Exigences* non fonctionnelles (ENF) exprimées par les porteurs du projet dans la limite des contraintes ;
 * *Solution* (description de l'architecture retenue et répondant aux ENF).
 
@@ -53,13 +53,13 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * *Isoler dans des annexes* en fin de document les informations d'architecture importantes mais concernant des points précis n’intéressant que peu de lecteurs ;
 
 ### Que ne trouve-t-on *PAS* dans ce document ?
-** la *conception détaillée* du projet (diagrammes UML de classes, de séquences ...) sauf pour présenter un pattern général spécifique à l’application ;
+** la *conception détaillée* du projet (diagrammes UML de classes, de séquences…) sauf pour présenter un pattern général spécifique à l’application ;
 ** des éléments d’*études* (SWOT, scénarios…) : les choix doivent déjà avoir été faits (en revanche, nous préconisons à cette fin l'écriture d'https://florat.net/comment-faire-de-bons-adr/[ADRs] en annexe du DA);
 ** l’*urbanisation du SI* (nous nous positionnons ici au niveau d’une application ou d’un ensemble de composants cohérents) ;
 ** les *règles d'architecture de référence* (communes à toutes les applications) ;
 ** des détails techniques (IP, logins) pouvant compromettre la sécurité ;
-** l'*architecture physique* (détails des serveurs et datacenters, architecture réseau, architecture de stockage, provisioning...). Il s'agit de sujets très pointus et en général traités par les architectes d'infrastructure à un niveau SI ;
-** le détail des *environnements* autres que la production (recette, développement...). Ces derniers sont en général trop fluctuants pour figurer dans ce dossier et gagneront à plutôt être documentés par l'intégrateur dans d'autres dossiers, fiches, wikis ou outils de CMDB.
+** l'*architecture physique* (détails des serveurs et datacenters, architecture réseau, architecture de stockage, provisioning…). Il s'agit de sujets très pointus et en général traités par les architectes d'infrastructure à un niveau SI ;
+** le détail des *environnements* autres que la production (recette, développement…). Ces derniers sont en général trop fluctuants pour figurer dans ce dossier et gagneront à plutôt être documentés par l'intégrateur dans d'autres dossiers, fiches, wikis ou outils de CMDB.
 
 ## FAQ
 * **A partir de quelle taille de projet ce modèle est-il éligible ?** Ce modèle a été utilisé avec succès sur un projet d'une seule personne. Il peut être utilisé pour toute taille de projet. Un grand projet remplira probablement plus de rubriques mais la plupart concernent tous les projets. Par exemple, les questions de disponibilité ou d’internationalisation ne sont pas liées à la taille d'un projet nous semble-il.

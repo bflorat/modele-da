@@ -68,10 +68,10 @@ Lister ici les contraintes relatives à l'architecture logicielle, ceci inclut p
 
 * L'obligation d'utiliser un framework ou une filière technologique précise
 * Les budgets maximums de licence ou de développement
-* L'outillage (IDE, ...)
+* L'outillage (IDE, …)
 * L'intégration continue
 * Les normes et seuils de qualité de code applicables
-* Les tests (taux de couverture, répartition par type de test, ...)
+* Les tests (taux de couverture, répartition par type de test, …)
 
 ====
 ====
@@ -134,7 +134,7 @@ Exemple 2 : de nombreux écrans seront pourvus d’accordéons
 ====
 Décrire ici les polices de caractère à utiliser pour les pages Web, les applications ou les documents composés.
 
-Le choix des polices suit des contraintes de licences. Afin d'assurer une sécurité juridique au projet, attention aux polices commerciales soumises à royalties (en particulier les polices appartement à Microsoft comme Times New Roman, Courier, Verdana, Arial) et qui ne permettent pas de produire gratuitement des documents sans passer par leurs éditeurs (Word, ...). 
+Le choix des polices suit des contraintes de licences. Afin d'assurer une sécurité juridique au projet, attention aux polices commerciales soumises à royalties (en particulier les polices appartement à Microsoft comme Times New Roman, Courier, Verdana, Arial) et qui ne permettent pas de produire gratuitement des documents sans passer par leurs éditeurs (Word, …). 
 
 Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-les-fondamentaux/la-typographie[Marianne] préconisée par le gouvernenement en tant que police à chasse variable.
 
@@ -159,7 +159,7 @@ WARNING: Un design responsive vient avec ses contraintes (duplication de code, a
 
 [TIP]
 ====
-Spécifier si l'application est progressive. Les applications PWA sont des applications Web HTML5 possédant tous les attributs des applications natives (mode déconnecté, rapide, adaptatif, accessible depuis l'OS, ...) 
+Spécifier si l'application est progressive. Les applications PWA sont des applications Web HTML5 possédant tous les attributs des applications natives (mode déconnecté, rapide, adaptatif, accessible depuis l'OS, …) 
 ====
 ====
 Exemple : L'application X sera totalement PWA. Des tests devront démonter que le site continuer à fonctionner sans réseau et que les pages se chargent en moins de 5 secs en 4G. 
@@ -206,7 +206,7 @@ Exemple 2 : les formats de dates et autres champs de saisie devront être parfa
 ====
 Préciser si l'application doit pouvoir continuer à fonctionner sans accès à Internet ou au LAN (très courant pour les applications utilisées par les professionnels en déplacement par exemple). 
 
-Il peut s’agir de clients lourds classiques (Java, C, ...) possédant leur base locale pouvant être synchronisée de retour au bureau. Il peut également s'agir d'applications PWA (voir plus haut) utilisant un service worker pour les resources statiques et du stockage navigateur (local storage, base de données IndexedDB).
+Il peut s’agir de clients lourds classiques (Java, C, …) possédant leur base locale pouvant être synchronisée de retour au bureau. Il peut également s'agir d'applications PWA (voir plus haut) utilisant un service worker pour les resources statiques et du stockage navigateur (local storage, base de données IndexedDB).
 ====
 ====
 Exemple 1 : L'application sera développée en Java Swing avec stockage local basé sur une base H2 synchronisées avec la base commune par appels REST.
@@ -242,7 +242,7 @@ Donner les technologies choisies parmi les technologies au catalogue de l’orga
 Exemple : cette application est de profil P3 : "Application Web Spring" avec utilisation exceptionnelle de la librairie JasperReport.
 ====
 ====
-Exemple : Utilisation de Reacts.js à titre expérimental au sein de l'organisation. Validé en commité architecture le ...
+Exemple : Utilisation de Reacts.js à titre expérimental au sein de l'organisation. Validé en commité architecture le …
 ====
 
 #### Composants logiciels
@@ -277,7 +277,7 @@ IMPORTANT: Voir les exigences sont dans le link:./volet-architecture-dimensionne
 [TIP]
 ====
 Même si des campagnes de performance sont prévues, l'expérience montre que la plupart des problèmes de performance auraient pu être détectés dès le développement.
-Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, ...) mais la plupart des problèmes de temps de réponse. Il est également souvent possible de simuler de la concurrence et de la charge. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
+Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, …) mais la plupart des problèmes de temps de réponse. Il est également souvent possible de simuler de la concurrence et de la charge. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
 
 
 Coté Frontend :
@@ -285,7 +285,7 @@ Coté Frontend :
 * Limiter la complexité des CSS (sélecteurs ou fonctions en particulier)
 * Utiliser un profiler (comme celui de Chrome)
 * Privilégier les appels asynchrones
-* ...
+* …
 
 Coté Backend :
 
@@ -301,14 +301,14 @@ Coté Backend :
 * Vérifier qu'il n'y a pas de fuite de threads ou de deadlocks en comptant le nombre de threads actifs sur une période suffisamment longue (une nuit compléte par exemple).
 * Stresser les API _a minima_ (avec des injecteurs comme JMeter ou K6) et via une rampe progressive.
 * Traquer les IO (des millions de fois plus lents que des accès mémoire).
-* ...
+* …
 
 Frontend et backend : 
 
-* Toute ressource (taille de chaîne, nombre d'appel sur une durée, ...) doit systématiquement être bornée par une limite (pas d'open bar).
+* Toute ressource (taille de chaîne, nombre d'appel sur une durée, …) doit systématiquement être bornée par une limite (pas d'open bar).
 * Vérifier que la taille des requêtes HTTP reste en dessous de quelques dizaines de Kio (hors GET sur fichiers). Utiliser la <<Tri et Pagination,pagination cliente et serveur>>.
 * Traquer le bavardage réseau : grouper les requêtes quand possible (il faut trouver un compromis avec la règle précédente). S'aider de la règle ‘I’ de SOLID (Interface Segregation).
-* Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2,...`) pour récupérer plusieurs éléments à la fois
+* Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2…`) pour récupérer plusieurs éléments à la fois
 (doit se concrétiser par un seul `SELECT WHERE .. IN` dans la requête finale, pas une boucle dans le code !)
 
 ====
@@ -410,7 +410,7 @@ Exemple 3 : Types de tests
 |TI (tests d'intégration) 
 |Faible 
 |Automatisé 
-|Composants appelant des systèmes externes (bases de données, API...) 
+|Composants appelant des systèmes externes (bases de données, API…) 
 |50 à 60% 
 |Chaque TI ne doit tester qu'un seul système externe à la fois 
 
@@ -537,7 +537,7 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 * Différencions-nous erreurs fonctionnelles (erreurs fonctionnelles prévues) et techniques ? Prévoir un diagramme de classe.
 * Comment logue t-on les erreurs ? quel niveau de log ? 
 * Où sont attrapées les exceptions ? au plus tôt ou en début d'appel de façon centralisée ?
-* Utilise-t-on les exceptions standards du langage (`IOException`,...) ou notre propre jeu d'exceptions ?
+* Utilise-t-on les exceptions standards du langage (`IOException`…) ou notre propre jeu d'exceptions ?
 * La liste des erreurs est-elle consolidée ? documentée ? 
 * Affecte-t-on des codes erreur ?
 * Affiche-on les stack-traces complètes ? si oui, coté serveur et coté client ?
@@ -559,7 +559,7 @@ Comment configure-t-on l'application ? Exemples de points à traiter :
 * Quels sont les variables inclues dans le package final de façon statique ?
 * Quels sont les paramètres modifiables au runtime ? 
 * Mon application est-elle paramétrable via feature flags pour des raisons de canary testing par exemple ? si oui, comment je le gère dans le code ?
-* Sous quelle forme les paramètres sont-ils injectés dans l'application (variable d'environnement ? fichier .properties, base de donnée, ...) ? 
+* Sous quelle forme les paramètres sont-ils injectés dans l'application (variable d'environnement ? fichier .properties, base de donnée, …) ? 
 * L'application accepte-elle une modification du paramètrage à chaud ?
 * Décrire le système de configuration
 
@@ -597,7 +597,7 @@ Que versionne-t-on et quel système de version utilise-t-on ?
 ====
 Exemple: 
 
-* D'une façon générale, toute ressource non dérivée (source, outil, script de ci-cd, template, DDL de base de données, ...) doit être versionnée.
+* D'une façon générale, toute ressource non dérivée (source, outil, script de ci-cd, template, DDL de base de données, …) doit être versionnée.
 * Les modules seront versionnés suivant la numérotation `x.y.z` (`<majeur).<évolution>.<fix>`)
 * Les librairies seront versionnées suivant la même numérotation que les modules mais la valeur `x` sera incrémentée lors de toute montée de version cassant la compatibilité ascendante (principe du Semantic Versioning).
 * La version logique globale du projet sera : `<lot>.<no sprint>.<déploiement>`
@@ -628,7 +628,7 @@ Quelles sont les règles concernant l'encodage des chaînes de caractère ? Ceci
 ==== 
 
 ==== 
-Exemple 1 : Le seul encodage autorisé dans tous les modules et composants techniques est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat...), des sources, des fichiers de configuration, des bases de données et des fichiers. 
+Exemple 1 : Le seul encodage autorisé dans tous les modules et composants techniques est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat…), des sources, des fichiers de configuration, des bases de données et des fichiers. 
 
 NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des  .properties (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en UTF-8. 
 
@@ -728,9 +728,9 @@ L'application doit-elle fournir des services d’administration ? Il est forteme
 
 Exemples de points à traiter :
 
-* Dois-je fournir un moyen de purger des données, logs, caches, ... ? 
+* Dois-je fournir un moyen de purger des données, logs, caches, … ? 
 (on appelle quelque fois ce type de service un 'traitement interne')    
-* Dois-je fournir des indicateurs applicatifs de supervision ? (nombre de dossiers consultés, ...) ?
+* Dois-je fournir des indicateurs applicatifs de supervision ? (nombre de dossiers consultés, …) ?
 * Dois-je fournir des outils de migration ?
 
 ====

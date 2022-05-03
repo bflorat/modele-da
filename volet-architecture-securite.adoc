@@ -70,7 +70,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 ====
 Lister ici les contraintes relatives à la sécurité, ceci inclut par exemple mais pas seulement :
 
-* L'isolation des composants au sein de zones réseaux étanches (DMZ, pare-feux, reverse-proxy...)
+* L'isolation des composants au sein de zones réseaux étanches (DMZ, pare-feux, reverse-proxy…)
 * Les normes applicables (comme les politiques de mot de passe)
 * Les contraintes légales (RGPD par exemple)
 
@@ -232,7 +232,7 @@ L’authentification peut être à un ou plusieurs facteurs (dans ce dernier cas
 
 * Quelque chose que l’on *connaît* (classiquement un mot de passe).
 * Quelque chose qu’on *est* (biométrie).
-* Quelque chose qu’on *possède* (token, générateur de mot de passe unique, pièce d’identité avec photo...).
+* Quelque chose qu’on *possède* (token, générateur de mot de passe unique, pièce d’identité avec photo…).
 
 Penser à décrire le système d'authentification une fois inscrit mais également lors de l’inscription (authentification initiale).
 
@@ -283,7 +283,7 @@ La fédération d’identité est l’utilisation d’une même identité géré
 
 Par exemple, France Connect très utilisé par les administrations et basé sur OpenId Connect permet de réutiliser le compte d’une administration pour se loguer sur le compte d’une autre (DGFiP et CNAM par exemple). 
 
-Voir aussi les « Connect with [Google|Twitter|...] » en technologie OpenId Connect. Contrairement au SSO, la fédération d'identité n’assure pas un login automatique à une application comme le SSO mais permet simplement de réutiliser les mêmes credentials (login/mot de passe).
+Voir aussi les « Connect with [Google|Twitter|…] » en technologie OpenId Connect. Contrairement au SSO, la fédération d'identité n’assure pas un login automatique à une application comme le SSO mais permet simplement de réutiliser les mêmes credentials (login/mot de passe).
 ====
 
 ====
@@ -439,7 +439,7 @@ Les traces sont des données nominatives et complètes pour permettre l’audit.
 Différentier :
 
 * Les traces métier (bilan d’un acte de gestion complet comme `l’agent X a consulté le dossier de Mme Y`) ;
-* ... et les traces applicatives (logs) comme dans un fichier de log : `[INFO] 2016/12/23 11:14 [Agent X] Appel du service consulter` qui sont de niveau technique. 
+* … et les traces applicatives (logs) comme dans un fichier de log : `[INFO] 2016/12/23 11:14 [Agent X] Appel du service consulter` qui sont de niveau technique. 
 
 Pour les données les plus sensibles, il est possible de prévoir une traçabilité à deux niveaux (tracer la consultation des traces) pour éviter une traçabilité hiérarchique abusive.
 
@@ -554,7 +554,7 @@ Il s’agit donc d’un chiffrement client uniquement. Une perte de mot de passe
 Penser aussi à la confidentialité des données dérivées :
 
 * chiffrement des backups ;
-* chiffrement des données clientes pour les applications lourdes. Cela peut être un chiffrement matériel en SED (Self Encryption Disk), un chiffrement logiciel de niveau partition (SafeGuard, dm-crypt) ou de niveau fichier (encfs, TrueCrypt,…)
+* chiffrement des données clientes pour les applications lourdes. Cela peut être un chiffrement matériel en SED (Self Encryption Disk), un chiffrement logiciel de niveau partition (SafeGuard, dm-crypt) ou de niveau fichier (encfs, TrueCrypt…)
 ====
 
 ### Identification
@@ -806,7 +806,7 @@ Cette liste n'est qu'un exemple partiel, faire valider votre projet par votre se
 [cols="e,e,e"]
 |===
 |Exigence RGPD
-|Prise en compte ?
+|Prise en compte ?
 |Mesures techniques entreprises
 
 |Registre du traitement de données personnelles
@@ -824,4 +824,4 @@ Cette liste n'est qu'un exemple partiel, faire valider votre projet par votre se
 |Sécurisation des données
 |X
 |Oui, voir les mesures listées dans ce document notamment sur la confidentialité, audibilité et intégrité.
-
+|===

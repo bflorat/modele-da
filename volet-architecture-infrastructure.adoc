@@ -17,7 +17,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 [TIP]
 ====
-Ce point de vue est aussi souvent appelé « point de vue technique » et concerne l'infrastructure : serveurs, réseaux, systèmes d'exploitation, bases de données, intergiciels (middleware), ... 
+Ce point de vue est aussi souvent appelé « point de vue technique » et concerne l'infrastructure : serveurs, réseaux, systèmes d'exploitation, bases de données, intergiciels (middleware), … 
 
 Bref, elle porte sur tout ce qui est externe à l'application et nécessaire à son exécution
 ====
@@ -101,7 +101,7 @@ Donner les éléments permettant d'estimer le temps moyen de réparation (Mean T
 
 Préciser les plages de présence des exploitants en journée et les possibilités d'astreintes.
 
-Lister ici les durées d’intervention des prestataires matériels, logiciels, électricité, telecom...
+Lister ici les durées d’intervention des prestataires matériels, logiciels, électricité, telecom…
 ====
 ====
 Exemple 1 : Cinq serveurs physiques de spare sont disponibles à tout moment.
@@ -207,11 +207,11 @@ Exemple : <disponibilité datacenter> * <plage de fonctionnement effective> * <d
 
 Les catastrophes peuvent être classées en trois catégories:
 
-* Naturelle (tremblements de terre, inondations, ouragans, canicules...).
-* Incident sur l'infrastructure du datacenter (accidentel comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, les erreurs critiques d'administrateurs ou intentionnelles: militaire, terroriste, sabotage ...).
-* Cyber (DDOS, virus, Ransomware ... )
+* Naturelle (tremblements de terre, inondations, ouragans, canicules…).
+* Incident sur l'infrastructure du datacenter (accidentel comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, les erreurs critiques d'administrateurs ou intentionnelles: militaire, terroriste, sabotage …).
+* Cyber (DDOS, virus, Ransomware … )
 
-PRA (Plan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie...). Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il exige au minium un doublement du datacenter. 
+PRA (Plan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie…). Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il exige au minium un doublement du datacenter. 
 
 Un PCA permet de poursuivre les activités critiques de l’organisation (en général dans un mode dégradé) sans interruption notable. Ce principe est réservé aux organisations assez matures car il exige des dispositifs techniques coûteux et complexes (filesystems distribués et concurrents par exemple).
 
@@ -219,7 +219,7 @@ Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou
 
 Note: Dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, des deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
 
-Note: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS...) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
+Note: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS…) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
 
 Décrire entre autres :
 
@@ -378,7 +378,7 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 
 Attention à bien cadrer ces exigences car un porteur de projet a souvent tendance à demander une disponibilité très élevée sans toujours se rendre compte des implications. Le coût et la complexité de la solution augmente exponentiellement avec le niveau de disponibilité exigé. 
 
-L’architecture physique, technique voire logicielle change complètement en fonction du besoin de disponibilité (clusters d’intergiciels voire de bases de données, redondances matériels coûteuses, architecture asynchrone, caches de session, failover ...). 
+L’architecture physique, technique voire logicielle change complètement en fonction du besoin de disponibilité (clusters d’intergiciels voire de bases de données, redondances matériels coûteuses, architecture asynchrone, caches de session, failover …). 
 
 Ne pas oublier également les coûts d’astreinte très importants si les exigences sont très élevées. De la pédagogie et un devis permettent en général de modérer les exigences.
 
@@ -423,7 +423,7 @@ Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en 
 ====
 La robustesse du système indique sa capacité à ne pas produire d'erreurs lors d’événements exceptionnels comme une surcharge ou la panne de l'un de ses composants.
 
-Cette robustesse s'exprime en valeur absolue par unité de temps : nombre d'erreurs (techniques) par mois, nombre de messages perdus par an...
+Cette robustesse s'exprime en valeur absolue par unité de temps : nombre d'erreurs (techniques) par mois, nombre de messages perdus par an…
 
 Attention à ne pas être trop exigeant sur ce point car une grande robustesse peut impliquer la mise en place de systèmes à tolérance de panne complexes, coûteux et pouvant aller à l'encontre des capacités de montée en charge, voire même de la disponibilité.
 ====
@@ -449,7 +449,7 @@ Donner ici le Recovery Point Objective (RPO) de l’application. Il peut être u
 * Une perte de données matérielle (peu probable avec des systèmes de redondance).
 * Une fausse manipulation d'un power-user ou d'un administrateur (assez courant).
 * Un bug applicatif.
-* Une destruction de donnée volontaire (attaque de type ransomware)...
+* Une destruction de donnée volontaire (attaque de type ransomware)…
 
 ====
 ====
@@ -607,11 +607,11 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 * *Dispositifs organisationnels* :  
 
-** la présence humaine (astreintes, heures de support étendues...) qui permet d'améliorer le MTTR (temps moyen de résolution) et sans laquelle la supervision est inefficiente ; 
+** la présence humaine (astreintes, heures de support étendues…) qui permet d'améliorer le MTTR (temps moyen de résolution) et sans laquelle la supervision est inefficiente ; 
 
 ** La qualité de la gestion des incidents (voir les bonnes pratiques ITIL), par exemple un workflow de résolution d'incident est-il prévu ? si oui, quel est sa complexité ? sa durée de mise en œuvre ? si elle nécessite par exemple plusieurs validations hiérarchiques, la présence de nombreux exploitants affecte le MTTR. 
 
-* Dispositifs de *haute disponibilité (HA)* (clusters, RAID...) qu'il ne faut pas surestimer si les dispositifs précédents sont insuffisants. 
+* Dispositifs de *haute disponibilité (HA)* (clusters, RAID…) qu'il ne faut pas surestimer si les dispositifs précédents sont insuffisants. 
 
 * Dispositifs de *restauration de données* : la procédure de restauration est-t-elle bien définie ? testée ? d'une durée compatible avec les exigences de disponibilité ? C'est typiquement utile dans le cas de perte de données causée par une fausse manipulation ou bug dans le code : il faut alors arrêter l'application et dans cette situation, pouvoir restaurer rapidement la dernière sauvegarde améliore grandement le MTTR. 
  
@@ -630,7 +630,7 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 * On estime un système comme hautement disponible *(HA) à partir de 99%* de disponibilité. 
 
-* On désigne par *«spare»* un dispositif (serveur, disque, carte électronique...) de rechange qui est dédié au besoin de disponibilité mais qui n'est pas activé en dehors des pannes. En fonction du niveau de disponibilité recherché, il peut être dédié à l’application ou mutualisé au niveau SI.  
+* On désigne par *«spare»* un dispositif (serveur, disque, carte électronique…) de rechange qui est dédié au besoin de disponibilité mais qui n'est pas activé en dehors des pannes. En fonction du niveau de disponibilité recherché, il peut être dédié à l’application ou mutualisé au niveau SI.  
 
 * Les *niveaux de redondance* d'un système (modèle NMR = N-Modular Redundancy) les plus courants sont les suivants (avec N, le nombre de dispositifs assurant un fonctionnement correct en charge) :  
 
@@ -679,7 +679,7 @@ Sans failover, c'est au client de détecter la panne et de se reconfigurer pour 
 
 Une solution de failover peut être décrite par les attributs suivants : 
 
-* Quelle *stratégie de failback* ? Par exemple: "Fail fast" (un nœud est noté comme tombé dès le premier échec); "On fail, try next one" ; "On fail, try all"... 
+* Quelle *stratégie de failback* ? Par exemple: "Fail fast" (un nœud est noté comme tombé dès le premier échec); "On fail, try next one" ; "On fail, try all"… 
 
 * Quelle *solution de détection des pannes* ?  
 
@@ -722,7 +722,7 @@ Quelques mots sur les *répartiteurs de charge* :
 
 La *tolérance de panne* : 
 
-La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la Haute Disponibilité. Il s'agit d'une version plus stricte de HA où la *disponibilité est de 100% et aucune donnée ne peut être perdue* (Wikipédia: "La tolérance aux pannes est la propriété qui permet à un système de continuer à fonctionner correctement en cas de défaillance d'un ou de certains de ses composants"). Seuls les systèmes critiques (santé, militaires, transport, industrie...) ont en général besoin d'un tel niveau de disponibilité.
+La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la Haute Disponibilité. Il s'agit d'une version plus stricte de HA où la *disponibilité est de 100% et aucune donnée ne peut être perdue* (Wikipédia: "La tolérance aux pannes est la propriété qui permet à un système de continuer à fonctionner correctement en cas de défaillance d'un ou de certains de ses composants"). Seuls les systèmes critiques (santé, militaires, transport, industrie…) ont en général besoin d'un tel niveau de disponibilité.
 
 Historiquement, cela signifiait une redondance matérielle complète. Dans un monde de micro-services, cela peut également être réalisé au niveau logiciel avec des clusters actifs-actifs. De plus, un véritable système de tolérance aux pannes devrait éviter une dégradation significative des performances vue par les utilisateurs finaux. 
 
@@ -792,7 +792,7 @@ Exemple 2 : Pour atteindre la disponibilité de 99.97% exigée, les dispositifs 
 [TIP]
 ====
 Fournir ici le modèle de déploiement des composants en environnement cible sur les différents intergiciels et nœuds physiques (serveurs). 
-Ne représenter les équipements réseau (pare-feu, appliances, routeurs...) que s'ils aident à la compréhension. 
+Ne représenter les équipements réseau (pare-feu, appliances, routeurs…) que s'ils aident à la compréhension. 
 
 Tout naturellement, on le documentera de préférence avec un diagramme de déploiement UML2 ou un diagramme de déploiement C4.
 
@@ -813,7 +813,7 @@ image::diagrams/archi-infra.svg[Diagramme de déploiement MIEL]
 
 [TIP]
 ====
-Lister ici OS, bases de données, MOM, serveurs d'application, etc...
+Lister ici OS, bases de données, MOM, serveurs d'application, etc…
 ====
 .Exemple de composants d'infrastructure
 [cols="1e,2e,1e,2e"]
@@ -856,7 +856,7 @@ Dans certaines organisations, cette matrice sera trop détaillée pour un dossie
 
 Il n'est pas nécessaire de faire référence aux flux applicatifs car les lecteurs ne recherchent pas les mêmes informations. Ici, les exploitants ou les intégrateurs recherchent l’exhaustivité des flux à fin d'installation et de configuration des pare-feu par exemple.
 
-Les types de réseaux incluent les informations utiles sur le réseau utilisé afin d'apprécier les performances (TR, latence) et la sécurité: LAN, VLAN, Internet, LS, WAN,...)
+Les types de réseaux incluent les informations utiles sur le réseau utilisé afin d'apprécier les performances (TR, latence) et la sécurité: LAN, VLAN, Internet, LS, WAN…)
 ====
 
 .Exemple partiel de matrice de flux techniques
@@ -892,6 +892,7 @@ Dans les gros SI, il est souvent utile de segmenter les environnements en 'plate
 |Recette fonctionnelle par les testeurs
 |Tag déployé à la fin de chaque Sprint
 |UAT1 et UAT2
+|====
 ====
 
 === Écoconception
@@ -905,7 +906,7 @@ Les réponses à ses problématiques sont souvent les mêmes que celles aux exig
 Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème. Quelques pistes d’amélioration de la performance énergétique :
 
 * Mesurer la consommation électrique des systèmes avec les sondes http://www.powerapi.org/[PowerAPI] (développé par l'INRIA et l'université Lille 1).
-* Utiliser des caches (cache d'opcode, caches mémoire, caches HTTP...).
+* Utiliser des caches (cache d'opcode, caches mémoire, caches HTTP…).
 * Pour des grands projets ou dans le cadre de l’utilisation d'un cloud CaaS, l’utilisation de cluster de containers (solution type Swarm, Mesos ou Kubernete) permet d'optimiser l'utilisation des VM ou machines physiques en les démarrant / arrêtant à la volée de façon élastique.
 * Héberger ses serveurs dans un datacenter performant. Les fournisseurs de cloud proposent en général des datacenters plus performants que on-premises. L'unité de comparaison est ici le PUE (Power Usage Effectiveness), ratio entre l’énergie consommée par le datacenter et l’énergie effectivement utilisée par les serveurs (donc hors refroidissement et dispositifs externes). OVH propose par exemple des datacenter avec un PUE de 1.2 en 2017 contre 2.5 en moyenne. 
 * Néanmoins :
@@ -989,7 +990,7 @@ Exemple :
 
 [TIP]
 ====
-Lister ici les grands principes d’exploitation de la solution. Les détails (filesystems sauvegardés, plan de production, planification des traitements...) seront consigné dans un DEX (Dossier d’EXploitation) séparé. 
+Lister ici les grands principes d’exploitation de la solution. Les détails (filesystems sauvegardés, plan de production, planification des traitements…) seront consigné dans un DEX (Dossier d’EXploitation) séparé. 
 
 Si cette application reste dans le standard de l’organisation, se référer simplement à un dossier commun.
 ====
@@ -1028,7 +1029,7 @@ Inverse exact du démarrage
 Lister de façon macroscopique (le DEX détaillera le plan de production précis) :
 
 * Les batchs ou famille de batchs et leurs éventuelles inter-dépendances. Préciser si un ordonnanceur sera utilisé.
-* Les traitements internes (tâches de nettoyage / bonne santé) du système qui ne remplissent uniquement des rôles techniques (purges, reconstruction d'index, suppression de données temporaires...)
+* Les traitements internes (tâches de nettoyage / bonne santé) du système qui ne remplissent uniquement des rôles techniques (purges, reconstruction d'index, suppression de données temporaires…)
 ====
 ====
 Exemple 1 : le batch `traiter-demande` fonctionnera au fil de l'eau. Il sera lancé toutes les 5 mins depuis l’ordonnanceur JobScheduler.
@@ -1060,9 +1061,9 @@ Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigence
 ** des bases de données sous forme de dump ? sous forme binaire ?
 ** les logs ? les traces ?
 * Les sauvegardes sont-elles chiffrées ? si oui, chiffrement de la partition toute entière, fichier par fichier, les deux ? Faut-il chiffrer également le nom des répertoires et fichiers sauvegardés ? Préciser l'algorithme de chiffrement utilisé et comment seront gérées les clés.
-* Les sauvegardes sont-elles compressées ? si oui, avec quel algorithme ? (lzw, deflate, lzma?, ...), avec quel niveau de compression ? attention à trouver le compromis entre durée de compression / décompression et gain de stockage.
+* Les sauvegardes sont-elles compressées ? si oui, avec quel algorithme ? (lzw, deflate, lzma?, …), avec quel niveau de compression ? attention à trouver le compromis entre durée de compression / décompression et gain de stockage.
 * Quel outillage est mis en œuvre ? Simple cron + tar/rsync ? Outil Open Source comme « backup-manager » ? IBM TSM ? Outil orienté Cloud comme « Duplicity » ou « Restic » ?, etc.
-* Quelle technologie est utilisée pour les sauvegardes ? (bandes magnétiques type LTO ou DLT ? disques externes ? cartouches RDX ? cloud de stockage comme Amazon S3 ? support optique ? NAS ? ...)
+* Quelle technologie est utilisée pour les sauvegardes ? (bandes magnétiques type LTO ou DLT ? disques externes ? cartouches RDX ? cloud de stockage comme Amazon S3 ? support optique ? NAS ? …)
 * Quelle est la périodicité de chaque type de sauvegarde ? (ne pas trop détailler ici, ceci sera dans le DEX)
 * Quelle est la stratégie de sauvegarde ?
 ** complètes ? incrémentales ? différentielles ? (prendre en compte les exigences en disponibilité. La restauration d'une sauvegarde incrémentale sera plus longue qu'une restauration de sauvegarde différentielle, elle-même plus longue qu'une restauration de sauvegarde complète) ;
@@ -1092,7 +1093,7 @@ Enfin, il est important de garder à l'esprit que ce que nous voulons _vraiment_
 * Quels tests de restauration sont prévus ? à quelle fréquence (une fois par an est un minium) ?
 * Combien de temps va prendre une restauration (benchmarks) ? Est-ce compatible avec le RTO ?
 * Avons nous des dépendances externes pouvant nous ralentir (coffre accessible en journée uniquement par exemple) ?
-* Avons nous suffisamment de ressources pour la restauration (stockage intermédiaires, CPU et mémoire pour la décompression/déchiffrement , etc...) ?
+* Avons nous suffisamment de ressources pour la restauration (stockage intermédiaires, CPU et mémoire pour la décompression/déchiffrement , etc…) ?
 
 
 #### Archivage
@@ -1115,7 +1116,7 @@ Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LT
 Donner ici les dispositifs techniques répondant aux <<exigences-purge>>.
 ====
 ====
-Exemple : l'historique des consultations sera archivé par un dump avec une requête SQL de la forme `COPY (SELECT * FROM matable WHERE ...) TO '/tmp/dump.tsv'` puis purgé par une requete SQL `DELETE` après validation par l'exploitant de la complétude du dump.
+Exemple : l'historique des consultations sera archivé par un dump avec une requête SQL de la forme `COPY (SELECT * FROM matable WHERE …) TO '/tmp/dump.tsv'` puis purgé par une requete SQL `DELETE` après validation par l'exploitant de la complétude du dump.
 ====
 
 #### Logs
@@ -1145,7 +1146,7 @@ La supervision est un pilier central de la disponibilité en faisant diminuer dr
 
 Idéalement, elle ne sera pas uniquement réactive mais également proactive (detection des signaux faibles).
 
-Les métriques sont des mesures brutes (% CPU, taille FS, taille d'un pool...) issues de sondes système, middleware ou applicatives. 
+Les métriques sont des mesures brutes (% CPU, taille FS, taille d'un pool…) issues de sondes système, middleware ou applicatives. 
 
 Les indicateurs sont des combinaisons logiques de plusieurs métriques disposant de seuils (ex : 'niveau critique si l'utilisation de CPU sur le serveur s1 reste au delà de 95% pendant plus de 5 minutes').
 ====
@@ -1156,7 +1157,7 @@ Les indicateurs sont des combinaisons logiques de plusieurs métriques disposant
 ====
 Lister les métriques :
 
-* Système (% d'utilisation de file system, load, volume de swap in/out, nombre de threads total ...)
+* Système (% d'utilisation de file system, load, volume de swap in/out, nombre de threads total …)
 * Middleware (% de HEAP utilisée sur une JVM, nb de threads sur la JVM, % utilisation d'un pool de threads ou de connexions JDBC ..)
 ====
 ====
@@ -1171,12 +1172,12 @@ Lister les métriques applicatives (développés en interne). lls peuvent être 
 
 * Nombre de requêtes d'accès à un écran.
 * Nombre de contrats traités dans l'heure.
-* ...
+* …
 
 Il est également possible de mettre en place des outils de BAM (Business Activity Monitoring) basées sur ces métriques pour suivre des indicateurs orientés processus.
 ====
 ====
-Exemple : l'API REST de supervision applicative proposera une ressource Metrique contenant les métriques métier principaux : nombre de colis à envoyer, nombre de préparateurs actifs...
+Exemple : l'API REST de supervision applicative proposera une ressource Metrique contenant les métriques métier principaux : nombre de colis à envoyer, nombre de préparateurs actifs…
 ====
 
 ##### Outil de pilotage de la supervision
@@ -1185,7 +1186,7 @@ Exemple : l'API REST de supervision applicative proposera une ressource Metrique
 ====
 Un tel outil (comme Nagios, Hyperic HQ dans le monde Open Source) :
 
-* Collecte les métriques (en SNMP, JMX, HTTP ...) de façon périodique.
+* Collecte les métriques (en SNMP, JMX, HTTP …) de façon périodique.
 * Persiste les métriques dans un type de base de données de séries chronologiques (comme RRD).
 * Consolide les indicateurs depuis les métriques.
 * Affiche les tendances dans le temps de ces indicateurs.
@@ -1209,12 +1210,12 @@ Exemple : SMS si aucune demande depuis les 4 dernières heures ou si le nombre d
 
 [TIP]
 ====
-Indiquer l’ordonnanceur ou le planificateur utilisé pour piloter les jobs et consolider le plan de production (exemple : VTOM, JobScheduler, Dollar Universe, Control-M,...). Détailler les éventuelles spécificités de l’application :
+Indiquer l’ordonnanceur ou le planificateur utilisé pour piloter les jobs et consolider le plan de production (exemple : VTOM, JobScheduler, Dollar Universe, Control-M…). Détailler les éventuelles spécificités de l’application :
 
 * Degré de parallélisme des jobs
 * Plages de temps obligatoires
 * Rejeux en cas d'erreur
-* ...
+* …
 
 Les jobs doivent-ils produire un rapport d'exécution ? sous quelle forme et avec quel contenu ?
 ====
@@ -1254,7 +1255,7 @@ Suit-on les performances de l'application en production ? Cela permet :
 
 Il existe trois grandes familles de solutions :
 
-* Les APM (Application Performance Monitoring) : outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource ...). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met en péril la stabilité de l'application.
+* Les APM (Application Performance Monitoring) : outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource …). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met en péril la stabilité de l'application.
 * La métrologie «maison» par logs si le besoin est modeste.
 * Les sites de requêtage externes qui appellent périodiquement l'application et produisent des dashboards. Ils ont l'avantage de prendre en compte les temps WAN non disponibles via les outils internes. A utiliser couplés à la supervision boite noire (voir plus haut).
 ====

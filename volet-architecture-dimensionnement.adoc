@@ -159,18 +159,18 @@ Prendre en compte :
 * La taille des fichiers produits.
 * La taille des files.
 * La taille des logs.
-* L'espace nécessaire dans un éventuel stockage objet (S3, Swift, Ceph,...)
-*  ...
+* L'espace nécessaire dans un éventuel stockage objet (S3, Swift, Ceph…)
+*  …
 
 Ne pas prendre en compte :
 
 * Le volume lié à la sauvegarde : elle est gérée par les exploitants.
-* Le volume des binaires (OS, intergiciels...) qui est à considérer par les exploitants comme une volumétrie de base d'un serveur (le ticket d'entrée) et qui est de leur ressort.
+* Le volume des binaires (OS, intergiciels…) qui est à considérer par les exploitants comme une volumétrie de base d'un serveur (le ticket d'entrée) et qui est de leur ressort.
 * Les données archivées qui ne sont donc plus en ligne.
 
 Fournir également une estimation de l'augmentation annuelle en % du volume pour permettre aux exploitants de commander ou réserver suffisamment de disque.
 
-Pour les calculs de volumétrie, penser à prendre en compte les spécificités de l'encodage (nombre d’octets par caractère, par date, par valeur numérique...). 
+Pour les calculs de volumétrie, penser à prendre en compte les spécificités de l'encodage (nombre d’octets par caractère, par date, par valeur numérique…). 
 
 Pour une base de donnée, prévoir l'espace occupé par les index et qui est très spécifique à chaque application. Une (très piètre) estimation préliminaire est de doubler l'espace disque (à affiner ensuite).
 
@@ -207,7 +207,7 @@ N'estimer que les données dont la taille est non négligeable (plusieurs Gio mi
 
 ### Volumétrie dynamique
 
-TIP: Il s'agit des métriques par durée (année, mois, heure,...) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
+TIP: Il s'agit des métriques par durée (année, mois, heure…) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
 
 #### Métriques
 
@@ -410,6 +410,7 @@ Exemple :
 | 2024
 | 24/7, activité principale 8-17h Europe/Paris lun-ven
 | Instance Postgresql
+|====
 ====
 
 ### Dimensionnement des machines
@@ -424,7 +425,7 @@ Cette section fournit le dimensionnement final des machines nécessaires
 * Pour les VM, attention à vérifier qu'un VCPU = 1 cœur physique (et non un thread si hyperthreading activé)
 * Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique exécutant la VM ou d'un SAN.
 * Le disque distant concerne du stockage sur une baie de disque (SAN)
-* Le stockage externe hors SAN concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, ...) ou un stockage objet (Swift, S3, ...)
+* Le stockage externe hors SAN concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, …) ou un stockage objet (Swift, S3, …)
 ====
 
 .Dimensionnement des machines
