@@ -1,4 +1,4 @@
-= Volet dimensionnement
+# Volet dimensionnement
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -8,7 +8,7 @@
 
 Dernière modification : {docdate}
 
-== Introduction
+## Introduction
 
 Ceci est le point de vue dimensionnement du projet. Il permet de déterminer la taille de l'infrastructure nécessaire au projet.
 
@@ -16,7 +16,7 @@ Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
-=== Documentation de Référence
+### Documentation de Référence
 
 .Références documentaires dimensionnement
 [cols="1e,1e,4e,4e"]
@@ -30,9 +30,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 |====
 
 
-== Non statué
+## Non statué
 
-=== Points soumis à étude complémentaire
+### Points soumis à étude complémentaire
 
 .Points soumis à étude complémentaire
 [cols="1e,1e,1e,2e,2e"]
@@ -44,7 +44,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 |====
 
 
-=== Hypothèses
+### Hypothèses
 
 [TIP]
 ====
@@ -65,7 +65,7 @@ Exemple:
 
 ====
 
-== Contraintes
+## Contraintes
 
 [TIP]
 ====
@@ -76,7 +76,7 @@ Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par
 ====
 
 
-=== Contraintes stockage
+### Contraintes stockage
 
 TIP: Lister ici les éventuelles contraintes liées aux disques
 
@@ -85,7 +85,7 @@ TIP: Lister ici les éventuelles contraintes liées aux disques
 Exemple : L'espace disque maximal allouable à une VM est de 2 To.
 ====
 
-=== Contraintes CPU
+### Contraintes CPU
 
 TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul
 [Exemple]
@@ -97,7 +97,7 @@ Exemple 1 : Une VM sera dotée au maximum de 10 VCPU
 Exemple 2 : L'ensemble des pods de l'application ne devra pas demander plus de 1 CPU par node.
 ====
 
-=== Contraintes mémoire
+### Contraintes mémoire
 
 TIP: Lister ici les éventuelles contraintes liées à la mémoire
 [Exemple]
@@ -105,7 +105,7 @@ TIP: Lister ici les éventuelles contraintes liées à la mémoire
 Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM
 ====
 
-=== Contraintes réseau
+### Contraintes réseau
 
 TIP: Lister ici les éventuelles contraintes de volume réseau utilisé
 [Exemple]
@@ -118,7 +118,7 @@ Exemple 1 : La latence minimale des requêtes sur le WAN entre Londres et Tokyo 
 Exemple 2 : Le réseau Ethernet du Datacenter dispose d'une bande passante de 40 Gbps.
 ====
 
-== Exigences
+## Exigences
 
 [TIP]
 ====
@@ -131,11 +131,11 @@ Les sections suivantes portant sur les calculs de volumétrie statiques et dynam
 
 ====
 
-=== Volumétrie statique
+### Volumétrie statique
 
 TIP: Il s'agit des métriques permettant de déterminer le volume de stockage *cumulé* du projet. Penser à bien préciser les hypothèses prises pour les métriques estimées. Il sera ainsi possible de les revoir si de nouveaux éléments métier apparaissent.
 
-==== Métriques
+#### Métriques
 
 TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entrants au calcul des besoins techniques de stockage.
 
@@ -147,7 +147,7 @@ TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entra
 |S2 |Taille moyenne d'un PDF | Mesurée | 40Ko  | 0%| Exploitants | 
 |====
 
-==== Estimation besoins de stockage
+#### Estimation besoins de stockage
 
 [TIP]
 ====
@@ -159,18 +159,18 @@ Prendre en compte :
 * La taille des fichiers produits.
 * La taille des files.
 * La taille des logs.
-* L'espace nécessaire dans un éventuel stockage objet (S3, Swift, Ceph,...)
-*  ...
+* L'espace nécessaire dans un éventuel stockage objet (S3, Swift, Ceph,…)
+*  …
 
 Ne pas prendre en compte :
 
 * Le volume lié à la sauvegarde : elle est gérée par les exploitants.
-* Le volume des binaires (OS, intergiciels...) qui est à considérer par les exploitants comme une volumétrie de base d'un serveur (le ticket d'entrée) et qui est de leur ressort.
+* Le volume des binaires (OS, intergiciels…) qui est à considérer par les exploitants comme une volumétrie de base d'un serveur (le ticket d'entrée) et qui est de leur ressort.
 * Les données archivées qui ne sont donc plus en ligne.
 
 Fournir également une estimation de l'augmentation annuelle en % du volume pour permettre aux exploitants de commander ou réserver suffisamment de disque.
 
-Pour les calculs de volumétrie, penser à prendre en compte les spécificités de l'encodage (nombre d’octets par caractère, par date, par valeur numérique...). 
+Pour les calculs de volumétrie, penser à prendre en compte les spécificités de l'encodage (nombre d’octets par caractère, par date, par valeur numérique…). 
 
 Pour une base de donnée, prévoir l'espace occupé par les index et qui est très spécifique à chaque application. Une (très piètre) estimation préliminaire est de doubler l'espace disque (à affiner ensuite).
 
@@ -205,11 +205,11 @@ N'estimer que les données dont la taille est non négligeable (plusieurs Gio mi
 |====
 ====
 
-=== Volumétrie dynamique
+### Volumétrie dynamique
 
-TIP: Il s'agit des métriques par durée (année, mois, heure,...) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
+TIP: Il s'agit des métriques par durée (année, mois, heure,…) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
 
-==== Métriques
+#### Métriques
 
 TIP: Ce sont les données métier mesurées ou estimées qui serviront d'entrants au calcul de la charge.
 
@@ -227,7 +227,7 @@ a|
 |====
 
 
-==== Estimation de la charge
+#### Estimation de la charge
 
 [TIP]
 ====
@@ -301,9 +301,9 @@ Exemple : la base de donnée Oracle BD01 est utilisée en lecture par les appels
 |====
 ====
 
-=== Exigences de temps de réponse
+### Exigences de temps de réponse
 
-==== Temps de Réponse des IHM
+#### Temps de Réponse des IHM
 
 [TIP]
 ====
@@ -352,7 +352,7 @@ Acceptable si :
 En dehors de ces valeurs, l’application devra être optimisée et repasser en recette puis être soumise à nouveau aux tests de charge.
 ====
 
-==== Durée d’exécution des batchs
+#### Durée d’exécution des batchs
 
 [TIP]
 ====
@@ -371,14 +371,14 @@ Exemple 3 : les batchs et les IHM pouvant fonctionner en concurrence, il n’y 
 ====
 
 
-== Dimensionnement cible
+## Dimensionnement cible
 
 [TIP]
 ====
 Nous donnons un dimensionnement final devant supporter la volumétrie statique et dynamique et respecter les exigences.
 ====
 
-=== Estimation des besoins en ressources par composant technique
+### Estimation des besoins en ressources par composant technique
 
 [TIP]
 ====
@@ -410,9 +410,10 @@ Exemple :
 | 2024
 | 24/7, activité principale 8-17h Europe/Paris lun-ven
 | Instance Postgresql
+|====
 ====
 
-=== Dimensionnement des machines
+### Dimensionnement des machines
 
 Voir le link:./volet-architecture-infrastructure.adoc#_déploiement_en_production[modèle de déploiement].
 
@@ -424,7 +425,7 @@ Cette section fournit le dimensionnement final des machines nécessaires
 * Pour les VM, attention à vérifier qu'un VCPU = 1 cœur physique (et non un thread si hyperthreading activé)
 * Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique exécutant la VM ou d'un SAN.
 * Le disque distant concerne du stockage sur une baie de disque (SAN)
-* Le stockage externe hors SAN concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, ...) ou un stockage objet (Swift, S3, ...)
+* Le stockage externe hors SAN concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, …) ou un stockage objet (Swift, S3, …)
 ====
 
 .Dimensionnement des machines

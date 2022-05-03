@@ -1,5 +1,5 @@
 
-= Volet architecture sécurité
+# Volet architecture sécurité
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -9,7 +9,7 @@
 
 Dernière modification : {docdate}
 
-== Introduction
+## Introduction
 
 Ceci est le point de vue sécurité. Il décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
 
@@ -20,7 +20,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 [TIP]
 La disponibilité est traitée dans le volet infrastructure.
 
-=== Documentation de Référence
+### Documentation de Référence
 
 [TIP]
 ====
@@ -36,9 +36,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |2|latest|Normes sécurité société|http://masociete/monurl
 |====
 
-== Non statué
+## Non statué
 
-=== Points soumis à étude complémentaire
+### Points soumis à étude complémentaire
 
 .Points soumis à étude complémentaire
 [cols="1e,3e,1e,1e,2e"]
@@ -53,7 +53,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
-=== Hypothèses
+### Hypothèses
 
 .Hypothèses
 [cols="e,e"]
@@ -64,13 +64,13 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |La solution SAML actuellement en place dans l’organisation ne permet pas de répondre aux besoins d’authentification exprimés pour cette application Internet. Une solution OpenID Connect sera proposée. 
 |====
 
-== Contraintes
+## Contraintes
 
 [TIP]
 ====
 Lister ici les contraintes relatives à la sécurité, ceci inclut par exemple mais pas seulement :
 
-* L'isolation des composants au sein de zones réseaux étanches (DMZ, pare-feux, reverse-proxy...)
+* L'isolation des composants au sein de zones réseaux étanches (DMZ, pare-feux, reverse-proxy…)
 * Les normes applicables (comme les politiques de mot de passe)
 * Les contraintes légales (RGPD par exemple)
 
@@ -85,7 +85,7 @@ Exemple 2 : il est formellement interdit à un composant de la zone internet d'a
 Exemple 3 : en application du RGPD, les données utilisateur devront être chiffrées
 ====
 
-== Exigences
+## Exigences
 
 [TIP]
 ====
@@ -95,7 +95,7 @@ Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de
 ====
 
 [[exigences-integrite]]
-=== Exigences d'intégrité
+### Exigences d'intégrité
 
 [TIP]
 ====
@@ -152,7 +152,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 |X
 |====
 
-=== Exigences de confidentialité
+### Exigences de confidentialité
 
 [TIP]
 ====
@@ -202,7 +202,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 |====
 
 [[exigences-identification]]
-=== Exigences d'identification
+### Exigences d'identification
 
 [TIP]
 ====
@@ -220,7 +220,7 @@ Exemple 3 : un ID est non supprimable, non modifiable et non réutilisable
 ====
 
 [[exigences-authentification]]
-=== Exigences d'authentification
+### Exigences d'authentification
 
 [TIP]
 ====
@@ -232,7 +232,7 @@ L’authentification peut être à un ou plusieurs facteurs (dans ce dernier cas
 
 * Quelque chose que l’on *connaît* (classiquement un mot de passe).
 * Quelque chose qu’on *est* (biométrie).
-* Quelque chose qu’on *possède* (token, générateur de mot de passe unique, pièce d’identité avec photo...).
+* Quelque chose qu’on *possède* (token, générateur de mot de passe unique, pièce d’identité avec photo…).
 
 Penser à décrire le système d'authentification une fois inscrit mais également lors de l’inscription (authentification initiale).
 
@@ -275,7 +275,7 @@ Les facteurs d’authentification requis en fonction des situations sont (on peu
 |====
 
 [[exigence-federation-identite]]
-=== Exigences de fédération d’identité
+### Exigences de fédération d’identité
 
 [TIP]
 ====
@@ -283,14 +283,14 @@ La fédération d’identité est l’utilisation d’une même identité géré
 
 Par exemple, France Connect très utilisé par les administrations et basé sur OpenId Connect permet de réutiliser le compte d’une administration pour se loguer sur le compte d’une autre (DGFiP et CNAM par exemple). 
 
-Voir aussi les « Connect with [Google|Twitter|...] » en technologie OpenId Connect. Contrairement au SSO, la fédération d'identité n’assure pas un login automatique à une application comme le SSO mais permet simplement de réutiliser les mêmes credentials (login/mot de passe).
+Voir aussi les « Connect with [Google|Twitter|…] » en technologie OpenId Connect. Contrairement au SSO, la fédération d'identité n’assure pas un login automatique à une application comme le SSO mais permet simplement de réutiliser les mêmes credentials (login/mot de passe).
 ====
 
 ====
 Exemple : L’identification et l’authentification seront externalisés au fournisseur d’identité Auth0 pour simplifier la gestion de la sécurité et réduire les coûts de développement et d’exploitation.
 ====
 
-=== Exigences de SSO et SLO
+### Exigences de SSO et SLO
 
 [TIP]
 ====
@@ -318,7 +318,7 @@ Exemple 2 : aucun besoin de SSO ou SLO n’est identifié
 Exemple 3 : cette application Web métier devra fournir une authentification unique mutualisée avec celle des autres applications de l’intranet : une fois authentifié sur l’une des applications, l’agent ne doit pas avoir à se reconnecter (jusqu'à expiration de sa session). De même, une déconnexion depuis l’une des applications doit assurer la déconnexion de toutes les applications de l’intranet.
 ====
 
-=== Exigences de non répudiation
+### Exigences de non répudiation
 
 [TIP]
 ====
@@ -336,7 +336,7 @@ Lister ici les actions métiers possédant une exigence de non-répudiation, c�
 |===
 
 [[exigence-anonymat]]
-=== Exigences d'anonymat et de respect de la vie privée
+### Exigences d'anonymat et de respect de la vie privée
 
 [TIP]
 Lister les contraintes d’anonymat et de vie privée légale (exigée par le RGPD). Voir https://www.cnil.fr/fr/rgpd-par-ou-commencer.
@@ -360,7 +360,7 @@ Exemple 5 : En application de la directive européenne « paquet telecom », 
 Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs dans la conservation de leurs données personnelles de santé sera proposé.
 ====
 
-=== Exigences sur les habilitations
+### Exigences sur les habilitations
 
 [TIP]
 ====
@@ -424,7 +424,7 @@ Exemple 2 : l’application s’appuiera sur une gestion des autorisations matr
 ====
 
 [[exigences-tracabilite]]
-=== Exigences de traçabilité et d'auditabilité
+### Exigences de traçabilité et d'auditabilité
 
 [TIP]
 ====
@@ -439,7 +439,7 @@ Les traces sont des données nominatives et complètes pour permettre l’audit.
 Différentier :
 
 * Les traces métier (bilan d’un acte de gestion complet comme `l’agent X a consulté le dossier de Mme Y`) ;
-* ... et les traces applicatives (logs) comme dans un fichier de log : `[INFO] 2016/12/23 11:14 [Agent X] Appel du service consulter` qui sont de niveau technique. 
+* … et les traces applicatives (logs) comme dans un fichier de log : `[INFO] 2016/12/23 11:14 [Agent X] Appel du service consulter` qui sont de niveau technique. 
 
 Pour les données les plus sensibles, il est possible de prévoir une traçabilité à deux niveaux (tracer la consultation des traces) pour éviter une traçabilité hiérarchique abusive.
 
@@ -480,9 +480,9 @@ Exemple 3 : nous devons pouvoir reconstituer l’historique du dossier de tout 
 |5 ans
 |===
 
-== Mesures de sécurité
+## Mesures de sécurité
 
-=== Intégrité
+### Intégrité
 
 Dispositifs répondant aux <<exigences-integrite,exigences d'intégrité>> :
 
@@ -518,7 +518,7 @@ a|
 |Signature numérique du montant net + date + nom au format PKCS#7 (RSA, SHA256) avec horodatage. La signature résultante sera intégrée a posteriori au format hexadécimal en pied de page du PDF.
 |===
 
-=== Confidentialité
+### Confidentialité
 
 Dispositifs répondant aux <<Exigences de confidentialité>> :
 
@@ -557,7 +557,7 @@ Penser aussi à la confidentialité des données dérivées :
 * chiffrement des données clientes pour les applications lourdes. Cela peut être un chiffrement matériel en SED (Self Encryption Disk), un chiffrement logiciel de niveau partition (SafeGuard, dm-crypt) ou de niveau fichier (encfs, TrueCrypt,…)
 ====
 
-=== Identification
+### Identification
 
 Dispositifs répondant aux <<exigences-identification,exigences d'identification>> :
 
@@ -565,7 +565,7 @@ _Exemple 1  : L’Id des usagers de l’application sera l’attribut uid des D
 
 _Exemple 2  : Pour assurer la non réutilisation des ID des comptes supprimés, une table d’historique sera ajoutée dans l’application et requêtée avant toute création de nouveau compte._
 
-=== Authentification
+### Authentification
 
 Dispositifs répondant aux <<exigences-authentification,exigences d'authentification>> :
 [TIP]
@@ -585,7 +585,7 @@ Exemple 3 : lors de la création d’un nouveau bénéficiaire de virement dans
 Exemple 4 : Les mots de passe ne seront en aucun cas conservés mais stockés sous la forme de digest bcrypt.
 ====
 
-==== Comptes de service
+#### Comptes de service
 
 [TIP]
 ====
@@ -602,7 +602,7 @@ Les comptes de service sont utilisés pour l'authentification à un composant te
 |====
 
 
-=== Fédération d’identité
+### Fédération d’identité
 
 Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
 
@@ -617,7 +617,7 @@ Pour les applications Web, préciser les contraintes navigateur (activation des 
 Exemple  : L’IHM grand public permettra une identification et authentification France Connect (basé sur OIDC) de sorte que les utilisateurs puissent utiliser leur compte DGFiP ou CNAM pour s’identifier et s’authentifier. La cinématique d’authentification sera la suivante : <faire un schéma>
 ====
 
-=== SSO, SLO
+### SSO, SLO
 
 Dispositifs répondant aux <<Exigences de SSO et SLO> :
 [TIP]
@@ -631,7 +631,7 @@ Exemple 1 : L’IHM X intégrera un client CAS spring-security pour le SSO. Le 
 Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra gérer les callbacks de déconnexion provenant du serveur CAS suite à une demande de SLO. 
 ====
 
-=== Non-répudiation
+### Non-répudiation
 
 Dispositifs répondant aux <<Exigences de non répudiation>> :
 
@@ -639,7 +639,7 @@ Dispositifs répondant aux <<Exigences de non répudiation>> :
 Exemple  : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X.
 ====
 
-=== Anonymat et vie privée
+### Anonymat et vie privée
 
 Dispositifs répondant aux <<exigence-anonymat,exigences d'anonymat et de respect de la vie privée>> :
 
@@ -653,7 +653,7 @@ Exemple 2 : les données à destination de la zone publique seront exportées p
 Exemple 3 : le bandeau d’acceptation des cookies sera mis en ouvre sur toutes les pages de l’application Angular via le module `angular-cookie-law`.
 ====
 
-=== Habilitations
+### Habilitations
 
 Dispositifs répondant aux <<Exigences sur les habilitations>> :
 ====
@@ -663,7 +663,7 @@ Exemple 1 : la gestion des autorisations sera gérée applicativement et stock�
 Exemple 2 : L’obtention du carnet d’adresse Facebook sera en OAuth2. On utilisera l’API Java Google Oauth2.
 ====
 
-=== Tracabilité, auditabilité
+### Tracabilité, auditabilité
 
 Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
@@ -684,9 +684,9 @@ Exemple 5 : Les logs contenant le tag `[PREUVE]` et issu de l’ensemble des co
 ====
 
 
-== Auto-contrôles
+## Auto-contrôles
 
-=== Auto-contrôle des vulnérabilités
+### Auto-contrôle des vulnérabilités
 
 [TIP]
 ====
@@ -791,7 +791,7 @@ a|
 
 |===
 
-=== Auto-contrôle RGPD
+### Auto-contrôle RGPD
 
 [TIP]
 ====
@@ -806,7 +806,7 @@ Cette liste n'est qu'un exemple partiel, faire valider votre projet par votre se
 [cols="e,e,e"]
 |===
 |Exigence RGPD
-|Prise en compte ?
+|Prise en compte ?
 |Mesures techniques entreprises
 
 |Registre du traitement de données personnelles
@@ -824,4 +824,4 @@ Cette liste n'est qu'un exemple partiel, faire valider votre projet par votre se
 |Sécurisation des données
 |X
 |Oui, voir les mesures listées dans ce document notamment sur la confidentialité, audibilité et intégrité.
-
+|===

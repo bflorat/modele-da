@@ -1,8 +1,8 @@
-= Glossaire des termes utilisés
+# Glossaire des termes utilisés
 
 WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
 
-== Termes en cours de discussion / à valider
+## Termes en cours de discussion / à valider
 
 [cols="1e,4e,4e"]
 |=======================================================================
@@ -11,7 +11,7 @@ WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
 |Canal| Origine de la demande | Canal ou provenance ?
 |=======================================================================
 
-== Termes métier et organisationnels
+## Termes métier et organisationnels
 
 [cols="1e,4e,4e"]
 |=======================================================================
@@ -22,7 +22,7 @@ WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
 
 |=======================================================================
 
-== Termes applicatifs
+## Termes applicatifs
 
 [cols="1e,4e,4e"]
 |=======================================================================
@@ -35,7 +35,7 @@ WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
 |=======================================================================
 
 
-== Termes techniques 
+## Termes techniques 
 
 [cols="1e,4e,4e"]
 |=======================================================================
@@ -46,6 +46,6 @@ Permet entre autres d'augmenter la sécurité par rupture protocolaire.
 
 |=======================================================================
 
-== Sources
+## Sources
 
 * _http://km.mondomaine.fr_

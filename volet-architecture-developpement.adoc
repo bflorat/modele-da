@@ -1,4 +1,4 @@
-= Volet développement
+# Volet développement
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -8,7 +8,7 @@
 
 Dernière modification : {docdate}
 
-== Introduction
+## Introduction
 
 Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
 
@@ -16,7 +16,7 @@ Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
-=== Documentation de Référence
+### Documentation de Référence
 
 [TIP]
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
@@ -31,9 +31,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
-== Non statué
+## Non statué
 
-=== Points soumis à étude complémentaire
+### Points soumis à étude complémentaire
 
 .Points soumis à étude complémentaire
 [cols="e,e,e,e,e"]
@@ -49,7 +49,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |====
 
 
-=== Hypothèses
+### Hypothèses
 
 .Hypothèses
 [cols="1e,4e"]
@@ -60,7 +60,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Même si ce point n’est pas encore totalement validé, l’application nécessitera un JRE 9 + pour tirer profil de librairies et frameworks Java indispensables au projet.
 |====
 
-== Contraintes
+## Contraintes
 
 [TIP]
 ====
@@ -68,10 +68,10 @@ Lister ici les contraintes relatives à l'architecture logicielle, ceci inclut p
 
 * L'obligation d'utiliser un framework ou une filière technologique précise
 * Les budgets maximums de licence ou de développement
-* L'outillage (IDE, ...)
+* L'outillage (IDE, …)
 * L'intégration continue
 * Les normes et seuils de qualité de code applicables
-* Les tests (taux de couverture, répartition par type de test, ...)
+* Les tests (taux de couverture, répartition par type de test, …)
 
 ====
 ====
@@ -84,14 +84,14 @@ Exemple 2 : Le module devra se baser sur le framework Hibernate pour la persista
 Exemple 3 : l'application sera construite, testée et déployée en continu à chaque push via la plateforme Gitlab-ci
 ====
 
-== Exigences non fonctionnelles
+## Exigences non fonctionnelles
 
 [TIP]
 ====
 Contrairement aux contraintes qui fixaient le cadre auquel toute application devait se conformer, les exigences non fonctionnelles sont données par les porteurs du projet (MOA en général). Prévoir des interviews pour les déterminer. Si certaines exigences ne sont pas réalistes, le mentionner dans le référentiel des points à statuer.
 ====
 
-=== Accessibilité
+### Accessibilité
 
 [TIP]
 ====
@@ -106,16 +106,16 @@ Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb …) . Attentio
 * La loi est de plus en plus stricte pour les administrations qui doivent respecter un niveau d’accessibilité suffisant (loi  n°2005-102 du 11 février 2005 pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées). « Tous les sites publics européens doivent atteindre le double A (AA) du W3C/WAI ».
 ====
 
-=== Ergonomie
+### Ergonomie
 
-==== Charte ergonomique
+#### Charte ergonomique
 
 [TIP]
 ====
 En général, on se réfère ici à la charte ergonomique de l’organisme. Lister néanmoins d’éventuelles spécificités. Ne pas reprendre les contraintes d’accessibilité listées plus haut.
 ====
  
-==== Spécificités sur les widgets
+#### Spécificités sur les widgets
 
 [TIP]
 ====
@@ -128,20 +128,20 @@ Exemple 1 : les tableaux devront être triables suivant plusieurs colonnes.
 Exemple 2 : de nombreux écrans seront pourvus d’accordéons
 ====
 
-==== Polices de caractère
+#### Polices de caractère
 
 [TIP]
 ====
 Décrire ici les polices de caractère à utiliser pour les pages Web, les applications ou les documents composés.
 
-Le choix des polices suit des contraintes de licences. Afin d'assurer une sécurité juridique au projet, attention aux polices commerciales soumises à royalties (en particulier les polices appartement à Microsoft comme Times New Roman, Courier, Verdana, Arial) et qui ne permettent pas de produire gratuitement des documents sans passer par leurs éditeurs (Word, ...). 
+Le choix des polices suit des contraintes de licences. Afin d'assurer une sécurité juridique au projet, attention aux polices commerciales soumises à royalties (en particulier les polices appartement à Microsoft comme Times New Roman, Courier, Verdana, Arial) et qui ne permettent pas de produire gratuitement des documents sans passer par leurs éditeurs (Word, …). 
 
 Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-les-fondamentaux/la-typographie[Marianne] préconisée par le gouvernenement en tant que police à chasse variable.
 
 Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberation_(police_d%27%C3%A9criture)[Liberation Mono] en licence Open Source sécurisante sur un plan juridique et compatible métriquement avec le Monotype, le Courrier New, l'Arial et le Times New Roman. 
 ====
 
-==== Site Web adaptatif
+#### Site Web adaptatif
 
 [TIP]
 ====
@@ -155,17 +155,17 @@ Lister les contraintes d’affichage multi-support. Utiliser quand c'est possibl
 WARNING: Un design responsive vient avec ses contraintes (duplication de code, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir…). 
 ====
 
-==== Progressive Web Apps (PWA)
+#### Progressive Web Apps (PWA)
 
 [TIP]
 ====
-Spécifier si l'application est progressive. Les applications PWA sont des applications Web HTML5 possédant tous les attributs des applications natives (mode déconnecté, rapide, adaptatif, accessible depuis l'OS, ...) 
+Spécifier si l'application est progressive. Les applications PWA sont des applications Web HTML5 possédant tous les attributs des applications natives (mode déconnecté, rapide, adaptatif, accessible depuis l'OS, …) 
 ====
 ====
 Exemple : L'application X sera totalement PWA. Des tests devront démonter que le site continuer à fonctionner sans réseau et que les pages se chargent en moins de 5 secs en 4G. 
 ====
 
-==== Navigateurs supportés
+#### Navigateurs supportés
 
 [TIP]
 ====
@@ -187,7 +187,7 @@ Exemple 2 : L’application Y étant une application internet visant le public 
 Exemple 3 : L’application Z vise le public le plus large et doté de systèmes raisonnablement anciens et devra donc supporter : Firefox 6+, Chrome 8+, Opera 8+, IE 10, Edge.
 ====
 
-==== Internationalisation (i18n)
+#### Internationalisation (i18n)
 
 [TIP]
 ====
@@ -200,13 +200,13 @@ Exemple 1 : L’IHM X sera traduite en 25 langues dont certaines langues asiati
 Exemple 2 : les formats de dates et autres champs de saisie devront être parfaitement localisés pour un confort maximal de l’utilisateur.
 ====
 
-==== Mode déconnecté
+#### Mode déconnecté
 
 [TIP]
 ====
 Préciser si l'application doit pouvoir continuer à fonctionner sans accès à Internet ou au LAN (très courant pour les applications utilisées par les professionnels en déplacement par exemple). 
 
-Il peut s’agir de clients lourds classiques (Java, C, ...) possédant leur base locale pouvant être synchronisée de retour au bureau. Il peut également s'agir d'applications PWA (voir plus haut) utilisant un service worker pour les resources statiques et du stockage navigateur (local storage, base de données IndexedDB).
+Il peut s’agir de clients lourds classiques (Java, C, …) possédant leur base locale pouvant être synchronisée de retour au bureau. Il peut également s'agir d'applications PWA (voir plus haut) utilisant un service worker pour les resources statiques et du stockage navigateur (local storage, base de données IndexedDB).
 ====
 ====
 Exemple 1 : L'application sera développée en Java Swing avec stockage local basé sur une base H2 synchronisées avec la base commune par appels REST.
@@ -215,7 +215,7 @@ Exemple 1 : L'application sera développée en Java Swing avec stockage local ba
 Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5 avec local storage pour stocker les données de la journée dans le navigateur.
 ====
 
-=== Exigences de SEO
+### Exigences de SEO
 
 [TIP]
 ====
@@ -228,11 +228,11 @@ Exemple 1 :  Aucune indexation nécessaire ni désirée (site interne)
 Exemple 2 : Les pages statiques du site devront suivre les bonnes pratiques SEO pour optimiser sa visibilité.
 ====
 
-== Architecture cible
+## Architecture cible
 
-=== Pile logicielle
+### Pile logicielle
 
-==== Filière technique retenue
+#### Filière technique retenue
 
 [TIP]
 ====
@@ -242,10 +242,10 @@ Donner les technologies choisies parmi les technologies au catalogue de l’orga
 Exemple : cette application est de profil P3 : "Application Web Spring" avec utilisation exceptionnelle de la librairie JasperReport.
 ====
 ====
-Exemple : Utilisation de Reacts.js à titre expérimental au sein de l'organisation. Validé en commité architecture le ...
+Exemple : Utilisation de Reacts.js à titre expérimental au sein de l'organisation. Validé en commité architecture le …
 ====
 
-==== Composants logiciels
+#### Composants logiciels
 
 [TIP]
 ====
@@ -269,7 +269,7 @@ Exemple :
 |====
 ====
 
-=== Performances
+### Performances
 
 IMPORTANT: Voir les exigences sont dans le link:./volet-architecture-dimensionnement.adoc[volet dimmensionnement].
 
@@ -277,7 +277,7 @@ IMPORTANT: Voir les exigences sont dans le link:./volet-architecture-dimensionne
 [TIP]
 ====
 Même si des campagnes de performance sont prévues, l'expérience montre que la plupart des problèmes de performance auraient pu être détectés dès le développement.
-Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, ...) mais la plupart des problèmes de temps de réponse. Il est également souvent possible de simuler de la concurrence et de la charge. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
+Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, …) mais la plupart des problèmes de temps de réponse. Il est également souvent possible de simuler de la concurrence et de la charge. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
 
 
 Coté Frontend :
@@ -285,7 +285,7 @@ Coté Frontend :
 * Limiter la complexité des CSS (sélecteurs ou fonctions en particulier)
 * Utiliser un profiler (comme celui de Chrome)
 * Privilégier les appels asynchrones
-* ...
+* …
 
 Coté Backend :
 
@@ -301,14 +301,14 @@ Coté Backend :
 * Vérifier qu'il n'y a pas de fuite de threads ou de deadlocks en comptant le nombre de threads actifs sur une période suffisamment longue (une nuit compléte par exemple).
 * Stresser les API _a minima_ (avec des injecteurs comme JMeter ou K6) et via une rampe progressive.
 * Traquer les IO (des millions de fois plus lents que des accès mémoire).
-* ...
+* …
 
 Frontend et backend : 
 
-* Toute ressource (taille de chaîne, nombre d'appel sur une durée, ...) doit systématiquement être bornée par une limite (pas d'open bar).
+* Toute ressource (taille de chaîne, nombre d'appel sur une durée, …) doit systématiquement être bornée par une limite (pas d'open bar).
 * Vérifier que la taille des requêtes HTTP reste en dessous de quelques dizaines de Kio (hors GET sur fichiers). Utiliser la <<Tri et Pagination,pagination cliente et serveur>>.
 * Traquer le bavardage réseau : grouper les requêtes quand possible (il faut trouver un compromis avec la règle précédente). S'aider de la règle ‘I’ de SOLID (Interface Segregation).
-* Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2,...`) pour récupérer plusieurs éléments à la fois
+* Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2,…`) pour récupérer plusieurs éléments à la fois
 (doit se concrétiser par un seul `SELECT WHERE .. IN` dans la requête finale, pas une boucle dans le code !)
 
 ====
@@ -317,7 +317,7 @@ WARNING: Ne pas tomber à l'inverse dans l'optimisation prématurée "source de 
 N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimisations les plus significatives et ne pas perdre son temps à grappiller des microsecondes voire nanosecondes.
 
 
-=== Spécificités d’usine logicielle
+### Spécificités d’usine logicielle
 
 [TIP]
 ====
@@ -327,7 +327,7 @@ Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continu
 Exemple : Les jobs Jenkins produiront le logiciel sous forme de containers Docker si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce container. Si tous les tests d’intégration et BDD sont passants, l'image Docker est releasée dans Nexus.
 ====
 
-=== Normes de développement et qualimétrie 
+### Normes de développement et qualimétrie 
 
 [TIP] 
 ==== 
@@ -348,7 +348,7 @@ Exemple 2 : Le niveau de qualité exigé correspond au https://docs.sonarqube.or
 Exemple 3 : Quelle langue utilisée pour le code ? français pour les termes fonctionnels (il est impératif d'utiliser les termes métiers comme préconisé par le DDD) et l'anglais pour les termes techniques génériques.
 ====
 
-=== Patterns notables
+### Patterns notables
 
 [TIP]
 ====
@@ -358,7 +358,7 @@ Préciser si ce projet a mis en œuvre des patterns (GoF, JEE ou autre) structur
 Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et éviter de multiplier les niveaux d'héritage, nous utiliserons massivement la pattern décorateur [GoF] dont voici un exemple d’utilisation : <schéma>.
 ====
 
-=== Spécificités des tests 
+### Spécificités des tests 
 
 [TIP] 
 ==== 
@@ -410,7 +410,7 @@ Exemple 3 : Types de tests
 |TI (tests d'intégration) 
 |Faible 
 |Automatisé 
-|Composants appelant des systèmes externes (bases de données, API...) 
+|Composants appelant des systèmes externes (bases de données, API…) 
 |50 à 60% 
 |Chaque TI ne doit tester qu'un seul système externe à la fois 
 
@@ -489,9 +489,9 @@ Exemple 2 : des tests de robustesse courant sur plusieurs jours seront effectué
 Exemple 3 : Les campagnes de performance intégreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
 ====
 
-=== Gestion de la robustesse
+### Gestion de la robustesse
 
-==== Gestion des transactions
+#### Gestion des transactions
 
 [TIP]
 ====
@@ -508,7 +508,7 @@ Lister ici les décisions prises concernant la gestion des transactions. Ceci es
 Exemple : nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file pour effectuer des mises à jour au fil de l'eau.
 ====
 
-==== Gestion des sessions
+#### Gestion des sessions
 
 [TIP]
 ====
@@ -528,7 +528,7 @@ Exemples de points à traiter :
 Exemple : notre application JSF stockera en session HTTP uniquement son panier d'achat, pas les références produits
 ====
 
-==== Gestion des erreurs
+#### Gestion des erreurs
 
 [TIP]
 ====
@@ -537,7 +537,7 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 * Différencions-nous erreurs fonctionnelles (erreurs fonctionnelles prévues) et techniques ? Prévoir un diagramme de classe.
 * Comment logue t-on les erreurs ? quel niveau de log ? 
 * Où sont attrapées les exceptions ? au plus tôt ou en début d'appel de façon centralisée ?
-* Utilise-t-on les exceptions standards du langage (`IOException`,...) ou notre propre jeu d'exceptions ?
+* Utilise-t-on les exceptions standards du langage (`IOException`,…) ou notre propre jeu d'exceptions ?
 * La liste des erreurs est-elle consolidée ? documentée ? 
 * Affecte-t-on des codes erreur ?
 * Affiche-on les stack-traces complètes ? si oui, coté serveur et coté client ?
@@ -550,7 +550,7 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 Exemple : les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
 ====
 
-=== Gestion de la configuration
+### Gestion de la configuration
 
 [TIP]
 ====
@@ -559,7 +559,7 @@ Comment configure-t-on l'application ? Exemples de points à traiter :
 * Quels sont les variables inclues dans le package final de façon statique ?
 * Quels sont les paramètres modifiables au runtime ? 
 * Mon application est-elle paramétrable via feature flags pour des raisons de canary testing par exemple ? si oui, comment je le gère dans le code ?
-* Sous quelle forme les paramètres sont-ils injectés dans l'application (variable d'environnement ? fichier .properties, base de donnée, ...) ? 
+* Sous quelle forme les paramètres sont-ils injectés dans l'application (variable d'environnement ? fichier .properties, base de donnée, …) ? 
 * L'application accepte-elle une modification du paramètrage à chaud ?
 * Décrire le système de configuration
 
@@ -570,7 +570,7 @@ Exemple (application déployées dans Kubernetes) :
 La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le décripteur de déploiement Kubernetes.
 ====
 
-=== Politique de gestion des branches
+### Politique de gestion des branches
 
 [TIP]
 ====
@@ -587,7 +587,7 @@ Exemple :
 * Une branche de maintenance sera tirée sur chaque tag de version x.y. Seuls les bugfixs seront mergés dans les branches de maintenance depuis `develop` via des `cherry-pick`.
 ====
 
-=== Versioning
+### Versioning
 
 [TIP]
 ====
@@ -597,14 +597,14 @@ Que versionne-t-on et quel système de version utilise-t-on ?
 ====
 Exemple: 
 
-* D'une façon générale, toute ressource non dérivée (source, outil, script de ci-cd, template, DDL de base de données, ...) doit être versionnée.
+* D'une façon générale, toute ressource non dérivée (source, outil, script de ci-cd, template, DDL de base de données, …) doit être versionnée.
 * Les modules seront versionnés suivant la numérotation `x.y.z` (`<majeur).<évolution>.<fix>`)
 * Les librairies seront versionnées suivant la même numérotation que les modules mais la valeur `x` sera incrémentée lors de toute montée de version cassant la compatibilité ascendante (principe du Semantic Versioning).
 * La version logique globale du projet sera : `<lot>.<no sprint>.<déploiement>`
 
 ====
 
-=== Gestion de la concurrence
+### Gestion de la concurrence
 
 [TIP]
 ====
@@ -620,7 +620,7 @@ Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
 Exemple  (Spring MVC) : Tous les controllers seront en scope singleton et ne doivent donc en aucun cas stocker d'état dans leurs attributs pour éviter des race conditions.
 ====
 
-=== Encodage 
+### Encodage 
 
 [TIP] 
 ==== 
@@ -628,7 +628,7 @@ Quelles sont les règles concernant l'encodage des chaînes de caractère ? Ceci
 ==== 
 
 ==== 
-Exemple 1 : Le seul encodage autorisé dans tous les modules et composants techniques est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat...), des sources, des fichiers de configuration, des bases de données et des fichiers. 
+Exemple 1 : Le seul encodage autorisé dans tous les modules et composants techniques est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat…), des sources, des fichiers de configuration, des bases de données et des fichiers. 
 
 NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des  .properties (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en UTF-8. 
 
@@ -637,7 +637,7 @@ NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des  .propert
 Exemple 2 : Si un système externe impose d'envoyer ou de recevoir des chaînes de caractères dans un encodage autre que le UTF-8 (exemple : un service REST qui renvoi des données en ISO-8859-1) et qu’il n’est pas possible de modifier le contrat, il est impératif de traduire au sein d'une couche anti-corruption les chaînes de caractères et ceci au plus tôt, dès l'appel. De plus, il ne faut jamais persister dans nos systèmes une donnée dans un encodage non UTF-8. 
 ==== 
  
-=== Fuseaux horaires 
+### Fuseaux horaires 
 
 [TIP] 
 ==== 
@@ -651,7 +651,7 @@ Exemple 1 : Les heures ne seront jamais stockées sans fuseau horaire. En base, 
 Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera l'epoch millis à 12:00 UTC (et pas 00:00, trop proche du jour précédent, risque de bug). 
 ==== 
 
-=== Gestion des logs
+### Gestion des logs
 
 NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./volet-architecture-infrastructure.adoc#_logs[le volet infrastructure].
 
@@ -661,7 +661,7 @@ Donner ici les règles générales concernant les traces applicatives (logs), le
 Penser à l'exploitation des logs, surtout coté serveur. Se demander s'il sera possible d'en tirer profit en cas d'erreur en production au milieu de Mio voire Gio d'autres logs et de n threads loguant en parallèle.
 ====
 
-==== Règles générales
+#### Règles générales
 
 ====
 Exemple 1 : 
@@ -678,7 +678,7 @@ if (isDebugEnabled()){
 ```
 ====
 
-==== Niveaux et quantité de logs
+#### Niveaux et quantité de logs
 [TIP]
 ====
 Expliquer quand et quoi loguer de sorte à produire des logs exploitables en production.
@@ -720,7 +720,7 @@ Exemple :
 
 ====
  
-=== Outils d'administration
+### Outils d'administration
 
 [TIP]
 ====
@@ -728,9 +728,9 @@ L'application doit-elle fournir des services d’administration ? Il est forteme
 
 Exemples de points à traiter :
 
-* Dois-je fournir un moyen de purger des données, logs, caches, ... ? 
+* Dois-je fournir un moyen de purger des données, logs, caches, … ? 
 (on appelle quelque fois ce type de service un 'traitement interne')    
-* Dois-je fournir des indicateurs applicatifs de supervision ? (nombre de dossiers consultés, ...) ?
+* Dois-je fournir des indicateurs applicatifs de supervision ? (nombre de dossiers consultés, …) ?
 * Dois-je fournir des outils de migration ?
 
 ====
@@ -738,7 +738,7 @@ Exemples de points à traiter :
 Exemple : Le service `/interne/maj_2` effectuera une montée de version du modèle de donnée vers la V2
 ====
 
-=== Tri et Pagination
+### Tri et Pagination
 
 [TIP]
 ====
@@ -759,7 +759,7 @@ Exemple 2 (Coté client)
 * Les éléments retournés seront affichés dans les tableaux par blocs (taille paramétrable d’une taille indicative de l'ordre de 20 éléments). 
 ====
 
-=== Provisioning et mises à jour des DDL
+### Provisioning et mises à jour des DDL
 
 [TIP]
 ====
