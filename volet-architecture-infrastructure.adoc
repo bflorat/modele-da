@@ -806,7 +806,7 @@ Identifier clairement le matériel dédié à l’application (et éventuellemen
 ====
 Exemple :
 
-image::diagrams/archi-infra.svg[Diagramme de déploiement MIEL]
+image::diagrammes/archi-infra.svg[Diagramme de déploiement MIEL]
 ====
 
 ### Versions des composants d'infrastructure

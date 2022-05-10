@@ -1,20 +1,33 @@
 #!/bin/bash
 set -e
 
-# Exporte un repertoire asciidoc en un paquet de PDF ou de pages HTML (avec les diagrammes inclus dans les PDF et pages HTML)
-# Pré-requis: une installation de docker
-# Ceci est un script _a minima_, ne pas hésiter à le faire évoluer en fonction de vos besoins
 
-# option : [--pdf] pour créer les PDF en plus du html
-# option : [--adoc] pour une archive sans html ni pdf
-# option : [--html] pour une archive avec uniquement le HTML
+function usage(){
+  echo "Usage:
+    Exporte un repertoire asciidoc en un paquet de PDF ou de pages HTML (avec les diagrammes inclus dans les PDF et pages HTML)
+    Pré-requis: une installation de docker
+    Ceci est un script a minima, ne pas hésiter à le faire évoluer en fonction de vos besoins
+
+    --pdf : pour une archive PDF 
+    --adoc : pour une archive sans html ni pdf
+    --html : pour une archive HTML statique
+"
+
+}
+
+
+if [[ $# != 1 ]]; then
+	usage
+	exit 1
+fi
+
 
 OUT=/tmp/dossier-architecture
 ARCHIVE=/tmp/dossier-architecture-$(date +%y%m%d).zip
 rm -rf $OUT > /dev/null 2>&1 || true 
 mkdir $OUT
 rm $ARCHIVE > /dev/null 2>&1 || true 
-cp -rp *.adoc diagrams $OUT/
+cp -rp *.adoc diagrammes $OUT/
 
 cd $OUT
 for doc in $(find . -name '*.adoc' -print);  do
@@ -41,3 +54,6 @@ fi
 cd /tmp
 zip -r $ARCHIVE $(basename $OUT)
 echo "Archive produite sans erreur dans $ARCHIVE"
+
+
+
