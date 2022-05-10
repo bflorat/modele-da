@@ -23,7 +23,7 @@ fi
 
 
 OUT=/tmp/dossier-architecture
-ARCHIVE=/tmp/dossier-architecture-$(date +%y%m%d).zip
+ARCHIVE=/tmp/dossier-architecture-$(date +%Y%m%d).zip
 rm -rf $OUT > /dev/null 2>&1 || true 
 mkdir $OUT
 rm $ARCHIVE > /dev/null 2>&1 || true 
