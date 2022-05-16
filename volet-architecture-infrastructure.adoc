@@ -150,7 +150,7 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 Donner ici le niveau de sécurité du datacenter selon l’échelle Uptime Institute (Tier de 1 à 4). 
 
 .Niveaux Tier des datacenters (source : Wikipedia)
-[cols="1,5,2,2,2"]
+[cols="1,5,2,2,2,2"]
 |====
 |Niveau Tier|Caractéristiques|Taux de disponibilité|Indisponibilité statistique annuelle| Maintenance à chaud possible ?| Tolérance aux pannes ?
 
