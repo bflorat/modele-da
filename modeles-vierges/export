@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-
 function usage(){
   echo "Usage:
     Exporte un repertoire asciidoc en un paquet de PDF ou de pages HTML (avec les diagrammes inclus dans les PDF et pages HTML)
@@ -10,17 +9,15 @@ function usage(){
 
     --pdf : pour une archive PDF 
     --adoc : pour une archive sans html ni pdf
+    --odt : pour une archive avec des documents Open Document Text
     --html : pour une archive HTML statique
 "
-
 }
-
 
 if [[ $# != 1 ]]; then
 	usage
 	exit 1
 fi
-
 
 OUT=/tmp/dossier-architecture
 ARCHIVE=/tmp/dossier-architecture-$(date +%Y%m%d).zip
@@ -39,6 +36,11 @@ for doc in $(find . -name '*.adoc' -print);  do
   doc_without_extension=${doc%.adoc}
   if [[ $1 =~ '--pdf' ]]; then
      docker run --rm -v $OUT:/data madnight/docker-alpine-wkhtmltopdf --footer-center [page]/[topage] /data/$doc_without_extension.html /data/$doc_without_extension.pdf
+  elif [[ $1 =~ '--odt' ]]; then
+     docker run --rm \
+       -v "$OUT:/data" \
+       --user $(id -u):$(id -g) \
+       pandoc/core /data/$doc_without_extension.html -o /data/$doc_without_extension.odt
   fi
 done
 
@@ -53,7 +55,7 @@ fi
 # Création archive finale
 cd /tmp
 zip -r $ARCHIVE $(basename $OUT)
-echo "Archive produite sans erreur dans $ARCHIVE"
+echo "Archive produite avec succès : $ARCHIVE"
 
 
 
