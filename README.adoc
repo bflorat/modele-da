@@ -41,7 +41,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * Le texte en italique contient des exemples ;
 * Chaque chapitre dispose de notes aidant à le remplir ;
 * Des link:modeles-vierges[modèles vierges] (sans exemples) sont fournis pour votre confort. *Il est fortement préconisé de partir des modèles vierges tout en ayant dans une autre fenêtre le modèle avec exemples et explications sous les yeux* ;
-* Le script `export` joint permet de produire une archive avec tout votre dossier au format HTML et/ou PDF.
+* Le script `export` joint permet de produire une archive avec tout votre dossier au format HTML, PDF ou ODT.
 
 ### Conseils sur la rédaction de votre dossier d'architecture 
 * *Rester bref*, chaque mot doit avoir son utilité. Pas d’explication bateau type ‘ceci est l’introduction’, pas de redites d’autres documents, de l’historique de l’entreprise ou de concepts vagues ;
