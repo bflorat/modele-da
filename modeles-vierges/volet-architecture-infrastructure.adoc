@@ -1,4 +1,4 @@
-= Volet infrastructure
+# Volet infrastructure
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -8,14 +8,14 @@
 
 Dernière modification : {docdate}
 
-== Introduction
+## Introduction
 Ceci est le point de vue infrastructure de l’application. Il décrit le déploiement des modules applicatifs dans leur environnement d'exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
 Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
-=== Documentation de Référence
+### Documentation de Référence
 
 .Références documentaires développement
 [cols="1,2,5,4"]
@@ -29,8 +29,8 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-== Non statué
-=== Points soumis à étude complémentaire
+## Non statué
+### Points soumis à étude complémentaire
 .Points soumis à étude complémentaire
 [cols="1,5,2,2,2"]
 |====
@@ -45,7 +45,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 |====
 
 
-=== Hypothèses
+### Hypothèses
 .Hypothèses
 [cols="1e,5e"]
 |====
@@ -57,40 +57,40 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 |====
 
 
-== Contraintes
+## Contraintes
 
-=== Contraintes sur la disponibilité
+### Contraintes sur la disponibilité
 
-==== MTTD
+#### MTTD
 
-==== GTR
+#### GTR
 
-==== Outils et normes de supervision
+#### Outils et normes de supervision
 
-==== Interruptions programmées
+#### Interruptions programmées
 
-==== Niveau de service du datacenter
+#### Niveau de service du datacenter
 
-==== Synthèse de la disponibilité plancher
+#### Synthèse de la disponibilité plancher
 
-==== Gestion des catastrophes
+#### Gestion des catastrophes
 
-=== Hébergement
+### Hébergement
 
-=== Contraintes réseau
+### Contraintes réseau
 
-=== Contraintes de déploiement
+### Contraintes de déploiement
 
-=== Contraintes de logs
+### Contraintes de logs
 
-=== Contraintes de sauvegardes et restaurations
+### Contraintes de sauvegardes et restaurations
 
-=== Coûts
+### Coûts
 
-== Exigences
+## Exigences
 
 [[plages]]
-=== Plages de fonctionnement
+### Plages de fonctionnement
 
 .Plages de fonctionnement
 [cols="1,2,4"]
@@ -99,9 +99,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-=== Exigences de disponibilité
+### Exigences de disponibilité
 
-==== Disponibilité par plage de fonctionnement
+#### Disponibilité par plage de fonctionnement
 
 .Durée d’indisponibilité maximale admissible par plage
 [cols="1,5"]
@@ -110,37 +110,37 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-=== Mode dégradés
+### Mode dégradés
 
-=== Exigences de robustesse
+### Exigences de robustesse
 
-=== Exigences de RPO
+### Exigences de RPO
 
-=== Exigences d'archivage
+### Exigences d'archivage
 
-=== Exigences de purges
+### Exigences de purges
 
-=== Exigences de déploiements et de mise à jour
+### Exigences de déploiements et de mise à jour
 
-==== Coté serveur
+#### Coté serveur
 
-==== Coté client
+#### Coté client
 
-==== Stratégie de déploiement spécifiques
+#### Stratégie de déploiement spécifiques
 
-=== Exigences de gestion de la concurrence
+### Exigences de gestion de la concurrence
 
-=== Exigences d'écoconception
+### Exigences d'écoconception
 
-== Architecture cible
+## Architecture cible
 
-=== Principes de l'architecture technique
+### Principes de l'architecture technique
 
-=== Disponibilité
+### Disponibilité
 
-=== Déploiement en production
+### Déploiement en production
 
-=== Versions des composants d'infrastructure
+### Versions des composants d'infrastructure
 
 .Composants d'infrastructure
 [cols="1,2,1,2"]
@@ -149,7 +149,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-=== Matrice des flux techniques
+### Matrice des flux techniques
 
 .Matrice de flux techniques
 [cols="1,2,2,2,1,1"]
@@ -158,52 +158,64 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-=== Environnements
+### Environnements
 
-=== Écoconception
+### Écoconception
 
-=== Régulation de la charge
+### Régulation de la charge
 
-==== Coupe-circuits
+#### Coupe-circuits
 
-==== Qualité de Service
+#### Qualité de Service
 
-=== Gestion des timeouts
+### Gestion des timeouts
 
-=== Exploitation
+### Exploitation
 
-==== Ordre d’arrêt/démarrage
+#### Ordre d’arrêt/démarrage
 
-==== Opérations programmées
+#### Opérations programmées
 
-==== Mise en maintenance
+#### Mise en maintenance
 
-==== Sauvegardes et restaurations
+#### Sauvegardes et restaurations
 
-==== Archivage
+##### Périmètre
 
-==== Purges
+##### Stratégie de sauvegarde
 
-==== Logs
+##### Outillage
 
-==== Supervision
+##### Traitements sur les sauvegardes
 
-===== Supervision technique
+##### Modalités de stockage
 
-===== Supervision applicative
+##### Restauration
 
-===== Outil de pilotage de la supervision
+#### Archivage
 
-===== Alerting
+#### Purges
 
-===== Suivi des opérations programmées
+#### Logs
 
-===== Rapports d’exécution des batchs
+#### Supervision
 
-===== Supervision boite noire
+##### Supervision technique
 
-===== Métrologie
+##### Supervision applicative
 
-=== Migration
+##### Outil de pilotage de la supervision
 
-=== Décommissionnement
+##### Alerting
+
+##### Suivi des opérations programmées
+
+##### Rapports d’exécution des batchs
+
+##### Supervision boite noire
+
+##### Métrologie
+
+### Migration
+
+### Décommissionnement

@@ -93,28 +93,6 @@ Exemple 1 : l'hypervision se fait 24/7/365
 Exemple 2 : le service support production est disponible durant les heures de bureau mais une astreinte est mise en place avec alerting par e-mail et SMS en 24/7 du lundi au vendredi.
 ====
 
-#### MTTR
-
-[TIP]
-====
-Donner les éléments permettant d'estimer le temps moyen de réparation (Mean Time To Repair en anglais). A noter qu'il est important de distinguer le MTTD du MTTR. En effet, ce n'est pas parce qu'une panne est détectée que les compétences ou ressources nécessaires à sa correction sont disponibles.
-
-Préciser les plages de présence des exploitants en journée et les possibilités d'astreintes.
-
-Lister ici les durées d’intervention des prestataires matériels, logiciels, électricité, telecom…
-====
-====
-Exemple 1 : Cinq serveurs physiques de spare sont disponibles à tout moment.
-
-Exemple 2 : Le contrat de support Hitashi prévoit une intervention sur les baies SAN en moins de 24h.
-
-Exemple 3 : Au moins un expert de chaque domaine principal (système et virtualisation, stockage, réseau) est présent durant les heures de bureau.
-
-Exemple 4 : Comme toute application hébergée au datacenter X, l’application disposera de la présence d’exploitants de 7h à 20h jours ouvrés. Aucune astreinte n’est possible.
-
-Exemple 5 : le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
-====
-
 #### Outils et normes de supervision
 
 [TIP]
@@ -128,6 +106,66 @@ Exemple 2 : Les batchs doivent pouvoir se lancer sur un endpoint REST
 
 Exemple 3 : un batch en erreur ne doit pas pouvoir se relancer sans un acquittement humain
 ====
+
+#### MTTR
+
+[TIP]
+====
+Fournir les éléments permettant d'estimer le temps moyen de réparation (Mean Time To Repair). A noter qu'il est important de distinguer le MTTD du MTTR. En effet, ce n'est pas parce qu'une panne est détectée que les compétences ou ressources nécessaires à sa correction sont disponibles.
+
+Préciser les plages de présence des exploitants en journée et les possibilités d'astreintes.
+
+Si vous disposez de statistiques ou de post-mortems, mentionnez les durées effectives moyennes déjà observées.
+
+Lister ici les durées d’intervention des prestataires matériels, logiciels, électricité, télécom…
+
+Nous subdivisons de façon indicative cette section en sous-sections "Hardware", "Système et virtualisation", "Réseau", et "Restauration de données". D'autres catégories sont possibles.
+====
+
+##### Hardware
+
+TIP: Décrire ici les éléments permettant de prévoir le MTTR des éléments hardware (serveurs / baies / équipements réseau / systèmes électriques, etc.). Lister par exemple ici les durées d’intervention des prestataires matériels, électricité….
+
+====
+Exemple 1 : Cinq serveurs physiques de spare sont disponibles à tout moment.
+
+Exemple 2 : Le contrat de support Hitashi prévoit une intervention sur les baies SAN en moins de 24h.
+
+Exemple 3 : le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
+====
+
+##### Système et virtualisation
+
+TIP: Lister ici les éléments permettant d'estimer le temps de correction d'un problème lié à l'OS ou à une éventuelle solution de virtualisation.
+
+====
+Exemple 1 : Au moins un expert de chaque domaine principal (système et virtualisation, stockage, réseau) est présent durant les heures de bureau.
+
+Exemple 2 : Comme toute application hébergée au datacenter X, l’application disposera de la présence d’exploitants de 7h à 20h jours ouvrés. Aucune astreinte n’est possible.
+
+Exemple 3 : Le temps de restauration observé d'une sauvegarde Veeam de VM de 40 Gio est de 45 mins.
+
+====
+
+##### Réseau
+
+TIP: Lister ici les éléments liés au réseau permettant d'estimer les durées d’intervention des prestataires ou fournisseurs Telecom…
+
+====
+Exemple 1 : un ingénieur réseau est d'astreinte chaque week-end.
+
+Exemple 2 : Le SLA d'Orange prévoit un rétablissement de la connexion à Internet en conditions nominales en moins de 24H.
+====
+
+##### Restauration de données
+TIP: Lister ici les éléments permettant d'évaluer la durée de restauration de données (fichiers / objets / base de données). Les exigences de RTO listées plus bas devront prendre en compte ce MTTR.
+
+====
+Exemple 1 : Le temps de restauration Barman d'une base Postgresql est d'environ (en heures) de `0.1*x + 0.2*y` avec x, la taille de la base en Gio et `y` le nombre de jours de journaux à rejouer. 
+
+Exemple 2 : La restauration d'une sauvegarde offline (sur bandes) nécessite au minimum 4H de préparation supplémentaire.
+====
+
 
 #### Interruptions programmées
 
@@ -224,8 +262,7 @@ Note: La gestion des catastrophes est un sujet complexe. C'est l'un des points f
 Décrire entre autres :
 
 * Les matériels redondés dans le second datacenter, nombre de serveurs de spare, capacité du datacenter de secours par rapport au datacenter nominal.
-* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévues.
-* Pour un PRA, donner le *Recovery Time Objective* (durée maximale admissible de rétablissement en heures) et le *Recovery Point Objective*  (durée maximale admissible de données perdues en heures depuis la dernière sauvegarde).
+* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévues et le MTTR envisagé.
 * Pour un PCA les dispositifs de réplication de données (synchrone ? fil de l’eau ? Combien de transactions peuvent-être perdues ?).
 * Présenter la politique de failback (réversibilité) : doit-on rebasculer vers le premier datacenter ? Comment ?
 * Comment sont organisés les tests de bascule à blanc ? Avec quelle fréquence ?
@@ -235,7 +272,7 @@ Exemple de PRA : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le 
 
 Autre exemple de PRA (PME avec son propre datacenter à Paris) : Stockage de deux serveurs de spare dans les locaux de Lille. Sauvegarde à chaud toutes les quatre heures des données principales de l'entreprise et envoi (avec chiffrement client) sur BackBlaze.com. Le RPO est de 4h, le RTO de 2H.
 
-Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. Le RTO est de 0, le RPO est ~0 (zéro strict est impossible, voir le théorème de CAP).
+Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. Le MTTR est donc de 0.
 ====
 
 
@@ -444,7 +481,7 @@ Exemple 3 : le système devra pouvoir tenir une charge trois fois supérieure à
 ====
 La sauvegarde (ou backup) consiste à recopier les données d'une système sur un support dédié en vue d'une restauration en cas de perte. Ces données sont nécessaires au système pour fonctionner.
 
-Donner ici le Recovery Point Objective (RPO) de l’application. Il peut être utile de restaurer suite à :
+Donner ici le Recovery Point Objective (RPO) de l’application (en heures). Il peut être utile de restaurer suite à :
 
 * Une perte de données matérielle (peu probable avec des systèmes de redondance).
 * Une fausse manipulation d'un power-user ou d'un administrateur (assez courant).
@@ -455,6 +492,22 @@ Donner ici le Recovery Point Objective (RPO) de l’application. Il peut être u
 ====
 Exemple : on ne doit pas pouvoir perdre plus d'une journée de données applicatives
 ====
+
+### Exigences de RTO
+
+[TIP]
+====
+Le Recovery Time Objective (en heures) est l'objectif de temps maximal autorisé pour la réouverture du service suite à un incident.
+
+Cette exigence doit être compatible (inférieure ou égale) au MTTR donné en contrainte plus haut. Il est en effet inutile d'exiger un RTO de 1H si les exploitants on mesuré un MTTR effectif de 2H. Elle doit également être compatible avec l'exigence de disponibilité.
+
+Ne préciser cette valeur que pour expliciter un objectif de restauration précis, sinon, ne pas remplir cette rubrique et faire référence à la contrainte de MTTR plus haut.
+====
+
+====
+Exemple : On doit pouvoir restaurer et remettre en ligne les 3 Tio de la base XYZ en 1h maximum.
+====
+
 
 ### Exigences d'archivage
 
@@ -1050,34 +1103,48 @@ Exemple : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponibil
 
 #### Sauvegardes et restaurations
 
+##### Périmètre
+
 [TIP]
 ====
-Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<Exigences de disponibilité>> :
+
+Que sauvegarde-t-on ? 
+
+(Bien sélectionner les données à sauvegarder car le volume total du jeu de sauvegardes peut facilement atteindre dix fois le volume sauvegardé).
+
+* des images/snapshots systèmes pour restauration de serveur ou de VM ? 
+* des systèmes de fichiers ou des répertoires ?
+* des bases de données sous forme de dump ? sous forme binaire ?
+* les logs ? les traces ?
+====
+
+[TIP]
+====
+Exemple: 
+
+* Sauvegarde système des VM
+* Sauvegarde des bases PostgreSQL
+* Sauvegardes des documents Ceph
+====
+
+##### Stratégie de sauvegarde
+
+[TIP]
+====
+Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<Exigences de disponibilité>>.
 
 * Quels sont les backups à chaud ? à froid ? 
-* Que sauvegarde-t-on ? (bien sélectionner les données à sauvegarder car le volume total du jeu de sauvegardes peut facilement atteindre dix fois le volume sauvegardé).
-** des images/snapshots systèmes pour restauration de serveur ou de VM ? 
-** des systèmes de fichiers ou des répertoires ?
-** des bases de données sous forme de dump ? sous forme binaire ?
-** les logs ? les traces ?
-* Les sauvegardes sont-elles chiffrées ? si oui, chiffrement de la partition toute entière, fichier par fichier, les deux ? Faut-il chiffrer également le nom des répertoires et fichiers sauvegardés ? Préciser l'algorithme de chiffrement utilisé et comment seront gérées les clés.
-* Les sauvegardes sont-elles compressées ? si oui, avec quel algorithme ? (lzw, deflate, lzma?, …), avec quel niveau de compression ? attention à trouver le compromis entre durée de compression / décompression et gain de stockage.
-* Quel outillage est mis en œuvre ? Simple cron + tar/rsync ? Outil Open Source comme « backup-manager » ? IBM TSM ? Outil orienté Cloud comme « Duplicity » ou « Restic » ?, etc.
-* Quelle technologie est utilisée pour les sauvegardes ? (bandes magnétiques type LTO ou DLT ? disques externes ? cartouches RDX ? cloud de stockage comme Amazon S3 ? support optique ? NAS ? …)
+
 * Quelle est la périodicité de chaque type de sauvegarde ? (ne pas trop détailler ici, ceci sera dans le DEX)
+
 * Quelle est la stratégie de sauvegarde ?
 ** complètes ? incrémentales ? différentielles ? (prendre en compte les exigences en disponibilité. La restauration d'une sauvegarde incrémentale sera plus longue qu'une restauration de sauvegarde différentielle, elle-même plus longue qu'une restauration de sauvegarde complète) ;
 ** quel roulement ? (si les supports de sauvegarde sont écrasés périodiquement).
+
 * Comment se fait le bilan de la sauvegarde ? par courriel ? où sont les logs ? Sont-ils facilement accessibles ? Contiennent-ils des informations sensibles ?
-* Où sont stockées les sauvegardes ? (idéalement le plus loin possible du système sauvegardé tout en permettant une restauration dans un temps compatible avec le RTO).
-* Qui accède physiquement aux sauvegardes et à ses logs ? à la clé de chiffrement ? (penser aux exigences de confidentialité).
 
-Il est conseillé : 
-
-* d'utiliser un support distinct des données sources (ne pas sauvegarder sur un disque HD1 des données de ce même disque). 
-* de disposer d'au moins deux supports de stockage distincts si les données sont vitales à l'organisation.
-* de faire en sorte que les sauvegardes ne soient pas modifiables par la machine qui a été sauvegardée (par exemple, une sauvegarde sur NAS peut être supprimée par erreur en même temps que les données sauvegardées)
 ====
+
 ====
 Exemple de roulement : jeu de 21 sauvegardes sur un an : 
 
@@ -1087,13 +1154,108 @@ Exemple de roulement : jeu de 21 sauvegardes sur un an :
 * 11 sauvegardes mensuelles correspondant aux 11 derniers mois.
 ====
 
-Enfin, il est important de garder à l'esprit que ce que nous voulons _vraiment_, ce sont des restaurations, pas des sauvegardes. Il est crucial de s'assurer que la restauration sera fonctionnelle :
+##### Outillage
+
+[TIP]
+====
+Lister ici les outils utilisés pour les différents types de sauvegardes.
+
+Quel outillage est mis en œuvre ? 
+
+* Simple cron + rsync + tar ? 
+* Outil Open Source orienté fichier comme « backup-manager » ? 
+* Outil orienté imaging de VM comme Veeam ou FSArchiver ? 
+* Outil orienté Cloud comme « Duplicity » ou « Restic » ?, etc.
+* Outil de sauvegarde spécifique de base de données (comme MySqlDump, Barman...)
+
+====
+
+====
+Exemple 1: Sauvegarde de la base PostgreSQL en streaming avec Barman avec un full chaque nuit.
+
+Exemple 2: Sauvegarde journalière des documents via Duplicity avec stockage S3 sur OVH Public Cloud. 
+
+====
+
+##### Traitements sur les sauvegardes
+
+[TIP]
+====
+Lister ici les opérations réalisées sur les sauvegardes :
+
+* Les sauvegardes sont-elles chiffrées ? si oui, chiffrement de la partition toute entière, fichier par fichier, les deux ? Faut-il chiffrer également le nom des répertoires et fichiers sauvegardés ? Préciser l'algorithme de chiffrement utilisé et comment seront gérées les clés (vaults, code de secours...).
+
+* Les sauvegardes sont-elles compressées ? si oui, avec quel algorithme ? (lzw, deflate, lzma?, …), avec quel niveau de compression ? attention à trouver le compromis entre durée de compression / décompression et gain de stockage.
+
+* Doit-on proposer des fonctionnalité de 'Point In Time Recovery' (PITR), pour permettre une restauration à la situation d'un instant précis paramétrable ?
+
+* Les sauvegardes sont-elles protégées de l'écriture et de l'effacement (anti-ransomware) ? Si oui, de façon temporaire ou définitive ?
+
+* Autres fonctionnalités ? (tests d'intégrité, nettoyage automatique dans l'archive, duplication de données, refactoring des fichiers dans l'archive, ...)
+
+====
+Exemple 1 : Déduplication des sauvegarde de niveau bloc via les CBT de l'hyperviseur.
+
+Exemple 2 : Chiffrement des sauvegardes en AES256 via une partition chiffrée LUKS.
+
+Exemple 3 : Compression lzma2 de niveau 6.
+
+##### Modalités de stockage
+
+[TIP]
+====
+
+Préciser le(s) media de stockage utilisé(s), son lieu de stockage...
+
+* Le media est-il offline, online ou near-line (accessible via robot de sauvegarde dans une librairie de cassettes) ? (Attention, les sauvegardes online et même near-line sont sensibles aux erreurs humaines et aux ransonwares).
+
+* Quelle technologie de stockage est utilisée pour les sauvegardes ? (bandes magnétiques type LTO ou DLT ? disques externes ? cartouches RDX ? cloud de stockage comme Amazon S3 ? support optique ? NAS ? …)
+
+* Où sont stockées physiquement les sauvegardes ? (idéalement offline et le plus loin possible du système sauvegardé tout en permettant une restauration dans un temps compatible avec le RTO).
+
+* Quelle est la législation du pays hébergeant nos sauvegardes ? Est-ce compatible avec les exigences juridiques comme le RGPD ? (voir le Cloud Act américain).
+
+* Qui accède physiquement aux sauvegardes et à ses logs ? à la clé de chiffrement ? (penser aux exigences de confidentialité).
+
+* Avons nous connaissance de toutes les dépendances externes pouvant nous ralentir (coffre de banque accessible en journée uniquement par exemple) ?
+
+* Il est conseillé : 
+
+** d'utiliser un support distinct des données sources (ne pas sauvegarder sur un disque HD1 des données de ce même disque). 
+** de disposer d'au moins deux supports de stockage distincts si les données sont vitales à l'organisation.
+** de faire en sorte que les sauvegardes ne soient pas modifiables par la machine qui a été sauvegardée (par exemple, une sauvegarde sur NAS peut être supprimée par erreur en même temps que les données sauvegardées)
+
+* Règle des "3-2-1" pour les données importantes : il faut au moins deux copies en plus des données de production, stockées sur deux supports de technologie différentes et au moins une copie offline sur un site externe sécurisé (exemple: coffre-fort en banque).
+
+====
+
+====
+Exemple 1: Pour la PME Boucherie Sanzot, on conservera une sauvegarde hebdomadaire des données de comptabilité en ligne sur le NAS + une copie offline sur disque externe chiffré et conservée dans le coffre d'une voiture. On conservera sur les deux supports 12 sauvegardes mensuelles et une sauvegarde annuelle, ce qui permet de revenir jusqu'à 2 ans dans le passé.
+
+Exemple 2: Pour la sauvegarde des données d'imposition, chaque transaction vers la base de donnée sera sauvegardée en barman en utilisant les journaux WAL. Chaque nuit, une sauvegarde full barman de la base sera effectuée. On conservera 7J + 4 semaines + 12 mois + 1 an sur sauvegarde online (disques durs) et en near-ligne sur librairie de sauvegarde à base de bandes LTO. Les données seront chiffrées et compressées. Les sauvegardes hebdomadaires seront dupliquées et stockées sur bande offline sur un site distant dédié.
+
+====
+
+##### Restauration
+
+[TIP]
+====
+Toujours garder à l'esprit que ce que nous voulons _vraiment_, ce sont des restaurations, pas des sauvegardes. Il est crucial de s'assurer que la restauration sera fonctionnelle :
 
 * Les sauvegardes sont-elles correctes et complètes ? 
 * Quels tests de restauration sont prévus ? à quelle fréquence (une fois par an est un minium) ?
 * Combien de temps va prendre une restauration (benchmarks) ? Est-ce compatible avec le RTO ?
-* Avons nous des dépendances externes pouvant nous ralentir (coffre accessible en journée uniquement par exemple) ?
-* Avons nous suffisamment de ressources pour la restauration (stockage intermédiaires, CPU et mémoire pour la décompression/déchiffrement , etc…) ?
+
+* Avons nous suffisamment de ressources hardware pour la restauration dans le temps imparti par le RTO (stockage intermédiaires, CPU et mémoire pour la décompression/déchiffrement , etc…) ?
+
+* Comment se fait le bilan de la restauration ? où sont les logs ? Sont-ils facilement accessibles ? Contiennent-ils des informations sensibles ?
+
+====
+
+====
+Exemple: Un test de restauration des données de production sera effectuée en pré-production au minimum une fois par an.
+====
+
 
 
 #### Archivage
@@ -1103,7 +1265,7 @@ Enfin, il est important de garder à l'esprit que ce que nous voulons _vraiment_
 Décrire ici les dispositifs permettant de répondre aux <<exigences-archivage>> avec les modalités de stockage suivantes :
 
 * La technologie : idéalement, on dupliquera par sécurité l'archive sur plusieurs supports de technologies différentes (bande + disque dur par exemple).
-* Un lieu de stockage spécifique et distinct des sauvegardes classiques (coffre en banque par exemple).
+* Un lieu de stockage spécifique et distinct des sauvegardes classiques (coffre-fort en banque par exemple).
 ====
 ====
 Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LTO et disque dur. Les deux supports seront stockés en coffre dans deux banques différentes.
