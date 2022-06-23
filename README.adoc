@@ -7,6 +7,8 @@ NOTE: Nous utilisons le terme 'DA' et pas 'DAT' ou termes similaires car chaque 
 
 Autres langues : https://github.com/bflorat/architecture-document-template[Anglais].
 
+*Si vous utilisez et appréciez ce modèle, vous pouvez nous remercier en mettant une étoile au projet et/ou en nous permettant de lister votre organisation dans les références (adresse https://florat.net/contact[ici])*
+
 ## Principes du modèle
 Nous avons découpé l'architecture en cinq volets (applicatif, sécurité, dimensionnement, infrastructure et développement), *chaque volet étant auto-porteur*. 
 
