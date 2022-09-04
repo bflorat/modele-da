@@ -214,6 +214,11 @@ Rappeler :
  * D'éventuelles dérogations aux règles d'architecture du SI.
  
 Si l'application est prévue pour être implémentée en plusieurs étapes, décrire succinctement la trajectoire cible.
+====
+
+
+[TIP]
+====
 
 Le choix de la représentation est libre mais un diagramme C4 de System Landscape ou un diagramme de composant UML2 semble le plus adapté.
 
