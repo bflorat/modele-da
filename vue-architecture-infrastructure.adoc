@@ -1446,7 +1446,7 @@ Exemple 2 : en cas de problème sur le nouveau composant, un retour arrière se
 
 [TIP]
 ====
-Ce chapitre sera instruit quand l’application arrive en fin de vie et devra être supprimée ou remplacée. Il décrit entre autres :
+Ce chapitre sera instruit quand l’application arrive en fin de vie et devra être supprimée ou remplacée. Elle décrit entre autres :
 
 * Les données à archiver ou au contraire à détruire avec un haut niveau de confiance.
 * Les composants physiques à évacuer ou à détruire.
