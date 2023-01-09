@@ -8,7 +8,7 @@
 
 *Dernière modification* : {docdate} 
 
-*Date dernière revue globale* : _<Faire régulièrement des revues globale de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date dernière revue globale* : 
 
 *Statut du document* :  
 
