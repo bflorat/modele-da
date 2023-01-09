@@ -181,7 +181,6 @@ Lorsqu'on s'adresse à un public dont on ne gère pas le parc de navigateurs (co
 
 WARNING: Supporter d’anciens navigateur (IE en particulier) peut engendrer des surcoûts rédhibitoires et des risques sur la sécurité. Dans tous les cas, il convient d’évaluer les surcoûts de tester sur plusieurs plate-formes. Il existe de bons outils (payants) comme Litmus ou EmailOnAcid permettant de générer un rendu des sites Web et des courriels HTML sur une combinatoire d’OS / type de lecteur (PC/tablette/mobile) /navigateur très vaste (de l’ordre de 50).  Ce type de site est incontournable pour une application grand public.
 
-
 ====
 Exemple 1 : L’application intranet X devra fonctionner sur les navigateurs qualifiés en interne (cf norme xyz)
 ====
@@ -231,6 +230,20 @@ Exemple 1 :  Aucune indexation nécessaire ni désirée (site interne)
 ====
 ====
 Exemple 2 : Les pages statiques du site devront suivre les bonnes pratiques SEO pour optimiser sa visibilité.
+====
+
+### Exigences d'écoconception
+
+[TIP]
+====
+L'écoconception consiste à limiter l'impact environnemental des logiciels et matériels utilisés par l’application. Les exigences dans ce domaine s'expriment généralement en WH ou équivalent CO2.
+
+A noter que la loi française (voir loi https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/que-prevoit-la-loi/[du n°2020-105 du 10 février 2020, ou loi AGEC]) exige de réduire le gaspillage lié au numérique, notamment concernant l'obsolescence logicielle (art. 27). 
+
+Lister ici les exigences d'écoconception portant sur les logiciels.
+====
+====
+Exemple : La consommation électrique moyenne causée par l’affichage d'une page Web ne devra pas dépasser 10mWH, soit pour 10K utilisateurs qui affichent en moyenne 100 pages 200 J par an : 50 g/KWH x 10mWH x 100 x 10K x 200 = 100 Kg équivalent CO2 / an.
 ====
 
 ## Architecture cible
@@ -283,7 +296,6 @@ IMPORTANT: Voir les exigences sont dans le link:./vue-architecture-dimensionneme
 ====
 Même si des campagnes de performance sont prévues, l'expérience montre que la plupart des problèmes de performance auraient pu être détectés dès le développement.
 Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, …) mais la plupart des problèmes de temps de réponse. Il est également souvent possible de simuler de la concurrence et de la charge. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
-
 
 Coté Frontend :
 
@@ -471,7 +483,8 @@ NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'obje
 
 [TIP]
 ====
-Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listée dans la vue infrastructure. Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
+Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listée plus haut. Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
+
 Quelques pistes d’amélioration énergétique du projet :
 
 * Utiliser des profilers ou des outils de développement intégrés dans les navigateurs (comme Google Dev Tools) pour analyser la consommation de ressources (nombre, durée et taille des requêtes).

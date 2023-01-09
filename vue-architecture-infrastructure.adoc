@@ -618,18 +618,17 @@ Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé
 ====
 L'écoconception consiste à limiter l'impact environnemental des logiciels et matériels utilisés par l’application. Les exigences dans ce domaine s'expriment généralement en WH ou équivalent CO2.
 
+A noter que la loi française (voir loi https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/que-prevoit-la-loi/[du n°2020-105 du 10 février 2020, ou loi AGEC]) exige de réduire le gaspillage lié au numérique, notamment concernant l'obsolescence matérielle (art. 19). 
+
 Prendre également en compte les impressions et courriers.
 
 Selon l'ADEME (estimation 2014), les émissions équivalent CO2 d'un KWH en France continentale pour le tertiaire est de 50g/KWH.
 ====
 ====
-Exemple 1 : La consommation électrique moyenne causée par l’affichage d'une page Web ne devra pas dépasser 10mWH, soit pour 10K utilisateurs qui affichent en moyenne 100 pages 200 J par an : 50 g/KWH x 10mWH x 100 x 10K x 200 = 100 Kg équivalent CO2 / an.
+Exemple 1 : Le Power usage effectiveness (PUE) du site devra être de 1.5 ou moins.
 ====
 ====
-Exemple 2 : Le Power usage effectiveness (PUE) du site devra être de 1.5 ou moins.
-====
-====
-Exemple 3 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2020.
+Exemple 2 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2020.
 ====
 
 ## Architecture cible

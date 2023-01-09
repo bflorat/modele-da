@@ -89,6 +89,8 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Exigences de SEO
 
+### Exigences d'écoconception
+
 ## Architecture cible
 
 ### Pile logicielle
