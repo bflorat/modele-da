@@ -568,6 +568,30 @@ Comment gère-t-on erreurs ? Exemples de points à traiter :
 Exemple : les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
 ====
 
+#### Gestion de la robustesse coté frontend
+
+[TIP]
+====
+
+Tout comme le backend, le frontend requiert une robustesse importante, d'autant plus qu'il est en prise directe avec l'interface chaise-clavier. 
+
+Entre autres :
+
+* Penser à interdire les double soumissions (double appel au backend si on double-clic sur un bouton). Ceci n'exclue pas de procéder à des contrôles de durcissement coté backend.
+
+* Afin d'éviter des problèmes subtiles (surtout en cas d'utilisation de stockage navigateur comme les local/session storage), penser à empêcher l'ouverture d'une même application Web dans plusieurs fenêtres ou onglets du navigateur. En cas de tentative, afficher un message d'erreur dans les fenêtres surnuméraires.
+
+* Toujours vérifier la comptabilité du navigateur, même en environnement contrôlé. En cas de tentative d'ouverture d'une page par un navigateur non supporté, afficher un message d'erreur explicite à l'écran.
+===
+
+====
+Exemple 1 : Si l'application est ouverte avec IE, un message d'erreur doit inviter l'utilisateur à utiliser un navigateur supporté.
+====
+
+====
+Exemple 2 : Tous les boutons de l'application devront interdire la double soumission en désactivant temporairement les bouton sur événement.
+====
+
 ### Gestion de la configuration
 
 [TIP]
