@@ -1,7 +1,7 @@
 @startuml
 !include C4/C4_Container.puml
 title  archi-applicative-detaillee-statique
-header Diagramme de containeurs \Vue applicative détaillée statique \n Projet Mes Infos En Ligne (MIEL)
+header Diagramme de containeurs \nVue applicative détaillée statique \n Projet Mes Infos En Ligne (MIEL)
 LAYOUT_LEFT_RIGHT
 LAYOUT_WITH_LEGEND()
 skinparam linetype polyline
