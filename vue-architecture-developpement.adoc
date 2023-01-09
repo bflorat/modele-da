@@ -582,7 +582,7 @@ Entre autres :
 * Afin d'éviter des problèmes subtiles (surtout en cas d'utilisation de stockage navigateur comme les local/session storage), penser à empêcher l'ouverture d'une même application Web dans plusieurs fenêtres ou onglets du navigateur. En cas de tentative, afficher un message d'erreur dans les fenêtres surnuméraires.
 
 * Toujours vérifier la comptabilité du navigateur, même en environnement contrôlé. En cas de tentative d'ouverture d'une page par un navigateur non supporté, afficher un message d'erreur explicite à l'écran.
-===
+====
 
 ====
 Exemple 1 : Si l'application est ouverte avec IE, un message d'erreur doit inviter l'utilisateur à utiliser un navigateur supporté.
