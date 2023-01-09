@@ -6,7 +6,12 @@
 :icons: font
 :toc-title: Sommaire
 
-Dernière modification : {docdate}
+*Dernière modification* : {docdate} 
+
+*Date dernière revue globale* : _<Faire régulièrement des revues globale de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+
+*Statut du document* :  _<Donner ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+
 
 ## Introduction
 Ceci est le point de vue infrastructure de l’application. Elle décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.

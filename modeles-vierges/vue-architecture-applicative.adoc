@@ -7,9 +7,11 @@
 :icons: font
 :toc-title: Sommaire
 
-Dernière modification : {docdate} 
+*Dernière modification* : {docdate} 
 
-Etat du document : 
+*Date dernière revue globale* : _<Faire régulièrement des revues globale de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+
+*Statut du document* :  
 
 
 ## Introduction
