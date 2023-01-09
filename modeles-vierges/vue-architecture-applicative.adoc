@@ -65,7 +65,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Acteurs
 
-=### Acteurs internes 
+#### Acteurs internes 
 
 .Liste des acteurs internes
 [cols="1,1,4,4"]
@@ -79,7 +79,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |===
 
-=### Acteurs externes
+#### Acteurs externes
 
 .Liste acteurs externes
 [cols="1,1,4,4"]
