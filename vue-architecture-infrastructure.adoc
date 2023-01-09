@@ -1020,8 +1020,9 @@ Exemple 2 : un throttling de 100 requêtes par source et par minute sera mis en 
 
 [TIP]
 ====
-Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison. Garder en tête que dans une chaîne de liaison allant du client à la persistance, les timeouts devraient diminuer au fur et à mesure qu'on avance dans 
-la chaîne de liaison (exemple: 10 secs sur le Reverse proxy , 8 secs sur le endpoint REST, 5 secs sur la base de donnée). 
+D'une façon générale, tous les appels distribués (en particulier HTTP(S) vers les API ou du stockage objet et appels vers les bases de données) doivent être limités en temps de connexion ET temps d'exécution. Sans ces timeouts, des contentions fatales pour les modules peuvent apparaître en cas de problèmes de performance.
+
+Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison. Garder en tête que dans une chaîne de liaison allant du client à la persistance, les timeouts devraient diminuer au fur et à mesure qu'on avance dans la chaîne de liaison (exemple: 10 secs sur le Reverse proxy , 8 secs sur le endpoint REST, 5 secs sur la base de donnée). 
 
 En effet, dans le cas contraire, un composant technique peut continuer à traiter une requête alors que son composant appelant a déjà abandonné, ce qui pose à la fois des problèmes de gaspillage de ressource mais surtout des effets difficile à prévoir. 
 
