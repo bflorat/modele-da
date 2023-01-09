@@ -636,12 +636,21 @@ Exemple 1 : L’IHM X intégrera un client CAS spring-security pour le SSO. Le 
 Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra gérer les callbacks de déconnexion provenant du serveur CAS suite à une demande de SLO. 
 ====
 
-### Non-répudiation
+### Non-répudiation et horodatage
 
 Dispositifs répondant aux <<Exigences de non répudiation>> :
 
 ====
-Exemple  : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X.
+Exemple : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X.
+====
+
+[TIP]
+====
+Les solutions d'horodatage cryptographiques ne répondent pas à un besoin propre mais sont souvent requis pour répondre à des besoins de non répudiation (spécialement via des jetons d'horodatage utilisés conjointement avec une signature électronique afin de prévenir d'antidatage ou le postdatage). 
+
+====
+Exemple : Les signatures électroniques seront accompagnées d'un jeton d'horodatage qualifié eIDAS délivrés par le prestataire de service de confiance XYZ.
+====
 ====
 
 ### Anonymat et vie privée

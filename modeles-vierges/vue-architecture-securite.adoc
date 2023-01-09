@@ -174,7 +174,7 @@ Dispositifs répondant aux <<exigence-federation-identite,exigences de fédérat
 
 Dispositifs répondant aux <<Exigences de SSO et SLO> :
 
-### Non-répudiation
+### Non-répudiation et horodatage
 
 Dispositifs répondant aux <<Exigences de non répudiation>> :
 
