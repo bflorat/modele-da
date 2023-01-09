@@ -1,4 +1,4 @@
-= Vue développement
+# Vue développement
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -10,14 +10,14 @@ Dernière modification : {docdate}
 
 Etat du document : 
 
-== Introduction
+## Introduction
 Ceci est la vue développement de l’application. Elle décrit le code à produire et comment l'écrire.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
-=== Documentation de Référence
+### Documentation de Référence
 
 .Références documentaires développement
 [cols="1,1,4,4"]
@@ -30,9 +30,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-== Non statué
+## Non statué
 
-=== Points soumis à étude complémentaire
+### Points soumis à étude complémentaire
 
 .Points soumis à étude complémentaire
 [cols="1,6,1,1,1"]
@@ -47,7 +47,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-=== Hypothèses
+### Hypothèses
 
 .Hypothèses
 [cols="1,4"]
@@ -59,41 +59,41 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-== Contraintes
+## Contraintes
 
-== Exigences non fonctionnelles
+## Exigences non fonctionnelles
 
-=== Accessibilité
+### Accessibilité
 
-=== Ergonomie
+### Ergonomie
 
-==== Charte ergonomique
+#### Charte ergonomique
 
-==== Site Web adaptatif
+#### Site Web adaptatif
 
-==== Charte ergonomique
+#### Charte ergonomique
  
-==== Spécificités sur les widgets
+#### Spécificités sur les widgets
 
-==== Polices de caractère
+#### Polices de caractère
 
-==== Progressive Web Apps (PWA)
+#### Progressive Web Apps (PWA)
 
-==== Navigateurs supportés
+#### Navigateurs supportés
 
-==== Internationalisation (i18n)
+#### Internationalisation (i18n)
 
-==== Mode déconnecté
+#### Mode déconnecté
 
-=== Exigences de SEO
+### Exigences de SEO
 
-== Architecture cible
+## Architecture cible
 
-=== Pile logicielle
+### Pile logicielle
 
-==== Filière technique retenue
+#### Filière technique retenue
 
-==== Composants logiciels
+#### Composants logiciels
 
 .Pile logicielle
 [cols="1,4,1"]
@@ -102,42 +102,42 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-=== Performances
+### Performances
 
-=== Spécificités d’usine logicielle
+### Spécificités d’usine logicielle
 
-=== Normes de développement et qualimétrie 
+### Normes de développement et qualimétrie 
 
-=== Patterns notables
+### Patterns notables
 
-=== Spécificités des tests
+### Spécificités des tests
 
-=== Éco-conception
+### Éco-conception
 
-=== Gestion de la robustesse
+### Gestion de la robustesse
 
-==== Gestion des transactions
+#### Gestion des transactions
 
-==== Gestion des sessions
+#### Gestion des sessions
 
-==== Gestion des erreurs
+#### Gestion des erreurs
 
-=== Gestion de la configuration
+### Gestion de la configuration
 
-=== Gestion de la concurrence
+### Gestion de la concurrence
 
-=== Encodage
+### Encodage
 
-=== Fuseaux horaires
+### Fuseaux horaires
 
-=== Gestion des logs
+### Gestion des logs
 
-==== Règles générales
+#### Règles générales
 
-==== Niveaux et quantité de logs
+#### Niveaux et quantité de logs
 
-=== Outils d'administration
+### Outils d'administration
 
-=== Tri et Pagination
+### Tri et Pagination
 
-=== Provisioning et mises à jour des DDL
+### Provisioning et mises à jour des DDL

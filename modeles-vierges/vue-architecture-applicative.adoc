@@ -1,5 +1,5 @@
 
-= Vue architecture applicative
+# Vue architecture applicative
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -12,7 +12,7 @@ Dernière modification : {docdate}
 Etat du document : 
 
 
-== Introduction
+## Introduction
 
 Ceci est la vue applicative du projet. Elle décrit les modules applicatifs en jeu et leurs échanges.
 
@@ -20,7 +20,7 @@ Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
-=== Documentation de Référence
+### Documentation de Référence
 
 .Références documentaires
 [cols="1,1,4,4"]
@@ -34,9 +34,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |===
 
-== Non statué
+## Non statué
 
-=== Points soumis à étude complémentaire
+### Points soumis à étude complémentaire
 
 .Points soumis à étude complémentaire
 [cols="1,6,1,1,1"]
@@ -46,7 +46,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 |===
 
 
-=== Hypothèses
+### Hypothèses
 
 .Hypothèses
 [cols="1,6"]
@@ -55,17 +55,17 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-== Contexte général
+## Contexte général
 
-=== Objectifs
+### Objectifs
 
-=== Existant
+### Existant
 
-=== Positionnement dans le SI
+### Positionnement dans le SI
 
-=== Acteurs
+### Acteurs
 
-==== Acteurs internes 
+=### Acteurs internes 
 
 .Liste des acteurs internes
 [cols="1,1,4,4"]
@@ -79,7 +79,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |===
 
-==== Acteurs externes
+=### Acteurs externes
 
 .Liste acteurs externes
 [cols="1,1,4,4"]
@@ -93,29 +93,29 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |===
 
-== Contraintes
+## Contraintes
 
-=== Budget
+### Budget
 
-=== Planning
+### Planning
 
-=== Urbanisation
+### Urbanisation
 
-== Exigences
+## Exigences
 
-== Architecture cible
+## Architecture cible
 
-=== Architecture applicative générale
+### Architecture applicative générale
 
-=== Architecture applicative détaillée
+### Architecture applicative détaillée
 
-=== Principes ayant dicté les choix
+### Principes ayant dicté les choix
 
-=== Vision statique
+### Vision statique
 
-=== Vision dynamique
+### Vision dynamique
 
-=== Matrice des flux applicatifs
+### Matrice des flux applicatifs
 
 .Matrice de flux applicatifs
 [cols='1,3,1,1,1']
