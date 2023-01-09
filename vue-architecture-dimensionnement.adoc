@@ -10,7 +10,7 @@ Dernière modification : {docdate}
 
 ## Introduction
 
-Ceci est le point de vue dimensionnement du projet. Il permet de déterminer la taille de l'infrastructure nécessaire au projet.
+Ceci est la vue dimensionnement du projet. Il permet de déterminer la taille de l'infrastructure nécessaire au projet.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 

@@ -14,7 +14,7 @@ Etat du document :
 
 == Introduction
 
-Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
+Ceci est la vue applicative du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 

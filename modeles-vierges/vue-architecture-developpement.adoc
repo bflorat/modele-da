@@ -11,7 +11,7 @@ Dernière modification : {docdate}
 Etat du document : 
 
 == Introduction
-Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
+Ceci est la vue développement de l’application. Elle décrit le code à produire et comment l'écrire.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 

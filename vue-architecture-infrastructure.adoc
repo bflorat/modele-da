@@ -9,7 +9,7 @@
 Dernière modification : {docdate}
 
 ## Introduction
-Ceci est le point de vue infrastructure de l’application. Il décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
+Ceci est le point de vue infrastructure de l’application. Elle décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -17,7 +17,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 [TIP]
 ====
-Ce point de vue est aussi souvent appelé « point de vue technique » et concerne l'infrastructure : serveurs, réseaux, systèmes d'exploitation, bases de données, intergiciels (middleware), … 
+Cette vue est aussi souvent appelé « vue  technique » et concerne l'infrastructure : serveurs, réseaux, systèmes d'exploitation, bases de données, intergiciels (middleware), … 
 
 Bref, elle porte sur tout ce qui est externe à l'application et nécessaire à son exécution
 ====

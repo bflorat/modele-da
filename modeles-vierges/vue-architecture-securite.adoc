@@ -11,7 +11,7 @@ Dernière modification : {docdate}
 
 == Introduction
 
-Ceci est le point de vue sécurité. Il décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
+Ceci est la vue sécurité. Elle décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 

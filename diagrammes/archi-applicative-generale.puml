@@ -1,7 +1,7 @@
 @startuml
 !include C4/C4_Container.puml
 title  archi-applicative-generale
-header Diagramme de contexte système \nPoint de vue applicatif général \ndu projet Mes Infos En Ligne (MIEL)
+header Diagramme de contexte système \nVue applicative générale \ndu projet Mes Infos En Ligne (MIEL)
 LAYOUT_WITH_LEGEND()
 Person_Ext(entreprise, "Entreprise","[Personne]")
 

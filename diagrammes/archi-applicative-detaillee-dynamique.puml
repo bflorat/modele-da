@@ -1,7 +1,7 @@
 @startuml
 !include archi-applicative-detaillee-statique.puml
 title  archi-applicative-detaillee-dynamique
-header Diagramme de containeurs \nPoint de vue applicatif détaillé vue dynamique\n Projet Mes Infos En Ligne (MIEL)
+header Diagramme de containeurs \Vue applicative détaillée dynamique\n Projet Mes Infos En Ligne (MIEL)
 Rel(entreprise,resources_statiques,"Visite https://mesinfos.gouv.fr", "HTTPS, synchrone, lecture seule")
 Rel(entreprise,spa,"Récupère ses informations via")
 Rel(entreprise,mobile,"Récupère ses informations via")
