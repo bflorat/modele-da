@@ -67,10 +67,10 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 Décrire succinctement le projet et en rappeler les objectifs. Mettre en évidence ceux qui sont structurants pour l’architecture.
 
 ====
-Exemple 1 : Cette application doit permettre la dématérialisation des factures reçues de nos fournisseurs et une consultation aisée de ces documents par les services comptables.
+Exemple 1 : Cette application doit permettre la dématérialisation des factures reçues de nos fournisseurs et une consultation aisée de ces documents par les services comptables.
 ====
 ====
-Exemple 2 : ce projet est la réécriture en technologies Web de l’application Cobol X. Elle doit en faciliter la maintenance.
+Exemple 2 : ce projet est la réécriture en technologies Web de l’application Cobol X. Elle doit en faciliter la maintenance.
 ====
 ====
 Exemple 3: l’ application X est l’un des composants principaux du programme Y. Il s’adosse sur les référentiels Personne et Facturation pour enrichir le CMS en données clients temps réel.
@@ -184,6 +184,26 @@ Exemple 6 : Les composants de cette application suivent l'architecture SOA telle
 ====
 ====
 Exemple 7 : Les composants en zone Internet ne peuvent appeler les composants en zone Intranet pour des raisons de sécurité.
+====
+
+### Juridique
+
+Lister ici (sans détailler) les éventuelles contraintes juridiques liées au projet.
+
+====
+Exemple 1 : Le contrat cadre établi avec l'ESN XYZ prévoit de transférer à notre société les droits patrimoniaux du code source.
+====
+
+====
+Exemple 2 : Le code du projet sera en licence libre et open source GPL V3.
+====
+
+====
+Exemple 3 : Les données produites par le projet seront en licence Ouverte version 2.0.
+====
+
+====
+Exemple 4 : Le CLUF du progiciel prévoit un accès aux sources des utilisateurs ayant des parts dans la société.
 ====
 
 ## Exigences
