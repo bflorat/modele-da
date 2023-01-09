@@ -1,4 +1,4 @@
-= Volet développement
+= Vue développement
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -13,7 +13,7 @@ Etat du document :
 == Introduction
 Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
 
-Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
+Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 

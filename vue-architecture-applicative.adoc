@@ -1,4 +1,4 @@
-# Volet architecture applicative
+# Vue architecture applicative
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -12,7 +12,7 @@ Dernière modification : {docdate}
 
 Ceci est le point de vue applicatif du projet. Il décrit les modules applicatifs en jeu et leurs échanges.
 
-Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
+Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
@@ -252,7 +252,7 @@ Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhens
 Si l'application est particulièrement complexe, faire un schéma par chaîne de liaison.
 
 Utiliser comme ID des flux une simple séquence non signifiante (1, 2, …, n).
-Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux composants alors qu'en réalité, il passe par un répartiteur de charge intermédiaire : ce niveau de détail sera donné dans le volet infrastructure). 
+Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux composants alors qu'en réalité, il passe par un répartiteur de charge intermédiaire : ce niveau de détail sera donné dans la vue infrastructure). 
 
 Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.
 ====

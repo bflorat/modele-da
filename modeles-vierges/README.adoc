@@ -9,13 +9,13 @@ Dernière modification : {localdate} {localtime}
 
 Ce dossier est constitué : 
 
-* d’un link:volet-architecture-applicative.adoc[volet applicatif] présentant le contexte général et l’architecture applicative ;
-* d’un link:volet-architecture-developpement.adoc[volet développement] présentant l’architecture logicielle ;
-* d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les aspects d’architecture techniques ou physiques ;
-* d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et aux sollicitations ;
-* d’un link:volet-architecture-securite.adoc[volet sécurité].
+* d’une link:vue-architecture-applicative.adoc[vue applicatif] présentant le contexte général et l’architecture applicative ;
+* d’une link:vue-architecture-developpement.adoc[vue développement] présentant l’architecture logicielle ;
+* d’une link:vue-architecture-infrastructure.adoc[vue infrastructure] présentant les aspects d’architecture techniques ou physiques ;
+* d’une link:vue-architecture-dimensionnement.adoc[vue dimensionnement] présentant les aspects liés aux performances et aux sollicitations ;
+* d’une link:vue-architecture-securite.adoc[vue sécurité].
 
-Chaque volet expose les contraintes, exigences puis solutions mises en oeuvre.
+Chaque vue expose les contraintes, exigences puis solutions mises en oeuvre.
 
 [TIP]
 ====

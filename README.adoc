@@ -10,21 +10,21 @@ Autres langues : https://github.com/bflorat/architecture-document-template[Angla
 *Si vous utilisez et appréciez ce modèle, vous pouvez nous remercier en mettant une étoile au projet et/ou en nous permettant de lister votre organisation dans les références (adresse https://florat.net/contact[ici]).*
 
 ## Principes du modèle
-Nous avons découpé l'architecture en cinq volets (applicatif, sécurité, dimensionnement, infrastructure et développement), *chaque volet étant auto-porteur*. 
+Nous avons découpé l'architecture en cinq vues (applicative, sécurité, dimensionnement, infrastructure et développement), *chaque vue étant auto-porteuse*. 
 
-L'idée est de proposer un *ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations* et sur leurs préoccupations respectives. Par exemple, un architecte d'infrastructure ou un ingénieur DevOps a rarement besoin de connaitre le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un PO ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, …).
+L'idée est de proposer un *ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations* et sur leurs préoccupations respectives. Par exemple, un architecte d'infrastructure ou un ingénieur DevOps a rarement besoin de connaître le détail de l'architecture logicielle (le détail des frameworks utilisés ou façon de traiter les erreurs). De même, un PO ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de donnée du service, dimensionnement des machines, …).
 
 image:modeles-vierges/resources/metiers.png[à lire en priorité]
 
 Un dossier suivant ce modèle sera ainsi constitué :
 
-* d’un link:volet-architecture-applicative.adoc[volet applicatif] présentant le contexte général et l’architecture applicative ;
-* d’un link:volet-architecture-developpement.adoc[volet développement] présentant l’architecture logicielle et son environnement ;
-* d’un link:volet-architecture-dimensionnement.adoc[volet dimensionnement] présentant les aspects liés aux performances et au dimensionnement de l'infrastructure ;
-* d’un link:volet-architecture-infrastructure.adoc[volet infrastructure] présentant les serveurs, les middlewares, l'exploitation, etc. ;
-* d’un link:volet-architecture-securite.adoc[volet sécurité] ;
+* d’une link:vue-architecture-applicative.adoc[vue applicatif] présentant le contexte général et l’architecture applicative ;
+* d’une link:vue-architecture-developpement.adoc[vue développement] présentant l’architecture logicielle et son environnement ;
+* d’une link:vue-architecture-dimensionnement.adoc[vue dimensionnement] présentant les aspects liés aux performances et au dimensionnement de l'infrastructure ;
+* d’une link:vue-architecture-infrastructure.adoc[vue infrastructure] présentant les serveurs, les middlewares, l'exploitation, etc. ;
+* d’une link:vue-architecture-securite.adoc[vue sécurité] ;
 
-Dans chaque volet, on retrouvera le triptyque :
+Dans chaque vue, on retrouvera le triptyque :
 
 * *Contraintes* (juridiques, budgétaires, technologiques, normatives…) applicables au projet;
 * *Exigences* non fonctionnelles (ENF) exprimées par les porteurs du projet dans la limite des contraintes ;
@@ -51,7 +51,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * Si l’application suit une architecture standardisée par l’organisation, *ne jamais la répéter* (principe https://en.wikipedia.org/wiki/Don%27t_repeat_yourself[DRY]) et se référer à un document commun ;
 * Si un chapitre n’est pas applicable, ne pas le laisser vide mais simplement mentionner `N/A` pour que le lecteur sache que le sujet a été traité ou `TODO` s'il reste à compléter ;
 * Ce modèle se veut *suffisamment complet pour couvrir la plupart des applications*. Il est donc normal que de nombreux chapitres ne soient pas applicables dans votre contexte ; 
-* Lister les *hypothèses d’architecture* et études en cours dans le chapitre "Points non statués" de chaque volet (leur nombre doit être limité, sinon c'est le signe que le DA est rédigé trop tôt) ;
+* Lister les *hypothèses d’architecture* et études en cours dans le chapitre "Points non statués" de chaque vue- (leur nombre doit être limité, sinon c'est le signe que le DA est rédigé trop tôt) ;
 * *Isoler dans des annexes* en fin de document les informations d'architecture importantes mais concernant des points précis n’intéressant que peu de lecteurs ;
 
 ### Que ne trouve-t-on *PAS* dans ce document ?
@@ -67,10 +67,10 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * **A partir de quelle taille de projet ce modèle est-il éligible ?** Ce modèle a été utilisé avec succès sur un projet d'une seule personne. Il peut être utilisé pour toute taille de projet. Un grand projet remplira probablement plus de rubriques mais la plupart concernent tous les projets. Par exemple, les questions de disponibilité ou d’internationalisation ne sont pas liées à la taille d'un projet nous semble-il.
 * **Ce modèle peut-t-il servir de base à un référentiel d'architecture ?** Même si ne nombreuses idées peuvent être reprises, non, ce n'est pas l'objet de ce modèle.
 * **Ce modèle convient-il à un programme complet ?** Nous préconisons pour un programme complet une approche type TOGAF avec les livrables associés. En revanche, les phases C et D pourront être documentées par un DA au sein de chaque projet de ce programme.
-* **Comment documenter les trajectoires d'architecture ?** Nous préconisons de décrire la trajectoire générale (sans entrer dans trop de détails) dans la section "Architecture générale" du volet applicatif et d'en décrire l'architecture des futurs modules dans les sections habituelles des différents volet mais en spécifiant clairement de quelle étape il s'agit (par exemple, préfixer le titre d'un module ou d'un flux qui n’apparaît qu'en étape 2 avec `[Etape 2]`). Attention néanmoins à faire en sorte d'éviter trop de refactoring documentaire quand cette partie du projet sera implémentée (liens cassés par exemple).
+* **Comment documenter les trajectoires d'architecture ?** Nous préconisons de décrire la trajectoire générale (sans entrer dans trop de détails) dans la section "Architecture générale" de la vue applicative et d'en décrire l'architecture des futurs modules dans les sections habituelles des différents vues mais en spécifiant clairement de quelle étape il s'agit (par exemple, préfixer le titre d'un module ou d'un flux qui n’apparaît qu'en étape 2 avec `[Etape 2]`). Attention néanmoins à faire en sorte d'éviter trop de refactoring documentaire quand cette partie du projet sera implémentée (liens cassés par exemple).
     ** Traiter les éléments décrits dans les mêmes sections que les éléments à implémenter immédiatement afin de les traiter suivant la même logique que le reste.
     ** Plus l'élément décrit est lointain dans le temps, moins son architecture doit être détaillée (c'est un bon principe agile d'architecture 'Just In Time' qui évitera de réécrire de nombreuses fois ces sections).
-    ** Plus l'élément décrit est proche de l'architecture physique, moins il doit être détaillé. Par exemple, il peut être pertinent de documenter dans le volet applicatif l'architecture générale de modules qui devraient être implémentés dans un an mais attendre le plus possible pour documenter leur dimensionnement précis dans le volet dimensionnement. De même, vous pouvez documenter des flux applicatifs lointains mais attendez avant de décrire les flux techniques précis dans le volet infrastructure.    
+    ** Plus l'élément décrit est proche de l'architecture physique, moins il doit être détaillé. Par exemple, il peut être pertinent de documenter dans la vue applicative l'architecture générale de modules qui devraient être implémentés dans un an mais attendre le plus possible pour documenter leur dimensionnement précis dans la vue dimensionnement. De même, vous pouvez documenter des flux applicatifs lointains mais attendez avant de décrire les flux techniques précis dans la vue infrastructure.    
 
 
 ## Licence

@@ -1,4 +1,4 @@
-# Volet développement
+# Vue développement
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -12,7 +12,7 @@ Dernière modification : {docdate}
 
 Ceci est le point de vue développement de l’application. Il décrit le code à produire et comment l'écrire.
 
-Les autres volets du dossier sont accessibles link:./README.adoc[d'ici].
+Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
 
@@ -271,7 +271,7 @@ Exemple :
 
 ### Performances
 
-IMPORTANT: Voir les exigences sont dans le link:./volet-architecture-dimensionnement.adoc[volet dimmensionnement].
+IMPORTANT: Voir les exigences sont dans le link:./vue-architecture-dimensionnement.adoc[vue dimmensionnement].
 
 
 [TIP]
@@ -466,7 +466,7 @@ NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'obje
 
 [TIP]
 ====
-Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listée dans le volet infrastructure. Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
+Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listée dans la vue infrastructure. Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
 Quelques pistes d’amélioration énergétique du projet :
 
 * Utiliser des profilers ou des outils de développement intégrés dans les navigateurs (comme Google Dev Tools) pour analyser la consommation de ressources (nombre, durée et taille des requêtes).
@@ -516,7 +516,7 @@ Comment gère-t-on les sessions HTTP permettant de fournir un contexte d'exécut
 
 Notez que ceci est une surtout un problème pour les applications Web classiques dont la présentation est générée sur le serveur, pas pour les applications SPA (Single Page Application) qui gèrent toute la présentation et leur état en local dans le navigateur.
 
-Les choix faits ici affecteront les link:volet-architecture-infrastructure[choix d'infrastructure]. Par exemple, si une session est requise et que l'infrastructure est en cluster, il faudra soit mettre en place de l'affinité de session sur les serveurs pour forcer chaque utilisateur à toujours arriver sur le même serveur disposant de ses données, soit de mettre en place un cache distribué permettant aux serveurs de partager les sessions de tous les utilisateurs (plus complexe).
+Les choix faits ici affecteront les link:vue-architecture-infrastructure[choix d'infrastructure]. Par exemple, si une session est requise et que l'infrastructure est en cluster, il faudra soit mettre en place de l'affinité de session sur les serveurs pour forcer chaque utilisateur à toujours arriver sur le même serveur disposant de ses données, soit de mettre en place un cache distribué permettant aux serveurs de partager les sessions de tous les utilisateurs (plus complexe).
 
 Exemples de points à traiter :
 
@@ -653,7 +653,7 @@ Exemple 2 : Les dates et date-heures seront stockées en base de données comme 
 
 ### Gestion des logs
 
-NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./volet-architecture-infrastructure.adoc#_logs[le volet infrastructure].
+NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./vue-architecture-infrastructure.adoc#_logs[la vue infrastructure].
 
 [TIP]
 ====
