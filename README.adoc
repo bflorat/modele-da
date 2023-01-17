@@ -1,6 +1,6 @@
 # Modèle de dossier d'architecture
 
-Ce modèle de Dossier d'Architecture (DA) est applicable à la plupart des projets d'informatique de gestion, indépendamment de l'architecture générale retenue (monolithe, SOA, microservicesfix: typo, n-tiers, …). Il a déjà été utilisé sur plusieurs projets importants y compris au sein de grandes organisations. Il s'enrichit régulièrement.
+Ce modèle de Dossier d'Architecture (DA) est applicable à la plupart des projets d'informatique de gestion, indépendamment de l'architecture générale retenue (monolithe, SOA, microservices, n-tiers, …). Il a déjà été utilisé sur plusieurs projets importants y compris au sein de grandes organisations. Il s'enrichit régulièrement.
 
 NOTE: Nous utilisons le terme 'DA' et pas 'DAT' ou termes similaires car chaque organisation possède sa terminologie mais surtout le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
 
