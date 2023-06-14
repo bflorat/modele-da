@@ -3,7 +3,10 @@
 :lang: fr
 
 # Dossier d'architecture 
+
 Dernière modification : {localdate} {localtime}
+
+Version du modèle utilisé : #<id du commit du projet modèle de dossier d'architecture>, ex: `b523b6a`>#
 
 *Etat* : _En cours_
 
