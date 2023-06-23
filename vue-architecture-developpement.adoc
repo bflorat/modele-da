@@ -344,7 +344,17 @@ Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continu
 Exemple : Les jobs Jenkins produiront le logiciel sous forme de containers Docker si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce container. Si tous les tests d’intégration et BDD sont passants, l'image Docker est releasée dans Nexus.
 ====
 
-### Normes de développement et qualimétrie 
+### Bonnes pratiques
+
+[TIP]
+====
+Lister les bonnes pratiques (blueprints) applicables. Éviter les bonnes pratiques 'maison' mais privilégier celles qui viennent de la communauté et sont donc éprouvées et déjà connus des développeuses et développeurs. Idéalement, il ne devrait y avoir ici que les liens vers des ressources externes.
+====
+====
+Exemple : Suivre les recommendations de https://www.restapitutorial.com/[ce tutriel] pour la conception d'API Restful.
+====
+
+### Niveau de qualité
 
 [TIP] 
 ==== 
