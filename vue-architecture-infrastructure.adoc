@@ -1430,11 +1430,11 @@ Il existe trois grandes familles de solutions :
 Exemple : les performances du site seront supervisées en continu par `pingdom.com`. Des analyses de performances plus poussées seront mises en œuvre par Pinpoint en fonction des besoins.
 ====
 
-### Migration
+### Migrations
 
 [TIP]
 ====
-Ce chapitre permet de décrire une éventuelle migration depuis un ancien système. 
+Ce chapitre décrit les éventuelles migration requises depuis des systèmes plus anciens. 
 
 Décrire de façon macroscopique la procédure envisagée ainsi que les retours arrières prévus.
 

@@ -228,6 +228,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ##### Métrologie
 
-### Migration
+### Migrations
 
 ### Décommissionnement
