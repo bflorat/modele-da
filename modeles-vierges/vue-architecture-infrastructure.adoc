@@ -67,9 +67,17 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 #### MTTD
 
-#### GTR
-
 #### Outils et normes de supervision
+
+#### MTTR
+
+##### Hardware
+
+##### Système et virtualisation
+
+##### Réseau
+
+##### Restauration de données
 
 #### Interruptions programmées
 
@@ -120,6 +128,8 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Exigences de RPO
 
+### Exigences de RTO
+
 ### Exigences d'archivage
 
 ### Exigences de purges
@@ -138,7 +148,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ## Architecture cible
 
-### Principes de l'architecture technique
+### Principes
 
 ### Disponibilité
 
@@ -213,8 +223,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 ##### Alerting
 
 ##### Suivi des opérations programmées
-
-##### Rapports d’exécution des batchs
 
 ##### Supervision boite noire
 

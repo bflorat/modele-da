@@ -39,7 +39,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 .Points soumis à étude complémentaire
 [cols="1,6,1,1,1"]
 |====
-|ID|Détail|Statut|Porteur du sujet  | Échéance
+|ID|Détail|Statut|Porteur du sujet | Échéance
 
 |
 |
@@ -71,13 +71,13 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 #### Charte ergonomique
 
-#### Site Web adaptatif
-
-#### Charte ergonomique
- 
 #### Spécificités sur les widgets
 
 #### Polices de caractère
+
+#### Site Web adaptatif
+
+#### Charte ergonomique
 
 #### Progressive Web Apps (PWA)
 
@@ -110,7 +110,11 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Spécificités d’usine logicielle
 
+### Bonnes pratiques
+
 ### Normes de développement et qualimétrie 
+
+### Niveau de qualité
 
 ### Patterns notables
 
@@ -126,7 +130,13 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 #### Gestion des erreurs
 
+#### Gestion de la robustesse coté frontend
+
 ### Gestion de la configuration
+
+### Politique de gestion des branches
+
+### Versioning
 
 ### Gestion de la concurrence
 
@@ -137,10 +147,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 ### Gestion des logs
 
 #### Règles générales
-
-### Bonnes pratiques
-
-### Niveau de qualité
 
 ### Outils d'administration
 
