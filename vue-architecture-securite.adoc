@@ -704,7 +704,7 @@ Exemple 5 : Les logs contenant le tag `[PREUVE]` et issu de l’ensemble des co
 
 [TIP]
 ====
-La gestion des vulnérabilités dépasse largement le cadre de ce document mais il est bon de s’auto-contrôler pour s’assurer que les failles les plus courantes sont bien prises en compte et comment. Cette liste est en partie basée sur le TOP 10 OWASP. 
+La gestion des vulnérabilités dépasse largement le cadre de ce document mais il est bon de s’auto-contrôler pour s’assurer que les failles les plus courantes sont bien prises en compte et comment. Cette liste est en partie basée sur le https://owasp.org/Top10/[TOP 10 OWASP]. 
 
 Bien entendu, il existe de nombreux autres points de contrôle dépendants du contexte de l’application
 ====
@@ -713,7 +713,7 @@ Bien entendu, il existe de nombreux autres points de contrôle dépendants du co
 [cols="e,e,3e"]
 |===
 |Vulnérabilité
-|Pris en compte ?
+|Pris en compte ?
 |Mesures techniques entreprises
 
 |Accès à des ports privés
@@ -772,7 +772,7 @@ a|
 |Exposition de données sensibles
 |X
 a|
-* __Tous les algorithmes de sécurité sont à jour : au minimum SHA-256, AES 256__
+* __Tous les algorithmes de sécurité sont à jour : au minimum SHA-256, AES 256__
 * __Le SSL V2 et V3 est désactivé coté Apache suite à la faille DROWN ( SSLProtocol all -SSLv2 -SSLv3)__
 * __L’application ne fonctionne qu’en HTTPS__
 * __Le serveur Web fixera le header HSTS avec includeSubDomains sur toutes les ressources__
