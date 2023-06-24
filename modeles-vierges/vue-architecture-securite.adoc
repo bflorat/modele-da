@@ -157,15 +157,6 @@ Dispositifs répondant aux <<exigences-identification,exigences d'identification
 
 Dispositifs répondant aux <<exigences-authentification,exigences d'authentification>> :
 
-#### Comptes de service
-
-.Comptes de service
-[cols='1,2,2']
-|====
-|Compte | Ressource requérant authentification | mode de stockage des credentials
-
-|====
-
 ### Fédération d’identité
 
 Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
@@ -173,6 +164,15 @@ Dispositifs répondant aux <<exigence-federation-identite,exigences de fédérat
 ### SSO, SLO
 
 Dispositifs répondant aux <<Exigences de SSO et SLO> :
+
+### Comptes de service
+
+.Comptes de service
+[cols='1,2,2']
+|====
+|Compte | Ressource requérant authentification | mode de stockage des credentials
+
+|====
 
 ### Non-répudiation et horodatage
 

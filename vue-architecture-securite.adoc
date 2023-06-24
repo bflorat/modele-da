@@ -590,22 +590,6 @@ Exemple 3 : lors de la création d’un nouveau bénéficiaire de virement dans
 Exemple 4 : Les mots de passe ne seront en aucun cas conservés mais stockés sous la forme de digest bcrypt.
 ====
 
-#### Comptes de service
-
-[TIP]
-====
-Les comptes de service sont utilisés pour l'authentification à un composant technique depuis un batch ou une API.
-====
-
-.Comptes de service
-[cols='1,2,2']
-|====
-|Compte | Ressource requérant authentification | mode de stockage des credentials
-
-|Comptes JDBC (un compte par base de données) | Instances PG et SqlServer. 
-| Stockage en clair dans la configuration des datasources. Valorisé à partir des pilars Salt des API.
-|====
-
 
 ### Fédération d’identité
 
@@ -622,6 +606,7 @@ Pour les applications Web, préciser les contraintes navigateur (activation des 
 Exemple  : L’IHM grand public permettra une identification et authentification France Connect (basé sur OIDC) de sorte que les utilisateurs puissent utiliser leur compte DGFiP ou CNAM pour s’identifier et s’authentifier. La cinématique d’authentification sera la suivante : <faire un schéma>
 ====
 
+
 ### SSO, SLO
 
 Dispositifs répondant aux <<Exigences de SSO et SLO> :
@@ -635,6 +620,23 @@ Exemple 1 : L’IHM X intégrera un client CAS spring-security pour le SSO. Le 
 ====
 Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra gérer les callbacks de déconnexion provenant du serveur CAS suite à une demande de SLO. 
 ====
+
+### Comptes de service
+
+[TIP]
+====
+Les comptes de service sont utilisés pour l'authentification à un composant technique depuis un batch ou une API.
+====
+
+.Comptes de service
+[cols='1,2,2']
+|====
+|Compte | Ressource requérant authentification | mode de stockage des credentials
+
+|Comptes JDBC (un compte par base de données) | Instances PG et SqlServer. 
+| Stockage en clair dans la configuration des datasources. Valorisé à partir des pilars Salt des API.
+|====
+
 
 ### Non-répudiation et horodatage
 
