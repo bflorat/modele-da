@@ -6,7 +6,7 @@
 
 Dernière modification : {localdate} {localtime}
 
-Version du modèle utilisé : #<id du commit du projet modèle de dossier d'architecture>, ex: `b523b6a`>#
+Version du modèle utilisé : #<https://github.com/bflorat/modele-da/commits/master[id du commit] du projet modèle de dossier d'architecture>, ex: `b523b6a`>#
 
 *Etat* : _En cours_
 
