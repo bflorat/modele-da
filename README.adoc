@@ -79,7 +79,6 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 
 ## Remerciements 
 * https://github.com/bflorat/modele-da/graphs/contributors[Contributrices/eurs]
-* Relecture : Frédérique Lefranc
 * Retours : Antoine Parra Del Pozo, Pascal Bousquet, Philippe Mayjonade, Nicolas Chahwekilian, Steven Morvan, Dr. Christophe Gaie
 * Tous les diagrammes de ce modèle ont été générés avec l'excellent outil http://plantuml.com/[PlantUML]
 Les https://c4model.com/[diagrammes C4] utilisent la personnalisation https://github.com/plantuml-stdlib/C4-PlantUML[C4 de plantuml].
