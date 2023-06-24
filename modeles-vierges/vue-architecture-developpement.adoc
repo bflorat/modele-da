@@ -138,7 +138,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 #### Règles générales
 
-#### Niveaux et quantité de logs
+### Bonnes pratiques
+
+### Niveau de qualité
 
 ### Outils d'administration
 
