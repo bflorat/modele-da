@@ -90,7 +90,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 .Exigence d'authentification par cas d'utilisation
 |====
-|Cas d’authentification |Mot de passe respectant la politique de mot de passe |Clé publique ssh connue| OTP par Token |Biométrie |Connaissance de données métier |E-mail d’activation |Délégation authentification
+|Cas d’authentification |Mot de passe respectant la politique de mot de passe |Clé publique ssh connue| OTP par Token |Biométrie |Connaissance de données métier |E-mail d’activation 
+
+|||||||
 
 |====
 
