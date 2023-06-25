@@ -111,7 +111,7 @@ Gérer l’intégrité des données consiste à vérifier qu’elle ne peuvent �
 Attention à ne pas multiplier les classes de données. Il est possible de ne définir qu’une seule classe de donnée pour l’ensemble de l’application (cas courant). 
 ====
 
-.Niveau d'intégrité exigée par classe de données
+.Niveau d'intégrité exigée par classe de données (exemple)
 [cols='2e,1e,1e,1e,1e']
 |====
 |Classe de données
@@ -164,7 +164,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 [quote ]
 La confidentialité est le fait de s’assurer que l’information n’est accessible qu’à ceux dont l’accès est autorisé (norme ISO 27018). 
 
-Attention à ne pas multiplier les classes de données. Il est possible de ne définir qu’une classe de donnée pour l’ensemble de l’application (cas courant). 
+Attention à ne pas multiplier les classes de données. Il est possible de ne définir qu’une unique classe de donnée pour l’ensemble de l’application (cas courant). 
 ====
 
 .Niveau de confidentialité exigée par classe de données
@@ -181,7 +181,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 |
 |
 
-|Profil du compte du site Web
+|Données de profil de l'utilisateur
 |
 |X
 |
@@ -193,7 +193,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 |X
 |
 
-|Logs techniques des activités de l’internaute
+|Logs techniques des activités
 |
 |
 |X
@@ -215,13 +215,13 @@ L’identification est l’ensemble des dispositifs permettant de différentier 
 ====
 
 ====
-Exemple 1 : Un utilisateur ne peut avoir qu’un identifiant et un identifiant ne peut être partagé par plusieurs utilisateurs. L'adresse e-mail personnelle est donc un bon identifiant.
+Exemple 1 : Un utilisateur ne peut avoir qu’un unique identifiant et un identifiant ne peut être partagé par plusieurs utilisateurs. L'adresse e-mail personnelle est donc un bon identifiant.
 ====
 ====
-Exemple 2 : l’identité d’un internaute fera l’objet d’un test d’existence avant tout appel de service.
+Exemple 2 : L’identité d’un internaute fera l’objet d’un test d’existence avant tout appel de service.
 ====
 ====
-Exemple 3 : un ID est non supprimable, non modifiable et non réutilisable
+Exemple 3 : Un ID est non supprimable, non modifiable et non réutilisable.
 ====
 
 [[exigences-authentification]]
@@ -231,52 +231,52 @@ Exemple 3 : un ID est non supprimable, non modifiable et non réutilisable
 ====
 L’authentification permet de vérifier la cohérence entre l’identité d'un utilisateur et une personne physique se connectant. 
 
-A noter que les dispositifs techniques (comme les batchs) peuvent également faire l'objet d'identification et d'authentification (batch qui utilise un access-token pour appeler un service par exemple).
+A noter que les dispositifs techniques (comme les batchs) peuvent également faire l'objet d'identification et d'authentification (batch qui utilise un compte de service pour appeler une API par exemple).
 
 L’authentification peut être à un ou plusieurs facteurs (dans ce dernier cas, on parle d’authentification forte). Ces facteurs peuvent être : 
 
-* Quelque chose que l’on *connaît* (classiquement un mot de passe).
-* Quelque chose qu’on *est* (biométrie).
-* Quelque chose qu’on *possède* (token, générateur de mot de passe unique, pièce d’identité avec photo…).
+* Quelque chose que l’on *connaît* (mot de passe, pass phrase, code PIN, donné métier, …).
+* Quelque chose qu’on *est* (biométrie morphologique via par exemple empreintes digitales,  reconnaissance de l'iris ou la reconnaissance faciale ; comportementales comme via la démarche ou la signature manuscrite ou génétique (analyse de l'ADN)).
+* Quelque chose qu’on *possède* (devise OTP, application TOTP configurée sur son smartphone, carte à puce, pièce d’identité avec photo, clé privée sous forme de fichier, clé de récupération (PUK), …).
 
 Penser à décrire le système d'authentification une fois inscrit mais également lors de l’inscription (authentification initiale).
 
 Une éventuelle délégation d’authentification s’appuie sur une technologie de fédération d’identité pour authentifier l’utilisateur.
 
 Il est bien sûr possible d’ajouter au besoin dans le tableau ci-dessous des facteurs d’authentification spécifiques à votre organisation.
+
 ====
 
 Les facteurs d’authentification requis en fonction des situations sont (on peut exiger plusieurs occurrences du même facteur, utiliser autant de croix) :
 
-.Exigence d'authentification par cas d'utilisation
-[cols="e,e,e,e,e,e,e,e"]
+.Exigence d'authentification par cas d'utilisation (exemple)
+[cols="e,e,e,e,e,e,e"]
 |====
 |Cas d’authentification
-|Mot de passe respectant la politique de mot de passe P
+|Mot de passe respectant la politique de mot de passe
 |Clé publique ssh connue
 |OTP par Token
 |Biométrie
 |Connaissance de données métier
-|E-mail d’activation
-|Délégation d’authentification
+|E-mail avec hyperlien de vérification
 
 |Utilisateur déjà inscrit
-|X||||||
+|X|||||
 
 |Création d’un compte
-|||||XX|X|
+|||||XX|X
 
 |Modification du mot de passe 
-|X|||||X|
+|X|||||X
 
 |Accès aux logs
-||X|||||
+||X||||
 
 |Ajout d’un bénéficiaire de virement
-|X||X||||
+|X||X|||
 
 |Application mobile Y
-|||||||X
+||||X|||
 |====
 
 [[exigence-federation-identite]]
