@@ -188,9 +188,41 @@ Dispositifs répondant aux <<exigence-anonymat,exigences d'anonymat et de respec
 
 Dispositifs répondant aux <<Exigences sur les habilitations>> :
 
-### Tracabilité, auditabilité
+### Traçabilité, auditabilité
 
 Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
+
+
+## RACI
+
+[NOTE]
+====
+:r: pass:quotes[[.green]#R#]
+:a: pass:quotes[[.red]#A#]
+:c: pass:quotes[[.blue]#C#]
+:i: pass:quotes[[.orange]#I#]
+:na: pass:quotes[[.grey]#N/A#]
+:et: pass:quotes[[.grey]#&amp;#]
+
+* {r} : *Responsive* (personne qui va exécuter : elle en est responsable)
+* {a} : *Accountable* (personne qui va approuver la tâche : elle en est l'autorité)
+* {c} : *Consulted* (personne qui va être consultée dans l'exécution de la tâche)
+* {i} : *Informed* (personne qui sera informée lorsque la tâche est terminée)
+====
+
+.Gestion ...
+[cols="6,^1,^1,^1"]
+|===
+||Équipe A|Équipe B|Équipe C
+
+.^|...
+.^|{r} {et} {a}
+.^|{c} {et} {i}
+.^|{a}
+
+|===
+
+
 
 ## Auto-contrôles
 
@@ -210,3 +242,5 @@ Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et 
 |Exigence RGPD |Prise en compte ? |Mesures techniques entreprises
 
 |===
+
+
