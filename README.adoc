@@ -66,7 +66,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
     ** Traiter les éléments décrits dans les mêmes sections que les éléments à implémenter immédiatement afin de les traiter suivant la même logique que le reste.
     ** Plus l'élément décrit est lointain dans le temps, moins son architecture doit être détaillée (c'est un bon principe agile d'architecture 'Just In Time' qui évitera de réécrire de nombreuses fois ces sections).
     ** Plus l'élément décrit est proche de l'architecture physique, moins il doit être détaillé. Par exemple, il peut être pertinent de documenter dans la vue applicative l'architecture générale de modules qui devraient être implémentés dans un an mais attendre le plus possible pour documenter leur dimensionnement précis dans la vue dimensionnement. De même, vous pouvez documenter des flux applicatifs lointains mais attendez avant de décrire les flux techniques précis dans la vue infrastructure.    
-* **Pourquoi 'DA' et pas 'DAT' (dossier d'architecture technique) ou termes similaires ?** Chaque organisation possède sa terminologie propre mais surtout le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
+* **Pourquoi 'DA' et pas 'DAT' (dossier d'architecture technique) ou termes similaires ?** Chaque organisation possède sa terminologie propre mais le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
 
 ## Licence
 * Copyright (c) 2017-2023 Bertrand Florat et contributeurs
