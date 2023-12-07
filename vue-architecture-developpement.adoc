@@ -15,7 +15,7 @@
 
 ## Introduction
 
-Ceci est le point de vue développement de l’application. Elle décrit le code à produire et comment l'écrire.
+Ceci est la vue développement de l’application. Elle décrit le code à produire et comment l'écrire.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -139,9 +139,9 @@ Exemple 2 : de nombreux écrans seront pourvus d’accordéons
 ====
 Décrire ici les polices de caractère à utiliser pour les pages Web, les applications ou les documents composés.
 
-Le choix des polices suit des contraintes de licences. Afin d'assurer une sécurité juridique au projet, attention aux polices commerciales soumises à royalties (en particulier les polices appartement à Microsoft comme Times New Roman, Courier, Verdana, Arial) et qui ne permettent pas de produire gratuitement des documents sans passer par leurs éditeurs (Word, …). 
+Le choix des polices suit des contraintes de licences. Afin d'assurer une sécurité juridique au projet, attention aux polices commerciales soumises à royalties (en particulier les polices appartenant à Microsoft comme Times New Roman, Courier, Verdana, Arial) et qui ne permettent pas de produire gratuitement des documents sans passer par leurs éditeurs (Word, …). 
 
-Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-les-fondamentaux/la-typographie[Marianne] préconisée par le gouvernenement en tant que police à chasse variable.
+Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-les-fondamentaux/la-typographie[Marianne] préconisée par le gouvernement en tant que police à chasse variable.
 
 Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberation_(police_d%27%C3%A9criture)[Liberation Mono] en licence Open Source sécurisante sur un plan juridique et compatible métriquement avec le Monotype, le Courrier New, l'Arial et le Times New Roman. 
 ====
@@ -289,7 +289,7 @@ Exemple :
 
 ### Performances
 
-IMPORTANT: Voir les exigences sont dans le link:./vue-architecture-dimensionnement.adoc[vue dimmensionnement].
+IMPORTANT: Les exigences sont dans la link:./vue-architecture-dimensionnement.adoc[vue dimensionnement].
 
 
 [TIP]
@@ -312,10 +312,10 @@ Coté Backend :
 * Dans des cas de grosses volumétries, étudier les solutions de partitionnement de tables.
 * Ne pas oublier d'ajouter tous les index nécessaires, utiliser l'analyse du plan d'exécution pour vérifier qu'il n'y a pas de full scans.
 * Attention aux fonctions SQL qui 'cassent' les index (comme  `UPPER()`). Privilégier les traitements coté code backend si possible.
-* Activer les logs de requêtes (exemple Hibernate : `org.hibernate.SQL=DEBUG`,`-Dhibernate.generate_statistics=true`) et vérifier les equêtes SQL et leur nombre (pour détecter en particulier le problème du https://stackoverflow.com/questions/97197/what-is-the-n1-selects-problem-in-orm-object-relational-mapping[SELECT N+1], très courant).
+* Activer les logs de requêtes (exemple Hibernate : `org.hibernate.SQL=DEBUG`,`-Dhibernate.generate_statistics=true`) et vérifier les requêtes SQL et leur nombre (pour détecter en particulier le problème du https://stackoverflow.com/questions/97197/what-is-the-n1-selects-problem-in-orm-object-relational-mapping[SELECT N+1], très courant).
 * Disposer même sur poste de travail d'un jeu de donnée minimal (une centaine d'enregistrement).
 * Vérifier avec un profiler (comme JVisualVM en Java) la consommation mémoire pour détecter les fuites ou les surconsommations.
-* Vérifier qu'il n'y a pas de fuite de threads ou de deadlocks en comptant le nombre de threads actifs sur une période suffisamment longue (une nuit compléte par exemple).
+* Vérifier qu'il n'y a pas de fuite de threads ou de deadlocks en comptant le nombre de threads actifs sur une période suffisamment longue (une nuit complète par exemple).
 * Stresser les API _a minima_ (avec des injecteurs comme JMeter ou K6) et via une rampe progressive.
 * Traquer les IO (des millions de fois plus lents que des accès mémoire).
 * …
@@ -351,14 +351,14 @@ Exemple : Les jobs Jenkins produiront le logiciel sous forme de containers Docke
 Lister les bonnes pratiques (blueprints) applicables. Éviter les bonnes pratiques 'maison' mais privilégier celles qui viennent de la communauté et sont donc éprouvées et déjà connus des développeuses et développeurs. Idéalement, il ne devrait y avoir ici que les liens vers des ressources externes.
 ====
 ====
-Exemple : Suivre les recommendations de https://www.restapitutorial.com/[ce tutriel] pour la conception d'API Restful.
+Exemple : Suivre les recommendations de https://www.restapitutorial.com/[ce tutoriel] pour la conception d'API Restful.
 ====
 
-### Niveau de qualité
+### Normes de développement et qualimétrie
 
 [TIP] 
 ==== 
-Rendre explicite les régles et le niveau de qualité requis pour le code 
+Rendre explicite les règles et le niveau de qualité requis pour le code 
 ==== 
 ==== 
 Exemple 1 : Les règles de qualité à utiliser pour le code seront (https://rules.sonarsource.com/java[les règles standards SonarQube pour Java]). 
@@ -493,7 +493,7 @@ NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'obje
 
 [TIP]
 ====
-Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listée plus haut. Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
+Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listées plus haut. Les réponses à ces problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
 
 Quelques pistes d’amélioration énergétique du projet :
 
@@ -514,7 +514,7 @@ Exemple 1 : le processus gulp de construction de l'application appliquera une r�
 Exemple 2 : des tests de robustesse courant sur plusieurs jours seront effectués sur l’application mobile après chaque optimisation pour évaluer la consommation énergétique de l'application.
 ====
 ====
-Exemple 3 : Les campagnes de performance intégreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
+Exemple 3 : Les campagnes de performance intègreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
 ====
 
 ### Gestion de la robustesse
@@ -587,9 +587,9 @@ Tout comme le backend, le frontend requiert une robustesse importante, d'autant 
 
 Entre autres :
 
-* Penser à interdire les double soumissions (double appel au backend si on double-clic sur un bouton). Ceci n'exclue pas de procéder à des contrôles de durcissement coté backend.
+* Penser à interdire les doubles soumissions (double appel au backend si on double-clic sur un bouton). Ceci n'exclut pas de procéder à des contrôles de durcissement coté backend.
 
-* Afin d'éviter des problèmes subtiles (surtout en cas d'utilisation de stockage navigateur comme les local/session storage), penser à empêcher l'ouverture d'une même application Web dans plusieurs fenêtres ou onglets du navigateur. En cas de tentative, afficher un message d'erreur dans les fenêtres surnuméraires.
+* Afin d'éviter des problèmes subtils (surtout en cas d'utilisation de stockage navigateur comme les local/session storage), penser à empêcher l'ouverture d'une même application Web dans plusieurs fenêtres ou onglets du navigateur. En cas de tentative, afficher un message d'erreur dans les fenêtres surnuméraires.
 
 * Toujours vérifier la comptabilité du navigateur, même en environnement contrôlé. En cas de tentative d'ouverture d'une page par un navigateur non supporté, afficher un message d'erreur explicite à l'écran.
 ====
@@ -608,18 +608,18 @@ Exemple 2 : Tous les boutons de l'application devront interdire la double soumis
 ====
 Comment configure-t-on l'application ? Exemples de points à traiter :
 
-* Quels sont les variables inclues dans le package final de façon statique ?
+* Quelles sont les variables incluses dans le package final de façon statique ?
 * Quels sont les paramètres modifiables au runtime ? 
 * Mon application est-elle paramétrable via feature flags pour des raisons de canary testing par exemple ? si oui, comment je le gère dans le code ?
 * Sous quelle forme les paramètres sont-ils injectés dans l'application (variable d'environnement ? fichier .properties, base de donnée, …) ? 
-* L'application accepte-elle une modification du paramètrage à chaud ?
+* L'application accepte-elle une modification du paramétrage à chaud ?
 * Décrire le système de configuration
 
 ====
 ====
 Exemple (application déployées dans Kubernetes) : 
 
-La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le décripteur de déploiement Kubernetes.
+La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le descripteur de déploiement Kubernetes.
 ====
 
 ### Politique de gestion des branches
@@ -664,7 +664,7 @@ Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
 
 * Quel scope pour les objets (si utilisation d'un moteur IoC) ?
 * Les objets doivent-il être thread-safe ?
-* Quels méthodes doivent-elles être synchronisées ?
+* Quelles méthodes doivent être synchronisées ?
 * Risques de race condition ? de starvation ? de dead locks ?
 
 ====
@@ -676,7 +676,7 @@ Exemple  (Spring MVC) : Tous les controllers seront en scope singleton et ne doi
 
 [TIP] 
 ==== 
-Quelles sont les règles concernant l'encodage des chaînes de caractère ? Ceci est un problème récurrant dans les SI (qui n'a jamais observé d'accents corrompus sous forme de carrés ?). Ce problème est pourtant relativement simple à résoudre et n'exige que de la rigueur. Voir les exemples ci-dessous pour des exemples de dispositifs effectifs. 
+Quelles sont les règles concernant l'encodage des chaînes de caractère ? Ceci est un problème récurrent dans les SI (qui n'a jamais observé d'accents corrompus sous forme de carrés ?). Ce problème est pourtant relativement simple à résoudre et n'exige que de la rigueur. Voir les exemples ci-dessous pour des exemples de dispositifs effectifs. 
 ==== 
 
 ==== 
@@ -693,7 +693,7 @@ Exemple 2 : Si un système externe impose d'envoyer ou de recevoir des chaînes 
 
 [TIP] 
 ==== 
-Comment gère-t-on le stockage des dates ? Ceci, comme la gestion de l'encodage est un problème récurrant (décalage d'un jour, bugs lors des changements d'heure d'été/hiver, etc.) et pourtant simple à résoudre : suivre la norme https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] ("Time zones in ISO 8601 are represented as local time (with the location unspecified), as UTC, or as an offset from UTC." [Wikipedia]). 
+Comment gère-t-on le stockage des dates ? Ceci, comme la gestion de l'encodage est un problème récurrent (décalage d'un jour, bugs lors des changements d'heure d'été/hiver, etc.) et pourtant simple à résoudre : suivre la norme https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] ("Time zones in ISO 8601 are represented as local time (with the location unspecified), as UTC, or as an offset from UTC." [Wikipedia]). 
 ==== 
 
 ==== 
@@ -742,7 +742,7 @@ Exemple :
 .Niveaux logs
 [cols='1,3,1,1']
 |====
-|Niveau de gravité |Contexte d'utilisation | Volume indicatif | Environnent 
+|Niveau de gravité |Contexte d'utilisation | Volume indicatif | Environnement 
 
 |DEBUG
 |En environnement de développement, il permet d'afficher les valeurs de variables, E/S de méthodes etc.. 

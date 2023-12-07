@@ -77,8 +77,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 #### Site Web adaptatif
 
-#### Charte ergonomique
-
 #### Progressive Web Apps (PWA)
 
 #### Navigateurs supportés
@@ -113,8 +111,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 ### Bonnes pratiques
 
 ### Normes de développement et qualimétrie 
-
-### Niveau de qualité
 
 ### Patterns notables
 
