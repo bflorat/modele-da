@@ -699,6 +699,82 @@ Exemple 4 : tous les documents servant de preuve seront archivés dans la GED.
 Exemple 5 : Les logs contenant le tag `[PREUVE]` et issu de l’ensemble des composants seront centralisés via le système de centralisation de log Elastic Search puis insérés avec traitement Logstash de façon journalière vers l'index Elastic `preuves`.
 ====
 
+### Lutte contre les cybermenaces
+Ces dispositifs techniques ou organisationnels permettent de lutter contre les cybermenaces, comme les malwares, le phishing, les attaques DOS/DDOS, l'exploitation de vulnérabilités (connues ou zero-day), l'ingénierie sociale, les escroqueries en ligne, les fuites de données sensibles, etc. La plupart des solutions sont mises en œuvre au niveau du Système d'Information (SI). Il s'agit donc probablement ici de pointer vers les documents de référence et de détailler les éventuelles solutions spécifiques à votre projet ou produit.
+
+#### Solutions de prévention
+
+Incluent :
+
+* Les formations et sensibilisations des utilisateurs.
+* Les formations et sensibilisations des acteurs informatiques.
+* La mise en place d'un système de prévention d'intrusion (IPS) qui bloque les acteurs jugés malicieux.
+* La mise en place et le respect des procédures, comme les revues régulières d'habilitations.
+* Le durcissement des règles de sécurité comme imposer l'authentification à facteurs multiples obligatoires, le renouvellement obligatoire des mots de passe ou l'utilisation de coffres-fort numériques (personnels ou partagés) pour stocker les secrets.
+* La réalisation régulière d'audits (tests de pénétration et/ou audit de code) si possible par des experts externes.
+* Les outils de prévention de la perte de données (DLP) qui analysent notamment les flux réseau ou les emails à la recherche de fuites de données sensibles ou de propriété intellectuelle.
+* Le blocage de certains systèmes vecteurs d'attaques comme les clés USB.
+* Les systèmes de mises à jour automatiques des patches de sécurité sur les systèmes d'exploitation.
+
+====
+Exemple 1 : Sensibilisation des utilisateurs via https://cyber.gouv.fr/bonnes-pratiques-protegez-vous[ces recommendations de l'ANSSI].
+====
+
+====
+Exemple 2 : Sensibilisation au risque auprès des acteurs informatiques via https://cyber.gouv.fr/guides-essentiels-et-bonnes-pratiques-de-cybersecurite-par-ou-commencer[les guides essentiels de l'ANSSI]. 
+====
+
+====
+Exemple 3 : Mise en place de l'IPS OpenSource CrowdSec basé sur le partage d'information communautaire (Crowdsourcing).
+====
+
+
+#### Solutions de détection
+
+Incluent : 
+
+* Les antivirus (dont les dernières générations incluent de l'IA et vont au-delà de la recherche de signatures).
+* Les WAF (Web Application Firewall) qui détectent et bloquent les tentatives d'attaques en temps réel.
+* Les outils de SIEM (Security Information and Event Management) qui analysent les logs issus de sources variées.
+* Les outils d'IDS (Intrusion Detection System), assurant souvent également la fonction d'IPS et analysant les flux réseau à la recherche de tentatives d'accès malicieux (comme des tentatives d'exploitation de CVE).
+* Les outils SAST (Static Application Security Testing) et DAST (Dynamic Application Security Testing) analysant respectivement le code source de l'organisation et le comportement à l'exécution, à la recherche de vulnérabilités connues.
+* Les outils SCA (Software Composition Analysis) analysant les dépendances (essentiellement Open Source) des projets et remontant la liste des CVE (vulnérabilités connues) dès que possible en vue de les mettre à jour.
+
+====
+Exemple 1 : Mise en place au sein des pipelines de CI/CD de l'outil SCA OWASP Dependency-Check permettant de détecter les librairies Open Source contenant des vulnérabilités (CVE). Toute présence de CVE doit être bloquante.
+====
+
+#### Solutions de correction
+
+Incluent :
+
+* Les solutions anti-malware qui suppriment les logiciels malveillants.
+* Les outils de restauration de sauvegardes (la connaissance du MTTR, défini dans la vue infrastructure, est cruciale pour la planification de la restauration).
+* Les outils et procédures permettant l'isolation de composants ou de zones compromises au sein du SI.
+* Les outils de gestion de parc logiciel qui bloquent les logiciels non autorisés.
+* Les outils et méthodologies d'analyse forensique permettant d'analyser les logs pour comprendre les chemins d'une attaque et construire un post-mortem.
+* Les procédures et outils de réponse à une attaque.
+
+====
+Exemple 1 : Préparation de procédures et d'un https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/cyberattaque-que-faire-guide-dirigeants[plan de secours] en cas d'incident de sécurité suivant le standard NIST SP 800-61.
+====
+
+#### Solutions de prédiction
+
+Ces solutions récentes sont essentiellement basées sur du Machine Learning et l'analyse de données en masse (Big Data). Elles incluent :
+
+* Les solutions de type User and Entity Behavior Analytics (UEBA) qui permettent de détecter les comportements anormaux de certains utilisateurs.
+* Les outils de simulations d'attaques complexes ;
+* Les outils et référentiels de renseignement sur les menaces (Threat Intelligence).
+
+====
+Exemple 1 : Analyse et alerting des comportements suspects avec AWS GuardDuty sur une application cloud déployée sur AWS.
+====
+
+====
+Exemple 2 : Utilisation de CrowdSec Threat Intelligence pour découvrir les tendances des menaces basées sur des données réelles et consolidées.
+====
+
 
 ## RACI
 

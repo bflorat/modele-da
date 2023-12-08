@@ -193,6 +193,17 @@ Dispositifs répondant aux <<Exigences sur les habilitations>> :
 Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 
+### Lutte contre les cybermenaces
+
+#### Solutions de prévention
+
+#### Solutions de détection
+
+#### Solutions de correction
+
+#### Solutions de prédiction
+
+
 ## RACI
 
 [NOTE]
