@@ -72,7 +72,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 .Liste des acteurs internes
 [cols="1,1,4,4"]
 |===
-|Acteur|Description|Population|Fréquence d'appels 
+|Acteur|Description|Population|Localisation 
 
 |
 |
@@ -86,7 +86,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 .Liste acteurs externes
 [cols="1,1,4,4"]
 |===
-|Acteur|Description|Population|Fréquence d'appels
+|Acteur|Description|Population|Localisation
 
 | 
 |
@@ -113,11 +113,11 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Architecture applicative détaillée
 
-### Principes ayant dicté les choix
+#### Principes ayant dicté les choix
 
-### Vision statique
+#### Vision statique
 
-### Vision dynamique
+#### Vision dynamique
 
 ### Matrice des flux applicatifs
 
