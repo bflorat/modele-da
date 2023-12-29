@@ -342,6 +342,13 @@ Exemple 2 : la durée de rétention maximale des logs est de 3 mois
 [TIP]
 ====
 Lister les contraintes liées aux sauvegardes. 
+
+Une contrainte courante est le respect de la méthode 3-2-1 :
+
+* Au moins 3 exemplaires des données (la donnée vivante + 2 copies) ;
+* Au moins 2 technologies de stockage différentes pour ces 3 copies (exemple : disque SSD pour les données vivantes et deux sauvegardes sur bande) ;
+* Au moins 1 exemplaire hors-ligne et hors site (exemple : 1 jeu de bandes conservé dans un coffre ignifugé à la banque).
+
 ====
 ====
 Exemple 1 : L'espace disque maximal pouvant être provisionné par un projet pour les backups est de 100 Tio sur HDD.
