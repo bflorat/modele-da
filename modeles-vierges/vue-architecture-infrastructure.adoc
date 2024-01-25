@@ -13,7 +13,8 @@
 *Statut du document* :  
 
 ## Introduction
-Ceci est le point de vue infrastructure de l’application. Elle décrit le déploiement des modules applicatifs dans leur environnement d'exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
+
+Ceci est la vue infrastructure de l’application. Elle décrit le déploiement des modules applicatifs dans leur environnement d'exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -113,8 +114,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Exigences de disponibilité
 
-#### Disponibilité par plage de fonctionnement
-
 .Durée d’indisponibilité maximale admissible par plage
 [cols="1,5"]
 |====
@@ -122,7 +121,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-### Mode dégradés
+### Modes dégradés
 
 ### Exigences de robustesse
 

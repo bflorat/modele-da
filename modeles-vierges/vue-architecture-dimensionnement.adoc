@@ -112,9 +112,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 ### Estimation des besoins en ressources par composant technique
 
 .Estimation des besoins en ressources par composant technique
-[cols="2,1,1,3,2"]
+[cols="2e,1e,1e,3e,2e"]
 |====
-|Profil|CPU|Mémoire|Disque interne|Disque SAN
+| Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires
 
 |||||
 |====
