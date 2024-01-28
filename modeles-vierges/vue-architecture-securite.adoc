@@ -64,21 +64,23 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 [cols='2,1,1,1,1']
 |====
 |Classe de données
-|Niveau « Non intègre » ([small]#La donnée peut ne pas être intègre)#
-|Niveau « Détectable » ([small]#La donnée peut ne pas être intègre si l'altération est identifiée dans un délai raisonnable)#
-|Niveau « Maîtrisé » ([small]#La donnée peut ne pas être intègre, si l'altération est identifiée et l'intégrité du bien essentiel retrouvée)#
-|Niveau « Intègre » ([small]#La donnée doit toujours être rigoureusement intègre)#
+|Niveau « Non intègre » [small]#(La donnée peut ne pas être intègre)#
+|Niveau « Détectable » [small]#(La donnée peut ne pas être intègre si l'altération est identifiée dans un délai raisonnable)#
+|Niveau « Maîtrisé » [small]#(La donnée peut ne pas être intègre, si l'altération est identifiée et l'intégrité du bien essentiel retrouvée)#
+|Niveau « Intègre » [small]#(La donnée doit toujours être rigoureusement intègre)#
 
 |====
 
+[[exigences-confidentialite]]
 ### Exigences de confidentialité
 
 .Niveau de confidentialité exigée par classe de données
+[cols='2,1,1,1,1']
 |====
-|Classe de données | Niveau « Public » ([small]#Tout le monde peut accéder à la donnée)# 
-|Niveau  Limité » ([small]#La donnée n’est accessible qu’aux personnes habilitées)# 
-|Niveau « Réservé » ([small]#La donnée n’est accessible qu’au personnel interne habilité)# 
-|Niveau « Privé » ([small]#La donnée n’est visible que par l’intéressé(e))#
+|Classe de données | Niveau « Public » [small]#(Tout le monde peut accéder à la donnée)# 
+|Niveau  Limité » [small]#(La donnée n’est accessible qu’aux personnes habilitées)# 
+|Niveau « Réservé » [small]#(La donnée n’est accessible qu’au personnel interne habilité)# 
+|Niveau « Privé » [small]#(La donnée n’est visible que par l’intéressé(e))#
 
 |====
 
@@ -96,11 +98,13 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |====
 
-[[exigence-federation-identite]]
+[[exigences-federation-identite]]
 ### Exigences de fédération d’identité
 
+[[exigences-sso-slo]]
 ### Exigences de SSO et SLO
 
+[[exigences-non-repudiation]]
 ### Exigences de non répudiation
 
 .Besoins de non-répudiation
@@ -109,9 +113,10 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |===
 
-[[exigence-anonymat]]
+[[exigences-anonymat]]
 ### Exigences d'anonymat et de respect de la vie privée
 
+[[exigences-habilitations]]
 ### Exigences sur les habilitations
 
 .Matrice de rôles
@@ -120,6 +125,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 |===
 
+[[exigences-tracabilite]]
 ### Exigences de traçabilité et d'auditabilité
 
 .Données à conserver pour preuves
@@ -143,7 +149,7 @@ Dispositifs répondant aux <<exigences-integrite,exigences d'intégrité>> :
 
 ### Confidentialité
 
-Dispositifs répondant aux <<Exigences de confidentialité>> :
+Dispositifs répondant aux <<exigences-confidentialite,exigences de confidentialité>> :
 
 .Mesures pour assurer le niveau de confidentialité demandé
 |===
@@ -161,11 +167,11 @@ Dispositifs répondant aux <<exigences-authentification,exigences d'authentifica
 
 ### Fédération d’identité
 
-Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
+Dispositifs répondant aux <<exigences-federation-identite,exigences de fédération d’identité>> :
 
 ### SSO, SLO
 
-Dispositifs répondant aux <<Exigences de SSO et SLO> :
+Dispositifs répondant aux <<exigences-sso-slo,exigences de SSO et SLO>> :
 
 ### Comptes de service
 
@@ -178,19 +184,19 @@ Dispositifs répondant aux <<Exigences de SSO et SLO> :
 
 ### Non-répudiation et horodatage
 
-Dispositifs répondant aux <<Exigences de non répudiation>> :
+Dispositifs répondant aux <<exigences-non-repudiation,exigences de non répudiation>> :
 
 ### Anonymat et vie privée
 
-Dispositifs répondant aux <<exigence-anonymat,exigences d'anonymat et de respect de la vie privée>> :
+Dispositifs répondant aux <<exigences-anonymat,exigences d'anonymat et de respect de la vie privée>> :
 
 ### Habilitations
 
-Dispositifs répondant aux <<Exigences sur les habilitations>> :
+Dispositifs répondant aux <<exigences-habilitations,exigences sur les habilitations>> :
 
 ### Traçabilité, auditabilité
 
-Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
+Dispositifs répondant aux <<exigences-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 
 ### Lutte contre les cybermenaces
@@ -215,7 +221,7 @@ Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et 
 :na: pass:quotes[[.grey]#N/A#]
 :et: pass:quotes[[.grey]#&amp;#]
 
-* {r} : *Responsive* (personne qui va exécuter : elle en est responsable)
+* {r} : *Responsible* (personne qui va exécuter : elle en est responsable)
 * {a} : *Accountable* (personne qui va approuver la tâche : elle en est l'autorité)
 * {c} : *Consulted* (personne qui va être consultée dans l'exécution de la tâche)
 * {i} : *Informed* (personne qui sera informée lorsque la tâche est terminée)
@@ -242,7 +248,7 @@ Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et 
 .Checklist d'auto-contrôle de prise en compte des vulnérabilités courantes
 [cols="1,1,3"]
 |===
-|Vulnérabilité |Pris en compte ? |Mesures techniques entreprises
+|Vulnérabilité |Prise en compte ? |Mesures techniques entreprises
 
 |===
 

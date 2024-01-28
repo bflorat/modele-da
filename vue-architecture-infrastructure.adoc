@@ -14,7 +14,8 @@
 
 
 ## Introduction
-Ceci est le point de vue infrastructure de l’application. Elle décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
+
+Ceci est la vue infrastructure de l’application. Elle décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -236,7 +237,7 @@ Exemple : le datacenter de Paris est de niveau Tier III et celui de Toulouse Ti
 
 [TIP]
 ====
-En prenant en compte les éléments précédents, estimer la disponibilité planché (maximale) d'une application (hors catastrophe). Toute exigence devra être inférieure à celle-ci. Dans le cas d'un cloud, se baser sur le SLA du fournisseur. Dans le cas d'une application hébergée en interne, prendre en compte la disponibilité du datacenter et des indisponibilité programmées.
+En prenant en compte les éléments précédents, estimer la disponibilité plancher (maximale) d'une application (hors catastrophe). Toute exigence devra être inférieure à celle-ci. Dans le cas d'un cloud, se baser sur le SLA du fournisseur. Dans le cas d'une application hébergée en interne, prendre en compte la disponibilité du datacenter et des indisponibilité programmées.
 ====
 
 ====
@@ -260,7 +261,7 @@ Un PCA permet de poursuivre les activités critiques de l’organisation (en gé
 
 Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou un PCA. Par exemple, si on vise un PCA, il faut prévoir des clusters actifs-actifs multi-zonaux (situés dans des datacenters distants géographiquement) alors que pour un PRA, l'important est la qualité et la vitesse de sauvegarde/restauration des données dans le datacenter de secours. 
 
-Note: Dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, des deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
+Note: Dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, les deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
 
 Note: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS…) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
 
@@ -433,7 +434,7 @@ Ne pas oublier également les coûts d’astreinte très importants si les exige
 
 On estime en général que la haute disponibilité (HA) commence à deux neufs (99%), c'est à dire environ 90h d'indisponibilité par an.
 
-Donner la disponibilité demandé par plage.
+Donner la disponibilité demandée par plage.
 
 La disponibilité exigée ici devra être en cohérence avec les <<Contraintes sur la disponibilité>> du SI.
 ====
@@ -567,7 +568,7 @@ Par exemple :
 
 * L'installation est-elle manuelle ? scriptées avec des outils d'IT Automation comme Ansible ou SaltStack ? via des images Docker ?
 * Comment sont déployés les composants ? Sous forme de paquets ? Utilise-t-on un dépôt de paquets (type yum ou apt) ? Utilise-t-on des containeurs ?
-* Comment sont appliquées les mises jour ?
+* Comment sont appliquées les mises à jour ?
 ====
 
 #### Coté client
@@ -589,7 +590,7 @@ Coté client, pour une application client lourd :
 * Quel version de l’OS est supportée ?
 * Si l’OS est Windows, l’installation passe-t-elle par un outil de déploiement (Novell ZENWorks par exemple) ? l’application vient-elle avec un installeur type Nullsoft ? Affecte-t-elle le système (variables d’environnements, base de registre…) ou est-elle en mode portable (simple zip) ?
 * Si l’OS est Linux, l’application doit-elle fournie en tant que paquet? 
-* Comment sont appliquées les mises jour ?
+* Comment sont appliquées les mises à jour ?
 ====
 
 #### Stratégie de déploiement spécifiques
@@ -729,7 +730,7 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 ** Les *clusters actifs/actifs à couplage faible* dans lesquels un nœud est totalement indépendant des autres, soit parce que l'applicatif est stateless (le meilleur cas), soit parce que les données de contexte (typiquement une session HTTP) sont gérées isolément par chaque nœud. Dans le dernier cas, le répartiteur de charge devra assurer une affinité de session, c'est à dire toujours router les requêtes d'un client vers le même nœud et en cas de panne de ce nœud, les utilisateurs qui y sont routés perdent leurs données de session et doivent se reconnecter. Note : Les nœuds partagent tous les mêmes données persistées en base, les données de contexte sont uniquement des données transitoires en mémoire. 
 
-** Les *clusters actifs/actifs à couplage fort* dans lesquels tous les nœuds partageant les mêmes données en mémoire. Dans cette architecture, toute donnée de contexte doit être répliquée dans tous les nœuds (ex : cache distribué de sessions HTTP répliqué avec JGroups).  
+** Les *clusters actifs/actifs à couplage fort* dans lesquels tous les nœuds partagent les mêmes données en mémoire. Dans cette architecture, toute donnée de contexte doit être répliquée dans tous les nœuds (ex : cache distribué de sessions HTTP répliqué avec JGroups).  
 
 
 ==== 
@@ -965,7 +966,7 @@ Dans les gros SI, il est souvent utile de segmenter les environnements en 'plate
 ====
 Lister ici les mesures d'infrastructure permettant de répondre aux <<exigences_ecoconception,Exigences d'écoconception>>. 
 
-Les réponses à ses problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier) et à celles des coûts (achat de matériel). Dans ce cas, y faire simplement référence. 
+Les réponses à ces problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier) et à celles des coûts (achat de matériel). Dans ce cas, y faire simplement référence. 
 
 Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème. Quelques pistes d’amélioration de la performance énergétique :
 
@@ -1130,14 +1131,11 @@ Que sauvegarde-t-on ?
 * les logs ? les traces ?
 ====
 
-[TIP]
-====
 Exemple: 
 
 * Sauvegarde système des VM
 * Sauvegarde des bases PostgreSQL
 * Sauvegardes des documents Ceph
-====
 
 ##### Stratégie de sauvegarde
 

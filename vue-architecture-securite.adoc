@@ -16,7 +16,7 @@
 
 ## Introduction
 
-Ceci est le point de vue sécurité. Elle décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
+Ceci est la vue sécurité. Elle décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -94,7 +94,7 @@ Exemple 3 : en application du RGPD, les données utilisateur devront être chiff
 
 [TIP]
 ====
-Présenter ici les exigences, *pas les dispositifs y répondant*. Ceux-ci seront détaillées au chapitre 3. 
+Présenter ici les exigences, *pas les dispositifs y répondant*. Ceux-ci seront détaillés au chapitre 3. 
 
 Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de risque. Pour cela, utiliser par exemple la méthode https://www.ssi.gouv.fr/guide/la-methode-ebios-risk-manager-le-guide/[EBIOS Risk Manager] (Expression des Besoins et Identification des Objectifs de Sécurité).
 ====
@@ -115,10 +115,10 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 [cols='2e,1e,1e,1e,1e']
 |====
 |Classe de données
-|Niveau « Non intègre » ([small]#La donnée peut ne pas être totalement intègre)#
-|Niveau « Détectable » ([small]#La donnée peut ne pas être intègre si l'altération est identifiée dans un délai raisonnable)#
-|Niveau « Maîtrisé » ([small]#La donnée peut ne pas être intègre, si l'altération est identifiée et l'intégrité du bien essentiel retrouvée)#
-|Niveau « Intègre » ([small]#La donnée doit toujours être rigoureusement intègre)#
+|Niveau « Non intègre » [small]#(La donnée peut ne pas être totalement intègre)#
+|Niveau « Détectable » [small]#(La donnée peut ne pas être intègre si l'altération est identifiée dans un délai raisonnable)#
+|Niveau « Maîtrisé » [small]#(La donnée peut ne pas être intègre, si l'altération est identifiée et l'intégrité du bien essentiel retrouvée)#
+|Niveau « Intègre » [small]#(La donnée doit toujours être rigoureusement intègre)#
 
 |Données de la base métier
 |
@@ -157,6 +157,7 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 |X
 |====
 
+[[exigences-confidentialite]]
 ### Exigences de confidentialité
 
 [TIP]
@@ -170,10 +171,10 @@ Attention à ne pas multiplier les classes de données. Il est possible de ne d�
 .Niveau de confidentialité exigée par classe de données
 [cols="e,e,e,e,e"]
 |====
-|Classe de données | Niveau « Public » ([small]#Tout le monde peut accéder à la donnée)# 
-|Niveau Limité » ([small]#La donnée n’est accessible qu’aux personnes habilitées)# 
-|Niveau « Réservé » ([small]#La donnée n’est accessible qu’au personnel interne habilité)# 
-|Niveau « Privé » ([small]#La donnée n’est visible que par l’intéressé(e))#
+|Classe de données | Niveau « Public » [small]#(Tout le monde peut accéder à la donnée)# 
+|Niveau Limité » [small]#(La donnée n’est accessible qu’aux personnes habilitées)# 
+|Niveau « Réservé » [small]#(La donnée n’est accessible qu’au personnel interne habilité)# 
+|Niveau « Privé » [small]#(La donnée n’est visible que par l’intéressé(e))#
 
 |Contenu éditorial 
 |X
@@ -279,7 +280,7 @@ Les facteurs d’authentification requis en fonction des situations sont (on peu
 ||||X|||
 |====
 
-[[exigence-federation-identite]]
+[[exigences-federation-identite]]
 ### Exigences de fédération d’identité
 
 [TIP]
@@ -295,6 +296,7 @@ Voir aussi les « Connect with [Google|Twitter|…] » en technologie OpenId C
 Exemple : L’identification et l’authentification seront externalisés au fournisseur d’identité Auth0 pour simplifier la gestion de la sécurité et réduire les coûts de développement et d’exploitation.
 ====
 
+[[exigences-sso-slo]]
 ### Exigences de SSO et SLO
 
 [TIP]
@@ -323,6 +325,7 @@ Exemple 2 : aucun besoin de SSO ou SLO n’est identifié
 Exemple 3 : cette application Web métier devra fournir une authentification unique mutualisée avec celle des autres applications de l’intranet : une fois authentifié sur l’une des applications, l’agent ne doit pas avoir à se reconnecter (jusqu'à expiration de sa session). De même, une déconnexion depuis l’une des applications doit assurer la déconnexion de toutes les applications de l’intranet.
 ====
 
+[[exigences-non-repudiation]]
 ### Exigences de non répudiation
 
 [TIP]
@@ -340,14 +343,14 @@ Lister ici les actions métiers possédant une exigence de non-répudiation, c�
 |Verisign
 |===
 
-[[exigence-anonymat]]
+[[exigences-anonymat]]
 ### Exigences d'anonymat et de respect de la vie privée
 
 [TIP]
 Lister les contraintes d’anonymat et de vie privée légale (exigée par le RGPD). Voir https://www.cnil.fr/fr/rgpd-par-ou-commencer.
 
 ====
-Exemple 1  : Aucune consolidation de donnée de pourra être faite entre les données du domaine PERSONNE et du domaine SANTE.
+Exemple 1  : Aucune consolidation de donnée ne pourra être faite entre les données du domaine PERSONNE et du domaine SANTE.
 ====
 ====
 Exemple 2  : Par soucis de confidentialité en cas d’intrusion informatique, certaines données des personnes seront expurgées avant réplication vers la zone publique : le taux de cholestérol et le poids.
@@ -365,6 +368,7 @@ Exemple 5 : En application de la directive européenne « paquet telecom », 
 Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs dans la conservation de leurs données personnelles de santé sera proposé.
 ====
 
+[[exigences-habilitations]]
 ### Exigences sur les habilitations
 
 [TIP]
@@ -499,7 +503,7 @@ Dispositifs répondant aux <<exigences-integrite,exigences d'intégrité>> :
 |Données de la base métier
 |Intègre
 a|
-* Utilisation du SGBDR SGBD PostgreSQL avec un niveau d’isolation transactionnelle SERIALIZABLE 
+* Utilisation du SGBDR PostgreSQL avec un niveau d’isolation transactionnelle SERIALIZABLE 
 * Les entités seront référencées uniquement par des ID techniques issues de séquences PostgreSQL
 
 |Données archivées
@@ -525,7 +529,7 @@ a|
 
 ### Confidentialité
 
-Dispositifs répondant aux <<Exigences de confidentialité>> :
+Dispositifs répondant aux <<exigences-confidentialite,exigences de confidentialité>> :
 
 .Mesures pour assurer le niveau de confidentialité demandé
 [cols="e,e,e"]
@@ -593,7 +597,7 @@ Exemple 4 : Les mots de passe ne seront en aucun cas conservés mais stockés s
 
 ### Fédération d’identité
 
-Dispositifs répondant aux <<exigence-federation-identite,exigences de fédération d’identité>> :
+Dispositifs répondant aux <<exigences-federation-identite,exigences de fédération d’identité>> :
 
 [TIP]
 ====
@@ -609,7 +613,7 @@ Exemple  : L’IHM grand public permettra une identification et authentificatio
 
 ### SSO, SLO
 
-Dispositifs répondant aux <<Exigences de SSO et SLO> :
+Dispositifs répondant aux <<exigences-sso-slo,exigences de SSO et SLO>> :
 [TIP]
 ====
 Détailler la technologie choisie et son intégration. Quelques solutions courantes : CAS, OpenAM, LemonLDAP::NG. Pour les applications Web, préciser les contraintes navigateur (activation des cookies en particulier).
@@ -640,7 +644,7 @@ Les comptes de service sont utilisés pour l'authentification à un composant te
 
 ### Non-répudiation et horodatage
 
-Dispositifs répondant aux <<Exigences de non répudiation>> :
+Dispositifs répondant aux <<exigences-non-repudiation,exigences de non répudiation>> :
 
 ====
 Exemple : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X.
@@ -657,7 +661,7 @@ Exemple : Les signatures électroniques seront accompagnées d'un jeton d'horoda
 
 ### Anonymat et vie privée
 
-Dispositifs répondant aux <<exigence-anonymat,exigences d'anonymat et de respect de la vie privée>> :
+Dispositifs répondant aux <<exigences-anonymat,exigences d'anonymat et de respect de la vie privée>> :
 
 ====
 Exemple 1 : un audit interne sera mené une fois par an sur le contenu des données en base et les extractions à destination des partenaires.
@@ -671,7 +675,7 @@ Exemple 3 : le bandeau d’acceptation des cookies sera mis en ouvre sur toutes
 
 ### Habilitations
 
-Dispositifs répondant aux <<Exigences sur les habilitations>> :
+Dispositifs répondant aux <<exigences-habilitations,exigences sur les habilitations>> :
 ====
 Exemple 1 : la gestion des autorisations sera gérée applicativement et stockée dans la base applicative PostgreSQL. Ces tables seront décrites dans le dossier de spécification.
 ====
@@ -681,7 +685,7 @@ Exemple 2 : L’obtention du carnet d’adresse Facebook sera en OAuth2. On uti
 
 ### Tracabilité, auditabilité
 
-Dispositifs répondant aux <<exigence-tracabilite,exigences de traçabilité et d'auditabilité>> :
+Dispositifs répondant aux <<exigences-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 ====
 Exemple 1 : à la fin de chaque action métier, l’application ReactJS appellera dans une action asynchrone un service REST de trace métier. Ce service stockera les traces dans une base Elastic Search pour consultation en Kibana.
@@ -789,7 +793,7 @@ Ce RACI permet de définir clairement les rôles de chacun concernant les actes 
 :na: pass:quotes[[.grey]#N/A#]
 :et: pass:quotes[[.grey]#&amp;#]
 
-* {r} : *Responsive* (personne qui va exécuter : elle en est responsable)
+* {r} : *Responsible* (personne qui va exécuter : elle en est responsable)
 * {a} : *Accountable* (personne qui va approuver la tâche : elle en est l'autorité)
 * {c} : *Consulted* (personne qui va être consultée dans l'exécution de la tâche)
 * {i} : *Informed* (personne qui sera informée lorsque la tâche est terminée)
@@ -852,7 +856,7 @@ Bien entendu, il existe de nombreux autres points de contrôle dépendants du co
 [cols="e,e,3e"]
 |===
 |Vulnérabilité
-|Pris en compte ?
+|Prise en compte ?
 |Mesures techniques entreprises
 
 |Accès à des ports privés
