@@ -241,9 +241,10 @@ L'écoconception consiste à limiter l'impact environnemental des logiciels et m
 A noter que la loi française (voir loi https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/que-prevoit-la-loi/[du n°2020-105 du 10 février 2020, ou loi AGEC]) exige de réduire le gaspillage lié au numérique, notamment concernant l'obsolescence logicielle (art. 27). 
 
 Lister ici les exigences d'écoconception portant sur les logiciels.
+
 ====
 ====
-Exemple : La consommation électrique moyenne causée par l’affichage d'une page Web ne devra pas dépasser 10mWH, soit pour 10K utilisateurs qui affichent en moyenne 100 pages 200 J par an : 50 g/KWH x 10mWH x 100 x 10K x 200 = 100 Kg équivalent CO2 / an.
+Exemple : Les émissions cumulées de l'applicarion A ne devrait pas dépasser 100KgCO2 / an.    
 ====
 
 ## Architecture cible
@@ -495,6 +496,19 @@ NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'obje
 ====
 Lister ici les mesures logicielles permettant de répondre aux exigences d'écoconception listées plus haut. Les réponses à ces problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier). Dans ce cas, y faire simplement référence. Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème.
 
+Un point de départ intéressant pour manipuler l'impact carbone peut être la formule SCI (Software Carbone Intensity):
+
+```
+SCI = ((E * I)) + M) par R
+```
+
+Avec: 
+
+* E (kWh) : L'énergie totale consommé par le logiciel ; 
+* I (gCO2/kWh), la quantité de carbone émis par kwH ;
+* M (gCO2) : l'empreinte carbone du hardware ;
+* R: la quantité de référence (ex: par utilisateur, par appareil, ...)
+
 Quelques pistes d’amélioration énergétique du projet :
 
 * Utiliser des profilers ou des outils de développement intégrés dans les navigateurs (comme Google Dev Tools) pour analyser la consommation de ressources (nombre, durée et taille des requêtes).
@@ -514,9 +528,14 @@ Exemple 1 : le processus gulp de construction de l'application appliquera une r�
 Exemple 2 : des tests de robustesse courant sur plusieurs jours seront effectués sur l’application mobile après chaque optimisation pour évaluer la consommation énergétique de l'application.
 ====
 ====
-Exemple 3 : Les campagnes de performance intègreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
+Exemple 3 : Les campagnes de performance intégreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
 ====
+====
+Exemple 4 : Pour une exigence de 100KgCO2/an maximum emit par le service en ligne A : on utilise 20% d'un serveur physique. On estime l'intensité carbone du serveur hors fonctionnement à 1.5TCO2 sur tout son cycle de vie de 10 ans (donc 30 kgCO2/an au prorata du service A).
 
+En utilisant la formule SCI (voir plus haut), et pour une consommation totale du serveur de 800W et 20K appels par heure en moyenne, et une électricité française d'intensité carbone de 63g/KWH, on ne doit pas dépasser E=1111 KWH/an, soit 6.34 mWH/appel.
+
+====
 ### Gestion de la robustesse
 
 #### Gestion des transactions
