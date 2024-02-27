@@ -244,7 +244,7 @@ Lister ici les exigences d'écoconception portant sur les logiciels.
 
 ====
 ====
-Exemple : Les émissions cumulées de l'applicarion A ne devrait pas dépasser 100KgCO2 / an.    
+Exemple : Les émissions cumulées du service A ne devrait pas dépasser 100KgCO2/an.    
 ====
 
 ## Architecture cible
