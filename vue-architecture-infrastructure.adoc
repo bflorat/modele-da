@@ -191,7 +191,9 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 
 [TIP]
 ====
-Donner ici le niveau de sécurité du datacenter selon l’échelle Uptime Institute (Tier de 1 à 4). 
+Donner ici le niveau de sécurité du datacenter (DC) selon l’échelle Uptime Institute (Tier de 1 à 4).  
+
+TIP: A noter que les architectures Cloud modernes privilégient la redondance des DC sur des sites distants plutôt qu'un niveau Tier plus élevé sur un seul site (à condition de pouvoir répliquer efficacement des données et d'accepter un délais sur la cohérence immédiate des données, voir le théorème de CAP). De façon simpliste, on peut calculer que la disponibilité de deux DC actifs en parallèle est de sept neufs contre quatre neufs pour un DC Tier 4. Un compromis entre les deux modèles est le déploiement dans des zones redondantes d'un même site au prix d'une plus grande vulnérabilité aux catastrophes.
 
 .Niveaux Tier des datacenters (source : Wikipedia)
 [cols="1,5,2,2,2,2"]
