@@ -169,7 +169,7 @@ Lister ici les contraintes relatives à l'urbanisation, ceci inclut par exemple 
 Exemple 1 : les appels inter-services sont interdits sauf les appels de services à un service de nomenclature.
 ====
 ====
-Exemple 2 : pour en assurer la fraicheur, il est interdit de répliquer les données du référentiel PERSONNE. Ce dernier devra être interrogé au besoin en synchrone.
+Exemple 2 : pour en assurer la fraîcheur, il est interdit de répliquer les données du référentiel PERSONNE. Ce dernier devra être interrogé au besoin en synchrone.
 ====
 ====
 Exemple 3 : Lors de la modification d'une commande, les zones comptabilité et facturation seront mises à jour de façon asynchrone via un événement.
@@ -209,18 +209,78 @@ Exemple 4 : Le CLUF du progiciel prévoit un accès aux sources des utilisateurs
 
 ## Exigences
 
-TIP: Donner ici les exigences d'architecture applicative pouvant s'appliquer au projet.
+TIP: Donner ici les exigences d'architecture applicative pouvant s'appliquer au projet. En fonction de votre contexte, ne pas hésiter à ajouter des sous-sections.
+
+### Exigences stratégiques
+
+TIP: Décrire ici les exigences en rapport avec la stratégie générale du projet en termes de trajectoire, de budget et d'organisation.
 
 ====
-Exemple 1 (projet de migration) : Les modules legacy devront faire l'objet d'aussi peu d'adaptations que possible. 
+Exemple 1 : Le développement devra pouvoir se faire au sein d'équipes distribuées, chacune travaillant sur des modules distincts.
 ====
 
 ====
-Exemple 2 : Les modules devront pouvoir s'interfacer avec le partenaire XYZ via leurs API.
+Exemple 2 (projet de migration) : Les modules legacy devront faire l'objet d'aussi peu d'adaptations que possible par manque de ressources humaines.
+====
+
+### Interopérabilité
+
+TIP: Décrire ici les exigences portant sur les protocoles, formats et sémantiques à respecter afin de favoriser les échanges avec des organismes ou tiers.
+
+====
+Exemple 1: Nos modules XYZ devront pouvoir être exposés aux organismes X depuis Internet et sous la forme d'API REST authentifiées.
 ====
 
 ====
-Exemple 3 : Le développement devra pouvoir se faire au sein d'équipes distribuées, chacune travaillant sur des modules distincts.
+Exemple 2 (pour une administration): Le projet devra respecter le https://www.numerique.gouv.fr/publications/interoperabilite/[référentiel Général d’Interopérabilité (RGI)].
+====
+
+
+### Archivage
+
+[TIP]
+====
+L'archivage est la recopie de données importantes sur un support dédié offline en vue non pas d'une restauration comme la sauvegarde mais d'une _consultation_ occasionnelle. Les archives sont souvent exigées pour des raisons légales et conservées trente ans ou plus.
+
+Précisez si des données de l’application doivent être conservées à long terme. Précisez les raisons de cet archivage (https://www.service-public.fr/professionnels-entreprises/vosdroits/F10029[légales] le plus souvent).
+
+Précisez si des dispositifs spécifiques de protection de l'intégrité (pour empêcher toute modification principalement) doivent être mis en place.
+====
+
+====
+Exemple 1: comme exigé par l'article L.123-22 du code de commerce, les données comptables devront être conservées au moins dix ans.
+====
+====
+Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte SHA256 sera calculée au moment de l'archivage et stockée séparément pour vérification de l'intégrité des documents en cas de besoin.
+====
+
+### Durées de rétention
+
+TIP: Précisez ici combien de temps doivent être conservées les données et documents persistés par vos modules applicatifs. À noter que ces durées peuvent être contraintes par le droit (voir contraintes juridiques plus haut), par exemple dans le cadre du droit à l'oubli du RGPD.
+
+TIP: Ne pas oublier de mentionner les données techniques (comme les logs ou les tables techniques) ainsi que les archives.
+
+====
+Exemple :
+
+.Durée de rétention des données et documents
+[cols="1e,1e"]
+|====
+| Donnée | Durée maximale de rétention
+
+| Données de paiement (CB)
+| 2 mois
+
+| Liste des commandes
+| 2 ans
+
+| Logs d'accès
+| 1 mois
+
+| Archives des données comptables
+| 30 ans
+
+|====
 ====
 
 
@@ -321,6 +381,35 @@ Exemple:
 image:diagrammes/archi-applicative-detaillee-dynamique.svg[Diagramme architecture applicative détaillée (vue dynamique)] 
 
 ====
+
+### Archivage
+
+[TIP]
+====
+Décrire ici les dispositifs permettant de répondre aux exigences d'archivage. Cette section contiendra principalement : 
+
+* La technologie : idéalement, on dupliquera par sécurité l'archive sur plusieurs supports de technologies différentes : bande magnétique type LTO, disque optique (Blu-ray Disc Recordable par exemple), stockage sur cloud (comme 'Glacier' d'AWS ou 'Coldline' de GCP), disques durs en mode SMR,...).
+* Un lieu de stockage spécifique et distinct des sauvegardes classiques (Cloud, coffre-fort en banque par exemple).
+====
+====
+Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LTO et disque dur. Un jeu de chacun des deux supports sera stocké en coffre dans deux banques différentes.
+====
+
+### Purges
+
+[TIP]
+====
+Donner ici les dispositifs techniques répondant aux exigences de purge.
+====
+
+====
+Exemple 1: L'historique des consultations sera archivé par un dump avec une requête SQL de la forme `COPY (SELECT * FROM ma_table WHERE …) TO '/tmp/dump.tsv'` puis purgé par une requête SQL `DELETE` après validation par l'exploitant de la complétude du dump.
+====
+
+====
+Exemple 2: Chaque API est responsable de la purge des données qu'elle expose. Pour cela, prévoir des traitements internes qui suppriment les données suivant une planification (expression cron) et des critères paramétrables.
+====
+
 
 ### Matrice des flux applicatifs
 

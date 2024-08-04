@@ -524,40 +524,6 @@ Exemple : On doit pouvoir restaurer et remettre en ligne les 3 Tio de la base XY
 ====
 
 
-### Exigences d'archivage
-
-[TIP]
-====
-L'archivage est la recopie de données importantes sur un support dédié offline en vue non pas d'une restauration comme la sauvegarde mais d'une _consultation_ occasionnelle. Les archives sont souvent exigées pour des raisons légales et conservées trente ans ou plus. 
-
-Préciser si des données de l’application doivent être conservées à long terme. Préciser les raisons de cet archivage (https://www.service-public.fr/professionnels-entreprises/vosdroits/F10029[légales] le plus souvent).
-
-Préciser si des dispositifs spécifiques de protection de l'intégrité (pour empêcher toute modification principalement) doivent être mis en place.
-====
-
-====
-Exemple 1: comme exigé par l'article L.123-22 du code de commerce, les données comptables devront être conservées au moins dix ans. 
-====
-====
-Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte SHA256 sera calculée au moment de l'archivage et stockée séparément pour vérification de l'intégrité des documents en cas de besoin.
-====
-
-### Exigences de purges
-
-[TIP]
-====
-
-Il est crucial de prévoir des purges régulières pour éviter une dérive continue des performances et de l'utilisation disque (par exemple liée à un volume de base de données trop important). 
-
-Les purges peuvent également être imposées par la loi. Le RGPD apporte depuis 2018 de nouvelles contraintes sur le droit à l’oubli pouvant affecter la durée de rétention des informations personnelles.
-
-Il est souvent judicieux d'attendre la MEP voire plusieurs mois d'exploitation pour déterminer précisément les durées de rétention (âge ou volume maximal par exemple) mais il convient de prévoir le principe même de l’existence de purges dès la définition de l'architecture de l’application. En effet, l'existence de purges a souvent des conséquences importantes sur le fonctionnel (exemple : s'il n'y a pas de rétention _ad vitam aeternam_ de l'historique, certains patterns à base de listes chaînées ne sont pas envisageables).
-====
-
-====
-Exemple 1 : les dossiers de plus de six mois seront purgées (après archivage)
-====
-
 ### Exigences de déploiements et de mise à jour
 
 #### Coté serveur
@@ -1268,30 +1234,6 @@ Toujours garder à l'esprit que ce que nous voulons _vraiment_, ce sont des rest
 Exemple: Un test de restauration des données de production sera effectuée en pré-production au minimum une fois par an.
 ====
 
-
-
-#### Archivage
-
-[TIP]
-====
-Décrire ici les dispositifs permettant de répondre aux <<exigences-archivage>> avec les modalités de stockage suivantes :
-
-* La technologie : idéalement, on dupliquera par sécurité l'archive sur plusieurs supports de technologies différentes (bande + disque dur par exemple).
-* Un lieu de stockage spécifique et distinct des sauvegardes classiques (coffre-fort en banque par exemple).
-====
-====
-Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LTO et disque dur. Les deux supports seront stockés en coffre dans deux banques différentes.
-====
-
-#### Purges
-
-[TIP]
-====
-Donner ici les dispositifs techniques répondant aux <<exigences-purge>>.
-====
-====
-Exemple : l'historique des consultations sera archivé par un dump avec une requête SQL de la forme `COPY (SELECT * FROM matable WHERE …) TO '/tmp/dump.tsv'` puis purgé par une requete SQL `DELETE` après validation par l'exploitant de la complétude du dump.
-====
 
 #### Logs
 

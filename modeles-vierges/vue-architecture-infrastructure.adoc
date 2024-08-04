@@ -129,10 +129,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Exigences de RTO
 
-### Exigences d'archivage
-
-### Exigences de purges
-
 ### Exigences de déploiements et de mise à jour
 
 #### Coté serveur
@@ -204,10 +200,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 ##### Modalités de stockage
 
 ##### Restauration
-
-#### Archivage
-
-#### Purges
 
 #### Logs
 

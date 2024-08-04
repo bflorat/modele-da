@@ -107,6 +107,24 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ## Exigences
 
+### Exigences stratégiques
+
+### Interopérabilité
+
+### Archivage
+
+### Durée de rétention
+
+.Durée de rétention des données et documents
+[cols="1e,1e"]
+|====
+| Donnée | Durée maximale de rétention
+
+|
+|
+
+|====
+
 ## Architecture cible
 
 ### Architecture applicative générale
@@ -118,6 +136,10 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 #### Vision statique
 
 #### Vision dynamique
+
+### Archivage
+
+### Purges
 
 ### Matrice des flux applicatifs
 
