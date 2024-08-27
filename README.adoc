@@ -70,7 +70,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * **Pourquoi 'DA' et pas 'DAT' (dossier d'architecture technique) ou termes similaires ?** Chaque organisation possède sa terminologie propre mais le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
 
 ## Licence
-* Copyright (c) 2017-2023 Bertrand Florat et contributeurs
+* Copyright (c) 2017-2024 Bertrand Florat et contributeurs
 * Ce modèle est en licence https://creativecommons.org/licenses/by-sa/4.0/[CC BY-SA 4.0] : Creative Commons Attribution - Partage à l'identique V4.0
 * Vous pouvez créer votre propre modèle à condition qu'il conserve la licence CC BY-SA 4.0 et qu'il contienne donc ces trois éléments: 
 ** Le nom du créateur (Bertrand Florat) ;
