@@ -37,7 +37,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * De plus, il est volontairement riche en *explications et exemples* car il a également une (modeste) prétention éducative à destination des étudiants et jeunes architectes.
 * Le texte en italique contient des exemples ;
 * Chaque chapitre dispose de notes aidant à le remplir ;
-* Des link:modeles-vierges[modèles vierges] (sans exemples) sont fournis pour votre confort. *Il est fortement préconisé de partir des modèles vierges tout en ayant dans une autre fenêtre le modèle avec exemples et explications sous les yeux* ;
+* Des link:modeles-vierges[modèles vierges] (sans exemples) sont fournis pour votre confort. *Il est fortement préconisé de partir des modèles vierges tout en ayant sous les yeux, dans une autre fenêtre, le modèle avec exemples et explications* ;
 * Le script `export` joint permet de produire une archive de votre dossier complet au format HTML, PDF ou ODT.
 * Comme précisé dans le modèle vierge, nous recommendons de préciser la version de ce modèle (hash Git) en haut du fichier `README.adoc` afin de déterminer plus facilement les écarts avec de nouvelles versions du modèle. Exemple: `Version du modèle utilisé : b523b6a`.
 
@@ -70,7 +70,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * **Pourquoi 'DA' et pas 'DAT' (dossier d'architecture technique) ou termes similaires ?** Chaque organisation possède sa terminologie propre mais le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
 
 ## Licence
-* Copyright (c) 2017-2024 Bertrand Florat et contributeurs
+* Copyright (c) 2017-2025 Bertrand Florat et contributeurs
 * Ce modèle est en licence https://creativecommons.org/licenses/by-sa/4.0/[CC BY-SA 4.0] : Creative Commons Attribution - Partage à l'identique V4.0
 * Vous pouvez créer votre propre modèle à condition qu'il conserve la licence CC BY-SA 4.0 et qu'il contienne donc ces trois éléments: 
 ** Le nom du créateur (Bertrand Florat) ;
