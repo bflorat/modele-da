@@ -1,5 +1,4 @@
-@startuml
-title roles
+@startuml roles
 header Modèle classique d'habilitations
 skinparam defaultFontName Liberation Sans
 scale 500*400

@@ -340,6 +340,9 @@ Utiliser comme ID des flux une simple séquence non signifiante (1, 2, …, n).
 Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux composants alors qu'en réalité, il passe par un répartiteur de charge intermédiaire : ce niveau de détail sera donné dans la vue infrastructure). 
 
 Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.
+
+Nous fournissons des patterns et des détails à ce sujet dans https://florat.net/architecture-as-code-with-c4-and-plantuml/[cet article].
+
 ====
 
 #### Principes ayant dicté les choix
@@ -352,7 +355,7 @@ Donner ici l'intention dans la construction de l'architecture.
 Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise.
 ====
 
-#### Vision statique
+#### Vue inventaire
 
 [TIP]
 ====
@@ -362,18 +365,19 @@ Exposer les modules applicatifs dans leurs différentes zones ou domaines.
 Exemple: module X, Y et Z dans le domaine GED. Modules A, B dans le domaine PERSONNE.
 ====
 
-image:diagrammes/archi-applicative-detaillee-statique.svg[Diagramme d'Architecture applicative détaillée (vue statique)] 
+image:diagrammes/archi-applicative-detaillee-inventaire.svg[Diagramme d'Architecture applicative détaillée (vue inventaire)] 
 
-#### Vision dynamique
+#### Vue dynamique
 
 [TIP]
 ====
-Exposer les modules applicatifs dans leurs différentes zones ou domaines avec leurs flux applicatifs principaux.
+Exposer les dépendances entre l'ensemble des modules applicatifs dans leurs différentes zones ou domaines. A ce stade, ne pas détailler les appels entre modules ou composants.
 
-Ne pas détailler les flux techniques (comme les flux liés à la supervision ou au clustering).
+Ne pas détailler les flux techniques (comme les flux liés à la supervision ou  au clustering).
 
-Si l'application est complexe, proposer un schéma global exposant tous les flux applicatifs puis un schéma par chaîne de liaison principale en numérotant les échanges (utiliser un diagramme de séquence ou (mieux) un Dynamic Diagram C4). 
-Il est possible également de détailler les chaînes de liaison par fonctionnailité principale.
+Si (et seulement si) la complexité de l'application le justifie, proposer en plus de ce schéma global un schéma détaillant chaque chaîne de liaison principale en numérotant les échanges (utiliser un diagramme de séquence ou (mieux) un Dynamic Diagram C4). 
+
+Chaque chaîne de liaison décrit une fonctionnalité majeure. Dans les cas d'enchaînements complexes, il est préconisé de découper la fonctionnalité en plusieurs chaines de liaison comprenant uniquement des appels synchrones (voir https://florat.net/architecture-as-code-with-c4-and-plantuml/[cet article]). 
 ====
 ====
 Exemple: 
@@ -381,6 +385,7 @@ Exemple:
 image:diagrammes/archi-applicative-detaillee-dynamique.svg[Diagramme architecture applicative détaillée (vue dynamique)] 
 
 ====
+
 
 ### Archivage
 

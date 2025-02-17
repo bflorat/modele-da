@@ -1,6 +1,5 @@
-@startuml
-!include C4/C4_Container.puml
-title  archi-applicative-generale
+@startuml archi-applicative-generale
+!include <C4/C4_Container>
 header Diagramme de contexte système \nVue applicative générale \ndu projet Mes Infos En Ligne (MIEL)
 LAYOUT_WITH_LEGEND()
 Person_Ext(entreprise, "Entreprise","[Personne]")
@@ -9,7 +8,7 @@ System_Boundary(administration, "Système administration B") {
     System(p1, "Système comptabilité")        
 }
 
-System_Boundary(si, "Système d'information"),{
+System_Boundary(si, "Système d'information"){
   System(ma, "MIEL","Permet aux entreprises de récupérer leurs données")
   System(ref1, "REF_ENTREPRISE","Référentiel personne")
   System(compo, "Système de composition","Editique transactionnelle"){        

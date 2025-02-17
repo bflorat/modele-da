@@ -1,6 +1,5 @@
-@startuml
-!include archi-applicative-detaillee-statique.puml
-title  archi-applicative-detaillee-dynamique
+@startuml archi-applicative-detaillee-dynamique
+!include archi-applicative-detaillee-inventaire.puml
 header Diagramme de containeurs \nVue applicative détaillée dynamique\n Projet Mes Infos En Ligne (MIEL)
 Rel(entreprise,resources_statiques,"Visite https://mesinfos.gouv.fr", "HTTPS, synchrone, lecture seule")
 Rel(entreprise,spa,"Récupère ses informations via")
@@ -15,7 +14,5 @@ Rel(batch, scompta, "[2.2] Récupération informations comptables","HTTPS, synch
 Rel(batch, compo, "[2.3] Création PDF","HTTP, synchrone, lecture")
 Rel(batch, smails, "[2.4] Demande d'envoi mail avec PDF","SMTP, synchrone, exécution")
 Rel(smails, smails, "[2.5] Envoi mail avec PDF","SMTP, synchrone,exécution")
-
 @enduml
-
 

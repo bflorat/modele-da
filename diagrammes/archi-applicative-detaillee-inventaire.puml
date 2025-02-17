@@ -1,10 +1,8 @@
-@startuml
-!include C4/C4_Container.puml
-title  archi-applicative-detaillee-statique
-header Diagramme de containeurs \nVue applicative détaillée statique \n Projet Mes Infos En Ligne (MIEL)
-LAYOUT_LEFT_RIGHT
+@startuml archi-applicative-detaillee-inventaire
+!include <C4/C4_Container>
+header Diagramme de containeurs \nVue inventaire \n Projet Mes Infos En Ligne (MIEL)
 LAYOUT_WITH_LEGEND()
-skinparam linetype polyline
+
 System_Boundary(company_system, "SI d'une entreprise") {
   Person_Ext(entreprise, "Entreprise","[person] \nClient Web (PC, tablette, mobile)")
   Container(spa, "SPA ihm-miel", "Container: javascript, React.js","Interface graphique permettant de demander ses informations")
@@ -12,7 +10,7 @@ System_Boundary(company_system, "SI d'une entreprise") {
 }
 
 System_Boundary(administration, "Système administration B") {
-    Container(scompta, "Système comptabilité","Service REST") 
+    System_Ext(scompta, "Système comptabilité","Service REST") 
 }
 
 System_Boundary(si, "Système d'information"){
