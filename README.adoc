@@ -72,7 +72,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 
 TIP: Les documentations d'architecture utilisent souvent plusieurs termes différents de façon interchangeable et ambiguë. Ce document d'architecture utilise (sauf erreur) une terminologie constante et cohérente. Nous avons évité les termes ambigus (comme 'service') et nous utilisons les termes les plus répandus dans la littérature et les contextes opérationnels.
 
-TIP: **Pourquoi 'DA' et pas 'DAT' (dossier d'architecture technique) ou termes similaires ?** Chaque organisation possède sa terminologie propre mais le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
+TIP: Pourquoi 'DA' et pas 'DAT' (dossier d'architecture technique) ou termes similaires ? Chaque organisation possède sa terminologie propre mais le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
 
 - **Module** : Unité de code qui regroupe des fonctionnalités ou des services liés. Nous utilisons ce terme pour désigner les API (qui contiennent elles-mêmes des **endpoints**), les traitements par lots ou **batchs** (qui contiennent des **jobs**), et les IHM/GUI (interfaces graphiques).
 
