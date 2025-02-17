@@ -13,11 +13,11 @@ image:modeles-vierges/resources/metiers.png[à lire en priorité]
 
 Un dossier suivant ce modèle sera ainsi constitué :
 
-* d’une link:vue-architecture-applicative.adoc[vue applicative] présentant le contexte général et l’architecture applicative ;
-* d’une link:vue-architecture-developpement.adoc[vue développement] présentant l’architecture logicielle et son environnement ;
-* d’une link:vue-architecture-dimensionnement.adoc[vue dimensionnement] présentant les aspects liés aux performances et au dimensionnement de l'infrastructure ;
-* d’une link:vue-architecture-infrastructure.adoc[vue infrastructure] présentant les serveurs, les middlewares, l'exploitation, etc. ;
-* d’une link:vue-architecture-securite.adoc[vue sécurité] ;
+* d’une link:vue-applicative.adoc[vue applicative] présentant le contexte général et l’architecture applicative ;
+* d’une link:vue-developpement.adoc[vue développement] présentant l’architecture logicielle et son environnement ;
+* d’une link:vue-dimensionnement.adoc[vue dimensionnement] présentant les aspects liés aux performances et au dimensionnement de l'infrastructure ;
+* d’une link:vue-infrastructure.adoc[vue infrastructure] présentant les serveurs, les middlewares, l'exploitation, etc. ;
+* d’une link:vue-securite.adoc[vue sécurité] ;
 
 Dans chaque vue, on retrouvera le triptyque :
 

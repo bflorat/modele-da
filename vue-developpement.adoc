@@ -291,7 +291,7 @@ Exemple :
 
 ### Performances
 
-IMPORTANT: Les exigences sont dans la link:./vue-architecture-dimensionnement.adoc[vue dimensionnement].
+IMPORTANT: Les exigences sont dans la link:./vue-dimensionnement.adoc[vue dimensionnement].
 
 
 [TIP]
@@ -564,7 +564,7 @@ Comment gère-t-on les sessions HTTP permettant de fournir un contexte d'exécut
 
 Notez que ceci est une surtout un problème pour les applications Web classiques dont la présentation est générée sur le serveur, pas pour les applications SPA (Single Page Application) qui gèrent toute la présentation et leur état en local dans le navigateur.
 
-Les choix faits ici affecteront les link:vue-architecture-infrastructure[choix d'infrastructure]. Par exemple, si une session est requise et que l'infrastructure est en cluster, il faudra soit mettre en place de l'affinité de session sur les serveurs pour forcer chaque utilisateur à toujours arriver sur le même serveur disposant de ses données, soit de mettre en place un cache distribué permettant aux serveurs de partager les sessions de tous les utilisateurs (plus complexe).
+Les choix faits ici affecteront les link:vue-infrastructure[choix d'infrastructure]. Par exemple, si une session est requise et que l'infrastructure est en cluster, il faudra soit mettre en place de l'affinité de session sur les serveurs pour forcer chaque utilisateur à toujours arriver sur le même serveur disposant de ses données, soit de mettre en place un cache distribué permettant aux serveurs de partager les sessions de tous les utilisateurs (plus complexe).
 
 Exemples de points à traiter :
 
@@ -725,7 +725,7 @@ Exemple 2 : Les dates et date-heures seront stockées en base de données comme 
 
 ### Gestion des logs
 
-NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./vue-architecture-infrastructure.adoc#_logs[la vue infrastructure].
+NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./vue-infrastructure.adoc#_logs[la vue infrastructure].
 
 [TIP]
 ====

@@ -12,11 +12,11 @@ Version du modèle utilisé : #<https://github.com/bflorat/modele-da/commits/mas
 
 Ce dossier est constitué : 
 
-* d’une link:vue-architecture-applicative.adoc[vue applicative] présentant le contexte général et l’architecture applicative ;
-* d’une link:vue-architecture-developpement.adoc[vue développement] présentant l’architecture logicielle ;
-* d’une link:vue-architecture-infrastructure.adoc[vue infrastructure] présentant les aspects d’architecture techniques ou physiques ;
-* d’une link:vue-architecture-dimensionnement.adoc[vue dimensionnement] présentant les aspects liés aux performances et aux sollicitations ;
-* d’une link:vue-architecture-securite.adoc[vue sécurité].
+* d’une link:vue-applicative.adoc[vue applicative] présentant le contexte général et l’architecture applicative ;
+* d’une link:vue-developpement.adoc[vue développement] présentant l’architecture logicielle ;
+* d’une link:vue-infrastructure.adoc[vue infrastructure] présentant les aspects d’architecture techniques ou physiques ;
+* d’une link:vue-dimensionnement.adoc[vue dimensionnement] présentant les aspects liés aux performances et aux sollicitations ;
+* d’une link:vue-securite.adoc[vue sécurité].
 
 Chaque vue expose les contraintes, exigences puis solutions mises en oeuvre.
 
