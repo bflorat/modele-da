@@ -156,7 +156,7 @@ TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entra
 
 [TIP]
 ====
-Lister ici les besoins en stockage de chaque composant une fois l’application arrivée à pleine charge (volumétrie à deux ans par exemple).
+Lister ici les besoins en stockage de chaque module une fois l’application arrivée à pleine charge (volumétrie à deux ans par exemple).
 
 Prendre en compte :
 
@@ -183,7 +183,7 @@ N'estimer que les données dont la taille est non négligeable (plusieurs Gio mi
 ====
 
 ====
-. Exemple de volumétrie statique du composant C :
+. Exemple de volumétrie statique du module C :
 |====
 |Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
 
@@ -236,7 +236,7 @@ a|
 
 [TIP]
 ====
-Il s'agit ici d'estimer le nombre d'appels aux composants et donc le débit cible (en TPS = Transactions par seconde) que devra absorber chacun d'entre eux. Un système bien dimensionné devra présenter des temps de réponse moyen du même ordre en charge nominale et en pic.
+Il s'agit ici d'estimer le nombre d'appels aux modules et donc le débit cible (en TPS = Transactions par seconde) que devra absorber chacun d'entre eux. Un système bien dimensionné devra présenter des temps de réponse moyen du même ordre en charge nominale et en pic.
 
 Toujours estimer le "pic du pic", c'est à dire le moment où la charge sera maximale suite au cumul de tous les facteurs (par exemple pour un système de comptabilité : entre 14 et 15h  un jour de semaine de fin décembre). 
 
@@ -245,7 +245,7 @@ Ne pas considérer que la charge est constante mais prendre en compte :
 * Les variations journalières. Pour une application de gestion avec des utilisateurs travaillant sur des heures de bureau, on observe en général des pics du double de la charge moyenne à 8h-9h, 11h-12h et 14h-15h. Pour une application Internet grand public, ce sera plutôt en fin de soirée. Encore une fois, se baser sur des mesures d'applications similaires quand c'est possible plutôt que sur des estimations.
 * Les éléments de saisonnalité. La plupart des métiers en possèdent : Noël pour l'industrie du chocolat, le samedi soir pour les admissions aux urgences, juin pour les centrales de réservation de séjours etc. La charge peut alors doubler voire plus. Il ne faut donc pas négliger cette estimation.
 
-Si le calcul du pic pour un composant en bout de chaîne de liaison est complexe (par exemple, un service central du SI exposant des données référentiel et  appelé par de nombreux composants qui ont chacun leur pic), on tronçonnera la journée en intervalles de temps suffisamment fins (une heure par exemple) et on calculera sur chaque intervalle la somme mesurée ou estimée des appels de chaque appelant (batch ou transactionnel) pour ainsi déterminer la sollicitation cumulée la plus élevée.
+Si le calcul du pic pour un module en bout de chaîne de liaison est complexe (par exemple, un service central du SI exposant des données référentiel et  appelé par de nombreux modules qui ont chacun leur pic), on tronçonnera la journée en intervalles de temps suffisamment fins (une heure par exemple) et on calculera sur chaque intervalle la somme mesurée ou estimée des appels de chaque appelant (batch ou transactionnel) pour ainsi déterminer la sollicitation cumulée la plus élevée.
 
 Si l'application tourne sur un cloud de type PaaS, la charge sera absorbée dynamiquement mais veiller à estimer le surcoût et à fixer des limites de consommation cohérentes pour respecter le budget tout en assurant un bon niveau de service.
 ====
@@ -264,7 +264,7 @@ Si l'application tourne sur un cloud de type PaaS, la charge sera absorbée dyna
 
 [TIP]
 ====
-Pour un composant technique (comme une instance de base de donnée) en bout de chaîne et sollicité par de nombreux services, il convient d'estimer le nombre de requêtes en pic en cumulant les appels de tous les clients et de préciser le ratio lecture /écriture quand cette information est pertinente (elle est très importante pour une base de donnée).
+Pour un service d'infrastructure (comme une instance de base de donnée) en bout de chaîne et sollicité par de nombreux services, il convient d'estimer le nombre de requêtes en pic en cumulant les appels de tous les clients et de préciser le ratio lecture /écriture quand cette information est pertinente (elle est très importante pour une base de donnée).
 
 Le niveau de détail de l'estimation dépend de l'avancement de la conception de l’application et de la fiabilité des hypothèses. 
 
@@ -383,17 +383,17 @@ Exemple 3 : les batchs et les IHM pouvant fonctionner en concurrence, il n’y 
 Nous donnons un dimensionnement final devant supporter la volumétrie statique et dynamique et respecter les exigences.
 ====
 
-### Estimation des besoins en ressources par composant technique
+### Estimation des besoins en ressources par unité déployable
 
 [TIP]
 ====
-Donner ici RAM, disque et CPU par instance de composant technique déployé (à affiner après campagne de performance ou MEP). 
+Donner ici RAM, disque et CPU par instance d'unité déployable (à affiner après campagne de performance ou MEP). 
 
 ====
 ====
 Exemple : 
 
-.Estimation des besoins en ressources par composant technique
+.Estimation des besoins en ressources par unité déployable
 [cols="2e,1e,1e,3e,2e"]
 |====
 | Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires

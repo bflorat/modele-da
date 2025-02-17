@@ -265,11 +265,11 @@ Exemple : cette application est de profil P3 : "Application Web Spring" avec uti
 Exemple : Utilisation de Reacts.js à titre expérimental au sein de l'organisation. Validé en commité architecture le …
 ====
 
-#### Composants logiciels
+#### Dépendances
 
 [TIP]
 ====
-Lister ici pour chaque composant les principales librairies et frameworks utilisés ainsi que leur version. Ne pas lister les librairies fournies au runtime par les serveurs d'application ou les frameworks. Inutile de trop détailler, donner uniquement les composants structurants.
+Lister ici pour chaque module les principales librairies et frameworks utilisés ainsi que leur version. Ne pas lister les librairies fournies au runtime par les serveurs d'application ou les frameworks. Inutile de trop détailler, donner uniquement les dépendances structurantes.
 ====
 ====
 Exemple :
@@ -277,14 +277,14 @@ Exemple :
 .Exemple de pile logicielle
 [cols="1e,4e,1e"]
 |====
-|Librairie|Rôle|Version 
+|Dépendance|Rôle|Version 
 
 |Framework Angular2
 |Framework JS de présentation
 |2.1.1 
 
 |JasperReport
-|Editique transactionnelle, composition des factures au format PDF
+|Éditique transactionnelle, composition des factures au format PDF
 |6.3.0
 |====
 ====
@@ -439,7 +439,7 @@ Exemple 3 : Types de tests
 |TI (tests d'intégration) 
 |Faible 
 |Automatisé 
-|Composants appelant des systèmes externes (bases de données, API…) 
+|Test appelant des systèmes externes (bases de données, API…) 
 |50 à 60% 
 |Chaque TI ne doit tester qu'un seul système externe à la fois 
 
@@ -545,7 +545,7 @@ En utilisant la formule SCI (voir plus haut), et pour une consommation totale du
 ====
 Lister ici les décisions prises concernant la gestion des transactions. Ceci est surtout utile pour un système distribué. Quelques exemples de problématiques : 
 
-* Autorise-t-on les mises jours sur de multiples composants lors d'une même requête ? 
+* Autorise-t-on les mises jours sur de multiples modules lors d'une même requête ? 
 * Si oui, assurons nous le caractère ACID du tout (via le mode XA par exemple) ? 
 * Quel moteur transactionnel utilisons nous ? 
 * Quel niveau d'isolation transactionnelle (read commited, uncommited, repeatable read, serializable) ?
@@ -700,7 +700,7 @@ Quelles sont les règles concernant l'encodage des chaînes de caractère ? Ceci
 ==== 
 
 ==== 
-Exemple 1 : Le seul encodage autorisé dans tous les modules et composants techniques est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat…), des sources, des fichiers de configuration, des bases de données et des fichiers. 
+Exemple 1 : Le seul encodage autorisé dans tous les modules et services d'infrastructure est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat…), des sources, des fichiers de configuration, des bases de données et des fichiers. 
 
 NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des  .properties (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en UTF-8. 
 

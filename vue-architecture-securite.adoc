@@ -75,7 +75,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 ====
 Lister ici les contraintes relatives à la sécurité, ceci inclut par exemple mais pas seulement :
 
-* L'isolation des composants au sein de zones réseaux étanches (DMZ, pare-feux, reverse-proxy…)
+* L'isolation des modules au sein de zones réseaux étanches (DMZ, pare-feux, reverse-proxy…)
 * Les normes applicables (comme les politiques de mot de passe)
 * Les contraintes légales (RGPD par exemple)
 
@@ -84,7 +84,7 @@ Lister ici les contraintes relatives à la sécurité, ceci inclut par exemple m
 Exemple 1 : la politique de mot de passe devra se conformer à la norme xyz
 ====
 ====
-Exemple 2 : il est formellement interdit à un composant de la zone internet d'accéder à la zone intranet 
+Exemple 2 : il est formellement interdit à un module de la zone internet d'accéder à la zone intranet 
 ====
 ====
 Exemple 3 : en application du RGPD, les données utilisateur devront être chiffrées
@@ -629,7 +629,7 @@ Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra g
 
 [TIP]
 ====
-Les comptes de service sont utilisés pour l'authentification à un composant technique depuis un batch ou une API.
+Les comptes de service sont utilisés pour l'authentification à un service d'infrastructure (comme une base de données) depuis un batch ou une API.
 ====
 
 .Comptes de service
@@ -638,7 +638,7 @@ Les comptes de service sont utilisés pour l'authentification à un composant te
 |Compte | Ressource requérant authentification | mode de stockage des credentials
 
 |Comptes JDBC (un compte par base de données) | Instances PG et SqlServer. 
-| Stockage en clair dans la configuration des datasources. Valorisé à partir des pilars Salt des API.
+| Stockage en clair dans la configuration des datasources. Valorisé à partir de ConfigMap Kubernetes.
 |====
 
 
@@ -647,7 +647,7 @@ Les comptes de service sont utilisés pour l'authentification à un composant te
 Dispositifs répondant aux <<exigences-non-repudiation,exigences de non répudiation>> :
 
 ====
-Exemple : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le composant X.
+Exemple : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le module X.
 ====
 
 [TIP]
@@ -700,7 +700,7 @@ Exemple 3 : Les  tables X, Y, .. seront historisées suivant le principe suiva
 Exemple 4 : tous les documents servant de preuve seront archivés dans la GED.
 ====
 ====
-Exemple 5 : Les logs contenant le tag `[PREUVE]` et issu de l’ensemble des composants seront centralisés via le système de centralisation de log Elastic Search puis insérés avec traitement Logstash de façon journalière vers l'index Elastic `preuves`.
+Exemple 5 : Les logs contenant le tag `[PREUVE]` et issu de l’ensemble des modules seront centralisés via le système de centralisation de log Elastic Search puis insérés avec traitement Logstash de façon journalière vers l'index Elastic `preuves`.
 ====
 
 ### Lutte contre les cybermenaces
@@ -754,7 +754,7 @@ Incluent :
 
 * Les solutions anti-malware qui suppriment les logiciels malveillants.
 * Les outils de restauration de sauvegardes (la connaissance du MTTR, défini dans la vue infrastructure, est cruciale pour la planification de la restauration).
-* Les outils et procédures permettant l'isolation de composants ou de zones compromises au sein du SI.
+* Les outils et procédures permettant l'isolation de modules ou de zones compromises au sein du SI.
 * Les outils de gestion de parc logiciel qui bloquent les logiciels non autorisés.
 * Les outils et méthodologies d'analyse forensique permettant d'analyser les logs pour comprendre les chemins d'une attaque et construire un post-mortem.
 * Les procédures et outils de réponse à une attaque.

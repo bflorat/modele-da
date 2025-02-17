@@ -4,7 +4,7 @@ header Diagramme de contexte système \nVue applicative générale \ndu projet M
 LAYOUT_WITH_LEGEND()
 Person_Ext(entreprise, "Entreprise","[Personne]")
 
-System_Boundary(administration, "Système administration B") {
+System_Ext(administration, "Système administration B") {
     System(p1, "Système comptabilité")        
 }
 

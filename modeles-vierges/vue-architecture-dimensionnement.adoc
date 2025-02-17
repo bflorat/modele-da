@@ -109,9 +109,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ## Dimensionnement cible
 
-### Estimation des besoins en ressources par composant technique
+### Estimation des besoins en ressources par unité déployable
 
-.Estimation des besoins en ressources par composant technique
+.Estimation des besoins en ressources par unité déployable
 [cols="2e,1e,1e,3e,2e"]
 |====
 | Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires

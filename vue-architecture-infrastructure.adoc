@@ -297,7 +297,7 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 ====
 
 ====
-Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel PERSONNE, elle sera colocalisée avec le composant PERSONNE dans le VLAN XYZ.
+Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel PERSONNE, elle sera colocalisée avec le module PERSONNE dans le VLAN XYZ.
 ====
 
 ### Contraintes réseau
@@ -310,14 +310,14 @@ Lister les contraintes liées au réseau, en particulier le débit maximum théo
 Exemple 1 : le LAN dispose d'un débit maximal de 10 Gbps
 ====
 ====
-Exemple 2 : les composants applicatifs des applications intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
+Exemple 2 : les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
 ====
 
 ### Contraintes de déploiement
 
 [TIP]
 ====
-Lister les contraintes liées au déploiement des applications et composants techniques.
+Lister les contraintes liées au déploiement des applications et services d’infrastructure.
 ====
 ====
 Exemple 1 : Une VM ne doit héberger qu'une unique instance Postgresql
@@ -473,7 +473,7 @@ Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en 
 
 [TIP]
 ====
-La robustesse du système indique sa capacité à ne pas produire d'erreurs lors d’événements exceptionnels comme une surcharge ou la panne de l'un de ses composants.
+La robustesse du système indique sa capacité à ne pas produire d'erreurs lors d’événements exceptionnels comme une surcharge ou la panne de l'un de ses composants d'infrastructure.
 
 Cette robustesse s'exprime en valeur absolue par unité de temps : nombre d'erreurs (techniques) par mois, nombre de messages perdus par an…
 
@@ -535,7 +535,7 @@ Préciser ici comment l’application devra être déployée coté serveur.
 Par exemple :
 
 * L'installation est-elle manuelle ? scriptées avec des outils d'IT Automation comme Ansible ou SaltStack ? via des images Docker ?
-* Comment sont déployés les composants ? Sous forme de paquets ? Utilise-t-on un dépôt de paquets (type yum ou apt) ? Utilise-t-on des conteneurs ?
+* Comment sont déployés les unités déployables (modules ou composants d'infrastructure) ? Sous forme de paquets ? Utilise-t-on un dépôt de paquets (type yum ou apt) ? Utilise-t-on des conteneurs ?
 * Comment sont appliquées les mises à jour ?
 ====
 
@@ -578,10 +578,10 @@ Exemple: L'application sera déployée sur un mode blue/green, c'est à dire com
 
 [TIP]
 ====
-Préciser ici les composants internes ou externes pouvant interférer avec l’application.
+Préciser ici les modules internes ou externes pouvant interférer avec l’application.
 ====
 ====
-Exemple 1  : Tous les composants de cette application doivent pouvoir fonctionner en concurrence. En particulier, la concurrence batch/IHM doit toujours être possible car les batchs devront pouvoir tourner de jour en cas de besoin de rattrapage
+Exemple 1  : Tous les modules de cette application doivent pouvoir fonctionner en concurrence. En particulier, la concurrence batch/IHM doit toujours être possible car les batchs devront pouvoir tourner de jour en cas de besoin de rattrapage
 ====
 ====
 Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé correctement sous peine de corruption de données.
@@ -618,7 +618,7 @@ Quels sont les grands principes d'infrastructure de notre application ?
 ====
 Exemples :
 
-* Les composants applicatifs exposés à Internet dans une DMZ protégée derrière un pare-feu puis un reverse-proxy et sur un VLAN isolé. 
+* Les modules applicatifs exposés à Internet dans une DMZ protégée derrière un pare-feu puis un reverse-proxy et sur un VLAN isolé. 
 * Concernant les interactions entre la DMZ et l’intranet, un pare-feu ne permet les communications que depuis l’intranet vers la DMZ
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
@@ -655,9 +655,9 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 *Principes de disponibilité et de redondance*: 
 
-* La *disponibilité d’un ensemble de composants en série* : `D = D1 * D2 * … * Dn`. Exemple : la disponibilité d’une application utilisant un serveur Tomcat à 98 % et une base Oracle à 99 % sera de 97.02 %. 
+* La *disponibilité d’un ensemble de composants d'infrastructure en série* : `D = D1 * D2 * … * Dn`. Exemple : la disponibilité d’une application utilisant un serveur Tomcat à 98 % et une base Oracle à 99 % sera de 97.02 %. 
 
-* La *disponibilité d’un ensemble de composants en parallèle* : `D = 1 – (1-D1) * (1- D2) * ..* (1-Dn)`. Exemple : la disponibilité de trois serveurs Nginx en cluster dont chacun possède une disponibilité de 98 % est de 99.999 %. 
+* La *disponibilité d’un ensemble de composants d'infrastructure en parallèle* : `D = 1 – (1-D1) * (1- D2) * ..* (1-Dn)`. Exemple : la disponibilité de trois serveurs Nginx en cluster dont chacun possède une disponibilité de 98 % est de 99.999 %. 
 
 * Il convient d'être cohérent sur la *disponibilité de chaque maillon de la chaîne de liaison* : rien ne sert d'avoir un cluster actif/actif de serveurs d'application JEE si tous ces serveurs attaquent une base de donnée localisée sur un unique serveur physique avec disques sans RAID. 
 
@@ -669,11 +669,11 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 ** *N* : aucune redondance (exemple : si l'alimentation unique d'un serveur tombe, le serveur s'arrête) 
 
-** *N+1* : un composant de rechange est disponible, on peut supporter la panne d'un matériel (exemple : on a une alimentation de spare disponible). 
+** *N+1* : un composant d'infrastructure de rechange est disponible, on peut supporter la panne d'un matériel (exemple : on a une alimentation de spare disponible). 
 
 ** *N+M*: Un seul spare n'est pas suffisant pour tenir la charge, on prévoit au moins M spares. 
 
-** *2N* : le système est entièrement redondé et peut supporter la perte de la moitié des composants (exemple : on dispose de deux alimentations actives en même temps dont chacune suffit à alimenter le serveur). Ce système est tolèrant aux pannes (Fault-tolerant). 
+** *2N* : le système est entièrement redondé et peut supporter la perte de la moitié des composants d'infrastructure (exemple : on dispose de deux alimentations actives en même temps dont chacune suffit à alimenter le serveur). Ce système est tolèrant aux pannes (Fault-tolerant). 
 
 ** *2N+1*: En plus d'un système entièrement redondé, un système de secours est disponible (pour les opérations de maintenance par exemple). 
 
@@ -755,7 +755,7 @@ Quelques mots sur les *répartiteurs de charge* :
 
 La *tolérance de panne* : 
 
-La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la Haute Disponibilité. Il s'agit d'une version plus stricte de HA où la *disponibilité est de 100% et aucune donnée ne peut être perdue* (Wikipédia: "La tolérance aux pannes est la propriété qui permet à un système de continuer à fonctionner correctement en cas de défaillance d'un ou de certains de ses composants"). Seuls les systèmes critiques (santé, militaires, transport, industrie…) ont en général besoin d'un tel niveau de disponibilité.
+La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la Haute Disponibilité. Il s'agit d'une version plus stricte de HA où la *disponibilité est de 100% et aucune donnée ne peut être perdue* (Wikipédia: "La tolérance aux pannes est la propriété qui permet à un système de continuer à fonctionner correctement en cas de défaillance d'un ou de certains de ses composants d'infrastructure"). Seuls les systèmes critiques (santé, militaires, transport, industrie…) ont en général besoin d'un tel niveau de disponibilité.
 
 Historiquement, cela signifiait une redondance matérielle complète. Dans un monde de micro-services, cela peut également être réalisé au niveau logiciel avec des clusters actifs-actifs. De plus, un véritable système de tolérance aux pannes devrait éviter une dégradation significative des performances vue par les utilisateurs finaux. 
 
@@ -782,7 +782,7 @@ Attention à *bien qualifier les exigences* avant de construire une architecture
 
 |Disques en RAID 1 |XXX|X|XXX 
 |Disques en RAID 5 |X|X|XX 
-|Redondance des alimentations et autres composants |XX|X|XX 
+|Redondance des alimentations et autres composants d'infrastructure |XX|X|XX 
 |Bonding des cartes Ethernet|XX|X|X 
 |Cluster actif/passif|XX|XX|XX 
 |Cluster actif/actif (donc avec LB)|XXX|XXX|XXX 
@@ -824,14 +824,14 @@ Exemple 2 : Pour atteindre la disponibilité de 99.97% exigée, les dispositifs 
 
 [TIP]
 ====
-Fournir ici le modèle de déploiement des composants en environnement cible sur les différents intergiciels et nœuds physiques (serveurs). 
+Fournir ici le modèle de déploiement des modules et composants d'infrastructure en environnement cible sur les différents intergiciels et nœuds physiques (serveurs). 
 Ne représenter les équipements réseau (pare-feu, appliances, routeurs…) que s'ils aident à la compréhension. 
 
 Tout naturellement, on le documentera de préférence avec un diagramme de déploiement UML2 ou un diagramme de déploiement C4.
 
 Pour les clusters, donner le facteur d'instanciation de chaque nœud.
 
-Donner au besoin en commentaire les contraintes d'affinité (deux composants doivent s'exécuter sur le même nœud ou le même intergiciel) ou d'anti-affinité (deux composants ne doivent pas s'exécuter sur le même nœud ou dans le même intergiciel).
+Donner au besoin en commentaire les contraintes d'affinité (deux modules doivent s'exécuter sur le même nœud ou le même intergiciel) ou d'anti-affinité (deux modules ne doivent pas s'exécuter sur le même nœud ou dans le même intergiciel).
 
 Identifier clairement le matériel dédié à l’application (et éventuellement à acheter).
 ====
@@ -851,7 +851,7 @@ Lister ici OS, bases de données, MOM, serveurs d'application, etc…
 .Exemple de composants d'infrastructure
 [cols="1e,2e,1e,2e"]
 |====
-|Composant|Rôle|Version |Environnement technique
+|Composant d'infrastructure|Rôle|Version |Environnement technique
 
 |CFT
 |Transfert de fichiers sécurisé
@@ -909,7 +909,7 @@ Les types de réseaux incluent les informations utiles sur le réseau utilisé a
 ====
 Donner ici une vision générale des environnements utilisés par l'application. Les environnements les plus communs sont : développement, recette, pré-production/benchmarks, production, formation.
 
-Dans les gros SI, il est souvent utile de segmenter les environnements en 'plateformes' (ou 'couloirs') constituées d'un ensemble de composants techniques isolés les uns des autres (même s'il peuvent partager des ressources communes comme des VM suivant la politique de l'organisation). Par exemple, un environnement de recette peut être constitué des plateformes `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
+Dans les gros SI, il est souvent utile de segmenter les environnements en 'plateformes' (ou 'couloirs') constituées d'un ensemble de machines isolées les unes des autres (même s'il peuvent partager des ressources communes comme suivant la politique de l'organisation). Par exemple, un environnement de recette peut être constitué des plateformes `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
 
 .Environnements
 [cols='1,2,2,2']
@@ -999,9 +999,9 @@ D'une façon générale, tous les appels distribués (en particulier HTTP(S) ver
 
 Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison. Garder en tête que dans une chaîne de liaison allant du client à la persistance, les timeouts devraient diminuer au fur et à mesure qu'on avance dans la chaîne de liaison (exemple: 10 secs sur le Reverse proxy , 8 secs sur le endpoint REST, 5 secs sur la base de donnée). 
 
-En effet, dans le cas contraire, un composant technique peut continuer à traiter une requête alors que son composant appelant a déjà abandonné, ce qui pose à la fois des problèmes de gaspillage de ressource mais surtout des effets difficile à prévoir. 
+En effet, dans le cas contraire, un service d'infrastructure (comme une base de données) peut continuer à traiter une requête alors que son module appelant a déjà abandonné, ce qui pose à la fois des problèmes de gaspillage de ressource mais surtout des effets difficile à prévoir. 
 
-Éviter également d'utiliser la même valeur dans tous les composants techniques pour éviter les effets inattendus lié à la concomitance des timeouts.
+Éviter également d'utiliser la même valeur dans tous les services d'infrastructure pour éviter les effets inattendus lié à la concomitance des timeouts.
 
 ====
 
@@ -1009,7 +1009,7 @@ En effet, dans le cas contraire, un composant technique peut continuer à traite
 Exemple : 
 
 |===
-|Composant|Timeout (ms)
+|Composant d'infrastructure|Timeout (ms)
 
 |Client Rest JavaScript | 5000
 |API Gateway | 4000
@@ -1033,7 +1033,7 @@ Si cette application reste dans le standard de l’organisation, se référer si
 
 [TIP]
 ====
-Préciser ici l’ordre de démarrage des machines et composants entre eux ainsi que l’ordre d’arrêt. En fonction des situations, on peut faire figurer les composants externes ou non. 
+Préciser ici l’ordre de démarrage des machines et modules entre eux ainsi que l’ordre d’arrêt. En fonction des situations, on peut faire figurer les modules externes ou non. 
 
 Le DEX contiendra une version plus précise de ce chapitre (notamment avec un numéro d'ordre SystemV ou un "Wants" SystemD précis), ce sont surtout les principes généraux des ordres d'arrêt et de démarrage qui doivent ici être décrits.
 
@@ -1243,12 +1243,12 @@ Sans être exhaustif sur les fichiers de logs (à prévoir dans le DEX), présen
 
 * Quelles sont les politiques de roulement des logs ? le roulement est-il applicatif (via un `DailyRollingFileAppender` log4j par exemple) ou système (typiquement par le démon logrotate) ?
 * Une centralisation de logs est-elle prévue ? (indispensable pour les architectures SOA ou micro-services). Voir par exemple la stack ELK.
-* Quel est le niveau de prolixité prévu par type de composant ? le débat en production est en général entre les niveaux WARN et INFO. Si les développeurs ont bien utilisé le niveau INFO pour des informations pertinentes (environnement au démarrage par exemple) et pas du DEBUG, fixer le niveau INFO.
+* Quel est le niveau de prolixité prévu par type de module ? le débat en production est en général entre les niveaux WARN et INFO. Si les développeurs ont bien utilisé le niveau INFO pour des informations pertinentes (environnement au démarrage par exemple) et pas du DEBUG, fixer le niveau INFO.
 * Des mesures anti-injection de logs sont-elles prévues (échappement XSS) ?
 
 ====
 ====
-Exemple 1 : les logs applicatifs du composant service-miel seront en production de niveau INFO avec roulement journalier et conservation deux mois.
+Exemple 1 : les logs applicatifs du module service-miel seront en production de niveau INFO avec roulement journalier et conservation deux mois.
 ====
 ====
 Exemple 2 : les logs seront échappés à leur création via la méthode `StringEscapeUtils.escapeHtml()` de Jakarta commons-lang.
@@ -1319,7 +1319,7 @@ Exemple : la pilotage de la supervision se basera sur la plate-forme Grafana.
 Préciser ici les conditions d'alertes et le canal utilisé
 ====
 ====
-Exemple : SMS si aucune demande depuis les 4 dernières heures ou si le nombre d'erreurs techniques d'un composant dépasse 10/h.
+Exemple : SMS si aucune demande depuis les 4 dernières heures ou si le nombre d'erreurs techniques d'un module dépasse 10/h.
 ====
 
 ##### Suivi des opérations programmées
@@ -1349,11 +1349,11 @@ Exemple 2 : Les jobs devront produire un rapport d'exécution à chaque lancemen
 
 [TIP]
 ====
-Il est également fortement souhaitable et peu coûteux de prévoir un système de tests de supervision boite-noire (via des scénarios déroulés automatiquement). L'idée est ici de tester un système dans son ensemble et avec une vue end-user la plus externe possible (à l'inverse d'une supervision whitebox pour laquelle on supervise des composants bien précis avec un comportement attendu).
+Il est également fortement souhaitable et peu coûteux de prévoir un système de tests de supervision boite-noire (via des scénarios déroulés automatiquement). L'idée est ici de tester un système dans son ensemble et avec une vue end-user la plus externe possible (à l'inverse d'une supervision whitebox pour laquelle on supervise des modules bien précis avec un comportement attendu).
 
 En général, ces tests sont simples (requêtes HTTP depuis un curl croné par exemple). Ils doivent être lancés depuis un ou plusieurs sites distants pour détecter les coupures réseaux. 
 
-Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si tel est le cas, il faudra être en mesure d'identifier dans tous les composants les données issues de ce type de requêtes pour ne pas polluer les données métier et les systèmes décisionnels.
+Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si tel est le cas, il faudra être en mesure d'identifier dans tous les modules les données issues de ce type de requêtes pour ne pas polluer les données métier et les systèmes décisionnels.
 ====
 ====
 Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via l'outil uptrends.com. En cas de panne, un mail est envoyé aux exploitants.
@@ -1367,7 +1367,7 @@ Suit-on les performances de l'application en production ? Cela permet :
 
 * De disposer d'un retour factuel sur les performances _in vivo_ et d'améliorer la qualité des décisions d’éventuelles redimensionnement de la plate-forme matérielle.
 * De détecter les pannes de façon proactive (suite à une chute brutale du nombre de requêtes par exemple).
-* De faire de l'analyse statistique sur l’utilisation des composants ou des services afin de favoriser la prise de décision (pour le décommissionnement d'une application par exemple).
+* De faire de l'analyse statistique sur l’utilisation des modules afin de favoriser la prise de décision (pour le décommissionnement d'une application par exemple).
 
 Il existe trois grandes familles de solutions :
 
@@ -1390,10 +1390,10 @@ Décrire de façon macroscopique la procédure envisagée ainsi que les retours 
 Décrire éventuellement un fonctionnement 'à blanc' en parallèle de l'ancien système avant activation.
 ====
 ====
-Exemple 1 : Le composant X sera remplacé par les services Y. Ensuite les données Oracle Z du silo seront migrées en one-shot via un script PL/SQL + DBLink vers l’instance XX avec le nouveau format de base du composant T.
+Exemple 1 : Le module X sera remplacé par les services Y. Ensuite les données Oracle Z du silo seront migrées en one-shot via un script PL/SQL + DBLink vers l’instance XX avec le nouveau format de base du module T.
 ====
 ====
-Exemple 2 : en cas de problème sur le nouveau composant, un retour arrière sera prévu : les anciennes données seront restaurées dans les deux heures et les nouvelles données depuis la bascule seront reprise par le script S1.
+Exemple 2 : en cas de problème sur le nouveau module, un retour arrière sera prévu : les anciennes données seront restaurées dans les deux heures et les nouvelles données depuis la bascule seront reprise par le script S1.
 ====
 
 ### Décommissionnement
@@ -1403,8 +1403,8 @@ Exemple 2 : en cas de problème sur le nouveau composant, un retour arrière se
 Ce chapitre sera instruit quand l’application arrive en fin de vie et devra être supprimée ou remplacée. Elle décrit entre autres :
 
 * Les données à archiver ou au contraire à détruire avec un haut niveau de confiance.
-* Les composants physiques à évacuer ou à détruire.
-* Les procédures de désinstallation coté serveur et/ou client (il est courant de voir des composants obsolètes toujours s’exécuter sur des serveurs et occasionner des problèmes de performance et de sécurité passant sous le radar).
+* Les équipements physiques à évacuer ou à détruire.
+* Les procédures de désinstallation coté serveur et/ou client (il est courant de voir des modules obsolètes toujours s’exécuter sur des serveurs et occasionner des problèmes de performance et de sécurité passant sous le radar).
 * Les contraintes de sécurité associées au décommissionnement (c’est une étape sensible souvent négligée, on peut retrouver par exemple des disques durs remplis de données très sensibles suite à un don de matériel).
 ====
 

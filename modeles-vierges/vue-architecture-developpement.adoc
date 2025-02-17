@@ -95,12 +95,12 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 #### Filière technique retenue
 
-#### Composants logiciels
+#### Dépendances
 
 .Pile logicielle
 [cols="1,4,1"]
 |====
-|Librairie|Rôle|Version 
+|Dépendance|Rôle|Version 
 
 |====
 

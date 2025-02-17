@@ -53,7 +53,7 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 ### Que ne trouve-t-on *PAS* dans ce document ?
 ** la *conception détaillée* du projet (diagrammes UML de classes, de séquences…) sauf pour présenter un pattern général spécifique à l’application ;
 ** des éléments d’*études* (SWOT, scénarios…) : les choix doivent déjà avoir été faits (en revanche, nous préconisons à cette fin l'écriture d'https://florat.net/comment-faire-de-bons-adr/[ADRs] en annexe du DA);
-** l’*urbanisation du SI* (nous nous positionnons ici au niveau d’une application ou d’un ensemble de composants cohérents) ;
+** l’*urbanisation du SI* (nous nous positionnons ici au niveau d’une application ou d’un ensemble de modules applicatifs cohérents) ;
 ** les *règles d'architecture de référence* (communes à toutes les applications) ;
 ** des détails techniques (IP, logins) pouvant compromettre la sécurité ;
 ** l'*architecture physique* (détails des serveurs et datacenters, architecture réseau, architecture de stockage, provisioning…). Il s'agit de sujets très pointus et en général traités par les architectes d'infrastructure à un niveau SI ;
@@ -66,8 +66,22 @@ ou utiliser https://github.com/bflorat/modele-da/issues)[les issues]) ;
 * **Comment documenter les trajectoires d'architecture ?** Nous préconisons de décrire la trajectoire générale (sans entrer dans trop de détails) dans la section "Architecture générale" de la vue applicative et d'en décrire l'architecture des futurs modules dans les sections habituelles des différents vues mais en spécifiant clairement de quelle étape il s'agit (par exemple, préfixer le titre d'un module ou d'un flux qui n’apparaît qu'en étape 2 avec `[Etape 2]`). Attention néanmoins à faire en sorte d'éviter trop de refactoring documentaire quand cette partie du projet sera implémentée (liens cassés par exemple).
    ** Traiter les étapes futures dans les mêmes sections que les éléments à implémenter immédiatement afin de les traiter suivant la même logique que le reste.
    ** Plus l'étape décrite est lointaine dans le temps, moins son architecture doit être détaillée (c'est un bon principe agile d'architecture 'Just In Time' qui évitera de réécrire de nombreuses fois ces sections).
-   ** Plus l'étape décrite est proche de l'architecture physique, moins elle doit être détaillée. Par exemple, il peut être pertinent de documenter dans la vue applicative l'architecture générale de modules qui devraient être implémentés dans un an mais attendre le plus possible pour documenter leur dimensionnement précis dans la vue dimensionnement. De même, vous pouvez documenter des flux applicatifs lointains mais attendez avant de décrire les flux techniques précis dans la vue infrastructure.    
-* **Pourquoi 'DA' et pas 'DAT' (dossier d'architecture technique) ou termes similaires ?** Chaque organisation possède sa terminologie propre mais le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
+   ** Plus l'étape décrite est proche de l'architecture physique, moins elle doit être détaillée. Par exemple, il peut être pertinent de documenter dans la vue applicative l'architecture générale de modules qui devraient être implémentés dans un an mais attendre le plus possible pour documenter leur dimensionnement précis dans la vue dimensionnement. De même, vous pouvez documenter des flux applicatifs lointains mais attendez avant de décrire les flux techniques précis dans la vue infrastructure.  
+
+## Terminologie  
+
+TIP: Les documentations d'architecture utilisent souvent plusieurs termes différents de façon interchangeable et ambiguë. Ce document d'architecture utilise (sauf erreur) une terminologie constante et cohérente. Nous avons évité les termes ambigus (comme 'service') et nous utilisons les termes les plus répandus dans la littérature et les contextes opérationnels.
+
+- **Pourquoi 'DA' et pas 'DAT' (dossier d'architecture technique) ou termes similaires ?** Chaque organisation possède sa terminologie propre mais le terme 'technique' (comme 'fonctionnel' d'ailleurs) est équivoque (qu'est ce qui n'est pas "technique" dans l'IT ?).
+
+- **Module** : Unité de code qui regroupe des fonctionnalités ou des services liés. Nous utilisons ce terme pour désigner les API (qui contiennent elles-mêmes des **endpoints**), les traitements par lots ou **batchs** (qui contiennent des **jobs**), et les IHM/GUI (interfaces graphiques).
+
+- **Application** : En architecture monolithique, une application complète d'un seul tenant. En architecture microservices, un ensemble logique de modules.
+
+- **Composant d'infrastructure** : Exécutable tiers ou équipement proposant des services d'infrastructure tels que la persistance pour une base de données, le messaging pour les queues, la répartition de charge pour un load-balancer, la détection de malwares pour une API antivirus, etc. Ne doit pas être confondu avec un 'composant' qui décrit une sous-partie logicielle d'un module ou d'une application monolithique (et qui est rarement documenté dans un DA car trop proche de l'implémentation).
+
+- **Unité déployable** : Paquet/artefact autonome (zip, war, jar, gem, .deb, image OCI/Docker, binaire, etc.) qui contient les exécutables d'un module (ex : 'jar' d'une application Spring Boot, archive d'une application PHP ou JS) ou d'un composant d'infrastructure (ex : 'deb' d'installation d'une base de données PostgreSQL).
+
 
 ## Licence
 * Copyright (c) 2017-2025 Bertrand Florat et contributeurs
