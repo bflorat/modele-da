@@ -313,14 +313,13 @@ Ne pas faire figurer les nombreux systèmes d'infrastructure (serveur SMTP, disp
 ====
 
 ====
-Exemple 1 : MesInfosEnLigne permet à une entreprise de récupérer par mail un document récapitulant toutes les informations dont l’administration dispose sur elle. L'administration peut compléter ses données par celles d'une autre administration.
+Exemple 1 : Suite à la dérogation du DSI le 03 aout 20xx, l'IHM sera en architecture SPA (Single Page Application)
 ====
+
 ====
-Exemple 2 : MesInfosEnLigne est constituée de plusieurs microservices indépendants (modules IHM, batchs ou services REST)
+Exemple 2 : MesInfosEnLigne (MIEL) permet à une entreprise de récupérer par mail un document récapitulant toutes les informations dont l’administration dispose sur elle. L'administration peut compléter ses données par celles d'une autre administration. Elle  est constituée de plusieurs modules indépendants (modules IHM, batchs ou services REST)
 ====
-====
-Exemple 3 : Suite à la dérogation du DSI le 03 aout 20xx, l'IHM sera en architecture SPA (Single Page Application)
-====
+
 
 image::diagrammes/archi-applicative-generale.svg[Diagramme architecture applicative générale]
 
@@ -328,20 +327,13 @@ image::diagrammes/archi-applicative-generale.svg[Diagramme architecture applicat
 
 [TIP]
 ====
-Détailler ici tous les modules de l’application, leurs flux entre eux et avec les autres applications du SI.
+Détailler ici tous les modules de l’application, leurs interdépendances ainsi que les échanges avec d'autres applications du SI ou de partenaires.
+
+Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux modules alors qu'en réalité, il passe par un répartiteur de charge intermédiaire : ce niveau de détail sera donné dans la vue infrastructure). 
 
 Proposer un ou plusieurs schémas (de préférence des diagrammes C4 de type conteneurs ou diagramme UML2 de composant). 
 
 Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhensible par un non-technicien. Il devrait devenir l'un des artefacts documentaires les plus importants et figurer dans la war room d'un projet agile ou être imprimé par chaque développeur. 
-
-Si l'application est particulièrement complexe, faire un schéma par chaîne de liaison.
-
-Utiliser comme ID des flux une simple séquence non signifiante (1, 2, …, n).
-Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux modules alors qu'en réalité, il passe par un répartiteur de charge intermédiaire : ce niveau de détail sera donné dans la vue infrastructure). 
-
-Pour chaque flux, donner le protocole, un attribut synchrone/asynchrone, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur.
-
-Nous fournissons des patterns et des détails à ce sujet dans https://florat.net/architecture-as-code-with-c4-and-plantuml/[cet article].
 
 ====
 
@@ -375,7 +367,13 @@ Exposer les dépendances entre l'ensemble des modules applicatifs dans leurs dif
 
 Si (et seulement si) la complexité de l'application le justifie, proposer en plus de ce schéma global un schéma détaillant chaque chaîne de liaison principale en numérotant les échanges (utiliser un diagramme de séquence ou (mieux) un Dynamic Diagram C4). 
 
+Utiliser comme ID des flux une simple séquence non signifiante et hiérarchique  (1, 2.1, 2.2.3, …, n).
+
+Pour chaque flux, donner le protocole, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur. Si le flux est asynchrone, le spécifier (dans l'exemple plus bas, l'appel est en pointillés).
+
 Chaque chaîne de liaison décrit une fonctionnalité majeure. Dans les cas d'enchaînements complexes, il est préconisé de découper la fonctionnalité en plusieurs chaines de liaison comprenant uniquement des appels synchrones (voir https://florat.net/architecture-as-code-with-c4-and-plantuml/[cet article]). 
+
+
 ====
 ====
 Exemple: 
