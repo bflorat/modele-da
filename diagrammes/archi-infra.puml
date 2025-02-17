@@ -39,7 +39,7 @@ Node("dc","Datacenter","Paris"){
 
     Node("bdd1", "Serveur BDD","RHEL")  { 
       ContainerDb("pg1","PostgreSQL","PostgreSQL 12")
-      ContainerDb("mq1", "File de messages", "RabbitMQ")
+      ContainerDb("mq1", "File de messages", "ActiveMQ")
       Container("mail1","MTA","Postfix")
     }
 

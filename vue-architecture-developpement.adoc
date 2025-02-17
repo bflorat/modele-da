@@ -343,7 +343,7 @@ N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimis
 Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continue) de l'organisation, préciser si ce projet nécessite une configuration particulière.
 ====
 ====
-Exemple : Les jobs Jenkins produiront le logiciel sous forme de containers Docker si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce container. Si tous les tests d’intégration et BDD sont passants, l'image Docker est releasée dans Nexus.
+Exemple : Les jobs Jenkins produiront le logiciel sous forme de conteneurs Docker si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce conteneur. Si tous les tests d’intégration et BDD sont passants, l'image Docker est livrée dans Nexus.
 ====
 
 ### Bonnes pratiques

@@ -1,18 +1,22 @@
 @startuml archi-applicative-detaillee-dynamique
 !include archi-applicative-detaillee-inventaire.puml
-header Diagramme de containeurs \nVue applicative détaillée dynamique\n Projet Mes Infos En Ligne (MIEL)
-Rel(entreprise,resources_statiques,"Visite https://mesinfos.gouv.fr", "HTTPS, synchrone, lecture seule")
+header Vue applicative détaillée dynamique\nL: Lecture, E: Écriture, X: Exécution, S: Suppression\nLiaisons en pointillé : appel asynchrone.
+
+AddRelTag("async", $lineStyle = DashedLine())
+
+Rel(entreprise,resources_statiques,"Visite https://mesinfos.gouv.fr", "HTTPS, L")
 Rel(entreprise,spa,"Récupère ses informations via")
 Rel(entreprise,mobile,"Récupère ses informations via")
-Rel(resources_statiques,spa,"Fournit au navigateur Web du client","HTTPS, synchrone, lecture seule")
-Rel(spa, sm, "[1.1] Demande d'information","HTTPS, synchrone, lecture seule")
-Rel(mobile, sm, "[1.1] Demande d'information","HTTPS, synchrone, lecture seule")
-Rel(sm, bdd, "[1.2] Historisation de la demande","JDBC, synchrone, écriture")
-Rel(sm, file, "[1.3] Stockage de la demande","JMS, synchrone, écriture")
-Rel(batch, file, "[2.1] Dépile les demandes","JMS, asynchrone, lecture puis suppression")
-Rel(batch, scompta, "[2.2] Récupération informations comptables","HTTPS, synchrone, lecture seule")
-Rel(batch, compo, "[2.3] Création PDF","HTTP, synchrone, lecture")
-Rel(batch, smails, "[2.4] Demande d'envoi mail avec PDF","SMTP, synchrone, exécution")
-Rel(smails, smails, "[2.5] Envoi mail avec PDF","SMTP, synchrone,exécution")
+Rel(resources_statiques,spa,"Fournit au navigateur Web du client","HTTPS, L")
+Rel(spa, sm, "[1.1] Demande d'information","HTTPS, L")
+Rel(mobile, sm, "[1.1] Demande d'information","HTTPS, L")
+Rel(sm, bdd, "[1.2] Historisation de la demande","JDBC, E")
+Rel(sm, file, "[1.3] Stockage de la demande","JMS, E")
+Rel(batch, file, "[2.1] Dépile les demandes","JMS, L + S", $tags="async")
+Rel(batch, scompta, "[2.2] Récupération informations comptables","HTTPS, L")
+Rel(batch, compo, "[2.3] Création PDF","HTTP, L")
+Rel(batch, smails, "[2.4] Demande d'envoi mail avec PDF","SMTP, X")
+Rel(smails, smails, "[2.5] Envoi mail avec PDF","SMTP, X")
+
 @enduml
 

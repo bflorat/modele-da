@@ -535,7 +535,7 @@ Préciser ici comment l’application devra être déployée coté serveur.
 Par exemple :
 
 * L'installation est-elle manuelle ? scriptées avec des outils d'IT Automation comme Ansible ou SaltStack ? via des images Docker ?
-* Comment sont déployés les composants ? Sous forme de paquets ? Utilise-t-on un dépôt de paquets (type yum ou apt) ? Utilise-t-on des containeurs ?
+* Comment sont déployés les composants ? Sous forme de paquets ? Utilise-t-on un dépôt de paquets (type yum ou apt) ? Utilise-t-on des conteneurs ?
 * Comment sont appliquées les mises à jour ?
 ====
 

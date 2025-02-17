@@ -1,6 +1,6 @@
 @startuml archi-applicative-detaillee-inventaire
 !include <C4/C4_Container>
-header Diagramme de containeurs \nVue inventaire \n Projet Mes Infos En Ligne (MIEL)
+header Diagramme de conteneurs \nVue inventaire \n Projet Mes Infos En Ligne (MIEL)
 LAYOUT_WITH_LEGEND()
 
 System_Boundary(company_system, "SI d'une entreprise") {
@@ -17,9 +17,9 @@ System_Boundary(si, "Système d'information"){
     Container(resources_statiques, "Application Web ihm-miel", "Container: nginx","Délivre les ressources statiques (js, html, images...) de l'IHM MIEL")
     Container(sm, "service-miel", "Container: Tomcat, Spring Boot","Service REST permettant de faire une demande d'informations")
     Container(batch, "batch-traiter-demandes", "Container: groovy","Traite les demandes, lancé par cron toutes les minutes")
-    ContainerDb(file,"file-demandes","Container: RabbitMQ","Stocke les demandes")
+    ContainerDb(file,"file-demandes","Container: ActiveMQ","Stocke les demandes")
     ContainerDb(bdd,"bdd-miel","Container: PostgreSQL","Base interne")
-    Container(compo,"service-compo-pdf","Container: Wildfly, JasperReport", "Service REST de composition")
+    Container(compo,"service-compo-pdf","Container: Wildfly + JasperReport", "Service REST de composition")
     Container(smails,"serveur-mail","Container: Postfix","Envoi les e-mails")     
 }
 @enduml

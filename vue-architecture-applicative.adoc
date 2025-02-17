@@ -330,7 +330,7 @@ image::diagrammes/archi-applicative-generale.svg[Diagramme architecture applicat
 ====
 Détailler ici tous les composants de l’application, leurs flux entre eux et avec les autres applications du SI.
 
-Proposer un ou plusieurs schémas (de préférence des diagrammes C4 de type containers ou diagramme UML2 de composant). 
+Proposer un ou plusieurs schémas (de préférence des diagrammes C4 de type conteneurs ou diagramme UML2 de composant). 
 
 Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhensible par un non-technicien. Il devrait devenir l'un des artefacts documentaires les plus importants et figurer dans la war room d'un projet agile ou être imprimé par chaque développeur. 
 
