@@ -305,7 +305,7 @@ Si l'application est prévue pour être implémentée en plusieurs étapes, déc
 [TIP]
 ====
 
-Le choix de la représentation est libre mais un diagramme C4 de System Landscape semble le plus adapté.
+Le choix de la représentation est libre mais un diagramme C4 de System Landscape semble le plus adapté. Nous fournissons des patterns et des détails à ce sujet dans https://florat.net/architecture-as-code-with-c4-and-plantuml/[cet article].
 
 Numéroter les étapes par ordre chronologique assure une meilleure compréhension du schéma. Grouper les sous étapes par la notation x, x.y, x.y.z, …
 
@@ -319,7 +319,6 @@ Exemple 1 : Suite à la dérogation du DSI le 03 aout 20xx, l'IHM sera en archit
 ====
 Exemple 2 : MesInfosEnLigne (MIEL) permet à une entreprise de récupérer par mail un document récapitulant toutes les informations dont l’administration dispose sur elle. L'administration peut compléter ses données par celles d'une autre administration. Elle  est constituée de plusieurs modules indépendants (modules IHM, batchs ou services REST)
 ====
-
 
 image::diagrammes/archi-applicative-generale.svg[Diagramme architecture applicative générale]
 

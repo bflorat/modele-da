@@ -1001,7 +1001,7 @@ Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison.
 
 En effet, dans le cas contraire, un service d'infrastructure (comme une base de données) peut continuer à traiter une requête alors que son module appelant a déjà abandonné, ce qui pose à la fois des problèmes de gaspillage de ressource mais surtout des effets difficile à prévoir. 
 
-Éviter également d'utiliser la même valeur dans tous les services d'infrastructure pour éviter les effets inattendus lié à la concomitance des timeouts.
+Éviter également d'utiliser la même valeur dans tous les composants d'infrastructure pour éviter les effets inattendus lié à la concomitance des timeouts.
 
 ====
 
@@ -1009,7 +1009,7 @@ En effet, dans le cas contraire, un service d'infrastructure (comme une base de 
 Exemple : 
 
 |===
-|Composant d'infrastructure|Timeout (ms)
+|Module ou Composant d'infrastructure|Timeout (ms)
 
 |Client Rest JavaScript | 5000
 |API Gateway | 4000

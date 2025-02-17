@@ -149,7 +149,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Déploiement en production
 
-### Versions des services d'infrastructure
+### Versions des composants d'infrastructure
 
 .Services d'infrastructure
 [cols="1,2,1,2"]
