@@ -9,9 +9,9 @@
 
 *Dernière modification* : {docdate} 
 
-*Date dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date de la dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
 
-*Statut du document* :  _<Donner ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+*Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
 
 ## Introduction
@@ -43,9 +43,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 ## Non statué
 
-### Points soumis à étude complémentaire
+### Points nécessitant une étude complémentaire
 
-.Points soumis à étude complémentaire
+.Points nécessitant une étude complémentaire
 [cols="1e,3e,1e,1e,2e"]
 |====
 |ID|Détail|Statut|Porteur du sujet | Échéance

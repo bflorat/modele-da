@@ -9,7 +9,7 @@
 
 *Dernière modification* : {docdate} 
 
-*Date dernière revue globale* : 
+*Date de la dernière revue globale* : 
 
 *Statut du document* :  
 
@@ -38,9 +38,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ## Non statué
 
-### Points soumis à étude complémentaire
+### Points nécessitant une étude complémentaire
 
-.Points soumis à étude complémentaire
+.Points nécessitant une étude complémentaire
 [cols="1,6,1,1,1"]
 |===
 |Sujet| Détail | Statut| Porteur du sujet  | Échéance

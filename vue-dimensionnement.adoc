@@ -8,9 +8,9 @@
 
 *Dernière modification* : {docdate} 
 
-*Date dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date de la dernière revue globale* :  _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
 
-*Statut du document* :  _<Donner ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+*Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
 
 ## Introduction
@@ -37,9 +37,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ## Non statué
 
-### Points soumis à étude complémentaire
+### Points nécessitant une étude complémentaire
 
-.Points soumis à étude complémentaire
+.Points nécessitant une étude complémentaire
 [cols="1e,1e,1e,2e,2e"]
 |====
 |ID| Détail |Statut |Porteur du sujet  | Échéance
@@ -177,7 +177,7 @@ Fournir également une estimation de l'augmentation annuelle en % du volume pour
 
 Pour les calculs de volumétrie, penser à prendre en compte les spécificités de l'encodage (nombre d’octets par caractère, par date, par valeur numérique…). 
 
-Pour une base de donnée, prévoir l'espace occupé par les index et qui est très spécifique à chaque application. Une (très piètre) estimation préliminaire est de doubler l'espace disque (à affiner ensuite).
+Pour une base de données, prévoir l'espace occupé par les index et qui est très spécifique à chaque application. Une (très piètre) estimation préliminaire est de doubler l'espace disque (à affiner ensuite).
 
 N'estimer que les données dont la taille est non négligeable (plusieurs Gio minimum).
 ====
@@ -238,7 +238,7 @@ a|
 ====
 Il s'agit ici d'estimer le nombre d'appels aux modules et donc le débit cible (en TPS = Transactions par seconde) que devra absorber chacun d'entre eux. Un système bien dimensionné devra présenter des temps de réponse moyen du même ordre en charge nominale et en pic.
 
-Toujours estimer le "pic du pic", c'est à dire le moment où la charge sera maximale suite au cumul de tous les facteurs (par exemple pour un système de comptabilité : entre 14 et 15h  un jour de semaine de fin décembre). 
+Toujours estimer le "pic du pic", c'est-à-dire le moment où la charge sera maximale suite au cumul de tous les facteurs (par exemple pour un système de comptabilité : entre 14 et 15h  un jour de semaine de fin décembre). 
 
 Ne pas considérer que la charge est constante mais prendre en compte :
 
@@ -264,7 +264,7 @@ Si l'application tourne sur un cloud de type PaaS, la charge sera absorbée dyna
 
 [TIP]
 ====
-Pour un service d'infrastructure (comme une instance de base de donnée) en bout de chaîne et sollicité par de nombreux services, il convient d'estimer le nombre de requêtes en pic en cumulant les appels de tous les clients et de préciser le ratio lecture /écriture quand cette information est pertinente (elle est très importante pour une base de donnée).
+Pour un service d'infrastructure (comme une instance de base de données) en bout de chaîne et sollicité par de nombreux services, il convient d'estimer le nombre de requêtes en pic en cumulant les appels de tous les clients et de préciser le ratio lecture /écriture quand cette information est pertinente (elle est très importante pour une base de données).
 
 Le niveau de détail de l'estimation dépend de l'avancement de la conception de l’application et de la fiabilité des hypothèses. 
 
@@ -274,7 +274,7 @@ Enfin, garder en tête qu'il s'agit simplement d'estimation à valider lors de c
 ====
 
 ====
-Exemple : la base de donnée Oracle BD01 est utilisée en lecture par les appels REST `GET DetailArticle` fait depuis l'application end-user et en mise à jour par les appels POST et PUT sur `DetailArticle` issus du batch d'alimentation B03 la nuit entre 01:00 et 02:00.
+Exemple : la base de données Oracle BD01 est utilisée en lecture par les appels REST `GET DetailArticle` fait depuis l'application end-user et en mise à jour par les appels POST et PUT sur `DetailArticle` issus du batch d'alimentation B03 la nuit entre 01:00 et 02:00.
 
 .Exemple estimations nombre de requêtes SQL en pic vers l'instance BD01 de 01:00 à 02:00 en décembre
 |====

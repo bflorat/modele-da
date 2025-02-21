@@ -6,11 +6,11 @@
 :icons: font
 :toc-title: Sommaire
 
-*Dernière modification* : {docdate} 
+*Dernière modification* : _{docdate}_
 
-*Date dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date de la dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
 
-*Statut du document* :  _<Donner ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+*Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
 ## Introduction
 
@@ -22,7 +22,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Documentation de Référence
 
-Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et inmaintenable.
+Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu, sous peine de devenir rapidement obsolète et immaintenable.
 
 .Références documentaires
 [cols="1e,1e,4e,4e"]
@@ -34,9 +34,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 
 ## Non statué
 
-### Points soumis à étude complémentaire
+### Points nécessitant une étude complémentaire
 
-.Points soumis à étude complémentaire
+.Points nécessitant une étude complémentaire
 [cols="1e,6e,1e,1e,1e"]
 |===
 |Sujet| Détail | Statut| Porteur du sujet  | Échéance
@@ -45,7 +45,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |En fonction de l’avancement du projet Y, ce module applicatif pourrait appeler les services de ce dernier ou ceux de l’ancien module Z
 |EN_ATTENTE
 |Projet Y
-|AVANT 2040
+|Avant 2040
 |===
 
 ### Hypothèses
@@ -56,7 +56,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |ID| Détail
 
 |HA1
-|Même si la décision de généralisation de l'annuaire centralisé n'est pas totalement entérinée, l’application s’appuiera dessus et non sur un annuaire local.
+|Même si la décision de généralisation de l'annuaire centralisé n'est pas totalement entérinée, l’application s’appuiera sur celui-ci et non sur un annuaire local..
 |====
 
 ## Contexte général
@@ -70,16 +70,16 @@ Décrire succinctement le projet et en rappeler les objectifs. Mettre en éviden
 Exemple 1 : Cette application doit permettre la dématérialisation des factures reçues de nos fournisseurs et une consultation aisée de ces documents par les services comptables.
 ====
 ====
-Exemple 2 : ce projet est la réécriture en technologies Web de l’application Cobol X. Elle doit en faciliter la maintenance.
+Exemple 2 : Ce projet consiste en la réécriture en version Web de l’application Cobol X. Elle doit en faciliter la maintenance.
 ====
 ====
-Exemple 3: l’ application X est l’un des modules principaux du programme Y. Il s’adosse sur les référentiels Personne et Facturation pour enrichir le CMS en données clients temps réel.
+Exemple 3: l’application X est l’un des modules principaux du programme Y. Il s’adosse sur les référentiels `Personne` et `Facturation` pour enrichir le CMS en données clients temps réel.
 ====
 
 ### Existant
 
 [TIP]
-Si ce document présente un projet de refonte ou migration, décrire a minima l'application existante. Ne pas reprendre la documentation, y faire simplement référence et pointer vers son éventuel dossier d'architecture. Mentionner néanmoins toute information ayant un impact fort sur la migration ou la conception du nouveau projet.
+Si ce document présente un projet de refonte ou de migration, décrire a minima l'application existante. Ne pas reprendre la documentation, y faire simplement référence et pointer vers son éventuel dossier d'architecture. Mentionner néanmoins toute information ayant un impact fort sur la migration ou la conception du nouveau projet.
 ====
 Exemple 1 : L'application VENIR2 est une application Client-Server en FORMS 4 pointant vers une base Oracle 9i. Son dossier d'architecture est donné en [REFxyz].
 ====
@@ -90,17 +90,17 @@ Exemple 2 : L'application existante se base et alimente un annuaire LDAP pour se
 ### Positionnement dans le SI
 
 [TIP] 
-Si le SI est urbanisé, reprendre le plan d’occupation au sol et préciser le bloc concerné 
+Si le SI est urbanisé, reprendre le plan d’occupation au sol et préciser le bloc concerné.
 
 ### Acteurs
 
 #### Acteurs internes 
 
 [TIP]
-On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peut s’agir d'humains ou de modules applicatifs.
+Par ‘internes’, on entend les acteurs appartenant à l’organisation, qu’il s’agisse d’humains ou de modules applicatifs.
 
 .Liste des acteurs internes
-[cols="1e,1e,4e,4e"]
+[cols="2e,3e,2e,2e"]
 |===
 |Acteur|Description|Population|Localisation
 
@@ -119,17 +119,17 @@ On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peu
 #### Acteurs externes
 
 .Liste acteurs externes
-[cols="e,e,e,e"]
+[cols="2e,3e,2e,2e"]
 |===
 |Acteur| Description| Population| Localisation
 
 |Client Web
-|Une entreprise depuis un PC
+|Un utilisateur pro depuis un PC
 |Max 1M
 |Monde entier
 
 |Client mobile
-|Une entreprise depuis un mobile
+|Un utilisateur pro depuis un mobile
 |Max 2M
 |Monde entier
 |===
@@ -138,19 +138,19 @@ On entend par ‘internes’ les acteurs appartenant à l’organisation. Il peu
 
 ### Budget
 
-TIP: Donner les contraintes budgétaires du projet
+TIP: Donner un ordre de grandeur des contraintes budgétaires du projet (ou donner un lien vers un document pertinent).
 ====
-Exemple 1: Enveloppe globale de 1 M€
+Exemple 1: Enveloppe globale de 1 M€.
 ====
 ====
-Exemple 2: Coûts d'infrastructure cloud < 20K€ / mois
+Exemple 2: Coûts d'infrastructure cloud inférieurs à 20 K€ par mois.
 ====
 
 ### Planning
 
-TIP: Sans reprendre dans le détail les plannings du projet, donner les éléments intéressants pour l'architecture.
+TIP: Sans reprendre dans le détail les plannings du projet, donner les éléments pertinents pour l'architecture.
 ====
-Exemple 1: MEP avant fev 2034, prérequis au programme HEAVY en mai 2034.
+Exemple 1: Mise en production avant février 2034, prérequis au programme HEAVY en mai 2034.
 ====
 
 ### Urbanisation
@@ -159,26 +159,26 @@ Exemple 1: MEP avant fev 2034, prérequis au programme HEAVY en mai 2034.
 ====
 Lister ici les contraintes relatives à l'urbanisation, ceci inclut par exemple mais pas seulement :
 
-* Les règles applicables dans les appels entre modules (SOA)
-* Les règles d'appels entre zones réseau
-* Les règles concernant la localisation des données (MDM)
-* Les règles concernant la propagation des mises à jours par événements (EDA)
+* Les règles applicables dans les appels entre modules (SOA) ;
+* Les règles d'appels entre zones réseau ;
+* Les règles concernant la localisation des données (MDM) ;
+* Les règles concernant la propagation des mises à jours par événements (EDA).
 
 ====
 ====
-Exemple 1 : les appels inter-services sont interdits sauf les appels de services à un service de nomenclature.
+Exemple 1 : Les appels inter-services sont interdits sauf les appels de services à un service de nomenclature.
 ====
 ====
-Exemple 2 : pour en assurer la fraîcheur, il est interdit de répliquer les données du référentiel PERSONNE. Ce dernier devra être interrogé au besoin en synchrone.
+Exemple 2 : Pour en assurer la fraîcheur, il est interdit de répliquer les données du référentiel PERSONNE. Ce dernier devra être interrogé au besoin en synchrone.
 ====
 ====
-Exemple 3 : Lors de la modification d'une commande, les zones comptabilité et facturation seront mises à jour de façon asynchrone via un événement.
+Exemple 3 : Lors de la modification d'une commande, les zones `comptabilité` et `facturation` se mettront à jour de façon asynchrone via un événement.
 ====
 ====
-Exemple 4 : tous les batchs doivent pouvoir fonctionner en concurrence des IHM sans verrouillage des ressources.
+Exemple 4 : Tous les batchs doivent pouvoir fonctionner en parallèle des IHM sans verrouillage des ressources.
 ====
 ====
-Exemple 5 : les services ne peuvent être appelés directement. Les appels se feront obligatoirement via une route exposée au niveau du bus d'entreprise qui appellera à son tour le service. Il est alors possible de contrôler, prioriser, orchestrer ou piloter les appels.
+Exemple 5 : Les services ne peuvent être appelés directement. Les appels se feront obligatoirement via une route exposée au niveau du bus d'entreprise qui appellera à son tour le service. Il est alors possible de contrôler, prioriser, orchestrer ou piloter les appels.
 ====
 ====
 Exemple 6 : Les modules de cette application suivent l'architecture SOA telle que définie dans le document de référence X.
@@ -244,19 +244,19 @@ L'archivage est la recopie de données importantes sur un support dédié offlin
 
 Précisez si des données de l’application doivent être conservées à long terme. Précisez les raisons de cet archivage (https://www.service-public.fr/professionnels-entreprises/vosdroits/F10029[légales] le plus souvent).
 
-Précisez si des dispositifs spécifiques de protection de l'intégrité (pour empêcher toute modification principalement) doivent être mis en place.
+Précisez si des dispositifs spécifiques de protection de l'intégrité (pour prévenir ou détecter toute modification) doivent être mis en place.
 ====
 
 ====
 Exemple 1: comme exigé par l'article L.123-22 du code de commerce, les données comptables devront être conservées au moins dix ans.
 ====
 ====
-Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte SHA256 sera calculée au moment de l'archivage et stockée séparément pour vérification de l'intégrité des documents en cas de besoin.
+Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte SHA-512 sera calculée au moment de l'archivage et stockée séparément pour vérification de l'intégrité des documents au besoin.
 ====
 
 ### Durées de rétention
 
-TIP: Précisez ici combien de temps doivent être conservées les données et documents persistés par vos modules applicatifs. À noter que ces durées peuvent être contraintes par le droit (voir contraintes juridiques plus haut), par exemple dans le cadre du droit à l'oubli du RGPD.
+TIP: Précisez ici combien de temps doivent être conservées les données et documents stockés par vos modules applicatifs. À noter que ces durées peuvent être contraintes par le droit (voir contraintes juridiques plus haut), par exemple dans le cadre du droit à l'oubli du RGPD.
 
 TIP: Ne pas oublier de mentionner les données techniques (comme les logs ou les tables techniques) ainsi que les archives.
 
@@ -290,12 +290,12 @@ Exemple :
 
 [TIP]
 ====
-Présenter ici l'application dans son ensemble (sans détailler ses modules ou composants) en relation avec les autres applications du SI. Présenter également les macro-données échangées ou stockées. 
+Présenter ici l'application dans son ensemble (sans détailler ses modules ou composants) en relation avec les autres applications du SI. Présenter également les principales données échangées ou stockées. 
 
 Rappeler :
 
- * Le type d'architecture (client-serveur, Web monolithique, SOA, micro-service, event-driven…).
- * Les flux principaux entre les modules (micro-service/SOA) ou applications (monolithe).
+ * Le type d'architecture (client-serveur, Web monolithique, SOA, micro-service, event-driven…) ;
+ * Les flux principaux entre les modules (micro-service/SOA) ou applications (monolithe) ;
  * D'éventuelles dérogations aux règles d'architecture du SI.
  
 Si l'application est prévue pour être implémentée en plusieurs étapes, décrire succinctement la trajectoire cible.
@@ -305,30 +305,26 @@ Si l'application est prévue pour être implémentée en plusieurs étapes, déc
 [TIP]
 ====
 
-Le choix de la représentation est libre mais un diagramme C4 de System Landscape semble le plus adapté. Nous fournissons des patterns et des détails à ce sujet dans https://florat.net/architecture-as-code-with-c4-and-plantuml/[cet article].
+Le choix de la représentation est libre mais un diagramme https://c4model.com/diagrams/system-landscape[C4 System Landscape] semble le plus adapté. Nous fournissons des patterns et des détails à ce sujet dans https://florat.net/architecture-as-code-with-c4-and-plantuml/[cet article].
 
-Numéroter les étapes par ordre chronologique assure une meilleure compréhension du schéma. Grouper les sous étapes par la notation x, x.y, x.y.z, …
-
-Ne pas faire figurer les nombreux systèmes d'infrastructure (serveur SMTP, dispositif de sécurité, reverse proxy, annuaires LDAP, …) qui sont du domaine de l'architecture technique. Mentionner en revanche les éventuels bus d'entreprise qui ont un rôle applicatif (orchestration de service par exemple).
+Ne pas faire figurer les nombreux systèmes d'infrastructure (serveur SMTP, dispositif de sécurité, reverse proxy, annuaires LDAP, …) qui sont du domaine de l’infrastructure. Mentionner en revanche les éventuels bus d'entreprise qui ont un rôle applicatif (orchestration de service par exemple).
 ====
 
 ====
-Exemple 1 : Suite à la dérogation du DSI le 03 aout 20xx, l'IHM sera en architecture SPA (Single Page Application)
-====
-
-====
-Exemple 2 : MesInfosEnLigne (MIEL) permet à une entreprise de récupérer par mail un document récapitulant toutes les informations dont l’administration dispose sur elle. L'administration peut compléter ses données par celles d'une autre administration. Elle  est constituée de plusieurs modules indépendants (modules IHM, batchs ou services REST)
-====
+Exemple : MesInfosEnLigne (MIEL) permet à une entreprise de récupérer par mail un document récapitulant toutes les informations dont l’administration dispose sur elle. L'administration peut compléter ses données par celles d'une autre administration. Elle  est constituée de plusieurs modules indépendants (modules IHM, batchs ou services REST).
 
 image::diagrammes/archi-applicative-generale.svg[Diagramme architecture applicative générale]
+====
+
+
 
 ### Architecture applicative détaillée
 
 [TIP]
 ====
-Détailler ici tous les modules de l’application, leurs interdépendances ainsi que les échanges avec d'autres applications du SI ou de partenaires.
+Détailler ici tous les modules de l’application, leurs interdépendances et leurs échanges avec d'autres applications du SI ou de partenaires.
 
-Les flux sont logiques et non techniques (par exemple, on peut représenter un flux HTTP direct entre deux modules alors qu'en réalité, il passe par un répartiteur de charge intermédiaire : ce niveau de détail sera donné dans la vue infrastructure). 
+Les flux sont logiques et non techniques. Par exemple, on peut représenter un flux HTTP direct entre deux modules alors qu'en réalité, il passe par un répartiteur de charge intermédiaire : ce niveau de détail sera donné dans la vue infrastructure. 
 
 Proposer un ou plusieurs schémas (de préférence des diagrammes C4 de type conteneurs ou diagramme UML2 de composant). 
 
@@ -343,20 +339,26 @@ Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhens
 Donner ici l'intention dans la construction de l'architecture.
 ====
 ====
-Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise.
+Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise à ce stade.
 ====
 
 #### Vue inventaire
 
 [TIP]
 ====
-Exposer les modules applicatifs dans leurs différentes zones ou domaines.
+Exposer les modules applicatifs dans leurs différentes zones et/ou domaines.
 ====
 ====
-Exemple: module X, Y et Z dans le domaine GED. Modules A, B dans le domaine PERSONNE.
+Exemple 1 : module `X`, `Y` et `Z` dans le domaine `GED`. Modules `A`, `B` dans le domaine `PERSONNE`.
 ====
+====
+Exemple 2 : vue inventaire du projet MIEL :
 
 image:diagrammes/archi-applicative-detaillee-inventaire.svg[Diagramme d'Architecture applicative détaillée (vue inventaire)] 
+====
+
+
+
 
 #### Vue dynamique
 
@@ -366,7 +368,7 @@ Exposer les dépendances entre l'ensemble des modules applicatifs dans leurs dif
 
 Si (et seulement si) la complexité de l'application le justifie, proposer en plus de ce schéma global un schéma détaillant chaque chaîne de liaison principale en numérotant les échanges (utiliser un diagramme de séquence ou (mieux) un Dynamic Diagram C4). 
 
-Utiliser comme ID des flux une simple séquence non signifiante et hiérarchique  (1, 2.1, 2.2.3, …, n).
+Utiliser comme ID des flux une simple séquence non signifiante et hiérarchique  (`1`, `2.1`, `2.2.3`, …, `n`).
 
 Pour chaque flux, donner le protocole, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur. Si le flux est asynchrone, le spécifier (dans l'exemple plus bas, l'appel est en pointillés).
 
@@ -388,7 +390,7 @@ image:diagrammes/archi-applicative-detaillee-dynamique.svg[Diagramme architectur
 ====
 Décrire ici les dispositifs permettant de répondre aux exigences d'archivage. Cette section contiendra principalement : 
 
-* La technologie : idéalement, on dupliquera par sécurité l'archive sur plusieurs supports de technologies différentes : bande magnétique type LTO, disque optique (Blu-ray Disc Recordable par exemple), stockage sur cloud (comme 'Glacier' d'AWS ou 'Coldline' de GCP), disques durs en mode SMR,...).
+* La technologie générale utilisée : idéalement, on dupliquera par sécurité l'archive sur plusieurs supports de technologies différentes : bande magnétique type LTO, disque optique (Blu-ray Disc Recordable par exemple), stockage sur cloud (comme 'Glacier' d'AWS ou 'Coldline' de GCP), disques durs en mode SMR,...).
 * Un lieu de stockage spécifique et distinct des sauvegardes classiques (Cloud, coffre-fort en banque par exemple).
 ====
 ====
@@ -403,11 +405,11 @@ Donner ici les dispositifs techniques répondant aux exigences de purge.
 ====
 
 ====
-Exemple 1: L'historique des consultations sera archivé par un dump avec une requête SQL de la forme `COPY (SELECT * FROM ma_table WHERE …) TO '/tmp/dump.tsv'` puis purgé par une requête SQL `DELETE` après validation par l'exploitant de la complétude du dump.
+Exemple 1: L'historique des consultations sera archivé par un dump avec une requête SQL puis purgé par une requête SQL après validation par l'exploitant de la complétude du dump.
 ====
 
 ====
-Exemple 2: Chaque API est responsable de la purge des données qu'elle expose. Pour cela, prévoir des traitements internes qui suppriment les données suivant une planification (expression cron) et des critères paramétrables.
+Exemple 2: Chaque API est responsable de la purge des données qu'elle expose. Pour cela, prévoir des traitements internes qui suppriment les données suivant une planification paramétrable.
 ====
 
 
@@ -417,7 +419,7 @@ Exemple 2: Chaque API est responsable de la purge des données qu'elle expose. P
 ====
 Lister ici les flux principaux de l'application. 
 
-Ne pas détailler les flux techniques de supervision ou liés au clustering par exemple. Mentionner le type de réseau (LAN, WAN). 
+Ne pas détailler les flux techniques, notamment ceux liés à la supervision ou au clustering.
 ====
 
 .Exemple partiel de matrice de flux applicatifs

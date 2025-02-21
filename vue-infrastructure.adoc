@@ -8,9 +8,9 @@
 
 *Dernière modification* : {docdate} 
 
-*Date dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date de la dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
 
-*Statut du document* :  _<Donner ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+*Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
 
 ## Introduction
@@ -43,8 +43,8 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |====
 
 ## Non statué
-### Points soumis à étude complémentaire
-.Points soumis à étude complémentaire
+### Points nécessitant une étude complémentaire
+.Points nécessitant une étude complémentaire
 [cols="1e,5e,2e,2e,2e"]
 |====
 |ID|Détail|Statut|Porteur du sujet | Échéance
@@ -434,7 +434,7 @@ L’architecture physique, technique voire logicielle change complètement en fo
 
 Ne pas oublier également les coûts d’astreinte très importants si les exigences sont très élevées. De la pédagogie et un devis permettent en général de modérer les exigences.
 
-On estime en général que la haute disponibilité (HA) commence à deux neufs (99%), c'est à dire environ 90h d'indisponibilité par an.
+On estime en général que la haute disponibilité (HA) commence à deux neufs (99%), soit environ 90h d'indisponibilité par an.
 
 Donner la disponibilité demandée par plage.
 
@@ -466,7 +466,7 @@ Préciser les modes dégradés applicatifs envisagés.
 Exemple 1 : Le site _monsite.com_ devra pouvoir continuer à accepter les commandes en l’absence du service de logistique.
 ====
 ====
-Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de donnée puis soumis à nouveau suite à une opération manuelle des exploitants.
+Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de données puis soumis à nouveau suite à une opération manuelle des exploitants.
 ====
 
 ### Exigences de robustesse
@@ -571,7 +571,7 @@ Coté client, pour une application client lourd :
 ====
 
 ====
-Exemple: L'application sera déployée sur un mode blue/green, c'est à dire complètement installée sur des machines initialement inaccessibles puis une bascule DNS permettra de pointer vers les machines disposant de la dernière version.
+Exemple: L'application sera déployée sur un mode blue/green, c'est-à-dire complètement installée sur des machines initialement inaccessibles puis une bascule DNS permettra de pointer vers les machines disposant de la dernière version.
 ====
 
 ### Exigences de gestion de la concurrence
@@ -659,7 +659,7 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 * La *disponibilité d’un ensemble de composants d'infrastructure en parallèle* : `D = 1 – (1-D1) * (1- D2) * ..* (1-Dn)`. Exemple : la disponibilité de trois serveurs Nginx en cluster dont chacun possède une disponibilité de 98 % est de 99.999 %. 
 
-* Il convient d'être cohérent sur la *disponibilité de chaque maillon de la chaîne de liaison* : rien ne sert d'avoir un cluster actif/actif de serveurs d'application JEE si tous ces serveurs attaquent une base de donnée localisée sur un unique serveur physique avec disques sans RAID. 
+* Il convient d'être cohérent sur la *disponibilité de chaque maillon de la chaîne de liaison* : rien ne sert d'avoir un cluster actif/actif de serveurs d'application JEE si tous ces serveurs attaquent une base de données localisée sur un unique serveur physique avec disques sans RAID. 
 
 * On estime un système comme hautement disponible *(HA) à partir de 99%* de disponibilité. 
 
@@ -696,7 +696,7 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 * On peut classer les architectures de clusters actif/actif en deux catégories :  
 
-** Les *clusters actifs/actifs à couplage faible* dans lesquels un nœud est totalement indépendant des autres, soit parce que l'applicatif est stateless (le meilleur cas), soit parce que les données de contexte (typiquement une session HTTP) sont gérées isolément par chaque nœud. Dans le dernier cas, le répartiteur de charge devra assurer une affinité de session, c'est à dire toujours router les requêtes d'un client vers le même nœud et en cas de panne de ce nœud, les utilisateurs qui y sont routés perdent leurs données de session et doivent se reconnecter. Note : Les nœuds partagent tous les mêmes données persistées en base, les données de contexte sont uniquement des données transitoires en mémoire. 
+** Les *clusters actifs/actifs à couplage faible* dans lesquels un nœud est totalement indépendant des autres, soit parce que l'applicatif est stateless (le meilleur cas), soit parce que les données de contexte (typiquement une session HTTP) sont gérées isolément par chaque nœud. Dans le dernier cas, le répartiteur de charge devra assurer une affinité de session, c'est-à-dire toujours router les requêtes d'un client vers le même nœud et en cas de panne de ce nœud, les utilisateurs qui y sont routés perdent leurs données de session et doivent se reconnecter. Note : Les nœuds partagent tous les mêmes données persistées en base, les données de contexte sont uniquement des données transitoires en mémoire. 
 
 ** Les *clusters actifs/actifs à couplage fort* dans lesquels tous les nœuds partagent les mêmes données en mémoire. Dans cette architecture, toute donnée de contexte doit être répliquée dans tous les nœuds (ex : cache distribué de sessions HTTP répliqué avec JGroups).  
 
@@ -997,7 +997,7 @@ Exemple 2 : un throttling de 100 requêtes par source et par minute sera mis en 
 ====
 D'une façon générale, tous les appels distribués (en particulier HTTP(S) vers les API ou du stockage objet et appels vers les bases de données) doivent être limités en temps de connexion ET temps d'exécution. Sans ces timeouts, des contentions fatales pour les modules peuvent apparaître en cas de problèmes de performance.
 
-Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison. Garder en tête que dans une chaîne de liaison allant du client à la persistance, les timeouts devraient diminuer au fur et à mesure qu'on avance dans la chaîne de liaison (exemple: 10 secs sur le Reverse proxy , 8 secs sur le endpoint REST, 5 secs sur la base de donnée). 
+Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison. Garder en tête que dans une chaîne de liaison allant du client à la persistance, les timeouts devraient diminuer au fur et à mesure qu'on avance dans la chaîne de liaison (exemple: 10 secs sur le Reverse proxy , 8 secs sur le endpoint REST, 5 secs sur la base de données). 
 
 En effet, dans le cas contraire, un service d'infrastructure (comme une base de données) peut continuer à traiter une requête alors que son module appelant a déjà abandonné, ce qui pose à la fois des problèmes de gaspillage de ressource mais surtout des effets difficile à prévoir. 
 
@@ -1014,7 +1014,7 @@ Exemple :
 |Client Rest JavaScript | 5000
 |API Gateway | 4000
 |API Rest Node.js | 3500
-|Base de donnée PG | 3000
+|Base de données PG | 3000
 
 |===
 
@@ -1039,7 +1039,7 @@ Le DEX contiendra une version plus précise de ce chapitre (notamment avec un nu
 
 Le démarrage se fait en général dans le sens inverse des chaînes de liaison et l'arrêt dans le sens de la chaîne de liaison.
 
-Préciser d'éventuelles problématiques en cas de démarrage partiel (par exemple, le pool de connexions du serveur d'application va-t-il retenter de se connecter à la base de donnée si elle n'est pas démarrée ? combien de fois ? quel est le degré de robustesse de la chaîne de liaison ? )
+Préciser d'éventuelles problématiques en cas de démarrage partiel (par exemple, le pool de connexions du serveur d'application va-t-il retenter de se connecter à la base de données si elle n'est pas démarrée ? combien de fois ? quel est le degré de robustesse de la chaîne de liaison ? )
 ====
 ====
 Exemple d'ordre de démarrage :
@@ -1210,7 +1210,7 @@ Préciser le(s) media de stockage utilisé(s), son lieu de stockage...
 ====
 Exemple 1: Pour la PME Boucherie Sanzot, on conservera une sauvegarde hebdomadaire des données de comptabilité en ligne sur le NAS + une copie offline sur disque externe chiffré et conservée dans le coffre d'une voiture. On conservera sur les deux supports 12 sauvegardes mensuelles et une sauvegarde annuelle, ce qui permet de revenir jusqu'à 2 ans dans le passé.
 
-Exemple 2: Pour la sauvegarde des données d'imposition, chaque transaction vers la base de donnée sera sauvegardée en barman en utilisant les journaux WAL. Chaque nuit, une sauvegarde full barman de la base sera effectuée. On conservera 7J + 4 semaines + 12 mois + 1 an sur sauvegarde online (disques durs) et en near-ligne sur librairie de sauvegarde à base de bandes LTO. Les données seront chiffrées et compressées. Les sauvegardes hebdomadaires seront dupliquées et stockées sur bande offline sur un site distant dédié.
+Exemple 2: Pour la sauvegarde des données d'imposition, chaque transaction vers la base de données sera sauvegardée en barman en utilisant les journaux WAL. Chaque nuit, une sauvegarde full barman de la base sera effectuée. On conservera 7J + 4 semaines + 12 mois + 1 an sur sauvegarde online (disques durs) et en near-ligne sur librairie de sauvegarde à base de bandes LTO. Les données seront chiffrées et compressées. Les sauvegardes hebdomadaires seront dupliquées et stockées sur bande offline sur un site distant dédié.
 
 ====
 
