@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Ceci est la vue infrastructure de l’application. Elle décrit le déploiement des modules applicatifs dans leur environnement d'exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
+La vue infrastructure décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -94,7 +94,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 ### Contraintes de déploiement
 
-### Contraintes de logs
+### Contraintes de journaux
 
 ### Contraintes de sauvegardes et restaurations
 

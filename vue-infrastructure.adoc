@@ -15,7 +15,7 @@
 
 ## Introduction
 
-Ceci est la vue infrastructure de l’application. Elle décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
+La vue infrastructure décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -72,7 +72,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 [TIP]
 ====
-Les contraintes sont les limites applicables aux exigences sur le projet. 
+Les contraintes définissent les limites applicables aux exigences du projet.
 
 Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par exemple, il ne serait pas valide d'exiger une disponibilité incompatible avec le niveau de sécurité Tier du datacenter qui l'hébergera.
 
@@ -328,16 +328,16 @@ Exemple 3 : Toute application doit être packagées sous forme d'image OCI et d�
 
 ====
 
-### Contraintes de logs
+### Contraintes de journaux
 
 [TIP]
 ====
-Lister les contraintes liées aux logs
+Lister les contraintes liées aux journaux
 ====
 ====
-Exemple 1 : une application ne doit pas produire plus de 1Tio de logs / mois.
+Exemple 1 : une application ne doit pas produire plus de 1 Tio de journaux / mois.
 
-Exemple 2 : la durée de rétention maximale des logs est de 3 mois
+Exemple 2 : la durée de rétention maximale des journaux est de 3 mois
 ====
 
 ### Contraintes de sauvegardes et restaurations
@@ -703,7 +703,7 @@ Une solution de failover peut être décrite par les attributs suivants :
 
 * Quelle *solution de détection des pannes* ?  
 
-** les répartiteurs de charge utilisent des *sondes* (health check) très variées (requêtes fictives, analyse du CPU, des logs, etc.…) vers les nœuds ;  
+** les répartiteurs de charge utilisent des *sondes* (health check) très variées (requêtes fictives, analyse du CPU, des journaux, etc.…) vers les nœuds ;  
 
 ** les détections de panne des clusters actifs/passifs fonctionnent la plupart du temps par écoute des palpitations (*heartbeat*) du serveur actif par le serveur passif, par exemple via des requêtes multicast UDP dans le protocole VRRP utilisé par keepalived. 
 
@@ -1083,7 +1083,7 @@ Que sauvegarde-t-on ?
 * des images/snapshots systèmes pour restauration de serveur ou de VM ? 
 * des systèmes de fichiers ou des répertoires ?
 * des bases de données sous forme de dump ? sous forme binaire ?
-* les logs ? les traces ?
+* les journaux ? les traces ?
 ====
 
 Exemple: 
@@ -1106,7 +1106,7 @@ Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigence
 ** complètes ? incrémentales ? différentielles ? (prendre en compte les exigences en disponibilité. La restauration d'une sauvegarde incrémentale sera plus longue qu'une restauration de sauvegarde différentielle, elle-même plus longue qu'une restauration de sauvegarde complète) ;
 ** quel roulement ? (si les supports de sauvegarde sont écrasés périodiquement).
 
-* Comment se fait le bilan de la sauvegarde ? par courriel ? où sont les logs ? Sont-ils facilement accessibles ? Contiennent-ils des informations sensibles ?
+* Comment se fait le bilan de la sauvegarde ? par courriel ? où sont les journaux ? Sont-ils facilement accessibles ? Contiennent-ils des informations sensibles ?
 
 ====
 
@@ -1180,7 +1180,7 @@ Préciser le(s) media de stockage utilisé(s), son lieu de stockage...
 
 * Quelle est la législation du pays hébergeant nos sauvegardes ? Est-ce compatible avec les exigences juridiques comme le RGPD ? (voir le Cloud Act américain).
 
-* Qui accède physiquement aux sauvegardes et à ses logs ? à la clé de chiffrement ? (penser aux exigences de confidentialité).
+* Qui accède physiquement aux sauvegardes et à ses journaux ? à la clé de chiffrement ? (penser aux exigences de confidentialité).
 
 * Avons nous connaissance de toutes les dépendances externes pouvant nous ralentir (coffre de banque accessible en journée uniquement par exemple) ?
 
@@ -1213,7 +1213,7 @@ Toujours garder à l'esprit que ce que nous voulons _vraiment_, ce sont des rest
 
 * Avons nous suffisamment de ressources hardware pour la restauration dans le temps imparti par le RTO (stockage intermédiaires, CPU et mémoire pour la décompression/déchiffrement , etc…) ?
 
-* Comment se fait le bilan de la restauration ? où sont les logs ? Sont-ils facilement accessibles ? Contiennent-ils des informations sensibles ?
+* Comment se fait le bilan de la restauration ? où sont les journaux ? Sont-ils facilement accessibles ? Contiennent-ils des informations sensibles ?
 
 ====
 
@@ -1226,19 +1226,19 @@ Exemple: Un test de restauration des données de production sera effectuée en p
 
 [TIP]
 ====
-Sans être exhaustif sur les fichiers de logs (à prévoir dans le DEX), présenter la politique générale de production et de gestion des logs :
+Sans être exhaustif sur les fichiers de journaux (à prévoir dans le DEX), présenter la politique générale de production et de gestion des journaux :
 
-* Quelles sont les politiques de roulement des logs ? le roulement est-il applicatif (via un `DailyRollingFileAppender` log4j par exemple) ou système (typiquement par le démon logrotate) ?
-* Une centralisation de logs est-elle prévue ? (indispensable pour les architectures SOA ou micro-services). Voir par exemple la stack ELK.
+* Quelles sont les politiques de roulement des journaux ? le roulement est-il applicatif (via un `DailyRollingFileAppender` log4j par exemple) ou système (typiquement par le démon logrotate) ?
+* Une centralisation de journaux est-elle prévue ? (indispensable pour les architectures SOA ou micro-services). Voir par exemple la stack ELK.
 * Quel est le niveau de prolixité prévu par type de module ? le débat en production est en général entre les niveaux WARN et INFO. Si les développeurs ont bien utilisé le niveau INFO pour des informations pertinentes (environnement au démarrage par exemple) et pas du DEBUG, fixer le niveau INFO.
-* Des mesures anti-injection de logs sont-elles prévues (échappement XSS) ?
+* Des mesures anti-injection de journaux sont-elles prévues (échappement XSS) ?
 
 ====
 ====
-Exemple 1 : les logs applicatifs du module service-miel seront en production de niveau INFO avec roulement journalier et conservation deux mois.
+Exemple 1 : les journaux applicatifs du module service-miel seront en production de niveau INFO avec roulement journalier et conservation deux mois.
 ====
 ====
-Exemple 2 : les logs seront échappés à leur création via la méthode `StringEscapeUtils.escapeHtml()` de Jakarta commons-lang.
+Exemple 2 : les journaux seront échappés à leur création via la méthode `StringEscapeUtils.escapeHtml()` de Jakarta commons-lang.
 ====
 
 #### Supervision
@@ -1359,7 +1359,7 @@ Suit-on les performances de l'application en production ? Cela permet :
 Il existe trois grandes familles de solutions :
 
 * Les APM (Application Performance Monitoring) : outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource …). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met en péril la stabilité de l'application.
-* La métrologie «maison» par logs si le besoin est modeste.
+* La métrologie «maison» par journaux si le besoin est modeste.
 * Les sites de requêtage externes qui appellent périodiquement l'application et produisent des dashboards. Ils ont l'avantage de prendre en compte les temps WAN non disponibles via les outils internes. A utiliser couplés à la supervision boite noire (voir plus haut).
 ====
 ====

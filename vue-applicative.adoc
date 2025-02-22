@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Ceci est la vue applicative du projet. Elle décrit les modules applicatifs en jeu et leurs échanges.
+La vue applicative du projet décrit les modules applicatifs en jeu et leurs échanges.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -271,7 +271,7 @@ Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) 
 
 TIP: Précisez ici combien de temps doivent être conservées les données et documents stockés par vos modules applicatifs. À noter que ces durées peuvent être contraintes par le droit (voir contraintes juridiques plus haut), par exemple dans le cadre du droit à l'oubli du RGPD.
 
-TIP: Ne pas oublier de mentionner les données techniques (comme les logs ou les tables techniques) ainsi que les archives.
+TIP: Ne pas oublier de mentionner les données techniques (comme les journaux ou les tables techniques) ainsi que les archives.
 
 ====
 Exemple :

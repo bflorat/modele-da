@@ -13,7 +13,7 @@
 *Statut du document* :  
 
 ## Introduction
-Ceci est la vue développement de l’application. Elle décrit le code à produire et comment l'écrire.
+La vue développement décrit le code à produire et les méthodes pour l'écrire.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -140,7 +140,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 ### Fuseaux horaires
 
-### Gestion des logs
+### Gestion des journaux
 
 #### Règles générales
 

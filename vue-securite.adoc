@@ -16,7 +16,7 @@
 
 ## Introduction
 
-Ceci est la vue sécurité. Elle décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
+La vue sécurité décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -270,7 +270,7 @@ Les facteurs d’authentification requis en fonction des situations sont (on peu
 |Modification du mot de passe 
 |X|||||X
 
-|Accès aux logs
+|Accès aux journaux
 ||X||||
 
 |Ajout d’un bénéficiaire de virement
@@ -448,7 +448,7 @@ Les traces sont des données nominatives et complètes pour permettre l’audit.
 Différentier :
 
 * Les traces métier (bilan d’un acte de gestion complet comme `l’agent X a consulté le dossier de Mme Y`) ;
-* … et les traces applicatives (logs) comme dans un fichier de log : `[INFO] 2016/12/23 11:14 [Agent X] Appel du service consulter` qui sont de niveau technique. 
+* … et les journaux applicatifs, par exemple via un fichier de log : `[INFO] 2016/12/23 11:14 [Agent X] Appel du service consulter` qui sont de niveau technique. 
 
 Pour les données les plus sensibles, il est possible de prévoir une traçabilité à deux niveaux (tracer la consultation des traces) pour éviter une traçabilité hiérarchique abusive.
 
@@ -700,7 +700,7 @@ Exemple 3 : Les  tables X, Y, .. seront historisées suivant le principe suiva
 Exemple 4 : tous les documents servant de preuve seront archivés dans la GED.
 ====
 ====
-Exemple 5 : Les logs contenant le tag `[PREUVE]` et issu de l’ensemble des modules seront centralisés via le système de centralisation de log Elastic Search puis insérés avec traitement Logstash de façon journalière vers l'index Elastic `preuves`.
+Exemple 5 : Les journaux contenant le tag `[PREUVE]` et issu de l’ensemble des modules seront centralisés via le système de centralisation de log Elastic Search puis insérés avec traitement Logstash de façon journalière vers l'index Elastic `preuves`.
 ====
 
 ### Lutte contre les cybermenaces
@@ -739,7 +739,7 @@ Incluent :
 
 * Les antivirus (dont les dernières générations incluent de l'IA et vont au-delà de la recherche de signatures).
 * Les WAF (Web Application Firewall) qui détectent et bloquent les tentatives d'attaques en temps réel.
-* Les outils de SIEM (Security Information and Event Management) qui analysent les logs issus de sources variées.
+* Les outils de SIEM (Security Information and Event Management) qui analysent les journaux issus de sources variées.
 * Les outils d'IDS (Intrusion Detection System), assurant souvent également la fonction d'IPS et analysant les flux réseau à la recherche de tentatives d'accès malicieux (comme des tentatives d'exploitation de CVE).
 * Les outils SAST (Static Application Security Testing) et DAST (Dynamic Application Security Testing) analysant respectivement le code source de l'organisation et le comportement à l'exécution, à la recherche de vulnérabilités connues.
 * Les outils SCA (Software Composition Analysis) analysant les dépendances (essentiellement Open Source) des projets et remontant la liste des CVE (vulnérabilités connues) dès que possible en vue de les mettre à jour.
@@ -756,7 +756,7 @@ Incluent :
 * Les outils de restauration de sauvegardes (la connaissance du MTTR, défini dans la vue infrastructure, est cruciale pour la planification de la restauration).
 * Les outils et procédures permettant l'isolation de modules ou de zones compromises au sein du SI.
 * Les outils de gestion de parc logiciel qui bloquent les logiciels non autorisés.
-* Les outils et méthodologies d'analyse forensique permettant d'analyser les logs pour comprendre les chemins d'une attaque et construire un post-mortem.
+* Les outils et méthodologies d'analyse forensique permettant d'analyser les journaux pour comprendre les chemins d'une attaque et construire un post-mortem.
 * Les procédures et outils de réponse à une attaque.
 
 ====
@@ -933,8 +933,8 @@ a|
 |Log injection
 |X
 a|
-* __Échappement des logs avant de les transmettre à log4j__
-* __Vérification des outils de consultation de logs__
+* __Échappement des journaux avant de les transmettre à log4j__
+* __Vérification des outils de consultation de journaux__
 
 |Attaques HTTPS + compression CRIME/BREACH 
 |X

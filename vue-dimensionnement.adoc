@@ -15,7 +15,7 @@
 
 ## Introduction
 
-Ceci est la vue dimensionnement du projet. Il permet de déterminer la taille de l'infrastructure nécessaire au projet.
+La vue dimensionnement permet de déterminer la taille de l'infrastructure nécessaire au projet.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -29,7 +29,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 |N°|Version|Titre/URL du document|Détail
 
 |1|1.2|Rapport_benchmark_xyz.pdf|
-|2|2019|Rapport INSEE sur les entreprises françaises|
+|2|2019|Rapport de l'INSEE sur les entreprises françaises|
 
 
 |====
@@ -64,7 +64,7 @@ Exemple:
 |====
 |ID|Détail
 
-|1|Nous estimons que 10M de personnes téléchargeront l'application StopCovid
+|1|Nous estimons que 10 millions de personnes téléchargeront l'application XYZ
 
 |====
 
@@ -74,16 +74,16 @@ Exemple:
 
 [TIP]
 ====
-Les contraintes sont les limites applicables aux exigences sur le projet. 
+Les contraintes définissent les limites applicables aux exigences du projet.
 
-Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par exemple, il ne serait pas réaliste d'exiger des temps de réponse d'un web service incompatibles avec le débit du réseau sous-jacent.
+Il est important de les expliciter pour obtenir des exigences réalistes. Par exemple, il ne serait pas réaliste d'exiger des temps de réponse d'un web service incompatibles avec le débit du réseau sous-jacent.
 
 ====
 
 
 ### Contraintes stockage
 
-TIP: Lister ici les éventuelles contraintes liées aux disques
+TIP: Lister ici les éventuelles contraintes liées au stockage persistant.
 
 [Exemple]
 ====
@@ -120,19 +120,19 @@ Exemple 1 : La latence minimale des requêtes sur le WAN entre Londres et Tokyo 
 
 [Exemple]
 ====
-Exemple 2 : Le réseau Ethernet du Datacenter dispose d'une bande passante de 40 Gbps.
+Exemple 2 : Le cœur de réseau du datacenter dispose d'une bande passante de 40 Gbps.
 ====
 
 ## Exigences
 
 [TIP]
 ====
-Il est crucial de récupérer un maximum d'informations issues de la production plutôt que des estimations car ces dernières se révèlent souvent loin de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Prévoir alors une marge importante. Les informations données ici pourront serviront d'entrants au SLO (Objectif de Service fixé par les exploitants).
+Il est crucial de privilégier les données issues de la production plutôt que des estimations, car ces dernières sont souvent éloignées de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Il est alors recommandé de prévoir une marge importante. Les informations données ici pourront servir d'entrants au SLO (objectif de niveau de service fixé par les exploitants).
 ====
 
 [TIP]
 ====
-Les sections suivantes portant sur les calculs de volumétrie statiques et dynamiques donnent des exemples de calculs et d'élements à prendre en compte. Sur le plan de la forme, il peut être préférable de remplacer le texte par des feuilles de calculs dans un tableur. Pour un projet complexe ou aux hypothèses mouvantes, c'est indispensable.
+Les sections suivantes portant sur les calculs de volumétrie statiques et dynamiques donnent des exemples de calculs et d'éléments à prendre en compte. Sur le plan de la forme, il peut être préférable de remplacer le texte par des feuilles de calculs dans un tableur. Pour un projet complexe ou aux hypothèses mouvantes, c'est indispensable.
 
 ====
 
@@ -149,7 +149,7 @@ TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entra
 |Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) |  Source| Détail/hypothèses
 
 |S1 |Nombre d'entreprises éligibles | Estimé |  4M | +1% |  INSEE [2]  | On considère que MIEL ne concerne pas les auto-entrepreneurs
-|S2 |Taille moyenne d'un PDF | Mesurée | 40Ko  | 0%| Exploitants | 
+|S2 |Taille moyenne d'un PDF composé| Mesurée | 40Ko  | 0%| Exploitants | 
 |====
 
 #### Estimation besoins de stockage
@@ -163,7 +163,7 @@ Prendre en compte :
 * La taille des bases de données.
 * La taille des fichiers produits.
 * La taille des files.
-* La taille des logs.
+* La taille des journaux.
 * L'espace nécessaire dans un éventuel stockage objet (S3, Swift, Ceph…)
 *  …
 
@@ -173,13 +173,13 @@ Ne pas prendre en compte :
 * Le volume des binaires (OS, intergiciels…) qui est à considérer par les exploitants comme une volumétrie de base d'un serveur (le ticket d'entrée) et qui est de leur ressort.
 * Les données archivées qui ne sont donc plus en ligne.
 
-Fournir également une estimation de l'augmentation annuelle en % du volume pour permettre aux exploitants de commander ou réserver suffisamment de disque.
+Fournir également une estimation de l'augmentation annuelle en pourcentage du volume pour permettre aux exploitants de commander ou réserver suffisamment de disque.
 
 Pour les calculs de volumétrie, penser à prendre en compte les spécificités de l'encodage (nombre d’octets par caractère, par date, par valeur numérique…). 
 
-Pour une base de données, prévoir l'espace occupé par les index et qui est très spécifique à chaque application. Une (très piètre) estimation préliminaire est de doubler l'espace disque (à affiner ensuite).
+Pour une base de données, prévoir l'espace occupé par les index, qui varie selon l'application et le moteur de base de données. Une estimation préliminaire peut consister à ajouter environ 30 % d'espace disque supplémentaire, à affiner selon les tests.
 
-N'estimer que les données dont la taille est non négligeable (plusieurs Gio minimum).
+Ne prendre en compte que les données dont la taille est significative (au moins quelques Gio).
 ====
 
 ====
@@ -202,7 +202,7 @@ N'estimer que les données dont la taille est non négligeable (plusieurs Gio mi
 |10 %
 
 |Logs 
-|Les logs applicatifs (niveau INFO)
+|Les journaux applicatifs (niveau INFO)
 |200 o
 |300M
 |56 Gio
@@ -228,7 +228,8 @@ a|
  - Constant sur l'année
  - Constant sur la semaine
  - 3 pics à 20% de la journée à 8:00-9:00, 11:00-12:00 et 14:00-15:00
- | | Les utilisateurs sont des professionnels utilisant l'application depuis la France métropolitaine aux heures de bureau standards
+ | Service communication, rapport du 01/01/2040
+ | Les utilisateurs sont des professionnels utilisant l'application depuis la France métropolitaine aux heures de bureau standards
 |====
 
 
@@ -236,18 +237,18 @@ a|
 
 [TIP]
 ====
-Il s'agit ici d'estimer le nombre d'appels aux modules et donc le débit cible (en TPS = Transactions par seconde) que devra absorber chacun d'entre eux. Un système bien dimensionné devra présenter des temps de réponse moyen du même ordre en charge nominale et en pic.
+Il s'agit ici d'estimer le nombre d'appels aux modules et donc le débit cible (en TPS = Transactions par seconde) que chacun d'entre eux devra absorber. Un système bien dimensionné devra présenter des temps de réponse moyen du même ordre en charge nominale et en pic.
 
-Toujours estimer le "pic du pic", c'est-à-dire le moment où la charge sera maximale suite au cumul de tous les facteurs (par exemple pour un système de comptabilité : entre 14 et 15h  un jour de semaine de fin décembre). 
+Estimer le "pic du pic", c'est-à-dire le moment où la charge sera maximale suite au cumul de tous les facteurs (par exemple pour un système de comptabilité : entre 14 et 15h  un jour de semaine de fin décembre). 
 
-Ne pas considérer que la charge est constante mais prendre en compte :
+Ne pas considérer la charge comme constante mais prendre en compte :
 
-* Les variations journalières. Pour une application de gestion avec des utilisateurs travaillant sur des heures de bureau, on observe en général des pics du double de la charge moyenne à 8h-9h, 11h-12h et 14h-15h. Pour une application Internet grand public, ce sera plutôt en fin de soirée. Encore une fois, se baser sur des mesures d'applications similaires quand c'est possible plutôt que sur des estimations.
-* Les éléments de saisonnalité. La plupart des métiers en possèdent : Noël pour l'industrie du chocolat, le samedi soir pour les admissions aux urgences, juin pour les centrales de réservation de séjours etc. La charge peut alors doubler voire plus. Il ne faut donc pas négliger cette estimation.
+* Les variations journalières. Pour une application de gestion avec des utilisateurs travaillant sur des heures de bureau, on observe en général des pics du double de la charge moyenne dans les périodes 8h-9h, 11h-12h et 14h-15h. Pour une application Internet grand public, ce sera plutôt en soirée. Encore une fois, se baser sur des mesures d'applications similaires quand c'est possible plutôt que sur des estimations.
+* Les éléments de saisonnalité. La plupart des métiers en possèdent : Noël pour l'industrie du chocolat, le samedi soir pour les admissions aux urgences, juin pour les centrales de réservation de séjours etc. La charge peut alors doubler, voire davantage. Il ne faut donc pas négliger cette estimation.
 
 Si le calcul du pic pour un module en bout de chaîne de liaison est complexe (par exemple, un service central du SI exposant des données référentiel et  appelé par de nombreux modules qui ont chacun leur pic), on tronçonnera la journée en intervalles de temps suffisamment fins (une heure par exemple) et on calculera sur chaque intervalle la somme mesurée ou estimée des appels de chaque appelant (batch ou transactionnel) pour ainsi déterminer la sollicitation cumulée la plus élevée.
 
-Si l'application tourne sur un cloud de type PaaS, la charge sera absorbée dynamiquement mais veiller à estimer le surcoût et à fixer des limites de consommation cohérentes pour respecter le budget tout en assurant un bon niveau de service.
+Si l'application est déployée sur un cloud de type PaaS, la charge sera absorbée dynamiquement. Il convient néanmoins d'estimer le surcoût et de fixer des limites de consommation pour concilier budget et qualité de service.
 ====
 
 .Exemple : estimation volumétrie dynamique de l'opération REST `GET Detail` de l'application MIEL
@@ -316,7 +317,7 @@ Si les clients accèdent au système en WAN (Internet, VPN, LS …), préciser q
 
 Dans le cas d’accès LAN, il est préférable d’intégrer le temps réseau, d’autant que les outils de test de charge vont déjà le prendre en compte.
 
-Les objectifs de TR sont toujours donnés avec une tolérance statistique (90éme centile par exemple) car la réalité montre que le TR est très fluctuant car affecté par un grand nombre de facteurs.
+Les objectifs de TR sont toujours donnés avec une tolérance statistique (90e centile par exemple) car la réalité montre que le TR est très fluctuant car affecté par un grand nombre de facteurs.
 
 Inutile de multiplier les types de sollicitations (en fonction de la complexité de l’écran par exemple) car ce type de critère n’a plus grand sens aujourd'hui, particulièrement pour une application SPA).
 ====
@@ -368,7 +369,7 @@ Exemple 1 : La fin de l’exécution des batchs étant un pré-requis à l’ou
 ====
 
 ====
-Exemple 2 : le batch mensuel B1 de consolidation des comptes doit s’exécuter en moins de 4 J.
+Exemple 2 : le batch mensuel B1 de consolidation des comptes doit s’exécuter en moins de 4 jours.
 ====
 
 ====
@@ -380,15 +381,14 @@ Exemple 3 : les batchs et les IHM pouvant fonctionner en concurrence, il n’y 
 
 [TIP]
 ====
-Nous donnons un dimensionnement final devant supporter la volumétrie statique et dynamique et respecter les exigences.
+Nous donnons un dimensionnement final qui doit supporter la volumétrie statique et dynamique et respecter les exigences.
 ====
 
 ### Estimation des besoins en ressources par unité déployable
 
 [TIP]
 ====
-Donner ici RAM, disque et CPU par instance d'unité déployable (à affiner après campagne de performance ou MEP). 
-
+Donner ici RAM, disque et CPU par instance d'unité déployable (à affiner après campagne de performance ou MEP).
 ====
 ====
 Exemple : 
@@ -398,7 +398,7 @@ Exemple :
 |====
 | Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires
 
-| `tomcat-batchs1`
+| `tomcat-batch_x`
 | <négligeable>
 | 1024
 | Toutes les heures, 24/7/365
@@ -427,10 +427,10 @@ Voir le link:./vue-infrastructure.adoc#_déploiement_en_production[modèle de d�
 
 Cette section fournit le dimensionnement final des machines nécessaires
 
-* Pour les VM, attention à vérifier qu'un VCPU = 1 cœur physique (et non un thread si hyperthreading activé)
-* Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique exécutant la VM ou d'un SAN.
-* Le disque distant concerne du stockage sur une baie de disque (SAN)
-* Le stockage externe hors SAN concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, …) ou un stockage objet (Swift, S3, …)
+* Pour les VM, attention à vérifier qu'un vCPU (Virtual CPU) = 1 cœur physique (et non un thread si hyperthreading activé) ;
+* Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NVMe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique exécutant la VM ou d'un SAN ;
+* Le disque distant concerne du stockage sur une baie de disque (SAN) ;
+* Le stockage externe hors SAN concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, …) ou un stockage objet (Swift, S3, etc.).
 ====
 
 .Dimensionnement des machines
@@ -463,7 +463,7 @@ Cette section fournit le dimensionnement final des machines nécessaires
 
 |NFS (montage NAS)
 |248
-|Machine physique Base de données
+|VM du cluster de calcul
 
 |OpenStack Object Storage ("Swift")
 |20

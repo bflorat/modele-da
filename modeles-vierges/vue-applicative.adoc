@@ -16,7 +16,7 @@
 
 ## Introduction
 
-Ceci est la vue applicative du projet. Elle décrit les modules applicatifs en jeu et leurs échanges.
+La vue applicative du projet décrit les modules applicatifs en jeu et leurs échanges.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 

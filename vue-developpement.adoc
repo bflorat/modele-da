@@ -15,7 +15,7 @@
 
 ## Introduction
 
-Ceci est la vue développement de l’application. Elle décrit le code à produire et les méthodes pour l'écrire.
+La vue développement décrit le code à produire et les méthodes pour l'écrire.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -314,7 +314,7 @@ Coté Backend :
 * Dans des cas de grosses volumétries, étudier les solutions de partitionnement de tables.
 * Ne pas oublier d'ajouter tous les index nécessaires, utiliser l'analyse du plan d'exécution pour vérifier qu'il n'y a pas de full scans.
 * Attention aux fonctions SQL qui 'cassent' les index (comme  `UPPER()`). Privilégier les traitements coté code backend si possible ou prévoir des index de fonctions correspondants.
-* Activer les logs de requêtes (exemple Hibernate : `org.hibernate.SQL=DEBUG`,`-Dhibernate.generate_statistics=true`) et vérifier les requêtes SQL et leur nombre (pour détecter en particulier le problème du https://stackoverflow.com/questions/97197/what-is-the-n1-selects-problem-in-orm-object-relational-mapping[SELECT N+1], très courant).
+* Activer les journaux de requêtes (exemple Hibernate : `org.hibernate.SQL=DEBUG`,`-Dhibernate.generate_statistics=true`) et vérifier les requêtes SQL et leur nombre (pour détecter en particulier le problème du https://stackoverflow.com/questions/97197/what-is-the-n1-selects-problem-in-orm-object-relational-mapping[SELECT N+1], très courant).
 * Disposer même sur poste de travail d'un jeu de donnée minimal (une centaine d'enregistrement).
 * Vérifier avec un profiler (comme JVisualVM en Java) la consommation mémoire pour détecter les fuites ou les surconsommations.
 * Vérifier qu'il n'y a pas de fuite de threads ou de deadlocks en comptant le nombre de threads actifs sur une période suffisamment longue (une nuit complète par exemple).
@@ -723,14 +723,14 @@ Exemple 1 : Les heures ne seront jamais stockées sans fuseau horaire. En base, 
 Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera l'epoch millis à `12:00 UTC` (et pas `00:00`, trop proche du jour précédent, risque de bug). 
 ==== 
 
-### Gestion des logs
+### Gestion des journaux
 
-NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./vue-infrastructure.adoc#_logs[la vue infrastructure].
+NOTE: Les aspects d'infrastructure de journaux sont détaillés dans link:./vue-infrastructure.adoc#_journaux[la vue infrastructure].
 
 [TIP]
 ====
-Donner ici les règles générales concernant les traces applicatives (logs), les niveaux et quantité de logs.
-Penser à l'exploitation des logs, surtout coté serveur. Se demander s'il sera possible d'en tirer profit en cas d'erreur en production au milieu de Mio voire Gio d'autres logs et de nombreux threads écrivant en parallèle.
+Donner ici les règles générales concernant les journaux (logs) : leur niveau de prolixité et le volume qu'ils représentent.
+Penser à l'exploitation des journaux, surtout coté serveur. Se demander s'il sera possible d'en tirer profit en cas d'erreur en production au milieu de Mio voire Gio d'autres journaux et de nombreux threads écrivant en parallèle.
 ====
 
 #### Règles générales
@@ -738,8 +738,8 @@ Penser à l'exploitation des logs, surtout coté serveur. Se demander s'il sera 
 ====
 Exemple 1 : 
 
-* Ne pas laisser de logs de développement dans le code (exemple : `console.out("entrée dans méthode x")` ou `e.printStackTrace()`)
-* Penser à utiliser des chaînes de caractère discriminantes (exemple : code erreur) pour faciliter le filtrage dans l'outil de recherche de logs.
+* Ne pas laisser de journaux de développement dans le code (exemple : `console.out("entrée dans méthode x")` ou `e.printStackTrace()`)
+* Penser à utiliser des chaînes de caractère discriminantes (exemple : code erreur) pour faciliter le filtrage dans l'outil de recherche de journaux.
 * Toujours fournir des identifiants d'entités permettant de retrouver l'objet concerné 
 * Utiliser des identifiant de corrélation entre tiers (exemple : id de traitement générée coté client en JS, passée au serveur)
 * Eviter les calculs coûteux (exemple: beaucoup de concaténations) en utilisant des placeholders (La chaine de caractère à loguer finale n'est effectivement construite que si le niveau de prolixité requis est utilisé). Exemple Logback : 
@@ -748,16 +748,16 @@ log.info("Problème sur le dossier {} de l'utilisateur {}",dossier.getId(), util
 ```
 ====
 
-#### Niveaux et quantité de logs
+#### Niveaux et quantité de journaux
 [TIP]
 ====
-Expliquer quand et quoi loguer de sorte à produire des logs exploitables en production.
+Expliquer quand et quoi loguer de sorte à produire des journaux exploitables en production.
 ====
 
 ====
 Exemple :   
 
-.Niveaux logs
+.Niveaux journaux
 [cols='1,3,1,1']
 |====
 |Niveau de gravité |Contexte d'utilisation | Volume indicatif | Environnement 
@@ -769,7 +769,7 @@ Exemple :
 
 |INFO
 |Début/fin d'un batch ou d'un appel, chargement d'une nouvelle propriété. Peut être utilisé sous forme condensée pour les appels de service (logging d'un appel et de son contexte). C'est le niveau de prolixité utilisé pour la métrologie.
-|Max 10 logs / sec, quelques Kio / minute
+|Max 10 journaux / sec, quelques Kio / minute
 |Tous
 
 |WARN
@@ -798,7 +798,7 @@ L'application doit-elle fournir des services d’administration ? Il est forteme
 
 Exemples de points à traiter :
 
-* Dois-je fournir un moyen de purger des données, logs, caches, etc. ? 
+* Dois-je fournir un moyen de purger des données, journaux, caches, etc. ? 
 (on appelle quelque fois ce type de service un 'traitement interne')    
 * Dois-je fournir des indicateurs applicatifs de supervision ? (nombre de dossiers consultés, etc.) ?
 * Dois-je fournir des outils de migration ?
