@@ -111,6 +111,8 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 ### Interopérabilité
 
+### Exigences de gestion de la concurrence
+
 ### Archivage
 
 ### Durée de rétention

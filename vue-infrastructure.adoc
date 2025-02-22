@@ -574,19 +574,6 @@ Coté client, pour une application client lourd :
 Exemple: L'application sera déployée sur un mode blue/green, c'est-à-dire complètement installée sur des machines initialement inaccessibles puis une bascule DNS permettra de pointer vers les machines disposant de la dernière version.
 ====
 
-### Exigences de gestion de la concurrence
-
-[TIP]
-====
-Préciser ici les modules internes ou externes pouvant interférer avec l’application.
-====
-====
-Exemple 1  : Tous les modules de cette application doivent pouvoir fonctionner en concurrence. En particulier, la concurrence batch/IHM doit toujours être possible car les batchs devront pouvoir tourner de jour en cas de besoin de rattrapage
-====
-====
-Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé correctement sous peine de corruption de données.
-====
-
 [[exigences_ecoconception]]
 ### Exigences d'écoconception
 

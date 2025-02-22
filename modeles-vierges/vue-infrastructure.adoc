@@ -137,8 +137,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfin
 
 #### Stratégie de déploiement spécifiques
 
-### Exigences de gestion de la concurrence
-
 ### Exigences d'écoconception
 
 ## Architecture cible

@@ -235,6 +235,19 @@ Exemple 1: Nos modules XYZ devront pouvoir être exposés aux organismes X depui
 Exemple 2 (pour une administration): Le projet devra respecter le https://www.numerique.gouv.fr/publications/interoperabilite/[référentiel Général d’Interopérabilité (RGI)].
 ====
 
+### Exigences de gestion de la concurrence
+
+[TIP]
+====
+Préciser ici les modules internes ou externes pouvant interférer avec l’application.
+====
+====
+Exemple 1  : Tous les modules de cette application doivent pouvoir fonctionner en concurrence. En particulier, la concurrence batch/IHM doit toujours être possible car les batchs devront pouvoir tourner de jour en cas de besoin de rattrapage
+====
+====
+Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé correctement sous peine de corruption de données.
+====
+
 
 ### Archivage
 
