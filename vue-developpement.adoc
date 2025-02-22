@@ -19,7 +19,7 @@ Ceci est la vue développement de l’application. Elle décrit le code à produ
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
-Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendrons pas ici les termes fonctionnels ou techniques déjà définis.
 
 ### Documentation de Référence
 
@@ -62,38 +62,38 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |ID|Détail
 
 |HD1
-|Même si ce point n’est pas encore totalement validé, l’application nécessitera un JRE 9 + pour tirer profil de librairies et frameworks Java indispensables au projet.
+|Même si ce point n’est pas encore totalement validé, l’application nécessitera un JRE 21+ pour tirer partie de librairies et frameworks Java indispensables au projet.
 |====
 
 ## Contraintes
 
 [TIP]
 ====
-Lister ici les contraintes relatives à l'architecture logicielle, ceci inclut par exemple mais pas seulement :
+Lister ici les contraintes relatives à l'architecture logicielle, ceci inclut de façon non-exhaustive :
 
-* L'obligation d'utiliser un framework ou une filière technologique précise
-* Les budgets maximums de licence ou de développement
-* L'outillage (IDE, …)
-* L'intégration continue
-* Les normes et seuils de qualité de code applicables
-* Les tests (taux de couverture, répartition par type de test, …)
+* L'obligation d'utiliser un framework ou une filière technologique précise ;
+* Les budgets disponibles pour les licences ou les frais de développement ;
+* L'outillage (IDE, etc.) ;
+* L'intégration continue ;
+* Les normes et niveaux de qualité de code applicables ;
+* Les tests (taux de couverture, répartition par type de test, etc.).
 
 ====
 ====
-Exemple 1 : La couverture de code devra être d'au moins 60%
+Exemple 1 : La couverture de code devra être d'au moins 60%.
 ====
 ====
-Exemple 2 : Le module devra se baser sur le framework Hibernate pour la persistance et CDI pour l'injection de dépendance
+Exemple 2 : Le module devra se baser sur le framework Hibernate pour la persistance.
 ====
 ====
-Exemple 3 : l'application sera construite, testée et déployée en continu à chaque push via la plateforme Gitlab-ci
+Exemple 3 : l'application sera construite, testée et déployée en continu à chaque push via la plateforme Gitlab-CI.
 ====
 
 ## Exigences non fonctionnelles
 
 [TIP]
 ====
-Contrairement aux contraintes qui fixaient le cadre auquel toute application devait se conformer, les exigences non fonctionnelles sont données par les porteurs du projet (MOA en général). Prévoir des interviews pour les déterminer. Si certaines exigences ne sont pas réalistes, le mentionner dans le référentiel des points à statuer.
+Contrairement aux contraintes qui fixent le cadre auquel toute application devait se conformer, les exigences non fonctionnelles sont données par les porteurs du projet (Product Owner/MOA en général). Prévoir des interviews pour les déterminer. Si certaines exigences ne sont pas réalistes, le mentionner dans le référentiel des points à statuer.
 ====
 
 ### Accessibilité
@@ -102,10 +102,10 @@ Contrairement aux contraintes qui fixaient le cadre auquel toute application dev
 ====
 Cette application doit-elle être accessible aux non/mal voyants ? malentendants ? 
 
-Si oui, quelle niveau d’accessibilité ? 
+Si oui, quel niveau d’accessibilité ? 
 Se référer de préférence au Référentiel Général d’Accessibilité (https://references.modernisation.gouv.fr/rgaa-accessibilite/#menu[RGAA]) qui préconise un niveau WCAG 2.0 AA : 
 
-Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb …) . Attention à correctement évaluer le niveau visé (ni sur-qualité, ni sous-qualité) :
+Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb, etc.) . Attention à correctement évaluer le niveau visé (ni sur-qualité, ni sous-qualité) :
 
 * Atteindre un niveau d’accessibilité très élevé peut être coûteux et contraignant technologiquement. Il demande également de bonnes compétences (accessibilité, HTML5/CSS3 en particulier) et des profils rares.
 * La loi est de plus en plus stricte pour les administrations qui doivent respecter un niveau d’accessibilité suffisant (loi  n°2005-102 du 11 février 2005 pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées). « Tous les sites publics européens doivent atteindre le double A (AA) du W3C/WAI ».
@@ -139,7 +139,7 @@ Exemple 2 : de nombreux écrans seront pourvus d’accordéons
 ====
 Décrire ici les polices de caractère à utiliser pour les pages Web, les applications ou les documents composés.
 
-Le choix des polices suit des contraintes de licences. Afin d'assurer une sécurité juridique au projet, attention aux polices commerciales soumises à royalties (en particulier les polices appartenant à Microsoft comme Times New Roman, Courier, Verdana, Arial) et qui ne permettent pas de produire gratuitement des documents sans passer par leurs éditeurs (Word, …). 
+Le choix des polices suit des contraintes de licences. Afin d'assurer une sécurité juridique au projet, attention aux polices commerciales soumises à royalties (en particulier les polices appartenant à Microsoft comme Times New Roman, Courier, Verdana, Arial) et qui ne permettent pas de produire gratuitement des documents sans passer par leurs éditeurs (Word, etc.). 
 
 Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-les-fondamentaux/la-typographie[Marianne] préconisée par le gouvernement en tant que police à chasse variable.
 
@@ -150,21 +150,21 @@ Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberati
 
 [TIP]
 ====
-Lister les contraintes d’affichage multi-support. Utiliser quand c'est possible les frameworks modernes (type AngularJS ou React.js). Il existe plusieurs niveaux d’adaptation des pages Web :
+Lister les contraintes d’affichage multi-support. Utiliser quand c'est possible les frameworks modernes (type Angular, Vue.js ou React.js). Il existe plusieurs niveaux d’adaptation des pages Web :
 
 * Statique (largeur de page fixe).
 * Dynamique (redimensionnement automatique, les tailles sont exprimées en %).
 * Adaptatif (les distances sont exprimées en unités dont la taille dépend du support).
 * Responsive (le contenu et son agencement dépend du support).
 
-WARNING: Un design responsive vient avec ses contraintes (duplication de code, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir…). 
+WARNING: Un design responsive vient avec ses contraintes (duplication de code CSS, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir, etc.). 
 ====
 
 #### Progressive Web Apps (PWA)
 
 [TIP]
 ====
-Spécifier si l'application est progressive. Les applications PWA sont des applications Web HTML5 possédant tous les attributs des applications natives (mode déconnecté, rapide, adaptatif, accessible depuis l'OS, …) 
+Spécifier si l'application est progressive. Les applications PWA sont des applications Web HTML5 possédant tous les attributs des applications natives (mode déconnecté, rapide, adaptatif, accessible depuis l'OS, etc.) 
 ====
 ====
 Exemple : L'application X sera totalement PWA. Des tests devront démonter que le site continuer à fonctionner sans réseau et que les pages se chargent en moins de 5 secs en 4G. 
@@ -176,7 +176,7 @@ Exemple : L'application X sera totalement PWA. Des tests devront démonter que l
 ====
 Préciser quels sont les navigateurs supportés si votre projet contient une IHM Web. 
 
-Lorsqu'on s'adresse à un public dont on ne gère pas le parc de navigateurs (comme un site Web sur Internet), la meilleure option pour rendre les choses intelligibles et expliciter les enjeux est de négocier avec les parties prenantes du projet un pourcentage de public supporté en se basant sur des https://gs.statcounter.com/[statistiques]. Par exemple : "Support de 95 % des navigateurs".
+Lorsqu'on s'adresse à un public dont on ne gère pas le parc de navigateurs (comme un site Web sur Internet), la meilleure option pour rendre les choses intelligibles et expliciter les enjeux est de négocier avec les parties prenantes du projet un pourcentage de public supporté en se basant sur des https://gs.statcounter.com/[statistiques]. Par exemple : "Support de 95 % des navigateurs à date d'aujourd'hui".
 ====
 
 WARNING: Supporter d’anciens navigateur (IE en particulier) peut engendrer des surcoûts rédhibitoires et des risques sur la sécurité. Dans tous les cas, il convient d’évaluer les surcoûts de tester sur plusieurs plate-formes. Il existe de bons outils (payants) comme Litmus ou EmailOnAcid permettant de générer un rendu des sites Web et des courriels HTML sur une combinatoire d’OS / type de lecteur (PC/tablette/mobile) /navigateur très vaste (de l’ordre de 50).  Ce type de site est incontournable pour une application grand public.
@@ -185,10 +185,10 @@ WARNING: Supporter d’anciens navigateur (IE en particulier) peut engendrer des
 Exemple 1 : L’application intranet X devra fonctionner sur les navigateurs qualifiés en interne (cf norme xyz)
 ====
 ====
-Exemple 2 : L’application Y étant une application internet visant le public le plus large possible, y compris des terminaux de pays en voie de développement. Il devra supporter Firefox 3+, IE 8+, Opera 6+.
+Exemple 2 : L’application Y étant une application internet visant le public le plus large possible, y compris des terminaux de pays en voie de développement. Il devra supporter Firefox 3+, Chrome 49+, IE 8+, Opera 6+.
 ====
 ====
-Exemple 3 : L’application Z vise le public le plus large et doté de systèmes raisonnablement anciens et devra donc supporter : Firefox 6+, Chrome 8+, Opera 8+, IE 10, Edge.
+Exemple 3 : L’application Z vise le public le plus large et doté de systèmes raisonnablement anciens et devra donc supporter : Firefox 135+, Chrome 126+, Safari 5+, Opera 20+, Edge.
 ====
 
 #### Internationalisation (i18n)
@@ -209,12 +209,12 @@ Exemple 2 : les formats de dates et autres champs de saisie devront être parfa
 
 [TIP]
 ====
-Préciser si l'application doit pouvoir continuer à fonctionner sans accès à Internet ou au LAN (très courant pour les applications utilisées par les professionnels en déplacement par exemple). 
+Préciser si l'application doit pouvoir continuer à fonctionner sans accès à Internet ou au LAN (courant pour les applications utilisées par les professionnels en déplacement par exemple). 
 
-Il peut s’agir de clients lourds classiques (Java, C, …) possédant leur base locale pouvant être synchronisée de retour au bureau. Il peut également s'agir d'applications PWA (voir plus haut) utilisant un service worker pour les resources statiques et du stockage navigateur (local storage, base de données IndexedDB).
+Il peut s’agir de clients lourds classiques (Java, Kotlin, JS, C++, etc.) possédant leur base locale pouvant être synchronisée de retour au bureau. Il peut aussi s'agir d'applications PWA (voir plus haut) utilisant un service worker pour les resources statiques et du stockage navigateur (local storage, base de données IndexedDB).
 ====
 ====
-Exemple 1 : L'application sera développée en Java Swing avec stockage local basé sur une base H2 synchronisées avec la base commune par appels REST.
+Exemple 1 : L'application sera développée en Kotlin Jetpack Compose avec stockage local basé sur une base H2 synchronisées avec la base commune par appels REST.
 ====
 ====
 Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5 avec local storage pour stocker les données de la journée dans le navigateur.
@@ -224,7 +224,7 @@ Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5
 
 [TIP]
 ====
-Le SEO (Search engine optimization) concerne la visibilité d'un site Web au travers des moteurs de recherches (comme Google ou Quant).
+Le SEO (Search engine optimization) concerne la visibilité d'un site Web au travers des moteurs de recherche (comme Google Search, Bing ou Quant).
 ====
 ====
 Exemple 1 :  Aucune indexation nécessaire ni désirée (site interne)
@@ -237,7 +237,7 @@ Exemple 2 : Les pages statiques du site devront suivre les bonnes pratiques SEO 
 
 [TIP]
 ====
-L'écoconception consiste à limiter l'impact environnemental des logiciels et matériels utilisés par l’application. Les exigences dans ce domaine s'expriment généralement en WH ou équivalent CO2.
+L'écoconception consiste à limiter l'impact environnemental des logiciels et matériels utilisés par l’application. Les exigences dans ce domaine s'expriment généralement en kilowattheures (KWH) ou équivalent CO2.
 
 A noter que la loi française (voir loi https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/que-prevoit-la-loi/[du n°2020-105 du 10 février 2020, ou loi AGEC]) exige de réduire le gaspillage lié au numérique, notamment concernant l'obsolescence logicielle (art. 27). 
 
@@ -262,7 +262,7 @@ Donner les technologies choisies parmi les technologies au catalogue de l’orga
 Exemple : cette application est de profil P3 : "Application Web Spring" avec utilisation exceptionnelle de la librairie JasperReport.
 ====
 ====
-Exemple : Utilisation de Reacts.js à titre expérimental au sein de l'organisation. Validé en commité architecture le …
+Exemple : Utilisation de Rust à titre expérimental au sein de l'organisation. Validé en commité architecture le …
 ====
 
 #### Dépendances
@@ -279,71 +279,71 @@ Exemple :
 |====
 |Dépendance|Rôle|Version 
 
-|Framework Angular2
+|Framework React.js
 |Framework JS de présentation
-|2.1.1 
+|19
 
 |JasperReport
 |Éditique transactionnelle, composition des factures au format PDF
-|6.3.0
+|7.0.0
 |====
 ====
 
 ### Performances
 
-IMPORTANT: Les exigences sont dans la link:./vue-dimensionnement.adoc[vue dimensionnement].
+IMPORTANT: Les exigences sont situées dans la link:./vue-dimensionnement.adoc[vue dimensionnement].
 
 
 [TIP]
 ====
-Même si des campagnes de performance sont prévues, l'expérience montre que la plupart des problèmes de performance auraient pu être détectés dès le développement.
-Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, …) mais la plupart des problèmes de temps de réponse. Il est également souvent possible de simuler de la concurrence et de la charge. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
+Même si des campagnes de performance sont prévues, l'expérience montre que la plupart des problèmes de performance peuvent être détectés dès le développement.
+Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, etc.) mais c'est le cas de la plupart des problèmes de temps de réponse. Il est également souvent possible de simuler de la concurrence et de la charge. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
 
 Coté Frontend :
 
-* Limiter la complexité des CSS (sélecteurs ou fonctions en particulier)
-* Utiliser un profiler (comme celui de Chrome)
-* Privilégier les appels asynchrones
+* Limiter la complexité des CSS (sélecteurs ou fonctions en particulier) ;
+* Utiliser un profiler (comme celui de Chrome ou Firefox) ;
+* Privilégier les appels asynchrones quand c'est possible.
 * …
 
 Coté Backend :
 
-* S'assurer que la pagination serveur va bien jusqu'à la base de donnée (utiliser `FETCH FIRST x ROWS ONLY` mais https://www.postgresqltutorial.com/postgresql-fetch/[pas `LIMIT` and `OFFSET`]).
+* S'assurer que la pagination serveur va bien jusqu'à la base de donnée (en PostgreSQL, utiliser `FETCH FIRST x ROWS ONLY`.
 * Ne pas mettre en place de contraintes inutiles en base de données.
 * Limiter le nombre de jointures et les relations many-to-many.
 * Dans des cas de grosses volumétries, étudier les solutions de partitionnement de tables.
 * Ne pas oublier d'ajouter tous les index nécessaires, utiliser l'analyse du plan d'exécution pour vérifier qu'il n'y a pas de full scans.
-* Attention aux fonctions SQL qui 'cassent' les index (comme  `UPPER()`). Privilégier les traitements coté code backend si possible.
+* Attention aux fonctions SQL qui 'cassent' les index (comme  `UPPER()`). Privilégier les traitements coté code backend si possible ou prévoir des index de fonctions correspondants.
 * Activer les logs de requêtes (exemple Hibernate : `org.hibernate.SQL=DEBUG`,`-Dhibernate.generate_statistics=true`) et vérifier les requêtes SQL et leur nombre (pour détecter en particulier le problème du https://stackoverflow.com/questions/97197/what-is-the-n1-selects-problem-in-orm-object-relational-mapping[SELECT N+1], très courant).
 * Disposer même sur poste de travail d'un jeu de donnée minimal (une centaine d'enregistrement).
 * Vérifier avec un profiler (comme JVisualVM en Java) la consommation mémoire pour détecter les fuites ou les surconsommations.
 * Vérifier qu'il n'y a pas de fuite de threads ou de deadlocks en comptant le nombre de threads actifs sur une période suffisamment longue (une nuit complète par exemple).
 * Stresser les API _a minima_ (avec des injecteurs comme JMeter ou K6) et via une rampe progressive.
-* Traquer les IO (des millions de fois plus lents que des accès mémoire).
+* Traquer les IO (des milliers de fois plus lents que des accès mémoire).
 * …
 
 Frontend et backend : 
 
-* Toute ressource (taille de chaîne, nombre d'appel sur une durée, …) doit systématiquement être bornée par une limite (pas d'open bar).
+* Toute ressource (taille de chaîne, nombre d'appel sur une durée, etc.) doit systématiquement être bornée par une limite (pas d'« open bar »).
 * Vérifier que la taille des requêtes HTTP reste en dessous de quelques dizaines de Kio (hors GET sur fichiers). Utiliser la <<Tri et Pagination,pagination cliente et serveur>>.
 * Traquer le bavardage réseau : grouper les requêtes quand possible (il faut trouver un compromis avec la règle précédente). S'aider de la règle ‘I’ de SOLID (Interface Segregation).
-* Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2…`) pour récupérer plusieurs éléments à la fois
+* Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2,…`) pour récupérer plusieurs éléments à la fois
 (doit se concrétiser par un seul `SELECT WHERE .. IN` dans la requête finale, pas une boucle dans le code !)
 
 ====
 
 WARNING: Ne pas tomber à l'inverse dans l'optimisation prématurée "source de tous les problèmes" selon Donald Knuth. Écrire le code le plus simple possible et suivre un bon design, ne l'optimiser qu’ensuite. 
-N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimisations les plus significatives et ne pas perdre son temps à grappiller des microsecondes voire nanosecondes.
+N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimisations les plus significatives (top 10) et ne pas perdre son temps à grappiller des microsecondes voire nanosecondes.
 
 
 ### Spécificités d’usine logicielle
 
 [TIP]
 ====
-Sans reprendre le fonctionnement de la PIC (Plate-forme d’Intégration Continue) de l'organisation, préciser si ce projet nécessite une configuration particulière.
+Sans reprendre le fonctionnement de la plate-forme d’Intégration Continue de l'organisation (CI), préciser si ce projet nécessite une configuration particulière.
 ====
 ====
-Exemple : Les jobs Jenkins produiront le logiciel sous forme de conteneurs Docker si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce conteneur. Si tous les tests d’intégration et BDD sont passants, l'image Docker est livrée dans Nexus.
+Exemple : Les jobs Jenkins produiront le logiciel sous forme de conteneurs Docker/OCI si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce conteneur. Si tous les tests d’intégration et BDD sont passants, l'image Docker/OCI est livrée dans Nexus.
 ====
 
 ### Bonnes pratiques
@@ -363,12 +363,12 @@ Exemple : Suivre les recommendations de https://www.restapitutorial.com/[ce tuto
 Rendre explicite les règles et le niveau de qualité requis pour le code 
 ==== 
 ==== 
-Exemple 1 : Les règles de qualité à utiliser pour le code seront (https://rules.sonarsource.com/java[les règles standards SonarQube pour Java]). 
+Exemple 1 : Les règles de qualité à utiliser pour le code seront https://rules.sonarsource.com/java[les règles standards SonarQube pour Java]. 
 ==== 
 ==== 
 Exemple 2 : Le niveau de qualité exigé correspond au https://docs.sonarqube.org/6.7/QualityGates.html[Quality Gate SonarQube] recommandé : 
 
-* 80% de couverture de code minimum 
+* 80% de couverture minimum sur le nouveau code.
 * 3 % max de lignes dupliquées 
 * Niveau A en Maintenabily, Relability et Security 
 ==== 
@@ -381,7 +381,7 @@ Exemple 3 : Quelle langue utilisée pour le code ? français pour les termes fon
 
 [TIP]
 ====
-Préciser si ce projet a mis en œuvre des patterns (GoF, JEE ou autre) structurants. Inutile de reprendre les patterns déjà supportés par les langages ou les serveurs d'application (par exemple, l'IoC avec CDI dans un serveur JEE 6).
+Préciser si ce projet a mis en œuvre des patterns structurants (GoF, JEE ou autres). Inutile de reprendre les patterns déjà supportés par les langages ou les serveurs d'application (par exemple, l'IoC dans un serveur JEE).
 ====
 ====
 Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et éviter de multiplier les niveaux d'héritage, nous utiliserons massivement la pattern décorateur [GoF] dont voici un exemple d’utilisation : <schéma>.
@@ -394,7 +394,7 @@ Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et évi
 Une méthodologie ou une technologie particulière est-elle en jeu dans ce projet ? Quelle est la stratégie de tests ? 
 ==== 
 ==== 
-Exemple 1 : ce projet sera couvert en plus des TU et tests d’intégration car des tests d'acceptance BDD (Behavioral Driven Development) en technologie JBehave + Serenity. 
+Exemple 1 : ce projet sera couvert en plus des TU et tests d’intégration car des tests d'acceptance BDD (Behavioral Driven Development) en technologie Spock. 
 ==== 
 ==== 
 Exemple 2 : ce projet sera développé en TDD (test first) 
@@ -418,7 +418,7 @@ Exemple 3 : Types de tests
 |Spécifications exécutables 
 |Très élevé 
 |Automatisé 
-|Api  
+|API  
 |env. 100% pour les classes du domaine 
 |Mode bouchonné.  
 
@@ -439,7 +439,7 @@ Exemple 3 : Types de tests
 |TI (tests d'intégration) 
 |Faible 
 |Automatisé 
-|Test appelant des systèmes externes (bases de données, API…) 
+|Test appelant des systèmes externes (bases de données, API, etc.) 
 |50 à 60% 
 |Chaque TI ne doit tester qu'un seul système externe à la fois 
 
@@ -448,7 +448,7 @@ Exemple 3 : Types de tests
 |Automatisé 
 |UI 
 |30%, cas nominaux (happy path) 
-|Ecrits en CodeceptJS, Selenium ou technologie similaire. Ils seront limités à un rôle de smoke tests (détection de problèmes grossiers). Ces tests ne seront pas bouchonnés mais seront effectués sur chaîne de liaison instanciée de bout en bout. Pour éviter le travail inutile, ces tests seront faits au niveau de features entières, pas forcément à chaque sprint. Ces tests feront office également de tests système puisqu'ils solliciteront un maximum de modules débouchonnés. 
+|Ecrits en Playright, Cypress ou technologie similaire. Ils seront limités à un rôle de smoke tests (détection de problèmes grossiers). Ces tests ne seront pas bouchonnés mais seront effectués sur chaîne de liaison instanciée de bout en bout. Pour éviter le travail inutile, ces tests seront faits au niveau de features entières, pas forcément à chaque sprint. Ces tests feront office également de tests système puisqu'ils solliciteront un maximum de modules débouchonnés. 
 
 |Tests de performance 
 |Faible (hors campagnes de performance dédiées) 
@@ -480,12 +480,12 @@ Exemple 3 : Types de tests
 est ici de tester le fonctionnement de l'ensemble des modules (ce qui n'est pas automatisable) et de  
 détecter un maximum de bugs avant les tests d'UAT. 
 
-|Tests UAT (acceptance) 
+|Tests UAT (acceptation) 
 |Moyenne 
 |Manuels 
 |UI, batchs lancé à la main 
 |de 30% à 80% selon le nombre de scénarios prévus  
-|Tests menés en recette par des utilisateurs finaux sur environnement non bouchonné avec des cahiers de tests. Tests d'acceptance de bout n bout (on suit un cahier de tests avec les cas nominaux), Tests exploratoires (on tente toutes les combinatoires possibles avec un guidage minimal dans le cahier de test) 
+|Tests menés en recette par des utilisateurs finaux sur environnement non bouchonné avec des cahiers de tests. Tests d'acceptance de bout n bout (on suit un cahier de tests avec les cas nominaux), Tests exploratoires (on tente toutes les combinatoires possibles avec un guidage minimal dans le cahier de test). Utilisation de l'outil Squash pour le suivi.
 |==== 
 ==== 
 
@@ -523,7 +523,7 @@ Quelques pistes d’amélioration énergétique du projet :
 * Grouper les traitements de masse dans des batchs qui seront plus efficaces (lots).
 ====
 ====
-Exemple 1 : le processus gulp de construction de l'application appliquera une réduction de taille des images via le plugin imagemin-pngcrush.
+Exemple 1 : le processus Vite de construction de l'application appliquera une réduction de taille des images via le plugin vite-imagetools.
 ====
 ====
 Exemple 2 : des tests de robustesse courant sur plusieurs jours seront effectués sur l’application mobile après chaque optimisation pour évaluer la consommation énergétique de l'application.
@@ -532,7 +532,7 @@ Exemple 2 : des tests de robustesse courant sur plusieurs jours seront effectué
 Exemple 3 : Les campagnes de performance intégreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
 ====
 ====
-Exemple 4 : Pour une exigence de 100KgCO2/an maximum emit par le service en ligne A : on utilise 20% d'un serveur physique. On estime l'intensité carbone du serveur hors fonctionnement à 1.5TCO2 sur tout son cycle de vie de 10 ans (donc 30 kgCO2/an au prorata du service A).
+Exemple 4 : Pour une exigence de 100 KgCO2/an maximum emit par le service en ligne A : on utilise 20% d'un serveur physique. On estime l'intensité carbone du serveur hors fonctionnement à 1.5TCO2 sur tout son cycle de vie de 10 ans (donc 30 kgCO2/an au prorata du service A).
 
 En utilisant la formule SCI (voir plus haut), et pour une consommation totale du serveur de 800W et 20K appels par heure en moyenne, et une électricité française d'intensité carbone de 63g/KWH, on ne doit pas dépasser E=1111 KWH/an, soit 6.34 mWH/appel.
 
@@ -549,11 +549,11 @@ Lister ici les décisions prises concernant la gestion des transactions. Ceci es
 * Si oui, assurons nous le caractère ACID du tout (via le mode XA par exemple) ? 
 * Quel moteur transactionnel utilisons nous ? 
 * Quel niveau d'isolation transactionnelle (read commited, uncommited, repeatable read, serializable) ?
-* Si aucun moniteur transactionnel n'est utilisé (appel de plusieurs services REST en mise à jour par exemple), prévoit-t-on des transactions compensatoires en cas d'échec de l'une des mises à jours ?
+* Si aucun moniteur transactionnel n'est utilisé (appel de plusieurs services REST en mise à jour par exemple), prévoit-t-on des transactions compensatoires en cas d'échec de l'une des mises à jours ? un pattern https://learn.microsoft.com/en-us/azure/architecture/patterns/saga[SAGA] ? des jobs de resynchronisation ? ...
 
 ====
 ====
-Exemple : nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file pour effectuer des mises à jour au fil de l'eau.
+Exemple : nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file de messages pour effectuer des mises à jour au fil de l'eau.
 ====
 
 #### Gestion des sessions
@@ -564,7 +564,7 @@ Comment gère-t-on les sessions HTTP permettant de fournir un contexte d'exécut
 
 Notez que ceci est une surtout un problème pour les applications Web classiques dont la présentation est générée sur le serveur, pas pour les applications SPA (Single Page Application) qui gèrent toute la présentation et leur état en local dans le navigateur.
 
-Les choix faits ici affecteront les link:vue-infrastructure[choix d'infrastructure]. Par exemple, si une session est requise et que l'infrastructure est en cluster, il faudra soit mettre en place de l'affinité de session sur les serveurs pour forcer chaque utilisateur à toujours arriver sur le même serveur disposant de ses données, soit de mettre en place un cache distribué permettant aux serveurs de partager les sessions de tous les utilisateurs (plus complexe).
+Les choix faits ici affecteront les link:vue-infrastructure.adoc[choix d'infrastructure]. Par exemple, si une session est requise et que l'infrastructure est en cluster, il faudra soit mettre en place de l'affinité de session sur les serveurs pour forcer chaque utilisateur à toujours arriver sur le même serveur disposant de ses données, soit de mettre en place un cache distribué permettant aux serveurs de partager les sessions de tous les utilisateurs (plus complexe et plus lourd).
 
 Exemples de points à traiter :
 
@@ -580,12 +580,12 @@ Exemple : notre application JSF stockera en session HTTP uniquement son panier d
 
 [TIP]
 ====
-Comment gère-t-on erreurs ? Exemples de points à traiter :
+Comment gère-t-on les erreurs ? Exemples de points à traiter :
 
 * Différencions-nous erreurs fonctionnelles (erreurs fonctionnelles prévues) et techniques ? Prévoir un diagramme de classe.
 * Comment logue t-on les erreurs ? quel niveau de log ? 
 * Où sont attrapées les exceptions ? au plus tôt ou en début d'appel de façon centralisée ?
-* Utilise-t-on les exceptions standards du langage (`IOException`…) ou notre propre jeu d'exceptions ?
+* Utilise-t-on les exceptions standards du langage (ex: `IOException`, etc.) ou notre propre jeu d'exceptions ?
 * La liste des erreurs est-elle consolidée ? documentée ? 
 * Affecte-t-on des codes erreur ?
 * Affiche-on les stack-traces complètes ? si oui, coté serveur et coté client ?
@@ -603,7 +603,7 @@ Exemple : les erreurs techniques (imprévues) comme le timeout à un appel de se
 [TIP]
 ====
 
-Tout comme le backend, le frontend requiert une robustesse importante, d'autant plus qu'il est en prise directe avec l'interface chaise-clavier. 
+Tout comme le backend, le frontend requiert une robustesse importante, d'autant plus qu'il est en prise directe avec des utilisateurs finaux. 
 
 Entre autres :
 
@@ -631,7 +631,7 @@ Comment configure-t-on l'application ? Exemples de points à traiter :
 * Quelles sont les variables incluses dans le package final de façon statique ?
 * Quels sont les paramètres modifiables au runtime ? 
 * Mon application est-elle paramétrable via feature flags pour des raisons de canary testing par exemple ? si oui, comment je le gère dans le code ?
-* Sous quelle forme les paramètres sont-ils injectés dans l'application (variable d'environnement ? fichier .properties, base de données, …) ? 
+* Sous quelle forme les paramètres sont-ils injectés dans l'application (variable d'environnement ? fichier .properties, base de données, etc.) ? 
 * L'application accepte-elle une modification du paramétrage à chaud ?
 * Décrire le système de configuration
 
@@ -646,7 +646,7 @@ La configuration sera injectée au lancement (non modifiable à chaud) via des v
 
 [TIP]
 ====
-Quels sont des workflows de branche à prévoir ? git-flow ? TBD (Trunked-based Development) ? autre ?
+Quels sont les workflows de branche à prévoir ? git-flow ? TBD (Trunked-based Development) ? autre ?
 ====
 
 ====
@@ -669,7 +669,7 @@ Que versionne-t-on et quel système de version utilise-t-on ?
 ====
 Exemple: 
 
-* D'une façon générale, toute ressource non dérivée (source, outil, script de ci-cd, template, DDL de base de données, …) doit être versionnée.
+* D'une façon générale, toute ressource non dérivée (source, outil, script de ci-cd, template, DDL de base de données, etc.) doit être versionnée.
 * Les modules seront versionnés suivant la numérotation `x.y.z` (`<majeur).<évolution>.<fix>`)
 * Les librairies seront versionnées suivant la même numérotation que les modules mais la valeur `x` sera incrémentée lors de toute montée de version cassant la compatibilité ascendante (principe du Semantic Versioning).
 * La version logique globale du projet sera : `<lot>.<no sprint>.<déploiement>`
@@ -685,42 +685,42 @@ Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
 * Quel scope pour les objets (si utilisation d'un moteur IoC) ?
 * Les objets doivent-il être thread-safe ?
 * Quelles méthodes doivent être synchronisées ?
-* Risques de race condition ? de starvation ? de dead locks ?
+* Risques de race condition ? de famine ? de dead locks ?
 
 ====
 ====
-Exemple  (Spring MVC) : Tous les controllers seront en scope singleton et ne doivent donc en aucun cas stocker d'état dans leurs attributs pour éviter des race conditions.
+Exemple  (Spring MVC) : Tous les controllers seront en scope singleton et ne doivent donc en aucun cas stocker d'état dans leurs attributs pour éviter des accès concurrents.
 ====
 
 ### Encodage 
 
 [TIP] 
 ==== 
-Quelles sont les règles concernant l'encodage des chaînes de caractère ? Ceci est un problème récurrent dans les SI (qui n'a jamais observé d'accents corrompus sous forme de carrés ?). Ce problème est pourtant relativement simple à résoudre et n'exige que de la rigueur. Voir les exemples ci-dessous pour des exemples de dispositifs effectifs. 
+Quelles sont les règles concernant l'encodage des chaînes de caractères ? Ceci est un problème récurrent dans les SI (qui n'a jamais observé d'accents corrompus sous forme de carrés ?). Ce problème est pourtant relativement simple à résoudre. Voir les exemples ci-dessous pour des exemples de dispositifs effectifs. 
 ==== 
 
 ==== 
-Exemple 1 : Le seul encodage autorisé dans tous les modules et composants d'infrastructure est l'UTF-8. L'utilisation de l'ISO-8859-1, CP-1252 ou de tout autre encodage est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat…), des sources, des fichiers de configuration, des bases de données et des fichiers. 
+Exemple 1 : Le seul encodage autorisé dans tous les modules et composants d'infrastructure est l'`UTF-8`. L'utilisation des encodages `ISO-8859-1`, `CP-1252` ou de tout autre est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat, etc.), des sources, des fichiers de configuration, des bases de données et des fichiers. 
 
-NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des  .properties (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en UTF-8. 
+NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des `.properties` (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en `UTF-8`. Il faut alors s'assurer qu'on spécifie l'encodage effectif dans l'outil ou le code qui le lit.
 
 ==== 
 ==== 
-Exemple 2 : Si un système externe impose d'envoyer ou de recevoir des chaînes de caractères dans un encodage autre que le UTF-8 (exemple : un service REST qui renvoi des données en ISO-8859-1) et qu’il n’est pas possible de modifier le contrat, il est impératif de traduire au sein d'une couche anti-corruption les chaînes de caractères et ceci au plus tôt, dès l'appel. De plus, il ne faut jamais persister dans nos systèmes une donnée dans un encodage non UTF-8. 
+Exemple 2 : Si un système externe impose d'envoyer ou de recevoir des chaînes de caractères dans un encodage autre que le `UTF-8` (exemple : un service REST qui renvoi des données en `ISO-8859-1`) et qu’il n’est pas possible de modifier le contrat, il est impératif de traduire au sein d'une couche anti-corruption les chaînes de caractères et ceci au plus tôt, dès l'appel. De plus, il ne faut jamais persister dans nos systèmes une donnée dans un encodage non `UTF-8`. 
 ==== 
  
 ### Fuseaux horaires 
 
 [TIP] 
 ==== 
-Comment gère-t-on le stockage des dates ? Ceci, comme la gestion de l'encodage est un problème récurrent (décalage d'un jour, bugs lors des changements d'heure d'été/hiver, etc.) et pourtant simple à résoudre : suivre la norme https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] ("Time zones in ISO 8601 are represented as local time (with the location unspecified), as UTC, or as an offset from UTC." [Wikipedia]). 
+Comment gère-t-on le stockage des dates ? Ceci, comme la gestion de l'encodage est un problème récurrent (décalage d'un jour, bugs lors des changements d'heure d'été/hiver, etc.). Pour éviter les problèmes, suivre la norme https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] ("Time zones in ISO 8601 are represented as local time (with the location unspecified), as UTC, or as an offset from UTC." [Wikipedia]). 
 ==== 
 
 ==== 
 Exemple 1 : Les heures ne seront jamais stockées sans fuseau horaire. En base, on utilisera des timestamps avec timezone (`timestamptz`) et en Java ou JS, des objets intégrant le fuseau horaire de façon explicite (ex: `Instant` et pas `LocalDateTime` en java) ou des epochs. La précision sera au moins de la milliseconde. 
 ==== 
 ==== 
-Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera l'epoch millis à 12:00 UTC (et pas 00:00, trop proche du jour précédent, risque de bug). 
+Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera l'epoch millis à `12:00 UTC` (et pas `00:00`, trop proche du jour précédent, risque de bug). 
 ==== 
 
 ### Gestion des logs
@@ -730,7 +730,7 @@ NOTE: Les aspects d'infrastructure de logs sont détaillés dans link:./vue-infr
 [TIP]
 ====
 Donner ici les règles générales concernant les traces applicatives (logs), les niveaux et quantité de logs.
-Penser à l'exploitation des logs, surtout coté serveur. Se demander s'il sera possible d'en tirer profit en cas d'erreur en production au milieu de Mio voire Gio d'autres logs et de n threads loguant en parallèle.
+Penser à l'exploitation des logs, surtout coté serveur. Se demander s'il sera possible d'en tirer profit en cas d'erreur en production au milieu de Mio voire Gio d'autres logs et de nombreux threads écrivant en parallèle.
 ====
 
 #### Règles générales
@@ -742,11 +742,9 @@ Exemple 1 :
 * Penser à utiliser des chaînes de caractère discriminantes (exemple : code erreur) pour faciliter le filtrage dans l'outil de recherche de logs.
 * Toujours fournir des identifiants d'entités permettant de retrouver l'objet concerné 
 * Utiliser des identifiant de corrélation entre tiers (exemple : id de traitement générée coté client en JS, passée au serveur)
-* Eviter les calculs coûteux (exemple: beaucoup de concaténations) et utiliser des blocs conditionnels (exemple en Java : 
-```java
-if (isDebugEnabled()){
-   logger.debug(a+b+c)
-}
+* Eviter les calculs coûteux (exemple: beaucoup de concaténations) en utilisant des placeholders (La chaine de caractère à loguer finale n'est effectivement construite que si le niveau de prolixité requis est utilisé). Exemple Logback : 
+```
+log.info("Problème sur le dossier {} de l'utilisateur {}",dossier.getId(), utilisateur.getId());
 ```
 ====
 
@@ -800,28 +798,28 @@ L'application doit-elle fournir des services d’administration ? Il est forteme
 
 Exemples de points à traiter :
 
-* Dois-je fournir un moyen de purger des données, logs, caches, … ? 
+* Dois-je fournir un moyen de purger des données, logs, caches, etc. ? 
 (on appelle quelque fois ce type de service un 'traitement interne')    
-* Dois-je fournir des indicateurs applicatifs de supervision ? (nombre de dossiers consultés, …) ?
+* Dois-je fournir des indicateurs applicatifs de supervision ? (nombre de dossiers consultés, etc.) ?
 * Dois-je fournir des outils de migration ?
 
 ====
 ====
-Exemple : Le service `/interne/maj_2` effectuera une montée de version du modèle de donnée vers la V2
+Exemple : Le service `/interne/maj_v2` effectuera une montée de version du modèle de donnée vers la V2
 ====
 
 ### Tri et Pagination
 
 [TIP]
 ====
-Il est nécessaire de conserver une bonne fluidité de récupération des données en lot. La pagination permet de limiter le bavardage entre les clients (IHM et batchs) et les API. Décrire ici les dispositifs de pagination mis en ouvre coté client et coté serveur.
+Il est nécessaire de conserver une bonne fluidité de récupération des données en lot. La pagination permet de limiter le bavardage entre les clients (IHM et batchs) et les API. Décrire ici les dispositifs de pagination mis en oeuvre coté client et coté serveur.
 ====
 
 ====
 Exemple 1 (Coté serveur) 
 
-* Les requêtes en sortie de l'api sont systématiquement triées selon un ordre ascendant (le défaut) ou descendant. De plus, il sera possible de choisir le champ sur lequel se fait le tri via un autre query param.
-* Afin de limiter le nombre de requêtes à destination de l'api, celle-ci retourne un nombre limité d'éléments (ce nombre sera paramétrable suivant la taille des éléments individuels). Il s'agit du query param `range` contenant le numéro de la page à récupérer + le nombre d'éléments de la page. Chaque API proposera une valeur par défaut (de l'ordre d'une centaine).
+* Les requêtes en sortie de l'API sont systématiquement triées selon un ordre ascendant (le défaut) ou descendant. De plus, il sera possible de choisir le champ sur lequel se fait le tri via un autre query param.
+* Afin de limiter le nombre de requêtes à destination de l'API, celle-ci retourne un nombre limité d'éléments (ce nombre sera paramétrable suivant la taille des éléments individuels). Il s'agit du query param `range` contenant le numéro de la page à récupérer + le nombre d'éléments de la page. Chaque API proposera une valeur par défaut (de l'ordre d'une centaine).
 ====
 
 ====
@@ -839,7 +837,7 @@ Décrire comment les DDL (structures de tables en base de données) et les donn�
 ====
 
 ====
-Exemple : Nous utiliserons Liquibase embarqué dans les war pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
+Exemple : Nous utiliserons Liquibase embarqué dans les livrables pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
 ====
 
 

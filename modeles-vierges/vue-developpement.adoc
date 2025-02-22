@@ -17,7 +17,7 @@ Ceci est la vue développement de l’application. Elle décrit le code à produ
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
-Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne redéfinirons pas ici les termes fonctionnels ou techniques utilisés.
+Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendrons pas ici les termes fonctionnels ou techniques déjà définis.
 
 ### Documentation de Référence
 
