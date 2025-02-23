@@ -23,9 +23,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 [TIP]
 ====
-Cette vue est aussi souvent appelé « vue  technique » et concerne l'infrastructure : serveurs, réseaux, systèmes d'exploitation, bases de données, intergiciels (middleware), … 
+Cette vue est aussi souvent appelé « vue  technique » et concerne l'infrastructure : serveurs, réseaux, systèmes d'exploitation, bases de données, intergiciels, … 
 
-Bref, elle porte sur tout ce qui est externe à l'application et nécessaire à son exécution
+Bref, elle porte sur tout ce qui est externe à l'application et nécessaire à son exécution.
 ====
 
 ### Documentation de Référence
@@ -65,7 +65,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |ID|Détail
 
 |HI1
-|Nous prenons l'hypothèse que d'ici à la MEP du projet, PostgreSQL 11 sera validé en interne.
+|Nous prenons l'hypothèse que d'ici à la MEP du projet, PostgreSQL 17 sera validé en interne.
 |====
 
 ## Contraintes
@@ -91,12 +91,12 @@ Ce chapitre a une vocation pédagogique car il rappelle la disponibilité plafon
 
 [TIP]
 ====
-Donner les éléments permettant d'estimer le temps moyen de détection d'incident.
+Donner les éléments permettant d'estimer le temps moyen de détection d'incident (Mean Time To Detect).
 ====
 ====
-Exemple 1 : l'hypervision se fait 24/7/365
+Exemple 1 : Le SI est supervisé en 24/7/365.
 
-Exemple 2 : le service support production est disponible durant les heures de bureau mais une astreinte est mise en place avec alerting par e-mail et SMS en 24/7 du lundi au vendredi.
+Exemple 2 : Le service support production est disponible durant les heures de bureau mais une astreinte est mise en place avec alerting par e-mail et SMS en 24/7 du lundi au vendredi.
 ====
 
 #### Outils et normes de supervision
@@ -106,11 +106,11 @@ Exemple 2 : le service support production est disponible durant les heures de bu
 Donner ici les outils et normes de supervisions imposés au niveau du SI et les éventuelles contraintes liées.
 ====
 ====
-Exemple 1 : L'application sera supervisée avec Zabbix
+Exemple 1 : L'application sera supervisée avec Zabbix.
 
-Exemple 2 : Les batchs doivent pouvoir se lancer sur un endpoint REST
+Exemple 2 : Les batchs doivent pouvoir se lancer via un endpoint REST.
 
-Exemple 3 : un batch en erreur ne doit pas pouvoir se relancer sans un acquittement humain
+Exemple 3 : un batch en erreur ne doit pas pouvoir se relancer sans un acquittement humain.
 ====
 
 #### MTTR
@@ -147,7 +147,7 @@ TIP: Lister ici les éléments permettant d'estimer le temps de correction d'un 
 ====
 Exemple 1 : Au moins un expert de chaque domaine principal (système et virtualisation, stockage, réseau) est présent durant les heures de bureau.
 
-Exemple 2 : Comme toute application hébergée au datacenter X, l’application disposera de la présence d’exploitants de 7h à 20h jours ouvrés. Aucune astreinte n’est possible.
+Exemple 2 : Comme toute application hébergée au datacenter de la région X, l’application disposera de la présence d’exploitants de 7h à 20h jours ouvrés. Aucune astreinte n’est possible.
 
 Exemple 3 : Le temps de restauration observé d'une sauvegarde Veeam de VM de 40 Gio est de 45 mins.
 
@@ -167,7 +167,7 @@ Exemple 2 : Le SLA d'Orange prévoit un rétablissement de la connexion à Inter
 TIP: Lister ici les éléments permettant d'évaluer la durée de restauration de données (fichiers / objets / base de données). Les exigences de RTO listées plus bas devront prendre en compte ce MTTR.
 
 ====
-Exemple 1 : Le temps de restauration Barman d'une base Postgresql est d'environ (en heures) de `0.1*x + 0.2*y` avec x, la taille de la base en Gio et `y` le nombre de jours de journaux à rejouer. 
+Exemple 1 : Le temps de restauration Barman d'une base PostgreSQL est d'environ `x/V + y*T/P` heures avec `x`, la taille de la base en Gio, `V` la vitesse de lecture/écriture (Go/h), `y` le nombre de jours de journaux à rejouer, `T` le temps moyen pour rejouer un 1 jour de WAL et `P` le niveau de parallélisme de la restauration. 
 
 Exemple 2 : La restauration d'une sauvegarde offline (sur bandes) nécessite au minimum 4H de préparation supplémentaire.
 ====
@@ -193,7 +193,7 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 ====
 Donner ici le niveau de sécurité du datacenter (DC) selon l’échelle Uptime Institute (Tier de 1 à 4).  
 
-TIP: A noter que les architectures Cloud modernes privilégient la redondance des DC sur des sites distants plutôt qu'un niveau Tier plus élevé sur un seul site (à condition de pouvoir répliquer efficacement des données et d'accepter un délais sur la cohérence immédiate des données, voir le théorème de CAP). De façon simpliste, on peut calculer que la disponibilité de deux DC actifs en parallèle est de sept neufs contre quatre neufs pour un DC Tier 4. Un compromis entre les deux modèles est le déploiement dans des zones redondantes d'un même site au prix d'une plus grande vulnérabilité aux catastrophes.
+TIP: A noter que les architectures Cloud modernes privilégient la redondance des DC sur des sites distants plutôt qu'un niveau Tier plus élevé sur un seul site (à condition de pouvoir répliquer efficacement des données et d'accepter un délais sur la cohérence immédiate des données, voir le https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_CAP[théorème CAP]). De façon simpliste, on peut calculer que la disponibilité de deux DC actifs en parallèle est de sept neufs contre quatre neufs pour un DC Tier 4. Un compromis entre les deux modèles est le déploiement dans des zones redondantes d'un même site au prix d'une plus grande vulnérabilité aux catastrophes.
 
 .Niveaux Tier des datacenters (source : Wikipedia)
 [cols="1,5,2,2,2,2"]
@@ -224,7 +224,7 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 |Tier 4
 |Tolérance aux pannes
 |99,995 %
-|0,4 h
+|24 mins
 |Oui
 |Oui
 
@@ -232,7 +232,7 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 ====
 
 ====
-Exemple : le datacenter de Paris est de niveau Tier III et celui de Toulouse Tier II.
+Exemple : Le datacenter de Paris est de niveau Tier III et celui de Toulouse Tier II.
 ====
 
 #### Synthèse de la disponibilité plancher
@@ -243,7 +243,7 @@ En prenant en compte les éléments précédents, estimer la disponibilité plan
 ====
 
 ====
-Exemple : <disponibilité datacenter> * <plage de fonctionnement effective> * <disponibilité système > * <disponibilité hardware> = 99.8 x 99.99 x 99.6 x 99.99 =~ *99.4%*.
+Exemple : Disponibilité effective application  = <disponibilité datacenter> * <plage de fonctionnement effective> * <disponibilité système > * <disponibilité hardware> = 99.8 x 99.99 x 99.6 x 99.99 =~ *99.4%*.
 ====
 
 #### Gestion des catastrophes
@@ -253,43 +253,49 @@ Exemple : <disponibilité datacenter> * <plage de fonctionnement effective> * <d
 
 Les catastrophes peuvent être classées en trois catégories:
 
-* Naturelle (tremblements de terre, inondations, ouragans, canicules…).
-* Incident sur l'infrastructure du datacenter (accidentel comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, les erreurs critiques d'administrateurs ou intentionnelles: militaire, terroriste, sabotage …).
-* Cyber (DDOS, virus, Ransomware … )
+* Naturelles (tremblements de terre, inondations, ouragans, canicules, etc. ) ;
+* Infrastructurelles (accidentel comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, les erreurs critiques d'administrateurs ou intentionnelles: militaire, terroriste, sabotage, etc.) ;
+* Cyber (DDOS, virus, Ransomware, etc. ).
 
-PRA (Plan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie…). Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il exige au minium un doublement du datacenter. 
+PRA (Plan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie…). Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il peut nécessiter un DC secondaire ou des solutions cloud de récupération (DRaaS, cold/hot sites). 
 
-Un PCA permet de poursuivre les activités critiques de l’organisation (en général dans un mode dégradé) sans interruption notable. Ce principe est réservé aux organisations assez matures car il exige des dispositifs techniques coûteux et complexes (filesystems distribués et concurrents par exemple).
+Un PCA permet d'assurer la continuité des activités critiques, avec ou sans mode dégradé selon le niveau de redondance et de réplication des infrastructures. Ce principe est réservé aux organisations assez matures car il exige des dispositifs techniques coûteux et complexes (filesystems distribués et concurrents par exemple).
 
-Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou un PCA. Par exemple, si on vise un PCA, il faut prévoir des clusters actifs-actifs multi-zonaux (situés dans des datacenters distants géographiquement) alors que pour un PRA, l'important est la qualité et la vitesse de sauvegarde/restauration des données dans le datacenter de secours. 
+Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou un PCA. Par exemple, si on vise un PCA, il faut prévoir des clusters actifs-actifs multi-zonaux (situés dans des DC distants géographiquement) alors que pour un PRA, l'important est la qualité et la vitesse de sauvegarde/restauration des données dans le DC de secours. 
 
-Note: Dans la plupart des grands comptes, PRA comme PCA impliquent une réplication par lien optique des baies SAN pour limiter le RPO au minimum et s'assurer que l'ensemble des données du datacenter soient bien répliquées. Les systèmes de sauvegarde/restauration classiques sont rarement suffisants à couvrir ce besoin. La différence est que dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du datacenter de secours alors que dans le cas d'un PCA, les deux (ou plus) datacenters fonctionnent en parallèle en mode actif/actif de façon nominale.
+Notes: 
 
-Note: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS…) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
+* Pour un PCA, la réplication synchrone est souvent utilisée pour garantir un RPO nul, mais certaines architectures (ex: vSphere Metro Storage Cluster avec SRDF asynchrone) permettent un PCA avec une réplication asynchrone, à condition que le RPO reste dans des limites acceptables (perte de quelques transactions seulement). Cependant, une réplication sur longue distance peut introduire une latence élevée, impactant les performances. C'est pourquoi ce type de réplication synchrone n'est pas envisageable pour entre des DC éloignés de plus de 50 km environ.
+* Un PRA peut  quant-à lui tolérer une réplication asynchrone ou des sauvegardes périodiques selon les exigences métier. 
+* Les systèmes de sauvegarde classiques peuvent suffire pour un PRA avec un RTO adapté, mais sont généralement insuffisants pour un PCA, qui requiert une réplication temps réel. 
+* Dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du DC de secours alors que dans le cas d'un PCA, tous les DC fonctionnent en parallèle en mode actif/actif de façon nominale.
+* Les tests de bascule devraient être réalisés au moins une fois par an pour un PRA, et trimestriellement pour un PCA. Ils doivent inclure des tests unitaires (failover d’une application) et globaux (bascule totale du SI).
+
+Note: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS, etc.) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
 
 Décrire entre autres :
 
-* Les matériels redondés dans le second datacenter, nombre de serveurs de spare, capacité du datacenter de secours par rapport au datacenter nominal.
-* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévues et le MTTR envisagé.
-* Pour un PCA les dispositifs de réplication de données (synchrone ? fil de l’eau ? Combien de transactions peuvent-être perdues ?).
-* Présenter la politique de failback (réversibilité) : doit-on rebasculer vers le premier datacenter ? Comment ?
+* Les matériels redondés dans le second DC, nombre de serveurs de spare, capacité du DC de secours par rapport au DC nominal.
+* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévues et le RTO.
+* Pour un PCA, la latence et dégradation de performances induite par la réplication synchrone des données entre DC ou la quantité de transactions perdues acceptables en cas de réplication asynchrone.
+* Présenter la politique de failback (réversibilité) : doit-on rebasculer vers le premier DC? Comment ?
 * Comment sont organisés les tests de bascule à blanc ? Avec quelle fréquence ?
 ====
 ====
-Exemple de PRA : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le datacenter de secours via la technologie vSphere Metro Storage Cluster utilisant SRDF en mode asynchrone pour la réplication inter-baies. En cas de catastrophe, la VM répliquée sur le site de secours est à jour et prête à démarrer. Le RPO est de ~0 secs et le RTO de 30 mins.
+Exemple de PRA : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le DC de secours via la technologie vSphere Metro Storage Cluster utilisant SRDF en mode asynchrone pour la réplication inter-baies. En cas de catastrophe, la VM répliquée sur le site de secours est à jour et prête à démarrer. Le RPO est de ~0 secs et le RTO de 30 mins.
 
-Autre exemple de PRA (PME avec son propre datacenter à Paris) : Stockage de deux serveurs de spare dans les locaux de Lille. Sauvegarde à chaud toutes les quatre heures des données principales de l'entreprise et envoi (avec chiffrement client) sur BackBlaze.com. Le RPO est de 4h, le RTO de 2H.
+Autre exemple de PRA (PME avec son propre DC à Paris) : Stockage de deux serveurs de spare dans les locaux de Lille. Sauvegarde à chaud toutes les quatre heures des données principales de l'entreprise et envoi (avec chiffrement client) sur BackBlaze.com. Le RPO est de 4h, le RTO de 2H.
 
-Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. Le MTTR est donc de 0.
+Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. 
 ====
 
 
 ### Hébergement
 
-* Où sera hébergée cette application ? datacenter "on premises" ? Cloud interne ? Cloud IaaS ? PaaS ? autre ?
+* Où sera hébergée cette application ? DC "on premises" ? Cloud interne ? Cloud IaaS ? PaaS ? autre ?
 * Qui administrera cette application ? en interne ? Sous-traité ? Pas d’administration (PaaS) … ?
 ====
-Exemple 1: Cette application sera hébergée en interne dans le datacenter de Nantes (seul à assurer la disponibilité de service exigée) et il sera administré par l’équipe X de Lyon. 
+Exemple 1: Cette application sera hébergée en interne dans le DC de Nantes (seul à assurer la disponibilité de service exigée) et il sera administré par l’équipe X de Lyon. 
 ====
 
 ====
@@ -297,7 +303,7 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 ====
 
 ====
-Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel PERSONNE, elle sera colocalisée avec le module PERSONNE dans le VLAN XYZ.
+Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel `PERSONNE`, elle sera colocalisée avec le module `COMPTA-API` dans le VLAN `XYZ`.
 ====
 
 ### Contraintes réseau
@@ -307,10 +313,10 @@ Exemple 3 : Étant donné le nombre d’appels très important de cette applica
 Lister les contraintes liées au réseau, en particulier le débit maximum théorique et les découpages en zones de sécurité.
 ====
 ====
-Exemple 1 : le LAN dispose d'un débit maximal de 10 Gbps
+Exemple 1 : Le LAN dispose d'un débit maximal de 10 Gbps.
 ====
 ====
-Exemple 2 : les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
+Exemple 2 : Les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
 ====
 
 ### Contraintes de déploiement
@@ -320,11 +326,11 @@ Exemple 2 : les modules applicatifs intranet doivent se trouver dans une zone de
 Lister les contraintes liées au déploiement des applications et services d’infrastructure.
 ====
 ====
-Exemple 1 : Une VM ne doit héberger qu'une unique instance Postgresql
+Exemple 1 : Une VM ne doit héberger qu'une unique instance PostgreSQL.
 
-Exemple 2 : Les applications Java doivent être déployées sous forme de jar exécutable et non de war.
+Exemple 2 : Les applications Java doivent être déployées sous forme de .jar exécutables et non de .war.
 
-Exemple 3 : Toute application doit être packagées sous forme d'image OCI et déployable sur Kubernetes via un ensemble de manifests structurés au format Kustomize.
+Exemple 3 : Toute application doit être publiée sous forme d'image OCI et déployable sur Kubernetes via un ensemble de manifests structurés au format Kustomize.
 
 ====
 
@@ -335,9 +341,9 @@ Exemple 3 : Toute application doit être packagées sous forme d'image OCI et d�
 Lister les contraintes liées aux journaux
 ====
 ====
-Exemple 1 : une application ne doit pas produire plus de 1 Tio de journaux / mois.
+Exemple 1 : Une application ne doit pas produire plus de 1 Tio de journaux / mois.
 
-Exemple 2 : la durée de rétention maximale des journaux est de 3 mois
+Exemple 2 : La durée de rétention maximale des journaux est de 3 mois.
 ====
 
 ### Contraintes de sauvegardes et restaurations
@@ -349,14 +355,14 @@ Lister les contraintes liées aux sauvegardes.
 Une contrainte courante est le respect de la méthode 3-2-1 :
 
 * Au moins 3 exemplaires des données (la donnée vivante + 2 copies) ;
-* Au moins 2 technologies de stockage différentes pour ces 3 copies (exemple : disque SSD pour les données vivantes et deux sauvegardes sur bande) ;
+* Au moins 2 technologies de stockage différentes pour ces 3 copies (exemple : disques SSD pour les données vivantes et deux sauvegardes sur bandes) ;
 * Au moins 1 exemplaire hors-ligne et hors site (exemple : 1 jeu de bandes conservé dans un coffre ignifugé à la banque).
 
 ====
 ====
 Exemple 1 : L'espace disque maximal pouvant être provisionné par un projet pour les backups est de 100 Tio sur HDD.
 
-Exemple 2 : la durée de retentions maximale des sauvegardes est de deux ans
+Exemple 2 : La durée de retentions maximale des sauvegardes est de deux ans.
 
 Exemple 3 : Compter 1 min / Gio pour une restauration NetBackup.
 ====
@@ -368,20 +374,20 @@ Exemple 3 : Compter 1 min / Gio pour une restauration NetBackup.
 Lister les limites budgétaires.
 ====
 ====
-Exemple 1 : les frais de services Cloud AWS ne devront pas dépasser 5K€/ an pour ce projet.
+Exemple 1 : les frais de services Cloud AWS ne devront pas dépasser 5 K€/ an pour ce projet.
 ====
 
 ## Exigences
 
 [TIP]
 ====
-Contrairement aux contraintes qui fixaient le cadre auquel toute application devait se conformer, les exigences non fonctionnelles sont données par les porteurs du projet (MOA en général).
+Contrairement aux contraintes qui fixaient le cadre auquel toute application devait se conformer, les exigences non fonctionnelles sont données par les porteurs du projet (Product Owner, MOA, client, etc.).
 
-Prévoir des interviews pour les recueillir.
+Prévoir des interviews pour les recueillir. 
 
 Si certaines exigences ne sont pas réalistes, le mentionner dans le document des points non statués.
 
-Les exigences liées à la disponibilité devraient être précisées via une étude de risque (type EBIOS Risk Manager)
+Les exigences liées à la disponibilité devraient être précisées via une étude de risque (type https://cyber.gouv.fr/la-methode-ebios-risk-manager[EBIOS Risk Manager])
 
 ====
 
@@ -430,7 +436,7 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 
 Attention à bien cadrer ces exigences car un porteur de projet a souvent tendance à demander une disponibilité très élevée sans toujours se rendre compte des implications. Le coût et la complexité de la solution augmente exponentiellement avec le niveau de disponibilité exigé. 
 
-L’architecture physique, technique voire logicielle change complètement en fonction du besoin de disponibilité (clusters d’intergiciels voire de bases de données, redondances matériels coûteuses, architecture asynchrone, caches de session, failover …). 
+L’architecture physique, technique voire logicielle change complètement en fonction du besoin de disponibilité (clusters d’intergiciels ou de bases de données, redondances matériels coûteuses, architecture asynchrone, caches de session, failover, etc.). 
 
 Ne pas oublier également les coûts d’astreinte très importants si les exigences sont très élevées. De la pédagogie et un devis permettent en général de modérer les exigences.
 
@@ -463,7 +469,7 @@ Préciser les modes dégradés applicatifs envisagés.
 ====
 
 ====
-Exemple 1 : Le site _monsite.com_ devra pouvoir continuer à accepter les commandes en l’absence du service de logistique.
+Exemple 1 : Le site `monsite.com` devra pouvoir continuer à accepter les commandes en l’absence du service de logistique.
 ====
 ====
 Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de données puis soumis à nouveau suite à une opération manuelle des exploitants.
@@ -480,14 +486,13 @@ Cette robustesse s'exprime en valeur absolue par unité de temps : nombre d'erre
 Attention à ne pas être trop exigeant sur ce point car une grande robustesse peut impliquer la mise en place de systèmes à tolérance de panne complexes, coûteux et pouvant aller à l'encontre des capacités de montée en charge, voire même de la disponibilité.
 ====
 ====
-Exemple 1 : pas plus de 0.001% de requêtes en erreur
+Exemple 1 : Pas plus de 0.001% de requêtes en erreur.
 ====
 ====
-Exemple 2 : l'utilisateur ne devra pas perdre son panier d'achat même en cas de panne
--> attention, ce type d'exigence impacte l'architecture en profondeur, voir la section <<Disponibilite>>.
+Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de panne (attention, ce type d'exigence impacte l'architecture en profondeur, voir la section <<Disponibilite>>).
 ====
 ====
-Exemple 3 : le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95éme centile.
+Exemple 3 : Le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95e centile.
 ====
 
 ### Exigences de RPO
@@ -498,14 +503,14 @@ La sauvegarde (ou backup) consiste à recopier les données d'une système sur u
 
 Donner ici le Recovery Point Objective (RPO) de l’application (en heures). Il peut être utile de restaurer suite à :
 
-* Une perte de données matérielle (peu probable avec des systèmes de redondance).
-* Une fausse manipulation d'un power-user ou d'un administrateur (assez courant).
-* Un bug applicatif.
-* Une destruction de donnée volontaire (attaque de type ransomware)…
+* Une perte de données matérielle (peu probable avec des systèmes de redondance) ;
+* Une fausse manipulation d'un power-user ou d'un administrateur (assez courant) ;
+* Un bug applicatif ;
+* Une destruction de donnée volontaire (attaque de type ransomware, etc.).
 
 ====
 ====
-Exemple : on ne doit pas pouvoir perdre plus d'une journée de données applicatives
+Exemple : On ne doit pas pouvoir perdre plus d'une journée de données applicatives.
 ====
 
 ### Exigences de RTO
@@ -535,7 +540,7 @@ Préciser ici comment l’application devra être déployée coté serveur.
 Par exemple :
 
 * L'installation est-elle manuelle ? scriptées avec des outils d'IT Automation comme Ansible ou SaltStack ? via des images Docker ?
-* Comment sont déployés les unités déployables (modules ou composants d'infrastructure) ? Sous forme de paquets ? Utilise-t-on un dépôt de paquets (type yum ou apt) ? Utilise-t-on des conteneurs ?
+* Comment sont déployées les unités déployables (modules ou composants d'infrastructure) ? Sous forme de paquets ? Utilise-t-on un dépôt de paquets (type yum ou apt) ? Utilise-t-on des conteneurs ?
 * Comment sont appliquées les mises à jour ?
 ====
 
@@ -557,7 +562,7 @@ Coté client, pour une application client lourd :
 
 * Quel version de l’OS est supportée ?
 * Si l’OS est Windows, l’installation passe-t-elle par un outil de déploiement (Novell ZENWorks par exemple) ? l’application vient-elle avec un installeur type Nullsoft ? Affecte-t-elle le système (variables d’environnements, base de registre…) ou est-elle en mode portable (simple zip) ?
-* Si l’OS est Linux, l’application doit-elle fournie en tant que paquet? 
+* Si l’OS est Linux, l’application doit-elle fournie en tant que paquet ? 
 * Comment sont appliquées les mises à jour ?
 ====
 
@@ -571,7 +576,7 @@ Coté client, pour une application client lourd :
 ====
 
 ====
-Exemple: L'application sera déployée sur un mode blue/green, c'est-à-dire complètement installée sur des machines initialement inaccessibles puis une bascule DNS permettra de pointer vers les machines disposant de la dernière version.
+Exemple: L'application sera déployée sur un mode blue/green, c'est-à-dire complètement installée sur un ensemble de machines initialement inaccessibles puis une bascule DNS permettra de pointer vers les machines disposant de la dernière version.
 ====
 
 [[exigences_ecoconception]]
@@ -579,19 +584,19 @@ Exemple: L'application sera déployée sur un mode blue/green, c'est-à-dire com
 
 [TIP]
 ====
-L'écoconception consiste à limiter l'impact environnemental des logiciels et matériels utilisés par l’application. Les exigences dans ce domaine s'expriment généralement en WH ou équivalent CO2.
+L'écoconception consiste à limiter l'impact environnemental des logiciels et matériels utilisés par l’application. Les exigences dans ce domaine s'expriment généralement en wattheures ou équivalent CO2.
 
 A noter que la loi française (voir loi https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/que-prevoit-la-loi/[du n°2020-105 du 10 février 2020, ou loi AGEC]) exige de réduire le gaspillage lié au numérique, notamment concernant l'obsolescence matérielle (art. 19). 
 
 Prendre également en compte les impressions et courriers.
 
-Selon l'ADEME (estimation 2014), les émissions équivalent CO2 d'un KWH en France continentale pour le tertiaire est de 50g/KWH.
+Selon l'ADEME (estimation 2014), les émissions équivalent CO2 d'un KWH en France continentale pour le tertiaire est de 50 g/KWH.
 ====
 ====
-Exemple 1 : Le Power usage effectiveness (PUE) du site devra être de 1.5 ou moins.
+Exemple 1 : Le Power Usage Effectiveness (PUE) du site devra être de 1.5 ou moins.
 ====
 ====
-Exemple 2 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2020.
+Exemple 2 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2024.
 ====
 
 ## Architecture cible
@@ -606,7 +611,7 @@ Quels sont les grands principes d'infrastructure de notre application ?
 Exemples :
 
 * Les modules applicatifs exposés à Internet dans une DMZ protégée derrière un pare-feu puis un reverse-proxy et sur un VLAN isolé. 
-* Concernant les interactions entre la DMZ et l’intranet, un pare-feu ne permet les communications que depuis l’intranet vers la DMZ
+* Concernant les interactions entre la DMZ et l’intranet, un pare-feu ne permet les communications que depuis l’intranet vers la DMZ.
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
@@ -615,13 +620,20 @@ Exemples :
 [TIP] 
 ==== 
 
-La disponibilité est le pourcentage de temps minimal sur une année pendant lequel un système doit être utilisable dans des conditions acceptables. Il est exprimé en % (exemple: 99.9%).
+La disponibilité mesure le pourcentage de temps pendant lequel un système est utilisable dans des conditions acceptables, c'est-à-dire accessible et opérationnel selon les critères définis (temps de réponse, capacité de traitement, etc.). Il est exprimé en % (exemple: 99.9% = ~8h45 d’indisponibilité/an).
 
 Donner ici les dispositifs permettant d'atteindre les <<Exigences de disponibilité>>. 
 
-Les mesures permettant d’atteindre la disponibilité exigée sont très nombreuses et devront être choisies par l’architecte en fonction de leur apport et de leur coût (financier, en complexité, …).  
+Les mesures permettant d’atteindre la disponibilité exigée sont nombreuses et devront être choisies par l’architecte en fonction de leur apport et de leur coût (financier, en complexité, etc.).  
 
-Nous regroupons les dispositifs de disponibilité en quatre grandes catégories : 
+Les indisponibilités peuvent-être de deux natures :
+
+* Indisponibilités non planifiées (imprévues) : pannes matérielles (serveur, disque, réseau, etc.), bugs ou crashs logiciels, attaques (DDoS, ransomware, etc.), problèmes d’infrastructure (coupure électrique, incendie), ...
+* Indisponibilités programmées (maintenance planifiée) : mises à jour logicielles (OS, application, base de données), remplacements matériels, changements d’architecture (migration, refonte), tests de bascule (DRP/PRA, failover test), ...
+
+Les indisponibilité programmées sont en général prises en compte dans le calcul de la disponibilité globale (sauf si le SLA prévoit le contraire) puisque le service aux utilisateurs n'est alors pas rendu.
+
+Nous regroupons ici les dispositifs de disponibilité en cinq grandes catégories : 
 
 * Dispositifs de *supervision* (technique et applicative) permettant de détecter au plus tôt les pannes et donc de limiter le MTTD (temps moyen de détection). 
 
@@ -629,11 +641,13 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 ** la présence humaine (astreintes, heures de support étendues…) qui permet d'améliorer le MTTR (temps moyen de résolution) et sans laquelle la supervision est inefficiente ; 
 
-** La qualité de la gestion des incidents (voir les bonnes pratiques ITIL), par exemple un workflow de résolution d'incident est-il prévu ? si oui, quel est sa complexité ? sa durée de mise en œuvre ? si elle nécessite par exemple plusieurs validations hiérarchiques, la présence de nombreux exploitants affecte le MTTR. 
+** La qualité de la gestion des incidents (voir les bonnes pratiques ITIL), par exemple un workflow de résolution d'incident est-il prévu ? si oui, quel est sa complexité ? sa durée de mise en œuvre ? des validations hiérarchiques (affectant donc le MTTR) sont-elles prévues ? 
 
-* Dispositifs de *haute disponibilité (HA)* (clusters, RAID…) qu'il ne faut pas surestimer si les dispositifs précédents sont insuffisants. 
+* Dispositifs de *haute disponibilité (HA)* (clusters, load balancers, failover automatique, etc.) qu'il ne faut pas surestimer si les dispositifs précédents sont insuffisants. 
 
-* Dispositifs de *restauration de données* : la procédure de restauration est-t-elle bien définie ? testée ? d'une durée compatible avec les exigences de disponibilité ? C'est typiquement utile dans le cas de perte de données causée par une fausse manipulation ou bug dans le code : il faut alors arrêter l'application et dans cette situation, pouvoir restaurer rapidement la dernière sauvegarde améliore grandement le MTTR. 
+* Dispositifs de *restauration de données* : La procédure de restauration est-elle bien définie et testée régulièrement ? L’isolement des sauvegardes est-il assuré pour éviter toute compromission (ex: ransomware, corruption) ? Le temps de restauration est-il compatible avec le RTO défini ? En cas de perte de données causée par une fausse manipulation ou bug dans le code, il faut alors arrêter l'application et dans cette situation, pouvoir restaurer rapidement la dernière sauvegarde améliore grandement le MTTR. 
+
+* Architectures et modèles de déploiement limitant les indisponibilité programmées : mise à jour sans coupure (Rolling Update, Blue/Green Deployment), clusters HA avec failover automatique (voir plus bas), maintenance sans coupure via redondance active/active (voir plus bas).
  
 
 ==== 
@@ -648,8 +662,6 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 * Il convient d'être cohérent sur la *disponibilité de chaque maillon de la chaîne de liaison* : rien ne sert d'avoir un cluster actif/actif de serveurs d'application JEE si tous ces serveurs attaquent une base de données localisée sur un unique serveur physique avec disques sans RAID. 
 
-* On estime un système comme hautement disponible *(HA) à partir de 99%* de disponibilité. 
-
 * On désigne par *«spare»* un dispositif (serveur, disque, carte électronique…) de rechange qui est dédié au besoin de disponibilité mais qui n'est pas activé en dehors des pannes. En fonction du niveau de disponibilité recherché, il peut être dédié à l’application ou mutualisé au niveau SI.  
 
 * Les *niveaux de redondance* d'un système (modèle NMR = N-Modular Redundancy) les plus courants sont les suivants (avec N, le nombre de dispositifs assurant un fonctionnement correct en charge) :  
@@ -660,9 +672,33 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 ** *N+M*: Un seul spare n'est pas suffisant pour tenir la charge, on prévoit au moins M spares. 
 
-** *2N* : le système est entièrement redondé et peut supporter la perte de la moitié des composants d'infrastructure (exemple : on dispose de deux alimentations actives en même temps dont chacune suffit à alimenter le serveur). Ce système est tolèrant aux pannes (Fault-tolerant). 
+** *2N* : le système est entièrement redondé en parallèle et peut donc supporter la perte de la moitié des composants d'infrastructure (exemple : on dispose de deux alimentations actives en même temps dont chacune suffit à alimenter le serveur). Ce système est tolerant aux pannes (FT = fault-tolerant). 
 
-** *2N+1*: En plus d'un système entièrement redondé, un système de secours est disponible (pour les opérations de maintenance par exemple). 
+** *2N+1*: En plus d'un système entièrement redondé, un système de secours est disponible (pour les opérations de maintenance par exemple). Elle est courante dans les DC critiques et les architectures cloud multi-zonales (AWS, Azure, GCP).
+
+==== 
+[TIP] 
+==== 
+Quelques mots sur les *répartiteurs de charge* : 
+
+* Un répartiteur de charge (Load Balancer = LB) est un composant réseau ou logiciel qui distribue automatiquement le trafic entrant entre plusieurs serveurs afin d’optimiser la disponibilité, la performance et la tolérance aux pannes d’une application ; il peut fonctionner à différents niveaux du modèle OSI, du niveau 4 (TCP/UDP, ex: LVS, F5 LTM) au niveau 7 (HTTP, ex: HAProxy, Nginx, Traefik).
+
+* Un répartiteur de charge (Load Balancer = LB) est une *brique indispensable à un cluster actif/actif*. 
+
+* Dans la plupart des clusters à vocation de haute disponibilité, il faut redonder le répartiteur de charge pour éviter un SPOF. Une approche classique est un LB actif/passif (ex: Keepalived avec VRRP), mais un mode actif/actif est possible avec des solutions comme ECMP (repartition interne à un DC) ou GSLB (repartition multi-DC). L’essentiel est d’éviter une centralisation excessive qui recréerait un SPOF.
+
+* Pour les clusters subissant une très forte charge (ex: LB cloud GCP), une approche consiste à déployer les LB en actif/actif avec un équilibrage côté client via Anycast DNS, Weighted DNS Routing ou GSLB. 
+
+* Il est crucial de configurer correctement et à fréquence suffisante les tests de vie (*heathcheck*) des nœuds vers lesquels le répartiteur distribue la charge car sinon, le répartiteur va continuer à envoyer des requêtes vers des nœuds tombés ou en surcharge. 
+
+* Certains LB avancés (ex: option redispatch de HAProxy) permettent de rejouer une requête sur un autre nœud en cas d’échec. Cela améliore la tolérance aux pannes, mais il faut veiller à ne pas rejouer des requêtes non idempotentes (ex: POST). Pour cela, l’utilisation d’identifiants d’idempotence (ex: header HTTP `Idempotency-Key`) peut être nécessaire.
+
+* Lisser la charge entre les nœuds et ne pas forcement se contenter de round robin. Un algorithme simple est le LC (Least Connection) permettant de privilégier les nœuds les moins chargés, mais il existe d'autres algorithmes, comme Least Response Time, qui prend aussi en compte la latence. Dans le cloud, il peut être pertinent de combiner plusieurs critères (charge, latence, géolocalisation, etc.). Attention néanmoins à bien les tester et en maîtriser les implications pour éviter les catastrophes. 
+
+* Dans le monde Open Source, voir par exemple LVS + Keepalived ou HAProxy + Keepalived. Pour Kubernetes, Traefik et Envoy Proxy sont des alternatives populaires, tandis que NGINX reste une référence pour des architectures classiques. 
+
+* Il existe aussi des "LB as-a-service" comme Cloudflare Load Balancing pour les services web. 
+
 
 ==== 
 [TIP] 
@@ -675,31 +711,35 @@ Nous regroupons les dispositifs de disponibilité en quatre grandes catégories 
 
 ** *actif* : le nœud traite les requêtes (exemple : un serveur Apache parmi dix et derrière un répartiteur de charge). Temps de failover : nul ; 
 
-** *passif en mode «hot standby»* : le nœud est installé et démarré mais ne traite pas les requêtes (exemple: une base MySQL slave qui devient master en cas de panne de ce dernier via l'outil mysqlfailover). MTTR de l'ordre de la seconde (temps de la détection de la panne) ; 
+** *passif en mode «hot standby»* : le nœud de secours est installé et démarré mais ne traite pas les requêtes (exemple: une base MySQL slave qui devient master en cas de panne de ce dernier via l'outil mysqlfailover). MTTR de l'ordre de quelques secondes à quelques dizaines de secondes selon la technologie de failover (ex: Patroni pour PostgreSQL, mysqlfailover pour MySQL, Pacemaker pour un cluster Linux).
 
 ** *passif en mode «warm standby»* : le nœud est démarré et l'application est installée mais n'est pas démarrée (exemple : un serveur avec une instance Tomcat éteinte hébergeant notre application). En cas de panne, notre application est démarrée automatiquement. MTTR : de l'ordre de la minute (temps de la détection de la panne et d'activation de l'application) ; 
 
-** passif en mode «cold standby» : le nœud est un simple spare. Pour l'utiliser, il faut installer l'application et la démarrer. MTTR : de l'ordre de dizaines de minutes avec solutions de virtualisation (ex : KVM live migration) et/ou de containers (Docker) à une journée lorsqu'il faut installer/restaurer et démarrer l'application. 
+** passif en mode «cold standby» : le nœud est un simple spare. Pour l'utiliser, il faut installer l'application et la démarrer. MTTR : de plusieurs dizaines de minutes (si l'application et son environnement sont préconfigurés) à une journée si une installation complète est requise. La virtualisation et les conteneurs (Docker, Kubernetes) peuvent accélérer la remise en service si les images sont préchargées.
 
 * On peut classer les architectures de clusters actif/actif en deux catégories :  
 
-** Les *clusters actifs/actifs à couplage faible* dans lesquels un nœud est totalement indépendant des autres, soit parce que l'applicatif est stateless (le meilleur cas), soit parce que les données de contexte (typiquement une session HTTP) sont gérées isolément par chaque nœud. Dans le dernier cas, le répartiteur de charge devra assurer une affinité de session, c'est-à-dire toujours router les requêtes d'un client vers le même nœud et en cas de panne de ce nœud, les utilisateurs qui y sont routés perdent leurs données de session et doivent se reconnecter. Note : Les nœuds partagent tous les mêmes données persistées en base, les données de contexte sont uniquement des données transitoires en mémoire. 
+** Les *clusters actifs/actifs à couplage faible* dans lesquels un nœud est totalement indépendant des autres, soit parce que l'applicatif est stateless (le meilleur cas), soit parce que les données transitoires de contexte (typiquement une session HTTP) sont gérées isolément par chaque nœud. Dans le dernier cas, si l’application stocke des données de session en mémoire locale, un répartiteur de charge devra assurer une affinité de session ('Sticky Sessions'). En cas de panne d’un nœud, les utilisateurs affectés perdront leur session. Pour éviter cela, des solutions de stockage des sessions dans un cache distribué (ex: Redis, Hazelcast) ou en base de données peuvent être mises en place (mais ajoutent de complexité et doivent être elles-mêmes redondées pour ne pas devenir un SPOF).
 
-** Les *clusters actifs/actifs à couplage fort* dans lesquels tous les nœuds partagent les mêmes données en mémoire. Dans cette architecture, toute donnée de contexte doit être répliquée dans tous les nœuds (ex : cache distribué de sessions HTTP répliqué avec JGroups).  
+** Les *clusters actifs/actifs à couplage fort* dans lesquels tous les nœuds partagent les mêmes données en mémoire. Dans cette architecture, toute donnée de contexte doit être répliquée dans tous les nœuds (ex : cache distribué de sessions HTTP répliqué avec Redis, JGroups, Infinispan, etc.).  
 
 
 ==== 
 [TIP] 
 ==== 
-*Failover:* 
+*Failover (basculement automatique)* :
 
-Le failover (bascule) est la capacité d'un cluster de s'assurer qu'en cas de panne, les requêtes ne sont plus envoyées vers le nœud défectueux mais vers un nœud opérationnel. Ce *processus est automatique*. 
+Le failover  est la capacité d'un cluster de s'assurer qu'en cas de panne, les requêtes ne sont plus envoyées vers le nœud défectueux mais vers un nœud opérationnel. Ce *processus est automatique*. 
 
 Sans failover, c'est au client de détecter la panne et de se reconfigurer pour rejouer sa requête vers un nœud actif. Dans les faits, ceci est rarement praticable et les *clusters disposent presque toujours de capacités de failover*. 
 
 Une solution de failover peut être décrite par les attributs suivants : 
 
-* Quelle *stratégie de failback* ? Par exemple: "Fail fast" (un nœud est noté comme tombé dès le premier échec); "On fail, try next one" ; "On fail, try all"… 
+* Quelle *stratégie de failback* (retour à la normale) ? Exemples :
+  **  Fail Fast : un nœud est marqué comme défectueux dès le premier échec détecté.
+  **  Fail Soft : plusieurs échecs consécutifs sont nécessaires avant de déclarer un nœud en panne.
+  **  Retry on Next Node : la requête est renvoyée à un autre nœud après un échec.
+  **  Failover à escalade : le système tente d'abord un nœud de même niveau (ex: un autre serveur d'application) avant de remonter à un niveau supérieur (ex: un cluster dans une autre zone ou région). 
 
 * Quelle *solution de détection des pannes* ?  
 
@@ -707,7 +747,7 @@ Une solution de failover peut être décrite par les attributs suivants :
 
 ** les détections de panne des clusters actifs/passifs fonctionnent la plupart du temps par écoute des palpitations (*heartbeat*) du serveur actif par le serveur passif, par exemple via des requêtes multicast UDP dans le protocole VRRP utilisé par keepalived. 
 
-* Quel *délai de détection* de la panne ? il convient de paramétrer correctement les solutions de détection de panne (le plus court possible sans dégradation de performance). 
+* Quel *délai de détection* de la panne ? Paramétrer un délai trop court peut entraîner des bascules inutiles. Il est recommandé d’utiliser un seuil (ex: 3 échecs consécutifs) pour éviter les faux positifs. En actif/actif, les nœuds en erreur peuvent être retirés rapidement, tandis qu’en actif/passif, la promotion du standby peut nécessiter plusieurs secondes.
 
 * Quelle *pertinence de la détection* ? le serveur en panne est-il *vraiment* en panne ? un mauvais paramétrage ou une microcoupure réseau ne doit pas provoquer une indisponibilité totale d'un cluster alors que les nœuds sont sains.  
 
@@ -715,26 +755,10 @@ Une solution de failover peut être décrite par les attributs suivants :
 
 ** dans un cluster "N-to-1", on rebasculera (failback) sur le serveur qui était tombé en panne une fois réparé et le serveur basculé redeviendra le serveur de secours ; 
 
-** dans un cluster N-to-N (architecture en voie de démocratisation avec le cloud de type PaaS comme AWS Lambda ou CaaS comme Kubernetes) : on distribue les applications du nœud en panne vers d'autres nœuds actifs (le cluster ayant été dimensionné en prévision de cette éventuelle surcharge). 
+** dans un cluster N-to-N (architecture en voie de démocratisation avec les solutions PaaS comme AWS Lambda ou CaaS comme Kubernetes) : la charge est automatiquement redistribuée entre les nœuds restants, et un autoscaler peut ajouter de nouvelles instances si nécessaire. 
 
-* *Transparent via à vis de l’appelant* ou pas ? En général, les requêtes pointant vers un serveur dont la panne n'a pas encore été détectée tombent en erreur (en timeout la plupart du temps). Certains dispositifs ou architectures de FT (tolérance de panne) permettent de le rendre transparent pour le client. 
+* *Transparent via à vis de l’appelant* ou pas ? La transparence du failover dépend de l’architecture. En HTTP, un répartiteur de charge peut masquer la panne en redirigeant immédiatement les requêtes vers un autre nœud. Dans le cas de bases de données, le client doit souvent gérer un retry. Les systèmes événementiels comme Kafka peuvent assurer un failover quasi-transparente.
 
-==== 
-[TIP] 
-==== 
-Quelques mots sur les *répartiteurs de charge* : 
-
-* Un répartiteur de charge (Load Balancer = LB) est une *brique obligatoire pour un cluster actif/actif*. 
-
-* Dans le cas des clusters, une erreur classique est de créer un *SPOF* au niveau du répartiteur de charge. On va alors diminuer la disponibilité totale du système au lieu de l'améliorer. Dans la plupart des clusters à vocation de disponibilité (et pas seulement de performance), il faut redonder le répartiteur lui-même en mode actif/passif (et pas actif/actif sinon on ne fait que déplacer le problème et il faudrait un "répartiteur de répartiteurs"). Le répartiteur passif doit surveiller à fréquence élevée le répartiteur actif et le replacer dès qu'il tombe. 
-
-* Il est crucial de configurer correctement et à fréquence suffisante les tests de vie (*heathcheck*) des nœuds vers lesquels le répartiteur distribue la charge car sinon, le répartiteur va continuer à envoyer des requêtes vers des nœuds tombés ou en surcharge. 
-
-* Certains LB avancés (exemple : option redispatch de HAProxy) permettent la transparence vis à vis de l'appelant en configurant des rejeux vers d'autres nœuds en cas d'erreur ou timeout et donc d'améliorer la tolérance de panne puisqu'on évite de retourner une erreur à l'appelant pendant la période de pré-détection de la panne. 
-
-* Lisser la charge entre les nœuds et ne pas forcement se contenter de round robin. Un algorithme simple est le LC (Least Connection) permettant au répartiteur de privilégier les nœuds les moins chargés, mais il existe bien d'autres algorithmes plus ou moins complexes (systèmes de poids par nœud ou de combinaison charge + poids par exemple). Attention néanmoins à bien les tester et en maîtriser les implications pour éviter les catastrophes. 
-
-* Dans le monde Open Source, voir par exemple LVS + keepalived ou HAProxy + keepalived. 
 
 ==== 
 [TIP] 
@@ -742,30 +766,50 @@ Quelques mots sur les *répartiteurs de charge* :
 
 La *tolérance de panne* : 
 
-La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la Haute Disponibilité. Il s'agit d'une version plus stricte de HA où la *disponibilité est de 100% et aucune donnée ne peut être perdue* (Wikipédia: "La tolérance aux pannes est la propriété qui permet à un système de continuer à fonctionner correctement en cas de défaillance d'un ou de certains de ses composants d'infrastructure"). Seuls les systèmes critiques (santé, militaires, transport, industrie…) ont en général besoin d'un tel niveau de disponibilité.
+La tolérance de panne (FT = Fault Tolerance) ne doit pas être confondue avec la Haute Disponibilité. Il s'agit d'une version plus stricte de HA visant une disponibilité quasi absolue (99.999% ou plus) et une absence de perte de données dans des conditions normales de fonctionnement (Wikipédia: "La tolérance aux pannes est la propriété qui permet à un système de continuer à fonctionner correctement en cas de défaillance d'un ou de certains de ses composants d'infrastructure"). Seuls les systèmes critiques (santé, militaires, transport, industrie…) ont en général besoin d'un tel niveau de disponibilité.
 
 Historiquement, cela signifiait une redondance matérielle complète. Dans un monde de micro-services, cela peut également être réalisé au niveau logiciel avec des clusters actifs-actifs. De plus, un véritable système de tolérance aux pannes devrait éviter une dégradation significative des performances vue par les utilisateurs finaux. 
 
-Par exemple, un lecteur RAID 1 offre une tolérance aux pannes transparente : en cas de panne, le processus écrit ou lit sans erreur après le basculement automatique sur le disque sain. Un cluster Kubernetes peut également atteindre la tolérance aux pannes en démarrant de nouveaux POD. Ou encore, un cache distribué en mémoire en cluster peut éviter de perdre une session HTTP. 
+Par exemple, un lecteur RAID 1 offre une tolérance aux pannes transparente : en cas de panne, le processus écrit ou lit sans erreur après le basculement automatique sur le disque sain. Ou encore, un cache distribué mémoire en cluster peut éviter de perdre une session HTTP. 
+
+Certains systèmes critiques nécessitent un niveau élevé de tolérance de panne, par exemple :
+
+* L'aéronautique avec les architectures Triple Modular Redundancy (TMR) utilisées dans les avions de ligne.
+* Les bases de données distribuées comme CockroachDB ou Google Spanner, qui assurent une réplication multi-région synchrone.
+* Les systèmes de messagerie comme Kafka, qui utilisent un système de réplication ISR (In-Sync Replicas).
+* Les infrastructures financières ultra-basse latence pour les transactions boursières.
  
-Pour permettre la tolérance de panne d'un cluster, il faut obligatoirement *disposer d'un cluster actif/actif avec fort couplage* dans lequel les données de contexte sont répliquées à tout moment. Une autre solution (bien meilleure) est d’éviter tout simplement les données de contexte (en gardant les données de session dans le navigateur via un client JavaScript par exemple) ou de les stocker en base (SQL/NoSQL) ou en cache distribué (mais attention aux performances).  
- 
-Pour disposer d'une tolérance de panne totalement transparente, il faut en plus prévoir un répartiteur de charge assurant les rejeux lui-même. 
+Pour permettre la tolérance de panne d'un cluster, il faut obligatoirement *disposer d'un cluster actif/actif avec fort couplage* dans lequel les données de contexte sont répliquées à tout moment. Une autre approche intéressante est d'éviter autant que possible les données de contexte côté serveur en favorisant leur stockage côté client (ex: dans le navigateur via localStorage ou les jetons JWT). Cependant, cette solution peut être limitée par des contraintes de sécurité et de volumétrie. Alternativement, un stockage en base de données ou en cache distribué peut être envisagé, en tenant compte des compromis entre fiabilité, performance et latence.
+
+Un système tolérant aux pannes (FT) peut rendre une erreur totalement invisible pour le client si un mécanisme de rejeu automatique, de réplication synchrone ou de reprise transactionnelle est en place (ex: Oracle RAC, PostgreSQL avec réplication synchrone, Kafka avec rejeu des messages) ; sinon, une requête en cours peut échouer et nécessiter une nouvelle soumission (ex: failover manuel en PostgreSQL, crash d’un serveur Redis non répliqué, perte d’une transaction financière en cours), ce qui peut poser un **risque d’incohérence** si l’opération n’est pas **idempotente** (ex: double facturation d’un paiement, duplication d’un message non contrôlé en MQ, insertion partielle en base de données).
 
 Attention à *bien qualifier les exigences* avant de construire une architecture FT car en général ces solutions : 
 
 * *Complexifient l'architecture* et la rendent donc moins robuste et plus coûteuse à construire, tester, exploiter. 
 
-* *Peuvent dégrader les performances* : les solutions de disponibilité et de performance vont en général dans le même sens (par exemple, un cluster de machines stateless va diviser la charge par le nombre de nœuds et dans le même temps, la disponibilité augmente), mais quelque fois, disponibilité et performance peuvent être antagonistes : dans le cas d'une architecture stateful, typiquement gérant les sessions HTTP avec un cache distribué (type Infinispan répliqué en mode synchrone ou un REDIS avec persistance sur le master), toute mise à jour transactionnelle de la session ajoute un surcoût lié à la mise à jour et la réplication des caches, ceci pour assurer le failover. En cas de plantage d'un des nœuds, l'utilisateur conserve sa session à la requête suivante et n'a pas à se reconnecter, mais à quel coût ?  
+* *Peuvent dégrader les performances* : les solutions de disponibilité et de performance vont en général dans le même sens (par exemple, un cluster de machines stateless va diviser la charge par le nombre de nœuds et dans le même temps, la disponibilité augmente), mais quelque fois, disponibilité et performance peuvent être antagonistes : dans le cas d'une architecture stateful, typiquement gérant les sessions HTTP avec un cache distribué (type Infinispan répliqué en mode synchrone ou un Redis persistant sur le master), toute mise à jour transactionnelle de la session ajoute un surcoût lié à la mise à jour et la réplication synchrone des caches, ceci pour assurer le failover. En cas de plantage d'un des nœuds, l'utilisateur conserve sa session à la requête suivante et n'a pas à se reconnecter, mais à quel coût ?  
 
-* *Peuvent même dégrader la disponibilité* car tous les nœuds sont fortement couplés. Une mise à jour logicielle par exemple peut imposer l'arrêt de l'ensemble du cluster. 
+* *Peuvent même dégrader la disponibilité* si les nœuds sont fortement couplés. Une mise à jour logicielle peut alors nécessiter l’arrêt de l’ensemble du cluster. Cependant, des stratégies comme les rolling updates, le blue/green deployment ou l'event sourcing peuvent atténuer ces contraintes.
+
+* *Peuvent créer des problèmes d'intégrité de données* dans le cas de rejeux automatiques (pour rendre l'erreur invisible au client) de requêtes non-idempotentes.
 
 ==== 
+
+
+[TIP] 
+==== 
+
+La *haute disponibilité (HA)* : 
+
+Un système est généralement considéré comme hautement disponible (HA) à partir de 99.9% de disponibilité (~8h45 d’indisponibilité/an), bien que certaines exigences critiques nécessitent 99.99% ou plus. 
+
+==== 
+
 
 .Quelques solutions de disponibilité 
 
 |==== 
-|Solution|Coût |Complexité de mise en œuvre indicative |Amélioration de la disponibilité indicative 
+|Solution|Coût |Complexité de mise en œuvre (indicative) |Amélioration de la disponibilité (indicative) 
 
 |Disques en RAID 1 |XXX|X|XXX 
 |Disques en RAID 5 |X|X|XX 

@@ -414,7 +414,7 @@ Exemple :
 | 2
 | 2024
 | 24/7, activité principale 8-17h Europe/Paris lun-ven
-| Instance Postgresql
+| Instance PostgreSQL
 |====
 ====
 
