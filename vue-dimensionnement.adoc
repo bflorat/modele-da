@@ -53,7 +53,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 [TIP]
 ====
-Donner ici les hypothèses structurantes prises pour le dimensionnement
+Fournir ici les hypothèses structurantes prises pour le dimensionnement
 ====
 
 ====
@@ -388,7 +388,7 @@ Nous donnons un dimensionnement final qui doit supporter la volumétrie statique
 
 [TIP]
 ====
-Donner ici RAM, disque et CPU par instance d'unité déployable (à affiner après campagne de performance ou MEP).
+Fournir ici RAM, disque et CPU par instance d'unité déployable (à affiner après campagne de performance ou MEP).
 ====
 ====
 Exemple : 

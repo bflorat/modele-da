@@ -94,7 +94,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 ### Contraintes de déploiement
 
-### Contraintes de journaux
+### Contraintes liées au cycle de vie des composants d'infrastructure
+
+### Contraintes liées aux journaux
 
 ### Contraintes de sauvegardes et restaurations
 

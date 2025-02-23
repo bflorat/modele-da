@@ -209,7 +209,7 @@ Exemple 4 : Le CLUF du progiciel prévoit un accès aux sources des utilisateurs
 
 ## Exigences
 
-TIP: Donner ici les exigences d'architecture applicative pouvant s'appliquer au projet. En fonction de votre contexte, ne pas hésiter à ajouter des sous-sections.
+TIP: Fournir ici les exigences d'architecture applicative pouvant s'appliquer au projet. En fonction de votre contexte, ne pas hésiter à ajouter des sous-sections.
 
 ### Exigences stratégiques
 
@@ -349,7 +349,7 @@ Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhens
 
 [TIP]
 ====
-Donner ici l'intention dans la construction de l'architecture.
+Fournir ici l'intention dans la construction de l'architecture.
 ====
 ====
 Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise à ce stade.
@@ -414,7 +414,7 @@ Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LT
 
 [TIP]
 ====
-Donner ici les dispositifs techniques répondant aux exigences de purge.
+Fournir ici les dispositifs techniques répondant aux exigences de purge.
 ====
 
 ====

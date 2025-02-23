@@ -256,7 +256,7 @@ Exemple : Les émissions cumulées du service A ne devrait pas dépasser 100KgCO
 
 [TIP]
 ====
-Donner les technologies choisies parmi les technologies au catalogue de l’organisation. S’il existe des écarts avec le catalogue, le préciser et le justifier.
+Détailler les technologies choisies parmi les technologies au catalogue de l’organisation. S’il existe des écarts avec le catalogue, le préciser et le justifier.
 ====
 ====
 Exemple : cette application est de profil P3 : "Application Web Spring" avec utilisation exceptionnelle de la librairie JasperReport.
@@ -729,7 +729,7 @@ NOTE: Les aspects d'infrastructure de journaux sont détaillés dans link:./vue-
 
 [TIP]
 ====
-Donner ici les règles générales concernant les journaux (logs) : leur niveau de prolixité et le volume qu'ils représentent.
+Fournir ici les règles générales concernant les journaux (logs) : leur niveau de prolixité et le volume qu'ils représentent.
 Penser à l'exploitation des journaux, surtout coté serveur. Se demander s'il sera possible d'en tirer profit en cas d'erreur en production au milieu de Mio voire Gio d'autres journaux et de nombreux threads écrivant en parallèle.
 ====
 

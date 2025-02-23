@@ -91,7 +91,7 @@ Ce chapitre a une vocation pédagogique car il rappelle la disponibilité plafon
 
 [TIP]
 ====
-Donner les éléments permettant d'estimer le temps moyen de détection d'incident (Mean Time To Detect).
+Détailler les éléments permettant d'estimer le temps moyen de détection d'incident (Mean Time To Detect).
 ====
 ====
 Exemple 1 : Le SI est supervisé en 24/7/365.
@@ -103,7 +103,7 @@ Exemple 2 : Le service support production est disponible durant les heures de bu
 
 [TIP]
 ====
-Donner ici les outils et normes de supervisions imposés au niveau du SI et les éventuelles contraintes liées.
+Fournir ici les outils et normes de supervisions imposés au niveau du SI et les éventuelles contraintes liées.
 ====
 ====
 Exemple 1 : L'application sera supervisée avec Zabbix.
@@ -177,7 +177,7 @@ Exemple 2 : La restauration d'une sauvegarde offline (sur bandes) nécessite au 
 
 [TIP]
 ====
-Donner ici la liste et la durée des interruptions programmées standards dans le SI.
+Fournir ici la liste et la durée des interruptions programmées standards dans le SI.
 ====
 
 ====
@@ -191,7 +191,7 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 
 [TIP]
 ====
-Donner ici le niveau de sécurité du datacenter (DC) selon l’échelle Uptime Institute (Tier de 1 à 4).  
+Fournir ici le niveau de sécurité du datacenter (DC) selon l’échelle Uptime Institute (Tier de 1 à 4).  
 
 TIP: A noter que les architectures Cloud modernes privilégient la redondance des DC sur des sites distants plutôt qu'un niveau Tier plus élevé sur un seul site (à condition de pouvoir répliquer efficacement des données et d'accepter un délais sur la cohérence immédiate des données, voir le https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_CAP[théorème CAP]). De façon simpliste, on peut calculer que la disponibilité de deux DC actifs en parallèle est de sept neufs contre quatre neufs pour un DC Tier 4. Un compromis entre les deux modèles est le déploiement dans des zones redondantes d'un même site au prix d'une plus grande vulnérabilité aux catastrophes.
 
@@ -257,11 +257,26 @@ Les catastrophes peuvent être classées en trois catégories:
 * Infrastructurelles (accidentel comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, les erreurs critiques d'administrateurs ou intentionnelles: militaire, terroriste, sabotage, etc.) ;
 * Cyber (DDOS, virus, Ransomware, etc. ).
 
-PRA (Plan de Reprise d'Activité) comme PCA (Plan de Continuité d'Activité) répondent à un risque de catastrophe sur le SI (catastrophe naturelle, accident industriel, incendie…). Un PRA permet de reprendre l’activité suite à une catastrophe après une certaine durée de restauration. Il peut nécessiter un DC secondaire ou des solutions cloud de récupération (DRaaS, cold/hot sites). 
+**Disaster Recovery (DR)** est l'ensemble des stratégies et solutions mises en place pour **restaurer un système informatique après une catastrophe**, minimisant ainsi les pertes de données et le temps d'arrêt. DR peut inclure des solutions comme :
 
-Un PCA permet d'assurer la continuité des activités critiques, avec ou sans mode dégradé selon le niveau de redondance et de réplication des infrastructures. Ce principe est réservé aux organisations assez matures car il exige des dispositifs techniques coûteux et complexes (filesystems distribués et concurrents par exemple).
+* **Cold site** : Centre de secours prêt à être activé mais sans infrastructure active.
+* **Warm site** : Infrastructure préinstallée mais nécessitant une mise en production manuelle.
+* **Hot site** : Réplication en temps réel avec bascule automatique possible.
+* **Disaster Recovery as a Service (DRaaS)** : Solutions cloud de restauration rapide (AWS Elastic Disaster Recovery, Azure Site Recovery, etc.).
 
-Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un PRA ou un PCA. Par exemple, si on vise un PCA, il faut prévoir des clusters actifs-actifs multi-zonaux (situés dans des DC distants géographiquement) alors que pour un PRA, l'important est la qualité et la vitesse de sauvegarde/restauration des données dans le DC de secours. 
+PRA (Plan de Reprise d'Activité) et PCA (Plan de Continuité d'Activité) sont des stratégies spécifiques de **DR** répondant à un risque de catastrophe sur le SI :
+
+* **PRA (Plan de Reprise d'Activité)**  
+  Permet de **reprendre l’activité après une catastrophe** dans un délai défini (RTO). Il repose sur des **sauvegardes, des restaurations et des infrastructures de secours** comme des **DC secondaires, du stockage répliqué** ou des **solutions DRaaS**. L'objectif est d'assurer la reprise, mais avec une **interruption temporaire**.
+
+* **PCA (Plan de Continuité d'Activité)**  
+  Permet d'assurer la **continuité des activités critiques** sans interruption notable. Il nécessite des **clusters actifs-actifs multi-zonaux, une réplication synchrone des données et des infrastructures hautement redondantes**. Il est plus coûteux et plus complexe qu’un PRA.
+
+
+Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un **PRA ou un PCA** :
+
+* **PRA** → Se concentre sur la **sauvegarde et la restauration** en DC de secours, avec un **RTO défini** (ex: **snapshots de VMs avec Veeam, DRaaS, bases en mode réplication asynchrone**).
+* **PCA** → Nécessite des **clusters actifs-actifs multi-zonaux** répartis sur plusieurs **DC distants** avec synchronisation en temps réel (ex: **Oracle RAC, Ceph, Kafka MirrorMaker**).
 
 Notes: 
 
@@ -334,7 +349,30 @@ Exemple 3 : Toute application doit être publiée sous forme d'image OCI et dép
 
 ====
 
-### Contraintes de journaux
+### Contraintes liées au cycle de vie des composants d'infrastructure
+
+[TIP]
+====
+Lister les contraintes liées aux mises à jour et maintenance des composants d’infrastructure (systèmes d'exploitation, intergiciels, bases de données, etc.).
+====
+
+====
+Exemple 1 : Toute mise à jour de système d'exploitation doit être validée en environnement de recette avant déploiement en production.
+
+Exemple 2 : Les mises à jour des bases de données doivent être appliquées en mode rolling upgrade pour éviter toute interruption de service.
+
+Exemple 3 : Les versions de noyau Linux utilisées en production doivent être exclusivement des versions LTS validées par l’équipe infrastructure.
+
+Exemple 4 : Tout correctif de sécurité critique doit être appliqué dans un délai de 72 heures suivant sa publication.
+
+Exemple 5 : Les images OCI utilisées en production doivent être mises à jour tous les trimestres avec les dernières versions validées des dépendances.
+
+Exemple 6 : Un calendrier de mise à jour des composants critiques sera établi afin d’éviter les failles de sécurité et d'assurer la compatibilité avec les dépendances.
+
+====
+
+
+### Contraintes liées aux journaux
 
 [TIP]
 ====
@@ -442,7 +480,7 @@ Ne pas oublier également les coûts d’astreinte très importants si les exige
 
 On estime en général que la haute disponibilité (HA) commence à deux neufs (99%), soit environ 90h d'indisponibilité par an.
 
-Donner la disponibilité demandée par plage.
+Détailler la disponibilité demandée par plage.
 
 La disponibilité exigée ici devra être en cohérence avec les <<Contraintes sur la disponibilité>> du SI.
 ====
@@ -501,7 +539,7 @@ Exemple 3 : Le système devra pouvoir tenir une charge trois fois supérieure à
 ====
 La sauvegarde (ou backup) consiste à recopier les données d'une système sur un support dédié en vue d'une restauration en cas de perte. Ces données sont nécessaires au système pour fonctionner.
 
-Donner ici le Recovery Point Objective (RPO) de l’application (en heures). Il peut être utile de restaurer suite à :
+Fournir ici le Recovery Point Objective (RPO) de l’application (en heures). Il peut être utile de restaurer suite à :
 
 * Une perte de données matérielle (peu probable avec des systèmes de redondance) ;
 * Une fausse manipulation d'un power-user ou d'un administrateur (assez courant) ;
@@ -622,7 +660,7 @@ Exemples :
 
 La disponibilité mesure le pourcentage de temps pendant lequel un système est utilisable dans des conditions acceptables, c'est-à-dire accessible et opérationnel selon les critères définis (temps de réponse, capacité de traitement, etc.). Il est exprimé en % (exemple: 99.9% = ~8h45 d’indisponibilité/an).
 
-Donner ici les dispositifs permettant d'atteindre les <<Exigences de disponibilité>>. 
+Fournir ici les dispositifs permettant d'atteindre les <<Exigences de disponibilité>>. 
 
 Les mesures permettant d’atteindre la disponibilité exigée sont nombreuses et devront être choisies par l’architecte en fonction de leur apport et de leur coût (financier, en complexité, etc.).  
 
@@ -799,56 +837,129 @@ Attention à *bien qualifier les exigences* avant de construire une architecture
 [TIP] 
 ==== 
 
-La *haute disponibilité (HA)* : 
+La *Haute Disponibilité (HA)* : 
 
-Un système est généralement considéré comme hautement disponible (HA) à partir de 99.9% de disponibilité (~8h45 d’indisponibilité/an), bien que certaines exigences critiques nécessitent 99.99% ou plus. 
+Un système est généralement considéré comme hautement disponible (HA) à partir de 99.9% de disponibilité (~8h45 d’indisponibilité/an).
+
+Un système HA repose généralement sur :
+
+* Des *mécanismes de redondance* (ex: clustering, répartition de charge, réplication).
+* Des dispositifs de *failover* pour basculer automatiquement en cas de panne.
+
+La Tolérance de Panne (FT) inclut toujours la Haute Disponibilité (HA), mais la HA ne garantit pas nécessairement la FT.
 
 ==== 
 
 
 .Quelques solutions de disponibilité 
 
-|==== 
-|Solution|Coût |Complexité de mise en œuvre (indicative) |Amélioration de la disponibilité (indicative) 
+.Quelques solutions de disponibilité
+|====
+| Solution | Coût | Complexité de mise en œuvre | Amélioration de la disponibilité
 
-|Disques en RAID 1 |XXX|X|XXX 
-|Disques en RAID 5 |X|X|XX 
-|Redondance des alimentations et autres composants d'infrastructure |XX|X|XX 
-|Bonding des cartes Ethernet|XX|X|X 
-|Cluster actif/passif|XX|XX|XX 
-|Cluster actif/actif (donc avec LB)|XXX|XXX|XXX 
-|Serveurs/matériels de spare|XX|X|XX 
-|Bonne supervision système|X|X|XX 
-|Bonne supervision applicative|XX|XX|XX 
-|Systèmes de test de vie depuis un site distant|X|X|XX 
-|Astreintes dédiées à l’application, 24/7/365|XXX|XX|XXX 
-|Copie du backup du dernier dump de base métier sur baie SAN (pour restauration expresse) |XX|X|XX 
-|==== 
+| Disques en RAID 1
+| XX
+| X
+| XXX
 
+| Disques en RAID 10
+| X
+| X
+| XX
 
-==== 
-Exemple 1 : Pour atteindre la disponibilité de 98 % exigée, les dispositifs de disponibilité envisagés sont les suivants : 
+| Redondance des alimentations et autres composants d'infrastructure
+| XX
+| X
+| XX
 
-* Tous les serveurs en RAID 5 + alimentations redondées. 
+| Bonding des cartes Ethernet
+| XX
+| X
+| X
 
-* Répartiteur HAProxy + keepalived actif/passif mutualisé avec les autres applications. 
+| Cluster actif/passif
+| XX
+| XX
+| XX
 
-* Cluster actif /actif de deux serveurs Apache + mod_php. 
+| Cluster actif/actif (souvent avec LB)
+| XXX
+| XXX
+| XXX
 
-* Serveur de spare pouvant servir à remonter la base MariaDB depuis le backup de la veille en moins de 2h. 
-==== 
+| Serveurs/matériels de spare
+| XX
+| X
+| XX
 
-==== 
-Exemple 2 : Pour atteindre la disponibilité de 99.97% exigée, les dispositifs de disponibilité envisagés sont les suivants (pour rappel, l'application sera hébergée dans un DC de niveau tier 3) : 
+| Bonne supervision système
+| X
+| X
+| XX
 
-* Tous les serveurs en RAID 1 + alimentations redondées + interfaces en bonding. 
+| Bonne supervision applicative
+| XX
+| XX
+| XX
 
-* Répartiteur HAProxy + keepalived actif/passif dédié à l’application. 
+| Systèmes de test de vie depuis un site distant
+| X
+| X
+| XX
 
-* Cluster actif /actif de 4 serveurs (soit une redondance 2N) Apache + mod_php. 
+| Astreintes dédiées à l’application, 24/7/365
+| XXX
+| XX
+| XXX
 
-* Instance Oracle en RAC sur deux machines (avec interconnexion FC dédiée). 
-==== 
+| Réplication asynchrone des bases de données (ex: PostgreSQL Streaming)
+| XX
+| XX
+| XX
+
+| Réplication synchrone des bases (ex: Galera, Oracle Data Guard)
+| XXX
+| XXX
+| XXX
+
+| Réplication des données sur baie SAN pour restauration rapide
+| XX
+| X
+| XX
+
+| Auto-scaling et orchestration dynamique (Kubernetes, Serverless)
+| XXX
+| XXX
+| XXX
+
+| Stockage distribué HA (Ceph, GlusterFS, MinIO)
+| XXX
+| XXX
+| XXX
+
+| CDN avec mise en cache distribué (Cloudflare, Akamai)
+| XX
+| XX
+| XX
+|====
+
+====  
+Exemple 1 : Pour atteindre la disponibilité de 98 % exigée, les dispositifs de disponibilité envisagés sont les suivants :  
+
+* Tous les serveurs en **RAID 10 ou RAID 6** + alimentations redondées.  
+* Répartiteur HAProxy + keepalived actif/passif mutualisé avec les autres applications.  
+* Cluster actif/actif de deux serveurs Apache + mod_php.  
+* **Serveur MariaDB en réplication asynchrone** avec un basculement manuel en moins de 2h.  
+====  
+
+====  
+Exemple 2 : Pour atteindre la disponibilité de 99.97 % exigée, les dispositifs de disponibilité envisagés sont les suivants (pour rappel, l'application sera hébergée dans un DC de niveau Tier 3) :  
+
+* Tous les serveurs en **RAID 1** + alimentations redondées + interfaces en bonding.  
+* Répartiteur HAProxy + keepalived actif/passif dédié à l’application.  
+* Cluster actif/actif de 4 serveurs (redondance **N+N**) Apache + mod_php.  
+* Instance Oracle en RAC sur deux machines avec **interconnexion Fibre Channel (FC) dédiée, latence <1 ms**.  
+====  
 
 
 ### Déploiement en production
@@ -856,13 +967,13 @@ Exemple 2 : Pour atteindre la disponibilité de 99.97% exigée, les dispositifs 
 [TIP]
 ====
 Fournir ici le modèle de déploiement des modules et composants d'infrastructure en environnement cible sur les différents intergiciels et nœuds physiques (serveurs). 
-Ne représenter les équipements réseau (pare-feu, appliances, routeurs…) que s'ils aident à la compréhension. 
+Ne représenter les équipements réseau (pare-feu, switchs, routeurs, etc.) que s'ils aident à la compréhension. 
 
-Tout naturellement, on le documentera de préférence avec un diagramme de déploiement UML2 ou un diagramme de déploiement C4.
+On le documentera de préférence avec un diagramme de déploiement UML2 ou (mieux) un diagramme de déploiement C4.
 
 Pour les clusters, donner le facteur d'instanciation de chaque nœud.
 
-Donner au besoin en commentaire les contraintes d'affinité (deux modules doivent s'exécuter sur le même nœud ou le même intergiciel) ou d'anti-affinité (deux modules ne doivent pas s'exécuter sur le même nœud ou dans le même intergiciel).
+Préciser au besoin les contraintes d'affinité (deux modules doivent s'exécuter sur le même nœud ou le même intergiciel) ou d'anti-affinité (deux modules ne doivent pas s'exécuter sur le même nœud ou dans le même intergiciel). Exemple : Les bases de données et les serveurs d'application doivent être sur des nœuds séparés pour éviter la contention CPU et garantir l'isolation des ressources.
 
 Identifier clairement le matériel dédié à l’application (et éventuellement à acheter).
 ====
@@ -877,70 +988,73 @@ image::diagrammes/archi-infra.svg[Diagramme de déploiement MIEL]
 
 [TIP]
 ====
-Lister ici OS, bases de données, MOM, serveurs d'application, etc…
+Lister ici OS, bases de données, MOM, serveurs d'application, etc. Ne détailler la version précise (le `y` ou le `z` de la version que si cette information est pertinente)
+
 ====
 .Exemple de composants d'infrastructure
 [cols="1e,2e,1e,2e"]
 |====
 |Composant d'infrastructure|Rôle|Version |Environnement technique
 
-|CFT
-|Transfert de fichiers sécurisé
-|X.Y.Z
-|RHEL 6
-|Wildfly
-|Serveur d'application JEE
-|9
-|Debian 8, OpenJDK 1.8.0_144
+|Express.js
+|Serveur d'application Node.js
+|4.21.x
+|Debian 13, OpenJDK 1.8.0_144
+
 |Tomcat
 |Container Web pour les IHM 
-|7.0.3
-|CentOS 7, Sun JDK 1.8.0_144
+|10.x.x
+|RHEL 9, Sun JDK 1.8.0_144
+
 |Nginx 
 |Serveur Web
-|1.11.4
-|Debian 8
+|1.11.x
+|Debian 13
+
 |PHP + php5-fpm
 |Pages dynamiques de l'IHM XYZ
-|5.6.29
-|nginx
+|8.3.x
+|Windows Server 2025 + IIS
+
 |PostgreSQL
 |SGBDR
-|9.3.15
-|CentOS 7
+|17.x
+|AlmaLinux 9.x 
+
 |====
 
 ### Matrice des flux techniques
 
 [TIP]
 ====
-Lister ici l'intégralité des flux techniques utilisés par l'application. Les ports d’écoute sont précisés. On détaille aussi les protocoles d'exploitation (JMX ou SNMP par exemple). 
+Lister ici l'intégralité des flux techniques utilisés par l'application. Les ports d’écoute sont précisés. On détaille aussi les flux d'exploitation (en protocoles JMX ou SNMP par exemple). 
 
 Dans certaines organisations, cette matrice sera trop détaillée pour un dossier d'architecture et sera maintenue dans un document géré par les intégrateurs ou les exploitants.
 
 Il n'est pas nécessaire de faire référence aux flux applicatifs car les lecteurs ne recherchent pas les mêmes informations. Ici, les exploitants ou les intégrateurs recherchent l’exhaustivité des flux à fin d'installation et de configuration des pare-feu par exemple.
 
 Les types de réseaux incluent les informations utiles sur le réseau utilisé afin d'apprécier les performances (TR, latence) et la sécurité: LAN, VLAN, Internet, LS, WAN…)
+
 ====
 
 .Exemple partiel de matrice de flux techniques
-[cols="1e,2e,2e,2e,1e,1e"]
+[cols="1e,2e,2e,2e,1e,1e,1e"]
 |====
-|ID|Source|Destination|Type de réseau|Protocole|Port d'écoute
+|ID|Source|Destination|Type de réseau|Protocole|Port d'écoute | Chiffrement ?
 
-|1|lb2|IP multicast 224.0.0.18|LAN|VRRP sur UDP|3222
-|2|lb1|host1, host2|LAN|HTTP|80
-|3|host3, host4, host5|bdd1|LAN|PG|5432
-|4|sup1|host[1-6]|LAN|SNMP|199
+|1|lb2|IP multicast 224.0.0.18|LAN|VRRP sur UDP|3222 | Non
+|2|lb1|host1, host2|LAN|HTTPS|80 | Oui (TLS)
+|3|host3, host4, host5|bdd1|LAN|PG|5432 |Oui (via VPN)
+|4|sup1|host[1-6]|LAN|SNMP|199 | Non mais utilisation du VLAN d'admin
 |====
 
 ### Environnements
 
 [TIP]
 ====
-Donner ici une vision générale des environnements utilisés par l'application. Les environnements les plus communs sont : développement, recette, pré-production/benchmarks, production, formation.
+Fournir ici une vision générale des environnements utilisés par l'application. Les environnements les plus communs sont : développement, recette, pré-production/benchmarks, production, formation.
 
-Dans les gros SI, il est souvent utile de segmenter les environnements en 'plateformes' (ou 'couloirs') constituées d'un ensemble de machines isolées les unes des autres (même s'il peuvent partager des ressources communes comme suivant la politique de l'organisation). Par exemple, un environnement de recette peut être constitué des plateformes `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
+Dans les grands systèmes d'information, il est souvent utile de segmenter les environnements en 'plateformes' (ou 'couloirs') constituées d'un ensemble de machines isolées les unes des autres (même s'ils peuvent partager des ressources communes, selon la politique de l'organisation). Par exemple, un environnement de recette peut être constitué des plateformes `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
 
 .Environnements
 [cols='1,2,2,2']
@@ -953,35 +1067,62 @@ Dans les gros SI, il est souvent utile de segmenter les environnements en 'plate
 |Un seul
 
 |Recette 
-|Recette fonctionnelle par les testeurs
+|Recette fonctionnelle effectuée par les testeurs
 |Tag déployé à la fin de chaque Sprint
 |UAT1 et UAT2
 |====
 ====
 
-=== Écoconception
+### Écoconception
 
 [TIP]
 ====
 Lister ici les mesures d'infrastructure permettant de répondre aux <<exigences_ecoconception,Exigences d'écoconception>>. 
 
-Les réponses à ces problématiques sont souvent les mêmes que celles aux exigences de performance (temps de réponse en particulier) et à celles des coûts (achat de matériel). Dans ce cas, y faire simplement référence. 
+Les enjeux d'écoconception sont souvent alignés avec les exigences de **performance** (temps de réponse, latence, optimisation des ressources) et de **coût** (réduction de la consommation énergétique, rationalisation des infrastructures). Lorsqu’une solution impacte plusieurs de ces dimensions, il est préférable d'y faire simplement référence.
 
-Néanmoins, les analyses et solutions d'écoconception peuvent être spécifiques à ce thème. Quelques pistes d’amélioration de la performance énergétique :
+Cependant, certaines pratiques sont **spécifiquement liées à l’écoconception** et doivent être prises en compte dès la conception de l'architecture.
 
-* Mesurer la consommation électrique des systèmes avec les sondes http://www.powerapi.org/[PowerAPI] (développé par l'INRIA et l'université Lille 1).
-* Utiliser des caches (cache d'opcode, caches mémoire, caches HTTP…).
-* Pour des grands projets ou dans le cadre de l’utilisation d'un cloud CaaS, l’utilisation de cluster de containers (solution type Swarm, Mesos ou Kubernete) permet d'optimiser l'utilisation des VM ou machines physiques en les démarrant / arrêtant à la volée de façon élastique.
-* Héberger ses serveurs dans un datacenter performant. Les fournisseurs de cloud proposent en général des datacenters plus performants que on-premises. L'unité de comparaison est ici le PUE (Power Usage Effectiveness), ratio entre l’énergie consommée par le datacenter et l’énergie effectivement utilisée par les serveurs (donc hors refroidissement et dispositifs externes). OVH propose par exemple des datacenter avec un PUE de 1.2 en 2017 contre 2.5 en moyenne. 
-* Néanmoins :
-** vérifier l'origine de l'énergie (voir par exemple les analyses de Greenpeace en 2017 sur http://www.clickclean.org[l’utilisation d’énergie issue du charbon et du nucléaire] par Amazon pour son cloud AWS) ;
-** garder en tête que l'énergie consommée par l'application coté client et réseau est très supérieure à celle utilisée coté serveur (par exemple, on peut estimer qu'un serveur consommant à peine plus qu'une station de travail suffit à plusieurs milliers voire dizaines de milliers d'utilisateurs). La réduction énergétique passe aussi par un allongement de la durée de vie des terminaux et l'utilisation de matériel plus sobre.
 ====
+
+#### Optimisation énergétique et infrastructure
+* **Mesure et suivi de la consommation électrique** :  
+  - Utiliser des sondes d’analyse de la consommation comme http://www.powerapi.org/[PowerAPI] (développé par l'INRIA et l'université Lille 1).  
+  - Intégrer des solutions de monitoring énergétique dans les systèmes de supervision (ex : Prometheus avec métriques spécifiques).  
+
+* **Gestion des ressources et mutualisation** :  
+  - Prioriser l'utilisation de **caches** (opcodes, mémoire, HTTP…) pour réduire la charge CPU et les accès disque.  
+  - **Optimiser l’utilisation des conteneurs** en orchestrant dynamiquement les ressources via Kubernetes ou des solutions similaires, pour adapter la consommation en fonction de la charge réelle.  
+
+* **Efficacité des datacenters** :  
+  - Héberger ses serveurs dans un **datacenter à haut rendement énergétique**. Le PUE (**Power Usage Effectiveness**) est l'indicateur clé.  
+  - **Exemples de PUE**: OVHcloud atteint un PUE moyen de 1.29 en 2023 avec des optimisations avancées (refroidissement liquide) ; Certains datacenters hyperscale comme Google Cloud peuvent atteindre 1.1 grâce à l’IA et aux optimisations thermiques.  
+  - **Attention :** L'efficacité énergétique ne se limite pas au PUE, il faut aussi considérer **l'origine de l'énergie** (renouvelable ou fossile).
+
+#### **Impact énergétique global**
+* **Évaluer l’impact complet de l’application** :  
+  - L’énergie consommée **du côté des terminaux client et du réseau** est souvent bien plus élevée que celle du serveur.  
+  - **Allonger la durée de vie des équipements** (terminaux et serveurs) est une approche efficace pour limiter l'empreinte carbone.  
+
+* **Optimisation des déploiements** :  
+  - Réduire le nombre d’instances actives pendant les périodes creuses en scalant dynamiquement.  
+  - Prioriser le **serverless computing** lorsque cela est pertinent pour éviter d’allouer des ressources inutilisées.  
+
+[TIP]
 ====
-Exemple 1 : la mise en place d'un cache Varnish devant notre CMS reduira de 50% le nombre de construction de pages dynamiques PHP et permettra l'économie de deux serveurs.
+Pour évaluer et améliorer l'empreinte énergétique d'un SI, des solutions comme le **Green Software Foundation** proposent des modèles d'analyse.
 ====
-====
-Exemple 2 : L'application sera hébergée sur un cloud avec un PUE de 1.2 et une origine à 80 % renouvelable de l’énergie électrique.
+
+====  
+**Exemple 1** : La mise en place d'un cache **Varnish** devant notre CMS réduira de **50%** le nombre de constructions de pages dynamiques PHP et permettra **l'économie de deux serveurs**.  
+====  
+
+====  
+**Exemple 2** : L'application sera hébergée dans un **datacenter avec un PUE de 1.29**, alimenté à **80 % par de l’énergie renouvelable**.  
+====  
+
+====  
+**Exemple 3** : Le **scaling automatique des pods Kubernetes** permettra de **réduire l’empreinte carbone** en désactivant les instances inutiles durant les heures creuses.  
 ====
 
 ### Régulation de la charge
@@ -990,7 +1131,7 @@ Exemple 2 : L'application sera hébergée sur un cloud avec un PUE de 1.2 et une
 
 [TIP]
 ====
-Dans certains cas, des pics extrêmes et imprévisibles sont possibles (effet Slashdot). 
+Dans certains cas, des pics extrêmes et imprévisibles sont possibles (effet "Slashdot"). 
 
 Si ce risque est identifié, prévoir un système de fusible avec déport de toute ou partie de la charge sur un site Web statique avec message d'erreur par exemple. 
 
@@ -1001,55 +1142,76 @@ Ce dispositif peut également servir en cas d’attaque de type DDOS et permet d
 
 [TIP]
 ====
-Il est également utile de prévoir des systèmes de régulation applicatifs dynamiques, par exemple :
+Il est également utile de prévoir des systèmes de régulation dynamiques, par exemple :
 
-* Via du throttling (écrêtage du nombre de requêtes par origine et unité de temps). A mettre en amont de la chaîne de liaison.
-* Des systèmes de jetons (qui permettent en outre de favoriser tel ou tel client en leur accordant un quota de jetons différents).
+* **Throttling** : régulation du débit des requêtes (exemple : si un client dépasse **1000 appels par minute**, ses requêtes sont mises en attente ou ralenties artificiellement).
+* **Rate Limiting** : limitation stricte du nombre d'appels qu'un client peut effectuer sur un endpoint (exemple : chaque client est limité à **100 appels/minute sur le endpoint E**. Toute requête excédentaire retourne une **erreur 429 Too Many Requests**).
+* **Systèmes de jetons** : chaque client dispose d'un quota de jetons qui limite ses appels. Ce système permet d’accorder des **priorités différenciées** en attribuant plus de jetons à certains clients stratégiques.
 ====
-====
-Exemple 1 : Le nombre total de jetons d'appels aux opérations REST sur la ressource `DetailArticle` sera de 1000. Au delà de 1000 appels simultanés, les appelants obtiendront une erreur d'indisponibilité 429 qu'ils devront gérer (et faire éventuellement des rejeux à espacer progressivement dans le temps). 
 
-.Exemple : répartition des jetons sera la suivante par défaut
+====
+**Exemple 1 :**  
+Un **système de jetons** régulera l'accès à la ressource `DetailArticle` avec un total de **1000 jetons simultanés**.  
+Au-delà de cette limite, les requêtes obtiendront une **erreur 429 Too Many Requests** et devront appliquer un rejeu avec **backoff exponentiel**.
+
+.Exemple : Répartition des jetons par type d'opération
 |====
 |Opération sur `DetailArticle`|Proportion des jetons
 
-|GET|80%
-|POST|5%
-|PUT|15%
+|GET | 80%
+|POST | 5%
+|PUT | 15%
 |====
+
 ====
+
 ====
-Exemple 2 : un throttling de 100 requêtes par source et par minute sera mis en place au niveau du reverse proxy.
+**Exemple 2 :**  
+Un **Rate Limiting** de **100 requêtes par source et par minute** sera mis en place au niveau du reverse proxy.  
+Les requêtes dépassant ce seuil recevront une **erreur 429 Too Many Requests** et devront être replanifiées par le client.  
 ====
 
 ### Gestion des timeouts
 
 [TIP]
 ====
-D'une façon générale, tous les appels distribués (en particulier HTTP(S) vers les API ou du stockage objet et appels vers les bases de données) doivent être limités en temps de connexion ET temps d'exécution. Sans ces timeouts, des contentions fatales pour les modules peuvent apparaître en cas de problèmes de performance.
+Tous les appels distribués (ex : HTTP(S) vers des API, accès à un stockage objet, requêtes vers une base de données) doivent être **strictement limités en temps de connexion et en temps d'exécution**.  
+Sans timeouts appropriés, des contentions peuvent émerger, entraînant des **blocages critiques et une saturation des ressources** en cas de ralentissement des systèmes.  
 
-Décrire ici les différents timeouts mis en œuvre sur les chaînes de liaison. Garder en tête que dans une chaîne de liaison allant du client à la persistance, les timeouts devraient diminuer au fur et à mesure qu'on avance dans la chaîne de liaison (exemple: 10 secs sur le Reverse proxy , 8 secs sur le endpoint REST, 5 secs sur la base de données). 
+**Principes clés :**
 
-En effet, dans le cas contraire, un service d'infrastructure (comme une base de données) peut continuer à traiter une requête alors que son module appelant a déjà abandonné, ce qui pose à la fois des problèmes de gaspillage de ressource mais surtout des effets difficile à prévoir. 
+* **Définir des timeouts progressifs** le long de la chaîne de liaison.  
+  - Ex : **10 s sur le reverse proxy**, **8 s sur l’API REST**, **5 s sur la base de données**.  
+  - Objectif : éviter qu’un service d'infrastructure continue de traiter une requête alors que son module appelant a déjà abandonné.  
+* **Éviter des valeurs de timeout identiques partout**, ce qui pourrait provoquer des pics d’expiration simultanés et des effets de cascade indésirables.  
+* **Utiliser un retry intelligent avec un backoff exponentiel** (augmentation progressive du délai entre chaque nouvelle tentative).  
+* **Ajouter un jitter** au backoff exponentiel pour éviter des pics de charge si plusieurs requêtes expirent en même temps.  
 
-Éviter également d'utiliser la même valeur dans tous les composants d'infrastructure pour éviter les effets inattendus lié à la concomitance des timeouts.
+**Jitter :**
+
+- Si plusieurs clients échouent en même temps et appliquent un **retry avec un délai fixe**, ils risquent de saturer le système.  
+- Le jitter consiste à **ajouter une variabilité aléatoire** au délai du backoff exponentiel pour éviter ces pics de charge.  
+- Exemple :  
+  * **Sans jitter** : Tous les clients refont une requête après **1s, puis 2s, puis 4s…** → Risque d’embouteillage.  
+  * **Avec jitter** : Les retries sont espacés de **1.1s, 1.8s, 3.6s, 4.2s…** → La charge est mieux répartie.  
 
 ====
 
 ====
-Exemple : 
+**Exemple de timeouts définis sur une architecture type :**
 
 |===
-|Module ou Composant d'infrastructure|Timeout (ms)
+|Module ou Composant d'infrastructure|Timeout de connexion (ms)|Timeout d'exécution (ms)
 
-|Client Rest JavaScript | 5000
-|API Gateway | 4000
-|API Rest Node.js | 3500
-|Base de données PG | 3000
+|Client Rest JavaScript  | 1000 | 5000
+|API Gateway (Reverse Proxy) | 1500 | 4000
+|API Rest Node.js  | 1000 | 3500
+|Base de données PostgreSQL | 500  | 3000
 
 |===
 
 ====
+
 
 ### Exploitation
 
@@ -1140,7 +1302,7 @@ Exemple:
 
 [TIP]
 ====
-Donner la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<Exigences de disponibilité>>.
+Fournir la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<Exigences de disponibilité>>.
 
 * Quels sont les backups à chaud ? à froid ? 
 
