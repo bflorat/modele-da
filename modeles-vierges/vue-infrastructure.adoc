@@ -183,7 +183,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 #### Ordre d’arrêt/démarrage
 
-#### Opérations programmées
+#### Opérations programmées et suivi
 
 #### Mise en maintenance
 
@@ -201,19 +201,17 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 ##### Restauration
 
-#### Logs
+#### Journaux
 
 #### Supervision
 
 ##### Supervision technique
 
-##### Supervision applicative
+##### Supervision applicative et métier
 
-##### Outil de pilotage de la supervision
+##### Outils de supervision & monitoring
 
-##### Alerting
-
-##### Suivi des opérations programmées
+##### Alerting & notifications
 
 ##### Supervision boite noire
 

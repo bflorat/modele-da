@@ -1217,9 +1217,11 @@ Sans timeouts appropriés, des contentions peuvent émerger, entraînant des **b
 
 [TIP]
 ====
-Lister ici les grands principes d’exploitation de la solution. Les détails (filesystems sauvegardés, plan de production, planification des traitements…) seront consigné dans un DEX (Dossier d’EXploitation) séparé. 
+Lister ici les grands principes d’exploitation de la solution. 
 
-Si cette application reste dans le standard de l’organisation, se référer simplement à un dossier commun.
+Les détails (contenu des sauvegardes, plan de production, planification des traitements, etc.) seront consignés dans un Dossier d’EXploitation (DEX) séparé. 
+
+Si cette application suit les standards de l'organisation, il suffit de se référer au dossier d'exploitation commun.
 ====
 
 #### Ordre d’arrêt/démarrage
@@ -1228,51 +1230,79 @@ Si cette application reste dans le standard de l’organisation, se référer si
 ====
 Préciser ici l’ordre de démarrage des machines et modules entre eux ainsi que l’ordre d’arrêt. En fonction des situations, on peut faire figurer les modules externes ou non. 
 
-Le DEX contiendra une version plus précise de ce chapitre (notamment avec un numéro d'ordre SystemV ou un "Wants" SystemD précis), ce sont surtout les principes généraux des ordres d'arrêt et de démarrage qui doivent ici être décrits.
+En général, le démarrage suit l'ordre inverse de la chaîne de liaison, tandis que l'arrêt respecte l'ordre de dépendance des composants.
 
-Le démarrage se fait en général dans le sens inverse des chaînes de liaison et l'arrêt dans le sens de la chaîne de liaison.
-
-Préciser d'éventuelles problématiques en cas de démarrage partiel (par exemple, le pool de connexions du serveur d'application va-t-il retenter de se connecter à la base de données si elle n'est pas démarrée ? combien de fois ? quel est le degré de robustesse de la chaîne de liaison ? )
+Préciser d'éventuelles contraintes en cas de démarrage partiel (exemple : le pool de connexions du serveur d’application retente-t-il la connexion à la base de données si celle-ci n'est pas encore disponible ? Combien de fois ? À quelle fréquence ?).
 ====
 ====
-Exemple d'ordre de démarrage :
+.Exemple d'ordre de démarrage :
 
-. pg1 sur serveur bdd1
-. mq1 sur bdd1
-. services1 sur serveurs host3, host4 et host5
-. services2 sur serveurs host3, host4 et host5
-. batchs sur serveurs host1, host2
-. ihm sur serveurs host1, host2
+. Base `pg1` sur serveur `bdd1` 
+. Base `mq1` sur serveur `bdd1` 
+. `services1` sur serveurs `host3`, `host4` et `host5`
+. `services2` sur serveurs `host3`, `host4` et `host5`
+. `batchs` sur serveurs `host1`, `host2`
+. `ihm` sur serveurs `host1`, `host2`
 
-Exemple d'ordre d'arrêt : 
+.Exemple d'ordre d'arrêt :
 
-Inverse exact du démarrage
+1. `ihm` sur serveurs `host1`, `host2`
+2. `batchs` sur serveurs `host1`, `host2`
+3. `services2` sur serveurs `host3`, `host4` et `host5`
+4. `services1` sur serveurs `host3`, `host4` et `host5`
+5. Base `mq1` sur serveur `bdd1`
+6. Base `pg1` sur serveur `bdd1`
 ====
 
-#### Opérations programmées
+#### Opérations programmées et suivi
 
 [TIP]
 ====
-Lister de façon macroscopique (le DEX détaillera le plan de production précis) :
+Décrire ici l’ensemble des opérations programmées et leur suivi, y compris :
 
-* Les batchs ou famille de batchs et leurs éventuelles inter-dépendances. Préciser si un ordonnanceur sera utilisé.
-* Les traitements internes (tâches de nettoyage / bonne santé) du système qui ne remplissent uniquement des rôles techniques (purges, reconstruction d'index, suppression de données temporaires…)
+* Les jobs et leurs éventuelles interdépendances (ordre d'exécution, contraintes, fréquence).
+* Les traitements internes (tâches de nettoyage, maintenance) qui remplissent uniquement des rôles techniques (purges, reconstruction d'index, suppression de données temporaires…).
+* L’ordonnanceur ou planificateur utilisé pour piloter les jobs et consolider le plan de production (exemple : VTOM, JobScheduler, Dollar Universe, Control-M, etc.).
+* Les éventuelles spécificités applicatives :
+
+  - Degré de parallélisme des jobs ;
+  - Plages de temps obligatoires ;
+  - Rejeux en cas d'erreur ;
+  - Production de rapports d’exécution (contenu et format).
+
+Il est également crucial de définir les mécanismes de supervision ou d'alerte pour détecter les échecs des jobs critiques.
 ====
+
 ====
-Exemple 1 : le batch `traiter-demande` fonctionnera au fil de l'eau. Il sera lancé toutes les 5 mins depuis l’ordonnanceur JobScheduler.
+Exemple 1 : Les jobs seront ordonnancés par l'instance JobScheduler de l'organisation.  
+
+* Ils ne devront jamais tourner les jours fériés.  
+* Leur exécution sera bornée aux périodes **23h00 - 06h00**. Toute tâche planifiée en dehors de cette plage ne sera pas exécutée.  
+* On ne lancera pas plus de **cinq instances simultanées** du job `J1`.  
+* Chaque job produira un **rapport d'exécution détaillé** contenant le nombre d'éléments traités, la durée du traitement et les indicateurs métier pertinents.
 ====
+
 ====
-Exemple 2 : le traitement interne `ti_index` est une classe Java appelant des commandes `REINDEX` en JDBC lancées depuis un scheduler Quartz une fois par mois.
+Exemple 2 : Le job `traiter-demande` fonctionnera **au fil de l'eau**, exécuté toutes les **5 minutes** via l’ordonnanceur JobScheduler.
 ====
+
+====
+Exemple 3 : Le traitement interne `ti_index` est une **classe Java** appelant des commandes `VACUUM FULL` en JDBC, exécutée via un planificateur Quartz **une fois par mois**.
+====
+
 
 #### Mise en maintenance
 
 [TIP]
 ====
-Expliquer (si besoin) les dispositifs et procédures permettant de mettre l'application 'offline' de façon explicite pour les utilisateurs.
+Détailler les dispositifs et procédures permettant de mettre l'application offline de façon explicite pour les utilisateurs.
+====
+
+====
+Exemple 1 : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponibilité.
 ====
 ====
-Exemple : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponibilité.
+Exemple 2 : Un fichier de verrouillage `maintenance.lock` sera utilisé pour désactiver l'accès au backend. Un script shell déclenchera un mode dégradé affichant une page statique temporaire.
 ====
 
 #### Sauvegardes et restaurations
@@ -1282,21 +1312,19 @@ Exemple : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponibil
 [TIP]
 ====
 
-Que sauvegarde-t-on ? 
+Quel est le périmètre de la sauvegarde  ? 
 
-(Bien sélectionner les données à sauvegarder car le volume total du jeu de sauvegardes peut facilement atteindre dix fois le volume sauvegardé).
-
-* des images/snapshots systèmes pour restauration de serveur ou de VM ? 
+* des images/snapshots systèmes pour restauration système de serveur ou de VM complets ? 
 * des systèmes de fichiers ou des répertoires ?
-* des bases de données sous forme de dump ? sous forme binaire ?
+* des bases de données sous forme de dumps ? 
 * les journaux ? les traces ?
 ====
 
-Exemple: 
+Exemple de périmètre : 
 
-* Sauvegarde système des VM
-* Sauvegarde des bases PostgreSQL
-* Sauvegardes des documents Ceph
+* Sauvegarde système des VM ;
+* Sauvegarde des bases PostgreSQL ;
+* Sauvegardes des documents Ceph.
 
 ##### Stratégie de sauvegarde
 
@@ -1304,7 +1332,7 @@ Exemple:
 ====
 Fournir la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<Exigences de disponibilité>>.
 
-* Quels sont les backups à chaud ? à froid ? 
+* Quels types de sauvegardes sont effectués ? À chaud ? En lecture seule ? À froid (nécessitant un arrêt de service) ?
 
 * Quelle est la périodicité de chaque type de sauvegarde ? (ne pas trop détailler ici, ceci sera dans le DEX)
 
@@ -1320,8 +1348,8 @@ Fournir la politique générale de sauvegarde. Elle doit répondre aux <<Exigenc
 Exemple de roulement : jeu de 21 sauvegardes sur un an : 
 
 * 6 sauvegardes journalières incrémentales ;
-* 1 sauvegarde complète le dimanche et qui sert de sauvegarde hebdomadaire ;
-* 3 sauvegardes hebdomadaires correspondant aux 3 autres dimanches. Le support du dernier dimanche du mois devient le backup mensuel ;
+* 1 sauvegarde complète le dimanche, servant de sauvegarde hebdomadaire ;
+* 3 sauvegardes hebdomadaires correspondant aux 3 autres dimanches. Le support du dernier dimanche du mois devient la sauvegarde mensuelle ;
 * 11 sauvegardes mensuelles correspondant aux 11 derniers mois.
 ====
 
@@ -1335,6 +1363,7 @@ Quel outillage est mis en œuvre ?
 
 * Simple cron + rsync + tar ? 
 * Outil Open Source orienté fichier comme « backup-manager » ? 
+* Outil de sauvegarde dédupliquée type Restic, Borg, Kopia...)
 * Outil orienté imaging de VM comme Veeam ou FSArchiver ? 
 * Outil orienté Cloud comme « Duplicity » ou « Restic » ?, etc.
 * Outil de sauvegarde spécifique de base de données (comme MySqlDump, Barman...)
@@ -1343,9 +1372,9 @@ Quel outillage est mis en œuvre ?
 
 ====
 Exemple 1: Sauvegarde de la base PostgreSQL en streaming avec Barman avec un full chaque nuit.
-
-Exemple 2: Sauvegarde journalière des documents via Duplicity avec stockage S3 sur OVH Public Cloud. 
-
+====
+====
+Exemple 2: Sauvegarde journalière des documents via Restic avec stockage S3 sur OVH Public Cloud. 
 ====
 
 ##### Traitements sur les sauvegardes
@@ -1353,6 +1382,8 @@ Exemple 2: Sauvegarde journalière des documents via Duplicity avec stockage S3 
 [TIP]
 ====
 Lister ici les opérations réalisées sur les sauvegardes :
+
+* Les données sont-elles dédupliquées ? (un même fichier voire bloc de donnée identique sur la source n'est stocké qu'une fois dans tout le jeu de sauvegarde). La plupart des solutions modernes utilisent ce principe. Par exemple des outils Open Source comme Restic ou propriétaires comme Veeam utilisent massivement de type de fonctionnement (proche du fonctionnement d'un dépot Git) pour réduire drastiquement la taille des sauvegardes et éliminer le besoin de sauvegardes full.
 
 * Les sauvegardes sont-elles chiffrées ? si oui, chiffrement de la partition toute entière, fichier par fichier, les deux ? Faut-il chiffrer également le nom des répertoires et fichiers sauvegardés ? Préciser l'algorithme de chiffrement utilisé et comment seront gérées les clés (vaults, code de secours...).
 
@@ -1362,25 +1393,34 @@ Lister ici les opérations réalisées sur les sauvegardes :
 
 * Les sauvegardes sont-elles protégées de l'écriture et de l'effacement (anti-ransomware) ? Si oui, de façon temporaire ou définitive ?
 
-* Autres fonctionnalités ? (tests d'intégrité, nettoyage automatique dans l'archive, duplication de données, refactoring des fichiers dans l'archive, ...)
-
+* Autres fonctionnalités ? (tests d'intégrité, nettoyage automatique dans l'archive, refactoring des fichiers dans l'archive, ...)
 ====
-Exemple 1 : Déduplication des sauvegarde de niveau bloc via les CBT de l'hyperviseur.
-
-Exemple 2 : Chiffrement des sauvegardes en AES256 via une partition chiffrée LUKS.
-
+====
+Exemple 1 : Déduplication des sauvegardes de niveau bloc via Restic.
+====
+====
+Exemple 2 : Chiffrement des sauvegardes en AES-256 via une partition chiffrée LUKS.
+====
+====
 Exemple 3 : Compression lzma2 de niveau 6.
+====
+====
+Exemple 4 : Les sauvegardes en ligne stockées dans le stockage objet S3 seront protégées des ransomewares grâce à S3 Object Lock en mode Compliance.
+====
+====
+Exemple 5 : Activation du PITR sur PostgreSQL via Barman pour permettre une restauration à la seconde près en cas de corruption ou d'erreur humaine.
+====
 
 ##### Modalités de stockage
 
 [TIP]
 ====
 
-Préciser le(s) media de stockage utilisé(s), son lieu de stockage...
+Préciser le(s) media de stockage des sauvegardes utilisé(s), son lieu de stockage...
 
-* Le media est-il offline, online ou near-line (accessible via robot de sauvegarde dans une librairie de cassettes) ? (Attention, les sauvegardes online et même near-line sont sensibles aux erreurs humaines et aux ransonwares).
+* Le média est-il offline, near-line (accessible via un robot de sauvegarde dans une librairie de cassettes) ou online (accessible en permanence) ? Attention, les sauvegardes online et même near-line sont vulnérables aux erreurs humaines et aux ransomwares.
 
-* Quelle technologie de stockage est utilisée pour les sauvegardes ? (bandes magnétiques type LTO ou DLT ? disques externes ? cartouches RDX ? cloud de stockage comme Amazon S3 ? support optique ? NAS ? …)
+* Quelle technologie de stockage est utilisée pour les sauvegardes ? (bandes magnétiques type LTO ou DLT ? disques externes ? cartouches RDX ? cloud de stockage comme Amazon S3 ? support optique ? NAS ? etc.)
 
 * Où sont stockées physiquement les sauvegardes ? (idéalement offline et le plus loin possible du système sauvegardé tout en permettant une restauration dans un temps compatible avec le RTO).
 
@@ -1390,11 +1430,11 @@ Préciser le(s) media de stockage utilisé(s), son lieu de stockage...
 
 * Avons nous connaissance de toutes les dépendances externes pouvant nous ralentir (coffre de banque accessible en journée uniquement par exemple) ?
 
-* Il est conseillé : 
+* Il est fortement préconisé : 
 
-** d'utiliser un support distinct des données sources (ne pas sauvegarder sur un disque HD1 des données de ce même disque). 
-** de disposer d'au moins deux supports de stockage distincts si les données sont vitales à l'organisation.
-** de faire en sorte que les sauvegardes ne soient pas modifiables par la machine qui a été sauvegardée (par exemple, une sauvegarde sur NAS peut être supprimée par erreur en même temps que les données sauvegardées)
+** d'utiliser un support distinct des données sources ; 
+** de disposer d'au moins deux supports de stockage distincts si les données sont vitales à l'organisation ;
+** de faire en sorte que les sauvegardes ne soient pas modifiables par la machine qui a été sauvegardée (par exemple, une sauvegarde sur NAS peut être supprimée par erreur en même temps que les données sauvegardées).
 
 * Règle des "3-2-1" pour les données importantes : il faut au moins deux copies en plus des données de production, stockées sur deux supports de technologie différentes et au moins une copie offline sur un site externe sécurisé (exemple: coffre-fort en banque).
 
@@ -1402,9 +1442,9 @@ Préciser le(s) media de stockage utilisé(s), son lieu de stockage...
 
 ====
 Exemple 1: Pour la PME Boucherie Sanzot, on conservera une sauvegarde hebdomadaire des données de comptabilité en ligne sur le NAS + une copie offline sur disque externe chiffré et conservée dans le coffre d'une voiture. On conservera sur les deux supports 12 sauvegardes mensuelles et une sauvegarde annuelle, ce qui permet de revenir jusqu'à 2 ans dans le passé.
-
-Exemple 2: Pour la sauvegarde des données d'imposition, chaque transaction vers la base de données sera sauvegardée en barman en utilisant les journaux WAL. Chaque nuit, une sauvegarde full barman de la base sera effectuée. On conservera 7J + 4 semaines + 12 mois + 1 an sur sauvegarde online (disques durs) et en near-ligne sur librairie de sauvegarde à base de bandes LTO. Les données seront chiffrées et compressées. Les sauvegardes hebdomadaires seront dupliquées et stockées sur bande offline sur un site distant dédié.
-
+====
+====
+Exemple 2: Pour la sauvegarde des données d'imposition, chaque transaction vers la base de données sera sauvegardée en barman en utilisant les journaux WAL. Chaque nuit, une sauvegarde full barman de la base sera effectuée. On conservera 7J + 4 semaines + 12 mois + 1 an sur sauvegarde online (disques durs) et en near-ligne sur librairie de sauvegarde à base de bandes LTO. Les données seront chiffrées et compressées. Une copie des sauvegardes hebdomadaires sera conservée sur des bandes offline stockées sur un site distant sécurisé.
 ====
 
 ##### Restauration
@@ -1415,128 +1455,191 @@ Toujours garder à l'esprit que ce que nous voulons _vraiment_, ce sont des rest
 
 * Les sauvegardes sont-elles correctes et complètes ? 
 * Quels tests de restauration sont prévus ? à quelle fréquence (une fois par an est un minium) ?
-* Combien de temps va prendre une restauration (benchmarks) ? Est-ce compatible avec le RTO ?
+* Combien de temps une restauration prendra-t-elle  ? Est-ce compatible avec le RTO ?
+* Comment sont gérées les erreurs ? (rejeux, timeouts, journaux, alertes, etc.)
 
 * Avons nous suffisamment de ressources hardware pour la restauration dans le temps imparti par le RTO (stockage intermédiaires, CPU et mémoire pour la décompression/déchiffrement , etc…) ?
 
-* Comment se fait le bilan de la restauration ? où sont les journaux ? Sont-ils facilement accessibles ? Contiennent-ils des informations sensibles ?
+* Comment se font les tests de restauration ?
+
+  ** Quels jeux de tests ? 
+  ** Quel formalisme de bilan / suivi ?
+  ** Où se trouvent les journaux ? 
+  ** Risque-t-on d'écraser par erreur les données de production pendant les tests de restauration ? (si oui, tester sur une autre plateforme)
+  ** Les données restaurées lors du test sont-elles bien chiffrées (le test de restauration ne doit pas faire courir un risque de perte de confidantialité massive) ?
+  ** ...
 
 ====
 
 ====
-Exemple: Un test de restauration des données de production sera effectuée en pré-production au minimum une fois par an.
+Exemple 1: Un test de restauration des données de production sera effectuée en pré-production au minimum une fois par an.
+====
+====
+Exemple 2: Les tests de restauration se feront sur un système de fichier chiffré (LUKS).
+====
+====
+Exemple 3 : Une restauration mensuelle des dernières sauvegardes PostgreSQL sera effectuée sur un environnement de test avec exécution de requêtes de validation des données.
 ====
 
-
-#### Logs
-
-[TIP]
-====
-Sans être exhaustif sur les fichiers de journaux (à prévoir dans le DEX), présenter la politique générale de production et de gestion des journaux :
-
-* Quelles sont les politiques de roulement des journaux ? le roulement est-il applicatif (via un `DailyRollingFileAppender` log4j par exemple) ou système (typiquement par le démon logrotate) ?
-* Une centralisation de journaux est-elle prévue ? (indispensable pour les architectures SOA ou micro-services). Voir par exemple la stack ELK.
-* Quel est le niveau de prolixité prévu par type de module ? le débat en production est en général entre les niveaux WARN et INFO. Si les développeurs ont bien utilisé le niveau INFO pour des informations pertinentes (environnement au démarrage par exemple) et pas du DEBUG, fixer le niveau INFO.
-* Des mesures anti-injection de journaux sont-elles prévues (échappement XSS) ?
-
-====
-====
-Exemple 1 : les journaux applicatifs du module service-miel seront en production de niveau INFO avec roulement journalier et conservation deux mois.
-====
-====
-Exemple 2 : les journaux seront échappés à leur création via la méthode `StringEscapeUtils.escapeHtml()` de Jakarta commons-lang.
-====
-
-#### Supervision
+#### Journaux
 
 [TIP]
 ====
-La supervision est un pilier central de la disponibilité en faisant diminuer drastiquement le MTTD (temps moyen de détection de la panne). 
+Sans être exhaustif sur les fichiers de journaux (à prévoir dans le DEX), présenter la politique générale de production et de gestion des journaux (le contenu des journaux est abordé quant à lui dans la vue développement):
 
-Idéalement, elle ne sera pas uniquement réactive mais également proactive (detection des signaux faibles).
+* **Politiques de roulement et rétention** :
+  ** Comment sont gérés les fichiers de journaux ? Rotation applicative (`DailyRollingFileAppender` log4j, logback) ou système (`logrotate`) ?
+  ** Quelle politique de rétention est appliquée ? (ex : durée de conservation, taille maximale avant suppression)
+  ** Où sont stockés les anciens journaux ? (fichiers locaux, stockage objet, archive centralisée...)
 
-Les métriques sont des mesures brutes (% CPU, taille FS, taille d'un pool…) issues de sondes système, middleware ou applicatives. 
+* **Centralisation et exploitation des journaux** :
+  ** Une solution de collecte et d’analyse des journaux est-elle mise en place ? (ELK, Loki, Splunk…)
+  ** Un monitoring des logs en temps réel est-il prévu ? (alertes sur erreurs critiques)
 
-Les indicateurs sont des combinaisons logiques de plusieurs métriques disposant de seuils (ex : 'niveau critique si l'utilisation de CPU sur le serveur s1 reste au delà de 95% pendant plus de 5 minutes').
+* **Niveaux de journalisation** :
+  ** Quel niveau de journalisation est prévu par type de module (`WARN`, `INFO`, `DEBUG`…) ?
+  ** L'application doit-elle permettre de modifier dynamiquement le niveau de logs en production (ex: via JMX, API) ?
+
+* **Sécurité et conformité** :
+  ** Les logs sont-ils protégés contre les injections (`Log Injection`) ?
+  ** Une anonymisation ou pseudonymisation des données sensibles est-elle prévue ? (RGPD)
+  ** Vérifier la protection contre la modification ou suppression non autorisée des logs.
+  ** Si les journaux sont accessibles en consultation, quel est le mécanisme d'authentification et d'autorisation ?
 ====
 
-##### Supervision technique
+====
+.Exemple 1 : Gestion des journaux applicatifs
+Les journaux applicatifs du module `service-miel` seront en production au niveau `INFO`, avec roulement journalier, conservation de deux mois, et stockage dans ELK.
+====
+
+====
+.Exemple 2 : Sécurité des journaux
+Les journaux seront protégés contre les injections via la méthode `StringEscapeUtils.escapeHtml4()` de `org.apache.commons.text`.
+====
+
+====
+.Exemple 3 : Logs d’accès
+Les logs d’accès seront envoyés sur un serveur distant en plus d’une conservation locale sur 7 jours maximum.
+====
+
+
+
+### Supervision
 
 [TIP]
 ====
-Lister les métriques :
+La supervision est un **pilier central de la disponibilité** en permettant de réduire drastiquement le **MTTD (Mean Time to Detect, temps moyen de détection d’une panne)**.  
+Une supervision efficace ne doit pas être **uniquement réactive** (alerte en cas de panne) mais aussi **proactive** en détectant les signaux faibles avant qu’une défaillance ne survienne.
 
-* Système (% d'utilisation de file system, load, volume de swap in/out, nombre de threads total …)
-* Middleware (% de HEAP utilisée sur une JVM, nb de threads sur la JVM, % utilisation d'un pool de threads ou de connexions JDBC ..)
-====
-====
-Exemple : on mesura le % de wait io et la charge serveur.
+- **Métriques** : données brutes collectées (% CPU, taille FS, nombre de requêtes, etc.), issues de sondes système, middleware ou applicatives.
+- **Indicateurs** : combinaisons de plusieurs métriques avec des seuils d’alerte (ex : _"alerte critique si l'utilisation CPU du serveur `s1` dépasse 95% pendant plus de 5 minutes"_).
 ====
 
-##### Supervision applicative
+#### Supervision technique
 
 [TIP]
 ====
-Lister les métriques applicatives (développés en interne). lls peuvent être techniques ou fonctionnels :
+Lister ici les **métriques techniques (infrastructure & middleware)** à superviser :
 
-* Nombre de requêtes d'accès à un écran.
-* Nombre de contrats traités dans l'heure.
-* …
+- **Système** :  
+  * Utilisation CPU (%), charge moyenne (`load average`), usage mémoire (%), swap in/out.
+  * Occupation disque et file system (% d’utilisation, inodes libres).
+  * Utilisation réseau (latence, débit, taux d’erreurs).
+  * Nombre de processus actifs et threads.
+  * IO wait (temps CPU bloqué en attente d’IO).
 
-Il est également possible de mettre en place des outils de BAM (Business Activity Monitoring) basées sur ces métriques pour suivre des indicateurs orientés processus.
+- **Middleware & bases de données** :  
+  * % de **HEAP utilisée** sur une JVM.
+  * Nombre de **threads actifs** sur une JVM.
+  * Utilisation d’un **pool de threads** ou **pool de connexions JDBC**.
+  * Temps de réponse moyen d’une base de données, nombre de requêtes en attente, taux de cache hit.
+  * Statistiques de garbage collection (GC).
 ====
 ====
-Exemple : l'API REST de supervision applicative proposera une ressource Metrique contenant les métriques métier principaux : nombre de colis à envoyer, nombre de préparateurs actifs…
+**Exemple** : Supervision du **% de CPU en IO wait** et de la **charge moyenne du serveur** (`load average`).
 ====
 
-##### Outil de pilotage de la supervision
-
-[TIP]
-====
-Un tel outil (comme Nagios, Hyperic HQ dans le monde Open Source) :
-
-* Collecte les métriques (en SNMP, JMX, HTTP …) de façon périodique.
-* Persiste les métriques dans un type de base de données de séries chronologiques (comme RRD).
-* Consolide les indicateurs depuis les métriques.
-* Affiche les tendances dans le temps de ces indicateurs.
-* Permet de fixer des seuils d’alerte basés sur les indicateurs et de notifier les exploitants en cas de dépassement.
-====
-==== 
-Exemple : la pilotage de la supervision se basera sur la plate-forme Grafana.
-====
-
-##### Alerting
+#### Supervision applicative et métier
 
 [TIP]
 ====
-Préciser ici les conditions d'alertes et le canal utilisé
+Lister ici les métriques **applicatives** ou **métier** :
+
+- **Métriques applicatives** :  
+  * Nombre de requêtes HTTP reçues par service.
+  * Temps de réponse moyen par API REST.
+  * Taux d’erreur (5xx) des services.
+
+- **Métriques métier** :  
+  * Nombre de contrats traités dans l’heure.
+  * Volume de commandes validées / rejetées.
+  * Nombre de colis à expédier en attente.
+
+**Business Activity Monitoring (BAM)** :  
+Une couche BAM peut être mise en place pour générer des indicateurs orientés **processus métier** à partir de ces métriques.
 ====
 ====
-Exemple : SMS si aucune demande depuis les 4 dernières heures ou si le nombre d'erreurs techniques d'un module dépasse 10/h.
+**Exemple** : L’API REST de supervision exposera une ressource `Metrique` contenant les **indicateurs métier clés** :  
+
+- **Nombre de colis à expédier**.  
+- **Nombre de préparateurs actifs**.  
+- **Taux d’erreur des transactions**.
 ====
 
-##### Suivi des opérations programmées
+#### Outils de supervision & monitoring
 
 [TIP]
 ====
-Indiquer l’ordonnanceur ou le planificateur utilisé pour piloter les jobs et consolider le plan de production (exemple : VTOM, JobScheduler, Dollar Universe, Control-M…). Détailler les éventuelles spécificités de l’application :
+Une plateforme de supervision collecte, stocke et analyse les métriques en temps réel.  
+Les outils Open Source les plus courants sont :
 
-* Degré de parallélisme des jobs
-* Plages de temps obligatoires
-* Rejeux en cas d'erreur
-* …
+- **Collecte des métriques** :  
+  * **Prometheus** (scraping métriques en HTTP).
+  * **Telegraf** (agent pour collecter CPU, mémoire, réseau, etc.).
+  * **SNMP, JMX** pour monitoring système et JVM.
 
-Les jobs doivent-ils produire un rapport d'exécution ? sous quelle forme et avec quel contenu ?
+- **Stockage des métriques** (bases de données de séries temporelles) :  
+  * **InfluxDB, Prometheus TSDB, TimescaleDB**.
+  * **ElasticSearch** (si besoin de logs en plus des métriques).
+
+- **Visualisation et alerte** :  
+  * **Grafana** (tableaux de bord interactifs).
+  * **Zabbix, Netdata, Nagios** (supervision système classique).
+
+Les indicateurs sont ensuite affichés via **tableaux de bord dynamiques** et des **seuils d’alerte** sont définis pour notifier les équipes.
 ====
 ====
-Exemple 1 : les jobs seront ordonnancés par l'instance JobScheduler de l'organisation. 
-
-* Les jobs ne devront jamais tourner les jours féries.
-* Leur exécution sera bornée aux périodes 23h00 - 06h00. Leur planification devra donc figurer dans cette plage ou ils ne seront pas lancés.
-* On ne lancera pas plus de cinq instances du job J1 en parallèle.
-
-Exemple 2 : Les jobs devront produire un rapport d'exécution à chaque lancement (avec des données de base comme le nombre d'éléments traités, la durée du traitement et tout indicateur pertinent).
+**Exemple** :  
+La **supervision technique et applicative** reposera sur une stack **Grafana + Prometheus + ElasticSearch**.
 ====
+
+#### Alerting & notifications
+
+[TIP]
+====
+Définir les **conditions de déclenchement des alertes** et les **canaux de notification** :
+
+- **Types d’alertes** :  
+  * **Critique** (urgence) → serveur hors ligne, saturation disque, crash applicatif.
+  * **Avertissement** → tendance à la hausse, signaux faibles (ex : mémoire consommée > 80%).
+
+- **Canaux de notification** :  
+  * Alertes **par e-mail** (non-urgent).
+  * **Slack, Mattermost, Microsoft Teams** (suivi opérationnel).
+  * **SMS ou PagerDuty** (urgence, astreintes 24/7).
+
+- **Règles de déclenchement** :  
+  * Répétition sur une période avant alerte (éviter le bruit).
+  * **Corrélation d’événements** pour éviter des faux positifs.
+====
+====
+**Exemple** :  
+Une **alerte SMS** sera envoyée si :  
+
+- **Aucune demande n’a été reçue depuis 4 heures**.  
+- **Le nombre d’erreurs 5xx dépasse 10/h** sur un module critique.
+====
+
 
 ##### Supervision boite noire
 
@@ -1549,58 +1652,75 @@ En général, ces tests sont simples (requêtes HTTP depuis un curl croné par e
 Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si tel est le cas, il faudra être en mesure d'identifier dans tous les modules les données issues de ce type de requêtes pour ne pas polluer les données métier et les systèmes décisionnels.
 ====
 ====
-Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via l'outil uptrends.com. En cas de panne, un mail est envoyé aux exploitants.
+Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via Netvigie. En cas de panne, un mail est envoyé aux exploitants.
 ====
 
 ##### Métrologie
 
 [TIP]
 ====
-Suit-on les performances de l'application en production ? Cela permet :
+Le suivi des performances de l'application en production est essentiel pour :
 
-* De disposer d'un retour factuel sur les performances _in vivo_ et d'améliorer la qualité des décisions d’éventuelles redimensionnement de la plate-forme matérielle.
-* De détecter les pannes de façon proactive (suite à une chute brutale du nombre de requêtes par exemple).
-* De faire de l'analyse statistique sur l’utilisation des modules afin de favoriser la prise de décision (pour le décommissionnement d'une application par exemple).
+* Disposer d'un retour factuel sur les performances _in vivo_, permettant d'améliorer la qualité des décisions pour un éventuel redimensionnement de la plate-forme matérielle.
+* Détecter les pannes de manière proactive (exemple : une chute brutale du nombre de requêtes).
+* Réaliser des analyses statistiques sur l’utilisation des modules pour guider la prise de décision (exemple : décommissionnement d'une application peu utilisée).
 
-Il existe trois grandes familles de solutions :
+Trois grandes familles de solutions existent :
 
-* Les APM (Application Performance Monitoring) : outils qui injectent des sondes sans impact applicatifs, qui les collectent et les restituent (certains reconstituent même les chaînes de liaison complètes via des identifiants de corrélations injectés lors des appels distribués). Exemple : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace , Pinpoint en OpenSource …). Vérifier que l'overhead de ces solutions est négligeable ou limité et qu'on ne met en péril la stabilité de l'application.
-* La métrologie «maison» par journaux si le besoin est modeste.
-* Les sites de requêtage externes qui appellent périodiquement l'application et produisent des dashboards. Ils ont l'avantage de prendre en compte les temps WAN non disponibles via les outils internes. A utiliser couplés à la supervision boite noire (voir plus haut).
+* **APM (Application Performance Monitoring)** :  
+  Ces outils injectent des sondes avec un impact limité sur l'application, collectent les données et les restituent sous forme de tableaux de bord. Certains reconstruisent même les chaînes de liaison complètes grâce à des identifiants de corrélation injectés lors des appels distribués.  
+  **Exemples** : Oracle Enterprise Manager, Oracle Mission Control, Radware, BMC APM, Dynatrace, Glowroot (Open Source), etc.  
+  ⚠ Vérifier que l'overhead (impact sur les performances) de ces solutions est négligeable ou maîtrisé.
+
+* **Métrologie maison par journaux** :  
+  Une solution simple pour des besoins modestes, utilisant les logs applicatifs pour extraire des métriques de performance.
+
+* **Sites de requêtage externes** :  
+  Ces services effectuent des appels périodiques vers l'application et génèrent des tableaux de bord. Ils permettent de prendre en compte les temps de transit sur le WAN, ce qui n'est pas possible avec des outils internes. À utiliser en complément de la supervision en boîte noire.
+
 ====
+
 ====
-Exemple : les performances du site seront supervisées en continu par `pingdom.com`. Des analyses de performances plus poussées seront mises en œuvre par Pinpoint en fonction des besoins.
+Exemple :  
+
+* Les performances du site seront supervisées en continu par Datadog ;
+* Des analyses de performances plus poussées seront mises en œuvre par **Glowroot**, selon les besoins.
 ====
+
 
 ### Migrations
 
 [TIP]
 ====
-Ce chapitre décrit les éventuelles migration requises depuis des systèmes plus anciens. 
+Ce chapitre décrit les éventuelles migrations requises depuis des systèmes plus anciens.  
 
-Décrire de façon macroscopique la procédure envisagée ainsi que les retours arrières prévus.
+Décrire de façon macroscopique la procédure envisagée ainsi que les mécanismes de retour arrière.  
 
-Décrire éventuellement un fonctionnement 'à blanc' en parallèle de l'ancien système avant activation.
+Préciser si un fonctionnement en parallèle de l'ancien système est prévu avant activation (exemple : exécution en mode "à blanc" pour validation).  
 ====
 ====
-Exemple 1 : Le module X sera remplacé par les services Y. Ensuite les données Oracle Z du silo seront migrées en one-shot via un script PL/SQL + DBLink vers l’instance XX avec le nouveau format de base du module T.
+Exemple 1 : Le module `X` sera remplacé par les services `Y`. Les données Oracle `Z` du silo seront migrées en une seule opération via un script PL/SQL + DBLink vers l’instance `XX`, en respectant le nouveau format de base du module `T`.
 ====
 ====
-Exemple 2 : en cas de problème sur le nouveau module, un retour arrière sera prévu : les anciennes données seront restaurées dans les deux heures et les nouvelles données depuis la bascule seront reprise par le script S1.
+Exemple 2 : En cas de problème sur le nouveau module, un retour arrière est prévu :  
+
+* Les anciennes données seront restaurées sous **2 heures**.  
+* Les nouvelles données créées après la bascule seront retraitées via le script `S1` pour assurer leur réintégration.  
 ====
+
 
 ### Décommissionnement
 
 [TIP]
 ====
-Ce chapitre sera instruit quand l’application arrive en fin de vie et devra être supprimée ou remplacée. Elle décrit entre autres :
+Ce chapitre sera complété lorsque l’application arrivera en fin de vie et devra être supprimée ou remplacée. Il décrit notamment :
 
-* Les données à archiver ou au contraire à détruire avec un haut niveau de confiance.
-* Les équipements physiques à évacuer ou à détruire.
-* Les procédures de désinstallation coté serveur et/ou client (il est courant de voir des modules obsolètes toujours s’exécuter sur des serveurs et occasionner des problèmes de performance et de sécurité passant sous le radar).
-* Les contraintes de sécurité associées au décommissionnement (c’est une étape sensible souvent négligée, on peut retrouver par exemple des disques durs remplis de données très sensibles suite à un don de matériel).
+- Les **données** à archiver ou, au contraire, à détruire avec un **haut niveau de confiance**.
+- Les **équipements physiques** à évacuer, recycler ou détruire de manière sécurisée.
+- Les **procédures de désinstallation** côté serveur et/ou client (il est courant que des modules obsolètes restent en exécution, entraînant des risques de **performance et de sécurité**).
+- Les **contraintes de sécurité** associées au décommissionnement (c'est une **étape critique** souvent négligée ; par exemple, des disques durs remplis de **données sensibles** peuvent être récupérés après un simple don de matériel).
 ====
 
 ====
-Exemple : Les serveurs X, Y et Z seront transmis au service d’action sociale pour don caritatif après avoir effacé intégralement les disques durs via la commande shred, 3 passes.
+Exemple : Les serveurs `X`, `Y` et `Z` seront transmis au service d’action sociale pour don caritatif après un effacement sécurisé des disques durs via la commande `shred` avec **3 passes**, garantissant une suppression définitive des données.
 ====
