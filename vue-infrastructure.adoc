@@ -30,7 +30,7 @@ Bref, elle porte sur tout ce qui est externe à l'application et nécessaire à 
 
 ### Documentation de Référence
 [TIP]
-Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
+Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit pas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
 
 .Références documentaires
 [cols="1e,2e,5e,4e"]
@@ -1385,7 +1385,7 @@ Lister ici les opérations réalisées sur les sauvegardes :
 
 * Les données sont-elles dédupliquées ? (un même fichier voire bloc de donnée identique sur la source n'est stocké qu'une fois dans tout le jeu de sauvegarde). La plupart des solutions modernes utilisent ce principe. Par exemple des outils Open Source comme Restic ou propriétaires comme Veeam utilisent massivement de type de fonctionnement (proche du fonctionnement d'un dépot Git) pour réduire drastiquement la taille des sauvegardes et éliminer le besoin de sauvegardes full.
 
-* Les sauvegardes sont-elles chiffrées ? si oui, chiffrement de la partition toute entière, fichier par fichier, les deux ? Faut-il chiffrer également le nom des répertoires et fichiers sauvegardés ? Préciser l'algorithme de chiffrement utilisé et comment seront gérées les clés (vaults, code de secours...).
+* Les sauvegardes sont-elles chiffrées ? si oui, chiffrement de la partition toute entière, fichier par fichier, les deux ? Faut-il chiffrer également le nom des répertoires et fichiers sauvegardés ? Préciser l'algorithme de chiffrement utilisé et comment seront gérées les clés (coffres-forts numériques, code de secours...).
 
 * Les sauvegardes sont-elles compressées ? si oui, avec quel algorithme ? (lzw, deflate, lzma?, …), avec quel niveau de compression ? attention à trouver le compromis entre durée de compression / décompression et gain de stockage.
 
