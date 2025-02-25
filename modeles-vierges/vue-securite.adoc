@@ -210,10 +210,12 @@ Dispositifs répondant aux <<exigences-tracabilite,exigences de traçabilité et
 #### Solutions de prédiction
 
 
-## RACI
+## RACI & Gouvernance de la Sécurité
 
 [NOTE]
 ====
+Ce RACI permet de définir clairement les rôles et responsabilités des équipes en matière de **gestion de la sécurité informatique**.
+
 :r: pass:quotes[[.green]#R#]
 :a: pass:quotes[[.red]#A#]
 :c: pass:quotes[[.blue]#C#]
@@ -221,10 +223,12 @@ Dispositifs répondant aux <<exigences-tracabilite,exigences de traçabilité et
 :na: pass:quotes[[.grey]#N/A#]
 :et: pass:quotes[[.grey]#&amp;#]
 
-* {r} : *Responsible* (personne qui va exécuter : elle en est responsable)
-* {a} : *Accountable* (personne qui va approuver la tâche : elle en est l'autorité)
-* {c} : *Consulted* (personne qui va être consultée dans l'exécution de la tâche)
-* {i} : *Informed* (personne qui sera informée lorsque la tâche est terminée)
+* {r} : *Responsible* (exécute l'action).
+* {a} : *Accountable* (valide l'action et en est responsable devant l'organisation).
+* {c} : *Consulted* (doit être consulté pour expertise).
+* {i} : *Informed* (doit être informé après réalisation).
+
+Dans un bon RACI, il ne doit **jamais** y avoir plus d'un {a} pour chaque ligne.
 ====
 
 .Gestion ...
@@ -238,7 +242,6 @@ Dispositifs répondant aux <<exigences-tracabilite,exigences de traçabilité et
 .^|{a}
 
 |===
-
 
 
 ## Auto-contrôles

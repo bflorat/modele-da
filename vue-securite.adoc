@@ -29,7 +29,7 @@ La disponibilité est traitée dans la vue infrastructure.
 
 [TIP]
 ====
-Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit en aucun cas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
+Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit pas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
 ====
 
 .Références documentaires sécurité
@@ -39,6 +39,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |1|1.0|Dispositifs_securite.pdf|Catalogue de dispositifs de sécurité habilités
 |2|latest|Normes sécurité société|http://masociete/monurl
+|3|latest|Explications RGPD | https://www.cnil.fr/fr/rgpd-par-ou-commencer
 |====
 
 ## Non statué
@@ -73,30 +74,32 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 [TIP]
 ====
-Lister ici les contraintes relatives à la sécurité, ceci inclut par exemple mais pas seulement :
+Lister ici les **contraintes de sécurité** applicables à l'architecture, incluant notamment :
 
-* L'isolation des modules au sein de zones réseaux étanches (DMZ, pare-feux, reverse-proxy…)
-* Les normes applicables (comme les politiques de mot de passe)
-* Les contraintes légales (RGPD par exemple)
+- **Isolation des modules** au sein de zones réseaux sécurisées (_DMZ, pare-feux, reverse proxy, segmentation réseau, etc._).
+- **Normes et politiques applicables** (_ex. : politiques de mots de passe, exigences de chiffrement, MFA, conformité aux standards de sécurité_).
+- **Contraintes légales et réglementaires** (_ex. : conformité RGPD, exigences sectorielles spécifiques_).
+- **Restrictions d'accès** entre les différentes zones et systèmes.
 
 ====
 ====
-Exemple 1 : la politique de mot de passe devra se conformer à la norme xyz
+Exemple 1 : La politique de gestion des mots de passe devra se conformer à la norme `XYZ`, incluant une complexité minimale et un renouvellement périodique.
 ====
 ====
-Exemple 2 : il est formellement interdit à un module de la zone internet d'accéder à la zone intranet 
+Exemple 2 : Il est formellement interdit à un module de la **zone Internet** d'accéder directement à la **zone Intranet**.
 ====
 ====
-Exemple 3 : en application du RGPD, les données utilisateur devront être chiffrées
+Exemple 3 : En application du **RGPD**, les données utilisateur devront être chiffrées **au repos et en transit** avec **AES-256 et TLS 1.3**.
 ====
+
 
 ## Exigences
 
 [TIP]
 ====
-Présenter ici les exigences, *pas les dispositifs y répondant*. Ceux-ci seront détaillés au chapitre 3. 
+Présenter ici les **exigences**, *pas les dispositifs y répondant*. Ceux-ci seront détaillés au chapitre 3.
 
-Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de risque. Pour cela, utiliser par exemple la méthode https://www.ssi.gouv.fr/guide/la-methode-ebios-risk-manager-le-guide/[EBIOS Risk Manager] (Expression des Besoins et Identification des Objectifs de Sécurité).
+Pour les projets particulièrement sensibles, prévoir un **dossier d’analyse de risque**. Pour cela, utiliser par exemple la méthode https://www.ssi.gouv.fr/guide/la-methode-ebios-risk-manager-le-guide/[EBIOS Risk Manager] (_Expression des Besoins et Identification des Objectifs de Sécurité_).
 ====
 
 [[exigences-integrite]]
@@ -104,250 +107,303 @@ Pour les projets particulièrement sensibles, prévoir un dossier d’analyse de
 
 [TIP]
 ====
-L’intégrité concerne la durabilité, la justesse et le niveau de confiance dans les données de l’application. 
+L’intégrité concerne la **justesse, la durabilité et le niveau de confiance** des données de l’application.
 
-Gérer l’intégrité des données consiste à vérifier qu’elle ne peuvent être altérées ou supprimées (involontairement, suite à un crash disque par exemple) ou volontairement, par exemple dans le cadre d’une attaque de type "man in the middle" ou par une personne s’étant octroyé des droits indus.
+Garantir l’intégrité des données signifie s’assurer qu’elles **ne peuvent être altérées ou supprimées** de manière involontaire (_ex. : crash disque, corruption logicielle, bug applicatif_) ou volontaire (_ex. : attaque "man-in-the-middle", élévation de privilèges, sabotage interne_).
 
-Attention à ne pas multiplier les classes de données. Il est possible de ne définir qu’une seule classe de donnée pour l’ensemble de l’application (cas courant). 
+⚠ **Ne pas multiplier inutilement les classes de données**. Une unique classification pour toute l’application est souvent suffisante.
 ====
 
-.Niveau d'intégrité exigée par classe de données (exemple)
+.Niveau d'intégrité exigé par classe de données (exemple)
 [cols='2e,1e,1e,1e,1e']
 |====
-|Classe de données
-|Niveau « Non intègre » [small]#(La donnée peut ne pas être totalement intègre)#
-|Niveau « Détectable » [small]#(La donnée peut ne pas être intègre si l'altération est identifiée dans un délai raisonnable)#
-|Niveau « Maîtrisé » [small]#(La donnée peut ne pas être intègre, si l'altération est identifiée et l'intégrité du bien essentiel retrouvée)#
-|Niveau « Intègre » [small]#(La donnée doit toujours être rigoureusement intègre)#
+|Classe de données |Non intègre [small]#(Les erreurs d'intégrité sont tolérées)# |Détectable [small]#(Les erreurs sont identifiées rapidement)# |Maîtrisé [small]#(Les erreurs sont corrigées)# |Intègre [small]#(Aucune altération n’est tolérée)#
 
-|Données de la base métier
-|
-|
-|
-|X
-
-|Données archivées
-|
-|X
-|
-|
-
-|Données calculées stats entreprises
-|
-|
-|X 
-|
-
-|Silo NoSQL des données Big Data avant consolidation
-|X
-|
-|
-|
-
-|Sources de l’application
-|
-|
-|
-|X
-
-|Avis d‘imposition en PDF
-|
-|
-|
-|X
+|**Données de la base métier** | | | | X
+|**Données archivées** | | X | |
+|**Données statistiques agrégées** | | | X |
+|**Silo NoSQL des données Big Data (avant consolidation)** | X | | |
+|**Code source de l’application** | | | | X
+|**Documents officiels générés (ex. : avis d’imposition PDF)** | | | | X
 |====
+
+[TIP]
+====
+Exemples de dispositifs associés selon le niveau d’intégrité requis :
+
+- **Détectable** → Logs d’accès et vérification des empreintes numériques (hashes).
+- **Maîtrisé** → Rétention des versions, auditabilité, correction automatique des erreurs détectées.
+- **Intègre** → Chiffrement, signatures numériques, réplication synchrone, stockage immuable (WORM).
+====
+
 
 [[exigences-confidentialite]]
 ### Exigences de confidentialité
 
 [TIP]
 ====
-[quote ]
-La confidentialité est le fait de s’assurer que l’information n’est accessible qu’à ceux dont l’accès est autorisé (norme ISO 27018). 
+La confidentialité est la garantie que l’information **n’est accessible qu’aux personnes autorisées** (définition ISO 27018).
 
-Attention à ne pas multiplier les classes de données. Il est possible de ne définir qu’une unique classe de donnée pour l’ensemble de l’application (cas courant). 
+**Bonnes pratiques** :  
+
+- Ne pas multiplier inutilement les classes de données. Une seule classification peut suffire pour l’ensemble de l’application.
+- S’assurer que les niveaux de confidentialité sont **cohérents avec les exigences légales et contractuelles**.
 ====
 
-.Niveau de confidentialité exigée par classe de données
+.Niveau de confidentialité exigé par classe de données
 [cols="e,e,e,e,e"]
 |====
-|Classe de données | Niveau « Public » [small]#(Tout le monde peut accéder à la donnée)# 
-|Niveau Limité » [small]#(La donnée n’est accessible qu’aux personnes habilitées)# 
-|Niveau « Réservé » [small]#(La donnée n’est accessible qu’au personnel interne habilité)# 
-|Niveau « Privé » [small]#(La donnée n’est visible que par l’intéressé(e))#
+|Classe de données |Public [small]#(Donnée accessible à tous sans restriction)# |Limité [small]#(Accessible uniquement aux personnes habilitées)# |Réservé [small]#(Restreint au personnel interne autorisé)# |Privé [small]#(Accès strictement individuel)#
 
-|Contenu éditorial 
-|X
-|
-|
-|
+|**Contenu éditorial**  
+| X | | | 
 
-|Données de profil de l'utilisateur
-|
-|X
-|
-|
+|**Données de profil utilisateur**  
+| | X | | 
 
-|Historique du compte
-|
-|
-|X
-|
+|**Historique du compte**  
+| | | X | 
 
-|Logs techniques des activités
-|
-|
-|X
-|
+|**Logs techniques des activités**  
+| | | X | 
 
-|Données RH de type "aides sociales aux employés"
-|
-|
-|
-|X
+|**Données RH (ex. : aides sociales aux employés)**  
+| | | | X
 |====
+
+[TIP]
+====
+**Exemples d’applications des niveaux de confidentialité** :
+
+- **Public** → Pages web accessibles sans connexion.
+- **Limité** → Informations réservées aux utilisateurs authentifiés (ex : tableau de bord d’un SaaS).
+- **Réservé** → Données internes sensibles (ex : logs système non accessibles aux clients).
+- **Privé** → Données personnelles visibles uniquement par l’utilisateur concerné (ex : fiche de paie).
+====
+
 
 [[exigences-identification]]
 ### Exigences d'identification
 
 [TIP]
 ====
-L’identification est l’ensemble des dispositifs permettant de différentier un utilisateur d’un autre (mais sans vérifier qu’il est bien celui qu’il prétend être). 
+L’identification permet d'**attribuer un identifiant unique** à chaque utilisateur, afin de le différencier des autres.  
+
+**Attention :**  L’identification **ne garantit pas** que l’utilisateur est bien celui qu’il prétend être. C’est le rôle de l’authentification (exemple : mot de passe, MFA…).
 ====
 
+.Exigences d'identification
+[cols="1e,3e"]
+|====
+|Exigence |Description
+
+|**Identifiant unique**  
+| Chaque utilisateur doit avoir un identifiant **unique et non partageable**. Une adresse e-mail personnelle est un bon identifiant.
+
+|**Validation de l'identité**  
+| L'existence de l'identité d'un internaute doit être vérifiée avant tout appel de service.
+
+|**Pérennité de l’identifiant**  
+| Un identifiant ne doit **jamais être supprimé, modifié ou réutilisé**, même après la suppression d’un compte utilisateur.
+|====
+
+[TIP]
 ====
-Exemple 1 : Un utilisateur ne peut avoir qu’un unique identifiant et un identifiant ne peut être partagé par plusieurs utilisateurs. L'adresse e-mail personnelle est donc un bon identifiant.
+**Bonnes pratiques** :  
+
+- **Privilégier des identifiants stables et uniques** (e-mail, numéro de client, UUID…).
+- **Éviter les identifiants réattribuables** (exemple : ID numérique incrémental risquant d’être réutilisé après suppression d’un compte).
+- **S'assurer que l'identifiant est cohérent dans tous les systèmes** où il est utilisé.
 ====
-====
-Exemple 2 : L’identité d’un internaute fera l’objet d’un test d’existence avant tout appel de service.
-====
-====
-Exemple 3 : Un ID est non supprimable, non modifiable et non réutilisable.
-====
+
 
 [[exigences-authentification]]
 ### Exigences d'authentification
 
 [TIP]
 ====
-L’authentification permet de vérifier la cohérence entre l’identité d'un utilisateur et une personne physique se connectant. 
+L’authentification vérifie qu’un utilisateur est bien celui qu’il prétend être, en validant son identité à l’aide d’un ou plusieurs facteurs de preuve.
 
-A noter que les dispositifs techniques (comme les batchs) peuvent également faire l'objet d'identification et d'authentification (batch qui utilise un compte de service pour appeler une API par exemple).
+⚠ **À ne pas confondre avec l’identification**, qui ne fait que distinguer un utilisateur d’un autre sans valider son identité.
 
-L’authentification peut être à un ou plusieurs facteurs (dans ce dernier cas, on parle d’authentification forte). Ces facteurs peuvent être : 
+**Cas particuliers :** 
 
-* Quelque chose que l’on *connaît* (mot de passe, pass phrase, code PIN, donné métier, …).
-* Quelque chose qu’on *est* (biométrie morphologique via par exemple empreintes digitales,  reconnaissance de l'iris ou la reconnaissance faciale ; comportementales comme via la démarche ou la signature manuscrite ou génétique (analyse de l'ADN)).
-* Quelque chose qu’on *possède* (devise OTP, application TOTP configurée sur son smartphone, carte à puce, pièce d’identité avec photo, clé privée sous forme de fichier, clé de récupération (PUK), …).
-
-Penser à décrire le système d'authentification une fois inscrit mais également lors de l’inscription (authentification initiale).
-
-Une éventuelle délégation d’authentification s’appuie sur une technologie de fédération d’identité pour authentifier l’utilisateur.
-
-Il est bien sûr possible d’ajouter au besoin dans le tableau ci-dessous des facteurs d’authentification spécifiques à votre organisation.
-
+- Les **comptes techniques** (ex: batchs, applications, API) nécessitent également une authentification (ex: comptes de service avec certificats ou clés SSH).
+- L’**authentification initiale** (lors de l'inscription) est souvent plus stricte que les authentifications ultérieures.
+- Une **authentification fédérée** permet de déléguer l’authentification à un fournisseur d’identité (SSO, OAuth2, SAML, etc.), voir la section suivante.
 ====
 
-Les facteurs d’authentification requis en fonction des situations sont (on peut exiger plusieurs occurrences du même facteur, utiliser autant de croix) :
+#### **Facteurs d’authentification**
+L’authentification peut être basée sur **un seul facteur** ou être **multi-facteurs (MFA)** pour plus de sécurité.  
+Les principaux types de facteurs sont :
 
-.Exigence d'authentification par cas d'utilisation (exemple)
+* **Ce que l'on *connaît*** → Mot de passe, phrase secrète, PIN, donnée métier.
+* **Ce que l'on *est*** → Biométrie (empreinte digitale, reconnaissance faciale, ADN, signature…).
+* **Ce que l'on *possède*** → Clé privée, token OTP (TOTP, FIDO2, carte à puce), e-mail de validation.
+
+#### **Exigences d'authentification par cas d'utilisation**
+Le tableau ci-dessous indique les **facteurs d’authentification requis** selon le contexte d’utilisation :  
+
 [cols="e,e,e,e,e,e,e"]
 |====
-|Cas d’authentification
-|Mot de passe respectant la politique de mot de passe
-|Clé publique ssh connue
-|OTP par Token
-|Biométrie
-|Connaissance de données métier
-|E-mail avec hyperlien de vérification
+|Cas d’authentification  
+|Mot de passe respectant la politique de sécurité  
+|Clé publique SSH connue  
+|OTP par Token  
+|Biométrie  
+|Connaissance de données métier  
+|E-mail avec lien de vérification  
 
-|Utilisateur déjà inscrit
-|X|||||
+|Utilisateur déjà inscrit  
+|X|||||  
 
-|Création d’un compte
-|||||XX|X
+|Création d’un compte  
+|||||XX|X  
 
-|Modification du mot de passe 
-|X|||||X
+|Modification du mot de passe  
+|X|||||X  
 
-|Accès aux journaux
-||X||||
+|Accès aux journaux sécurisés  
+||X||||  
 
-|Ajout d’un bénéficiaire de virement
-|X||X|||
+|Ajout d’un bénéficiaire de virement  
+|X||X|||  
 
-|Application mobile Y
-||||X|||
+|Connexion à l’application mobile Y  
+||||X|||  
 |====
+
+[TIP]
+====
+**Bonnes pratiques** :  
+
+- **Éviter l’authentification unique par mot de passe** → privilégier au minimum un second facteur (OTP, biométrie…).  
+- **Utiliser des normes éprouvées** → FIDO2, WebAuthn, TOTP, SAML, OpenID Connect.  
+- **Sécuriser les comptes de service** → éviter les mots de passe statiques et privilégier les clés SSH, certificats ou tokens JWT.  
+- **Gérer la révocation et le renouvellement** → prévoir des mécanismes pour régénérer un facteur perdu ou compromis.  
+====
+
 
 [[exigences-federation-identite]]
 ### Exigences de fédération d’identité
 
 [TIP]
 ====
-La fédération d’identité est l’utilisation d’une même identité gérée par un identity provider (IdP) depuis plusieurs entités différentes. 
+La fédération d’identité permet à un utilisateur de **réutiliser son identité** (credentials) gérée par un **Identity Provider (IdP)** pour s’authentifier sur plusieurs systèmes indépendants.
 
-Par exemple, France Connect très utilisé par les administrations et basé sur OpenId Connect permet de réutiliser le compte d’une administration pour se loguer sur le compte d’une autre (DGFiP et CNAM par exemple). 
+Contrairement au **SSO (Single Sign-On)**, qui assure une connexion automatique sans nouvelle saisie des identifiants, la fédération **ne dispense pas** de l’authentification mais centralise la gestion des identités.
 
-Voir aussi les « Connect with [Google|Twitter|…] » en technologie OpenId Connect. Contrairement au SSO, la fédération d'identité n’assure pas un login automatique à une application comme le SSO mais permet simplement de réutiliser les mêmes credentials (login/mot de passe).
+**Exemples courants :**  
+
+- **France Connect** → Basé sur OpenID Connect, permet aux citoyens de se connecter aux services administratifs (DGFiP, CNAM…) avec un compte unique.  
+- **"Se connecter avec [Google | Facebook | GitHub]”** → Implémenté via **OpenID Connect** ou **OAuth2**, permettant d’utiliser un compte tiers pour l’authentification sur une autre plateforme.
+
+**Avantages de la fédération d’identité :**  
+
+- **Simplifie la gestion des comptes** → Moins d’identifiants à mémoriser pour l’utilisateur.  
+- **Réduit les coûts de maintenance** → Moins de réinitialisations de mot de passe et de gestion des utilisateurs.  
+- **Améliore la sécurité** → Centralisation de l’authentification auprès d’un IdP de confiance, possibilité d’intégrer une authentification multi-facteurs (MFA).  
 ====
 
+#### **Exemple d’application**
 ====
-Exemple : L’identification et l’authentification seront externalisés au fournisseur d’identité Auth0 pour simplifier la gestion de la sécurité et réduire les coûts de développement et d’exploitation.
+**Cas d’usage** :  
+L’identification et l’authentification des utilisateurs seront externalisées à **Auth0**, un fournisseur d’identité (IdP) supportant **OIDC, SAML et OAuth2**.  
+
+**Objectifs** :  
+
+- **Centraliser la gestion des identités** et éviter la duplication des comptes utilisateurs.  
+- **Réduire les coûts** de développement et d’exploitation liés à l’authentification.  
+- **Améliorer la sécurité** en déléguant l’authentification à un IdP conforme aux normes de sécurité.
 ====
+
 
 [[exigences-sso-slo]]
 ### Exigences de SSO et SLO
 
 [TIP]
 ====
-Décrire les besoin en terme de Single Sign On et Single Log Out.
+Le **Single Sign-On (SSO)** permet à un utilisateur de s’authentifier une seule fois et d’accéder à plusieurs applications sans ressaisir ses identifiants.  
+Le **Single Log-Out (SLO)** assure qu’une déconnexion depuis une application entraîne automatiquement la déconnexion de toutes les autres applications du même domaine de confiance.
 
-Nous entendons ici SSO dans son sens le plus complet : une authentification automatique à une application d’un utilisateur déjà authentifié depuis une autre application du même domaine de confiance. 
+**Points d’attention :**
 
-Attention, la mise en place de SSO peut être complexe, surtout si l’infrastructure (ID provider…) n’existe pas encore. 
+- **Le SSO peut être complexe** à mettre en œuvre, surtout si l’infrastructure IdP (Identity Provider) n’est pas encore en place.
+- **Les applications doivent être compatibles** avec le protocole choisi (SAML, OIDC, Kerberos…).
+- **Le besoin métier doit être justifié** → Une application rarement utilisée ne nécessite pas forcément de SSO.
+- **Risque sécurité** → Une **authentification faible** sur une application SSO met en péril tout le SI (ex. : un mot de passe faible compromet toutes les applications accessibles via SSO).
 
-Elle nécessite souvent une adaptation des applications. 
+**Bonnes pratiques :**
 
-Le SSO est souvent demandé par les métiers mais cette exigence doit être justifiée. 
+- Définir des **périmètres de confiance** limités (ex. : SSO pour les applications internes uniquement).  
+- Utiliser une **authentification forte** pour réduire les risques d’usurpation.  
+- Gérer correctement les **sessions et expirations de jetons**.  
+- Envisager **une authentification centralisée simple (LDAP, CAS)** si le SSO n’est pas justifié.  
+====
 
-Une application périphérique ou un outil rarement utilisé n’a en général pas besoin de SSO (une simple authentification centralisée au sein d’un annuaire peut suffire). 
+====
+**Exemple 1 : Pas de besoin de SSO**  
+Le portail applicatif repose sur un framework JSR352 qui gère déjà l’authentification unique. Aucun besoin de SSO supplémentaire.
+====
+====
+**Exemple 2 : Pas de SSO ni de SLO requis**  
+L’application fonctionne de manière autonome et ne partage pas d’authentification avec d’autres services.
+====
+====
+**Exemple 3 : SSO requis pour un environnement intranet**  
 
-Attention également à évaluer l’impact qu’aurait une authentification faible (mauvais mot de passe par exemple) sur la sécurité de l’ensemble du SI.
+- Une fois authentifié sur l’une des applications de l’intranet, l’utilisateur ne doit **pas avoir à se reconnecter** sur les autres applications jusqu’à expiration de la session.  
+- Une **déconnexion (SLO)** depuis une application doit entraîner **la déconnexion de toutes les autres applications** du domaine.  
+- Le protocole choisi sera **OIDC avec un Identity Provider interne**.
 ====
-====
-Exemple 1 : aucun SSO n’est exigé puisque toutes les IHM de l’application sont exposées au sein d’un portail JSR352 qui gère déjà l’authentification.
-====
-====
-Exemple 2 : aucun besoin de SSO ou SLO n’est identifié
-====
-====
-Exemple 3 : cette application Web métier devra fournir une authentification unique mutualisée avec celle des autres applications de l’intranet : une fois authentifié sur l’une des applications, l’agent ne doit pas avoir à se reconnecter (jusqu'à expiration de sa session). De même, une déconnexion depuis l’une des applications doit assurer la déconnexion de toutes les applications de l’intranet.
-====
+
 
 [[exigences-non-repudiation]]
-### Exigences de non répudiation
+### Exigences de non-répudiation
 
 [TIP]
 ====
-Lister ici les actions métiers possédant une exigence de non-répudiation, c’est à dire un dispositif permettant de rendre impossible la remise en cause d’un contrat en prouvant l’identité des deux parties et l’intégrité du document par signature numérique comme décrit dans le texte n°2000-230 du 13 mars 2000 du code civil.
+La **non-répudiation** garantit qu’un utilisateur ou une organisation ne peut **nier** avoir réalisé une action donnée (signature, validation, transaction…).  
+Elle repose généralement sur des mécanismes cryptographiques, notamment la **signature électronique** et l’horodatage sécurisé.
+
+La signature numérique est reconnue légalement par **le texte n°2000-230 du 13 mars 2000 du code civil**, ainsi que par le **règlement eIDAS (UE 910/2014)** définissant plusieurs niveaux de signature :  
+- **Simple** : Vérifie uniquement l’identité de l’émetteur.  
+- **Avancée (AES)** : Liée de manière unique au signataire et protégée contre toute modification.  
+- **Qualifiée (QES)** : Conforme aux normes les plus strictes, avec certificat qualifié et dispositif sécurisé.
+
+**Cas d’usage typiques :**  
+
+- Signature des **contrats et engagements légaux**.  
+- Validation des **transactions financières sensibles**.  
+- Soumission de **documents officiels** (déclarations fiscales, actes notariés…).
 ====
 
-.Besoins de non-répudiation
-[cols="e,e,e"]
+#### **Besoins de non-répudiation**
+[cols="e,e,e,e"]
 |===
-|Donnée signée|Origine du certificat client|Origine du certificat serveur
+|Action ou document signé|Niveau de signature exigé|Origine du certificat client|Origine du certificat serveur
 
 |Déclaration d’impôt sur le revenu (données X, Y et Z)
+|Signature eIDAS qualifiée 
 |PKI de l’administration fiscale
-|Verisign
+|Autorité de certification Verisign
+
+|Contrat d’embauche électronique
+|Signature eIDAS avancée
+|PKI interne de l’entreprise
+|PKI externe certifiée eIDAS
+
+|Validation d’un paiement électronique
+|Signature eIDAS avancée
+|Certificat bancaire du client
+|PKI du fournisseur de paiement (ex. : Visa, Mastercard)
 |===
 
 [[exigences-anonymat]]
 ### Exigences d'anonymat et de respect de la vie privée
 
 [TIP]
-Lister les contraintes d’anonymat et de vie privée légale (exigée par le RGPD). Voir https://www.cnil.fr/fr/rgpd-par-ou-commencer.
+Lister les contraintes d’anonymat et de vie privée légale (exigée par le RGPD). Voir [3].
 
 ====
 Exemple 1  : Aucune consolidation de donnée ne pourra être faite entre les données du domaine PERSONNE et du domaine SANTE.
@@ -368,126 +424,148 @@ Exemple 5 : En application de la directive européenne « paquet telecom », 
 Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs dans la conservation de leurs données personnelles de santé sera proposé.
 ====
 
+
 [[exigences-habilitations]]
 ### Exigences sur les habilitations
 
 [TIP]
 ====
-Une habilitation (ou autorisation) permet de donner l’accès à une fonction applicative (ou « privilège » ou « permission ») à un utilisateur ou un groupe d’utilisateur. 
+Une habilitation (ou autorisation) permet de **contrôler l’accès** à une fonction applicative spécifique (également appelée **privilège** ou **permission**) pour un utilisateur ou un groupe d’utilisateurs.
 
-Exemples de fonctions : 'faire un virement inter-bancaire', 'voir l’historique de son compte', 'supprimer un utilisateur'
+**Exemples de fonctions applicatives :**
 
-Attention à ne pas multiplier le nombre de fonctions et de rôles pour éviter une explosion combinatoire et des coûts de gestion associés.
+- "Effectuer un virement interbancaire"
+- "Consulter l’historique de son compte"
+- "Supprimer un utilisateur"
 
-Pour simplifier la gestion des habilitations par factorisation, on peut :
+⚠ Il est recommandé de **ne pas multiplier excessivement** les fonctions et les rôles afin d’éviter une explosion combinatoire et des coûts de gestion élevés.
 
-* Regrouper les utilisateurs dans des groupes (comme `G_chef_service`).
-* Associer une liste de fonctions à un rôle (comme `R_Administrateur`, `R_banquier_niv1`, `R_chef_service`) qu’on peut affecter à une personne ou à un groupe.
+**Bonnes pratiques pour simplifier la gestion des habilitations :**
 
-Exemple de modèle classique de gestion des habilitations :
+- **Regrouper** les utilisateurs dans des **groupes** (ex: `G_chef_service`).
+- **Associer** une liste de **fonctions** à un **rôle** (ex: `R_Administrateur`, `R_banquier_niv1`, `R_chef_service`).
+- **Attribuer** les rôles aux **utilisateurs ou groupes** pour une meilleure factorisation.
+
+**Modèle classique de gestion des habilitations :**  
 
 image::diagrammes/roles.svg[Gestion classique des rôles]
 
-Penser à spécifier les éventuels pseudo-utilisateurs et leurs rôles comme :
+**Pseudo-utilisateurs et rôles prédéfinis** :
+Penser à spécifier les utilisateurs génériques tels que :
 
-* `@anonyme` : les personnes non connectées
-* `@connecte` : les personnes connectées
+- **`@anonyme`** : utilisateurs non connectés.
+- **`@connecte`** : utilisateurs authentifiés.
 
-Préciser si l’application doit utiliser de la délégation d’autorisation (type OAuth2) et si oui, l’application est-elle fournisseur ou consommateur d’autorisations ? Quelles sont les autorisations concernées ?
-====
+**Délégation d’autorisation (OAuth2, etc.) :**
 
-====
-Exemple 1  : les personnes non connectées auront accès à tous les privilèges en lecture seule
-====
-====
-Exemple 2 : l’application s’appuiera sur une gestion des autorisations matricielle de type [rôles] -> [groupes ou utilisateurs] comme décrit plus bas. Le détail des autorisations sera donnée dans les SFD.
+Si l’application **délègue ou consomme** des autorisations via un **système externe (OAuth2, OpenID Connect, etc.)**, il est nécessaire de préciser :
+
+- **L’application est-elle fournisseur ou consommatrice d’autorisations ?**
+- **Quels types d’autorisations sont concernées ?**
 ====
 
 ====
-.Exemple de matrice de rôles
+Exemple 1 : Les utilisateurs **non connectés** auront **accès à tous les privilèges en lecture seule uniquement**.
+====
+
+====
+Exemple 2 : L’application utilisera **une gestion des autorisations matricielle** basée sur une association **[rôles] → [groupes ou utilisateurs]**.  
+Le détail des autorisations sera documenté dans les **SFD (Spécifications Fonctionnelles Détaillées)**.
+====
+
+**Exemple de matrice de rôles :**  
 [cols="e,e,e,e"]
 |===
-|_Groupe ou utilisateur_|_Rôle_ `suppression`|_Rôle_ `administration`|_Rôle `_consultation données de base`
+| _Groupe ou utilisateur_ | _Rôle_ `suppression` | _Rôle_ `administration` | _Rôle_ `consultation données de base`
 
-|Groupe `g_usagers`
+| Groupe `g_usagers`
 |
 |
-|X
+| X
 
-|Groupe `@anonyme`
+| Groupe `@anonyme`
 |
 |
 |
 
-|Groupe `g_admin`
-|X
-|X
-|X
+| Groupe `g_admin`
+| X
+| X
+| X
 
-|Utilisateur `xyz`
-|X
+| Utilisateur `xyz`
+| X
 |
-|X
+| X
 |===
 
-====
 
 [[exigences-tracabilite]]
 ### Exigences de traçabilité et d'auditabilité
 
 [TIP]
 ====
-Lister ici les besoins en traces permettant de détecter par exemple :
+Lister ici les besoins en **traçabilité et auditabilité** pour détecter et analyser :
 
-* Un usage abusif des applications Back Office par des employés
-* Des intrusions informatiques
-* Des modifications de données
+* **Un usage abusif** des applications Back Office par des employés.
+* **Des intrusions informatiques** ou tentatives de compromission.
+* **Des modifications de données** nécessitant un suivi détaillé.
 
-Les traces sont des données nominatives et complètes pour permettre l’audit. Elles sont donc elles-mêmes sensibles et nécessitent souvent un bon niveau de confidentialité.
+⚠ **Les traces sont des données nominatives et sensibles**. Elles doivent être protégées avec des **mécanismes de confidentialité** appropriés pour éviter tout abus.
 
-Différentier :
+**Différenciation des types de traces :**
 
-* Les traces métier (bilan d’un acte de gestion complet comme `l’agent X a consulté le dossier de Mme Y`) ;
-* … et les journaux applicatifs, par exemple via un fichier de log : `[INFO] 2016/12/23 11:14 [Agent X] Appel du service consulter` qui sont de niveau technique. 
+- **Traces métier** : elles reflètent des actions de gestion complètes.  
+  *Exemple* : `L’agent X a consulté le dossier de Mme Y le 2024-02-23 à 10:30`.  
 
-Pour les données les plus sensibles, il est possible de prévoir une traçabilité à deux niveaux (tracer la consultation des traces) pour éviter une traçabilité hiérarchique abusive.
+- **Journaux applicatifs** : ils fournissent un niveau technique d’information.  
+  *Exemple* : `[INFO] 2024-02-23 11:14 [Agent X] Appel du service "consulterDossier"`.
 
-La traçabilité des données des référentiels (base des personnes typiquement) nécessite une historisation complète, ce qui est de toute façon une bonne pratique d'urbanisation (voir par exemple Longépé « Le projet d’Urbanisation du SI », règles applicatives 1, 2 et 3). 
+**Bonnes pratiques :**
 
-Pour cela, prévoir un MCD permettant d’ajouter un enregistrement à chaque changement de la donnée avec une date de modification et une date d’effet.
+- Pour les **données sensibles**, prévoir **une traçabilité à deux niveaux** (tracer aussi l’accès aux traces) pour limiter les abus hiérarchiques.  
+- La **traçabilité des référentiels** (ex: base des personnes) doit inclure **une historisation complète**.  
+- Concevoir un **MCD** (Modèle Conceptuel de Données) permettant de conserver **chaque modification** avec sa date de modification et sa date d’effet.  
 ====
 
 ====
-Exemple 1 : pour le module X, toute action métier (en mise à jour comme en consultation) devra faire l’objet d’une trace métier contenant a minima l’agent, la date et en cas de modification l’ancienne et la nouvelle valeur.
-====
-====
-Exemple 2 : Toute intrusion dans le SI devra être détectée (dans la mesure du possible).
-====
-====
-Exemple 3 : nous devons pouvoir reconstituer l’historique du dossier de tout patient à n’importe quelle date.
+**Exemple 1** : Pour le module X, **toute action métier** (consultation et mise à jour) devra générer une trace métier contenant _a minima_ :
+
+- L'identité de l’agent.
+- La date et l'heure.
+- En cas de modification : **ancienne et nouvelle valeur**.
 ====
 
-.Données à conserver pour preuves
+====
+**Exemple 2** : Toute **intrusion dans le SI** devra être détectée dans la mesure du possible et remontée aux équipes de sécurité.
+====
+
+====
+**Exemple 3** : Il doit être possible de **reconstituer l’historique** complet d’un dossier patient à **n’importe quelle date**.
+====
+
+=== **Données à conserver pour preuves**  
 [cols="e,e,e"]
 |===
-|Donnée|Objectif|Durée de rétention
+| Donnée | Objectif | Durée de rétention
 
-|Log complet (IP, heure GMT, détail) des commandes passées sur le site
-|Prouver que la commande a bien été passée
-|1 an 
+| Log complet (IP, heure GMT, détail) des commandes passées sur le site
+| Prouver que la commande a bien été passée
+| 1 an 
 
-|Date et contenu du mail de confirmation
-|Prouver que le mail de confirmation a bien été envoyé 
-|2 ans
+| Date et contenu du mail de confirmation
+| Prouver que le mail de confirmation a bien été envoyé 
+| 2 ans
 
-|Contrat d’assurance signé et numérisé en PDF
-|Prouver que le contrat a bien été signé
-|5 ans
+| Contrat d’assurance signé et numérisé en PDF
+| Prouver que le contrat a bien été signé
+| 5 ans
 
-|Avis d’imposition primitif avec signature numérique
-|Conserver le montant et de l’impôt.
-|5 ans
+| Avis d’imposition primitif avec signature numérique
+| Conserver le montant et la validation de l’impôt
+| 5 ans
 |===
+
 
 ## Mesures de sécurité
 
@@ -495,103 +573,174 @@ Exemple 3 : nous devons pouvoir reconstituer l’historique du dossier de tout 
 
 Dispositifs répondant aux <<exigences-integrite,exigences d'intégrité>> :
 
-.Mesures pour assurer le niveau d'intégrité demandée
+.Mesures pour assurer le niveau d'intégrité demandé
 [cols="e,e,e"]
 |===
-|Classe de données|Niveau exigé|Mesures
+| Classe de données | Niveau exigé | Mesures
 
-|Données de la base métier
-|Intègre
+| Données de la base métier
+| Intègre
 a|
-* Utilisation du SGBDR PostgreSQL avec un niveau d’isolation transactionnelle SERIALIZABLE 
-* Les entités seront référencées uniquement par des ID techniques issues de séquences PostgreSQL
+* Utilisation du SGBDR **PostgreSQL** avec un niveau d’isolation transactionnelle **SERIALIZABLE**.
+* Les entités seront référencées uniquement par des **ID techniques** issues de séquences PostgreSQL.
+* Activation de la **journaling WAL** pour assurer la reprise en cas de crash.
+* Vérification d'intégrité périodique avec `pg_checksums`.
 
-|Données archivées
-|Détecté
-|Génération de checksums SHA-256 des backups
+| Données archivées
+| Détecté
+| Génération de checksums **SHA-256** des backups et validation lors des restaurations.
 
-|Données calculées D1
-|Maîtrisé
-|Stockage d’un checksum SHA1, relance du calcul automatiquement par batch dans les 24H.
+| Données calculées D1
+| Maîtrisé
+| Stockage d’un checksum **SHA1**, relance automatique du calcul par batch en cas de divergence dans un délai de **24h**.
 
-|Silo NoSQL des données Big Data avant consolidation
-|Non intègre
-|Pas de mesure particulière, pas de backup
+| Silo NoSQL des données Big Data avant consolidation
+| Non intègre
+| Pas de mesure particulière, **pas de backup**, ces données sont temporaires et recalculables.
 
-|Sources
-|Intègre
-|Utilisation du SCM Git
+| Sources de l'application
+| Intègre
+a|
+* Utilisation du **SCM Git** avec contrôle d’intégrité natif (hash SHA-1/SHA-256).
+* Vérification des commits avec **GPG signing**.
+* Stratégie de merge stricte (fast-forward only).
 
-|Avis d’imposition PDF
-|Intègre
-|Signature numérique du montant net + date + nom au format PKCS#7 (RSA, SHA256) avec horodatage. La signature résultante sera intégrée a posteriori au format hexadécimal en pied de page du PDF.
+| Avis d’imposition PDF
+| Intègre
+a|
+* **Signature numérique** du montant net, de la date et du nom via **PKCS#7 (RSA, SHA-256)**.
+* **Horodatage qualifié** intégré à la signature (PAdES).
+* Inclusion de la signature hexadécimale en **pied de page** du PDF pour vérification ultérieure.
 |===
 
-### Confidentialité
+
+### **Confidentialité**
 
 Dispositifs répondant aux <<exigences-confidentialite,exigences de confidentialité>> :
 
 .Mesures pour assurer le niveau de confidentialité demandé
 [cols="e,e,e"]
 |===
-|Classe de données|Niveau exigé|Mesures
+| _Classe de données_ | _Niveau exigé_ | _Mesures_
 
-|Contenu éditorial
-|Public
-|Échanges en HTTPS, pas d’authentification
+| Contenu éditorial
+| Public
+| Échanges sécurisés via **HTTPS** (TLS 1.2+), **pas d’authentification requise**.
 
-|Profil du compte du site Web
-|Limité
-|L’accès à ce contenu nécessite une authentification réussie par login/mot de passe
+| Profil du compte du site Web
+| Limité
+a|
+* L’accès à ce contenu nécessite une **authentification réussie** par login/mot de passe.
+* **Hash sécurisé des mots de passe** avec **Argon2id**.
+* Utilisation de **JWT** pour les sessions avec expiration contrôlée.
 
-|Historique du compte
-|Réservé
-|L’accès à ce contenu est réservé aux exploitants habilités, uniquement via des requêtes PL/SQL de la base de données
+| Historique du compte
+| Réservé
+a|
+* L’accès est **réservé aux exploitants habilités**.
+* Consultation uniquement via **requêtes PL/SQL sécurisées** exécutées avec un rôle limité en base de données.
+* Activation du **Data Masking** pour les informations sensibles.
 
-|Logs des activités de l’internaute
-|Réservé
-|L’accès aux fichiers de log est réservé aux exploitants habilités (accès SSH à la machine M et mot de passe Unix)
+| Logs des activités de l’internaute
+| Réservé
+a|
+* **Accès restreint** aux exploitants habilités via **SSH** et authentification forte (clé SSH + MFA).
+* Rotation automatique des logs avec **logrotate**.
+* Protection contre l’injection de logs (`log forging`).
 
-|Données RH aides sociales aux employés
-|Privé
-|Ces données sont chiffrées en AES 256 sous forme d’un BLOB en base, remontées au client Web via le service REST Y puis déchiffrées au sein du navigateur dans l’application Angular (librairie forge.js) via un mot de passe complémentaire de l’utilisateur (non stocké coté serveur). +
-Il s’agit donc d’un chiffrement client uniquement. Une perte de mot de passe rend les données irrécupérables. Les données modifiées sur le client sont chiffrées et enregistrées à nouveau dans le BLOB via le service REST X.
+| Données RH aides sociales aux employés
+| Privé
+a|
+* **Chiffrement AES-256** en base sous forme de **BLOB**.
+* Déchiffrement **côté client uniquement** via la librairie `forge.js` (JavaScript).
+* Mot de passe complémentaire **non stocké côté serveur**, la perte du mot de passe rend les données irrécupérables.
+* Les données modifiées sur le client sont **chiffrées avant envoi** et enregistrées dans le BLOB via le service REST X.
 |===
+
 
 [TIP]
 ====
-Penser aussi à la confidentialité des données dérivées :
+⚠ **Confidentialité des données dérivées** :  
 
-* chiffrement des backups ;
-* chiffrement des données clientes pour les applications lourdes. Cela peut être un chiffrement matériel en SED (Self Encryption Disk), un chiffrement logiciel de niveau partition (SafeGuard, dm-crypt) ou de niveau fichier (encfs, TrueCrypt…)
+✔ **Chiffrement des backups** :  
+
+- Utilisation de **Restic, Borg, Kopia** avec **chiffrement AES-GCM** et stockage sécurisé.  
+- **Activation de S3 Object Lock (Compliance mode)** pour bloquer toute suppression accidentelle ou malveillante.
+
+✔ **Chiffrement des données clientes pour les applications lourdes** :  
+
+- **Chiffrement matériel** avec **SED (Self-Encrypting Drive)**.  
+- **Chiffrement logiciel de partition** avec **LUKS (dm-crypt)** ou **BitLocker**.  
+- **Chiffrement au niveau fichier** avec **dm-crypt**, **encfs** ou **Cryptomator**.
 ====
+
 
 ### Identification
 
 Dispositifs répondant aux <<exigences-identification,exigences d'identification>> :
 
-_Exemple 1  : L’Id des usagers de l’application sera l’attribut uid des DN `cn=XXX,ou=service1,dc=entreprise,dc=com` dans l’annuaire LDAP central. Un filtre sera également appliqué sur l’appartenance au groupe `ou=monapplication,dc=entreprise,dc=com`._
+[TIP]
+====
+Décrire ici le mode d’identification des utilisateurs et des systèmes (batchs, API, services externes).  
+Préciser les attributs d’identification et les mécanismes garantissant l’unicité et la persistance des identifiants.
+====
 
-_Exemple 2  : Pour assurer la non réutilisation des ID des comptes supprimés, une table d’historique sera ajoutée dans l’application et requêtée avant toute création de nouveau compte._
+====
+Exemple 1 : L’identifiant des usagers sera l’attribut `uid` des DN `cn=XXX,ou=service1,dc=entreprise,dc=com` dans l’annuaire LDAP central.  
+Un filtre sera également appliqué pour restreindre l'accès aux membres du groupe `ou=monapplication,dc=entreprise,dc=com`.
+====
+====
+Exemple 2 : Pour éviter la réutilisation des identifiants de comptes supprimés, une table d’historique `historique_uid` sera ajoutée à la base de données et systématiquement interrogée avant toute création de nouveau compte.
+====
+====
+Exemple 3 : Les comptes de service seront identifiés via une clé API unique stockée dans un **Vault sécurisé** et soumise à une rotation automatique tous les 6 mois.
+====
+
 
 ### Authentification
 
 Dispositifs répondant aux <<exigences-authentification,exigences d'authentification>> :
+
 [TIP]
 ====
-Pour les authentifications par mot de passe, décrire le mode de stockage et de vérification. Penser également à décrire les solutions de changement de mot de passe.
+Décrire ici les mécanismes d’authentification mis en place, y compris :  
+- Le mode de stockage et de vérification des mots de passe.  
+- Les éventuels facteurs d’authentification supplémentaires.  
+- La gestion du cycle de vie des identifiants (création, mise à jour, suppression).  
+====
+
+**Authentification par mot de passe :**
+
+====
+Exemple 1 : L’authentification des internautes inscrits se fera par **login/mot de passe**, en respectant la politique de mot de passe `P`.  
+Les mots de passe seront hachés et stockés sous forme de digest **bcrypt avec un facteur de coût de 12**.
 ====
 ====
-Exemple 1 : L’authentification des internautes inscrits se fera par login/mot de passe (respectant la politique de mot de passe P)
+Exemple 2 : Les administrateurs internes utiliseront un **SSO basé sur Kerberos** avec délégation via un fournisseur d’identité OAuth2/OpenID Connect.
 ====
 ====
-Exemple 2 : L’authentification des internautes à l’inscription se fera par la saisie du code internaute figurant sur les factures + la valeur de la dernière facture puis par l’activation du compte via un lien figurant dans un e-mail de vérification.
+Exemple 3 : Pour permettre la récupération de compte, les utilisateurs pourront réinitialiser leur mot de passe via **un lien temporaire envoyé par e-mail** (valable 10 minutes).
+====
+
+**Authentification forte (2FA/MFA) :**
+
+====
+Exemple 4 : Lors de l’ajout d’un nouveau bénéficiaire de virement dans l’espace internet, l’utilisateur devra fournir :  
+  - Son mot de passe habituel.  
+  - Un **OTP** généré via une application TOTP (Google Authenticator, FreeOTP…).  
 ====
 ====
-Exemple 3 : lors de la création d’un nouveau bénéficiaire de virement dans l’espace internet, l’utilisateur devra fournir un mot de passe unique issu de son token OTP en plus d’être authentifié.
+Exemple 5 : L'accès aux API REST critiques nécessitera une **authentification par clé API + JWT signé**.  
+Les clés API seront stockées dans un **Vault** et soumises à une rotation automatique.
+====
+
+**Sécurisation des authentifications sensibles: **
+====
+Exemple 6 : Toute tentative d’authentification échouée sera **journalisée et supervisée**.  
+Après **5 échecs successifs**, le compte sera **verrouillé temporairement pendant 30 minutes**.
 ====
 ====
-Exemple 4 : Les mots de passe ne seront en aucun cas conservés mais stockés sous la forme de digest bcrypt.
+Exemple 7 : Les connexions suspectes (nouvelle adresse IP, localisation inhabituelle) nécessiteront une **vérification supplémentaire via un OTP envoyé par e-mail**.
 ====
 
 
@@ -601,44 +750,70 @@ Dispositifs répondant aux <<exigences-federation-identite,exigences de fédéra
 
 [TIP]
 ====
-Les solutions les plus courantes sont actuellement : OpenId Connect (OIDC), SAML ou Oauth 2.0 (pseudo-authentification seulement pour cette dernière). 
+Les solutions les plus courantes sont actuellement :
 
-Pour les applications Web, préciser les contraintes navigateur (activation des cookies en particulier).
+- **OpenID Connect (OIDC)** : protocole moderne basé sur OAuth2, adapté aux applications Web et mobiles.
+- **SAML** : utilisé principalement pour le SSO en entreprise (ADFS, Shibboleth, Okta…).
+- **OAuth 2.0** : uniquement pour **l’autorisation**, pas l’authentification (pseudo-authentification possible via un IdP complémentaire).
+
+Pour les applications Web, préciser les **contraintes navigateur** (gestion des cookies, SameSite policy…).
 ====
 
 ====
-Exemple  : L’IHM grand public permettra une identification et authentification France Connect (basé sur OIDC) de sorte que les utilisateurs puissent utiliser leur compte DGFiP ou CNAM pour s’identifier et s’authentifier. La cinématique d’authentification sera la suivante : <faire un schéma>
+Exemple  : L’IHM grand public permettra une identification et authentification via **France Connect** (basé sur OpenID Connect).  
+Les utilisateurs pourront s’identifier en réutilisant leur compte **DGFiP, CNAM, etc.**  
 ====
 
-
-### SSO, SLO
+### SSO et SLO
 
 Dispositifs répondant aux <<exigences-sso-slo,exigences de SSO et SLO>> :
+
 [TIP]
 ====
-Détailler la technologie choisie et son intégration. Quelques solutions courantes : CAS, OpenAM, LemonLDAP::NG. Pour les applications Web, préciser les contraintes navigateur (activation des cookies en particulier).
+Décrire ici la technologie choisie et son intégration dans l’architecture.  
+Quelques solutions courantes : 
+
+- **CAS** (Central Authentication Service)  
+- **Keycloak**  
+- **OpenAM**  
+- **LemonLDAP::NG**  
+
+Préciser les contraintes spécifiques aux applications Web, notamment la gestion des **cookies**, du **token session**, et les implications de **SameSite / CORS**.
+====
+
+====
+Exemple 1 : L’IHM X intégrera un client **CAS spring-security** pour le SSO.  
+Le serveur CAS utilisé sera **YYY** et le **realm d’authentification** utilisé sera basé sur l’**Active Directory (AD) Y**.
 ====
 ====
-Exemple 1 : L’IHM X intégrera un client CAS spring-security pour le SSO. Le serveur CAS utilisé sera YYY. Son royaume d'authentification (realm) sera l’annuaire AD Y.
+Exemple 2 : Comme toutes les applications du **portail métier**, l’IHM X devra implémenter le **Single Logout (SLO)** en **gérant les callbacks de déconnexion** du serveur CAS.
 ====
 ====
-Exemple 2 : Comme toutes les applications du portail métier, l’IHM X devra gérer les callbacks de déconnexion provenant du serveur CAS suite à une demande de SLO. 
+Exemple 3 : Le SSO sera mis en œuvre via **Keycloak** en tant que fournisseur d’identité, avec une délégation vers l’AD via **LDAP**.
 ====
+
 
 ### Comptes de service
 
 [TIP]
 ====
-Les comptes de service sont utilisés pour l'authentification à un service d'infrastructure (comme une base de données) depuis un batch ou une API.
+Les **comptes de service** sont utilisés pour authentifier une application ou un batch lorsqu’ils accèdent à un service d’infrastructure (base de données, API…).
+
+**Bonnes pratiques :**
+
+- **Stockage sécurisé** des credentials (éviter le stockage en clair dans la configuration).
+- **Rotation automatique** des secrets si possible (HashiCorp Vault, AWS Secrets Manager…).
+- **Permissions minimales** (Principe du Moindre Privilège).
 ====
 
 .Comptes de service
 [cols='1,2,2']
 |====
-|Compte | Ressource requérant authentification | mode de stockage des credentials
+|Compte | Ressource requérant authentification | Mode de stockage des credentials
 
-|Comptes JDBC (un compte par base de données) | Instances PG et SqlServer. 
-| Stockage en clair dans la configuration des datasources. Valorisé à partir de ConfigMap Kubernetes.
+|`jdbc_app` | Base de données PostgreSQL et SQL Server | **Stockage comme secret Kubernetes** (monté en volume uniquement sur les pods concernés)
+|`api_backend` | API REST X | **Authentification via JWT signé et stocké dans un coffre-fort numérique sécurisé**
+|`ci_cd_runner` | Serveur CI/CD | **Stockage en HashiCorp Vault avec rotation automatique des secrets**
 |====
 
 
@@ -647,144 +822,175 @@ Les comptes de service sont utilisés pour l'authentification à un service d'in
 Dispositifs répondant aux <<exigences-non-repudiation,exigences de non répudiation>> :
 
 ====
-Exemple : La déclaration d’impôt sera signée par le certificat client de l’usager (certificat X509, RSA, SHA-256) qui lui a été fourni par le module X.
+Exemple : La déclaration d’impôt sera signée par le certificat client de l’usager (*X.509*, *RSA*, *SHA-256*) qui lui a été fourni par le module X.
 ====
 
 [TIP]
 ====
-Les solutions d'horodatage cryptographiques ne répondent pas à un besoin propre mais sont souvent requis pour répondre à des besoins de non répudiation (spécialement via des jetons d'horodatage utilisés conjointement avec une signature électronique afin de prévenir d'antidatage ou le postdatage). 
+L'**horodatage cryptographique** ne répond pas à un besoin isolé mais est souvent utilisé en **complément d'une signature électronique** pour garantir la non-répudiation.  
+L’horodatage permet de prévenir toute **altération de date** (*antidatage ou postdatage*).  
+Il repose sur des **jetons d’horodatage qualifiés** (*RFC 3161, eIDAS*), délivrés par un **Prestataire de Service de Confiance (TSA – Timestamping Authority)**.
 
 ====
-Exemple : Les signatures électroniques seront accompagnées d'un jeton d'horodatage qualifié eIDAS délivrés par le prestataire de service de confiance XYZ.
+
 ====
+Exemple : Les signatures électroniques seront **horodatées** avec un **jeton d’horodatage qualifié eIDAS**, délivré par le **prestataire de service de confiance XYZ**.
 ====
+
 
 ### Anonymat et vie privée
 
 Dispositifs répondant aux <<exigences-anonymat,exigences d'anonymat et de respect de la vie privée>> :
 
 ====
-Exemple 1 : un audit interne sera mené une fois par an sur le contenu des données en base et les extractions à destination des partenaires.
+Exemple 1 : Un **audit interne annuel** sera mené sur :
+
+- Le **contenu des bases de données**.
+- Les **extractions de données** à destination des partenaires externes.
 ====
 ====
-Exemple 2 : les données à destination de la zone publique seront exportées partiellement via un `COPY (SELECT …) TO <fichier>`. Les colonnes sensibles seront ainsi exclues de la réplication.
+Exemple 2 : Les données exposées publiquement seront **exportées partiellement** via :  
+`COPY (SELECT <colonnes_autorisées> FROM table) TO <fichier>`  
+Les **colonnes sensibles seront exclues** de la réplication vers la zone publique.
 ====
+
 ====
-Exemple 3 : le bandeau d’acceptation des cookies sera mis en ouvre sur toutes les pages de l’application Angular via le module `angular-cookie-law`.
+Exemple 3 : Un **bandeau de consentement aux cookies** sera mis en place sur toutes les pages de l’application **Angular** via le module `angular-cookie-law`.
 ====
+
 
 ### Habilitations
 
 Dispositifs répondant aux <<exigences-habilitations,exigences sur les habilitations>> :
+
 ====
-Exemple 1 : la gestion des autorisations sera gérée applicativement et stockée dans la base applicative PostgreSQL. Ces tables seront décrites dans le dossier de spécification.
+Exemple 1 : La gestion des **autorisations** sera intégrée **applicativement** et stockée dans la **base PostgreSQL**.  
+Les tables dédiées aux habilitations seront détaillées dans le **dossier de spécification**.
 ====
 ====
-Exemple 2 : L’obtention du carnet d’adresse Facebook sera en OAuth2. On utilisera l’API Java Google Oauth2.
+Exemple 2 : L’accès aux **carnets d’adresses** sera contrôlé via **OAuth2**.  
+L’API utilisée sera **Google OAuth2 en Java**.
 ====
 
-### Tracabilité, auditabilité
+
+### Traçabilité et auditabilité
 
 Dispositifs répondant aux <<exigences-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 ====
-Exemple 1 : à la fin de chaque action métier, l’application ReactJS appellera dans une action asynchrone un service REST de trace métier. Ce service stockera les traces dans une base Elastic Search pour consultation en Kibana.
+Exemple 1 : À la fin de chaque **action métier**, l’application **ReactJS** effectuera un **appel asynchrone** à un service REST dédié à la **traçabilité des actions**.  
+Ce service enregistrera les **traces métier** dans une **base Elasticsearch** pour consultation via **Kibana**.
 ====
 ====
-Exemple 2 : l’outil d’IDS hybride (réseau + host) OSSEC sera installé sur l’ensemble des machines utilisées par l’application.
+Exemple 2 : Un système de **détection d'intrusion (IDS)** hybride (*réseau + hôte*), basé sur **OSSEC**, sera **déployé sur l’ensemble des machines** utilisées par l’application.
 ====
 ====
-Exemple 3 : Les  tables X, Y, .. seront historisées suivant le principe suivant : … <diagramme de classe>
+Exemple 3 : Les **tables X, Y, …** seront **historisées** selon le modèle suivant : +
+<diagramme de classe décrivant la conservation des versions de données>
 ====
 ====
-Exemple 4 : tous les documents servant de preuve seront archivés dans la GED.
+Exemple 4 : Tous les documents **servant de preuve** seront archivés dans la **GED (Gestion Électronique de Documents)** avec des métadonnées permettant leur indexation et leur consultation rapide.
 ====
 ====
-Exemple 5 : Les journaux contenant le tag `[PREUVE]` et issu de l’ensemble des modules seront centralisés via le système de centralisation de log Elastic Search puis insérés avec traitement Logstash de façon journalière vers l'index Elastic `preuves`.
+Exemple 5 : Les journaux **contenant le tag `[PREUVE]`** et issus de **tous les modules** seront :
+
+- **Centralisés** via le système de logs **Elasticsearch**.
+- **Transformés et enrichis** via **Logstash**.
+- **Indexés quotidiennement** dans l’index **Elastic `preuves`** pour faciliter les recherches et la conformité.
 ====
 
+
 ### Lutte contre les cybermenaces
-Ces dispositifs techniques ou organisationnels permettent de lutter contre les cybermenaces, comme les malwares, le phishing, les attaques DOS/DDOS, l'exploitation de vulnérabilités (connues ou zero-day), l'ingénierie sociale, les escroqueries en ligne, les fuites de données sensibles, etc. La plupart des solutions sont mises en œuvre au niveau du Système d'Information (SI). Il s'agit donc probablement ici de pointer vers les documents de référence et de détailler les éventuelles solutions spécifiques à votre projet ou produit.
+
+Les cybermenaces incluent : malwares, phishing, attaques DOS/DDOS, exploitation de vulnérabilités (connues ou zero-day), ingénierie sociale, escroqueries en ligne, fuites de données sensibles, etc.
+
+Le cadre de réponse aux menaces peut être aligné sur le **NIST Cybersecurity Framework**, qui définit 5 fonctions clés :
+
+1. **Identifier** : Comprendre et prioriser les risques.
+2. **Protéger** : Mettre en place des mécanismes de défense.
+3. **Détecter** : Identifier une attaque en cours.
+4. **Réagir** : Contenir et neutraliser la menace.
+5. **Récupérer** : Restaurer les services après une attaque.
 
 #### Solutions de prévention
 
-Incluent :
+Ces solutions permettent d’**anticiper** les menaces avant qu'elles ne surviennent.
 
-* Les formations et sensibilisations des utilisateurs.
-* Les formations et sensibilisations des acteurs informatiques.
-* La mise en place d'un système de prévention d'intrusion (IPS) qui bloque les acteurs jugés malicieux.
-* La mise en place et le respect des procédures, comme les revues régulières d'habilitations.
-* Le durcissement des règles de sécurité comme imposer l'authentification à facteurs multiples obligatoires, le renouvellement obligatoire des mots de passe ou l'utilisation de coffres-fort numériques (personnels ou partagés) pour stocker les secrets.
-* La réalisation régulière d'audits (tests de pénétration et/ou audit de code) si possible par des experts externes.
-* Les outils de prévention de la perte de données (DLP) qui analysent notamment les flux réseau ou les emails à la recherche de fuites de données sensibles ou de propriété intellectuelle.
-* Le blocage de certains systèmes vecteurs d'attaques comme les clés USB.
-* Les systèmes de mises à jour automatiques des patches de sécurité sur les systèmes d'exploitation.
-
-====
-Exemple 1 : Sensibilisation des utilisateurs via https://cyber.gouv.fr/bonnes-pratiques-protegez-vous[ces recommendations de l'ANSSI].
-====
+* **Formations et sensibilisations** des utilisateurs et des équipes IT.
+* **Systèmes de prévention d'intrusion (IPS)** pour bloquer les acteurs jugés malicieux.
+* **Revues d'habilitations régulières** pour minimiser l'exposition.
+* **Durcissement des règles de sécurité** :
+  - Authentification à facteurs multiples (MFA).
+  - Rotation obligatoire des mots de passe.
+  - Utilisation de **coffres-forts numériques** pour stocker les secrets.
+* **Audits réguliers** (tests d'intrusion, audit de code) par des experts internes ou externes.
+* **Solutions DLP (Data Loss Prevention)** pour surveiller et empêcher les fuites de données sensibles.
+* **Blocage des vecteurs d'attaque** (ex. désactivation des ports USB).
+* **Mises à jour automatiques des patches de sécurité**.
 
 ====
-Exemple 2 : Sensibilisation au risque auprès des acteurs informatiques via https://cyber.gouv.fr/guides-essentiels-et-bonnes-pratiques-de-cybersecurite-par-ou-commencer[les guides essentiels de l'ANSSI]. 
+Exemple 1 : Sensibilisation des utilisateurs via https://cyber.gouv.fr/bonnes-pratiques-protegez-vous[les recommandations de l'ANSSI].
 ====
 
 ====
-Exemple 3 : Mise en place de l'IPS OpenSource CrowdSec basé sur le partage d'information communautaire (Crowdsourcing).
+Exemple 2 : Mise en place de l'IPS OpenSource **CrowdSec**, basé sur le partage d'information communautaire (*crowdsourcing*).
 ====
-
 
 #### Solutions de détection
 
-Incluent : 
+Ces solutions permettent d’**identifier** les attaques en cours.
 
-* Les antivirus (dont les dernières générations incluent de l'IA et vont au-delà de la recherche de signatures).
-* Les WAF (Web Application Firewall) qui détectent et bloquent les tentatives d'attaques en temps réel.
-* Les outils de SIEM (Security Information and Event Management) qui analysent les journaux issus de sources variées.
-* Les outils d'IDS (Intrusion Detection System), assurant souvent également la fonction d'IPS et analysant les flux réseau à la recherche de tentatives d'accès malicieux (comme des tentatives d'exploitation de CVE).
-* Les outils SAST (Static Application Security Testing) et DAST (Dynamic Application Security Testing) analysant respectivement le code source de l'organisation et le comportement à l'exécution, à la recherche de vulnérabilités connues.
-* Les outils SCA (Software Composition Analysis) analysant les dépendances (essentiellement Open Source) des projets et remontant la liste des CVE (vulnérabilités connues) dès que possible en vue de les mettre à jour.
+* **Antivirus nouvelle génération** (basés sur IA et heuristiques, et non uniquement sur des signatures).
+* **WAF (Web Application Firewall)** pour analyser et bloquer les attaques applicatives.
+* **SIEM (Security Information and Event Management)** pour corréler et analyser les journaux issus de multiples sources.
+* **IDS (Intrusion Detection System)** pour surveiller le trafic réseau et détecter les attaques.
+* **SAST (Static Application Security Testing)** et **DAST (Dynamic Application Security Testing)** :
+  - SAST : Analyse du **code source** pour identifier les vulnérabilités connues.
+  - DAST : Analyse des **comportements en exécution**.
+* **SCA (Software Composition Analysis)** : Analyse des dépendances logicielles pour détecter les **CVE (Common Vulnerabilities and Exposures)**.
 
 ====
-Exemple 1 : Mise en place au sein des pipelines de CI/CD de l'outil SCA OWASP Dependency-Check permettant de détecter les librairies Open Source contenant des vulnérabilités (CVE). Toute présence de CVE doit être bloquante.
+Exemple 1 : Intégration de **OWASP Dependency-Check** dans la CI/CD pour détecter les librairies contenant des CVE.
 ====
 
 #### Solutions de correction
 
-Incluent :
+Ces solutions permettent de **réagir** et **corriger** après la détection d’une menace.
 
-* Les solutions anti-malware qui suppriment les logiciels malveillants.
-* Les outils de restauration de sauvegardes (la connaissance du MTTR, défini dans la vue infrastructure, est cruciale pour la planification de la restauration).
-* Les outils et procédures permettant l'isolation de modules ou de zones compromises au sein du SI.
-* Les outils de gestion de parc logiciel qui bloquent les logiciels non autorisés.
-* Les outils et méthodologies d'analyse forensique permettant d'analyser les journaux pour comprendre les chemins d'une attaque et construire un post-mortem.
-* Les procédures et outils de réponse à une attaque.
+* **Solutions anti-malware** pour supprimer les logiciels malveillants.
+* **Plans de restauration des sauvegardes** pour reprendre l’activité rapidement (**MTTR** optimisé).
+* **Isolation des zones compromises** (micro-segmentation réseau, cloisonnement des applications).
+* **Gestion de parc logiciel** pour **bloquer** les logiciels non autorisés.
+* **Analyse forensique** pour comprendre les chemins d'attaque et identifier la source d’une compromission.
+* **Procédures de réponse à incident**, en se basant sur le standard **NIST SP 800-61**.
 
 ====
-Exemple 1 : Préparation de procédures et d'un https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/cyberattaque-que-faire-guide-dirigeants[plan de secours] en cas d'incident de sécurité suivant le standard NIST SP 800-61.
+Exemple 1 : Déploiement d’un **plan de secours** basé sur les recommandations du https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/cyberattaque-que-faire-guide-dirigeants[NIST SP 800-61].
 ====
 
 #### Solutions de prédiction
 
-Ces solutions récentes sont essentiellement basées sur du Machine Learning et l'analyse de données en masse (Big Data). Elles incluent :
+Ces solutions récentes reposent sur **l’analyse comportementale** et le **Machine Learning**.
 
-* Les solutions de type User and Entity Behavior Analytics (UEBA) qui permettent de détecter les comportements anormaux de certains utilisateurs.
-* Les outils de simulations d'attaques complexes ;
-* Les outils et référentiels de renseignement sur les menaces (Threat Intelligence).
-
-====
-Exemple 1 : Analyse et alerting des comportements suspects avec AWS GuardDuty sur une application cloud déployée sur AWS.
-====
+* **UEBA (User and Entity Behavior Analytics)** : Détection des comportements anormaux d’utilisateurs ou de systèmes.
+* **Simulations d'attaques complexes** pour tester la résilience du SI.
+* **Threat Intelligence** : Intégration de flux de renseignement sur les menaces en temps réel.
 
 ====
-Exemple 2 : Utilisation de CrowdSec Threat Intelligence pour découvrir les tendances des menaces basées sur des données réelles et consolidées.
+Exemple 1 : Surveillance des comportements suspects via **AWS GuardDuty** sur une application cloud AWS.
+====
+
+====
+Exemple 2 : Utilisation de **CrowdSec Threat Intelligence** pour anticiper les tendances d’attaques.
 ====
 
 
-## RACI
+
+## RACI & Gouvernance de la Sécurité
 
 [NOTE]
 ====
-Ce RACI permet de définir clairement les rôles de chacun concernant les actes liés à la sécurité.
+Ce RACI permet de définir clairement les rôles et responsabilités des équipes en matière de **gestion de la sécurité informatique**.
 
 :r: pass:quotes[[.green]#R#]
 :a: pass:quotes[[.red]#A#]
@@ -793,33 +999,40 @@ Ce RACI permet de définir clairement les rôles de chacun concernant les actes 
 :na: pass:quotes[[.grey]#N/A#]
 :et: pass:quotes[[.grey]#&amp;#]
 
-* {r} : *Responsible* (personne qui va exécuter : elle en est responsable)
-* {a} : *Accountable* (personne qui va approuver la tâche : elle en est l'autorité)
-* {c} : *Consulted* (personne qui va être consultée dans l'exécution de la tâche)
-* {i} : *Informed* (personne qui sera informée lorsque la tâche est terminée)
+* {r} : *Responsible* (exécute l'action).
+* {a} : *Accountable* (valide l'action et en est responsable devant l'organisation).
+* {c} : *Consulted* (doit être consulté pour expertise).
+* {i} : *Informed* (doit être informé après réalisation).
+
+Dans un bon RACI, il ne doit **jamais** y avoir plus d'un {a} pour chaque ligne.
 ====
 
-### Gestion de la plateforme AWS (exemple)
+### Gestion de la plateforme Cloud (exemple AWS)
 
-.Gestion de la plateforme AWS
+.Gestion des services Cloud AWS
 [cols="6,^1,^1,^1"]
 |===
 ||Équipe Systèmes & Cloud|Équipe Sécurité SI|Équipe Réseau
 
-.^|Création des accounts AWS
+.^|Création des comptes AWS
 .^|{r} {et} {a}
 .^|{c} {et} {i}
-.^|{a}
+.^|{i}
 
-.^|Création des SCP AWS
-.^|{r} {et} {a}
-.^|{c} {et} {i}
+.^|Création des stratégies IAM & SCP AWS
+.^|{r}
 .^|{a}
+.^|{c}
+
+.^|Gestion des logs CloudTrail et alertes CloudWatch
+.^|{r}
+.^|{a}
+.^|{i}
 |===
 
-### Gestion des comptes applicatifs (exemple)
+### Gestion des identités et habilitations
 
-.Gestion des comptes applicatifs
+.Gestion des comptes applicatifs & IAM
 [cols="6,^1,^1,^1"]
 |===
 ||Équipe annuaire|Équipe projet|Équipe SOC
@@ -829,156 +1042,113 @@ Ce RACI permet de définir clairement les rôles de chacun concernant les actes 
 .^|{i}
 .^|{i}
 
-.^|Gestion des habilitations
+.^|Gestion des habilitations applicatives
 .^|{i}
 .^|{r} {et} {a}
-.^|{i}
+.^|{c}
 
-.^|Revue d'habilitations annuelle
+.^|Revue annuelle des habilitations
 .^|{c} {et} {i}
 .^|{i}
 .^|{r} {et} {a}
 
 |===
 
-## Auto-contrôles
+## Auto-contrôles de sécurité
 
 ### Auto-contrôle des vulnérabilités
 
 [TIP]
 ====
-La gestion des vulnérabilités dépasse largement le cadre de ce document mais il est bon de s’auto-contrôler pour s’assurer que les failles les plus courantes sont bien prises en compte et comment. Cette liste est en partie basée sur le https://owasp.org/Top10/[TOP 10 OWASP]. 
+La gestion des vulnérabilités suit les standards **OWASP Top 10**, **MITRE ATT&CK** et **NIST 800-53**.
 
-Bien entendu, il existe de nombreux autres points de contrôle dépendants du contexte de l’application
+Objectif : Vérifier que les mesures de **protection, détection et correction** sont bien appliquées pour réduire les risques d'attaques (ex: ransomware, attaques supply-chain, injections...).
 ====
 
-.Checklist d'auto-contrôle de prise en compte des vulnérabilités courantes
+.Checklist d'auto-contrôle des vulnérabilités
 [cols="e,e,3e"]
 |===
 |Vulnérabilité
 |Prise en compte ?
 |Mesures techniques entreprises
 
-|Accès à des ports privés
-|X
-|Configuration du pare-feu iptables sur la machine exposée à Internet. Seul les ports 80 et 443 sont ouverts. Le pare-feu sera configuré en mode stateful (avec extension conntrack)
+|Exposition de ports inutiles
+|✅
+|Configuration du firewall **iptables/nftables**. Seuls les ports 443 et 22 sont ouverts.
 
-|Attaque de mot de passe par force brute
-|X
-|Utilisation de fail2ban, mise en prison de 1h au bout de 3 tentatives de connexion ssh. 
+|Brute-force SSH
+|✅
+|Utilisation de **Fail2Ban** + authentification SSH par clé publique.
 
-|Visibilité des URLs directes
-|X
-|Centralisation de tous les accès depuis Internet via un reverse proxy Apache + mod_proxy. Réécriture d’URLs pour masquer les URL internes.
+|Contournement des contrôles d’accès
+|✅
+|Utilisation de **Spring Security**, **OAuth2** et **RBAC**.
 
-|Contournement du contrôle d’accès
-|X
-|Utilisation du SSO CAS, voir chapitre 3
+|Injection SQL / NoSQL
+|✅
+|Utilisation **exclusivement** de **Prepared Statements** et ORM sécurisés.
 
-|Injection SQL
-|X
-|Utilisation de PreparedStatement uniquement, audit des requêtes SQL.
-
-|Injection NoSQL
-|X
-|Désactivation du suport JS par MongoDB 
-
-|Injection OS
-|X
-|Vérification qu’il n’y a aucun appel de commandes systèmes dans le code (type Runtime.exec() )
-
-|Violation de gestion d’authentification et de session
-|X
-|Traité avec le dispositif anti-CSRF, voir plus bas. On logue l’IP à fin d’audit.
-
-|XSS
-|X
+|XSS (Cross-Site Scripting)
+|✅
 a|
-* _Utilisation de librairie d’échappement. Pour les modules Java, nous utiliserons StringEscapeUtils.escapeHtml4() de commons-lang_
-* __Utilisation des headers HTTP : X-Frame-Options SAMEORIGIN, Content-Security-Policy__
-* __Spécification systématique de l’encoding dans le header de réponse Content-Type (ex : text/html;charset=UTF-8) pour parer les attaques basées sur des caractères spéciaux contournant l'anti-XSS__
+* Échappement systématique des entrées utilisateur avec **OWASP Java Encoder**.
+* **CSP (Content-Security-Policy)** activé pour limiter l'exécution de scripts non autorisés.
 
-|ReDOS
-|X
-|Vérification que les expressions régulières utilisées par les dispositifs anti-XSS ne sont pas éligibles à ce type d’attaque, voir https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS
+|Fuite de secrets et API Keys
+|✅
+|Utilisation de **Vault** pour stocker les secrets.
 
-|Référence directe à un objet
-|X
-|Vérification à chaque requête que les arguments passés correspondent bien à la personne identifiée. Par exemple, toute requête contient son ID et on vérifie par une requête que le dossier qu’elle tente de consulter lui appartient bien avant de poursuivre la requête initiale.
+|Attaques HTTPS (CRIME, BREACH, DROWN)
+|✅
+a|
+* **Désactivation SSLv2 / SSLv3**
+* Activation **HSTS (HTTP Strict Transport Security)**
+
+|CSRF (Cross-Site Request Forgery)
+|✅
+|Utilisation du **double submit cookie pattern** et validation des tokens CSRF.
 
 |Planification des mises à jour de sécurité
-|X
+|✅
 a|
-* __Les mises à jour Centos seront planifiées tous les premiers mercredi du mois__
-* __Les mises à jour Wildfly sont appliquées au plus deux semaines après leur sortie__
-
-|Exposition de données sensibles
-|X
-a|
-* __Tous les algorithmes de sécurité sont à jour : au minimum SHA-256, AES 256__
-* __Le SSL V2 et V3 est désactivé coté Apache suite à la faille DROWN ( SSLProtocol all -SSLv2 -SSLv3)__
-* __L’application ne fonctionne qu’en HTTPS__
-* __Le serveur Web fixera le header HSTS avec includeSubDomains sur toutes les ressources__
-
-|CSRF
-|X
-|Utilisation du dispositif anti-CSRF d’AngularJS (https://docs.angularjs.org/api/ng/service/$http )
-
-|Manque de contrôle d’accès au niveau fonctionnel
-|X
-a|
-* __Mise en place de la politique d’autorisation décrite au chapitre 2__
-* __Campagne de tests fonctionnels__
-
-|Log injection
-|X
-a|
-* __Échappement des journaux avant de les transmettre à log4j__
-* __Vérification des outils de consultation de journaux__
-
-|Attaques HTTPS + compression CRIME/BREACH 
-|X
-a|
-* __Désactivation de la compression HTTPS au niveau de l’Apache : SSLCompression off __
-* __Dispositif anti-CSRF__
-
-|Upload de fichiers malicieux
-|X
-| Validation des pièces jointes par l'anti-virus ClamAV
-
+* Mises à jour **Debian/Ubuntu** via **unattended-upgrades** chaque semaine.
+* Mises à jour **PostgreSQL** appliquées dans un délai de **7 jours** après publication d'un CVE.
 |===
+
+---
 
 ### Auto-contrôle RGPD
 
 [TIP]
 ====
-Cette section aide à vérifier la prise en compte des exigences du https://www.cnil.fr/fr/rgpd-par-ou-commencer[RGPD].
+Le RGPD impose des exigences fortes sur les données personnelles des individus. Ces points sont basés sur les recommandations de la **CNIL** et de l'**EDPB**.
 
-A noter que le RGPD ne concerne que les personnes physiques, pas les personnes morales.
-
-Cette liste n'est qu'un exemple partiel, faire valider votre projet par votre service sécurité et juridique.
+A noter que le RGPD **ne concerne que les personnes physiques**, pas les entreprises.
 ====
 
-.Checklist d'auto-contrôle de respect du RGPD
+.Checklist d'auto-contrôle RGPD
 [cols="e,e,e"]
 |===
 |Exigence RGPD
 |Prise en compte ?
 |Mesures techniques entreprises
 
-|Registre du traitement de données personnelles
-|X
-|Liste des traitements et données personnelles dans le document XYZ
+|Registre des traitements
+|✅
+|Documentation complète dans **Confluence / Notion**.
 
-|Pas de données personnelles inutiles
-|X
-|Vérifié, la rétention de numéro de CB a été supprimée car inutile.
+|Minimisation des données collectées
+|✅
+|Suppression des **numéros de CB stockés inutilement**.
 
-|Droits des personnes (information, accès, rectification, opposition, effacement, portabilité et limitation du traitement.)
-|X
-|Oui, traitement manuel sur demande depuis le formulaire situé à http://xyz, traitement en 1 mois max
+|Droits des utilisateurs (accès, rectification, suppression)
+|✅
+|Un formulaire dédié permet d'effectuer les demandes de droit **via un workflow automatisé**.
 
-|Sécurisation des données
-|X
-|Oui, voir les mesures listées dans ce document notamment sur la confidentialité, audibilité et intégrité.
+|Protection des données sensibles
+|✅
+a|
+* Chiffrement des backups en **AES-256**.
+* Stockage des mots de passe en **bcrypt**.
 |===
+
