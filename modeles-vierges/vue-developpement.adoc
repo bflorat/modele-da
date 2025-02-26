@@ -21,7 +21,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 ### Documentation de Référence
 
-.Références documentaires développement
+.Références documentaires
 [cols="1,1,4,4"]
 |====
 |N°|Version|Titre/URL du document|Détail
@@ -63,7 +63,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 ## Contraintes
 
-## Exigences non fonctionnelles
+## Exigences
 
 ### Accessibilité
 

@@ -32,7 +32,7 @@ La disponibilité est traitée dans la vue infrastructure.
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit pas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
 ====
 
-.Références documentaires sécurité
+.Références documentaires
 [cols="1e,1e,3e,3e"]
 |====
 |N°|Version|Titre/URL du document|Détail

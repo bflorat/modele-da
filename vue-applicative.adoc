@@ -355,7 +355,7 @@ Fournir ici l'intention dans la construction de l'architecture.
 Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise à ce stade.
 ====
 
-#### Vue inventaire
+#### Inventaire des modules
 
 [TIP]
 ====
@@ -371,9 +371,7 @@ image:diagrammes/archi-applicative-detaillee-inventaire.svg[Diagramme d'Architec
 ====
 
 
-
-
-#### Vue dynamique
+#### Liens entre modules
 
 [TIP]
 ====

@@ -135,9 +135,9 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 #### Principes ayant dicté les choix
 
-#### Vision statique
+#### Inventaire des modules
 
-#### Vision dynamique
+#### Liens entre modules
 
 ### Archivage
 
