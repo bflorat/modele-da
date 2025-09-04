@@ -134,6 +134,27 @@ Par ‘internes’, on entend les acteurs appartenant à l’organisation, qu’
 |Monde entier
 |===
 
+#### Nature et sensibilité des données et traitements
+
+Donner une synthèse des traitements et processus métier et les natures de données qu'ils manipulent pour aider à la conception de la solution.
+
+WARNING: Ne pas reprendre l'AIPD mais y faire référence s'il existe. 
+
+[%header,cols="2,3,3,2,1,1,1,1"]
+|===
+| Processus métier | Finalité | Catégories de données manipulées | Classification interne | D | I | C | T
+
+| _Ex. Délivrance d’acte_ | _Produire un acte authentique_ | _identité, état civil, logs techniques_ | _élevée_ |_élevée_ | _Diffusion restreinte_ |  _moyenne_ | _moyenne_
+|===
+
+[cols="1,5"]
+|===
+| Légende | (D)isponibilité (I)ntégrité \(C)onfidentialité (T)race ou preuve : besoins de sécurité (faible, moyen, élevé)
+| Classification | Public, Interne, Diffusion restreinte, Confidentiel
+|===
+
+
+
 ## Contraintes
 
 ### Budget
