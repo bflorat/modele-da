@@ -118,7 +118,7 @@ Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb, etc.) . Attent
 * La loi est de plus en plus stricte pour les administrations qui doivent respecter un niveau d’accessibilité suffisant (loi  n°2005-102 du 11 février 2005 pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées). « Tous les sites publics européens doivent atteindre le double A (AA) du W3C/WAI ».
 ====
 
-//🏷{"id": "48bb8b97-2e97-4515-bf3b-95864f85e4e9", "labels": ["ihm"]}
+//🏷{"id": "b098d142-655e-4521-9d4f-2c2ea8eceb45", "labels": ["ihm"]}
 ### Ergonomie
 
 //🏷{"id": "3c031334-5598-4817-87b4-dec34ce8389b", "labels": ["niveau_detail::détaillé"]}
@@ -205,20 +205,6 @@ Exemple 2 : L’application Y étant une application internet visant le public 
 Exemple 3 : L’application Z vise le public le plus large et doté de systèmes raisonnablement anciens et devra donc supporter : Firefox 135+, Chrome 126+, Safari 5+, Opera 20+, Edge.
 ====
 
-//🏷{"id": "fbe627e5-be3f-41ec-9a2a-c43bd3587c6e", "labels": []}
-#### Internationalisation (i18n)
-
-[TIP]
-====
-Préciser les contraintes de l’ application en terme d’i18n : localisation des libellés, direction du texte, mise en page adaptable, code couleur spécifique, format de dates, devises, affichage des séparateurs décimaux, etc.
-====
-====
-Exemple 1 : L’IHM X sera traduite en 25 langues dont certaines langues asiatiques et l’arabe.
-====
-====
-Exemple 2 : les formats de dates et autres champs de saisie devront être parfaitement localisés pour un confort maximal de l’utilisateur. 
-====
-
 //🏷{"id": "39318743-8131-4d46-9354-c64804066ae8", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
 #### Mode déconnecté
 
@@ -234,6 +220,22 @@ Exemple 1 : L'application sera développée en Kotlin Jetpack Compose avec stock
 ====
 Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5 avec local storage pour stocker les données de la journée dans le navigateur.
 ====
+
+//🏷{"id": "fbe627e5-be3f-41ec-9a2a-c43bd3587c6e", "labels": []}
+#### Internationalisation (i18n)
+
+[TIP]
+====
+Préciser les contraintes de l’ application en terme d’i18n : localisation des libellés, direction du texte, mise en page adaptable, code couleur spécifique, format de dates, devises, affichage des séparateurs décimaux, etc.
+====
+====
+Exemple 1 : L’IHM X sera traduite en 25 langues dont certaines langues asiatiques et l’arabe.
+====
+====
+Exemple 2 : les formats de dates et autres champs de saisie devront être parfaitement localisés pour un confort maximal de l’utilisateur. 
+====
+
+
 
 //🏷{"id": "8c3bc449-1b44-44cf-82a1-f26cdbf258af", "labels": ["ihm"]}
 ### Exigences de SEO
