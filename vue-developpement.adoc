@@ -157,7 +157,7 @@ Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-l
 Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberation_(police_d%27%C3%A9criture)[Liberation Mono] en licence Open Source sécurisante sur un plan juridique et compatible métriquement avec le Monotype, le Courrier New, l'Arial et le Times New Roman. 
 ====
 
-//🏷{"id": "cfd3435f-d888-43e3-a634-35c3d5d92cb4", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi"]}]}
+//🏷{"id": "cfd3435f-d888-43e3-a634-35c3d5d92cb4", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi"]}
 #### Site Web adaptatif
 
 [TIP]
@@ -172,7 +172,7 @@ Lister les contraintes d’affichage multi-support. Utiliser quand c'est possibl
 WARNING: Un design responsive vient avec ses contraintes (duplication de code CSS, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir, etc.). 
 ====
 
-//🏷{"id": "30cc6226-2213-4351-83aa-a4905c5d4baa", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}]}
+//🏷{"id": "30cc6226-2213-4351-83aa-a4905c5d4baa", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
 #### Progressive Web Apps (PWA)
 
 [TIP]
@@ -251,6 +251,7 @@ Exemple 1 :  Aucune indexation nécessaire ni désirée (site interne)
 Exemple 2 : Les pages statiques du site devront suivre les bonnes pratiques SEO pour optimiser sa visibilité.
 ====
 
+//🏷{"id": "c8e58371-6bea-48e2-ab0e-989fec63e0ee", "labels": []}
 ### Exigences d'écoconception
 
 [TIP]
@@ -266,10 +267,13 @@ Lister ici les exigences d'écoconception portant sur les logiciels.
 Exemple : Les émissions cumulées du service A ne devrait pas dépasser 100KgCO2/an.    
 ====
 
+//🏷{"id": "2c0aa24a-24b8-4272-8787-b5e5207785fb", "labels": ["niveau_detail::general","solution"]}
 ## Architecture cible
 
+//🏷{"id": "50b4ef16-e558-4604-9b17-b90e68da6337", "labels": []}
 ### Pile logicielle
 
+//🏷{"id": "e9b08c72-a836-48ad-9255-e2977a09f290", "labels": ["niveau::avancé"]}
 #### Filière technique retenue
 
 [TIP]
@@ -283,6 +287,7 @@ Exemple : cette application est de profil P3 : "Application Web Spring" avec uti
 Exemple : Utilisation de Rust à titre expérimental au sein de l'organisation. Validé en commité architecture le …
 ====
 
+//🏷{"id": "e9b08c72-a836-48ad-9255-e2977a09f290", "labels": []}
 #### Dépendances
 
 [TIP]
