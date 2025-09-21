@@ -273,7 +273,7 @@ Exemple : Les émissions cumulées du service A ne devrait pas dépasser 100KgCO
 //🏷{"id": "50b4ef16-e558-4604-9b17-b90e68da6337", "labels": []}
 ### Pile logicielle
 
-//🏷{"id": "e9b08c72-a836-48ad-9255-e2977a09f290", "labels": ["niveau::avancé"]}
+//🏷{"id": "16dc549a-4b87-428e-b59d-4c0af1e720db", "labels": ["niveau::avancé"]}
 #### Filière technique retenue
 
 [TIP]
@@ -287,7 +287,7 @@ Exemple : cette application est de profil P3 : "Application Web Spring" avec uti
 Exemple : Utilisation de Rust à titre expérimental au sein de l'organisation. Validé en commité architecture le …
 ====
 
-//🏷{"id": "e9b08c72-a836-48ad-9255-e2977a09f290", "labels": []}
+//🏷{"id": "e9b08c72-a836-48ad-9255-e2977a09f290", "labels": [,skjfhdkjh[()]]}
 #### Dépendances
 
 [TIP]
