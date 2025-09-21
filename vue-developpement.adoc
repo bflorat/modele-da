@@ -12,7 +12,7 @@
 
 *Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
-
+//🏷{"id": "84c5d434-ea70-41fc-92bc-53a40ab29025", "labels": ["contexte"]}
 ## Introduction
 
 La vue développement décrit le code à produire et les méthodes pour l'écrire.
@@ -21,6 +21,7 @@ Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendrons pas ici les termes fonctionnels ou techniques déjà définis.
 
+//🏷{"id": "712fc07b-76ba-4093-bbf8-cceeaa903e64", "labels": ["references"]}
 ### Documentation de Référence
 
 [TIP]
@@ -36,8 +37,10 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
+//🏷{"id": "fa1ed85e-92d0-4aa9-9421-dcf267d0cf0e", "labels": ["contexte","incertitudes"]}
 ## Non statué
 
+//🏷{"id": "b3592a4d-d0df-4f87-8416-97cfb287cd08", "labels": []}
 ### Points nécessitant une étude complémentaire
 
 .Points nécessitant une étude complémentaire
@@ -53,7 +56,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
-
+//🏷{"id": "fb0b1a28-1c08-4c0b-bb38-1cae99a46818", "labels": []}
 ### Hypothèses
 
 .Hypothèses
@@ -65,6 +68,8 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Même si ce point n’est pas encore totalement validé, l’application nécessitera un JRE 21+ pour tirer partie de librairies et frameworks Java indispensables au projet.
 |====
 
+
+//🏷{"id": "84cd4aed-36c0-4564-8354-29a7de004923", "labels": ["niveau_detail::general", "contraintes"]}
 ## Contraintes
 
 [TIP]
@@ -89,6 +94,7 @@ Exemple 2 : Le module devra se baser sur le framework Hibernate pour la persista
 Exemple 3 : l'application sera construite, testée et déployée en continu à chaque push via la plateforme Gitlab-CI.
 ====
 
+//🏷{"id": "8d79cc07-e094-4863-8bb8-0a3ca317743d", "labels": ["niveau_detail::general","exigences"]}
 ## Exigences non fonctionnelles
 
 [TIP]
@@ -96,6 +102,7 @@ Exemple 3 : l'application sera construite, testée et déployée en continu à c
 Contrairement aux contraintes qui fixent le cadre auquel toute application devait se conformer, les exigences non fonctionnelles sont données par les porteurs du projet (Product Owner/MOA en général). Prévoir des interviews pour les déterminer. Si certaines exigences ne sont pas réalistes, le mentionner dans le référentiel des points à statuer.
 ====
 
+//🏷{"id": "48bb8b97-2e97-4515-bf3b-95864f85e4e9", "labels": ["ihm"]}
 ### Accessibilité
 
 [TIP]
@@ -111,8 +118,10 @@ Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb, etc.) . Attent
 * La loi est de plus en plus stricte pour les administrations qui doivent respecter un niveau d’accessibilité suffisant (loi  n°2005-102 du 11 février 2005 pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées). « Tous les sites publics européens doivent atteindre le double A (AA) du W3C/WAI ».
 ====
 
+//🏷{"id": "48bb8b97-2e97-4515-bf3b-95864f85e4e9", "labels": ["ihm"]}
 ### Ergonomie
 
+//🏷{"id": "3c031334-5598-4817-87b4-dec34ce8389b", "labels": ["niveau_detail::détaillé"]}
 #### Charte ergonomique
 
 [TIP]
@@ -120,6 +129,7 @@ Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb, etc.) . Attent
 En général, on se réfère ici à la charte ergonomique de l’organisme. Lister néanmoins d’éventuelles spécificités. Ne pas reprendre les contraintes d’accessibilité listées plus haut.
 ====
  
+//🏷{"id": "90b4af62-df5b-485e-87c4-7dd0b21d0464", "labels": ["niveau_detail::approfondi"]}
 #### Spécificités sur les widgets
 
 [TIP]
@@ -133,6 +143,7 @@ Exemple 1 : les tableaux devront être triables suivant plusieurs colonnes.
 Exemple 2 : de nombreux écrans seront pourvus d’accordéons
 ====
 
+//🏷{"id": "1cacea74-bede-43b3-93a5-804fd60ff4fb", "labels": ["niveau_detail::approfondi"]}
 #### Polices de caractère
 
 [TIP]
@@ -146,6 +157,7 @@ Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-l
 Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberation_(police_d%27%C3%A9criture)[Liberation Mono] en licence Open Source sécurisante sur un plan juridique et compatible métriquement avec le Monotype, le Courrier New, l'Arial et le Times New Roman. 
 ====
 
+//🏷{"id": "cfd3435f-d888-43e3-a634-35c3d5d92cb4", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi"]}]}
 #### Site Web adaptatif
 
 [TIP]
@@ -160,6 +172,7 @@ Lister les contraintes d’affichage multi-support. Utiliser quand c'est possibl
 WARNING: Un design responsive vient avec ses contraintes (duplication de code CSS, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir, etc.). 
 ====
 
+//🏷{"id": "30cc6226-2213-4351-83aa-a4905c5d4baa", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}]}
 #### Progressive Web Apps (PWA)
 
 [TIP]
@@ -170,6 +183,7 @@ Spécifier si l'application est progressive. Les applications PWA sont des appli
 Exemple : L'application X sera totalement PWA. Des tests devront démonter que le site continuer à fonctionner sans réseau et que les pages se chargent en moins de 5 secs en 4G. 
 ====
 
+//🏷{"id": "67ff8381-8145-4dc4-bd15-cfec867dc8b5", "labels": []}
 #### Navigateurs supportés
 
 [TIP]
@@ -191,6 +205,7 @@ Exemple 2 : L’application Y étant une application internet visant le public 
 Exemple 3 : L’application Z vise le public le plus large et doté de systèmes raisonnablement anciens et devra donc supporter : Firefox 135+, Chrome 126+, Safari 5+, Opera 20+, Edge.
 ====
 
+//🏷{"id": "fbe627e5-be3f-41ec-9a2a-c43bd3587c6e", "labels": []}
 #### Internationalisation (i18n)
 
 [TIP]
@@ -204,7 +219,7 @@ Exemple 1 : L’IHM X sera traduite en 25 langues dont certaines langues asiati
 Exemple 2 : les formats de dates et autres champs de saisie devront être parfaitement localisés pour un confort maximal de l’utilisateur. 
 ====
 
-
+//🏷{"id": "39318743-8131-4d46-9354-c64804066ae8", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
 #### Mode déconnecté
 
 [TIP]
@@ -220,6 +235,7 @@ Exemple 1 : L'application sera développée en Kotlin Jetpack Compose avec stock
 Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5 avec local storage pour stocker les données de la journée dans le navigateur.
 ====
 
+//🏷{"id": "8c3bc449-1b44-44cf-82a1-f26cdbf258af", "labels": ["ihm"]}
 ### Exigences de SEO
 
 [TIP]

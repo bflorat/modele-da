@@ -34,10 +34,10 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |1|2.0.4|XX_Urba_POS.pdf|POS du SI|
 |===
 
-//🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["incertitudes"]}
+//🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["contexte","incertitudes"]}
 ## Non statué
 
-//🏷{"id": "0f9d2e4a-3c71-4b9e-8f3b-2b8c7d1e9a60", "labels": ["incertitudes"]}
+//🏷{"id": "0f9d2e4a-3c71-4b9e-8f3b-2b8c7d1e9a60", "labels": []}
 ### Points nécessitant une étude complémentaire
 
 .Points nécessitant une étude complémentaire
@@ -52,7 +52,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |Avant 2040
 |===
 
-//🏷{"id": "7a1cdb2e-4f52-42a1-9c3e-6e0f2d3a8b91", "labels": ["incertitudes"]}
+//🏷{"id": "7a1cdb2e-4f52-42a1-9c3e-6e0f2d3a8b91", "labels": []}
 ### Hypothèses
 
 .Hypothèses
