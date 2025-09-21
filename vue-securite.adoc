@@ -229,8 +229,10 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 **Cas particuliers :** 
 
 - Les **comptes techniques** (ex: batchs, applications, API) nécessitent également une authentification (ex: comptes de service avec certificats ou clés SSH).
+- Les **comptes à privilèges** (ex: `root` sur les serveurs, compte administrateur applicatif...). Ils peuvent être humains ou techniques mais peuvent lire/écrire/supprimer beaucoup de données ou réaliser des opérations irréversibles (blast radius large).
 - L’**authentification initiale** (lors de l'inscription) est souvent plus stricte que les authentifications ultérieures.
 - Une **authentification fédérée** permet de déléguer l’authentification à un fournisseur d’identité (SSO, OAuth2, SAML, etc.), voir la section suivante.
+
 ====
 
 #### **Facteurs d’authentification**
