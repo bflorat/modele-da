@@ -308,7 +308,7 @@ Exemple 1: comme exigé par l'article L.123-22 du code de commerce, les données
 Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte SHA-512 sera calculée au moment de l'archivage et stockée séparément pour vérification de l'intégrité des documents au besoin.
 ====
 
-//🏷{"id": "fedcba98-7654-4321-8abc-0def12345678", "labels": ["niveau_detail::détaillé"]}}
+//🏷{"id": "fedcba98-7654-4321-8abc-0def12345678", "labels": ["niveau_detail::détaillé"]}
 ### Durées de rétention
 
 TIP: Précisez ici combien de temps doivent être conservées les données et documents stockés par vos modules applicatifs. À noter que ces durées peuvent être contraintes par le droit (voir contraintes juridiques plus haut), par exemple dans le cadre du droit à l'oubli du RGPD.
