@@ -372,7 +372,7 @@ Exemple : MesInfosEnLigne (MIEL) permet à une entreprise de récupérer par mai
 image::diagrammes/archi-applicative-generale.svg[Diagramme architecture applicative générale]
 ====
 
-//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["niveau_detail::détaillé"]}}
+//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["niveau_detail::détaillé"]}
 ### Architecture applicative détaillée
 
 [TIP]
@@ -387,7 +387,7 @@ Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhens
 
 ====
 
-//🏷{"id": "f0c1b2a3-4d5e-46f7-88a9-b0c1d2e3f4a5", "labels": ["taille_projet::moyen","niveau_detail::détaillé"]}}
+//🏷{"id": "f0c1b2a3-4d5e-46f7-88a9-b0c1d2e3f4a5", "labels": ["taille_projet::moyen","niveau_detail::détaillé"]}
 #### Principes ayant dicté les choix
 
 [TIP]
@@ -398,7 +398,7 @@ Fournir ici l'intention dans la construction de l'architecture.
 Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise à ce stade.
 ====
 
-//🏷{"id": "aa11bb22-cc33-44dd-88ee-ff0011223344", "labels": ["taille_projet::grand","niveau_detail::détaillé"]}}
+//🏷{"id": "aa11bb22-cc33-44dd-88ee-ff0011223344", "labels": ["taille_projet::grand","niveau_detail::détaillé"]}
 #### Inventaire des modules
 
 [TIP]
@@ -414,7 +414,7 @@ Exemple 2 : vue inventaire du projet MIEL :
 image:diagrammes/archi-applicative-detaillee-inventaire.svg[Diagramme d'Architecture applicative détaillée (vue inventaire)] 
 ====
 
-//🏷{"id": "123e4567-e89b-42d3-a456-426614174001", "labels": ["taille_projet::grand","niveau_detail::détaillé"]}}
+//🏷{"id": "123e4567-e89b-42d3-a456-426614174001", "labels": ["taille_projet::grand","niveau_detail::détaillé"]}
 #### Liens entre modules
 
 [TIP]
@@ -438,7 +438,7 @@ image:diagrammes/archi-applicative-detaillee-dynamique.svg[Diagramme architectur
 
 ====
 
-//🏷{"id": "5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f", "labels": ["niveau_detail::détaillé","archivage"]}}
+//🏷{"id": "5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f", "labels": ["niveau_detail::détaillé","archivage"]}
 ### Archivage
 
 [TIP]
@@ -452,7 +452,7 @@ Décrire ici les dispositifs permettant de répondre aux exigences d'archivage. 
 Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LTO et disque dur. Un jeu de chacun des deux supports sera stocké en coffre dans deux banques différentes.
 ====
 
-//🏷{"id": "0a1b2c3d-4e5f-4061-82a3-b4c5d6e7f809", "labels": ["niveau_detail::détaillé"]}}
+//🏷{"id": "0a1b2c3d-4e5f-4061-82a3-b4c5d6e7f809", "labels": ["niveau_detail::détaillé"]}
 ### Purges
 
 [TIP]
@@ -468,7 +468,7 @@ Exemple 1: L'historique des consultations sera archivé par un dump avec une req
 Exemple 2: Chaque API est responsable de la purge des données qu'elle expose. Pour cela, prévoir des traitements internes qui suppriment les données suivant une planification paramétrable.
 ====
 
-//🏷{"id": "9f8e7d6c-5b4a-49a8-9c7d-6e5f4d3c2b1a", "labels": ["niveau_detail::approfondi"]}}
+//🏷{"id": "9f8e7d6c-5b4a-49a8-9c7d-6e5f4d3c2b1a", "labels": ["niveau_detail::approfondi"]}
 ### Matrice des flux applicatifs
 
 [TIP]
