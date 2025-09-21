@@ -312,10 +312,8 @@ Exemple :
 |====
 ====
 
+//🏷{"id": "ec64dc5b-cdc1-4ab3-ae41-ac3c1c3ad9e7", "labels": ["niveau::intermédiaire"], link_to=["d6e3eb12-371b-4c26-b538-9fea2051bfed"]}
 ### Performances
-
-IMPORTANT: Les exigences sont situées dans la link:./vue-dimensionnement.adoc[vue dimensionnement].
-
 
 [TIP]
 ====
@@ -358,7 +356,7 @@ Frontend et backend :
 WARNING: Ne pas tomber à l'inverse dans l'optimisation prématurée "source de tous les problèmes" selon Donald Knuth. Écrire le code le plus simple possible et suivre un bon design, ne l'optimiser qu’ensuite. 
 N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimisations les plus significatives (top 10) et ne pas perdre son temps à grappiller des microsecondes voire nanosecondes.
 
-
+//🏷{"id": "cacf4bd8-9e8a-449c-af31-1fd27169a685", "labels": ["niveau::intermédiaire",  "niveau_detail::détaillé"]}
 ### Spécificités d’usine logicielle
 
 [TIP]
@@ -369,6 +367,7 @@ Sans reprendre le fonctionnement de la plate-forme d’Intégration Continue de 
 Exemple : Les jobs Jenkins produiront le logiciel sous forme de conteneurs Docker/OCI si  tous les TU sont passants. Les tests d'intégration seront ensuite exécutés sur ce conteneur. Si tous les tests d’intégration et BDD sont passants, l'image Docker/OCI est livrée dans Nexus.
 ====
 
+//🏷{"id": "11f66697-ac3a-40f0-903a-cc8202b7315e", "labels": []}
 ### Bonnes pratiques
 
 [TIP]
@@ -379,6 +378,7 @@ Lister les bonnes pratiques (blueprints) applicables. Éviter les bonnes pratiqu
 Exemple : Suivre les recommendations de https://www.restapitutorial.com/[ce tutoriel] pour la conception d'API Restful.
 ====
 
+//🏷{"id": "4cfc1f5e-bf4b-4c33-b718-83ca90974090", "labels": ["niveau_detail::détaillé"]}
 ### Normes de développement et qualimétrie
 
 [TIP] 
@@ -400,6 +400,7 @@ Exemple 2 : Le niveau de qualité exigé correspond au https://docs.sonarqube.or
 Exemple 3 : Quelle langue utilisée pour le code ? français pour les termes fonctionnels (il est impératif d'utiliser les termes métiers comme préconisé par le DDD) et l'anglais pour les termes techniques génériques.
 ====
 
+//🏷{"id": "bbe62a07-d42a-4495-8d23-4d0ea23d19e6", "labels": ["level::intermediate", "project_size::large"]}
 ### Patterns notables
 
 [TIP]
@@ -410,6 +411,7 @@ Préciser si ce projet a mis en œuvre des patterns structurants (GoF, JEE ou au
 Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et éviter de multiplier les niveaux d'héritage, nous utiliserons massivement la pattern décorateur [GoF] dont voici un exemple d’utilisation : <schéma>.
 ====
 
+//🏷{"id": "99e519d3-e8cf-4b3c-8e87-e06a1bf675af", "labels": ["level::intermediate", "project_size::large"]}
 ### Spécificités des tests 
 
 [TIP] 
@@ -514,6 +516,7 @@ détecter un maximum de bugs avant les tests d'UAT.
 
 NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'objet d'un document propre. Une stratégie standard peut également être définie au niveau du SI. 
 
+//🏷{"id": "6ff8aacb-5020-4ade-a10d-3dce3898276b", "labels": ["level::intermediate", "detail_level::detailed"],"link_to": ["c8e58371-6bea-48e2-ab0e-989fec63e0ee"]}
 === Éco-conception
 
 [TIP]
@@ -560,8 +563,11 @@ Exemple 4 : Pour une exigence de 100 KgCO2/an maximum emit par le service en lig
 En utilisant la formule SCI (voir plus haut), et pour une consommation totale du serveur de 800W et 20K appels par heure en moyenne, et une électricité française d'intensité carbone de 63g/KWH, on ne doit pas dépasser E=1111 KWH/an, soit 6.34 mWH/appel.
 
 ====
+
+//🏷{"id": "bb5d8145-8519-4516-98a9-fc089f758d9c", "labels": ["level::intermediate", "detail_level::detailed"]}
 ### Gestion de la robustesse
 
+//🏷{"id": "a7bacacc-de70-48e5-8563-6a0b6d7b31a2", "labels": ["level::advanced"]}
 #### Gestion des transactions
 
 [TIP]
@@ -579,6 +585,7 @@ Lister ici les décisions prises concernant la gestion des transactions. Ceci es
 Exemple : nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file de messages pour effectuer des mises à jour au fil de l'eau.
 ====
 
+//🏷{"id": "8bd70b17-0223-4aaf-97ac-a7284efe721f", "labels": ["level::intermediate", "detail_level::in-depth"]}
 #### Gestion des sessions
 
 [TIP]
@@ -599,6 +606,7 @@ Exemples de points à traiter :
 Exemple : notre application JSF stockera en session HTTP uniquement son panier d'achat, pas les références produits
 ====
 
+//🏷{"id": "4ffcfd1b-87c9-48d0-96d6-f3b3b817a869", "labels": []}
 #### Gestion des erreurs
 
 [TIP]
@@ -621,6 +629,7 @@ Comment gère-t-on les erreurs ? Exemples de points à traiter :
 Exemple : les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
 ====
 
+//🏷{"id": "7a33eb60-882d-4095-bde2-9a477cc27433", "labels": ["gui"]}
 #### Gestion de la robustesse coté frontend
 
 [TIP]
@@ -645,6 +654,7 @@ Exemple 1 : Si l'application est ouverte avec IE, un message d'erreur doit invit
 Exemple 2 : Tous les boutons de l'application devront interdire la double soumission en désactivant temporairement les bouton sur événement.
 ====
 
+//🏷{"id": "d101d1ee-8ec7-48dd-b733-ebba345c656d", "labels": ["detail_level::detailed"]}
 ### Gestion de la configuration
 
 [TIP]
@@ -665,6 +675,7 @@ Exemple (application déployées dans Kubernetes) :
 La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le descripteur de déploiement Kubernetes.
 ====
 
+//🏷{"id": "01a81b2c-1dc0-4563-a2e2-5c5248086499", "labels": ["level::advanced", "detail_level::in-depth"]}
 ### Politique de gestion des branches
 
 [TIP]
@@ -682,6 +693,7 @@ Exemple :
 * Une branche de maintenance sera tirée sur chaque tag de version x.y. Seuls les bugfixs seront mergés dans les branches de maintenance depuis `develop` via des `cherry-pick`.
 ====
 
+//🏷{"id": "35b97569-e671-40c3-809c-ffcb5d1af383", "labels": ["detail_level::detailed"]}
 ### Versioning
 
 [TIP]
@@ -699,6 +711,7 @@ Exemple:
 
 ====
 
+//🏷{"id": "79682de3-09b7-46f1-8354-9371295d18a8", "labels": ["level::intermediate",  "detail_level::in-depth"]}
 ### Gestion de la concurrence
 
 [TIP]
@@ -715,6 +728,7 @@ Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
 Exemple  (Spring MVC) : Tous les controllers seront en scope singleton et ne doivent donc en aucun cas stocker d'état dans leurs attributs pour éviter des accès concurrents.
 ====
 
+//🏷{"id": "856b9e7b-3305-48c3-bb99-798cf409181d", "labels": ["level::intermediate", "detail_level::detailed"]}
 ### Encodage 
 
 [TIP] 
@@ -731,7 +745,8 @@ NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des `.propert
 ==== 
 Exemple 2 : Si un système externe impose d'envoyer ou de recevoir des chaînes de caractères dans un encodage autre que le `UTF-8` (exemple : un service REST qui renvoi des données en `ISO-8859-1`) et qu’il n’est pas possible de modifier le contrat, il est impératif de traduire au sein d'une couche anti-corruption les chaînes de caractères et ceci au plus tôt, dès l'appel. De plus, il ne faut jamais persister dans nos systèmes une donnée dans un encodage non `UTF-8`. 
 ==== 
- 
+
+//🏷{"id": "5885803d-2d3d-4e19-af30-40e904e9fb6d", "labels": ["level::intermediate", "detail_level::detailed"]}
 ### Fuseaux horaires 
 
 [TIP] 
@@ -746,6 +761,7 @@ Exemple 1 : Les heures ne seront jamais stockées sans fuseau horaire. En base, 
 Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera l'epoch millis à `12:00 UTC` (et pas `00:00`, trop proche du jour précédent, risque de bug). 
 ==== 
 
+//🏷{"id": "96ec879c-3ce3-4e48-a3f9-84590c281fd4", "labels": ["detail_level::detailed"]}
 ### Gestion des journaux
 
 NOTE: Les aspects d'infrastructure de journaux sont détaillés dans link:./vue-infrastructure.adoc#_journaux[la vue infrastructure].
@@ -756,6 +772,7 @@ Fournir ici les règles générales concernant les journaux (logs) : leur niveau
 Penser à l'exploitation des journaux, surtout coté serveur. Se demander s'il sera possible d'en tirer profit en cas d'erreur en production au milieu de Mio voire Gio d'autres journaux et de nombreux threads écrivant en parallèle.
 ====
 
+//🏷{"id": "cad3fb2c-5047-4025-892f-3180e74579c8", "labels": ["detail_level::in-depth"]}
 #### Règles générales
 
 ====
@@ -771,6 +788,7 @@ log.info("Problème sur le dossier {} de l'utilisateur {}",dossier.getId(), util
 ```
 ====
 
+//🏷{"id": "992c0bb3-83bc-4598-84ff-150a67df3324", "labels": ["detail_level::in-depth"]}
 #### Niveaux et quantité de journaux
 [TIP]
 ====
@@ -813,6 +831,7 @@ Exemple :
 
 ====
  
+//🏷{"id": "f2e9066c-18d9-4234-b37c-27d342b1c99e", "labels": ["level::intermediate", "project_size::large", "detail_level::detailed"]} 
 ### Outils d'administration
 
 [TIP]
@@ -831,6 +850,7 @@ Exemples de points à traiter :
 Exemple : Le service `/interne/maj_v2` effectuera une montée de version du modèle de donnée vers la V2
 ====
 
+//🏷{"id": "ef97a533-5fc7-4999-87fc-def24074746c", "labels": ["level::intermediate", "detail_level::detailed"]}
 ### Tri et Pagination
 
 [TIP]
@@ -852,6 +872,7 @@ Exemple 2 (Coté client)
 * Les éléments retournés seront affichés dans les tableaux par blocs (taille paramétrable d’une taille indicative de l'ordre de 20 éléments). 
 ====
 
+//🏷{"id": "4af6fb38-c84a-456f-b043-32abeb6e7798", "labels": ["level::intermediate" "detail_level::detailed"]}
 ### Provisioning et mises à jour des DDL
 
 [TIP]
@@ -863,8 +884,8 @@ Décrire comment les DDL (structures de tables en base de données) et les donn�
 Exemple : Nous utiliserons Liquibase embarqué dans les livrables pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
 ====
 
-
-### Gestion de l'i18N
+//🏷{"id": "201fca5f-50af-41f9-ab97-60b2f7abddc6", "labels": ["level::intermediate",  "detail_level::detailed"], link_to=["fbe627e5-be3f-41ec-9a2a-c43bd3587c6e"]}
+### Gestion de l'internationalisation
 [TIP]
 ====
 Décrire comment vous répondez aux exigences d'internationalisation exprimées plus haut.
