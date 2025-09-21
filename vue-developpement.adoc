@@ -400,7 +400,7 @@ Exemple 2 : Le niveau de qualité exigé correspond au https://docs.sonarqube.or
 Exemple 3 : Quelle langue utilisée pour le code ? français pour les termes fonctionnels (il est impératif d'utiliser les termes métiers comme préconisé par le DDD) et l'anglais pour les termes techniques génériques.
 ====
 
-//🏷{"id": "bbe62a07-d42a-4495-8d23-4d0ea23d19e6", "labels": ["niveau:intermédiaire", "project_size::large"]}
+//🏷{"id": "bbe62a07-d42a-4495-8d23-4d0ea23d19e6", "labels": ["niveau:intermédiaire", "taille_projet::grand"]}
 ### Patterns notables
 
 [TIP]
@@ -411,7 +411,7 @@ Préciser si ce projet a mis en œuvre des patterns structurants (GoF, JEE ou au
 Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et éviter de multiplier les niveaux d'héritage, nous utiliserons massivement la pattern décorateur [GoF] dont voici un exemple d’utilisation : <schéma>.
 ====
 
-//🏷{"id": "99e519d3-e8cf-4b3c-8e87-e06a1bf675af", "labels": ["niveau:intermédiaire", "project_size::large"]}
+//🏷{"id": "99e519d3-e8cf-4b3c-8e87-e06a1bf675af", "labels": ["niveau:intermédiaire", "taille_projet::grand"]}
 ### Spécificités des tests 
 
 [TIP] 
@@ -831,7 +831,7 @@ Exemple :
 
 ====
  
-//🏷{"id": "f2e9066c-18d9-4234-b37c-27d342b1c99e", "labels": ["niveau:intermédiaire", "project_size::large", "niveau_detail:détaillé"]} 
+//🏷{"id": "f2e9066c-18d9-4234-b37c-27d342b1c99e", "labels": ["niveau:intermédiaire", "taille_projet::grand", "niveau_detail:détaillé"]} 
 ### Outils d'administration
 
 [TIP]
