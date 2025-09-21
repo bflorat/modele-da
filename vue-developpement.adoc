@@ -287,7 +287,7 @@ Exemple : cette application est de profil P3 : "Application Web Spring" avec uti
 Exemple : Utilisation de Rust à titre expérimental au sein de l'organisation. Validé en commité architecture le …
 ====
 
-//🏷{"id": "e9b08c72-a836-48ad-9255-e2977a09f290", "labels": [,skjfhdkjh[()]]}
+//🏷{"id": "e9b08c72-a836-48ad-9255-e2977a09f290", "labels": []}
 #### Dépendances
 
 [TIP]
