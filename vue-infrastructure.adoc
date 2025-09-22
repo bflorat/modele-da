@@ -12,7 +12,7 @@
 
 *Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
-
+//🏷{"id": "e3208a9c-8d35-46a1-9399-aacea9817e0a", "labels": ["contexte"]}
 ## Introduction
 
 La vue infrastructure décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
@@ -28,6 +28,7 @@ Cette vue est aussi souvent appelé « vue  technique » et concerne l'infrast
 Bref, elle porte sur tout ce qui est externe à l'application et nécessaire à son exécution.
 ====
 
+//🏷{"id": "06fd3383-f875-4a44-a1f8-d135f9050038", "labels": ["references"]}
 ### Documentation de Référence
 [TIP]
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit pas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
@@ -42,7 +43,10 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
+//🏷{"id": "933039be-008f-40c7-a630-a08002b379f1", "labels": ["context","uncertainty"]}
 ## Non statué
+
+//🏷{"id": "87385297-c5c3-44f6-b9e8-7599576dda0a", "labels": []}
 ### Points nécessitant une étude complémentaire
 .Points nécessitant une étude complémentaire
 [cols="1e,5e,2e,2e,2e"]
@@ -57,6 +61,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
+//🏷{"id": "30d20b83-e35d-464b-8286-3ff230fb1471", "labels": []}
 ### Hypothèses
 
 .Hypothèses
@@ -68,6 +73,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Nous prenons l'hypothèse que d'ici à la MEP du projet, PostgreSQL 17 sera validé en interne.
 |====
 
+//🏷{"id": "82a207de-bc6f-4a62-a586-96a2b4c9f4dc", "labels": ["detail_level::overview", "constraints"]}
 ## Contraintes
 
 [TIP]
@@ -78,6 +84,7 @@ Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par
 
 ====
 
+//🏷{"id": "cc4a17a8-d68b-43cf-8b4e-c64829d950fc", "labels": ["availability"]}
 ### Contraintes sur la disponibilité
 
 [TIP]
@@ -87,6 +94,7 @@ Les éléments ici fournis pourront servir de base au SLO (Service Level Objecti
 Ce chapitre a une vocation pédagogique car il rappelle la disponibilité plafond envisageable : la disponibilité finale de l’application ne pourra être qu’inférieure.
 ====
 
+//🏷{"id": "a18eb613-e522-4bf5-a1fd-742b9d754ce1", "labels": ["detail_level::detailed","monitoring"]}
 #### MTTD
 
 [TIP]
@@ -99,6 +107,7 @@ Exemple 1 : Le SI est supervisé en 24/7/365.
 Exemple 2 : Le service support production est disponible durant les heures de bureau mais une astreinte est mise en place avec alerting par e-mail et SMS en 24/7 du lundi au vendredi.
 ====
 
+//🏷{"id": "dc11b031-5685-4972-9832-138fa74cd30b", "labels": ["detail_level::detailed","monitoring"]}
 #### Outils et normes de supervision
 
 [TIP]
@@ -113,6 +122,7 @@ Exemple 2 : Les batchs doivent pouvoir se lancer via un endpoint REST.
 Exemple 3 : un batch en erreur ne doit pas pouvoir se relancer sans un acquittement humain.
 ====
 
+//🏷{"id": "6903a99e-8b8e-464b-909c-d40da5a808d1", "labels": ["detail_level::detailed"]}
 #### MTTR
 
 [TIP]
@@ -128,7 +138,8 @@ Lister ici les durées d’intervention des prestataires matériels, logiciels, 
 Nous subdivisons de façon indicative cette section en sous-sections "Hardware", "Système et virtualisation", "Réseau", et "Restauration de données". D'autres catégories sont possibles.
 ====
 
-##### Hardware
+//🏷{"id": "e7470aba-8588-4792-bc94-28e4bf186b63", "labels": ["detail_level::in-depth"]}
+##### Matériel
 
 TIP: Décrire ici les éléments permettant de prévoir le MTTR des éléments hardware (serveurs / baies / équipements réseau / systèmes électriques, etc.). Lister par exemple ici les durées d’intervention des prestataires matériels, électricité….
 
@@ -140,6 +151,7 @@ Exemple 2 : Le contrat de support Hitashi prévoit une intervention sur les baie
 Exemple 3 : le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
 ====
 
+//🏷{"id": "9c691337-434c-4439-b735-0d0884ab15f1", "labels": ["detail_level::in-depth"]}
 ##### Système et virtualisation
 
 TIP: Lister ici les éléments permettant d'estimer le temps de correction d'un problème lié à l'OS ou à une éventuelle solution de virtualisation.
@@ -153,6 +165,7 @@ Exemple 3 : Le temps de restauration observé d'une sauvegarde Veeam de VM de 40
 
 ====
 
+//🏷{"id": "9c691337-434c-4439-b735-0d0884ab15f1", "labels": ["detail_level::in-depth"]}
 ##### Réseau
 
 TIP: Lister ici les éléments liés au réseau permettant d'estimer les durées d’intervention des prestataires ou fournisseurs Telecom…
@@ -163,6 +176,7 @@ Exemple 1 : un ingénieur réseau est d'astreinte chaque week-end.
 Exemple 2 : Le SLA d'Orange prévoit un rétablissement de la connexion à Internet en conditions nominales en moins de 24H.
 ====
 
+//🏷{"id": "b39586c3-6bbe-417f-ad64-eff53c81d283", "labels": ["detail_level::detailed"]}
 ##### Restauration de données
 TIP: Lister ici les éléments permettant d'évaluer la durée de restauration de données (fichiers / objets / base de données). Les exigences de RTO listées plus bas devront prendre en compte ce MTTR.
 
@@ -172,7 +186,7 @@ Exemple 1 : Le temps de restauration Barman d'une base PostgreSQL est d'environ 
 Exemple 2 : La restauration d'une sauvegarde offline (sur bandes) nécessite au minimum 4H de préparation supplémentaire.
 ====
 
-
+//🏷{"id": "421860fb-b6b3-461a-b149-57c6ba6dae41", "labels": ["detail_level::in-depth"]}
 #### Interruptions programmées
 
 [TIP]
@@ -187,6 +201,7 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 
 ====
 
+//🏷{"id": "21d704f6-f740-40f9-986c-36274643a711", "labels": ["detail_level::detailed"]}
 #### Niveau de service du datacenter
 
 [TIP]
@@ -235,6 +250,7 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 Exemple : Le datacenter de Paris est de niveau Tier III et celui de Toulouse Tier II.
 ====
 
+//🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["detail_level::overview"]}
 #### Synthèse de la disponibilité plancher
 
 [TIP]
@@ -246,6 +262,7 @@ En prenant en compte les éléments précédents, estimer la disponibilité plan
 Exemple : Disponibilité effective application  = <disponibilité datacenter> * <plage de fonctionnement effective> * <disponibilité système > * <disponibilité hardware> = 99.8 x 99.99 x 99.6 x 99.99 =~ *99.4%*.
 ====
 
+//🏷{"id": "4860fb1c-98e9-4c2c-adfc-09ea8149235d", "labels": ["detail_level::overview"]}
 #### Gestion des catastrophes
 
 [TIP]
@@ -304,7 +321,7 @@ Autre exemple de PRA (PME avec son propre DC à Paris) : Stockage de deux serve
 Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. 
 ====
 
-
+//🏷{"id": "c7c4fce5-c971-4ec8-bef7-006381492aff", "labels": ["detail_level::overview"]}
 ### Hébergement
 
 * Où sera hébergée cette application ? DC "on premises" ? Cloud interne ? Cloud IaaS ? PaaS ? autre ?
@@ -321,6 +338,7 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel `PERSONNE`, elle sera colocalisée avec le module `COMPTA-API` dans le VLAN `XYZ`.
 ====
 
+//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["detail_level::detailed"]}
 ### Contraintes réseau
 
 [TIP]
@@ -334,6 +352,7 @@ Exemple 1 : Le LAN dispose d'un débit maximal de 10 Gbps.
 Exemple 2 : Les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
 ====
 
+//🏷{"id": "86a3082e-7069-4120-b86f-f886ef919986", "labels": ["detail_level::detailed"]}
 ### Contraintes de déploiement
 
 [TIP]
@@ -349,6 +368,7 @@ Exemple 3 : Toute application doit être publiée sous forme d'image OCI et dép
 
 ====
 
+//🏷{"id": "608d63e6-7299-4976-bf59-52fa1c6ac486", "labels": ["detail_level::detailed"]}
 ### Contraintes liées au cycle de vie des composants d'infrastructure
 
 [TIP]
