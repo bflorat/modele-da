@@ -391,7 +391,7 @@ Exemple 6 : Un calendrier de mise à jour des composants critiques sera établi 
 
 ====
 
-
+//🏷{"id": "0a25770c-6a02-4fa3-82cc-bf5152d3cba6", "labels": ["detail_level::detailed"]}
 ### Contraintes liées aux journaux
 
 [TIP]
@@ -404,6 +404,7 @@ Exemple 1 : Une application ne doit pas produire plus de 1 Tio de journaux / moi
 Exemple 2 : La durée de rétention maximale des journaux est de 3 mois.
 ====
 
+//🏷{"id": "608d63e6-7299-4976-bf59-52fa1c6ac486", "labels": ["detail_level::detailed"]}
 ### Contraintes de sauvegardes et restaurations
 
 [TIP]
@@ -425,6 +426,7 @@ Exemple 2 : La durée de retentions maximale des sauvegardes est de deux ans.
 Exemple 3 : Compter 1 min / Gio pour une restauration NetBackup.
 ====
 
+//🏷{"id": "22e6cfa3-bc3d-466c-a902-9854540258b7", "labels": ["detail_level::detailed"]}
 ### Coûts
 
 [TIP]
@@ -435,6 +437,7 @@ Lister les limites budgétaires.
 Exemple 1 : les frais de services Cloud AWS ne devront pas dépasser 5 K€/ an pour ce projet.
 ====
 
+//🏷{"id": "f9ed2469-e3e5-48a1-8b69-4b9c9492c6cb", "labels": ["detail_level::overview", "constraint"]}
 ## Exigences
 
 [TIP]
@@ -449,6 +452,7 @@ Les exigences liées à la disponibilité devraient être précisées via une é
 
 ====
 
+//🏷{"id": "332c967b-3729-4a5f-984e-fc2f301b0329", "labels": []}
 ### Plages de fonctionnement
 
 [TIP]
@@ -484,6 +488,7 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 |====
 ====
 
+//🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["availability"]}
 ### Exigences de disponibilité
 
 [TIP]
@@ -520,6 +525,7 @@ La disponibilité exigée ici devra être en cohérence avec les <<Contraintes s
 |4h, 8 fois dans l'année
 |====
 
+//🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["level::advanced","detail_level::detailed"]}
 ### Modes dégradés
 [TIP]
 ====
@@ -533,6 +539,7 @@ Exemple 1 : Le site `monsite.com` devra pouvoir continuer à accepter les comman
 Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de données puis soumis à nouveau suite à une opération manuelle des exploitants.
 ====
 
+//🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["level::intermediate", "detail_level::detailed"]}
 ### Exigences de robustesse
 
 [TIP]
@@ -553,6 +560,7 @@ Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de
 Exemple 3 : Le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95e centile.
 ====
 
+//🏷{"id": "f0e94586-876d-46ca-b060-b5dcde468734", "labels": ["level::intermediate"]}
 ### Exigences de RPO
 
 [TIP]
@@ -571,6 +579,7 @@ Fournir ici le Recovery Point Objective (RPO) de l’application (en heures). Il
 Exemple : On ne doit pas pouvoir perdre plus d'une journée de données applicatives.
 ====
 
+//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["level::intermediate", "project_size::medium", "project_size::large", "detail_level::overview"]}
 ### Exigences de RTO
 
 [TIP]
@@ -586,9 +595,10 @@ Ne préciser cette valeur que pour expliciter un objectif de restauration préci
 Exemple : On doit pouvoir restaurer et remettre en ligne les 3 Tio de la base XYZ en 1h maximum.
 ====
 
+//🏷{"id": "cdb68f23-d2c5-4373-9f7d-e358191f0ebf", "labels": ["level::intermediate","detail_level::detailed"]}
+### Exigences de déploiements et de mises à jour
 
-### Exigences de déploiements et de mise à jour
-
+//🏷{"id": "663ee84f-7dde-4c6d-acf6-a810ab8fafb4", "labels": []}
 #### Coté serveur
 
 [TIP]
@@ -602,6 +612,7 @@ Par exemple :
 * Comment sont appliquées les mises à jour ?
 ====
 
+//🏷{"id": "fd64ad27-05da-42f0-9491-f790642b5d91", "labels": ["gui"]}
 #### Coté client
 
 [TIP]
