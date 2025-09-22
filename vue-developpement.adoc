@@ -872,7 +872,7 @@ Exemple 2 (Coté client)
 * Les éléments retournés seront affichés dans les tableaux par blocs (taille paramétrable d’une taille indicative de l'ordre de 20 éléments). 
 ====
 
-//🏷{"id": "4af6fb38-c84a-456f-b043-32abeb6e7798", "labels": ["niveau:intermédiaire" "niveau_detail:détaillé"]}
+//🏷{"id": "4af6fb38-c84a-456f-b043-32abeb6e7798", "labels": ["niveau:intermédiaire","niveau_detail:détaillé"]}
 ### Provisioning et mises à jour des DDL
 
 [TIP]
