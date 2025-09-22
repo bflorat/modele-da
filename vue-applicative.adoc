@@ -188,7 +188,7 @@ TIP: Sans reprendre dans le détail les plannings du projet, donner les élémen
 Exemple 1: Mise en production avant février 2034, prérequis au programme HEAVY en mai 2034.
 ====
 
-//🏷{"id": "5837249a-8fcc-4e42-9dd9-384c4fa32afc", "labels": ["project_size::large"]}
+//🏷{"id": "5837249a-8fcc-4e42-9dd9-384c4fa32afc", "labels": ["taille_projet::grand"]}
 ### Urbanisation
 
 [TIP]
