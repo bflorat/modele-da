@@ -312,7 +312,7 @@ Exemple :
 |====
 ====
 
-//🏷{"id": "ec64dc5b-cdc1-4ab3-ae41-ac3c1c3ad9e7", "labels": ["niveau::intermédiaire"], link_to=["d6e3eb12-371b-4c26-b538-9fea2051bfed"]}
+//🏷{"id": "ec64dc5b-cdc1-4ab3-ae41-ac3c1c3ad9e7", "labels": ["niveau::intermédiaire"], "link_to":["d6e3eb12-371b-4c26-b538-9fea2051bfed"]}
 ### Performances
 
 [TIP]
@@ -884,7 +884,7 @@ Décrire comment les DDL (structures de tables en base de données) et les donn�
 Exemple : Nous utiliserons Liquibase embarqué dans les livrables pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
 ====
 
-//🏷{"id": "201fca5f-50af-41f9-ab97-60b2f7abddc6", "labels": ["niveau:intermédiaire",  "niveau_detail:détaillé"], link_to=["fbe627e5-be3f-41ec-9a2a-c43bd3587c6e"]}
+//🏷{"id": "201fca5f-50af-41f9-ab97-60b2f7abddc6", "labels": ["niveau:intermédiaire",  "niveau_detail:détaillé"], "link_to":["fbe627e5-be3f-41ec-9a2a-c43bd3587c6e"]}
 ### Gestion de l'internationalisation
 [TIP]
 ====
