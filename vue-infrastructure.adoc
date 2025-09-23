@@ -151,7 +151,7 @@ Exemple 2 : Le contrat de support Hitashi prévoit une intervention sur les baie
 Exemple 3 : le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
 ====
 
-//🏷{"id": "9c691337-434c-4439-b735-0d0884ab15f1", "labels": ["niveau_detail::approfondi"]}
+//🏷{"id": "96cd73f1-0dca-447e-8fc8-2d9c03399e1c", "labels": ["niveau_detail::approfondi"]}
 ##### Système et virtualisation
 
 TIP: Lister ici les éléments permettant d'estimer le temps de correction d'un problème lié à l'OS ou à une éventuelle solution de virtualisation.
@@ -165,7 +165,7 @@ Exemple 3 : Le temps de restauration observé d'une sauvegarde Veeam de VM de 40
 
 ====
 
-//🏷{"id": "9c691337-434c-4439-b735-0d0884ab15f1", "labels": ["niveau_detail::approfondi"]}
+//🏷{"id": "22a1f1de-1ab0-4a54-bd0f-64c7c5ab9713", "labels": ["niveau_detail::approfondi"]}
 ##### Réseau
 
 TIP: Lister ici les éléments liés au réseau permettant d'estimer les durées d’intervention des prestataires ou fournisseurs Telecom…
@@ -387,7 +387,7 @@ Exemple 3 : Toute application doit être publiée sous forme d'image OCI et dép
 
 ====
 
-//🏷{"id": "608d63e6-7299-4976-bf59-52fa1c6ac486", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "86a3082e-7069-4120-b86f-f886ef919986", "labels": ["niveau_detail::detaillé"]}
 ### Contraintes liées au cycle de vie des composants d'infrastructure
 
 [TIP]
