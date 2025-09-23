@@ -635,6 +635,7 @@ Coté client, pour une application client lourd :
 * Comment sont appliquées les mises à jour ?
 ====
 
+//🏷{"id": "0bbb4d10-bb6c-4cb0-b227-2e97db99eae1", "labels": ["level::intermediate","detail_level::detailed"]}
 #### Stratégie de déploiement spécifiques
 
 [TIP]
@@ -648,6 +649,7 @@ Coté client, pour une application client lourd :
 Exemple: L'application sera déployée sur un mode blue/green, c'est-à-dire complètement installée sur un ensemble de machines initialement inaccessibles puis une bascule DNS permettra de pointer vers les machines disposant de la dernière version.
 ====
 
+//🏷{"id": "da0d11fe-0dc9-478e-a984-7a80ea1be482", "labels": ["level::intermediate"]}
 [[exigences_ecoconception]]
 ### Exigences d'écoconception
 
@@ -668,8 +670,10 @@ Exemple 1 : Le Power Usage Effectiveness (PUE) du site devra être de 1.5 ou moi
 Exemple 2 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2024.
 ====
 
+//🏷{"id": "602a7a0a-7f25-4512-b0ab-3b97c8a734e0", "labels": ["detail_level::overview", "solution"]}
 ## Architecture cible
 
+//🏷{"id": "8088138c-5258-4f3a-a293-0984501bb5db", "labels": ["detail_level::detailed"]}
 ### Principes
 
 [TIP]
@@ -684,6 +688,7 @@ Exemples :
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
+//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["level::intermediate","availability"]}
 ### Disponibilité 
  
 [TIP] 
@@ -992,7 +997,7 @@ Exemple 2 : Pour atteindre la disponibilité de 99.97 % exigée, les dispositifs
 * Instance Oracle en RAC sur deux machines avec **interconnexion Fibre Channel (FC) dédiée, latence <1 ms**.  
 ====  
 
-
+//🏷{"id": "c23ff676-32e3-4957-8cec-6a7619a33567", "labels": ["detail_level::detailed"]}
 ### Déploiement en production
 
 [TIP]
@@ -1015,6 +1020,7 @@ Exemple :
 image::diagrammes/archi-infra.svg[Diagramme de déploiement MIEL]
 ====
 
+//🏷{"id": "28ba010e-1c33-41b9-8061-9596710563bc", "labels": ["detail_level::detailed"]}
 ### Versions des composants d'infrastructure
 
 [TIP]
@@ -1054,6 +1060,7 @@ Lister ici OS, bases de données, MOM, serveurs d'application, etc. Ne détaille
 
 |====
 
+//🏷{"id": "3ff53ea7-2e7f-4d71-8848-6819ba23c930", "labels": ["detail_level::in-depth"]}
 ### Matrice des flux techniques
 
 [TIP]
@@ -1079,6 +1086,7 @@ Les types de réseaux incluent les informations utiles sur le réseau utilisé a
 |4|sup1|host[1-6]|LAN|SNMP|199 | Non mais utilisation du VLAN d'admin
 |====
 
+//🏷{"id": "93947744-e0ec-4bc3-af30-cc60473b7caf", "labels": ["project_size::medium","project_size::large", "detail_level::detailed"]}
 ### Environnements
 
 [TIP]
@@ -1104,6 +1112,7 @@ Dans les grands systèmes d'information, il est souvent utile de segmenter les e
 |====
 ====
 
+//🏷{"id": "0bbc320c-6291-4a89-b263-66abf1906ab0", "labels": ["level::intermediate"]}
 ### Écoconception
 
 [TIP]
@@ -1156,8 +1165,10 @@ Pour évaluer et améliorer l'empreinte énergétique d'un SI, des solutions com
 **Exemple 3** : Le **scaling automatique des pods Kubernetes** permettra de **réduire l’empreinte carbone** en désactivant les instances inutiles durant les heures creuses.  
 ====
 
+//🏷{"id": "46e9c057-75cb-4bc0-9c8d-9af81f737c61", "labels": ["level::advanced", "detail_level::detailed"]}
 ### Régulation de la charge
 
+//🏷{"id": "32466600-a3a5-465f-9679-2a244b34321e", "labels": ["level::advanced", "detail_level::in-depth"]}
 #### Coupe-circuits
 
 [TIP]
@@ -1169,6 +1180,7 @@ Si ce risque est identifié, prévoir un système de fusible avec déport de tou
 Ce dispositif peut également servir en cas d’attaque de type DDOS et permet de gèrer le problème et non de le subir car on assure un bon fonctionnement acceptable aux utilisateurs déjà connectés.
 ====
 
+//🏷{"id": "44f0732c-3b29-4bd5-873f-046fc010f728", "labels": ["level::advanced", "detail_level::in-depth"]}
 #### Qualité de Service
 
 [TIP]
@@ -1202,6 +1214,7 @@ Un **Rate Limiting** de **100 requêtes par source et par minute** sera mis en p
 Les requêtes dépassant ce seuil recevront une **erreur 429 Too Many Requests** et devront être replanifiées par le client.  
 ====
 
+//🏷{"id": "5fa5ed39-9b6d-4dec-a8c1-1dc1929ff796", "labels": ["level::intermediate","detail_level::detailed"]}
 ### Gestion des timeouts
 
 [TIP]
@@ -1243,7 +1256,7 @@ Sans timeouts appropriés, des contentions peuvent émerger, entraînant des **b
 
 ====
 
-
+//🏷{"id": "c9a330f1-ffde-44e2-a432-a1e178440333", "labels": []}
 ### Exploitation
 
 [TIP]
@@ -1255,6 +1268,7 @@ Les détails (contenu des sauvegardes, plan de production, planification des tra
 Si cette application suit les standards de l'organisation, il suffit de se référer au dossier d'exploitation commun.
 ====
 
+//🏷{"id": "0a3f0e4e-0458-4528-9513-1f75a4ad8464", "labels": ["level::intermediate", "detail_level::detailed"]}
 #### Ordre d’arrêt/démarrage
 
 [TIP]
@@ -1285,6 +1299,7 @@ Préciser d'éventuelles contraintes en cas de démarrage partiel (exemple : le 
 6. Base `pg1` sur serveur `bdd1`
 ====
 
+//🏷{"id": "314a1ef0-48b4-42a4-a8b6-be49250c5a50", "labels": ["level::intermediate", "detail_level::detailed"]}
 #### Opérations programmées et suivi
 
 [TIP]
@@ -1321,7 +1336,7 @@ Exemple 2 : Le job `traiter-demande` fonctionnera **au fil de l'eau**, exécuté
 Exemple 3 : Le traitement interne `ti_index` est une **classe Java** appelant des commandes `VACUUM FULL` en JDBC, exécutée via un planificateur Quartz **une fois par mois**.
 ====
 
-
+//🏷{"id": "0cf18e71-b20e-4b2b-9377-e104c21c9785", "labels": ["level::intermediate", "detail_level::in-depth"]}
 #### Mise en maintenance
 
 [TIP]
@@ -1336,6 +1351,7 @@ Exemple 1 : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponib
 Exemple 2 : Un fichier de verrouillage `maintenance.lock` sera utilisé pour désactiver l'accès au backend. Un script shell déclenchera un mode dégradé affichant une page statique temporaire.
 ====
 
+//🏷{"id": "fd5b00b0-4b23-4cbc-8117-0dcee74ddd8b", "labels": ["detail_level::detailed"]}
 #### Sauvegardes et restaurations
 
 ##### Périmètre
@@ -1512,6 +1528,7 @@ Exemple 2: Les tests de restauration se feront sur un système de fichier chiffr
 Exemple 3 : Une restauration mensuelle des dernières sauvegardes PostgreSQL sera effectuée sur un environnement de test avec exécution de requêtes de validation des données.
 ====
 
+//🏷{"id": "74ff1a8d-91b4-4437-bbfd-439e3d4b18b5", "labels": ["level::intermediate""detail_level::detailed"]}
 #### Journaux
 
 [TIP]
@@ -1553,8 +1570,7 @@ Les journaux seront protégés contre les injections via la méthode `StringEsca
 Les logs d’accès seront envoyés sur un serveur distant en plus d’une conservation locale sur 7 jours maximum.
 ====
 
-
-
+//🏷{"id": "f31e9b70-8bf9-41b5-bbb0-c6b3f6de9347", "labels": ["level::intermediate", "detail_level::detailed","monitoring"]}
 ### Supervision
 
 [TIP]
@@ -1566,6 +1582,7 @@ Une supervision efficace ne doit pas être **uniquement réactive** (alerte en c
 - **Indicateurs** : combinaisons de plusieurs métriques avec des seuils d’alerte (ex : _"alerte critique si l'utilisation CPU du serveur `s1` dépasse 95% pendant plus de 5 minutes"_).
 ====
 
+//🏷{"id": "f31e9b70-8bf9-41b5-bbb0-c6b3f6de9347", "labels": ["level::intermediate", "detail_level::in-depth","monitoring"]}
 #### Supervision technique
 
 [TIP]
@@ -1590,6 +1607,7 @@ Lister ici les **métriques techniques (infrastructure & middleware)** à superv
 **Exemple** : Supervision du **% de CPU en IO wait** et de la **charge moyenne du serveur** (`load average`).
 ====
 
+//🏷{"id": "be41d5fd-e1a8-4a49-bf80-a81c3db693db", "labels": ["level::intermediate", "detail_level::in-depth","monitoring"]}
 #### Supervision applicative et métier
 
 [TIP]
@@ -1617,6 +1635,7 @@ Une couche BAM peut être mise en place pour générer des indicateurs orientés
 - **Taux d’erreur des transactions**.
 ====
 
+//🏷{"id": "236fd883-5195-4b81-b5dd-f6c66f9ae3f0", "labels": ["level::intermediate", "detail_level::in-depth","monitoring"]}
 #### Outils de supervision & monitoring
 
 [TIP]
@@ -1644,6 +1663,7 @@ Les indicateurs sont ensuite affichés via **tableaux de bord dynamiques** et de
 La **supervision technique et applicative** reposera sur une stack **Grafana + Prometheus + ElasticSearch**.
 ====
 
+//🏷{"id": "aa3c7bab-527c-4411-a1f2-583a1d62118f", "labels": ["level::intermediate", "detail_level::detailed","monitoring"]}
 #### Alerting & notifications
 
 [TIP]
@@ -1671,7 +1691,7 @@ Une **alerte SMS** sera envoyée si :
 - **Le nombre d’erreurs 5xx dépasse 10/h** sur un module critique.
 ====
 
-
+//🏷{"id": "20dff012-aa85-465f-ba2e-272d7580dd0b", "labels": ["level::intermediate", "detail_level::detailed","monitoring"]}
 ##### Supervision boite noire
 
 [TIP]
@@ -1686,6 +1706,7 @@ Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si te
 Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via Netvigie. En cas de panne, un mail est envoyé aux exploitants.
 ====
 
+//🏷{"id": "f455e87e-47f0-422a-a80b-0ec65517ad53", "labels": ["level::advanced", "detail_level::detailed","monitoring"]}
 ##### Métrologie
 
 [TIP]
@@ -1718,28 +1739,7 @@ Exemple :
 * Des analyses de performances plus poussées seront mises en œuvre par **Glowroot**, selon les besoins.
 ====
 
-
-### Migrations
-
-[TIP]
-====
-Ce chapitre décrit les éventuelles migrations requises depuis des systèmes plus anciens.  
-
-Décrire de façon macroscopique la procédure envisagée ainsi que les mécanismes de retour arrière.  
-
-Préciser si un fonctionnement en parallèle de l'ancien système est prévu avant activation (exemple : exécution en mode "à blanc" pour validation).  
-====
-====
-Exemple 1 : Le module `X` sera remplacé par les services `Y`. Les données Oracle `Z` du silo seront migrées en une seule opération via un script PL/SQL + DBLink vers l’instance `XX`, en respectant le nouveau format de base du module `T`.
-====
-====
-Exemple 2 : En cas de problème sur le nouveau module, un retour arrière est prévu :  
-
-* Les anciennes données seront restaurées sous **2 heures**.  
-* Les nouvelles données créées après la bascule seront retraitées via le script `S1` pour assurer leur réintégration.  
-====
-
-
+//🏷{"id": "53b2f98c-11d9-4aa0-b762-b8f31db0c30f", "labels": ["level::intermediate"]}
 ### Décommissionnement
 
 [TIP]

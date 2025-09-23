@@ -438,6 +438,27 @@ image:diagrammes/archi-applicative-detaillee-dynamique.svg[Diagramme architectur
 
 ====
 
+//🏷{"id": "9ac6e5d2-e9a0-427e-ba12-27dedbd8ac4d", "labels": ["level::intermediate","migration"]}
+### Trajectoires de migrations
+
+[TIP]
+====
+Ce chapitre décrit les éventuelles migrations requises depuis des systèmes plus anciens.  
+
+Décrire de façon macroscopique la procédure envisagée ainsi que les mécanismes de retour arrière.  
+
+Préciser si un fonctionnement en parallèle de l'ancien système est prévu avant activation (exemple : exécution en mode "à blanc" pour validation).  
+====
+====
+Exemple 1 : Le module `X` sera remplacé par les services `Y`. Les données Oracle `Z` du silo seront migrées en une seule opération via un script PL/SQL + DBLink vers l’instance `XX`, en respectant le nouveau format de base du module `T`.
+====
+====
+Exemple 2 : En cas de problème sur le nouveau module, un retour arrière est prévu :  
+
+* Les anciennes données seront restaurées sous **2 heures**.  
+* Les nouvelles données créées après la bascule seront retraitées via le script `S1` pour assurer leur réintégration.  
+====
+
 //🏷{"id": "5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f", "labels": ["niveau_detail::détaillé","archivage"]}
 ### Archivage
 
