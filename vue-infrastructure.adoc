@@ -357,7 +357,7 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel `PERSONNE`, elle sera colocalisée avec le module `COMPTA-API` dans le VLAN `XYZ`.
 ====
 
-//🏷{"id": "22a1f1de-1ab0-4a54-bd0f-64c7c5ab9713", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["niveau_detail::detaillé"]}
 ### Contraintes réseau
 
 [TIP]
@@ -387,7 +387,7 @@ Exemple 3 : Toute application doit être publiée sous forme d'image OCI et dép
 
 ====
 
-//🏷{"id": "86a3082e-7069-4120-b86f-f886ef919986", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "16781642-a7f3-40f1-b208-e4064ffedaa4", "labels": ["niveau_detail::detaillé"]}
 ### Contraintes liées au cycle de vie des composants d'infrastructure
 
 [TIP]
