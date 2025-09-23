@@ -1,5 +1,4 @@
-
-# Vue architecture sécurité
+# Vue sécurité
 :sectnumlevels: 4
 :toclevels: 4
 :sectnums: 4
@@ -13,7 +12,7 @@
 
 *Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
-
+//🏷{"id": "a08e807e-1e9b-4752-a5b8-372a40665c49", "labels": ["context"]}
 ## Introduction
 
 La vue sécurité décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
@@ -25,6 +24,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 [TIP]
 La disponibilité est traitée dans la vue infrastructure.
 
+//🏷{"id": "cd8c64f1-d216-4b24-946c-175455e824a7", "labels": ["context","references"]}
 ### Documentation de Référence
 
 [TIP]
@@ -42,8 +42,10 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |3|latest|Explications RGPD | https://www.cnil.fr/fr/rgpd-par-ou-commencer
 |====
 
+//🏷{"id": "ea245600-dbd6-4f56-a58c-8c77556643ad", "labels": ["context","uncertainty"]}
 ## Non statué
 
+//🏷{"id": "a058d388-72e1-4136-8659-7a9db1c1a340", "labels": []}
 ### Points nécessitant une étude complémentaire
 
 .Points nécessitant une étude complémentaire
@@ -59,6 +61,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
+//🏷{"id": "68a4f41c-1139-4cdd-bb9e-e15667f47fd9", "labels": []}
 ### Hypothèses
 
 .Hypothèses
@@ -70,6 +73,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |La solution SAML actuellement en place dans l’organisation ne permet pas de répondre aux besoins d’authentification exprimés pour cette application Internet. Une solution OpenID Connect sera proposée. 
 |====
 
+//🏷{"id": "53ae9c06-1846-4dd2-ab55-f4a784c6a676", "labels": ["detail_level::overview", "constraints"]}
 ## Contraintes
 
 [TIP]
@@ -92,7 +96,7 @@ Exemple 2 : Il est formellement interdit à un module de la **zone Internet** d'
 Exemple 3 : En application du **RGPD**, les données utilisateur devront être chiffrées **au repos et en transit** avec **AES-256 et TLS 1.3**.
 ====
 
-
+//🏷{"id": "4882e5b9-c250-4079-8b24-04996016606d", "labels": ["detail_level::overview", "requirement"]}
 ## Exigences
 
 [TIP]
@@ -102,7 +106,7 @@ Présenter ici les **exigences**, *pas les dispositifs y répondant*. Ceux-ci se
 Pour les projets particulièrement sensibles, prévoir un **dossier d’analyse de risque**. Pour cela, utiliser par exemple la méthode https://www.ssi.gouv.fr/guide/la-methode-ebios-risk-manager-le-guide/[EBIOS Risk Manager] (_Expression des Besoins et Identification des Objectifs de Sécurité_).
 ====
 
-[[exigences-integrite]]
+//🏷{"id": "323d4c77-810a-4015-bc1a-11da07e24f3b", "labels": []}
 ### Exigences d'intégrité
 
 [TIP]
@@ -137,7 +141,6 @@ Exemples de dispositifs associés selon le niveau d’intégrité requis :
 ====
 
 
-[[exigences-confidentialite]]
 ### Exigences de confidentialité
 
 [TIP]
@@ -182,7 +185,6 @@ La confidentialité est la garantie que l’information **n’est accessible qu�
 ====
 
 
-[[exigences-identification]]
 ### Exigences d'identification
 
 [TIP]
@@ -217,7 +219,6 @@ L’identification permet d'**attribuer un identifiant unique** à chaque utilis
 ====
 
 
-[[exigences-authentification]]
 ### Exigences d'authentification
 
 [TIP]
@@ -285,8 +286,6 @@ Le tableau ci-dessous indique les **facteurs d’authentification requis** selon
 - **Gérer la révocation et le renouvellement** → prévoir des mécanismes pour régénérer un facteur perdu ou compromis.  
 ====
 
-
-[[exigences-federation-identite]]
 ### Exigences de fédération d’identité
 
 [TIP]
@@ -320,7 +319,6 @@ L’identification et l’authentification des utilisateurs seront externalisée
 ====
 
 
-[[exigences-sso-slo]]
 ### Exigences de SSO et SLO
 
 [TIP]
@@ -360,7 +358,6 @@ L’application fonctionne de manière autonome et ne partage pas d’authentifi
 ====
 
 
-[[exigences-non-repudiation]]
 ### Exigences de non-répudiation
 
 [TIP]
@@ -401,7 +398,6 @@ La signature numérique est reconnue légalement par **le texte n°2000-230 du 1
 |PKI du fournisseur de paiement (ex. : Visa, Mastercard)
 |===
 
-[[exigences-anonymat]]
 ### Exigences d'anonymat et de respect de la vie privée
 
 [TIP]
@@ -427,7 +423,6 @@ Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs 
 ====
 
 
-[[exigences-habilitations]]
 ### Exigences sur les habilitations
 
 [TIP]
@@ -502,7 +497,6 @@ Le détail des autorisations sera documenté dans les **SFD (Spécifications Fon
 |===
 
 
-[[exigences-tracabilite]]
 ### Exigences de traçabilité et d'auditabilité
 
 [TIP]
@@ -1007,9 +1001,8 @@ Ce RACI permet de définir clairement les rôles et responsabilités des équipe
 * {i} : *Informed* (doit être informé après réalisation).
 
 Dans un bon RACI, il ne doit **jamais** y avoir plus d'un {a} pour chaque ligne.
-====
 
-### Gestion de la plateforme Cloud (exemple AWS)
+Example: 
 
 .Gestion des services Cloud AWS
 [cols="6,^1,^1,^1"]
@@ -1031,8 +1024,6 @@ Dans un bon RACI, il ne doit **jamais** y avoir plus d'un {a} pour chaque ligne.
 .^|{a}
 .^|{i}
 |===
-
-### Gestion des identités et habilitations
 
 .Gestion des comptes applicatifs & IAM
 [cols="6,^1,^1,^1"]
@@ -1056,6 +1047,7 @@ Dans un bon RACI, il ne doit **jamais** y avoir plus d'un {a} pour chaque ligne.
 
 |===
 
+====
 ## Auto-contrôles de sécurité
 
 ### Auto-contrôle des vulnérabilités

@@ -251,16 +251,35 @@ Exemple : Le datacenter de Paris est de niveau Tier III et celui de Toulouse Ti
 ====
 
 //🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["detail_level::overview"]}
-#### Synthèse de la disponibilité plancher
+#### Plafond de disponibilité (borne supérieure)
 
 [TIP]
 ====
-En prenant en compte les éléments précédents, estimer la disponibilité plancher (maximale) d'une application (hors catastrophe). Toute exigence devra être inférieure à celle-ci. Dans le cas d'un cloud, se baser sur le SLA du fournisseur. Dans le cas d'une application hébergée en interne, prendre en compte la disponibilité du datacenter et des indisponibilité programmées.
+Expliquez clairement aux parties prenantes que, même avec de la HA au niveau applicatif, la **disponibilité de bout en bout maximale** est plafonnée par la disponibilité des dépendances sous-jacentes (datacenter, réseau, plateforme).
+Ce **plafond de disponibilité** est le produit de leurs SLA et est toujours
+≤ à la dépendance la moins disponible.
+
+`A_plafond = ∏(A_SLA de chaque dépendance en série)  ≤  min(A_SLA)`
+
+**Implication :** les cibles SLO **ne doivent pas dépasser** ce plafond. La HA aide à
+s’approcher du plafond, pas à le dépasser.
+
+**Notes de périmètre**
+
+* Si toutes les répliques se trouvent dans le **même domaine de défaillance** (même DC/énergie/accès),
+  le SLA du DC **fixe effectivement le plafond**.
+* Pour **rehausser le plafond**, utilisez des **domaines de défaillance indépendants** (p. ex. multi-AZ/région) ;
+  pour la redondance en parallèle : `A_parallel = 1 - ∏(1 - A_i)` (indépendance supposée).
 ====
 
 ====
-Exemple : Disponibilité effective application  = <disponibilité datacenter> * <plage de fonctionnement effective> * <disponibilité système > * <disponibilité hardware> = 99.8 x 99.99 x 99.6 x 99.99 =~ *99.4%*.
+*Exemple (sériel, un seul DC) :*  
+`<Datacenter 99,9 %> × <Réseau interne 99,95 %> × <Plateforme 99,9 %> ≈ **99,75 %**`
+
+Même si la couche applicative est « HA 99,999 % », la disponibilité **de bout en bout**
+ne peut pas dépasser ~**99,75 %** sur cette infrastructure.
 ====
+
 
 //🏷{"id": "4860fb1c-98e9-4c2c-adfc-09ea8149235d", "labels": ["detail_level::overview"]}
 #### Gestion des catastrophes
@@ -650,7 +669,6 @@ Exemple: L'application sera déployée sur un mode blue/green, c'est-à-dire com
 ====
 
 //🏷{"id": "da0d11fe-0dc9-478e-a984-7a80ea1be482", "labels": ["level::intermediate"]}
-[[exigences_ecoconception]]
 ### Exigences d'écoconception
 
 [TIP]
