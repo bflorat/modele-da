@@ -357,7 +357,7 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel `PERSONNE`, elle sera colocalisée avec le module `COMPTA-API` dans le VLAN `XYZ`.
 ====
 
-//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["detail_level::detailed"]}
+//🏷{"id": "22a1f1de-1ab0-4a54-bd0f-64c7c5ab9713", "labels": ["detail_level::detailed"]}
 ### Contraintes réseau
 
 [TIP]
@@ -1588,7 +1588,7 @@ Les journaux seront protégés contre les injections via la méthode `StringEsca
 Les logs d’accès seront envoyés sur un serveur distant en plus d’une conservation locale sur 7 jours maximum.
 ====
 
-//🏷{"id": "f31e9b70-8bf9-41b5-bbb0-c6b3f6de9347", "labels": ["level::intermediate", "detail_level::detailed","monitoring"]}
+//🏷{"id": "2c3d502d-d67c-417b-88f4-d610e158e930", "labels": ["level::intermediate", "detail_level::detailed","monitoring"]}
 ### Supervision
 
 [TIP]
