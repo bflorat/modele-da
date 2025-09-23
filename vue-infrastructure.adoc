@@ -1528,7 +1528,7 @@ Exemple 2: Les tests de restauration se feront sur un système de fichier chiffr
 Exemple 3 : Une restauration mensuelle des dernières sauvegardes PostgreSQL sera effectuée sur un environnement de test avec exécution de requêtes de validation des données.
 ====
 
-//🏷{"id": "74ff1a8d-91b4-4437-bbfd-439e3d4b18b5", "labels": ["level::intermediate""detail_level::detailed"]}
+//🏷{"id": "74ff1a8d-91b4-4437-bbfd-439e3d4b18b5", "labels": ["level::intermediate","detail_level::detailed"]}
 #### Journaux
 
 [TIP]
