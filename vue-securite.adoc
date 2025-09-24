@@ -236,8 +236,8 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 
 ====
 
-//🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["niveau::avancé", "niveau::avancé", "niveau_detail::detaillé"]}
-#### **Facteurs d’authentification**
+//🏷{"id": "500d6ef3-3b9b-4820-9178-39127920a247", "labels": ["niveau::avancé", "niveau_detail::detaillé"]}
+#### Facteurs d’authentification
 L’authentification peut être basée sur **un seul facteur** ou être **multi-facteurs (MFA)** pour plus de sécurité.  
 Les principaux types de facteurs sont :
 
@@ -245,7 +245,8 @@ Les principaux types de facteurs sont :
 * **Ce que l'on *est*** → Biométrie (empreinte digitale, reconnaissance faciale, ADN, signature…).
 * **Ce que l'on *possède*** → Clé privée, token OTP (TOTP, FIDO2, carte à puce), e-mail de validation.
 
-#### **Exigences d'authentification par cas d'utilisation**
+//🏷{"id": "58bf95ee-2fc4-4972-ac2b-7e2f775a4eb9", "labels": ["niveau_detail::detaillé"]}
+#### Exigences d'authentification par cas d'utilisation
 Le tableau ci-dessous indique les **facteurs d’authentification requis** selon le contexte d’utilisation :  
 
 [cols="e,e,e,e,e,e,e"]
