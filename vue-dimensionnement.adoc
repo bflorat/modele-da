@@ -93,7 +93,7 @@ TIP: Lister ici les éventuelles contraintes liées au stockage persistant.
 Exemple : L'espace disque maximal allouable à une VM est de 2 To.
 ====
 
-//🏷{"id": "1d3ec06e-d63d-4a61-bb4e-437358064687", "labels": ["level::intermediate", "detail_level::detailed"]}
+//🏷{"id": "1d3ec06e-d63d-4a61-bb4e-437358064687", "labels": ["niveau::intermédaire", "niveau_detail::detaillé"]}
 ### Contraintes CPU
 
 TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul
@@ -106,7 +106,7 @@ Exemple 1 : Une VM sera dotée au maximum de 10 VCPU
 Exemple 2 : L'ensemble des pods de l'application ne devra pas demander plus de 1 CPU par node.
 ====
 
-//🏷{"id": "ec6a420b-c284-442a-93fd-edc3d45ed00a", "labels": ["level::intermediate", "detail_level::detailed"]}
+//🏷{"id": "ec6a420b-c284-442a-93fd-edc3d45ed00a", "labels": ["niveau::intermédaire", "niveau_detail::detaillé"]}
 ### Contraintes mémoire
 
 TIP: Lister ici les éventuelles contraintes liées à la mémoire
@@ -148,7 +148,7 @@ Les sections suivantes portant sur les calculs de volumétrie statiques et dynam
 
 TIP: Il s'agit des métriques permettant de déterminer le volume de stockage *cumulé* du projet. Penser à bien préciser les hypothèses prises pour les métriques estimées. Il sera ainsi possible de les revoir si de nouveaux éléments métier apparaissent.
 
-//🏷{"id": "1736e661-2c68-4aa6-a157-9e4444d5a374", "labels": ["detail_level::detailed"]}
+//🏷{"id": "1736e661-2c68-4aa6-a157-9e4444d5a374", "labels": ["niveau_detail::detaillé"]}
 #### Métriques
 
 TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entrants au calcul des besoins techniques de stockage.
@@ -161,7 +161,7 @@ TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entra
 |S2 |Taille moyenne d'un PDF composé| Mesurée | 40Ko  | 0%| Exploitants | 
 |===
 
-//🏷{"id": "9968c2e6-46b9-4005-89d4-6a9114246a4c", "labels": ["detail_level::detailed"]}
+//🏷{"id": "9968c2e6-46b9-4005-89d4-6a9114246a4c", "labels": ["niveau_detail::detaillé"]}
 #### Estimation besoins de stockage
 
 [TIP]
@@ -225,7 +225,7 @@ Ne prendre en compte que les données dont la taille est significative (au moins
 
 TIP: Il s'agit des métriques par durée (année, mois, heure…) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
 
-//🏷{"id": "910fc171-30ed-47cd-b03c-3ca918b3103e", "labels": ["detail_level::detailed"]}
+//🏷{"id": "910fc171-30ed-47cd-b03c-3ca918b3103e", "labels": ["niveau_detail::detaillé"]}
 #### Métriques
 
 TIP: Ce sont les données métier mesurées ou estimées qui serviront d'entrants au calcul de la charge.
@@ -244,7 +244,7 @@ a|
  | Les utilisateurs sont des professionnels utilisant l'application depuis la France métropolitaine aux heures de bureau standards
 |===
 
-//🏷{"id": "3d09511c-17b2-43c3-bcba-0a62ead057b4", "labels": ["detail_level::detailed"]}
+//🏷{"id": "3d09511c-17b2-43c3-bcba-0a62ead057b4", "labels": ["niveau_detail::detaillé"]}
 #### Estimation de la charge
 
 [TIP]
@@ -322,7 +322,7 @@ Exemple : la base de données Oracle BD01 est utilisée en lecture par les appel
 //🏷{"id": "c1a8f666-70e1-4acf-9d7a-5e1b06ecb588", "labels": []}
 ### Exigences de temps de réponse
 
-//🏷{"id": "24f70acd-5f7c-49b3-bd75-d594e5af8917", "labels": ["detail_level::detailed", "gui"]}
+//🏷{"id": "24f70acd-5f7c-49b3-bd75-d594e5af8917", "labels": ["niveau_detail::detaillé", "ihm"]}
 #### Temps de Réponse des IHM
 
 [TIP]
@@ -372,7 +372,7 @@ Acceptable si :
 En dehors de ces valeurs, l’application devra être optimisée et repasser en recette puis être soumise à nouveau aux tests de charge.
 ====
 
-//🏷{"id": "88645b89-d407-4107-93b2-48003fd8688a", "labels": ["detail_level::detailed", "batch"]}
+//🏷{"id": "88645b89-d407-4107-93b2-48003fd8688a", "labels": ["niveau_detail::detaillé", "batch"]}
 #### Durée d’exécution des batchs
 
 [TIP]

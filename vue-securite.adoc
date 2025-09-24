@@ -236,7 +236,7 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 
 ====
 
-//🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["level::advanced", "level::advanced", "detail_level::detailed"]}
+//🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["niveau::avancé", "niveau::avancé", "niveau_detail::detaillé"]}
 #### **Facteurs d’authentification**
 L’authentification peut être basée sur **un seul facteur** ou être **multi-facteurs (MFA)** pour plus de sécurité.  
 Les principaux types de facteurs sont :
@@ -287,7 +287,7 @@ Le tableau ci-dessous indique les **facteurs d’authentification requis** selon
 - **Gérer la révocation et le renouvellement** → prévoir des mécanismes pour régénérer un facteur perdu ou compromis.  
 ====
 
-//🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["level::advanced", "level::advanced", "detail_level::detailed"]}
+//🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["niveau::avancé", "niveau::avancé", "niveau_detail::detaillé"]}
 ### Exigences de fédération d’identité
 
 [TIP]
@@ -320,7 +320,7 @@ L’identification et l’authentification des utilisateurs seront externalisée
 - **Améliorer la sécurité** en déléguant l’authentification à un IdP conforme aux normes de sécurité.
 ====
 
-//🏷{"id": "400376ad-cc62-4ab3-8e96-5a9f9a954e49", "labels": ["level::advanced", "level::advanced"]}
+//🏷{"id": "400376ad-cc62-4ab3-8e96-5a9f9a954e49", "labels": ["niveau::avancé", "niveau::avancé"]}
 ### Exigences de SSO et SLO
 
 [TIP]
@@ -359,7 +359,7 @@ L’application fonctionne de manière autonome et ne partage pas d’authentifi
 - Le protocole choisi sera **OIDC avec un Identity Provider interne**.
 ====
 
-//🏷{"id": "01404b83-f96f-4649-ace0-e5611601b830", "labels": ["level::advanced"]}
+//🏷{"id": "01404b83-f96f-4649-ace0-e5611601b830", "labels": ["niveau::avancé"]}
 ### Exigences de non-répudiation
 
 [TIP]
@@ -425,7 +425,7 @@ Exemple 5 : En application de la directive européenne « paquet telecom », 
 Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs dans la conservation de leurs données personnelles de santé sera proposé.
 ====
 
-//🏷{"id": "fcad5990-c241-4c88-b2c5-646602f8935a", "labels": ["level::intermediate"]}
+//🏷{"id": "fcad5990-c241-4c88-b2c5-646602f8935a", "labels": ["niveau::intermédaire"]}
 ### Exigences sur les habilitations
 
 [TIP]
@@ -499,7 +499,7 @@ Le détail des autorisations sera documenté dans les **SFD (Spécifications Fon
 | X
 |===
 
-//🏷{"id": "e72e5ea5-5711-4665-8a91-76c63cbca2bc", "labels": ["level::intermediate"]}
+//🏷{"id": "e72e5ea5-5711-4665-8a91-76c63cbca2bc", "labels": ["niveau::intermédaire"]}
 ### Exigences de traçabilité et d'auditabilité
 
 [TIP]
@@ -735,7 +735,7 @@ Après **5 échecs successifs**, le compte sera **verrouillé temporairement pen
 Exemple 7 : Les connexions suspectes (nouvelle adresse IP, localisation inhabituelle) nécessiteront une **vérification supplémentaire via un OTP envoyé par e-mail**.
 ====
 
-//🏷{"id": "49de0015-9e27-4f60-91ca-282feec8345d", "labels": ["level::advanced","detail_level::detailed"], "link_to": ["f552f1e6-9aea-4866-8da1-e7ed676fd228"]}
+//🏷{"id": "49de0015-9e27-4f60-91ca-282feec8345d", "labels": ["niveau::avancé","niveau_detail::detaillé"], "link_to": ["f552f1e6-9aea-4866-8da1-e7ed676fd228"]}
 ### Fédération d’identité
 
 [TIP]
@@ -754,7 +754,7 @@ Exemple  : L’IHM grand public permettra une identification et authentificatio
 Les utilisateurs pourront s’identifier en réutilisant leur compte **DGFiP, CNAM, etc.**  
 ====
 
-//🏷{"id": "1c4774ab-e6fc-46a4-bb89-97e318a8dd8f", "labels": ["level::advanced", "level::advanced"],"link_to:":["400376ad-cc62-4ab3-8e96-5a9f9a954e49"]}
+//🏷{"id": "1c4774ab-e6fc-46a4-bb89-97e318a8dd8f", "labels": ["niveau::avancé", "niveau::avancé"],"link_to:":["400376ad-cc62-4ab3-8e96-5a9f9a954e49"]}
 ### SSO et SLO
 
 [TIP]
@@ -781,7 +781,7 @@ Exemple 2 : Comme toutes les applications du **portail métier**, l’IHM X dev
 Exemple 3 : Le SSO sera mis en œuvre via **Keycloak** en tant que fournisseur d’identité, avec une délégation vers l’AD via **LDAP**.
 ====
 
-//🏷{"id": "8e35ee35-b5bc-433b-8389-f07e62a05339", "labels": "detail_level::detailed"]}
+//🏷{"id": "8e35ee35-b5bc-433b-8389-f07e62a05339", "labels": "niveau_detail::detaillé"]}
 ### Comptes de service
 
 [TIP]
@@ -805,7 +805,7 @@ Les **comptes de service** sont utilisés pour authentifier une application ou u
 |`ci_cd_runner` | Serveur CI/CD | **Stockage en HashiCorp Vault avec rotation automatique des secrets**
 |====
 
-//🏷{"id": "9f09dacf-d151-45af-a5f6-209823e7a401", "labels": ["level::advanced"],"link_to":["01404b83-f96f-4649-ace0-e5611601b830"]}
+//🏷{"id": "9f09dacf-d151-45af-a5f6-209823e7a401", "labels": ["niveau::avancé"],"link_to":["01404b83-f96f-4649-ace0-e5611601b830"]}
 ### Non-répudiation et horodatage
 
 ====
@@ -843,7 +843,7 @@ Les **colonnes sensibles seront exclues** de la réplication vers la zone publiq
 Exemple 3 : Un **bandeau de consentement aux cookies** sera mis en place sur toutes les pages de l’application **Angular** via le module `angular-cookie-law`.
 ====
 
-//🏷{"id": "e6d0ad26-40b7-412e-b861-1f8e6e2299ca", "labels": ["level::intermediate"],"link_to":["fcad5990-c241-4c88-b2c5-646602f8935a"]}
+//🏷{"id": "e6d0ad26-40b7-412e-b861-1f8e6e2299ca", "labels": ["niveau::intermédaire"],"link_to":["fcad5990-c241-4c88-b2c5-646602f8935a"]}
 ### Habilitations
 
 ====
@@ -855,7 +855,7 @@ Exemple 2 : L’accès aux **carnets d’adresses** sera contrôlé via **OAuth
 L’API utilisée sera **Google OAuth2 en Java**.
 ====
 
-//🏷{"id": "3819b8cc-d9c4-4d29-9ca1-adae300a79e2", "labels": ["level::intermediate"],"link_to":["e72e5ea5-5711-4665-8a91-76c63cbca2bc"]}
+//🏷{"id": "3819b8cc-d9c4-4d29-9ca1-adae300a79e2", "labels": ["niveau::intermédaire"],"link_to":["e72e5ea5-5711-4665-8a91-76c63cbca2bc"]}
 ### Traçabilité et auditabilité
 
 ====
@@ -880,7 +880,7 @@ Exemple 5 : Les journaux **contenant le tag `[PREUVE]`** et issus de **tous les
 - **Indexés quotidiennement** dans l’index **Elastic `preuves`** pour faciliter les recherches et la conformité.
 ====
 
-//🏷{"id": "5e00eeef-1d5b-4a21-ac19-116ae376d999", "labels": ["level::intermediate"]}
+//🏷{"id": "5e00eeef-1d5b-4a21-ac19-116ae376d999", "labels": ["niveau::intermédaire"]}
 ### Lutte contre les cybermenaces
 
 Les cybermenaces incluent : malwares, phishing, attaques DOS/DDOS, exploitation de vulnérabilités (connues ou zero-day), ingénierie sociale, escroqueries en ligne, fuites de données sensibles, etc.
@@ -952,7 +952,7 @@ Ces solutions permettent de **réagir** et **corriger** après la détection d�
 Exemple 1 : Déploiement d’un **plan de secours** basé sur les recommandations du https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/cyberattaque-que-faire-guide-dirigeants[NIST SP 800-61].
 ====
 
-//🏷{"id": "a69b42f5-4f4e-42bf-b4bc-c6093941600f", "labels": ["level::advanced"]}
+//🏷{"id": "a69b42f5-4f4e-42bf-b4bc-c6093941600f", "labels": ["niveau::avancé"]}
 #### Solutions de prédiction
 
 Ces solutions récentes reposent sur **l’analyse comportementale** et le **Machine Learning**.
@@ -972,7 +972,7 @@ Exemple 2 : Utilisation de **CrowdSec Threat Intelligence** pour anticiper les t
 //🏷{"id": "d4d0f075-dff9-4d81-aebc-bbd0cc45bb55", "labels": ["annexe"]}
 ## Annexes
 
-//🏷{"id": "b2f76b28-83da-478b-bc94-f1bc29dc6084", "labels": ["level::intermediate", "detail_level::detailed"]}
+//🏷{"id": "b2f76b28-83da-478b-bc94-f1bc29dc6084", "labels": ["niveau::intermédaire", "niveau_detail::detaillé"]}
 ### RACI & Gouvernance de la Sécurité
 
 [NOTE]
@@ -1039,7 +1039,7 @@ Example:
 |===
 
 ====
-//🏷{"id": "7d8dff71-3acd-450b-bc68-d2e2efee2fbb", "labels": ["level::intermediate","detail_level::detailed"]}
+//🏷{"id": "7d8dff71-3acd-450b-bc68-d2e2efee2fbb", "labels": ["niveau::intermédaire","niveau_detail::detaillé"]}
 ### Auto-contrôles de sécurité
 
 //🏷{"id": "68556bb6-b10d-4fe3-b956-ae9c5f926f4a", "labels": []}

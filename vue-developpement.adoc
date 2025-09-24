@@ -629,7 +629,7 @@ Comment gère-t-on les erreurs ? Exemples de points à traiter :
 Exemple : les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
 ====
 
-//🏷{"id": "7a33eb60-882d-4095-bde2-9a477cc27433", "labels": ["gui"]}
+//🏷{"id": "7a33eb60-882d-4095-bde2-9a477cc27433", "labels": ["ihm"]}
 #### Gestion de la robustesse coté frontend
 
 [TIP]

@@ -544,7 +544,7 @@ La disponibilité exigée ici devra être en cohérence avec les <<Contraintes s
 |4h, 8 fois dans l'année
 |====
 
-//🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["level::advanced","niveau_detail::detaillé"]}
+//🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["niveau::avancé","niveau_detail::detaillé"]}
 ### Modes dégradés
 [TIP]
 ====
@@ -631,7 +631,7 @@ Par exemple :
 * Comment sont appliquées les mises à jour ?
 ====
 
-//🏷{"id": "fd64ad27-05da-42f0-9491-f790642b5d91", "labels": ["gui"]}
+//🏷{"id": "fd64ad27-05da-42f0-9491-f790642b5d91", "labels": ["ihm"]}
 #### Coté client
 
 [TIP]
@@ -1183,10 +1183,10 @@ Pour évaluer et améliorer l'empreinte énergétique d'un SI, des solutions com
 **Exemple 3** : Le **scaling automatique des pods Kubernetes** permettra de **réduire l’empreinte carbone** en désactivant les instances inutiles durant les heures creuses.  
 ====
 
-//🏷{"id": "46e9c057-75cb-4bc0-9c8d-9af81f737c61", "labels": ["level::advanced", "niveau_detail::detaillé"]}
+//🏷{"id": "46e9c057-75cb-4bc0-9c8d-9af81f737c61", "labels": ["niveau::avancé", "niveau_detail::detaillé"]}
 ### Régulation de la charge
 
-//🏷{"id": "32466600-a3a5-465f-9679-2a244b34321e", "labels": ["level::advanced", "niveau_detail::approfondi"]}
+//🏷{"id": "32466600-a3a5-465f-9679-2a244b34321e", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
 #### Coupe-circuits
 
 [TIP]
@@ -1198,7 +1198,7 @@ Si ce risque est identifié, prévoir un système de fusible avec déport de tou
 Ce dispositif peut également servir en cas d’attaque de type DDOS et permet de gèrer le problème et non de le subir car on assure un bon fonctionnement acceptable aux utilisateurs déjà connectés.
 ====
 
-//🏷{"id": "44f0732c-3b29-4bd5-873f-046fc010f728", "labels": ["level::advanced", "niveau_detail::approfondi"]}
+//🏷{"id": "44f0732c-3b29-4bd5-873f-046fc010f728", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
 #### Qualité de Service
 
 [TIP]
@@ -1724,7 +1724,7 @@ Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si te
 Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via Netvigie. En cas de panne, un mail est envoyé aux exploitants.
 ====
 
-//🏷{"id": "f455e87e-47f0-422a-a80b-0ec65517ad53", "labels": ["level::advanced", "niveau_detail::detaillé","supervision"]}
+//🏷{"id": "f455e87e-47f0-422a-a80b-0ec65517ad53", "labels": ["niveau::avancé", "niveau_detail::detaillé","supervision"]}
 ##### Métrologie
 
 [TIP]
