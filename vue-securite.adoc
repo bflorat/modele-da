@@ -690,7 +690,7 @@ Exemple 2 : Pour éviter la réutilisation des identifiants de comptes supprim�
 Exemple 3 : Les comptes de service seront identifiés via une clé API unique stockée dans un **Vault sécurisé** et soumise à une rotation automatique tous les 6 mois.
 ====
 
-//🏷{"id": "ac587042-7060-44cf-96aa-93fddadc15f5", "labels": ], "link_to": ["9d0646cd-3e3f-4878-96de-f215c9f20bdc"]}
+//🏷{"id": "ac587042-7060-44cf-96aa-93fddadc15f5", "labels": [], "link_to": ["9d0646cd-3e3f-4878-96de-f215c9f20bdc"]}
 ### Authentification
 
 [TIP]
@@ -781,7 +781,7 @@ Exemple 2 : Comme toutes les applications du **portail métier**, l’IHM X dev
 Exemple 3 : Le SSO sera mis en œuvre via **Keycloak** en tant que fournisseur d’identité, avec une délégation vers l’AD via **LDAP**.
 ====
 
-//🏷{"id": "8e35ee35-b5bc-433b-8389-f07e62a05339", "labels": "niveau_detail::detaillé"]}
+//🏷{"id": "8e35ee35-b5bc-433b-8389-f07e62a05339", "labels": ["niveau_detail::detaillé"]}
 ### Comptes de service
 
 [TIP]
