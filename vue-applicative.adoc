@@ -164,7 +164,7 @@ WARNING: Ne pas reprendre l'AIPD mais y faire référence s'il existe.
 | Classification | Public, Interne, Diffusion restreinte, Confidentiel
 |===
 
-//🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["detail_level::overview","contraintes"]}
+//🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["niveau_detail::general","contraintes"]}
 ## Contraintes
 
 TIP: Limites / choix imposés sur la façon de concevoir ou de réaliser : technologies, processus, organisation, budget, réglementation. Elles rétrécissent l’espace de conception.
@@ -338,7 +338,7 @@ Exemple :
 |====
 ====
 
-//🏷{"id": "b269e65b-a8c7-4518-a861-5c6c17802869", "labels": ["solution","detail_level::overview"]}
+//🏷{"id": "b269e65b-a8c7-4518-a861-5c6c17802869", "labels": ["solution","niveau_detail::general"]}
 ## Architecture cible
 
 //🏷{"id": "2c107a25-a1c4-433d-b746-e12aa2c6eea1", "labels": []}

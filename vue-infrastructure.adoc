@@ -43,7 +43,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
-//🏷{"id": "933039be-008f-40c7-a630-a08002b379f1", "labels": ["context","uncertainty"]}
+//🏷{"id": "933039be-008f-40c7-a630-a08002b379f1", "labels": ["context","incertitude"]}
 ## Non statué
 
 //🏷{"id": "87385297-c5c3-44f6-b9e8-7599576dda0a", "labels": []}
@@ -73,7 +73,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Nous prenons l'hypothèse que d'ici à la MEP du projet, PostgreSQL 17 sera validé en interne.
 |====
 
-//🏷{"id": "82a207de-bc6f-4a62-a586-96a2b4c9f4dc", "labels": ["detail_level::overview", "constraints"]}
+//🏷{"id": "82a207de-bc6f-4a62-a586-96a2b4c9f4dc", "labels": ["niveau_detail::general", "contraintes"]}
 ## Contraintes
 
 [TIP]
@@ -84,7 +84,7 @@ Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par
 
 ====
 
-//🏷{"id": "cc4a17a8-d68b-43cf-8b4e-c64829d950fc", "labels": ["availability"]}
+//🏷{"id": "cc4a17a8-d68b-43cf-8b4e-c64829d950fc", "labels": ["disponibilité"]}
 ### Contraintes sur la disponibilité
 
 [TIP]
@@ -250,7 +250,7 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 Exemple : Le datacenter de Paris est de niveau Tier III et celui de Toulouse Tier II.
 ====
 
-//🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["detail_level::overview"]}
+//🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["niveau_detail::general"]}
 #### Plafond de disponibilité (borne supérieure)
 
 [TIP]
@@ -281,7 +281,7 @@ ne peut pas dépasser ~**99,75 %** sur cette infrastructure.
 ====
 
 
-//🏷{"id": "4860fb1c-98e9-4c2c-adfc-09ea8149235d", "labels": ["detail_level::overview"]}
+//🏷{"id": "4860fb1c-98e9-4c2c-adfc-09ea8149235d", "labels": ["niveau_detail::general"]}
 #### Gestion des catastrophes
 
 [TIP]
@@ -340,7 +340,7 @@ Autre exemple de PRA (PME avec son propre DC à Paris) : Stockage de deux serve
 Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. 
 ====
 
-//🏷{"id": "c7c4fce5-c971-4ec8-bef7-006381492aff", "labels": ["detail_level::overview"]}
+//🏷{"id": "c7c4fce5-c971-4ec8-bef7-006381492aff", "labels": ["niveau_detail::general"]}
 ### Hébergement
 
 * Où sera hébergée cette application ? DC "on premises" ? Cloud interne ? Cloud IaaS ? PaaS ? autre ?
@@ -456,7 +456,7 @@ Lister les limites budgétaires.
 Exemple 1 : les frais de services Cloud AWS ne devront pas dépasser 5 K€/ an pour ce projet.
 ====
 
-//🏷{"id": "f9ed2469-e3e5-48a1-8b69-4b9c9492c6cb", "labels": ["detail_level::overview", "constraint"]}
+//🏷{"id": "f9ed2469-e3e5-48a1-8b69-4b9c9492c6cb", "labels": ["niveau_detail::general", "contrainte"]}
 ## Exigences
 
 [TIP]
@@ -507,7 +507,7 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 |====
 ====
 
-//🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["availability"]}
+//🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["disponibilité"]}
 ### Exigences de disponibilité
 
 [TIP]
@@ -598,7 +598,7 @@ Fournir ici le Recovery Point Objective (RPO) de l’application (en heures). Il
 Exemple : On ne doit pas pouvoir perdre plus d'une journée de données applicatives.
 ====
 
-//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédaire", "project_size::medium", "project_size::large", "detail_level::overview"]}
+//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédaire", "taille_projet::moyen", "taille_projet::grand", "niveau_detail::general"]}
 ### Exigences de RTO
 
 [TIP]
@@ -688,7 +688,7 @@ Exemple 1 : Le Power Usage Effectiveness (PUE) du site devra être de 1.5 ou moi
 Exemple 2 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2024.
 ====
 
-//🏷{"id": "602a7a0a-7f25-4512-b0ab-3b97c8a734e0", "labels": ["detail_level::overview", "solution"]}
+//🏷{"id": "602a7a0a-7f25-4512-b0ab-3b97c8a734e0", "labels": ["niveau_detail::general", "solution"]}
 ## Architecture cible
 
 //🏷{"id": "8088138c-5258-4f3a-a293-0984501bb5db", "labels": ["niveau_detail::detaillé"]}
@@ -706,7 +706,7 @@ Exemples :
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
-//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["niveau::intermédaire","availability"]}
+//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["niveau::intermédaire","disponibilité"]}
 ### Disponibilité 
  
 [TIP] 
@@ -1104,7 +1104,7 @@ Les types de réseaux incluent les informations utiles sur le réseau utilisé a
 |4|sup1|host[1-6]|LAN|SNMP|199 | Non mais utilisation du VLAN d'admin
 |====
 
-//🏷{"id": "93947744-e0ec-4bc3-af30-cc60473b7caf", "labels": ["project_size::medium","project_size::large", "niveau_detail::detaillé"]}
+//🏷{"id": "93947744-e0ec-4bc3-af30-cc60473b7caf", "labels": ["taille_projet::moyen","taille_projet::grand", "niveau_detail::detaillé"]}
 ### Environnements
 
 [TIP]

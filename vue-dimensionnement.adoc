@@ -35,7 +35,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 |===
 
-//🏷{"id": "1ef7beb9-71ee-43e5-9a1b-c45a48959084", "labels": ["context","uncertainty"]}
+//🏷{"id": "1ef7beb9-71ee-43e5-9a1b-c45a48959084", "labels": ["context","incertitude"]}
 ## Non statué
 
 //🏷{"id": "c5db3e60-e70c-4ebb-9848-44a0cecc4c6e", "labels": []}
@@ -72,7 +72,7 @@ Exemple:
 
 ====
 
-//🏷{"id": "69811b17-b947-4562-90ba-a97160421965", "labels": ["detail_level::overview", "constraints"]}
+//🏷{"id": "69811b17-b947-4562-90ba-a97160421965", "labels": ["niveau_detail::general", "contraintes"]}
 ## Contraintes
 
 [TIP]
@@ -129,7 +129,7 @@ Exemple 1 : La latence minimale des requêtes sur le WAN entre Londres et Tokyo 
 Exemple 2 : Le cœur de réseau du datacenter dispose d'une bande passante de 40 Gbps.
 ====
 
-//🏷{"id": "d6e3eb12-371b-4c26-b538-9fea2051bfed", "labels": ["detail_level::overview", "requirement"]}
+//🏷{"id": "d6e3eb12-371b-4c26-b538-9fea2051bfed", "labels": ["niveau_detail::general", "exigence"]}
 ## Exigences
 
 [TIP]

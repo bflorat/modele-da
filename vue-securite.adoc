@@ -42,7 +42,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |3|latest|Explications RGPD | https://www.cnil.fr/fr/rgpd-par-ou-commencer
 |====
 
-//🏷{"id": "ea245600-dbd6-4f56-a58c-8c77556643ad", "labels": ["context","uncertainty"]}
+//🏷{"id": "ea245600-dbd6-4f56-a58c-8c77556643ad", "labels": ["context","incertitude"]}
 ## Non statué
 
 //🏷{"id": "a058d388-72e1-4136-8659-7a9db1c1a340", "labels": []}
@@ -73,7 +73,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |La solution SAML actuellement en place dans l’organisation ne permet pas de répondre aux besoins d’authentification exprimés pour cette application Internet. Une solution OpenID Connect sera proposée. 
 |====
 
-//🏷{"id": "53ae9c06-1846-4dd2-ab55-f4a784c6a676", "labels": ["detail_level::overview", "constraints"]}
+//🏷{"id": "53ae9c06-1846-4dd2-ab55-f4a784c6a676", "labels": ["niveau_detail::general", "contraintes"]}
 ## Contraintes
 
 [TIP]
@@ -96,7 +96,7 @@ Exemple 2 : Il est formellement interdit à un module de la **zone Internet** d'
 Exemple 3 : En application du **RGPD**, les données utilisateur devront être chiffrées **au repos et en transit** avec **AES-256 et TLS 1.3**.
 ====
 
-//🏷{"id": "4882e5b9-c250-4079-8b24-04996016606d", "labels": ["detail_level::overview", "requirement"]}
+//🏷{"id": "4882e5b9-c250-4079-8b24-04996016606d", "labels": ["niveau_detail::general", "exigence"]}
 ## Exigences
 
 [TIP]
