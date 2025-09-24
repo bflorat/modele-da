@@ -438,7 +438,7 @@ image:diagrammes/archi-applicative-detaillee-dynamique.svg[Diagramme architectur
 
 ====
 
-//🏷{"id": "9ac6e5d2-e9a0-427e-ba12-27dedbd8ac4d", "labels": ["level::intermediate","migration"]}
+//🏷{"id": "9ac6e5d2-e9a0-427e-ba12-27dedbd8ac4d", "labels": ["niveau::intermédaire","migration"]}
 ### Trajectoires de migrations
 
 [TIP]

@@ -140,7 +140,7 @@ Exemples de dispositifs associés selon le niveau d’intégrité requis :
 - **Intègre** → Chiffrement, signatures numériques, réplication synchrone, stockage immuable (WORM).
 ====
 
-
+//🏷{"id": "acfa846e-0ed7-4f41-a593-f4ee29e94efd", "labels": []}
 ### Exigences de confidentialité
 
 [TIP]
@@ -184,7 +184,7 @@ La confidentialité est la garantie que l’information **n’est accessible qu�
 - **Privé** → Données personnelles visibles uniquement par l’utilisateur concerné (ex : fiche de paie).
 ====
 
-
+//🏷{"id": "94c138c1-3e8b-4eaf-8926-b5b9bfa6a86b", "labels": []}
 ### Exigences d'identification
 
 [TIP]
@@ -218,7 +218,7 @@ L’identification permet d'**attribuer un identifiant unique** à chaque utilis
 - **S'assurer que l'identifiant est cohérent dans tous les systèmes** où il est utilisé.
 ====
 
-
+//🏷{"id": "9d0646cd-3e3f-4878-96de-f215c9f20bdc", "labels": []}
 ### Exigences d'authentification
 
 [TIP]
@@ -236,6 +236,7 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 
 ====
 
+//🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["level::advanced", "level::advanced", "detail_level::detailed"]}
 #### **Facteurs d’authentification**
 L’authentification peut être basée sur **un seul facteur** ou être **multi-facteurs (MFA)** pour plus de sécurité.  
 Les principaux types de facteurs sont :
@@ -286,6 +287,7 @@ Le tableau ci-dessous indique les **facteurs d’authentification requis** selon
 - **Gérer la révocation et le renouvellement** → prévoir des mécanismes pour régénérer un facteur perdu ou compromis.  
 ====
 
+//🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["level::advanced", "level::advanced", "detail_level::detailed"]}
 ### Exigences de fédération d’identité
 
 [TIP]
@@ -318,7 +320,7 @@ L’identification et l’authentification des utilisateurs seront externalisée
 - **Améliorer la sécurité** en déléguant l’authentification à un IdP conforme aux normes de sécurité.
 ====
 
-
+//🏷{"id": "400376ad-cc62-4ab3-8e96-5a9f9a954e49", "labels": ["level::advanced", "level::advanced"]}
 ### Exigences de SSO et SLO
 
 [TIP]
@@ -357,7 +359,7 @@ L’application fonctionne de manière autonome et ne partage pas d’authentifi
 - Le protocole choisi sera **OIDC avec un Identity Provider interne**.
 ====
 
-
+//🏷{"id": "01404b83-f96f-4649-ace0-e5611601b830", "labels": ["level::advanced"]}
 ### Exigences de non-répudiation
 
 [TIP]
@@ -398,6 +400,7 @@ La signature numérique est reconnue légalement par **le texte n°2000-230 du 1
 |PKI du fournisseur de paiement (ex. : Visa, Mastercard)
 |===
 
+//🏷{"id": "958fcccc-60cb-4158-940f-279cd1d12c9b", "labels": []}
 ### Exigences d'anonymat et de respect de la vie privée
 
 [TIP]
@@ -422,7 +425,7 @@ Exemple 5 : En application de la directive européenne « paquet telecom », 
 Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs dans la conservation de leurs données personnelles de santé sera proposé.
 ====
 
-
+//🏷{"id": "fcad5990-c241-4c88-b2c5-646602f8935a", "labels": ["level::intermediate"]}
 ### Exigences sur les habilitations
 
 [TIP]
@@ -496,7 +499,7 @@ Le détail des autorisations sera documenté dans les **SFD (Spécifications Fon
 | X
 |===
 
-
+//🏷{"id": "e72e5ea5-5711-4665-8a91-76c63cbca2bc", "labels": ["level::intermediate"]}
 ### Exigences de traçabilité et d'auditabilité
 
 [TIP]
@@ -562,12 +565,11 @@ Lister ici les besoins en **traçabilité et auditabilité** pour détecter et a
 | 5 ans
 |===
 
-
+//🏷{"id": "d1f16239-18f7-4a4a-875e-34a587eb88b4", "labels": ["solution"]}
 ## Mesures de sécurité
 
+//🏷{"id": "e60500e8-b4a3-471c-941c-8fd8c02c4da9", "labels": [], "link_to": ["323d4c77-810a-4015-bc1a-11da07e24f3b"]}
 ### Intégrité
-
-Dispositifs répondant aux <<exigences-integrite,exigences d'intégrité>> :
 
 .Mesures pour assurer le niveau d'intégrité demandé
 [cols="e,e,e"]
@@ -609,10 +611,8 @@ a|
 * Inclusion de la signature hexadécimale en **pied de page** du PDF pour vérification ultérieure.
 |===
 
-
+//🏷{"id": "a64b5e5d-e4d4-4ed2-b425-19cd542fa58e", "labels": [], "link_to": ["acfa846e-0ed7-4f41-a593-f4ee29e94efd"]}
 ### **Confidentialité**
-
-Dispositifs répondant aux <<exigences-confidentialite,exigences de confidentialité>> :
 
 .Mesures pour assurer le niveau de confidentialité demandé
 [cols="e,e,e"]
@@ -670,10 +670,8 @@ a|
 - **Chiffrement au niveau fichier** avec **dm-crypt**, **encfs** ou **Cryptomator**.
 ====
 
-
+//🏷{"id": "3779a946-fc73-455b-8bab-3d5398ce0311", "labels": [], "link_to": ["94c138c1-3e8b-4eaf-8926-b5b9bfa6a86b"]}
 ### Identification
-
-Dispositifs répondant aux <<exigences-identification,exigences d'identification>> :
 
 [TIP]
 ====
@@ -692,10 +690,8 @@ Exemple 2 : Pour éviter la réutilisation des identifiants de comptes supprim�
 Exemple 3 : Les comptes de service seront identifiés via une clé API unique stockée dans un **Vault sécurisé** et soumise à une rotation automatique tous les 6 mois.
 ====
 
-
+//🏷{"id": "ac587042-7060-44cf-96aa-93fddadc15f5", "labels": ], "link_to": ["9d0646cd-3e3f-4878-96de-f215c9f20bdc"]}
 ### Authentification
-
-Dispositifs répondant aux <<exigences-authentification,exigences d'authentification>> :
 
 [TIP]
 ====
@@ -739,10 +735,8 @@ Après **5 échecs successifs**, le compte sera **verrouillé temporairement pen
 Exemple 7 : Les connexions suspectes (nouvelle adresse IP, localisation inhabituelle) nécessiteront une **vérification supplémentaire via un OTP envoyé par e-mail**.
 ====
 
-
+//🏷{"id": "49de0015-9e27-4f60-91ca-282feec8345d", "labels": ["level::advanced","detail_level::detailed"], "link_to": ["f552f1e6-9aea-4866-8da1-e7ed676fd228"]}
 ### Fédération d’identité
-
-Dispositifs répondant aux <<exigences-federation-identite,exigences de fédération d’identité>> :
 
 [TIP]
 ====
@@ -760,9 +754,8 @@ Exemple  : L’IHM grand public permettra une identification et authentificatio
 Les utilisateurs pourront s’identifier en réutilisant leur compte **DGFiP, CNAM, etc.**  
 ====
 
+//🏷{"id": "1c4774ab-e6fc-46a4-bb89-97e318a8dd8f", "labels": ["level::advanced", "level::advanced"],"link_to:":["400376ad-cc62-4ab3-8e96-5a9f9a954e49"]}
 ### SSO et SLO
-
-Dispositifs répondant aux <<exigences-sso-slo,exigences de SSO et SLO>> :
 
 [TIP]
 ====
@@ -788,7 +781,7 @@ Exemple 2 : Comme toutes les applications du **portail métier**, l’IHM X dev
 Exemple 3 : Le SSO sera mis en œuvre via **Keycloak** en tant que fournisseur d’identité, avec une délégation vers l’AD via **LDAP**.
 ====
 
-
+//🏷{"id": "8e35ee35-b5bc-433b-8389-f07e62a05339", "labels": "detail_level::detailed"]}
 ### Comptes de service
 
 [TIP]
@@ -812,10 +805,8 @@ Les **comptes de service** sont utilisés pour authentifier une application ou u
 |`ci_cd_runner` | Serveur CI/CD | **Stockage en HashiCorp Vault avec rotation automatique des secrets**
 |====
 
-
+//🏷{"id": "9f09dacf-d151-45af-a5f6-209823e7a401", "labels": ["level::advanced"],"link_to":["01404b83-f96f-4649-ace0-e5611601b830"]}
 ### Non-répudiation et horodatage
-
-Dispositifs répondant aux <<exigences-non-repudiation,exigences de non répudiation>> :
 
 ====
 Exemple : La déclaration d’impôt sera signée par le certificat client de l’usager (*X.509*, *RSA*, *SHA-256*) qui lui a été fourni par le module X.
@@ -833,10 +824,8 @@ Il repose sur des **jetons d’horodatage qualifiés** (*RFC 3161, eIDAS*), dél
 Exemple : Les signatures électroniques seront **horodatées** avec un **jeton d’horodatage qualifié eIDAS**, délivré par le **prestataire de service de confiance XYZ**.
 ====
 
-
+//🏷{"id": "72efb92f-13f8-48e5-aed1-b57c4eab56fc", "labels": [],"link_to":["958fcccc-60cb-4158-940f-279cd1d12c9b"]}
 ### Anonymat et vie privée
-
-Dispositifs répondant aux <<exigences-anonymat,exigences d'anonymat et de respect de la vie privée>> :
 
 ====
 Exemple 1 : Un **audit interne annuel** sera mené sur :
@@ -854,10 +843,8 @@ Les **colonnes sensibles seront exclues** de la réplication vers la zone publiq
 Exemple 3 : Un **bandeau de consentement aux cookies** sera mis en place sur toutes les pages de l’application **Angular** via le module `angular-cookie-law`.
 ====
 
-
+//🏷{"id": "e6d0ad26-40b7-412e-b861-1f8e6e2299ca", "labels": ["level::intermediate"],"link_to":["fcad5990-c241-4c88-b2c5-646602f8935a"]}
 ### Habilitations
-
-Dispositifs répondant aux <<exigences-habilitations,exigences sur les habilitations>> :
 
 ====
 Exemple 1 : La gestion des **autorisations** sera intégrée **applicativement** et stockée dans la **base PostgreSQL**.  
@@ -868,10 +855,8 @@ Exemple 2 : L’accès aux **carnets d’adresses** sera contrôlé via **OAuth
 L’API utilisée sera **Google OAuth2 en Java**.
 ====
 
-
+//🏷{"id": "3819b8cc-d9c4-4d29-9ca1-adae300a79e2", "labels": ["level::intermediate"],"link_to":["e72e5ea5-5711-4665-8a91-76c63cbca2bc"]}
 ### Traçabilité et auditabilité
-
-Dispositifs répondant aux <<exigences-tracabilite,exigences de traçabilité et d'auditabilité>> :
 
 ====
 Exemple 1 : À la fin de chaque **action métier**, l’application **ReactJS** effectuera un **appel asynchrone** à un service REST dédié à la **traçabilité des actions**.  
@@ -895,7 +880,7 @@ Exemple 5 : Les journaux **contenant le tag `[PREUVE]`** et issus de **tous les
 - **Indexés quotidiennement** dans l’index **Elastic `preuves`** pour faciliter les recherches et la conformité.
 ====
 
-
+//🏷{"id": "5e00eeef-1d5b-4a21-ac19-116ae376d999", "labels": ["level::intermediate"]}
 ### Lutte contre les cybermenaces
 
 Les cybermenaces incluent : malwares, phishing, attaques DOS/DDOS, exploitation de vulnérabilités (connues ou zero-day), ingénierie sociale, escroqueries en ligne, fuites de données sensibles, etc.
@@ -908,6 +893,7 @@ Le cadre de réponse aux menaces peut être aligné sur le **NIST Cybersecurity 
 4. **Réagir** : Contenir et neutraliser la menace.
 5. **Récupérer** : Restaurer les services après une attaque.
 
+//🏷{"id": "d13f2885-ab5c-4543-9432-f53002c01c2c", "labels": []}
 #### Solutions de prévention
 
 Ces solutions permettent d’**anticiper** les menaces avant qu'elles ne surviennent.
@@ -932,6 +918,7 @@ Exemple 1 : Sensibilisation des utilisateurs via https://cyber.gouv.fr/bonnes-pr
 Exemple 2 : Mise en place de l'IPS OpenSource **CrowdSec**, basé sur le partage d'information communautaire (*crowdsourcing*).
 ====
 
+//🏷{"id": "ac7dde83-27c9-4916-9020-73efaab5fcb1", "labels": []}
 #### Solutions de détection
 
 Ces solutions permettent d’**identifier** les attaques en cours.
@@ -949,6 +936,7 @@ Ces solutions permettent d’**identifier** les attaques en cours.
 Exemple 1 : Intégration de **OWASP Dependency-Check** dans la CI/CD pour détecter les librairies contenant des CVE.
 ====
 
+//🏷{"id": "d4498522-32aa-4987-aaec-2d9cf01130da", "labels": []}
 #### Solutions de correction
 
 Ces solutions permettent de **réagir** et **corriger** après la détection d’une menace.
@@ -964,6 +952,7 @@ Ces solutions permettent de **réagir** et **corriger** après la détection d�
 Exemple 1 : Déploiement d’un **plan de secours** basé sur les recommandations du https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/cyberattaque-que-faire-guide-dirigeants[NIST SP 800-61].
 ====
 
+//🏷{"id": "a69b42f5-4f4e-42bf-b4bc-c6093941600f", "labels": ["level::advanced"]}
 #### Solutions de prédiction
 
 Ces solutions récentes reposent sur **l’analyse comportementale** et le **Machine Learning**.
@@ -980,9 +969,11 @@ Exemple 1 : Surveillance des comportements suspects via **AWS GuardDuty** sur un
 Exemple 2 : Utilisation de **CrowdSec Threat Intelligence** pour anticiper les tendances d’attaques.
 ====
 
+//🏷{"id": "d4d0f075-dff9-4d81-aebc-bbd0cc45bb55", "labels": ["annexe"]}
+## Annexes
 
-
-## RACI & Gouvernance de la Sécurité
+//🏷{"id": "b2f76b28-83da-478b-bc94-f1bc29dc6084", "labels": ["level::intermediate", "detail_level::detailed"]}
+### RACI & Gouvernance de la Sécurité
 
 [NOTE]
 ====
@@ -1048,9 +1039,11 @@ Example:
 |===
 
 ====
-## Auto-contrôles de sécurité
+//🏷{"id": "7d8dff71-3acd-450b-bc68-d2e2efee2fbb", "labels": ["level::intermediate","detail_level::detailed"]}
+### Auto-contrôles de sécurité
 
-### Auto-contrôle des vulnérabilités
+//🏷{"id": "68556bb6-b10d-4fe3-b956-ae9c5f926f4a", "labels": []}
+#### Auto-contrôle des vulnérabilités
 
 [TIP]
 ====
@@ -1110,8 +1103,8 @@ a|
 |===
 
 ---
-
-### Auto-contrôle RGPD
+//🏷{"id": "68556bb6-b10d-4fe3-b956-ae9c5f926f4a", "labels": ["juridique"]}
+#### Auto-contrôle RGPD
 
 [TIP]
 ====
