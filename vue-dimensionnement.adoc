@@ -115,7 +115,7 @@ TIP: Lister ici les éventuelles contraintes liées à la mémoire
 Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM
 ====
 
-//🏷{"id": "8d948872-15f9-49b6-9527-f511a2f7597d", "labels": []]}
+//🏷{"id": "8d948872-15f9-49b6-9527-f511a2f7597d", "labels": []}
 ### Contraintes réseau
 
 TIP: Lister ici les éventuelles contraintes de volume réseau utilisé
