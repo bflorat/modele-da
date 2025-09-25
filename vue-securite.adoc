@@ -73,7 +73,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |La solution SAML actuellement en place dans l’organisation ne permet pas de répondre aux besoins d’authentification exprimés pour cette application Internet. Une solution OpenID Connect sera proposée. 
 |====
 
-//🏷{"id": "53ae9c06-1846-4dd2-ab55-f4a784c6a676", "labels": ["niveau_detail::general", "contrainte"]}
+//🏷{"id": "53ae9c06-1846-4dd2-ab55-f4a784c6a676", "labels": ["niveau_detail::général", "contrainte"]}
 ## Contraintes
 
 [TIP]
@@ -96,7 +96,7 @@ Exemple 2 : Il est formellement interdit à un module de la **zone Internet** d'
 Exemple 3 : En application du **RGPD**, les données utilisateur devront être chiffrées **au repos et en transit** avec **AES-256 et TLS 1.3**.
 ====
 
-//🏷{"id": "4882e5b9-c250-4079-8b24-04996016606d", "labels": ["niveau_detail::general", "exigence"]}
+//🏷{"id": "4882e5b9-c250-4079-8b24-04996016606d", "labels": ["niveau_detail::général", "exigence"]}
 ## Exigences
 
 [TIP]
@@ -236,7 +236,7 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 
 ====
 
-//🏷{"id": "500d6ef3-3b9b-4820-9178-39127920a247", "labels": ["niveau::avancé", "niveau_detail::detaillé"]}
+//🏷{"id": "500d6ef3-3b9b-4820-9178-39127920a247", "labels": ["niveau::avancé", "niveau_detail::détaillé"]}
 #### Facteurs d’authentification
 L’authentification peut être basée sur **un seul facteur** ou être **multi-facteurs (MFA)** pour plus de sécurité.  
 Les principaux types de facteurs sont :
@@ -245,7 +245,7 @@ Les principaux types de facteurs sont :
 * **Ce que l'on *est*** → Biométrie (empreinte digitale, reconnaissance faciale, ADN, signature…).
 * **Ce que l'on *possède*** → Clé privée, token OTP (TOTP, FIDO2, carte à puce), e-mail de validation.
 
-//🏷{"id": "58bf95ee-2fc4-4972-ac2b-7e2f775a4eb9", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "58bf95ee-2fc4-4972-ac2b-7e2f775a4eb9", "labels": ["niveau_detail::détaillé"]}
 #### Exigences d'authentification par cas d'utilisation
 Le tableau ci-dessous indique les **facteurs d’authentification requis** selon le contexte d’utilisation :  
 
@@ -288,7 +288,7 @@ Le tableau ci-dessous indique les **facteurs d’authentification requis** selon
 - **Gérer la révocation et le renouvellement** → prévoir des mécanismes pour régénérer un facteur perdu ou compromis.  
 ====
 
-//🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["niveau::avancé", "niveau::avancé", "niveau_detail::detaillé"]}
+//🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["niveau::avancé", "niveau::avancé", "niveau_detail::détaillé"]}
 ### Exigences de fédération d’identité
 
 [TIP]
@@ -736,7 +736,7 @@ Après **5 échecs successifs**, le compte sera **verrouillé temporairement pen
 Exemple 7 : Les connexions suspectes (nouvelle adresse IP, localisation inhabituelle) nécessiteront une **vérification supplémentaire via un OTP envoyé par e-mail**.
 ====
 
-//🏷{"id": "49de0015-9e27-4f60-91ca-282feec8345d", "labels": ["niveau::avancé","niveau_detail::detaillé"], "link_to": ["f552f1e6-9aea-4866-8da1-e7ed676fd228"]}
+//🏷{"id": "49de0015-9e27-4f60-91ca-282feec8345d", "labels": ["niveau::avancé","niveau_detail::détaillé"], "link_to": ["f552f1e6-9aea-4866-8da1-e7ed676fd228"]}
 ### Fédération d’identité
 
 [TIP]
@@ -782,7 +782,7 @@ Exemple 2 : Comme toutes les applications du **portail métier**, l’IHM X dev
 Exemple 3 : Le SSO sera mis en œuvre via **Keycloak** en tant que fournisseur d’identité, avec une délégation vers l’AD via **LDAP**.
 ====
 
-//🏷{"id": "8e35ee35-b5bc-433b-8389-f07e62a05339", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "8e35ee35-b5bc-433b-8389-f07e62a05339", "labels": ["niveau_detail::détaillé"]}
 ### Comptes de service
 
 [TIP]
@@ -973,7 +973,7 @@ Exemple 2 : Utilisation de **CrowdSec Threat Intelligence** pour anticiper les t
 //🏷{"id": "d4d0f075-dff9-4d81-aebc-bbd0cc45bb55", "labels": ["annexe"]}
 ## Annexes
 
-//🏷{"id": "b2f76b28-83da-478b-bc94-f1bc29dc6084", "labels": ["niveau::intermédaire", "niveau_detail::detaillé"]}
+//🏷{"id": "b2f76b28-83da-478b-bc94-f1bc29dc6084", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
 ### RACI & Gouvernance de la Sécurité
 
 [NOTE]
@@ -1040,7 +1040,7 @@ Example:
 |===
 
 ====
-//🏷{"id": "7d8dff71-3acd-450b-bc68-d2e2efee2fbb", "labels": ["niveau::intermédaire","niveau_detail::detaillé"]}
+//🏷{"id": "7d8dff71-3acd-450b-bc68-d2e2efee2fbb", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
 ### Auto-contrôles de sécurité
 
 //🏷{"id": "68556bb6-b10d-4fe3-b956-ae9c5f926f4a", "labels": []}

@@ -73,7 +73,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Nous prenons l'hypothèse que d'ici à la MEP du projet, PostgreSQL 17 sera validé en interne.
 |====
 
-//🏷{"id": "82a207de-bc6f-4a62-a586-96a2b4c9f4dc", "labels": ["niveau_detail::general", "contrainte"]}
+//🏷{"id": "82a207de-bc6f-4a62-a586-96a2b4c9f4dc", "labels": ["niveau_detail::général", "contrainte"]}
 ## Contraintes
 
 [TIP]
@@ -94,7 +94,7 @@ Les éléments ici fournis pourront servir de base au SLO (Service Level Objecti
 Ce chapitre a une vocation pédagogique car il rappelle la disponibilité plafond envisageable : la disponibilité finale de l’application ne pourra être qu’inférieure.
 ====
 
-//🏷{"id": "a18eb613-e522-4bf5-a1fd-742b9d754ce1", "labels": ["niveau_detail::detaillé","supervision"]}
+//🏷{"id": "a18eb613-e522-4bf5-a1fd-742b9d754ce1", "labels": ["niveau_detail::détaillé","supervision"]}
 #### MTTD
 
 [TIP]
@@ -107,7 +107,7 @@ Exemple 1 : Le SI est supervisé en 24/7/365.
 Exemple 2 : Le service support production est disponible durant les heures de bureau mais une astreinte est mise en place avec alerting par e-mail et SMS en 24/7 du lundi au vendredi.
 ====
 
-//🏷{"id": "dc11b031-5685-4972-9832-138fa74cd30b", "labels": ["niveau_detail::detaillé","supervision"]}
+//🏷{"id": "dc11b031-5685-4972-9832-138fa74cd30b", "labels": ["niveau_detail::détaillé","supervision"]}
 #### Outils et normes de supervision
 
 [TIP]
@@ -122,7 +122,7 @@ Exemple 2 : Les batchs doivent pouvoir se lancer via un endpoint REST.
 Exemple 3 : un batch en erreur ne doit pas pouvoir se relancer sans un acquittement humain.
 ====
 
-//🏷{"id": "6903a99e-8b8e-464b-909c-d40da5a808d1", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "6903a99e-8b8e-464b-909c-d40da5a808d1", "labels": ["niveau_detail::détaillé"]}
 #### MTTR
 
 [TIP]
@@ -176,7 +176,7 @@ Exemple 1 : un ingénieur réseau est d'astreinte chaque week-end.
 Exemple 2 : Le SLA d'Orange prévoit un rétablissement de la connexion à Internet en conditions nominales en moins de 24H.
 ====
 
-//🏷{"id": "b39586c3-6bbe-417f-ad64-eff53c81d283", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "b39586c3-6bbe-417f-ad64-eff53c81d283", "labels": ["niveau_detail::détaillé"]}
 ##### Restauration de données
 TIP: Lister ici les éléments permettant d'évaluer la durée de restauration de données (fichiers / objets / base de données). Les exigences de RTO listées plus bas devront prendre en compte ce MTTR.
 
@@ -201,7 +201,7 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 
 ====
 
-//🏷{"id": "21d704f6-f740-40f9-986c-36274643a711", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "21d704f6-f740-40f9-986c-36274643a711", "labels": ["niveau_detail::détaillé"]}
 #### Niveau de service du datacenter
 
 [TIP]
@@ -250,7 +250,7 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 Exemple : Le datacenter de Paris est de niveau Tier III et celui de Toulouse Tier II.
 ====
 
-//🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["niveau_detail::general"]}
+//🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["niveau_detail::général"]}
 #### Plafond de disponibilité (borne supérieure)
 
 [TIP]
@@ -281,7 +281,7 @@ ne peut pas dépasser ~**99,75 %** sur cette infrastructure.
 ====
 
 
-//🏷{"id": "4860fb1c-98e9-4c2c-adfc-09ea8149235d", "labels": ["niveau_detail::general"]}
+//🏷{"id": "4860fb1c-98e9-4c2c-adfc-09ea8149235d", "labels": ["niveau_detail::général"]}
 #### Gestion des catastrophes
 
 [TIP]
@@ -340,7 +340,7 @@ Autre exemple de PRA (PME avec son propre DC à Paris) : Stockage de deux serve
 Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. 
 ====
 
-//🏷{"id": "c7c4fce5-c971-4ec8-bef7-006381492aff", "labels": ["niveau_detail::general"]}
+//🏷{"id": "c7c4fce5-c971-4ec8-bef7-006381492aff", "labels": ["niveau_detail::général"]}
 ### Hébergement
 
 * Où sera hébergée cette application ? DC "on premises" ? Cloud interne ? Cloud IaaS ? PaaS ? autre ?
@@ -357,7 +357,7 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel `PERSONNE`, elle sera colocalisée avec le module `COMPTA-API` dans le VLAN `XYZ`.
 ====
 
-//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes réseau
 
 [TIP]
@@ -371,7 +371,7 @@ Exemple 1 : Le LAN dispose d'un débit maximal de 10 Gbps.
 Exemple 2 : Les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
 ====
 
-//🏷{"id": "86a3082e-7069-4120-b86f-f886ef919986", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "86a3082e-7069-4120-b86f-f886ef919986", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes de déploiement
 
 [TIP]
@@ -387,7 +387,7 @@ Exemple 3 : Toute application doit être publiée sous forme d'image OCI et dép
 
 ====
 
-//🏷{"id": "16781642-a7f3-40f1-b208-e4064ffedaa4", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "16781642-a7f3-40f1-b208-e4064ffedaa4", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes liées au cycle de vie des composants d'infrastructure
 
 [TIP]
@@ -410,7 +410,7 @@ Exemple 6 : Un calendrier de mise à jour des composants critiques sera établi 
 
 ====
 
-//🏷{"id": "0a25770c-6a02-4fa3-82cc-bf5152d3cba6", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "0a25770c-6a02-4fa3-82cc-bf5152d3cba6", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes liées aux journaux
 
 [TIP]
@@ -423,7 +423,7 @@ Exemple 1 : Une application ne doit pas produire plus de 1 Tio de journaux / moi
 Exemple 2 : La durée de rétention maximale des journaux est de 3 mois.
 ====
 
-//🏷{"id": "608d63e6-7299-4976-bf59-52fa1c6ac486", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "608d63e6-7299-4976-bf59-52fa1c6ac486", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes de sauvegardes et restaurations
 
 [TIP]
@@ -445,7 +445,7 @@ Exemple 2 : La durée de retentions maximale des sauvegardes est de deux ans.
 Exemple 3 : Compter 1 min / Gio pour une restauration NetBackup.
 ====
 
-//🏷{"id": "22e6cfa3-bc3d-466c-a902-9854540258b7", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "22e6cfa3-bc3d-466c-a902-9854540258b7", "labels": ["niveau_detail::détaillé"]}
 ### Coûts
 
 [TIP]
@@ -456,7 +456,7 @@ Lister les limites budgétaires.
 Exemple 1 : les frais de services Cloud AWS ne devront pas dépasser 5 K€/ an pour ce projet.
 ====
 
-//🏷{"id": "f9ed2469-e3e5-48a1-8b69-4b9c9492c6cb", "labels": ["niveau_detail::general", "contrainte"]}
+//🏷{"id": "f9ed2469-e3e5-48a1-8b69-4b9c9492c6cb", "labels": ["niveau_detail::général", "contrainte"]}
 ## Exigences
 
 [TIP]
@@ -544,7 +544,7 @@ La disponibilité exigée ici devra être en cohérence avec les <<Contraintes s
 |4h, 8 fois dans l'année
 |====
 
-//🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["niveau::avancé","niveau_detail::detaillé"]}
+//🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["niveau::avancé","niveau_detail::détaillé"]}
 ### Modes dégradés
 [TIP]
 ====
@@ -558,7 +558,7 @@ Exemple 1 : Le site `monsite.com` devra pouvoir continuer à accepter les comman
 Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de données puis soumis à nouveau suite à une opération manuelle des exploitants.
 ====
 
-//🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["niveau::intermédaire", "niveau_detail::detaillé"]}
+//🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
 ### Exigences de robustesse
 
 [TIP]
@@ -598,7 +598,7 @@ Fournir ici le Recovery Point Objective (RPO) de l’application (en heures). Il
 Exemple : On ne doit pas pouvoir perdre plus d'une journée de données applicatives.
 ====
 
-//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédaire", "taille_projet::moyen", "taille_projet::grand", "niveau_detail::general"]}
+//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédaire", "taille_projet::moyen", "taille_projet::grand", "niveau_detail::général"]}
 ### Exigences de RTO
 
 [TIP]
@@ -614,7 +614,7 @@ Ne préciser cette valeur que pour expliciter un objectif de restauration préci
 Exemple : On doit pouvoir restaurer et remettre en ligne les 3 Tio de la base XYZ en 1h maximum.
 ====
 
-//🏷{"id": "cdb68f23-d2c5-4373-9f7d-e358191f0ebf", "labels": ["niveau::intermédaire","niveau_detail::detaillé"]}
+//🏷{"id": "cdb68f23-d2c5-4373-9f7d-e358191f0ebf", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
 ### Exigences de déploiements et de mises à jour
 
 //🏷{"id": "663ee84f-7dde-4c6d-acf6-a810ab8fafb4", "labels": []}
@@ -654,7 +654,7 @@ Coté client, pour une application client lourd :
 * Comment sont appliquées les mises à jour ?
 ====
 
-//🏷{"id": "0bbb4d10-bb6c-4cb0-b227-2e97db99eae1", "labels": ["niveau::intermédaire","niveau_detail::detaillé"]}
+//🏷{"id": "0bbb4d10-bb6c-4cb0-b227-2e97db99eae1", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
 #### Stratégie de déploiement spécifiques
 
 [TIP]
@@ -688,10 +688,10 @@ Exemple 1 : Le Power Usage Effectiveness (PUE) du site devra être de 1.5 ou moi
 Exemple 2 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2024.
 ====
 
-//🏷{"id": "602a7a0a-7f25-4512-b0ab-3b97c8a734e0", "labels": ["niveau_detail::general", "solution"]}
+//🏷{"id": "602a7a0a-7f25-4512-b0ab-3b97c8a734e0", "labels": ["niveau_detail::général", "solution"]}
 ## Architecture cible
 
-//🏷{"id": "8088138c-5258-4f3a-a293-0984501bb5db", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "8088138c-5258-4f3a-a293-0984501bb5db", "labels": ["niveau_detail::détaillé"]}
 ### Principes
 
 [TIP]
@@ -1015,7 +1015,7 @@ Exemple 2 : Pour atteindre la disponibilité de 99.97 % exigée, les dispositifs
 * Instance Oracle en RAC sur deux machines avec **interconnexion Fibre Channel (FC) dédiée, latence <1 ms**.  
 ====  
 
-//🏷{"id": "c23ff676-32e3-4957-8cec-6a7619a33567", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "c23ff676-32e3-4957-8cec-6a7619a33567", "labels": ["niveau_detail::détaillé"]}
 ### Déploiement en production
 
 [TIP]
@@ -1038,7 +1038,7 @@ Exemple :
 image::diagrammes/archi-infra.svg[Diagramme de déploiement MIEL]
 ====
 
-//🏷{"id": "28ba010e-1c33-41b9-8061-9596710563bc", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "28ba010e-1c33-41b9-8061-9596710563bc", "labels": ["niveau_detail::détaillé"]}
 ### Versions des composants d'infrastructure
 
 [TIP]
@@ -1104,7 +1104,7 @@ Les types de réseaux incluent les informations utiles sur le réseau utilisé a
 |4|sup1|host[1-6]|LAN|SNMP|199 | Non mais utilisation du VLAN d'admin
 |====
 
-//🏷{"id": "93947744-e0ec-4bc3-af30-cc60473b7caf", "labels": ["taille_projet::moyen","taille_projet::grand", "niveau_detail::detaillé"]}
+//🏷{"id": "93947744-e0ec-4bc3-af30-cc60473b7caf", "labels": ["taille_projet::moyen","taille_projet::grand", "niveau_detail::détaillé"]}
 ### Environnements
 
 [TIP]
@@ -1183,7 +1183,7 @@ Pour évaluer et améliorer l'empreinte énergétique d'un SI, des solutions com
 **Exemple 3** : Le **scaling automatique des pods Kubernetes** permettra de **réduire l’empreinte carbone** en désactivant les instances inutiles durant les heures creuses.  
 ====
 
-//🏷{"id": "46e9c057-75cb-4bc0-9c8d-9af81f737c61", "labels": ["niveau::avancé", "niveau_detail::detaillé"]}
+//🏷{"id": "46e9c057-75cb-4bc0-9c8d-9af81f737c61", "labels": ["niveau::avancé", "niveau_detail::détaillé"]}
 ### Régulation de la charge
 
 //🏷{"id": "32466600-a3a5-465f-9679-2a244b34321e", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
@@ -1232,7 +1232,7 @@ Un **Rate Limiting** de **100 requêtes par source et par minute** sera mis en p
 Les requêtes dépassant ce seuil recevront une **erreur 429 Too Many Requests** et devront être replanifiées par le client.  
 ====
 
-//🏷{"id": "5fa5ed39-9b6d-4dec-a8c1-1dc1929ff796", "labels": ["niveau::intermédaire","niveau_detail::detaillé"]}
+//🏷{"id": "5fa5ed39-9b6d-4dec-a8c1-1dc1929ff796", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
 ### Gestion des timeouts
 
 [TIP]
@@ -1286,7 +1286,7 @@ Les détails (contenu des sauvegardes, plan de production, planification des tra
 Si cette application suit les standards de l'organisation, il suffit de se référer au dossier d'exploitation commun.
 ====
 
-//🏷{"id": "0a3f0e4e-0458-4528-9513-1f75a4ad8464", "labels": ["niveau::intermédaire", "niveau_detail::detaillé"]}
+//🏷{"id": "0a3f0e4e-0458-4528-9513-1f75a4ad8464", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
 #### Ordre d’arrêt/démarrage
 
 [TIP]
@@ -1317,7 +1317,7 @@ Préciser d'éventuelles contraintes en cas de démarrage partiel (exemple : le 
 6. Base `pg1` sur serveur `bdd1`
 ====
 
-//🏷{"id": "314a1ef0-48b4-42a4-a8b6-be49250c5a50", "labels": ["niveau::intermédaire", "niveau_detail::detaillé"]}
+//🏷{"id": "314a1ef0-48b4-42a4-a8b6-be49250c5a50", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
 #### Opérations programmées et suivi
 
 [TIP]
@@ -1369,7 +1369,7 @@ Exemple 1 : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponib
 Exemple 2 : Un fichier de verrouillage `maintenance.lock` sera utilisé pour désactiver l'accès au backend. Un script shell déclenchera un mode dégradé affichant une page statique temporaire.
 ====
 
-//🏷{"id": "fd5b00b0-4b23-4cbc-8117-0dcee74ddd8b", "labels": ["niveau_detail::detaillé"]}
+//🏷{"id": "fd5b00b0-4b23-4cbc-8117-0dcee74ddd8b", "labels": ["niveau_detail::détaillé"]}
 #### Sauvegardes et restaurations
 
 ##### Périmètre
@@ -1546,7 +1546,7 @@ Exemple 2: Les tests de restauration se feront sur un système de fichier chiffr
 Exemple 3 : Une restauration mensuelle des dernières sauvegardes PostgreSQL sera effectuée sur un environnement de test avec exécution de requêtes de validation des données.
 ====
 
-//🏷{"id": "74ff1a8d-91b4-4437-bbfd-439e3d4b18b5", "labels": ["niveau::intermédaire","niveau_detail::detaillé"]}
+//🏷{"id": "74ff1a8d-91b4-4437-bbfd-439e3d4b18b5", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
 #### Journaux
 
 [TIP]
@@ -1588,7 +1588,7 @@ Les journaux seront protégés contre les injections via la méthode `StringEsca
 Les logs d’accès seront envoyés sur un serveur distant en plus d’une conservation locale sur 7 jours maximum.
 ====
 
-//🏷{"id": "2c3d502d-d67c-417b-88f4-d610e158e930", "labels": ["niveau::intermédaire", "niveau_detail::detaillé","supervision"]}
+//🏷{"id": "2c3d502d-d67c-417b-88f4-d610e158e930", "labels": ["niveau::intermédaire", "niveau_detail::détaillé","supervision"]}
 ### Supervision
 
 [TIP]
@@ -1681,7 +1681,7 @@ Les indicateurs sont ensuite affichés via **tableaux de bord dynamiques** et de
 La **supervision technique et applicative** reposera sur une stack **Grafana + Prometheus + ElasticSearch**.
 ====
 
-//🏷{"id": "aa3c7bab-527c-4411-a1f2-583a1d62118f", "labels": ["niveau::intermédaire", "niveau_detail::detaillé","supervision"]}
+//🏷{"id": "aa3c7bab-527c-4411-a1f2-583a1d62118f", "labels": ["niveau::intermédaire", "niveau_detail::détaillé","supervision"]}
 #### Alerting & notifications
 
 [TIP]
@@ -1709,7 +1709,7 @@ Une **alerte SMS** sera envoyée si :
 - **Le nombre d’erreurs 5xx dépasse 10/h** sur un module critique.
 ====
 
-//🏷{"id": "20dff012-aa85-465f-ba2e-272d7580dd0b", "labels": ["niveau::intermédaire", "niveau_detail::detaillé","supervision"]}
+//🏷{"id": "20dff012-aa85-465f-ba2e-272d7580dd0b", "labels": ["niveau::intermédaire", "niveau_detail::détaillé","supervision"]}
 ##### Supervision boite noire
 
 [TIP]
@@ -1724,7 +1724,7 @@ Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si te
 Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via Netvigie. En cas de panne, un mail est envoyé aux exploitants.
 ====
 
-//🏷{"id": "f455e87e-47f0-422a-a80b-0ec65517ad53", "labels": ["niveau::avancé", "niveau_detail::detaillé","supervision"]}
+//🏷{"id": "f455e87e-47f0-422a-a80b-0ec65517ad53", "labels": ["niveau::avancé", "niveau_detail::détaillé","supervision"]}
 ##### Métrologie
 
 [TIP]

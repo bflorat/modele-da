@@ -69,7 +69,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |====
 
 
-//🏷{"id": "84cd4aed-36c0-4564-8354-29a7de004923", "labels": ["niveau_detail::general", "contrainte"]}
+//🏷{"id": "84cd4aed-36c0-4564-8354-29a7de004923", "labels": ["niveau_detail::général", "contrainte"]}
 ## Contraintes
 
 [TIP]
@@ -94,7 +94,7 @@ Exemple 2 : Le module devra se baser sur le framework Hibernate pour la persista
 Exemple 3 : l'application sera construite, testée et déployée en continu à chaque push via la plateforme Gitlab-CI.
 ====
 
-//🏷{"id": "8d79cc07-e094-4863-8bb8-0a3ca317743d", "labels": ["niveau_detail::general","exigences"]}
+//🏷{"id": "8d79cc07-e094-4863-8bb8-0a3ca317743d", "labels": ["niveau_detail::général","exigence"]}
 ## Exigences non fonctionnelles
 
 [TIP]
@@ -267,7 +267,7 @@ Lister ici les exigences d'écoconception portant sur les logiciels.
 Exemple : Les émissions cumulées du service A ne devrait pas dépasser 100KgCO2/an.    
 ====
 
-//🏷{"id": "2c0aa24a-24b8-4272-8787-b5e5207785fb", "labels": ["niveau_detail::general","solution"]}
+//🏷{"id": "2c0aa24a-24b8-4272-8787-b5e5207785fb", "labels": ["niveau_detail::général","solution"]}
 ## Architecture cible
 
 //🏷{"id": "50b4ef16-e558-4604-9b17-b90e68da6337", "labels": []}
@@ -400,7 +400,7 @@ Exemple 2 : Le niveau de qualité exigé correspond au https://docs.sonarqube.or
 Exemple 3 : Quelle langue utilisée pour le code ? français pour les termes fonctionnels (il est impératif d'utiliser les termes métiers comme préconisé par le DDD) et l'anglais pour les termes techniques génériques.
 ====
 
-//🏷{"id": "bbe62a07-d42a-4495-8d23-4d0ea23d19e6", "labels": ["niveau:intermédiaire", "taille_projet::grand"]}
+//🏷{"id": "bbe62a07-d42a-4495-8d23-4d0ea23d19e6", "labels": ["niveau::intermédiaire", "taille_projet::grand"]}
 ### Patterns notables
 
 [TIP]
@@ -411,7 +411,7 @@ Préciser si ce projet a mis en œuvre des patterns structurants (GoF, JEE ou au
 Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et éviter de multiplier les niveaux d'héritage, nous utiliserons massivement la pattern décorateur [GoF] dont voici un exemple d’utilisation : <schéma>.
 ====
 
-//🏷{"id": "99e519d3-e8cf-4b3c-8e87-e06a1bf675af", "labels": ["niveau:intermédiaire", "taille_projet::grand"]}
+//🏷{"id": "99e519d3-e8cf-4b3c-8e87-e06a1bf675af", "labels": ["niveau::intermédiaire", "taille_projet::grand"]}
 ### Spécificités des tests 
 
 [TIP] 
@@ -516,7 +516,7 @@ détecter un maximum de bugs avant les tests d'UAT.
 
 NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'objet d'un document propre. Une stratégie standard peut également être définie au niveau du SI. 
 
-//🏷{"id": "6ff8aacb-5020-4ade-a10d-3dce3898276b", "labels": ["niveau:intermédiaire", "niveau_detail:détaillé"],"link_to": ["c8e58371-6bea-48e2-ab0e-989fec63e0ee"]}
+//🏷{"id": "6ff8aacb-5020-4ade-a10d-3dce3898276b", "labels": ["niveau::intermédiaire", "niveau_detail:détaillé"],"link_to": ["c8e58371-6bea-48e2-ab0e-989fec63e0ee"]}
 === Éco-conception
 
 [TIP]
@@ -564,7 +564,7 @@ En utilisant la formule SCI (voir plus haut), et pour une consommation totale du
 
 ====
 
-//🏷{"id": "bb5d8145-8519-4516-98a9-fc089f758d9c", "labels": ["niveau:intermédiaire", "niveau_detail:détaillé"]}
+//🏷{"id": "bb5d8145-8519-4516-98a9-fc089f758d9c", "labels": ["niveau::intermédiaire", "niveau_detail:détaillé"]}
 ### Gestion de la robustesse
 
 //🏷{"id": "a7bacacc-de70-48e5-8563-6a0b6d7b31a2", "labels": ["niveau:avancé"]}
@@ -585,7 +585,7 @@ Lister ici les décisions prises concernant la gestion des transactions. Ceci es
 Exemple : nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file de messages pour effectuer des mises à jour au fil de l'eau.
 ====
 
-//🏷{"id": "8bd70b17-0223-4aaf-97ac-a7284efe721f", "labels": ["niveau:intermédiaire", "niveau_detail::approfondi"]}
+//🏷{"id": "8bd70b17-0223-4aaf-97ac-a7284efe721f", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi"]}
 #### Gestion des sessions
 
 [TIP]
@@ -711,7 +711,7 @@ Exemple:
 
 ====
 
-//🏷{"id": "79682de3-09b7-46f1-8354-9371295d18a8", "labels": ["niveau:intermédiaire",  "niveau_detail::approfondi"]}
+//🏷{"id": "79682de3-09b7-46f1-8354-9371295d18a8", "labels": ["niveau::intermédiaire",  "niveau_detail::approfondi"]}
 ### Gestion de la concurrence
 
 [TIP]
@@ -728,7 +728,7 @@ Comment gère-t-on les accès concurrents ? Exemples de points à traiter :
 Exemple  (Spring MVC) : Tous les controllers seront en scope singleton et ne doivent donc en aucun cas stocker d'état dans leurs attributs pour éviter des accès concurrents.
 ====
 
-//🏷{"id": "856b9e7b-3305-48c3-bb99-798cf409181d", "labels": ["niveau:intermédiaire", "niveau_detail:détaillé"]}
+//🏷{"id": "856b9e7b-3305-48c3-bb99-798cf409181d", "labels": ["niveau::intermédiaire", "niveau_detail:détaillé"]}
 ### Encodage 
 
 [TIP] 
@@ -746,7 +746,7 @@ NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des `.propert
 Exemple 2 : Si un système externe impose d'envoyer ou de recevoir des chaînes de caractères dans un encodage autre que le `UTF-8` (exemple : un service REST qui renvoi des données en `ISO-8859-1`) et qu’il n’est pas possible de modifier le contrat, il est impératif de traduire au sein d'une couche anti-corruption les chaînes de caractères et ceci au plus tôt, dès l'appel. De plus, il ne faut jamais persister dans nos systèmes une donnée dans un encodage non `UTF-8`. 
 ==== 
 
-//🏷{"id": "5885803d-2d3d-4e19-af30-40e904e9fb6d", "labels": ["niveau:intermédiaire", "niveau_detail:détaillé"]}
+//🏷{"id": "5885803d-2d3d-4e19-af30-40e904e9fb6d", "labels": ["niveau::intermédiaire", "niveau_detail:détaillé"]}
 ### Fuseaux horaires 
 
 [TIP] 
@@ -831,7 +831,7 @@ Exemple :
 
 ====
  
-//🏷{"id": "f2e9066c-18d9-4234-b37c-27d342b1c99e", "labels": ["niveau:intermédiaire", "taille_projet::grand", "niveau_detail:détaillé"]} 
+//🏷{"id": "f2e9066c-18d9-4234-b37c-27d342b1c99e", "labels": ["niveau::intermédiaire", "taille_projet::grand", "niveau_detail:détaillé"]} 
 ### Outils d'administration
 
 [TIP]
@@ -850,7 +850,7 @@ Exemples de points à traiter :
 Exemple : Le service `/interne/maj_v2` effectuera une montée de version du modèle de donnée vers la V2
 ====
 
-//🏷{"id": "ef97a533-5fc7-4999-87fc-def24074746c", "labels": ["niveau:intermédiaire", "niveau_detail:détaillé"]}
+//🏷{"id": "ef97a533-5fc7-4999-87fc-def24074746c", "labels": ["niveau::intermédiaire", "niveau_detail:détaillé"]}
 ### Tri et Pagination
 
 [TIP]
@@ -872,7 +872,7 @@ Exemple 2 (Coté client)
 * Les éléments retournés seront affichés dans les tableaux par blocs (taille paramétrable d’une taille indicative de l'ordre de 20 éléments). 
 ====
 
-//🏷{"id": "4af6fb38-c84a-456f-b043-32abeb6e7798", "labels": ["niveau:intermédiaire","niveau_detail:détaillé"]}
+//🏷{"id": "4af6fb38-c84a-456f-b043-32abeb6e7798", "labels": ["niveau::intermédiaire","niveau_detail:détaillé"]}
 ### Provisioning et mises à jour des DDL
 
 [TIP]
@@ -884,7 +884,7 @@ Décrire comment les DDL (structures de tables en base de données) et les donn�
 Exemple : Nous utiliserons Liquibase embarqué dans les livrables pour créer et mettre à jour les DDL de la base. Il n'y aura donc pas de scripts SQL à lancer, les requêtes nécessaires seront effectuées directement par l'application lors de son démarrage.
 ====
 
-//🏷{"id": "201fca5f-50af-41f9-ab97-60b2f7abddc6", "labels": ["niveau:intermédiaire",  "niveau_detail:détaillé"], "link_to":["fbe627e5-be3f-41ec-9a2a-c43bd3587c6e"]}
+//🏷{"id": "201fca5f-50af-41f9-ab97-60b2f7abddc6", "labels": ["niveau::intermédiaire",  "niveau_detail:détaillé"], "link_to":["fbe627e5-be3f-41ec-9a2a-c43bd3587c6e"]}
 ### Gestion de l'internationalisation
 [TIP]
 ====

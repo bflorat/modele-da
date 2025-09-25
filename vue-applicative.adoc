@@ -64,7 +64,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |Même si la décision de généralisation de l'annuaire centralisé n'est pas totalement entérinée, l’application s’appuiera sur celui-ci et non sur un annuaire local..
 |====
 
-//🏷{"id": "382fd086-f48e-4ad5-9911-07e3de281971", "labels": ["niveau_detail::general"]}
+//🏷{"id": "382fd086-f48e-4ad5-9911-07e3de281971", "labels": ["niveau_detail::général"]}
 ## Contexte général
 
 //🏷{"id": "a2b4c6d8-e0f1-4a2b-9c3d-5e6f7a8b9c0d", "labels": []}
@@ -164,7 +164,7 @@ WARNING: Ne pas reprendre l'AIPD mais y faire référence s'il existe.
 | Classification | Public, Interne, Diffusion restreinte, Confidentiel
 |===
 
-//🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["niveau_detail::general","contrainte"]}
+//🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["niveau_detail::général","contrainte"]}
 ## Contraintes
 
 TIP: Limites / choix imposés sur la façon de concevoir ou de réaliser : technologies, processus, organisation, budget, réglementation. Elles rétrécissent l’espace de conception.
@@ -244,7 +244,7 @@ Exemple 3 : Les données produites par le projet seront en licence Ouverte versi
 Exemple 4 : Le CLUF du progiciel prévoit un accès aux sources des utilisateurs ayant des parts dans la société.
 ====
 
-//🏷{"id": "9352a89a-3f8b-4028-98d5-58fb970e01ef", "labels": ["exigences"]}
+//🏷{"id": "9352a89a-3f8b-4028-98d5-58fb970e01ef", "labels": ["exigence"]}
 ## Exigences
 
 TIP: Fournir ici les exigences d'architecture applicative pouvant s'appliquer au projet. En fonction de votre contexte, ne pas hésiter à ajouter des sous-sections.
@@ -338,7 +338,7 @@ Exemple :
 |====
 ====
 
-//🏷{"id": "b269e65b-a8c7-4518-a861-5c6c17802869", "labels": ["solution","niveau_detail::general"]}
+//🏷{"id": "b269e65b-a8c7-4518-a861-5c6c17802869", "labels": ["solution","niveau_detail::général"]}
 ## Architecture cible
 
 //🏷{"id": "2c107a25-a1c4-433d-b746-e12aa2c6eea1", "labels": []}
