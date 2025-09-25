@@ -72,7 +72,7 @@ Exemple:
 
 ====
 
-//🏷{"id": "69811b17-b947-4562-90ba-a97160421965", "labels": ["niveau_detail::general", "contraintes"]}
+//🏷{"id": "69811b17-b947-4562-90ba-a97160421965", "labels": ["niveau_detail::general", "contrainte"]}
 ## Contraintes
 
 [TIP]

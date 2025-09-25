@@ -73,7 +73,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Nous prenons l'hypothèse que d'ici à la MEP du projet, PostgreSQL 17 sera validé en interne.
 |====
 
-//🏷{"id": "82a207de-bc6f-4a62-a586-96a2b4c9f4dc", "labels": ["niveau_detail::general", "contraintes"]}
+//🏷{"id": "82a207de-bc6f-4a62-a586-96a2b4c9f4dc", "labels": ["niveau_detail::general", "contrainte"]}
 ## Contraintes
 
 [TIP]

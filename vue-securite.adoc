@@ -73,7 +73,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |La solution SAML actuellement en place dans l’organisation ne permet pas de répondre aux besoins d’authentification exprimés pour cette application Internet. Une solution OpenID Connect sera proposée. 
 |====
 
-//🏷{"id": "53ae9c06-1846-4dd2-ab55-f4a784c6a676", "labels": ["niveau_detail::general", "contraintes"]}
+//🏷{"id": "53ae9c06-1846-4dd2-ab55-f4a784c6a676", "labels": ["niveau_detail::general", "contrainte"]}
 ## Contraintes
 
 [TIP]

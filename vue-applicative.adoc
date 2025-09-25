@@ -34,7 +34,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |1|2.0.4|XX_Urba_POS.pdf|POS du SI|
 |===
 
-//🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["contexte","incertitudes"]}
+//🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["contexte","incertitude"]}
 ## Non statué
 
 //🏷{"id": "0f9d2e4a-3c71-4b9e-8f3b-2b8c7d1e9a60", "labels": []}
@@ -164,7 +164,7 @@ WARNING: Ne pas reprendre l'AIPD mais y faire référence s'il existe.
 | Classification | Public, Interne, Diffusion restreinte, Confidentiel
 |===
 
-//🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["niveau_detail::general","contraintes"]}
+//🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["niveau_detail::general","contrainte"]}
 ## Contraintes
 
 TIP: Limites / choix imposés sur la façon de concevoir ou de réaliser : technologies, processus, organisation, budget, réglementation. Elles rétrécissent l’espace de conception.

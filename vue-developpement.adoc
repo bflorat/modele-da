@@ -37,7 +37,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
-//🏷{"id": "fa1ed85e-92d0-4aa9-9421-dcf267d0cf0e", "labels": ["contexte","incertitudes"]}
+//🏷{"id": "fa1ed85e-92d0-4aa9-9421-dcf267d0cf0e", "labels": ["contexte","incertitude"]}
 ## Non statué
 
 //🏷{"id": "b3592a4d-d0df-4f87-8416-97cfb287cd08", "labels": []}
@@ -69,7 +69,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |====
 
 
-//🏷{"id": "84cd4aed-36c0-4564-8354-29a7de004923", "labels": ["niveau_detail::general", "contraintes"]}
+//🏷{"id": "84cd4aed-36c0-4564-8354-29a7de004923", "labels": ["niveau_detail::general", "contrainte"]}
 ## Contraintes
 
 [TIP]
