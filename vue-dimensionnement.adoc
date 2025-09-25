@@ -12,7 +12,7 @@
 
 *Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
-//🏷{"id": "32c8942e-443f-429d-a411-43869a720224", "labels": ["context"]}
+//🏷{"id": "32c8942e-443f-429d-a411-43869a720224", "labels": ["contexte"]}
 ## Introduction
 
 La vue dimensionnement permet de déterminer la taille de l'infrastructure nécessaire au projet.
@@ -21,7 +21,7 @@ Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendrons pas ici les termes fonctionnels ou techniques déjà définis.
 
-//🏷{"id": "c443e562-398d-49ab-92bd-8031f3e91bec", "labels": ["context","references"]}
+//🏷{"id": "c443e562-398d-49ab-92bd-8031f3e91bec", "labels": ["contexte","references"]}
 ### Documentation de Référence
 
 .Références documentaires dimensionnement
@@ -35,7 +35,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 |===
 
-//🏷{"id": "1ef7beb9-71ee-43e5-9a1b-c45a48959084", "labels": ["context","incertitude"]}
+//🏷{"id": "1ef7beb9-71ee-43e5-9a1b-c45a48959084", "labels": ["contexte","incertitude"]}
 ## Non statué
 
 //🏷{"id": "c5db3e60-e70c-4ebb-9848-44a0cecc4c6e", "labels": []}

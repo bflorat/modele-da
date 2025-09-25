@@ -43,7 +43,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
-//🏷{"id": "933039be-008f-40c7-a630-a08002b379f1", "labels": ["context","incertitude"]}
+//🏷{"id": "933039be-008f-40c7-a630-a08002b379f1", "labels": ["contexte","incertitude"]}
 ## Non statué
 
 //🏷{"id": "87385297-c5c3-44f6-b9e8-7599576dda0a", "labels": []}

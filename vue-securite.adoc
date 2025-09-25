@@ -12,7 +12,7 @@
 
 *Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
-//🏷{"id": "a08e807e-1e9b-4752-a5b8-372a40665c49", "labels": ["context"]}
+//🏷{"id": "a08e807e-1e9b-4752-a5b8-372a40665c49", "labels": ["contexte"]}
 ## Introduction
 
 La vue sécurité décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
@@ -24,7 +24,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 [TIP]
 La disponibilité est traitée dans la vue infrastructure.
 
-//🏷{"id": "cd8c64f1-d216-4b24-946c-175455e824a7", "labels": ["context","references"]}
+//🏷{"id": "cd8c64f1-d216-4b24-946c-175455e824a7", "labels": ["contexte","references"]}
 ### Documentation de Référence
 
 [TIP]
@@ -42,7 +42,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |3|latest|Explications RGPD | https://www.cnil.fr/fr/rgpd-par-ou-commencer
 |====
 
-//🏷{"id": "ea245600-dbd6-4f56-a58c-8c77556643ad", "labels": ["context","incertitude"]}
+//🏷{"id": "ea245600-dbd6-4f56-a58c-8c77556643ad", "labels": ["contexte","incertitude"]}
 ## Non statué
 
 //🏷{"id": "a058d388-72e1-4136-8659-7a9db1c1a340", "labels": []}
