@@ -287,57 +287,66 @@ ne peut pas dépasser ~**99,75 %** sur cette infrastructure.
 [TIP]
 ====
 
-Les catastrophes peuvent être classées en trois catégories:
+Les catastrophes peuvent être classées en trois catégories :
 
-* Naturelles (tremblements de terre, inondations, ouragans, canicules, etc. ) ;
-* Infrastructurelles (accidentel comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, les erreurs critiques d'administrateurs ou intentionnelles: militaire, terroriste, sabotage, etc.) ;
-* Cyber (DDOS, virus, Ransomware, etc. ).
+* Naturelles (tremblements de terre, inondations, ouragans, canicules, etc.) ;
+* Infrastructurelles (accidentelles comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, erreurs critiques d’administrateurs ou intentionnelles : militaires, terroristes, sabotage, etc.) ;
+* Cyber (DDoS, virus, ransomware, etc.).
 
-**Disaster Recovery (DR)** est l'ensemble des stratégies et solutions mises en place pour **restaurer un système informatique après une catastrophe**, minimisant ainsi les pertes de données et le temps d'arrêt. DR peut inclure des solutions comme :
+**Disaster Recovery (DR)** est l’ensemble des stratégies et solutions mises en place pour **restaurer un système informatique après une catastrophe**, minimisant ainsi les pertes de données et le temps d’arrêt. Le DR peut inclure des solutions comme :
 
-* **Cold site** : Centre de secours prêt à être activé mais sans infrastructure active.
-* **Warm site** : Infrastructure préinstallée mais nécessitant une mise en production manuelle.
-* **Hot site** : Réplication en temps réel avec bascule automatique possible.
-* **Disaster Recovery as a Service (DRaaS)** : Solutions cloud de restauration rapide (AWS Elastic Disaster Recovery, Azure Site Recovery, etc.).
+* **Cold site** : centre de secours prêt à être activé mais sans infrastructure active ;
+* **Warm site** : infrastructure préinstallée mais nécessitant une mise en production manuelle ;
+* **Hot site** : réplication en temps réel avec bascule automatique possible ;
+* **Disaster Recovery as a Service (DRaaS)** : solutions cloud de restauration rapide (AWS Elastic Disaster Recovery, Azure Site Recovery, etc.).
 
-PRA (Plan de Reprise d'Activité) et PCA (Plan de Continuité d'Activité) sont des stratégies spécifiques de **DR** répondant à un risque de catastrophe sur le SI :
+Le PRA (Plan de Reprise d’Activité) et le PCA (Plan de Continuité d’Activité) sont des stratégies spécifiques de **DR** répondant à un risque de catastrophe sur le SI :
 
-* **PRA (Plan de Reprise d'Activité)**  
-  Permet de **reprendre l’activité après une catastrophe** dans un délai défini (RTO). Il repose sur des **sauvegardes, des restaurations et des infrastructures de secours** comme des **DC secondaires, du stockage répliqué** ou des **solutions DRaaS**. L'objectif est d'assurer la reprise, mais avec une **interruption temporaire**.
+* **PRA (Plan de Reprise d’Activité)** ou _Comment revenir à la normale après le problème ?_ 
+  Permet de **reprendre l’activité après une catastrophe** dans un délai défini (RTO). Il repose sur des **synchronizations asynchrones entre sites, des sauvegardes, des restaurations et des infrastructures de secours** comme des **DC secondaires, du stockage répliqué** ou des **solutions DRaaS**. L’objectif est d’assurer la reprise, mais avec une **interruption temporaire** et l'acceptation d'un RPO non nul.
 
-* **PCA (Plan de Continuité d'Activité)**  
-  Permet d'assurer la **continuité des activités critiques** sans interruption notable. Il nécessite des **clusters actifs-actifs multi-zonaux, une réplication synchrone des données et des infrastructures hautement redondantes**. Il est plus coûteux et plus complexe qu’un PRA.
+* **PCA (Plan de Continuité d’Activité)** ou _Comment continuer à travailler malgré le problème ?_ 
+  Permet d’assurer la **continuité des activités critiques** sans interruption notable et avec un RPO quasi-nul. Il comprend des mesures organisationnelles (équipes de crise, mode dégradé comme utilisation du papier, sites de repli,...) et techniques comme des **clusters actifs-actifs multi-zonaux, une réplication synchrone des données et des infrastructures hautement redondantes**.
 
+Un architecte n’utilise pas les mêmes technologies selon que l’on vise un **PRA ou un PCA** :
 
-Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un **PRA ou un PCA** :
+* **PRA** →  Se concentre sur la **sauvegarde et la restauration** dans un DC de secours, avec un **RTO défini**.  
+  Exemples on-premises : **snapshots de VM avec Veeam, solutions DRaaS, bases de données répliquées en mode asynchrone** (ex. : **MySQL/MariaDB asynchrone, PostgreSQL streaming replication, SQL Server log shipping, VMware vSphere Replication, Dell EMC SRDF en mode asynchrone, Zerto**).  
+  Exemples cloud : **AWS Aurora Global Database (réplication asynchrone inter-régions), Amazon RDS cross-region read replicas, Azure SQL Geo-Replication, Google Cloud SQL cross-region replication**.  
 
-* **PRA** → Se concentre sur la **sauvegarde et la restauration** en DC de secours, avec un **RTO défini** (ex: **snapshots de VMs avec Veeam, DRaaS, bases en mode réplication asynchrone**).
-* **PCA** → Nécessite des **clusters actifs-actifs multi-zonaux** répartis sur plusieurs **DC distants** avec synchronisation en temps réel (ex: **Oracle RAC, Ceph, Kafka MirrorMaker**).
+* **PCA** → Repose sur des **clusters actifs-actifs multi-zones** répartis sur plusieurs DC distants, avec une **réplication généralement synchrone** pour garantir un RPO nul (ou quasi nul).  
+  Exemples on-premises : **Oracle RAC, VMware vSphere Metro Storage Cluster, NetApp MetroCluster, Dell EMC SRDF en mode synchrone, Ceph RADOS synchrone**.  
+  Exemples cloud : **Google Cloud Spanner (réplication synchrone multi-régions), Azure SQL Managed Instance Business Critical avec zones redondantes, AWS Aurora Multi-AZ (synchronous replication)**.
 
-Notes: 
+Notes :  
 
-* Pour un PCA, la réplication synchrone est souvent utilisée pour garantir un RPO nul, mais certaines architectures (ex: vSphere Metro Storage Cluster avec SRDF asynchrone) permettent un PCA avec une réplication asynchrone, à condition que le RPO reste dans des limites acceptables (perte de quelques transactions seulement). Cependant, une réplication sur longue distance peut introduire une latence élevée, impactant les performances. C'est pourquoi ce type de réplication synchrone n'est pas envisageable pour entre des DC éloignés de plus de 50 km environ.
-* Un PRA peut  quant-à lui tolérer une réplication asynchrone ou des sauvegardes périodiques selon les exigences métier. 
-* Les systèmes de sauvegarde classiques peuvent suffire pour un PRA avec un RTO adapté, mais sont généralement insuffisants pour un PCA, qui requiert une réplication temps réel. 
-* Dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du DC de secours alors que dans le cas d'un PCA, tous les DC fonctionnent en parallèle en mode actif/actif de façon nominale.
+* Pour un PCA, la réplication synchrone est souvent utilisée pour garantir un RPO nul, mais certaines architectures (ex. : vSphere Metro Storage Cluster avec SRDF asynchrone) permettent un PCA avec une réplication asynchrone, à condition que le RPO reste dans des limites acceptables (perte de quelques transactions seulement). Cependant, une réplication sur longue distance peut introduire une latence élevée, impactant les performances. C’est pourquoi ce type de réplication synchrone n’est pas envisageable pour des DC éloignés de plus de 50 km environ.  
+* Un PRA peut quant à lui tolérer une réplication asynchrone ou des sauvegardes périodiques selon les exigences métier.  
+* Les systèmes de sauvegarde classiques peuvent suffire pour un PRA avec un RTO adapté, mais sont généralement insuffisants pour un PCA, qui requiert une réplication en temps réel.  
+* Dans le cas d’un PRA, il faut prévoir une bascule et une préparation conséquente du DC de secours alors que dans le cas d’un PCA, tous les DC fonctionnent en parallèle en mode actif/actif de façon nominale.  
 * Les tests de bascule devraient être réalisés au moins une fois par an pour un PRA, et trimestriellement pour un PCA. Ils doivent inclure des tests unitaires (failover d’une application) et globaux (bascule totale du SI).
 
-Note: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS, etc.) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
+Note : la gestion des catastrophes est un sujet complexe. C’est l’un des points forts des clouds publics (OVH, GCP, Azure, AWS, etc.) que de gérer une partie de cette complexité pour vous. Des solutions cloud spécifiques existent (Disaster Recovery as a Service – DRaaS).
 
-Décrire entre autres :
+Décrire entre autres :
 
-* Les matériels redondés dans le second DC, nombre de serveurs de spare, capacité du DC de secours par rapport au DC nominal.
-* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévues et le RTO.
-* Pour un PCA, la latence et dégradation de performances induite par la réplication synchrone des données entre DC ou la quantité de transactions perdues acceptables en cas de réplication asynchrone.
-* Présenter la politique de failback (réversibilité) : doit-on rebasculer vers le premier DC? Comment ?
-* Comment sont organisés les tests de bascule à blanc ? Avec quelle fréquence ?
+* Les matériels redondés dans le second DC, le nombre de serveurs de spare, la capacité du DC de secours par rapport au DC nominal.  
+* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévus et le RTO.  
+* Pour un PCA, la latence et la dégradation de performances induites par la réplication synchrone des données entre DC ou la quantité de transactions perdues acceptables en cas de réplication asynchrone.  
+* Présenter la politique de failback (réversibilité) : doit-on rebasculer vers le premier DC ? Comment ?  
+* Comment sont organisés les tests de bascule à blanc ? Avec quelle fréquence ?  
+
 ====
 ====
-Exemple de PRA : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le DC de secours via la technologie vSphere Metro Storage Cluster utilisant SRDF en mode asynchrone pour la réplication inter-baies. En cas de catastrophe, la VM répliquée sur le site de secours est à jour et prête à démarrer. Le RPO est de ~0 secs et le RTO de 30 mins.
+Exemple 1 - PRA basé sur site de secours et replication asynchrone  : Les VM de production sont répliquées de façon continue vers un site de secours situé à 100km via la solution de réplication asynchrone Zerto. En cas de catastrophe, les VM du site secondaire peuvent être démarrées rapidement. Le RPO est de l’ordre de 5 minutes, et le RTO d’environ 30 minutes.
+====
 
-Autre exemple de PRA (PME avec son propre DC à Paris) : Stockage de deux serveurs de spare dans les locaux de Lille. Sauvegarde à chaud toutes les quatre heures des données principales de l'entreprise et envoi (avec chiffrement client) sur BackBlaze.com. Le RPO est de 4h, le RTO de 2H.
+====
+Exemple 2 - PRA basé sur sauvegardes cloud  (PME avec son propre DC à Paris) : deux serveurs de spare sont stockés dans les locaux de Lille. Les données principales de l’entreprise sont sauvegardées toutes les quatre heures et envoyées (avec chiffrement côté client) vers BackBlaze.com. En cas de sinistre majeur, les serveurs de spare peuvent être réinstallés et restaurés. Le RPO est de 4 h et le RTO visé de 2 à 4 h, selon le temps de transfert et de remise en service.
+====
 
-Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. 
+====
+Exemple 3 - PCA avec élasticité : les applications s’exécutent sous forme de pods Kubernetes répartis sur au moins trois clusters situés dans différentes zones de disponibilité. Les données MongoDB sont shardées et répliquées entre zones via un système de ReplicaSet. Le système est auto-régulé par Kubernetes : en cas de panne d’un DC, de nouveaux pods sont redéployés en quelques secondes sur les clusters restants. Ainsi, les utilisateurs ne subissent pas d’interruption de service et l’impact sur les performances reste très limité.
 ====
 
 //🏷{"id": "c7c4fce5-c971-4ec8-bef7-006381492aff", "labels": ["niveau_detail::général"]}
