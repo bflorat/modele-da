@@ -914,8 +914,6 @@ La Tolérance de Panne (FT) inclut toujours la Haute Disponibilité (HA), mais l
 ==== 
 
 
-.Quelques solutions de disponibilité 
-
 .Quelques solutions de disponibilité
 |====
 | Solution | Coût | Complexité de mise en œuvre | Amélioration de la disponibilité
@@ -1006,23 +1004,25 @@ La Tolérance de Panne (FT) inclut toujours la Haute Disponibilité (HA), mais l
 | XX
 |====
 
-====  
-Exemple 1 : Pour atteindre la disponibilité de 98 % exigée, les dispositifs de disponibilité envisagés sont les suivants :  
+====
+Exemple 1 : Pour atteindre la disponibilité requise de 98 % :
 
-* Tous les serveurs en **RAID 10 ou RAID 6** + alimentations redondées.  
-* Répartiteur HAProxy + keepalived actif/passif mutualisé avec les autres applications.  
-* Cluster actif/actif de deux serveurs Apache + mod_php.  
-* **Serveur MariaDB en réplication asynchrone** avec un basculement manuel en moins de 2h.  
-====  
+* Serveur unique avec **RAID 1**
+* Sauvegardes quotidiennes
+* Supervision basique (ex. : Nagios)
+* SLA de remplacement matériel en **4 heures**
+====
 
-====  
-Exemple 2 : Pour atteindre la disponibilité de 99.97 % exigée, les dispositifs de disponibilité envisagés sont les suivants (pour rappel, l'application sera hébergée dans un DC de niveau Tier 3) :  
+====
+Exemple 2 : Pour atteindre la disponibilité requise de 99,97 % :
 
-* Tous les serveurs en **RAID 1** + alimentations redondées + interfaces en bonding.  
-* Répartiteur HAProxy + keepalived actif/passif dédié à l’application.  
-* Cluster actif/actif de 4 serveurs (redondance **N+N**) Apache + mod_php.  
-* Instance Oracle en RAC sur deux machines avec **interconnexion Fibre Channel (FC) dédiée, latence <1 ms**.  
-====  
+* Cluster **actif/passif** de 2 serveurs (Apache + mod_php)
+* PostgreSQL avec **réplication synchrone** (ex. : Patroni)
+* Répartiteur HAProxy + keepalived **dédié**
+* Datacenter Tier 3 avec **réseau multi-opérateurs**
+* Tests de bascule **trimestriels**
+====
+
 
 //🏷{"id": "c23ff676-32e3-4957-8cec-6a7619a33567", "labels": ["niveau_detail::détaillé"]}
 ### Déploiement en production
