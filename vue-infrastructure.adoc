@@ -516,7 +516,7 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 |====
 ====
 
-//🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["disponibilité"]}
+//🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["disponibilité"],link_to=["cc4a17a8-d68b-43cf-8b4e-c64829d950fc"]}
 ### Exigences de disponibilité
 
 [TIP]
@@ -535,7 +535,7 @@ On estime en général que la haute disponibilité (HA) commence à deux neufs (
 
 Détailler la disponibilité demandée par plage.
 
-La disponibilité exigée ici devra être en cohérence avec les <<Contraintes sur la disponibilité>> du SI.
+La disponibilité exigée ici devra être en cohérence avec les Contraintes de disponibilité du SI.
 ====
 
 .Durée d’indisponibilité maximale admissible par plage
@@ -582,7 +582,7 @@ Attention à ne pas être trop exigeant sur ce point car une grande robustesse p
 Exemple 1 : Pas plus de 0.001% de requêtes en erreur.
 ====
 ====
-Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de panne (attention, ce type d'exigence impacte l'architecture en profondeur, voir la section <<Disponibilite>>).
+Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de panne (attention, ce type d'exigence impacte l'architecture en profondeur).
 ====
 ====
 Exemple 3 : Le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95e centile.
@@ -715,7 +715,7 @@ Exemples :
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
-//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["niveau::intermédaire","disponibilité"]}
+//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["niveau::intermédaire","disponibilité"],link_to=["08cb1019-20c4-42ef-9bf2-4adf72936c1c"]}
 ### Disponibilité 
  
 [TIP] 
@@ -723,7 +723,7 @@ Exemples :
 
 La disponibilité mesure le pourcentage de temps pendant lequel un système est utilisable dans des conditions acceptables, c'est-à-dire accessible et opérationnel selon les critères définis (temps de réponse, capacité de traitement, etc.). Il est exprimé en % (exemple: 99.9% = ~8h45 d’indisponibilité/an).
 
-Fournir ici les dispositifs permettant d'atteindre les <<Exigences de disponibilité>>. 
+Fournir ici les dispositifs permettant d'atteindre les Exigences de disponibilité. 
 
 Les mesures permettant d’atteindre la disponibilité exigée sont nombreuses et devront être choisies par l’architecte en fonction de leur apport et de leur coût (financier, en complexité, etc.).  
 
@@ -1139,13 +1139,11 @@ Dans les grands systèmes d'information, il est souvent utile de segmenter les e
 |====
 ====
 
-//🏷{"id": "0bbc320c-6291-4a89-b263-66abf1906ab0", "labels": ["niveau::intermédaire"]}
+//🏷{"id": "0bbc320c-6291-4a89-b263-66abf1906ab0", "labels": ["niveau::intermédaire"], link_to=["da0d11fe-0dc9-478e-a984-7a80ea1be482"]}
 ### Écoconception
 
 [TIP]
 ====
-Lister ici les mesures d'infrastructure permettant de répondre aux <<exigences_ecoconception,Exigences d'écoconception>>. 
-
 Les enjeux d'écoconception sont souvent alignés avec les exigences de **performance** (temps de réponse, latence, optimisation des ressources) et de **coût** (réduction de la consommation énergétique, rationalisation des infrastructures). Lorsqu’une solution impacte plusieurs de ces dimensions, il est préférable d'y faire simplement référence.
 
 Cependant, certaines pratiques sont **spécifiquement liées à l’écoconception** et doivent être prises en compte dès la conception de l'architecture.
@@ -1290,7 +1288,7 @@ Sans timeouts appropriés, des contentions peuvent émerger, entraînant des **b
 ====
 Lister ici les grands principes d’exploitation de la solution. 
 
-Les détails (contenu des sauvegardes, plan de production, planification des traitements, etc.) seront consignés dans un Dossier d’EXploitation (DEX) séparé. 
+Les détails (contenu des sauvegardes, plan de production, planification des traitements, etc.) seront consignés dans un Dossier d’EXploitation (DEX) séparé ou -mieux encore- codés sous la forme d'IaC (Infrastructure As Code). 
 
 Si cette application suit les standards de l'organisation, il suffit de se référer au dossier d'exploitation commun.
 ====
@@ -1381,6 +1379,7 @@ Exemple 2 : Un fichier de verrouillage `maintenance.lock` sera utilisé pour dé
 //🏷{"id": "fd5b00b0-4b23-4cbc-8117-0dcee74ddd8b", "labels": ["niveau_detail::détaillé"]}
 #### Sauvegardes et restaurations
 
+//🏷{"id": "506b442c-ec84-454c-b11b-ddf7fe560701", "labels": []}
 ##### Périmètre
 
 [TIP]
@@ -1400,11 +1399,12 @@ Exemple de périmètre :
 * Sauvegarde des bases PostgreSQL ;
 * Sauvegardes des documents Ceph.
 
+//🏷{"id": "ef7922e8-8122-4120-86f9-c5fed0676811", "labels": [], link_to=["f0e94586-876d-46ca-b060-b5dcde468734","3e07d851-b2dc-422f-9cba-1b4447a5c956"]}
 ##### Stratégie de sauvegarde
 
 [TIP]
 ====
-Fournir la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<Exigences de disponibilité>>.
+Fournir la politique générale de sauvegarde. Elle doit répondre aux exigences de RPO. De même les dispositifs de restauration doivent être compatibles avec les Exigences de disponibilité.
 
 * Quels types de sauvegardes sont effectués ? À chaud ? En lecture seule ? À froid (nécessitant un arrêt de service) ?
 
@@ -1427,6 +1427,7 @@ Exemple de roulement : jeu de 21 sauvegardes sur un an :
 * 11 sauvegardes mensuelles correspondant aux 11 derniers mois.
 ====
 
+//🏷{"id": "93b244a6-976c-465a-80fc-9665a81adeb9", "labels": []}
 ##### Outillage
 
 [TIP]
@@ -1451,6 +1452,7 @@ Exemple 1: Sauvegarde de la base PostgreSQL en streaming avec Barman avec un ful
 Exemple 2: Sauvegarde journalière des documents via Restic avec stockage S3 sur OVH Public Cloud. 
 ====
 
+//🏷{"id": "49e36233-2293-4135-80b2-5c145fe72c7d", "labels": []}
 ##### Traitements sur les sauvegardes
 
 [TIP]
@@ -1485,6 +1487,7 @@ Exemple 4 : Les sauvegardes en ligne stockées dans le stockage objet S3 seront 
 Exemple 5 : Activation du PITR sur PostgreSQL via Barman pour permettre une restauration à la seconde près en cas de corruption ou d'erreur humaine.
 ====
 
+//🏷{"id": "d8955c5f-7ccd-493e-8697-bdd6611ef727", "labels": []}
 ##### Modalités de stockage
 
 [TIP]
@@ -1521,6 +1524,7 @@ Exemple 1: Pour la PME Boucherie Sanzot, on conservera une sauvegarde hebdomadai
 Exemple 2: Pour la sauvegarde des données d'imposition, chaque transaction vers la base de données sera sauvegardée en barman en utilisant les journaux WAL. Chaque nuit, une sauvegarde full barman de la base sera effectuée. On conservera 7J + 4 semaines + 12 mois + 1 an sur sauvegarde online (disques durs) et en near-ligne sur librairie de sauvegarde à base de bandes LTO. Les données seront chiffrées et compressées. Une copie des sauvegardes hebdomadaires sera conservée sur des bandes offline stockées sur un site distant sécurisé.
 ====
 
+//🏷{"id": "2c96a319-9929-453b-a51e-d1de9b1103af", "labels": []}
 ##### Restauration
 
 [TIP]
