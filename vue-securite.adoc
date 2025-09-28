@@ -309,9 +309,9 @@ Contrairement au **SSO (Single Sign-On)**, qui assure une connexion automatique 
 - **Améliore la sécurité** → Centralisation de l’authentification auprès d’un IdP de confiance, possibilité d’intégrer une authentification multi-facteurs (MFA).  
 ====
 
-#### **Exemple d’application**
 ====
-**Cas d’usage** :  
+**Exemple d’application**
+
 L’identification et l’authentification des utilisateurs seront externalisées à **Auth0**, un fournisseur d’identité (IdP) supportant **OIDC, SAML et OAuth2**.  
 
 **Objectifs** :  
@@ -380,7 +380,7 @@ La signature numérique est reconnue légalement par **le texte n°2000-230 du 1
 - Soumission de **documents officiels** (déclarations fiscales, actes notariés…).
 ====
 
-#### **Besoins de non-répudiation**
+**Besoins de non-répudiation par cas d'usage**
 [cols="e,e,e,e"]
 |===
 |Action ou document signé|Niveau de signature exigé|Origine du certificat client|Origine du certificat serveur
@@ -427,11 +427,11 @@ Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs 
 ====
 
 //🏷{"id": "fcad5990-c241-4c88-b2c5-646602f8935a", "labels": ["niveau::intermédaire"]}
-### Exigences sur les habilitations
+### Exigences sur les autorisations
 
 [TIP]
 ====
-Une habilitation (ou autorisation) permet de **contrôler l’accès** à une fonction applicative spécifique (également appelée **privilège** ou **permission**) pour un utilisateur ou un groupe d’utilisateurs.
+Une autorisation ("droit d'accès" ou "habilitation") permet de **contrôler l’accès** à une fonction applicative spécifique (également appelée **droit**, **privilège** ou **permission**) pour un utilisateur ou un groupe d’utilisateurs.
 
 **Exemples de fonctions applicatives :**
 
@@ -441,13 +441,13 @@ Une habilitation (ou autorisation) permet de **contrôler l’accès** à une fo
 
 ⚠ Il est recommandé de **ne pas multiplier excessivement** les fonctions et les rôles afin d’éviter une explosion combinatoire et des coûts de gestion élevés.
 
-**Bonnes pratiques pour simplifier la gestion des habilitations :**
+**Bonnes pratiques pour simplifier la gestion des autorisations :**
 
 - **Regrouper** les utilisateurs dans des **groupes** (ex: `G_chef_service`).
 - **Associer** une liste de **fonctions** à un **rôle** (ex: `R_Administrateur`, `R_banquier_niv1`, `R_chef_service`).
 - **Attribuer** les rôles aux **utilisateurs ou groupes** pour une meilleure factorisation.
 
-**Modèle classique de gestion des habilitations :**  
+**Modèle classique de gestion des autorisations :**  
 
 image::diagrammes/roles.svg[Gestion classique des rôles]
 
@@ -849,7 +849,7 @@ Exemple 3 : Un **bandeau de consentement aux cookies** sera mis en place sur to
 
 ====
 Exemple 1 : La gestion des **autorisations** sera intégrée **applicativement** et stockée dans la **base PostgreSQL**.  
-Les tables dédiées aux habilitations seront détaillées dans le **dossier de spécification**.
+Les tables dédiées aux autorisations seront détaillées dans le **dossier de spécification**.
 ====
 ====
 Exemple 2 : L’accès aux **carnets d’adresses** sera contrôlé via **OAuth2**.  
@@ -901,7 +901,7 @@ Ces solutions permettent d’**anticiper** les menaces avant qu'elles ne survien
 
 * **Formations et sensibilisations** des utilisateurs et des équipes IT.
 * **Systèmes de prévention d'intrusion (IPS)** pour bloquer les acteurs jugés malicieux.
-* **Revues d'habilitations régulières** pour minimiser l'exposition.
+* **Revues d'autorisations régulières** pour minimiser l'exposition.
 * **Durcissement des règles de sécurité** :
   - Authentification à facteurs multiples (MFA).
   - Rotation obligatoire des mots de passe.
@@ -1027,12 +1027,12 @@ Example:
 .^|{i}
 .^|{i}
 
-.^|Gestion des habilitations applicatives
+.^|Gestion des accès
 .^|{i}
 .^|{r} {et} {a}
 .^|{c}
 
-.^|Revue annuelle des habilitations
+.^|Revue annuelle des accès
 .^|{c} {et} {i}
 .^|{i}
 .^|{r} {et} {a}
@@ -1040,6 +1040,7 @@ Example:
 |===
 
 ====
+
 //🏷{"id": "7d8dff71-3acd-450b-bc68-d2e2efee2fbb", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
 ### Auto-contrôles de sécurité
 
