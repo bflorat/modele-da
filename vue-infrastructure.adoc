@@ -516,7 +516,7 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 |====
 ====
 
-//🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["disponibilité"],link_to=["cc4a17a8-d68b-43cf-8b4e-c64829d950fc"]}
+//🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["disponibilité"],"link_to":["cc4a17a8-d68b-43cf-8b4e-c64829d950fc"]}
 ### Exigences de disponibilité
 
 [TIP]
@@ -715,7 +715,7 @@ Exemples :
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
-//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["niveau::intermédaire","disponibilité"],link_to=["08cb1019-20c4-42ef-9bf2-4adf72936c1c"]}
+//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["niveau::intermédaire","disponibilité"],"link_to":["08cb1019-20c4-42ef-9bf2-4adf72936c1c"]}
 ### Disponibilité 
  
 [TIP] 
@@ -1139,7 +1139,7 @@ Dans les grands systèmes d'information, il est souvent utile de segmenter les e
 |====
 ====
 
-//🏷{"id": "0bbc320c-6291-4a89-b263-66abf1906ab0", "labels": ["niveau::intermédaire"], link_to=["da0d11fe-0dc9-478e-a984-7a80ea1be482"]}
+//🏷{"id": "0bbc320c-6291-4a89-b263-66abf1906ab0", "labels": ["niveau::intermédaire"], "link_to":["da0d11fe-0dc9-478e-a984-7a80ea1be482"]}
 ### Écoconception
 
 [TIP]
@@ -1399,7 +1399,7 @@ Exemple de périmètre :
 * Sauvegarde des bases PostgreSQL ;
 * Sauvegardes des documents Ceph.
 
-//🏷{"id": "ef7922e8-8122-4120-86f9-c5fed0676811", "labels": [], link_to=["f0e94586-876d-46ca-b060-b5dcde468734","3e07d851-b2dc-422f-9cba-1b4447a5c956"]}
+//🏷{"id": "ef7922e8-8122-4120-86f9-c5fed0676811", "labels": [], "link_to":["f0e94586-876d-46ca-b060-b5dcde468734","3e07d851-b2dc-422f-9cba-1b4447a5c956"]}
 ##### Stratégie de sauvegarde
 
 [TIP]
