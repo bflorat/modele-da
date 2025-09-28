@@ -1,0 +1,118 @@
+# Vue architecture applicative
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Sommaire
+
+[#74c82505-5f47-4342-8f1b-f6951d603062]
+## Introduction
+
+[#c182158d-40af-4840-b8f2-3a2a030c95af]
+### Documentation de Référence
+.Références documentaires
+[cols="1e,1e,4e,4e"]
+|===
+|N°|Version|Titre/URL du document| Détail
+
+|1
+|
+|
+|
+|
+|===
+
+[#946b3119-a878-47ca-86f2-4c9e22ef0c89]
+## Non statué
+
+[#0f9d2e4a-3c71-4b9e-8f3b-2b8c7d1e9a60]
+### Points nécessitant une étude complémentaire
+
+[#7a1cdb2e-4f52-42a1-9c3e-6e0f2d3a8b91]
+### Hypothèses
+
+[#382fd086-f48e-4ad5-9911-07e3de281971]
+## Contexte général
+
+[#a2b4c6d8-e0f1-4a2b-9c3d-5e6f7a8b9c0d]
+### Objectifs
+
+[#c1d2e3f4-a5b6-4c7d-8e9f-0123456789ab]
+### Existant
+
+[#67bbae56-5ed3-4977-8467-2c951882d1a9]
+### Positionnement dans le SI
+
+[#9ca40d05-ab6e-42ab-aa3c-b9724373ae7f]
+### Acteurs
+
+#### Acteurs internes 
+
+#### Acteurs externes
+
+[#deafbeef-dead-4bed-8ace-0b0b0b0b0b0b]
+#### Nature et sensibilité des données et traitements
+
+[#3b714287-891e-4ea3-a7a4-17672caaf945]
+## Contraintes
+
+[#58897e87-0c12-4139-b5da-daec9cae21c6]
+### Budget
+
+[#ac5b1f28-bfcb-4543-a90b-abcff2b41822]
+### Planning
+
+[#5837249a-8fcc-4e42-9dd9-384c4fa32afc]
+### Urbanisation
+
+[#abafa462-262f-429e-aad8-d2cdc0cf15a3]
+### Juridique
+
+[#9352a89a-3f8b-4028-98d5-58fb970e01ef]
+## Exigences
+
+[#1b2c3d4e-5f60-47a1-82b3-c4d5e6f70809]
+### Exigences stratégiques
+
+[#38fd6aa0-2354-4d0d-9812-10ed917eae5e]
+### Interopérabilité
+
+[#9efde825-9508-4669-918c-7cfb0d45c21f]
+### Exigences de gestion de la concurrence
+
+[#4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f]
+### Archivage
+
+[#fedcba98-7654-4321-8abc-0def12345678]
+### Durées de rétention
+
+[#b269e65b-a8c7-4518-a861-5c6c17802869]
+## Architecture cible
+
+[#2c107a25-a1c4-433d-b746-e12aa2c6eea1]
+### Architecture applicative générale
+
+[#6390e724-c2f0-4737-99a0-531fdcfe8e20]
+### Architecture applicative détaillée
+
+[#f0c1b2a3-4d5e-46f7-88a9-b0c1d2e3f4a5]
+#### Principes ayant dicté les choix
+
+[#aa11bb22-cc33-44dd-88ee-ff0011223344]
+#### Inventaire des modules
+
+[#123e4567-e89b-42d3-a456-426614174001]
+#### Liens entre modules
+
+[#9ac6e5d2-e9a0-427e-ba12-27dedbd8ac4d]
+### Trajectoires de migrations
+
+[#5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f]
+### Archivage
+
+[#0a1b2c3d-4e5f-4061-82a3-b4c5d6e7f809]
+### Purges
+
+[#9f8e7d6c-5b4a-49a8-9c7d-6e5f4d3c2b1a]
+### Matrice des flux applicatifs

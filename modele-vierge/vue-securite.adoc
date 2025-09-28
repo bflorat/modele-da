@@ -1,0 +1,158 @@
+# Vue sécurité
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Sommaire
+
+[#a08e807e-1e9b-4752-a5b8-372a40665c49]
+## Introduction
+
+[#cd8c64f1-d216-4b24-946c-175455e824a7]
+### Documentation de Référence
+.Références documentaires
+[cols="1e,1e,4e,4e"]
+|===
+|N°|Version|Titre/URL du document| Détail
+
+|1
+|
+|
+|
+|
+|===
+
+[#ea245600-dbd6-4f56-a58c-8c77556643ad]
+## Non statué
+
+[#a058d388-72e1-4136-8659-7a9db1c1a340]
+### Points nécessitant une étude complémentaire
+
+[#68a4f41c-1139-4cdd-bb9e-e15667f47fd9]
+### Hypothèses
+
+[#53ae9c06-1846-4dd2-ab55-f4a784c6a676]
+## Contraintes
+
+[#4882e5b9-c250-4079-8b24-04996016606d]
+## Exigences
+
+[#323d4c77-810a-4015-bc1a-11da07e24f3b]
+### Exigences d'intégrité
+
+[#acfa846e-0ed7-4f41-a593-f4ee29e94efd]
+### Exigences de confidentialité
+
+[#94c138c1-3e8b-4eaf-8926-b5b9bfa6a86b]
+### Exigences d'identification
+
+[#9d0646cd-3e3f-4878-96de-f215c9f20bdc]
+### Exigences d'authentification
+
+[#500d6ef3-3b9b-4820-9178-39127920a247]
+#### Facteurs d’authentification
+
+[#58bf95ee-2fc4-4972-ac2b-7e2f775a4eb9]
+#### Exigences d'authentification par cas d'utilisation
+
+[#f552f1e6-9aea-4866-8da1-e7ed676fd228]
+### Exigences de fédération d’identité
+
+[#400376ad-cc62-4ab3-8e96-5a9f9a954e49]
+### Exigences de SSO et SLO
+
+[#01404b83-f96f-4649-ace0-e5611601b830]
+### Exigences de non-répudiation
+
+[#958fcccc-60cb-4158-940f-279cd1d12c9b]
+### Exigences d'anonymat et de respect de la vie privée
+
+[#fcad5990-c241-4c88-b2c5-646602f8935a]
+### Exigences sur les autorisations
+
+[#e72e5ea5-5711-4665-8a91-76c63cbca2bc]
+### Exigences de traçabilité et d'auditabilité
+
+=== **Données à conserver pour preuves**  
+
+[#d1f16239-18f7-4a4a-875e-34a587eb88b4]
+## Mesures de sécurité
+
+[#e60500e8-b4a3-471c-941c-8fd8c02c4da9]
+### Intégrité
+TIP: Voir aussi <<323d4c77-810a-4015-bc1a-11da07e24f3b,Exigences d'intégrité>>.
+
+[#a64b5e5d-e4d4-4ed2-b425-19cd542fa58e]
+### Confidentialité
+TIP: Voir aussi <<acfa846e-0ed7-4f41-a593-f4ee29e94efd,Exigences de confidentialité>>.
+
+[#3779a946-fc73-455b-8bab-3d5398ce0311]
+### Identification
+TIP: Voir aussi <<94c138c1-3e8b-4eaf-8926-b5b9bfa6a86b,Exigences d'identification>>.
+
+[#ac587042-7060-44cf-96aa-93fddadc15f5]
+### Authentification
+TIP: Voir aussi <<9d0646cd-3e3f-4878-96de-f215c9f20bdc,Exigences d'authentification>>.
+
+[#49de0015-9e27-4f60-91ca-282feec8345d]
+### Fédération d’identité
+TIP: Voir aussi <<f552f1e6-9aea-4866-8da1-e7ed676fd228,Exigences de fédération d’identité>>.
+
+[#1c4774ab-e6fc-46a4-bb89-97e318a8dd8f]
+### SSO et SLO
+
+[#8e35ee35-b5bc-433b-8389-f07e62a05339]
+### Comptes de service
+
+[#9f09dacf-d151-45af-a5f6-209823e7a401]
+### Non-répudiation et horodatage
+TIP: Voir aussi <<01404b83-f96f-4649-ace0-e5611601b830,Exigences de non-répudiation>>.
+
+[#72efb92f-13f8-48e5-aed1-b57c4eab56fc]
+### Anonymat et vie privée
+TIP: Voir aussi <<958fcccc-60cb-4158-940f-279cd1d12c9b,Exigences d'anonymat et de respect de la vie privée>>.
+
+[#e6d0ad26-40b7-412e-b861-1f8e6e2299ca]
+### Habilitations
+TIP: Voir aussi <<fcad5990-c241-4c88-b2c5-646602f8935a,Exigences sur les autorisations>>.
+
+[#3819b8cc-d9c4-4d29-9ca1-adae300a79e2]
+### Traçabilité et auditabilité
+TIP: Voir aussi <<e72e5ea5-5711-4665-8a91-76c63cbca2bc,Exigences de traçabilité et d'auditabilité>>.
+
+[#5e00eeef-1d5b-4a21-ac19-116ae376d999]
+### Lutte contre les cybermenaces
+
+[#d13f2885-ab5c-4543-9432-f53002c01c2c]
+#### Solutions de prévention
+
+[#ac7dde83-27c9-4916-9020-73efaab5fcb1]
+#### Solutions de détection
+
+[#d4498522-32aa-4987-aaec-2d9cf01130da]
+#### Solutions de correction
+
+[#a69b42f5-4f4e-42bf-b4bc-c6093941600f]
+#### Solutions de prédiction
+
+[#d4d0f075-dff9-4d81-aebc-bbd0cc45bb55]
+## Annexes
+
+[#b2f76b28-83da-478b-bc94-f1bc29dc6084]
+### RACI & Gouvernance de la Sécurité
+:r: pass:quotes[[.green]#R#]
+:a: pass:quotes[[.red]#A#]
+:c: pass:quotes[[.blue]#C#]
+:i: pass:quotes[[.orange]#I#]
+:na: pass:quotes[[.grey]#N/A#]
+:et: pass:quotes[[.grey]#&amp;#]
+
+[#7d8dff71-3acd-450b-bc68-d2e2efee2fbb]
+### Auto-contrôles de sécurité
+
+[#68556bb6-b10d-4fe3-b956-ae9c5f926f4a]
+#### Auto-contrôle des vulnérabilités
+
+[#f40cd11b-8d1f-4223-944d-3cad1a1a9f15]
+#### Auto-contrôle RGPD

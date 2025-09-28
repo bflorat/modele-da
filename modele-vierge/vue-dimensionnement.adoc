@@ -1,0 +1,87 @@
+# Vue dimensionnement
+:sectnumlevels: 4
+:toclevels: 4
+:sectnums: 4
+:toc: left
+:icons: font
+:toc-title: Sommaire
+
+[#32c8942e-443f-429d-a411-43869a720224]
+## Introduction
+
+[#c443e562-398d-49ab-92bd-8031f3e91bec]
+### Documentation de Référence
+.Références documentaires
+[cols="1e,1e,4e,4e"]
+|===
+|N°|Version|Titre/URL du document| Détail
+
+|1
+|
+|
+|
+|
+|===
+
+[#1ef7beb9-71ee-43e5-9a1b-c45a48959084]
+## Non statué
+
+[#c5db3e60-e70c-4ebb-9848-44a0cecc4c6e]
+### Points nécessitant une étude complémentaire
+
+[#577c9b37-77a2-4568-9fb5-2804d6f9bc70]
+### Hypothèses
+
+[#69811b17-b947-4562-90ba-a97160421965]
+## Contraintes
+
+[#646fc728-6cef-4e75-9fa9-646b4ec2159d]
+### Contraintes stockage
+
+[#1d3ec06e-d63d-4a61-bb4e-437358064687]
+### Contraintes CPU
+
+[#ec6a420b-c284-442a-93fd-edc3d45ed00a]
+### Contraintes mémoire
+
+[#8d948872-15f9-49b6-9527-f511a2f7597d]
+### Contraintes réseau
+
+[#d6e3eb12-371b-4c26-b538-9fea2051bfed]
+## Exigences
+
+[#962347a4-c3c8-4f0c-bcac-774a6ef617a4]
+### Volumétrie statique
+
+[#1736e661-2c68-4aa6-a157-9e4444d5a374]
+#### Métriques
+
+[#9968c2e6-46b9-4005-89d4-6a9114246a4c]
+#### Estimation besoins de stockage
+
+[#b22cadba-e5a7-4c3a-b4b8-f9ea32a2a0be]
+### Volumétrie dynamique
+
+[#910fc171-30ed-47cd-b03c-3ca918b3103e]
+#### Métriques
+
+[#3d09511c-17b2-43c3-bcba-0a62ead057b4]
+#### Estimation de la charge
+
+[#c1a8f666-70e1-4acf-9d7a-5e1b06ecb588]
+### Exigences de temps de réponse
+
+[#24f70acd-5f7c-49b3-bd75-d594e5af8917]
+#### Temps de Réponse des IHM
+
+[#88645b89-d407-4107-93b2-48003fd8688a]
+#### Durée d’exécution des batchs
+
+[#fb740b6a-bd23-4401-a7e0-b01610a01b9b]
+## Dimensionnement cible
+
+[#63214041-3461-4019-a685-fac68fdb4d74]
+### Estimation des besoins en ressources par unité déployable
+
+[#6e9675d7-5d8c-4cf8-989a-13640cd28ef3]
+### Dimensionnement des machines
