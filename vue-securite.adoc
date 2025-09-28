@@ -613,7 +613,7 @@ a|
 |===
 
 //🏷{"id": "a64b5e5d-e4d4-4ed2-b425-19cd542fa58e", "labels": [], "link_to": ["acfa846e-0ed7-4f41-a593-f4ee29e94efd"]}
-### **Confidentialité**
+### Confidentialité
 
 .Mesures pour assurer le niveau de confidentialité demandé
 [cols="e,e,e"]
@@ -810,7 +810,7 @@ Les **comptes de service** sont utilisés pour authentifier une application ou u
 ### Non-répudiation et horodatage
 
 ====
-Exemple : La déclaration d’impôt sera signée par le certificat client de l’usager (*X.509*, *RSA*, *SHA-256*) qui lui a été fourni par le module X.
+Exemple : La déclaration d’impôt sera signée par le certificat client de l’usager (*X.509*, *RSA*, *SHA-256*) qui lui a été fourni par l'organisation X.
 ====
 
 [TIP]
@@ -864,7 +864,7 @@ Exemple 1 : À la fin de chaque **action métier**, l’application **ReactJS**
 Ce service enregistrera les **traces métier** dans une **base Elasticsearch** pour consultation via **Kibana**.
 ====
 ====
-Exemple 2 : Un système de **détection d'intrusion (IDS)** hybride (*réseau + hôte*), basé sur **OSSEC**, sera **déployé sur l’ensemble des machines** utilisées par l’application.
+Exemple 2 : Un système de **détection d'intrusion (IDS)** hybride (*réseau + hôte*), basé sur **Wazuh**, sera **déployé sur l’ensemble des machines** utilisées par l’application.
 ====
 ====
 Exemple 3 : Les **tables X, Y, …** seront **historisées** selon le modèle suivant : +
@@ -900,6 +900,8 @@ Le cadre de réponse aux menaces peut être aligné sur le **NIST Cybersecurity 
 Ces solutions permettent d’**anticiper** les menaces avant qu'elles ne surviennent.
 
 * **Formations et sensibilisations** des utilisateurs et des équipes IT.
+* S’assurer que les développeurs connaissent et appliquent les mesures de mitigation issues du **https://owasp.org/www-project-top-ten/[OWASP Top 10]**, les bonnes pratiques de sécurité applicative (ex. : protection contre les injections, l’authentification défaillante, les conceptions non sécurisées et autres risques critiques).  
+
 * **Systèmes de prévention d'intrusion (IPS)** pour bloquer les acteurs jugés malicieux.
 * **Revues d'autorisations régulières** pour minimiser l'exposition.
 * **Durcissement des règles de sécurité** :
