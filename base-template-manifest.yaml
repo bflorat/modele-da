@@ -28,3 +28,4 @@ files_imported_into_blank_templates:
   - base_dir: modele-vierge/resources
     files:  
       - vues.png
+
