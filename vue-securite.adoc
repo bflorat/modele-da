@@ -32,15 +32,20 @@ La disponibilité est traitée dans la vue infrastructure.
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit pas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
 ====
 
+[PRE-FILLED]
+====
 .Références documentaires
-[cols="1e,1e,3e,3e"]
-|====
-|N°|Version|Titre/URL du document|Détail
+[cols="1e,1e,4e,4e"]
+|===
+|N°|Version|Titre/URL du document| Détail
 
-|1|1.0|Dispositifs_securite.pdf|Catalogue de dispositifs de sécurité habilités
-|2|latest|Normes sécurité société|http://masociete/monurl
-|3|latest|Explications RGPD | https://www.cnil.fr/fr/rgpd-par-ou-commencer
-|====
+|1
+|
+|
+|
+|
+|===
+====
 
 //🏷{"id": "ea245600-dbd6-4f56-a58c-8c77556643ad", "labels": ["contexte","incertitude"]}
 ## Non statué
