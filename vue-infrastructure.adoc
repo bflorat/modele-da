@@ -12,7 +12,7 @@
 
 *Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
-
+//🏷{"id": "e3208a9c-8d35-46a1-9399-aacea9817e0a", "labels": ["contexte"]}
 ## Introduction
 
 La vue infrastructure décrit le déploiement des modules applicatifs dans leur environnement d’exécution cible et l'ensemble des dispositifs assurant leur bon fonctionnement.
@@ -28,6 +28,7 @@ Cette vue est aussi souvent appelé « vue  technique » et concerne l'infrast
 Bref, elle porte sur tout ce qui est externe à l'application et nécessaire à son exécution.
 ====
 
+//🏷{"id": "06fd3383-f875-4a44-a1f8-d135f9050038", "labels": ["references"]}
 ### Documentation de Référence
 [TIP]
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit pas reprendre leur contenu sous peine de devenir rapidement obsolète et non maintenable.
@@ -42,7 +43,10 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
+//🏷{"id": "933039be-008f-40c7-a630-a08002b379f1", "labels": ["contexte","incertitude"]}
 ## Non statué
+
+//🏷{"id": "87385297-c5c3-44f6-b9e8-7599576dda0a", "labels": []}
 ### Points nécessitant une étude complémentaire
 .Points nécessitant une étude complémentaire
 [cols="1e,5e,2e,2e,2e"]
@@ -57,6 +61,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 |====
 
+//🏷{"id": "30d20b83-e35d-464b-8286-3ff230fb1471", "labels": []}
 ### Hypothèses
 
 .Hypothèses
@@ -68,6 +73,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Nous prenons l'hypothèse que d'ici à la MEP du projet, PostgreSQL 17 sera validé en interne.
 |====
 
+//🏷{"id": "82a207de-bc6f-4a62-a586-96a2b4c9f4dc", "labels": ["niveau_detail::général", "contrainte"]}
 ## Contraintes
 
 [TIP]
@@ -78,6 +84,7 @@ Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par
 
 ====
 
+//🏷{"id": "cc4a17a8-d68b-43cf-8b4e-c64829d950fc", "labels": ["disponibilité"]}
 ### Contraintes sur la disponibilité
 
 [TIP]
@@ -87,6 +94,7 @@ Les éléments ici fournis pourront servir de base au SLO (Service Level Objecti
 Ce chapitre a une vocation pédagogique car il rappelle la disponibilité plafond envisageable : la disponibilité finale de l’application ne pourra être qu’inférieure.
 ====
 
+//🏷{"id": "a18eb613-e522-4bf5-a1fd-742b9d754ce1", "labels": ["niveau_detail::détaillé","supervision"]}
 #### MTTD
 
 [TIP]
@@ -99,6 +107,7 @@ Exemple 1 : Le SI est supervisé en 24/7/365.
 Exemple 2 : Le service support production est disponible durant les heures de bureau mais une astreinte est mise en place avec alerting par e-mail et SMS en 24/7 du lundi au vendredi.
 ====
 
+//🏷{"id": "dc11b031-5685-4972-9832-138fa74cd30b", "labels": ["niveau_detail::détaillé","supervision"]}
 #### Outils et normes de supervision
 
 [TIP]
@@ -113,6 +122,7 @@ Exemple 2 : Les batchs doivent pouvoir se lancer via un endpoint REST.
 Exemple 3 : un batch en erreur ne doit pas pouvoir se relancer sans un acquittement humain.
 ====
 
+//🏷{"id": "6903a99e-8b8e-464b-909c-d40da5a808d1", "labels": ["niveau_detail::détaillé"]}
 #### MTTR
 
 [TIP]
@@ -128,7 +138,8 @@ Lister ici les durées d’intervention des prestataires matériels, logiciels, 
 Nous subdivisons de façon indicative cette section en sous-sections "Hardware", "Système et virtualisation", "Réseau", et "Restauration de données". D'autres catégories sont possibles.
 ====
 
-##### Hardware
+//🏷{"id": "e7470aba-8588-4792-bc94-28e4bf186b63", "labels": ["niveau_detail::approfondi"]}
+##### Matériel
 
 TIP: Décrire ici les éléments permettant de prévoir le MTTR des éléments hardware (serveurs / baies / équipements réseau / systèmes électriques, etc.). Lister par exemple ici les durées d’intervention des prestataires matériels, électricité….
 
@@ -140,6 +151,7 @@ Exemple 2 : Le contrat de support Hitashi prévoit une intervention sur les baie
 Exemple 3 : le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
 ====
 
+//🏷{"id": "96cd73f1-0dca-447e-8fc8-2d9c03399e1c", "labels": ["niveau_detail::approfondi"]}
 ##### Système et virtualisation
 
 TIP: Lister ici les éléments permettant d'estimer le temps de correction d'un problème lié à l'OS ou à une éventuelle solution de virtualisation.
@@ -153,6 +165,7 @@ Exemple 3 : Le temps de restauration observé d'une sauvegarde Veeam de VM de 40
 
 ====
 
+//🏷{"id": "22a1f1de-1ab0-4a54-bd0f-64c7c5ab9713", "labels": ["niveau_detail::approfondi"]}
 ##### Réseau
 
 TIP: Lister ici les éléments liés au réseau permettant d'estimer les durées d’intervention des prestataires ou fournisseurs Telecom…
@@ -163,6 +176,7 @@ Exemple 1 : un ingénieur réseau est d'astreinte chaque week-end.
 Exemple 2 : Le SLA d'Orange prévoit un rétablissement de la connexion à Internet en conditions nominales en moins de 24H.
 ====
 
+//🏷{"id": "b39586c3-6bbe-417f-ad64-eff53c81d283", "labels": ["niveau_detail::détaillé"]}
 ##### Restauration de données
 TIP: Lister ici les éléments permettant d'évaluer la durée de restauration de données (fichiers / objets / base de données). Les exigences de RTO listées plus bas devront prendre en compte ce MTTR.
 
@@ -172,7 +186,7 @@ Exemple 1 : Le temps de restauration Barman d'une base PostgreSQL est d'environ 
 Exemple 2 : La restauration d'une sauvegarde offline (sur bandes) nécessite au minimum 4H de préparation supplémentaire.
 ====
 
-
+//🏷{"id": "421860fb-b6b3-461a-b149-57c6ba6dae41", "labels": ["niveau_detail::approfondi"]}
 #### Interruptions programmées
 
 [TIP]
@@ -187,6 +201,7 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 
 ====
 
+//🏷{"id": "21d704f6-f740-40f9-986c-36274643a711", "labels": ["niveau_detail::détaillé"]}
 #### Niveau de service du datacenter
 
 [TIP]
@@ -235,76 +250,106 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 Exemple : Le datacenter de Paris est de niveau Tier III et celui de Toulouse Tier II.
 ====
 
-#### Synthèse de la disponibilité plancher
+//🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["niveau_detail::général"]}
+#### Plafond de disponibilité (borne supérieure)
 
 [TIP]
 ====
-En prenant en compte les éléments précédents, estimer la disponibilité plancher (maximale) d'une application (hors catastrophe). Toute exigence devra être inférieure à celle-ci. Dans le cas d'un cloud, se baser sur le SLA du fournisseur. Dans le cas d'une application hébergée en interne, prendre en compte la disponibilité du datacenter et des indisponibilité programmées.
+Expliquez clairement aux parties prenantes que, même avec de la HA au niveau applicatif, la **disponibilité de bout en bout maximale** est plafonnée par la disponibilité des dépendances sous-jacentes (datacenter, réseau, plateforme).
+Ce **plafond de disponibilité** est le produit de leurs SLA et est toujours
+≤ à la dépendance la moins disponible.
+
+`A_plafond = ∏(A_SLA de chaque dépendance en série)  ≤  min(A_SLA)`
+
+**Implication :** les cibles SLO **ne doivent pas dépasser** ce plafond. La HA aide à
+s’approcher du plafond, pas à le dépasser.
+
+**Notes de périmètre**
+
+* Si toutes les répliques se trouvent dans le **même domaine de défaillance** (même DC/énergie/accès),
+  le SLA du DC **fixe effectivement le plafond**.
+* Pour **rehausser le plafond**, utilisez des **domaines de défaillance indépendants** (p. ex. multi-AZ/région) ;
+  pour la redondance en parallèle : `A_parallel = 1 - ∏(1 - A_i)` (indépendance supposée).
 ====
 
 ====
-Exemple : Disponibilité effective application  = <disponibilité datacenter> * <plage de fonctionnement effective> * <disponibilité système > * <disponibilité hardware> = 99.8 x 99.99 x 99.6 x 99.99 =~ *99.4%*.
+*Exemple (sériel, un seul DC) :*  
+`<Datacenter 99,9 %> × <Réseau interne 99,95 %> × <Plateforme 99,9 %> ≈ **99,75 %**`
+
+Même si la couche applicative est « HA 99,999 % », la disponibilité **de bout en bout**
+ne peut pas dépasser ~**99,75 %** sur cette infrastructure.
 ====
 
+
+//🏷{"id": "4860fb1c-98e9-4c2c-adfc-09ea8149235d", "labels": ["niveau_detail::général"]}
 #### Gestion des catastrophes
 
 [TIP]
 ====
 
-Les catastrophes peuvent être classées en trois catégories:
+Les catastrophes peuvent être classées en trois catégories :
 
-* Naturelles (tremblements de terre, inondations, ouragans, canicules, etc. ) ;
-* Infrastructurelles (accidentel comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, les erreurs critiques d'administrateurs ou intentionnelles: militaire, terroriste, sabotage, etc.) ;
-* Cyber (DDOS, virus, Ransomware, etc. ).
+* Naturelles (tremblements de terre, inondations, ouragans, canicules, etc.) ;
+* Infrastructurelles (accidentelles comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, erreurs critiques d’administrateurs ou intentionnelles : militaires, terroristes, sabotage, etc.) ;
+* Cyber (DDoS, virus, ransomware, etc.).
 
-**Disaster Recovery (DR)** est l'ensemble des stratégies et solutions mises en place pour **restaurer un système informatique après une catastrophe**, minimisant ainsi les pertes de données et le temps d'arrêt. DR peut inclure des solutions comme :
+**Disaster Recovery (DR)** est l’ensemble des stratégies et solutions mises en place pour **restaurer un système informatique après une catastrophe**, minimisant ainsi les pertes de données et le temps d’arrêt. Le DR peut inclure des solutions comme :
 
-* **Cold site** : Centre de secours prêt à être activé mais sans infrastructure active.
-* **Warm site** : Infrastructure préinstallée mais nécessitant une mise en production manuelle.
-* **Hot site** : Réplication en temps réel avec bascule automatique possible.
-* **Disaster Recovery as a Service (DRaaS)** : Solutions cloud de restauration rapide (AWS Elastic Disaster Recovery, Azure Site Recovery, etc.).
+* **Cold site** : centre de secours prêt à être activé mais sans infrastructure active ;
+* **Warm site** : infrastructure préinstallée mais nécessitant une mise en production manuelle ;
+* **Hot site** : réplication en temps réel avec bascule automatique possible ;
+* **Disaster Recovery as a Service (DRaaS)** : solutions cloud de restauration rapide (AWS Elastic Disaster Recovery, Azure Site Recovery, etc.).
 
-PRA (Plan de Reprise d'Activité) et PCA (Plan de Continuité d'Activité) sont des stratégies spécifiques de **DR** répondant à un risque de catastrophe sur le SI :
+Le PRA (Plan de Reprise d’Activité) et le PCA (Plan de Continuité d’Activité) sont des stratégies spécifiques de **DR** répondant à un risque de catastrophe sur le SI :
 
-* **PRA (Plan de Reprise d'Activité)**  
-  Permet de **reprendre l’activité après une catastrophe** dans un délai défini (RTO). Il repose sur des **sauvegardes, des restaurations et des infrastructures de secours** comme des **DC secondaires, du stockage répliqué** ou des **solutions DRaaS**. L'objectif est d'assurer la reprise, mais avec une **interruption temporaire**.
+* **PRA (Plan de Reprise d’Activité)** ou _Comment revenir à la normale après le problème ?_ 
+  Permet de **reprendre l’activité après une catastrophe** dans un délai défini (RTO). Il repose sur des **synchronizations asynchrones entre sites, des sauvegardes, des restaurations et des infrastructures de secours** comme des **DC secondaires, du stockage répliqué** ou des **solutions DRaaS**. L’objectif est d’assurer la reprise, mais avec une **interruption temporaire** et l'acceptation d'un RPO non nul.
 
-* **PCA (Plan de Continuité d'Activité)**  
-  Permet d'assurer la **continuité des activités critiques** sans interruption notable. Il nécessite des **clusters actifs-actifs multi-zonaux, une réplication synchrone des données et des infrastructures hautement redondantes**. Il est plus coûteux et plus complexe qu’un PRA.
+* **PCA (Plan de Continuité d’Activité)** ou _Comment continuer à travailler malgré le problème ?_ 
+  Permet d’assurer la **continuité des activités critiques** sans interruption notable et avec un RPO quasi-nul. Il comprend des mesures organisationnelles (équipes de crise, mode dégradé comme utilisation du papier, sites de repli,...) et techniques comme des **clusters actifs-actifs multi-zonaux, une réplication synchrone des données et des infrastructures hautement redondantes**.
 
+Un architecte n’utilise pas les mêmes technologies selon que l’on vise un **PRA ou un PCA** :
 
-Un architecte n'utilise pas les mêmes technologies suivant qu'on vise un **PRA ou un PCA** :
+* **PRA** →  Se concentre sur la **sauvegarde et la restauration** dans un DC de secours, avec un **RTO défini**.  
+  Exemples on-premises : **snapshots de VM avec Veeam, solutions DRaaS, bases de données répliquées en mode asynchrone** (ex. : **MySQL/MariaDB asynchrone, PostgreSQL streaming replication, SQL Server log shipping, VMware vSphere Replication, Dell EMC SRDF en mode asynchrone, Zerto**).  
+  Exemples cloud : **AWS Aurora Global Database (réplication asynchrone inter-régions), Amazon RDS cross-region read replicas, Azure SQL Geo-Replication, Google Cloud SQL cross-region replication**.  
 
-* **PRA** → Se concentre sur la **sauvegarde et la restauration** en DC de secours, avec un **RTO défini** (ex: **snapshots de VMs avec Veeam, DRaaS, bases en mode réplication asynchrone**).
-* **PCA** → Nécessite des **clusters actifs-actifs multi-zonaux** répartis sur plusieurs **DC distants** avec synchronisation en temps réel (ex: **Oracle RAC, Ceph, Kafka MirrorMaker**).
+* **PCA** → Repose sur des **clusters actifs-actifs multi-zones** répartis sur plusieurs DC distants, avec une **réplication généralement synchrone** pour garantir un RPO nul (ou quasi nul).  
+  Exemples on-premises : **Oracle RAC, VMware vSphere Metro Storage Cluster, NetApp MetroCluster, Dell EMC SRDF en mode synchrone, Ceph RADOS synchrone**.  
+  Exemples cloud : **Google Cloud Spanner (réplication synchrone multi-régions), Azure SQL Managed Instance Business Critical avec zones redondantes, AWS Aurora Multi-AZ (synchronous replication)**.
 
-Notes: 
+Notes :  
 
-* Pour un PCA, la réplication synchrone est souvent utilisée pour garantir un RPO nul, mais certaines architectures (ex: vSphere Metro Storage Cluster avec SRDF asynchrone) permettent un PCA avec une réplication asynchrone, à condition que le RPO reste dans des limites acceptables (perte de quelques transactions seulement). Cependant, une réplication sur longue distance peut introduire une latence élevée, impactant les performances. C'est pourquoi ce type de réplication synchrone n'est pas envisageable pour entre des DC éloignés de plus de 50 km environ.
-* Un PRA peut  quant-à lui tolérer une réplication asynchrone ou des sauvegardes périodiques selon les exigences métier. 
-* Les systèmes de sauvegarde classiques peuvent suffire pour un PRA avec un RTO adapté, mais sont généralement insuffisants pour un PCA, qui requiert une réplication temps réel. 
-* Dans le cas d'un PRA, il faut prévoir une bascule et une préparation conséquente du DC de secours alors que dans le cas d'un PCA, tous les DC fonctionnent en parallèle en mode actif/actif de façon nominale.
+* Pour un PCA, la réplication synchrone est souvent utilisée pour garantir un RPO nul, mais certaines architectures (ex. : vSphere Metro Storage Cluster avec SRDF asynchrone) permettent un PCA avec une réplication asynchrone, à condition que le RPO reste dans des limites acceptables (perte de quelques transactions seulement). Cependant, une réplication sur longue distance peut introduire une latence élevée, impactant les performances. C’est pourquoi ce type de réplication synchrone n’est pas envisageable pour des DC éloignés de plus de 50 km environ.  
+* Un PRA peut quant à lui tolérer une réplication asynchrone ou des sauvegardes périodiques selon les exigences métier.  
+* Les systèmes de sauvegarde classiques peuvent suffire pour un PRA avec un RTO adapté, mais sont généralement insuffisants pour un PCA, qui requiert une réplication en temps réel.  
+* Dans le cas d’un PRA, il faut prévoir une bascule et une préparation conséquente du DC de secours alors que dans le cas d’un PCA, tous les DC fonctionnent en parallèle en mode actif/actif de façon nominale.  
 * Les tests de bascule devraient être réalisés au moins une fois par an pour un PRA, et trimestriellement pour un PCA. Ils doivent inclure des tests unitaires (failover d’une application) et globaux (bascule totale du SI).
 
-Note: La gestion des catastrophes est un sujet complexe. C'est l'un des points forts des Clouds publics (OVH, GCP, Azure, AWS, etc.) que de gérer une partie de cette complexité pour vous. Des solutions Cloud spécifiques existent (Disaster Recovery as a Service (DRaaS)).
+Note : la gestion des catastrophes est un sujet complexe. C’est l’un des points forts des clouds publics (OVH, GCP, Azure, AWS, etc.) que de gérer une partie de cette complexité pour vous. Des solutions cloud spécifiques existent (Disaster Recovery as a Service – DRaaS).
 
-Décrire entre autres :
+Décrire entre autres :
 
-* Les matériels redondés dans le second DC, nombre de serveurs de spare, capacité du DC de secours par rapport au DC nominal.
-* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévues et le RTO.
-* Pour un PCA, la latence et dégradation de performances induite par la réplication synchrone des données entre DC ou la quantité de transactions perdues acceptables en cas de réplication asynchrone.
-* Présenter la politique de failback (réversibilité) : doit-on rebasculer vers le premier DC? Comment ?
-* Comment sont organisés les tests de bascule à blanc ? Avec quelle fréquence ?
+* Les matériels redondés dans le second DC, le nombre de serveurs de spare, la capacité du DC de secours par rapport au DC nominal.  
+* Pour un PRA, les dispositifs de restauration (OS, données, applications) prévus et le RTO.  
+* Pour un PCA, la latence et la dégradation de performances induites par la réplication synchrone des données entre DC ou la quantité de transactions perdues acceptables en cas de réplication asynchrone.  
+* Présenter la politique de failback (réversibilité) : doit-on rebasculer vers le premier DC ? Comment ?  
+* Comment sont organisés les tests de bascule à blanc ? Avec quelle fréquence ?  
+
 ====
 ====
-Exemple de PRA : Pour rappel (voir [doc xyz]), les VM sont répliquées dans le DC de secours via la technologie vSphere Metro Storage Cluster utilisant SRDF en mode asynchrone pour la réplication inter-baies. En cas de catastrophe, la VM répliquée sur le site de secours est à jour et prête à démarrer. Le RPO est de ~0 secs et le RTO de 30 mins.
-
-Autre exemple de PRA (PME avec son propre DC à Paris) : Stockage de deux serveurs de spare dans les locaux de Lille. Sauvegarde à chaud toutes les quatre heures des données principales de l'entreprise et envoi (avec chiffrement client) sur BackBlaze.com. Le RPO est de 4h, le RTO de 2H.
-
-Exemple de PCA avec élasticité: Les applications s’exécutent sous forme de POD Kubernetes sur au moins trois clusters situées dans des zones géographiquement distantes. Les données MongoDB sont shardées et synchronisées entre zones via un système de ReplicatSet. Le système est auto-régulé par Kubernetes et tout plantage d'un DC sera compensé en quelques secondes par la création de nouveaux POD dans les deux clusters restants. Ainsi, non seulement les utilisateurs n'auront pas de perte de disponibilité mais ils ne verront pas non plus leurs performances dégradées. 
+Exemple 1 - PRA basé sur site de secours et replication asynchrone  : Les VM de production sont répliquées de façon continue vers un site de secours situé à 100km via la solution de réplication asynchrone Zerto. En cas de catastrophe, les VM du site secondaire peuvent être démarrées rapidement. Le RPO est de l’ordre de 5 minutes, et le RTO d’environ 30 minutes.
 ====
 
+====
+Exemple 2 - PRA basé sur sauvegardes cloud  (PME avec son propre DC à Paris) : deux serveurs de spare sont stockés dans les locaux de Lille. Les données principales de l’entreprise sont sauvegardées toutes les quatre heures et envoyées (avec chiffrement côté client) vers BackBlaze.com. En cas de sinistre majeur, les serveurs de spare peuvent être réinstallés et restaurés. Le RPO est de 4 h et le RTO visé de 2 à 4 h, selon le temps de transfert et de remise en service.
+====
 
+====
+Exemple 3 - PCA avec élasticité : les applications s’exécutent sous forme de pods Kubernetes répartis sur au moins trois clusters situés dans différentes zones de disponibilité. Les données MongoDB sont shardées et répliquées entre zones via un système de ReplicaSet. Le système est auto-régulé par Kubernetes : en cas de panne d’un DC, de nouveaux pods sont redéployés en quelques secondes sur les clusters restants. Ainsi, les utilisateurs ne subissent pas d’interruption de service et l’impact sur les performances reste très limité.
+====
+
+//🏷{"id": "c7c4fce5-c971-4ec8-bef7-006381492aff", "labels": ["niveau_detail::général"]}
 ### Hébergement
 
 * Où sera hébergée cette application ? DC "on premises" ? Cloud interne ? Cloud IaaS ? PaaS ? autre ?
@@ -321,6 +366,7 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel `PERSONNE`, elle sera colocalisée avec le module `COMPTA-API` dans le VLAN `XYZ`.
 ====
 
+//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes réseau
 
 [TIP]
@@ -334,6 +380,7 @@ Exemple 1 : Le LAN dispose d'un débit maximal de 10 Gbps.
 Exemple 2 : Les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
 ====
 
+//🏷{"id": "86a3082e-7069-4120-b86f-f886ef919986", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes de déploiement
 
 [TIP]
@@ -349,6 +396,7 @@ Exemple 3 : Toute application doit être publiée sous forme d'image OCI et dép
 
 ====
 
+//🏷{"id": "16781642-a7f3-40f1-b208-e4064ffedaa4", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes liées au cycle de vie des composants d'infrastructure
 
 [TIP]
@@ -371,7 +419,7 @@ Exemple 6 : Un calendrier de mise à jour des composants critiques sera établi 
 
 ====
 
-
+//🏷{"id": "0a25770c-6a02-4fa3-82cc-bf5152d3cba6", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes liées aux journaux
 
 [TIP]
@@ -384,6 +432,7 @@ Exemple 1 : Une application ne doit pas produire plus de 1 Tio de journaux / moi
 Exemple 2 : La durée de rétention maximale des journaux est de 3 mois.
 ====
 
+//🏷{"id": "608d63e6-7299-4976-bf59-52fa1c6ac486", "labels": ["niveau_detail::détaillé"]}
 ### Contraintes de sauvegardes et restaurations
 
 [TIP]
@@ -405,6 +454,7 @@ Exemple 2 : La durée de retentions maximale des sauvegardes est de deux ans.
 Exemple 3 : Compter 1 min / Gio pour une restauration NetBackup.
 ====
 
+//🏷{"id": "22e6cfa3-bc3d-466c-a902-9854540258b7", "labels": ["niveau_detail::détaillé"]}
 ### Coûts
 
 [TIP]
@@ -415,6 +465,7 @@ Lister les limites budgétaires.
 Exemple 1 : les frais de services Cloud AWS ne devront pas dépasser 5 K€/ an pour ce projet.
 ====
 
+//🏷{"id": "f9ed2469-e3e5-48a1-8b69-4b9c9492c6cb", "labels": ["niveau_detail::général", "contrainte"]}
 ## Exigences
 
 [TIP]
@@ -429,6 +480,7 @@ Les exigences liées à la disponibilité devraient être précisées via une é
 
 ====
 
+//🏷{"id": "332c967b-3729-4a5f-984e-fc2f301b0329", "labels": []}
 ### Plages de fonctionnement
 
 [TIP]
@@ -464,6 +516,7 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 |====
 ====
 
+//🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["disponibilité"],link_to=["cc4a17a8-d68b-43cf-8b4e-c64829d950fc"]}
 ### Exigences de disponibilité
 
 [TIP]
@@ -482,7 +535,7 @@ On estime en général que la haute disponibilité (HA) commence à deux neufs (
 
 Détailler la disponibilité demandée par plage.
 
-La disponibilité exigée ici devra être en cohérence avec les <<Contraintes sur la disponibilité>> du SI.
+La disponibilité exigée ici devra être en cohérence avec les Contraintes de disponibilité du SI.
 ====
 
 .Durée d’indisponibilité maximale admissible par plage
@@ -500,6 +553,7 @@ La disponibilité exigée ici devra être en cohérence avec les <<Contraintes s
 |4h, 8 fois dans l'année
 |====
 
+//🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["niveau::avancé","niveau_detail::détaillé"]}
 ### Modes dégradés
 [TIP]
 ====
@@ -513,6 +567,7 @@ Exemple 1 : Le site `monsite.com` devra pouvoir continuer à accepter les comman
 Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de données puis soumis à nouveau suite à une opération manuelle des exploitants.
 ====
 
+//🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
 ### Exigences de robustesse
 
 [TIP]
@@ -527,12 +582,13 @@ Attention à ne pas être trop exigeant sur ce point car une grande robustesse p
 Exemple 1 : Pas plus de 0.001% de requêtes en erreur.
 ====
 ====
-Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de panne (attention, ce type d'exigence impacte l'architecture en profondeur, voir la section <<Disponibilite>>).
+Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de panne (attention, ce type d'exigence impacte l'architecture en profondeur).
 ====
 ====
 Exemple 3 : Le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95e centile.
 ====
 
+//🏷{"id": "f0e94586-876d-46ca-b060-b5dcde468734", "labels": ["niveau::intermédaire"]}
 ### Exigences de RPO
 
 [TIP]
@@ -551,6 +607,7 @@ Fournir ici le Recovery Point Objective (RPO) de l’application (en heures). Il
 Exemple : On ne doit pas pouvoir perdre plus d'une journée de données applicatives.
 ====
 
+//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédaire", "taille_projet::moyen", "taille_projet::grand", "niveau_detail::général"]}
 ### Exigences de RTO
 
 [TIP]
@@ -566,9 +623,10 @@ Ne préciser cette valeur que pour expliciter un objectif de restauration préci
 Exemple : On doit pouvoir restaurer et remettre en ligne les 3 Tio de la base XYZ en 1h maximum.
 ====
 
+//🏷{"id": "cdb68f23-d2c5-4373-9f7d-e358191f0ebf", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
+### Exigences de déploiements et de mises à jour
 
-### Exigences de déploiements et de mise à jour
-
+//🏷{"id": "663ee84f-7dde-4c6d-acf6-a810ab8fafb4", "labels": []}
 #### Coté serveur
 
 [TIP]
@@ -582,6 +640,7 @@ Par exemple :
 * Comment sont appliquées les mises à jour ?
 ====
 
+//🏷{"id": "fd64ad27-05da-42f0-9491-f790642b5d91", "labels": ["ihm"]}
 #### Coté client
 
 [TIP]
@@ -604,6 +663,7 @@ Coté client, pour une application client lourd :
 * Comment sont appliquées les mises à jour ?
 ====
 
+//🏷{"id": "0bbb4d10-bb6c-4cb0-b227-2e97db99eae1", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
 #### Stratégie de déploiement spécifiques
 
 [TIP]
@@ -617,7 +677,7 @@ Coté client, pour une application client lourd :
 Exemple: L'application sera déployée sur un mode blue/green, c'est-à-dire complètement installée sur un ensemble de machines initialement inaccessibles puis une bascule DNS permettra de pointer vers les machines disposant de la dernière version.
 ====
 
-[[exigences_ecoconception]]
+//🏷{"id": "da0d11fe-0dc9-478e-a984-7a80ea1be482", "labels": ["niveau::intermédaire"]}
 ### Exigences d'écoconception
 
 [TIP]
@@ -637,8 +697,10 @@ Exemple 1 : Le Power Usage Effectiveness (PUE) du site devra être de 1.5 ou moi
 Exemple 2 : La consommation d'encre et de papier devra être réduite de 10% par rapport à 2024.
 ====
 
+//🏷{"id": "602a7a0a-7f25-4512-b0ab-3b97c8a734e0", "labels": ["niveau_detail::général", "solution"]}
 ## Architecture cible
 
+//🏷{"id": "8088138c-5258-4f3a-a293-0984501bb5db", "labels": ["niveau_detail::détaillé"]}
 ### Principes
 
 [TIP]
@@ -653,6 +715,7 @@ Exemples :
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
+//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["niveau::intermédaire","disponibilité"],link_to=["08cb1019-20c4-42ef-9bf2-4adf72936c1c"]}
 ### Disponibilité 
  
 [TIP] 
@@ -660,7 +723,7 @@ Exemples :
 
 La disponibilité mesure le pourcentage de temps pendant lequel un système est utilisable dans des conditions acceptables, c'est-à-dire accessible et opérationnel selon les critères définis (temps de réponse, capacité de traitement, etc.). Il est exprimé en % (exemple: 99.9% = ~8h45 d’indisponibilité/an).
 
-Fournir ici les dispositifs permettant d'atteindre les <<Exigences de disponibilité>>. 
+Fournir ici les dispositifs permettant d'atteindre les Exigences de disponibilité. 
 
 Les mesures permettant d’atteindre la disponibilité exigée sont nombreuses et devront être choisies par l’architecte en fonction de leur apport et de leur coût (financier, en complexité, etc.).  
 
@@ -851,8 +914,6 @@ La Tolérance de Panne (FT) inclut toujours la Haute Disponibilité (HA), mais l
 ==== 
 
 
-.Quelques solutions de disponibilité 
-
 .Quelques solutions de disponibilité
 |====
 | Solution | Coût | Complexité de mise en œuvre | Amélioration de la disponibilité
@@ -943,25 +1004,27 @@ La Tolérance de Panne (FT) inclut toujours la Haute Disponibilité (HA), mais l
 | XX
 |====
 
-====  
-Exemple 1 : Pour atteindre la disponibilité de 98 % exigée, les dispositifs de disponibilité envisagés sont les suivants :  
+====
+Exemple 1 : Pour atteindre la disponibilité requise de 98 % :
 
-* Tous les serveurs en **RAID 10 ou RAID 6** + alimentations redondées.  
-* Répartiteur HAProxy + keepalived actif/passif mutualisé avec les autres applications.  
-* Cluster actif/actif de deux serveurs Apache + mod_php.  
-* **Serveur MariaDB en réplication asynchrone** avec un basculement manuel en moins de 2h.  
-====  
+* Serveur unique avec **RAID 1**
+* Sauvegardes quotidiennes
+* Supervision basique (ex. : Nagios)
+* SLA de remplacement matériel en **4 heures**
+====
 
-====  
-Exemple 2 : Pour atteindre la disponibilité de 99.97 % exigée, les dispositifs de disponibilité envisagés sont les suivants (pour rappel, l'application sera hébergée dans un DC de niveau Tier 3) :  
+====
+Exemple 2 : Pour atteindre la disponibilité requise de 99,97 % :
 
-* Tous les serveurs en **RAID 1** + alimentations redondées + interfaces en bonding.  
-* Répartiteur HAProxy + keepalived actif/passif dédié à l’application.  
-* Cluster actif/actif de 4 serveurs (redondance **N+N**) Apache + mod_php.  
-* Instance Oracle en RAC sur deux machines avec **interconnexion Fibre Channel (FC) dédiée, latence <1 ms**.  
-====  
+* Cluster **actif/passif** de 2 serveurs (Apache + mod_php)
+* PostgreSQL avec **réplication synchrone** (ex. : Patroni)
+* Répartiteur HAProxy + keepalived **dédié**
+* Datacenter Tier 3 avec **réseau multi-opérateurs**
+* Tests de bascule **trimestriels**
+====
 
 
+//🏷{"id": "c23ff676-32e3-4957-8cec-6a7619a33567", "labels": ["niveau_detail::détaillé"]}
 ### Déploiement en production
 
 [TIP]
@@ -984,6 +1047,7 @@ Exemple :
 image::diagrammes/archi-infra.svg[Diagramme de déploiement MIEL]
 ====
 
+//🏷{"id": "28ba010e-1c33-41b9-8061-9596710563bc", "labels": ["niveau_detail::détaillé"]}
 ### Versions des composants d'infrastructure
 
 [TIP]
@@ -1023,6 +1087,7 @@ Lister ici OS, bases de données, MOM, serveurs d'application, etc. Ne détaille
 
 |====
 
+//🏷{"id": "3ff53ea7-2e7f-4d71-8848-6819ba23c930", "labels": ["niveau_detail::approfondi"]}
 ### Matrice des flux techniques
 
 [TIP]
@@ -1048,6 +1113,7 @@ Les types de réseaux incluent les informations utiles sur le réseau utilisé a
 |4|sup1|host[1-6]|LAN|SNMP|199 | Non mais utilisation du VLAN d'admin
 |====
 
+//🏷{"id": "93947744-e0ec-4bc3-af30-cc60473b7caf", "labels": ["taille_projet::moyen","taille_projet::grand", "niveau_detail::détaillé"]}
 ### Environnements
 
 [TIP]
@@ -1073,12 +1139,11 @@ Dans les grands systèmes d'information, il est souvent utile de segmenter les e
 |====
 ====
 
+//🏷{"id": "0bbc320c-6291-4a89-b263-66abf1906ab0", "labels": ["niveau::intermédaire"], link_to=["da0d11fe-0dc9-478e-a984-7a80ea1be482"]}
 ### Écoconception
 
 [TIP]
 ====
-Lister ici les mesures d'infrastructure permettant de répondre aux <<exigences_ecoconception,Exigences d'écoconception>>. 
-
 Les enjeux d'écoconception sont souvent alignés avec les exigences de **performance** (temps de réponse, latence, optimisation des ressources) et de **coût** (réduction de la consommation énergétique, rationalisation des infrastructures). Lorsqu’une solution impacte plusieurs de ces dimensions, il est préférable d'y faire simplement référence.
 
 Cependant, certaines pratiques sont **spécifiquement liées à l’écoconception** et doivent être prises en compte dès la conception de l'architecture.
@@ -1125,8 +1190,10 @@ Pour évaluer et améliorer l'empreinte énergétique d'un SI, des solutions com
 **Exemple 3** : Le **scaling automatique des pods Kubernetes** permettra de **réduire l’empreinte carbone** en désactivant les instances inutiles durant les heures creuses.  
 ====
 
+//🏷{"id": "46e9c057-75cb-4bc0-9c8d-9af81f737c61", "labels": ["niveau::avancé", "niveau_detail::détaillé"]}
 ### Régulation de la charge
 
+//🏷{"id": "32466600-a3a5-465f-9679-2a244b34321e", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
 #### Coupe-circuits
 
 [TIP]
@@ -1138,6 +1205,7 @@ Si ce risque est identifié, prévoir un système de fusible avec déport de tou
 Ce dispositif peut également servir en cas d’attaque de type DDOS et permet de gèrer le problème et non de le subir car on assure un bon fonctionnement acceptable aux utilisateurs déjà connectés.
 ====
 
+//🏷{"id": "44f0732c-3b29-4bd5-873f-046fc010f728", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
 #### Qualité de Service
 
 [TIP]
@@ -1171,6 +1239,7 @@ Un **Rate Limiting** de **100 requêtes par source et par minute** sera mis en p
 Les requêtes dépassant ce seuil recevront une **erreur 429 Too Many Requests** et devront être replanifiées par le client.  
 ====
 
+//🏷{"id": "5fa5ed39-9b6d-4dec-a8c1-1dc1929ff796", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
 ### Gestion des timeouts
 
 [TIP]
@@ -1212,18 +1281,19 @@ Sans timeouts appropriés, des contentions peuvent émerger, entraînant des **b
 
 ====
 
-
+//🏷{"id": "c9a330f1-ffde-44e2-a432-a1e178440333", "labels": []}
 ### Exploitation
 
 [TIP]
 ====
 Lister ici les grands principes d’exploitation de la solution. 
 
-Les détails (contenu des sauvegardes, plan de production, planification des traitements, etc.) seront consignés dans un Dossier d’EXploitation (DEX) séparé. 
+Les détails (contenu des sauvegardes, plan de production, planification des traitements, etc.) seront consignés dans un Dossier d’EXploitation (DEX) séparé ou -mieux encore- codés sous la forme d'IaC (Infrastructure As Code). 
 
 Si cette application suit les standards de l'organisation, il suffit de se référer au dossier d'exploitation commun.
 ====
 
+//🏷{"id": "0a3f0e4e-0458-4528-9513-1f75a4ad8464", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
 #### Ordre d’arrêt/démarrage
 
 [TIP]
@@ -1254,6 +1324,7 @@ Préciser d'éventuelles contraintes en cas de démarrage partiel (exemple : le 
 6. Base `pg1` sur serveur `bdd1`
 ====
 
+//🏷{"id": "314a1ef0-48b4-42a4-a8b6-be49250c5a50", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
 #### Opérations programmées et suivi
 
 [TIP]
@@ -1290,7 +1361,7 @@ Exemple 2 : Le job `traiter-demande` fonctionnera **au fil de l'eau**, exécuté
 Exemple 3 : Le traitement interne `ti_index` est une **classe Java** appelant des commandes `VACUUM FULL` en JDBC, exécutée via un planificateur Quartz **une fois par mois**.
 ====
 
-
+//🏷{"id": "0cf18e71-b20e-4b2b-9377-e104c21c9785", "labels": ["niveau::intermédaire", "niveau_detail::approfondi"]}
 #### Mise en maintenance
 
 [TIP]
@@ -1305,8 +1376,10 @@ Exemple 1 : Nous utiliserons le F5 BigIp LTM pour afficher une page d'indisponib
 Exemple 2 : Un fichier de verrouillage `maintenance.lock` sera utilisé pour désactiver l'accès au backend. Un script shell déclenchera un mode dégradé affichant une page statique temporaire.
 ====
 
+//🏷{"id": "fd5b00b0-4b23-4cbc-8117-0dcee74ddd8b", "labels": ["niveau_detail::détaillé"]}
 #### Sauvegardes et restaurations
 
+//🏷{"id": "506b442c-ec84-454c-b11b-ddf7fe560701", "labels": []}
 ##### Périmètre
 
 [TIP]
@@ -1326,11 +1399,12 @@ Exemple de périmètre :
 * Sauvegarde des bases PostgreSQL ;
 * Sauvegardes des documents Ceph.
 
+//🏷{"id": "ef7922e8-8122-4120-86f9-c5fed0676811", "labels": [], link_to=["f0e94586-876d-46ca-b060-b5dcde468734","3e07d851-b2dc-422f-9cba-1b4447a5c956"]}
 ##### Stratégie de sauvegarde
 
 [TIP]
 ====
-Fournir la politique générale de sauvegarde. Elle doit répondre aux <<Exigences de RPO>>. De même les dispositifs de restauration doivent être compatibles avec les <<Exigences de disponibilité>>.
+Fournir la politique générale de sauvegarde. Elle doit répondre aux exigences de RPO. De même les dispositifs de restauration doivent être compatibles avec les Exigences de disponibilité.
 
 * Quels types de sauvegardes sont effectués ? À chaud ? En lecture seule ? À froid (nécessitant un arrêt de service) ?
 
@@ -1353,6 +1427,7 @@ Exemple de roulement : jeu de 21 sauvegardes sur un an :
 * 11 sauvegardes mensuelles correspondant aux 11 derniers mois.
 ====
 
+//🏷{"id": "93b244a6-976c-465a-80fc-9665a81adeb9", "labels": []}
 ##### Outillage
 
 [TIP]
@@ -1377,6 +1452,7 @@ Exemple 1: Sauvegarde de la base PostgreSQL en streaming avec Barman avec un ful
 Exemple 2: Sauvegarde journalière des documents via Restic avec stockage S3 sur OVH Public Cloud. 
 ====
 
+//🏷{"id": "49e36233-2293-4135-80b2-5c145fe72c7d", "labels": []}
 ##### Traitements sur les sauvegardes
 
 [TIP]
@@ -1411,6 +1487,7 @@ Exemple 4 : Les sauvegardes en ligne stockées dans le stockage objet S3 seront 
 Exemple 5 : Activation du PITR sur PostgreSQL via Barman pour permettre une restauration à la seconde près en cas de corruption ou d'erreur humaine.
 ====
 
+//🏷{"id": "d8955c5f-7ccd-493e-8697-bdd6611ef727", "labels": []}
 ##### Modalités de stockage
 
 [TIP]
@@ -1447,6 +1524,7 @@ Exemple 1: Pour la PME Boucherie Sanzot, on conservera une sauvegarde hebdomadai
 Exemple 2: Pour la sauvegarde des données d'imposition, chaque transaction vers la base de données sera sauvegardée en barman en utilisant les journaux WAL. Chaque nuit, une sauvegarde full barman de la base sera effectuée. On conservera 7J + 4 semaines + 12 mois + 1 an sur sauvegarde online (disques durs) et en near-ligne sur librairie de sauvegarde à base de bandes LTO. Les données seront chiffrées et compressées. Une copie des sauvegardes hebdomadaires sera conservée sur des bandes offline stockées sur un site distant sécurisé.
 ====
 
+//🏷{"id": "2c96a319-9929-453b-a51e-d1de9b1103af", "labels": []}
 ##### Restauration
 
 [TIP]
@@ -1481,6 +1559,7 @@ Exemple 2: Les tests de restauration se feront sur un système de fichier chiffr
 Exemple 3 : Une restauration mensuelle des dernières sauvegardes PostgreSQL sera effectuée sur un environnement de test avec exécution de requêtes de validation des données.
 ====
 
+//🏷{"id": "74ff1a8d-91b4-4437-bbfd-439e3d4b18b5", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
 #### Journaux
 
 [TIP]
@@ -1522,8 +1601,7 @@ Les journaux seront protégés contre les injections via la méthode `StringEsca
 Les logs d’accès seront envoyés sur un serveur distant en plus d’une conservation locale sur 7 jours maximum.
 ====
 
-
-
+//🏷{"id": "2c3d502d-d67c-417b-88f4-d610e158e930", "labels": ["niveau::intermédaire", "niveau_detail::détaillé","supervision"]}
 ### Supervision
 
 [TIP]
@@ -1535,6 +1613,7 @@ Une supervision efficace ne doit pas être **uniquement réactive** (alerte en c
 - **Indicateurs** : combinaisons de plusieurs métriques avec des seuils d’alerte (ex : _"alerte critique si l'utilisation CPU du serveur `s1` dépasse 95% pendant plus de 5 minutes"_).
 ====
 
+//🏷{"id": "f31e9b70-8bf9-41b5-bbb0-c6b3f6de9347", "labels": ["niveau::intermédaire", "niveau_detail::approfondi","supervision"]}
 #### Supervision technique
 
 [TIP]
@@ -1559,6 +1638,7 @@ Lister ici les **métriques techniques (infrastructure & middleware)** à superv
 **Exemple** : Supervision du **% de CPU en IO wait** et de la **charge moyenne du serveur** (`load average`).
 ====
 
+//🏷{"id": "be41d5fd-e1a8-4a49-bf80-a81c3db693db", "labels": ["niveau::intermédaire", "niveau_detail::approfondi","supervision"]}
 #### Supervision applicative et métier
 
 [TIP]
@@ -1586,6 +1666,7 @@ Une couche BAM peut être mise en place pour générer des indicateurs orientés
 - **Taux d’erreur des transactions**.
 ====
 
+//🏷{"id": "236fd883-5195-4b81-b5dd-f6c66f9ae3f0", "labels": ["niveau::intermédaire", "niveau_detail::approfondi","supervision"]}
 #### Outils de supervision & monitoring
 
 [TIP]
@@ -1613,6 +1694,7 @@ Les indicateurs sont ensuite affichés via **tableaux de bord dynamiques** et de
 La **supervision technique et applicative** reposera sur une stack **Grafana + Prometheus + ElasticSearch**.
 ====
 
+//🏷{"id": "aa3c7bab-527c-4411-a1f2-583a1d62118f", "labels": ["niveau::intermédaire", "niveau_detail::détaillé","supervision"]}
 #### Alerting & notifications
 
 [TIP]
@@ -1640,7 +1722,7 @@ Une **alerte SMS** sera envoyée si :
 - **Le nombre d’erreurs 5xx dépasse 10/h** sur un module critique.
 ====
 
-
+//🏷{"id": "20dff012-aa85-465f-ba2e-272d7580dd0b", "labels": ["niveau::intermédaire", "niveau_detail::détaillé","supervision"]}
 ##### Supervision boite noire
 
 [TIP]
@@ -1655,6 +1737,7 @@ Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si te
 Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via Netvigie. En cas de panne, un mail est envoyé aux exploitants.
 ====
 
+//🏷{"id": "f455e87e-47f0-422a-a80b-0ec65517ad53", "labels": ["niveau::avancé", "niveau_detail::détaillé","supervision"]}
 ##### Métrologie
 
 [TIP]
@@ -1687,28 +1770,7 @@ Exemple :
 * Des analyses de performances plus poussées seront mises en œuvre par **Glowroot**, selon les besoins.
 ====
 
-
-### Migrations
-
-[TIP]
-====
-Ce chapitre décrit les éventuelles migrations requises depuis des systèmes plus anciens.  
-
-Décrire de façon macroscopique la procédure envisagée ainsi que les mécanismes de retour arrière.  
-
-Préciser si un fonctionnement en parallèle de l'ancien système est prévu avant activation (exemple : exécution en mode "à blanc" pour validation).  
-====
-====
-Exemple 1 : Le module `X` sera remplacé par les services `Y`. Les données Oracle `Z` du silo seront migrées en une seule opération via un script PL/SQL + DBLink vers l’instance `XX`, en respectant le nouveau format de base du module `T`.
-====
-====
-Exemple 2 : En cas de problème sur le nouveau module, un retour arrière est prévu :  
-
-* Les anciennes données seront restaurées sous **2 heures**.  
-* Les nouvelles données créées après la bascule seront retraitées via le script `S1` pour assurer leur réintégration.  
-====
-
-
+//🏷{"id": "53b2f98c-11d9-4aa0-b762-b8f31db0c30f", "labels": ["niveau::intermédaire"]}
 ### Décommissionnement
 
 [TIP]

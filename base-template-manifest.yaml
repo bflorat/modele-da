@@ -1,5 +1,6 @@
 author: Bertrand Florat
 license: CC BY-SA 4.0
+language: fr
 parts:
   - name: Vue Applicative
     file: vue-applicative.adoc
@@ -11,5 +12,11 @@ parts:
     file: vue-securite.adoc
   - name: Vue dimensionnement
     file: vue-dimensionnement.adoc
-
+multi_values_labels:
+  - name: niveau
+    available_values: [basique, intermédiaire, avancé]
+  - name: taille_projet
+    available_values: [petit, moyen, grand]
+  - name: niveau_detail
+    available_values: [général, détaillé, approfondi]
   

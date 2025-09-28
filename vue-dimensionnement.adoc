@@ -12,7 +12,7 @@
 
 *Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
 
-
+//🏷{"id": "32c8942e-443f-429d-a411-43869a720224", "labels": ["contexte"]}
 ## Introduction
 
 La vue dimensionnement permet de déterminer la taille de l'infrastructure nécessaire au projet.
@@ -21,34 +21,36 @@ Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
 Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendrons pas ici les termes fonctionnels ou techniques déjà définis.
 
+//🏷{"id": "c443e562-398d-49ab-92bd-8031f3e91bec", "labels": ["contexte","references"]}
 ### Documentation de Référence
 
 .Références documentaires dimensionnement
 [cols="1e,1e,4e,4e"]
-|====
+|===
 |N°|Version|Titre/URL du document|Détail
 
 |1|1.2|Rapport_benchmark_xyz.pdf|
 |2|2019|Rapport de l'INSEE sur les entreprises françaises|
 
 
-|====
+|===
 
-
+//🏷{"id": "1ef7beb9-71ee-43e5-9a1b-c45a48959084", "labels": ["contexte","incertitude"]}
 ## Non statué
 
+//🏷{"id": "c5db3e60-e70c-4ebb-9848-44a0cecc4c6e", "labels": []}
 ### Points nécessitant une étude complémentaire
 
 .Points nécessitant une étude complémentaire
 [cols="1e,1e,1e,2e,2e"]
-|====
+|===
 |ID| Détail |Statut |Porteur du sujet  | Échéance
 
 |1| Capacité disques SSD |EN_COURS | XYZ | 01/01/2022
 
-|====
+|===
 
-
+//🏷{"id": "577c9b37-77a2-4568-9fb5-2804d6f9bc70", "labels": []}
 ### Hypothèses
 
 [TIP]
@@ -61,15 +63,16 @@ Exemple:
 
 .Hypothèses
 [cols="1e,4e"]
-|====
+|===
 |ID|Détail
 
 |1|Nous estimons que 10 millions de personnes téléchargeront l'application XYZ
 
-|====
+|===
 
 ====
 
+//🏷{"id": "69811b17-b947-4562-90ba-a97160421965", "labels": ["niveau_detail::général", "contrainte"]}
 ## Contraintes
 
 [TIP]
@@ -80,7 +83,7 @@ Il est important de les expliciter pour obtenir des exigences réalistes. Par ex
 
 ====
 
-
+//🏷{"id": "646fc728-6cef-4e75-9fa9-646b4ec2159d", "labels": []}
 ### Contraintes stockage
 
 TIP: Lister ici les éventuelles contraintes liées au stockage persistant.
@@ -90,6 +93,7 @@ TIP: Lister ici les éventuelles contraintes liées au stockage persistant.
 Exemple : L'espace disque maximal allouable à une VM est de 2 To.
 ====
 
+//🏷{"id": "1d3ec06e-d63d-4a61-bb4e-437358064687", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
 ### Contraintes CPU
 
 TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul
@@ -102,6 +106,7 @@ Exemple 1 : Une VM sera dotée au maximum de 10 VCPU
 Exemple 2 : L'ensemble des pods de l'application ne devra pas demander plus de 1 CPU par node.
 ====
 
+//🏷{"id": "ec6a420b-c284-442a-93fd-edc3d45ed00a", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
 ### Contraintes mémoire
 
 TIP: Lister ici les éventuelles contraintes liées à la mémoire
@@ -110,6 +115,7 @@ TIP: Lister ici les éventuelles contraintes liées à la mémoire
 Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM
 ====
 
+//🏷{"id": "8d948872-15f9-49b6-9527-f511a2f7597d", "labels": []}
 ### Contraintes réseau
 
 TIP: Lister ici les éventuelles contraintes de volume réseau utilisé
@@ -123,6 +129,7 @@ Exemple 1 : La latence minimale des requêtes sur le WAN entre Londres et Tokyo 
 Exemple 2 : Le cœur de réseau du datacenter dispose d'une bande passante de 40 Gbps.
 ====
 
+//🏷{"id": "d6e3eb12-371b-4c26-b538-9fea2051bfed", "labels": ["niveau_detail::général", "exigence"]}
 ## Exigences
 
 [TIP]
@@ -136,22 +143,25 @@ Les sections suivantes portant sur les calculs de volumétrie statiques et dynam
 
 ====
 
+//🏷{"id": "962347a4-c3c8-4f0c-bcac-774a6ef617a4", "labels": []}
 ### Volumétrie statique
 
 TIP: Il s'agit des métriques permettant de déterminer le volume de stockage *cumulé* du projet. Penser à bien préciser les hypothèses prises pour les métriques estimées. Il sera ainsi possible de les revoir si de nouveaux éléments métier apparaissent.
 
+//🏷{"id": "1736e661-2c68-4aa6-a157-9e4444d5a374", "labels": ["niveau_detail::détaillé"]}
 #### Métriques
 
 TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entrants au calcul des besoins techniques de stockage.
 
 [cols="e,e,e,e,e,e,e"]
-|====
+|===
 |Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) |  Source| Détail/hypothèses
 
 |S1 |Nombre d'entreprises éligibles | Estimé |  4M | +1% |  INSEE [2]  | On considère que MIEL ne concerne pas les auto-entrepreneurs
 |S2 |Taille moyenne d'un PDF composé| Mesurée | 40Ko  | 0%| Exploitants | 
-|====
+|===
 
+//🏷{"id": "9968c2e6-46b9-4005-89d4-6a9114246a4c", "labels": ["niveau_detail::détaillé"]}
 #### Estimation besoins de stockage
 
 [TIP]
@@ -184,7 +194,7 @@ Ne prendre en compte que les données dont la taille est significative (au moins
 
 ====
 . Exemple de volumétrie statique du module C :
-|====
+|===
 |Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
 
 |Table Article
@@ -207,19 +217,21 @@ Ne prendre en compte que les données dont la taille est significative (au moins
 |300M
 |56 Gio
 |0 % (archivage)
-|====
+|===
 ====
 
+//🏷{"id": "b22cadba-e5a7-4c3a-b4b8-f9ea32a2a0be", "labels": []}
 ### Volumétrie dynamique
 
 TIP: Il s'agit des métriques par durée (année, mois, heure…) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
 
+//🏷{"id": "910fc171-30ed-47cd-b03c-3ca918b3103e", "labels": ["niveau_detail::détaillé"]}
 #### Métriques
 
 TIP: Ce sont les données métier mesurées ou estimées qui serviront d'entrants au calcul de la charge.
 
 [cols="e,e,e,e,e,e,e,e"]
-|====
+|===
 |Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) | Saisonnalité|  Source| Détail/hypothèses 
 
 |D1 |Proportion d'utilisateurs se connectant au service / J | Estimée | 1%  | +5%  
@@ -230,9 +242,9 @@ a|
  - 3 pics à 20% de la journée à 8:00-9:00, 11:00-12:00 et 14:00-15:00
  | Service communication, rapport du 01/01/2040
  | Les utilisateurs sont des professionnels utilisant l'application depuis la France métropolitaine aux heures de bureau standards
-|====
+|===
 
-
+//🏷{"id": "3d09511c-17b2-43c3-bcba-0a62ead057b4", "labels": ["niveau_detail::détaillé"]}
 #### Estimation de la charge
 
 [TIP]
@@ -252,7 +264,7 @@ Si l'application est déployée sur un cloud de type PaaS, la charge sera absorb
 ====
 
 .Exemple : estimation volumétrie dynamique de l'opération REST `GET Detail` de l'application MIEL
-|====
+|===
 |Taux maximal d’utilisateurs connectés en même temps en pic annuel | S1 x F1 x 0.2 = 8K /H  
 |Durée moyenne d'une session utilisateur
 |15 mins
@@ -260,7 +272,7 @@ Si l'application est déployée sur un cloud de type PaaS, la charge sera absorb
 |10
 |Charge (Transaction / seconde)
 |8K / 4 x 10 / 3600 =  5.5 Tps
-|====
+|===
 
 
 [TIP]
@@ -278,7 +290,7 @@ Enfin, garder en tête qu'il s'agit simplement d'estimation à valider lors de c
 Exemple : la base de données Oracle BD01 est utilisée en lecture par les appels REST `GET DetailArticle` fait depuis l'application end-user et en mise à jour par les appels POST et PUT sur `DetailArticle` issus du batch d'alimentation B03 la nuit entre 01:00 et 02:00.
 
 .Exemple estimations nombre de requêtes SQL en pic vers l'instance BD01 de 01:00 à 02:00 en décembre
-|====
+|===
 |Taux maximal d’utilisateurs connectés en même temps |0.5%
 |Nombre maximal d’utilisateurs connectés concurrents
 |5K
@@ -304,11 +316,13 @@ Exemple : la base de données Oracle BD01 est utilisée en lecture par les appel
 |0 + 3 x 4K/3600 = 3.4 Tps
 |Nombre de UPDATE / sec
 |0 + 3 x 10K/3600 = 8.3 Tps
-|====
+|===
 ====
 
+//🏷{"id": "c1a8f666-70e1-4acf-9d7a-5e1b06ecb588", "labels": []}
 ### Exigences de temps de réponse
 
+//🏷{"id": "24f70acd-5f7c-49b3-bd75-d594e5af8917", "labels": ["niveau_detail::détaillé", "ihm"]}
 #### Temps de Réponse des IHM
 
 [TIP]
@@ -324,7 +338,7 @@ Inutile de multiplier les types de sollicitations (en fonction de la complexité
 ====
 .Exemple de types de sollicitation :
 [cols='3e,1e,1e,1e']
-|====
+|===
 |Type de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
 
 |Chargement d’une page
@@ -341,7 +355,7 @@ Inutile de multiplier les types de sollicitations (en fonction de la complexité
 |< 3 s
 |< 6 s
 |> 15 s
-|====
+|===
 
 Exemple d'acceptabilité des TR :
 
@@ -358,6 +372,7 @@ Acceptable si :
 En dehors de ces valeurs, l’application devra être optimisée et repasser en recette puis être soumise à nouveau aux tests de charge.
 ====
 
+//🏷{"id": "88645b89-d407-4107-93b2-48003fd8688a", "labels": ["niveau_detail::détaillé", "batch"]}
 #### Durée d’exécution des batchs
 
 [TIP]
@@ -376,7 +391,7 @@ Exemple 2 : le batch mensuel B1 de consolidation des comptes doit s’exécuter
 Exemple 3 : les batchs et les IHM pouvant fonctionner en concurrence, il n’y a pas de contrainte stricte sur la durée d’exécution des batchs mais pour assurer une optimisation de l’infrastructure matérielle, on favorisera la nuit pendant laquelle les sollicitations IHM sont moins nombreuses.
 ====
 
-
+//🏷{"id": "fb740b6a-bd23-4401-a7e0-b01610a01b9b","labels": ["solution"]}
 ## Dimensionnement cible
 
 [TIP]
@@ -384,6 +399,7 @@ Exemple 3 : les batchs et les IHM pouvant fonctionner en concurrence, il n’y 
 Nous donnons un dimensionnement final qui doit supporter la volumétrie statique et dynamique et respecter les exigences.
 ====
 
+//🏷{"id": "63214041-3461-4019-a685-fac68fdb4d74", "labels": []}
 ### Estimation des besoins en ressources par unité déployable
 
 [TIP]
@@ -395,7 +411,7 @@ Exemple :
 
 .Estimation des besoins en ressources par unité déployable
 [cols="2e,1e,1e,3e,2e"]
-|====
+|===
 | Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires
 
 | `tomcat-batch_x`
@@ -415,9 +431,10 @@ Exemple :
 | 2024
 | 24/7, activité principale 8-17h Europe/Paris lun-ven
 | Instance PostgreSQL
-|====
+|===
 ====
 
+//🏷{"id": "6e9675d7-5d8c-4cf8-989a-13640cd28ef3", "labels": []}
 ### Dimensionnement des machines
 
 Voir le link:./vue-infrastructure.adoc#_déploiement_en_production[modèle de déploiement].
@@ -435,7 +452,7 @@ Cette section fournit le dimensionnement final des machines nécessaires
 
 .Dimensionnement des machines
 [cols='1e,3e,1e,1e,1e,1e,1e']
-|====
+|===
 |Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque distant SAN (Gio)
 
 |Zone 01 
@@ -454,11 +471,11 @@ Cette section fournit le dimensionnement final des machines nécessaires
 |50
 |1024
 
-|====
+|===
 
 .Dimensionnement du stockage externe hors SAN
 [cols='1e,3e,3e']
-|====
+|===
 |Nature|Taille (Gio)|Type(s) de machine utilisant ce partage
 
 |NFS (montage NAS)
@@ -469,4 +486,4 @@ Cette section fournit le dimensionnement final des machines nécessaires
 |20
 |VM serveur applicatif
 
-|====
+|===

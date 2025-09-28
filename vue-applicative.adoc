@@ -34,10 +34,10 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |1|2.0.4|XX_Urba_POS.pdf|POS du SI|
 |===
 
-//🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["incertitudes"]}
+//🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["contexte","incertitude"]}
 ## Non statué
 
-//🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["incertitudes"]}
+//🏷{"id": "0f9d2e4a-3c71-4b9e-8f3b-2b8c7d1e9a60", "labels": []}
 ### Points nécessitant une étude complémentaire
 
 .Points nécessitant une étude complémentaire
@@ -52,7 +52,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |Avant 2040
 |===
 
-//🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["incertitudes"]}
+//🏷{"id": "7a1cdb2e-4f52-42a1-9c3e-6e0f2d3a8b91", "labels": []}
 ### Hypothèses
 
 .Hypothèses
@@ -64,10 +64,10 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |Même si la décision de généralisation de l'annuaire centralisé n'est pas totalement entérinée, l’application s’appuiera sur celui-ci et non sur un annuaire local..
 |====
 
-//🏷{"id": "382fd086-f48e-4ad5-9911-07e3de281971", "labels": ["niveau_detail::general"]}
+//🏷{"id": "382fd086-f48e-4ad5-9911-07e3de281971", "labels": ["niveau_detail::général"]}
 ## Contexte général
 
-//🏷{"id": "382fd086-f48e-4ad5-9911-07e3de281971", "labels": []}
+//🏷{"id": "a2b4c6d8-e0f1-4a2b-9c3d-5e6f7a8b9c0d", "labels": []}
 ### Objectifs
 
 [TIP]
@@ -83,7 +83,7 @@ Exemple 2 : Ce projet consiste en la réécriture en version Web de l’applicat
 Exemple 3: l’application X est l’un des modules principaux du programme Y. Il s’adosse sur les référentiels `Personne` et `Facturation` pour enrichir le CMS en données clients temps réel.
 ====
 
-//🏷{"id": "382fd086-f48e-4ad5-9911-07e3de281971", "labels": ["migration"]}
+//🏷{"id": "c1d2e3f4-a5b6-4c7d-8e9f-0123456789ab", "labels": ["migration"]}
 ### Existant
 
 [TIP]
@@ -144,7 +144,7 @@ Par ‘internes’, on entend les acteurs appartenant à l’organisation, qu’
 |Monde entier
 |===
 
-//🏷{"id": "9ca40d05-ab6e-42ab-aa3c-b9724373ae7f", "labels": []}
+//🏷{"id": "deafbeef-dead-4bed-8ace-0b0b0b0b0b0b", "labels": []}
 #### Nature et sensibilité des données et traitements
 
 Donner une synthèse des traitements et processus métier et les natures de données qu'ils manipulent pour aider à la conception de la solution.
@@ -164,7 +164,7 @@ WARNING: Ne pas reprendre l'AIPD mais y faire référence s'il existe.
 | Classification | Public, Interne, Diffusion restreinte, Confidentiel
 |===
 
-//🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["detail_level::overview","contraintes"]}
+//🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["niveau_detail::général","contrainte"]}
 ## Contraintes
 
 TIP: Limites / choix imposés sur la façon de concevoir ou de réaliser : technologies, processus, organisation, budget, réglementation. Elles rétrécissent l’espace de conception.
@@ -188,7 +188,7 @@ TIP: Sans reprendre dans le détail les plannings du projet, donner les élémen
 Exemple 1: Mise en production avant février 2034, prérequis au programme HEAVY en mai 2034.
 ====
 
-//🏷{"id": "5837249a-8fcc-4e42-9dd9-384c4fa32afc", "labels": ["project_size::large"]}
+//🏷{"id": "5837249a-8fcc-4e42-9dd9-384c4fa32afc", "labels": ["taille_projet::grand"]}
 ### Urbanisation
 
 [TIP]
@@ -244,12 +244,12 @@ Exemple 3 : Les données produites par le projet seront en licence Ouverte versi
 Exemple 4 : Le CLUF du progiciel prévoit un accès aux sources des utilisateurs ayant des parts dans la société.
 ====
 
-//🏷{"id": "9352a89a-3f8b-4028-98d5-58fb970e01ef", "labels": ["exigences"]}
+//🏷{"id": "9352a89a-3f8b-4028-98d5-58fb970e01ef", "labels": ["exigence"]}
 ## Exigences
 
 TIP: Fournir ici les exigences d'architecture applicative pouvant s'appliquer au projet. En fonction de votre contexte, ne pas hésiter à ajouter des sous-sections.
 
-//🏷{"id": "9352a89a-3f8b-4028-98d5-58fb970e01ef", "labels": []}
+//🏷{"id": "1b2c3d4e-5f60-47a1-82b3-c4d5e6f70809", "labels": []}
 ### Exigences stratégiques
 
 TIP: Décrire ici les exigences en rapport avec la stratégie générale du projet en termes de trajectoire, de budget et d'organisation.
@@ -283,13 +283,13 @@ Exemple 2 (pour une administration): Le projet devra respecter le https://www.nu
 Préciser ici les modules internes ou externes pouvant interférer avec l’application.
 ====
 ====
-Exemple 1  : Tous les modules de cette application doivent pouvoir fonctionner en concurrence. En particulier, la concurrence batch/IHM doit toujours être possible car les batchs devront pouvoir tourner de jour en cas de besoin de rattrapage
+Exemple 1  : Tous les modules de cette application doivent pouvoir fonctionner en concurrence. En particulier, la concurrence batch/IHM doit toujours être possible car les batchs devront pouvoir tourner de jour en cas de besoin de rattrapage
 ====
 ====
-Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé correctement sous peine de corruption de données.
+Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé correctement sous peine de corruption de données.
 ====
 
-//🏷{"id": "9efde825-9508-4669-918c-7cfb0d45c21f", "labels": ["niveau_detail::détaillé","archivage"]}}
+//🏷{"id": "4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f", "labels": ["niveau_detail::détaillé","archivage"]}
 ### Archivage
 
 [TIP]
@@ -308,7 +308,7 @@ Exemple 1: comme exigé par l'article L.123-22 du code de commerce, les données
 Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte SHA-512 sera calculée au moment de l'archivage et stockée séparément pour vérification de l'intégrité des documents au besoin.
 ====
 
-//🏷{"id": "9efde825-9508-4669-918c-7cfb0d45c21f", "labels": ["niveau_detail::détaillé"]}}
+//🏷{"id": "fedcba98-7654-4321-8abc-0def12345678", "labels": ["niveau_detail::détaillé"]}
 ### Durées de rétention
 
 TIP: Précisez ici combien de temps doivent être conservées les données et documents stockés par vos modules applicatifs. À noter que ces durées peuvent être contraintes par le droit (voir contraintes juridiques plus haut), par exemple dans le cadre du droit à l'oubli du RGPD.
@@ -338,7 +338,7 @@ Exemple :
 |====
 ====
 
-//🏷{"id": "b269e65b-a8c7-4518-a861-5c6c17802869", "labels": ["solution","detail_level::overview"]}
+//🏷{"id": "b269e65b-a8c7-4518-a861-5c6c17802869", "labels": ["solution","niveau_detail::général"]}
 ## Architecture cible
 
 //🏷{"id": "2c107a25-a1c4-433d-b746-e12aa2c6eea1", "labels": []}
@@ -372,7 +372,7 @@ Exemple : MesInfosEnLigne (MIEL) permet à une entreprise de récupérer par mai
 image::diagrammes/archi-applicative-generale.svg[Diagramme architecture applicative générale]
 ====
 
-//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["niveau_detail::détaillé"]}}
+//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["niveau_detail::détaillé"]}
 ### Architecture applicative détaillée
 
 [TIP]
@@ -387,7 +387,7 @@ Idéalement, le schéma tiendra sur une page A4, sera autoporteur et compréhens
 
 ====
 
-//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["taille_projet::moyen","niveau_detail::détaillé"]}}
+//🏷{"id": "f0c1b2a3-4d5e-46f7-88a9-b0c1d2e3f4a5", "labels": ["taille_projet::moyen","niveau_detail::détaillé"]}
 #### Principes ayant dicté les choix
 
 [TIP]
@@ -398,7 +398,7 @@ Fournir ici l'intention dans la construction de l'architecture.
 Exemple : nous utiliserons une approche monolithique et non micro-service par manque d'expertise à ce stade.
 ====
 
-//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["taille_projet::grand","niveau_detail::détaillé"]}}
+//🏷{"id": "aa11bb22-cc33-44dd-88ee-ff0011223344", "labels": ["taille_projet::grand","niveau_detail::détaillé"]}
 #### Inventaire des modules
 
 [TIP]
@@ -414,7 +414,7 @@ Exemple 2 : vue inventaire du projet MIEL :
 image:diagrammes/archi-applicative-detaillee-inventaire.svg[Diagramme d'Architecture applicative détaillée (vue inventaire)] 
 ====
 
-//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["taille_projet::grand","niveau_detail::détaillé"]}}
+//🏷{"id": "123e4567-e89b-42d3-a456-426614174001", "labels": ["taille_projet::grand","niveau_detail::détaillé"]}
 #### Liens entre modules
 
 [TIP]
@@ -438,7 +438,28 @@ image:diagrammes/archi-applicative-detaillee-dynamique.svg[Diagramme architectur
 
 ====
 
-//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["niveau_detail::détaillé","archivage"]}}
+//🏷{"id": "9ac6e5d2-e9a0-427e-ba12-27dedbd8ac4d", "labels": ["niveau::intermédaire","migration"]}
+### Trajectoires de migrations
+
+[TIP]
+====
+Ce chapitre décrit les éventuelles migrations requises depuis des systèmes plus anciens.  
+
+Décrire de façon macroscopique la procédure envisagée ainsi que les mécanismes de retour arrière.  
+
+Préciser si un fonctionnement en parallèle de l'ancien système est prévu avant activation (exemple : exécution en mode "à blanc" pour validation).  
+====
+====
+Exemple 1 : Le module `X` sera remplacé par les services `Y`. Les données Oracle `Z` du silo seront migrées en une seule opération via un script PL/SQL + DBLink vers l’instance `XX`, en respectant le nouveau format de base du module `T`.
+====
+====
+Exemple 2 : En cas de problème sur le nouveau module, un retour arrière est prévu :  
+
+* Les anciennes données seront restaurées sous **2 heures**.  
+* Les nouvelles données créées après la bascule seront retraitées via le script `S1` pour assurer leur réintégration.  
+====
+
+//🏷{"id": "5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f", "labels": ["niveau_detail::détaillé","archivage"]}
 ### Archivage
 
 [TIP]
@@ -452,7 +473,7 @@ Décrire ici les dispositifs permettant de répondre aux exigences d'archivage. 
 Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LTO et disque dur. Un jeu de chacun des deux supports sera stocké en coffre dans deux banques différentes.
 ====
 
-//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["niveau_detail::détaillé"]}}
+//🏷{"id": "0a1b2c3d-4e5f-4061-82a3-b4c5d6e7f809", "labels": ["niveau_detail::détaillé"]}
 ### Purges
 
 [TIP]
@@ -468,7 +489,7 @@ Exemple 1: L'historique des consultations sera archivé par un dump avec une req
 Exemple 2: Chaque API est responsable de la purge des données qu'elle expose. Pour cela, prévoir des traitements internes qui suppriment les données suivant une planification paramétrable.
 ====
 
-//🏷{"id": "6390e724-c2f0-4737-99a0-531fdcfe8e20", "labels": ["niveau_detail::approfondi"]}}
+//🏷{"id": "9f8e7d6c-5b4a-49a8-9c7d-6e5f4d3c2b1a", "labels": ["niveau_detail::approfondi"]}
 ### Matrice des flux applicatifs
 
 [TIP]
@@ -486,4 +507,3 @@ Ne pas détailler les flux techniques, notamment ceux liés à la supervision ou
 |Entreprise|PC/tablette/mobile externe |WAN| ihm-miel | LE
 |batch-traiter-demandes | service-compo-pdf |LAN | HTTP | A
 |====
-
