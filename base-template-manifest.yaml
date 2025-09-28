@@ -19,4 +19,13 @@ multi_values_labels:
     available_values: [petit, moyen, grand]
   - name: niveau_detail
     available_values: [général, détaillé, approfondi]
-  
+files_imported_into_blank_templates:
+  - base_dir: modele-vierge
+    files:  
+      - README.adoc
+      - export
+      - glossaire.adoc
+  - base_dir: modele-vierge/resources
+    files:  
+      - vues.png
+

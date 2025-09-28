@@ -26,13 +26,20 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce dossier ne doit en aucun cas reprendre leur contenu, sous peine de devenir rapidement obsolète et immaintenable.
 
+[PRE-FILLED]
+====
 .Références documentaires
 [cols="1e,1e,4e,4e"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
-|1|2.0.4|XX_Urba_POS.pdf|POS du SI|
+|1
+|
+|
+|
+|
 |===
+====
 
 //🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["contexte","incertitude"]}
 ## Non statué

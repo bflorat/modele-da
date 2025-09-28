@@ -27,15 +27,20 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 [TIP]
 Mentionner ici les documents d'architecture de référence (mutualisés). Ce document ne doit pas reprendre leur contenu sous peine de devenir rapidement obsolète et immaintenable.
 
-.Références documentaires développement
+[PRE-FILLED]
+====
+.Références documentaires
 [cols="1e,1e,4e,4e"]
-|====
-|N°|Version|Titre/URL du document|Détail
+|===
+|N°|Version|Titre/URL du document| Détail
 
-|1|1.0|https://references.modernisation.gouv.fr/rgaa-accessibilite/#menu
-|RGAA
-
-|====
+|1
+|
+|
+|
+|
+|===
+====
 
 //🏷{"id": "fa1ed85e-92d0-4aa9-9421-dcf267d0cf0e", "labels": ["contexte","incertitude"]}
 ## Non statué

@@ -24,16 +24,20 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 //🏷{"id": "c443e562-398d-49ab-92bd-8031f3e91bec", "labels": ["contexte","references"]}
 ### Documentation de Référence
 
-.Références documentaires dimensionnement
+[PRE-FILLED]
+====
+.Références documentaires
 [cols="1e,1e,4e,4e"]
 |===
-|N°|Version|Titre/URL du document|Détail
+|N°|Version|Titre/URL du document| Détail
 
-|1|1.2|Rapport_benchmark_xyz.pdf|
-|2|2019|Rapport de l'INSEE sur les entreprises françaises|
-
-
+|1
+|
+|
+|
+|
 |===
+====
 
 //🏷{"id": "1ef7beb9-71ee-43e5-9a1b-c45a48959084", "labels": ["contexte","incertitude"]}
 ## Non statué
