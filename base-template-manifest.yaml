@@ -19,4 +19,6 @@ multi_values_labels:
     available_values: [petit, moyen, grand]
   - name: niveau_detail
     available_values: [général, détaillé, approfondi]
-  
+files_imported_into_blank_templates:
+  - modele-vierge/export
+  - modele-vierge/README.adoc 
