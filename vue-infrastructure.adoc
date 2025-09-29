@@ -572,7 +572,7 @@ Exemple 1 : Le site `monsite.com` devra pouvoir continuer à accepter les comman
 Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de données puis soumis à nouveau suite à une opération manuelle des exploitants.
 ====
 
-//🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
+//🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Exigences de robustesse
 
 [TIP]
@@ -593,7 +593,7 @@ Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de
 Exemple 3 : Le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95e centile.
 ====
 
-//🏷{"id": "f0e94586-876d-46ca-b060-b5dcde468734", "labels": ["niveau::intermédaire"]}
+//🏷{"id": "f0e94586-876d-46ca-b060-b5dcde468734", "labels": ["niveau::intermédiaire"]}
 ### Exigences de RPO
 
 [TIP]
@@ -612,7 +612,7 @@ Fournir ici le Recovery Point Objective (RPO) de l’application (en heures). Il
 Exemple : On ne doit pas pouvoir perdre plus d'une journée de données applicatives.
 ====
 
-//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédaire", "taille_projet::moyen", "taille_projet::grand", "niveau_detail::général"]}
+//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédiaire", "taille_projet::moyen", "taille_projet::grand", "niveau_detail::général"]}
 ### Exigences de RTO
 
 [TIP]
@@ -628,7 +628,7 @@ Ne préciser cette valeur que pour expliciter un objectif de restauration préci
 Exemple : On doit pouvoir restaurer et remettre en ligne les 3 Tio de la base XYZ en 1h maximum.
 ====
 
-//🏷{"id": "cdb68f23-d2c5-4373-9f7d-e358191f0ebf", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
+//🏷{"id": "cdb68f23-d2c5-4373-9f7d-e358191f0ebf", "labels": ["niveau::intermédiaire","niveau_detail::détaillé"]}
 ### Exigences de déploiements et de mises à jour
 
 //🏷{"id": "663ee84f-7dde-4c6d-acf6-a810ab8fafb4", "labels": []}
@@ -668,7 +668,7 @@ Coté client, pour une application client lourd :
 * Comment sont appliquées les mises à jour ?
 ====
 
-//🏷{"id": "0bbb4d10-bb6c-4cb0-b227-2e97db99eae1", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
+//🏷{"id": "0bbb4d10-bb6c-4cb0-b227-2e97db99eae1", "labels": ["niveau::intermédiaire","niveau_detail::détaillé"]}
 #### Stratégie de déploiement spécifiques
 
 [TIP]
@@ -682,7 +682,7 @@ Coté client, pour une application client lourd :
 Exemple: L'application sera déployée sur un mode blue/green, c'est-à-dire complètement installée sur un ensemble de machines initialement inaccessibles puis une bascule DNS permettra de pointer vers les machines disposant de la dernière version.
 ====
 
-//🏷{"id": "da0d11fe-0dc9-478e-a984-7a80ea1be482", "labels": ["niveau::intermédaire"]}
+//🏷{"id": "da0d11fe-0dc9-478e-a984-7a80ea1be482", "labels": ["niveau::intermédiaire"]}
 ### Exigences d'écoconception
 
 [TIP]
@@ -720,7 +720,7 @@ Exemples :
 * Les clusters actifs/actifs seront exposés derrière un LVS + Keepalived avec direct routing pour le retour.
 ====
 
-//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["niveau::intermédaire","disponibilité"],"link_to":["08cb1019-20c4-42ef-9bf2-4adf72936c1c"]}
+//🏷{"id": "17a46000-c51d-4fb7-868c-7386aef5b523", "labels": ["niveau::intermédiaire","disponibilité"],"link_to":["08cb1019-20c4-42ef-9bf2-4adf72936c1c"]}
 ### Disponibilité 
  
 [TIP] 
@@ -1144,7 +1144,7 @@ Dans les grands systèmes d'information, il est souvent utile de segmenter les e
 |====
 ====
 
-//🏷{"id": "0bbc320c-6291-4a89-b263-66abf1906ab0", "labels": ["niveau::intermédaire"], "link_to":["da0d11fe-0dc9-478e-a984-7a80ea1be482"]}
+//🏷{"id": "0bbc320c-6291-4a89-b263-66abf1906ab0", "labels": ["niveau::intermédiaire"], "link_to":["da0d11fe-0dc9-478e-a984-7a80ea1be482"]}
 ### Écoconception
 
 [TIP]
@@ -1244,7 +1244,7 @@ Un **Rate Limiting** de **100 requêtes par source et par minute** sera mis en p
 Les requêtes dépassant ce seuil recevront une **erreur 429 Too Many Requests** et devront être replanifiées par le client.  
 ====
 
-//🏷{"id": "5fa5ed39-9b6d-4dec-a8c1-1dc1929ff796", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
+//🏷{"id": "5fa5ed39-9b6d-4dec-a8c1-1dc1929ff796", "labels": ["niveau::intermédiaire","niveau_detail::détaillé"]}
 ### Gestion des timeouts
 
 [TIP]
@@ -1298,7 +1298,7 @@ Les détails (contenu des sauvegardes, plan de production, planification des tra
 Si cette application suit les standards de l'organisation, il suffit de se référer au dossier d'exploitation commun.
 ====
 
-//🏷{"id": "0a3f0e4e-0458-4528-9513-1f75a4ad8464", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
+//🏷{"id": "0a3f0e4e-0458-4528-9513-1f75a4ad8464", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 #### Ordre d’arrêt/démarrage
 
 [TIP]
@@ -1329,7 +1329,7 @@ Préciser d'éventuelles contraintes en cas de démarrage partiel (exemple : le 
 6. Base `pg1` sur serveur `bdd1`
 ====
 
-//🏷{"id": "314a1ef0-48b4-42a4-a8b6-be49250c5a50", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
+//🏷{"id": "314a1ef0-48b4-42a4-a8b6-be49250c5a50", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 #### Opérations programmées et suivi
 
 [TIP]
@@ -1366,7 +1366,7 @@ Exemple 2 : Le job `traiter-demande` fonctionnera **au fil de l'eau**, exécuté
 Exemple 3 : Le traitement interne `ti_index` est une **classe Java** appelant des commandes `VACUUM FULL` en JDBC, exécutée via un planificateur Quartz **une fois par mois**.
 ====
 
-//🏷{"id": "0cf18e71-b20e-4b2b-9377-e104c21c9785", "labels": ["niveau::intermédaire", "niveau_detail::approfondi"]}
+//🏷{"id": "0cf18e71-b20e-4b2b-9377-e104c21c9785", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi"]}
 #### Mise en maintenance
 
 [TIP]
@@ -1564,7 +1564,7 @@ Exemple 2: Les tests de restauration se feront sur un système de fichier chiffr
 Exemple 3 : Une restauration mensuelle des dernières sauvegardes PostgreSQL sera effectuée sur un environnement de test avec exécution de requêtes de validation des données.
 ====
 
-//🏷{"id": "74ff1a8d-91b4-4437-bbfd-439e3d4b18b5", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
+//🏷{"id": "74ff1a8d-91b4-4437-bbfd-439e3d4b18b5", "labels": ["niveau::intermédiaire","niveau_detail::détaillé"]}
 #### Journaux
 
 [TIP]
@@ -1606,7 +1606,7 @@ Les journaux seront protégés contre les injections via la méthode `StringEsca
 Les logs d’accès seront envoyés sur un serveur distant en plus d’une conservation locale sur 7 jours maximum.
 ====
 
-//🏷{"id": "2c3d502d-d67c-417b-88f4-d610e158e930", "labels": ["niveau::intermédaire", "niveau_detail::détaillé","supervision"]}
+//🏷{"id": "2c3d502d-d67c-417b-88f4-d610e158e930", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé","supervision"]}
 ### Supervision
 
 [TIP]
@@ -1618,7 +1618,7 @@ Une supervision efficace ne doit pas être **uniquement réactive** (alerte en c
 - **Indicateurs** : combinaisons de plusieurs métriques avec des seuils d’alerte (ex : _"alerte critique si l'utilisation CPU du serveur `s1` dépasse 95% pendant plus de 5 minutes"_).
 ====
 
-//🏷{"id": "f31e9b70-8bf9-41b5-bbb0-c6b3f6de9347", "labels": ["niveau::intermédaire", "niveau_detail::approfondi","supervision"]}
+//🏷{"id": "f31e9b70-8bf9-41b5-bbb0-c6b3f6de9347", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi","supervision"]}
 #### Supervision technique
 
 [TIP]
@@ -1643,7 +1643,7 @@ Lister ici les **métriques techniques (infrastructure & middleware)** à superv
 **Exemple** : Supervision du **% de CPU en IO wait** et de la **charge moyenne du serveur** (`load average`).
 ====
 
-//🏷{"id": "be41d5fd-e1a8-4a49-bf80-a81c3db693db", "labels": ["niveau::intermédaire", "niveau_detail::approfondi","supervision"]}
+//🏷{"id": "be41d5fd-e1a8-4a49-bf80-a81c3db693db", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi","supervision"]}
 #### Supervision applicative et métier
 
 [TIP]
@@ -1671,7 +1671,7 @@ Une couche BAM peut être mise en place pour générer des indicateurs orientés
 - **Taux d’erreur des transactions**.
 ====
 
-//🏷{"id": "236fd883-5195-4b81-b5dd-f6c66f9ae3f0", "labels": ["niveau::intermédaire", "niveau_detail::approfondi","supervision"]}
+//🏷{"id": "236fd883-5195-4b81-b5dd-f6c66f9ae3f0", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi","supervision"]}
 #### Outils de supervision & monitoring
 
 [TIP]
@@ -1699,7 +1699,7 @@ Les indicateurs sont ensuite affichés via **tableaux de bord dynamiques** et de
 La **supervision technique et applicative** reposera sur une stack **Grafana + Prometheus + ElasticSearch**.
 ====
 
-//🏷{"id": "aa3c7bab-527c-4411-a1f2-583a1d62118f", "labels": ["niveau::intermédaire", "niveau_detail::détaillé","supervision"]}
+//🏷{"id": "aa3c7bab-527c-4411-a1f2-583a1d62118f", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé","supervision"]}
 #### Alerting & notifications
 
 [TIP]
@@ -1727,7 +1727,7 @@ Une **alerte SMS** sera envoyée si :
 - **Le nombre d’erreurs 5xx dépasse 10/h** sur un module critique.
 ====
 
-//🏷{"id": "20dff012-aa85-465f-ba2e-272d7580dd0b", "labels": ["niveau::intermédaire", "niveau_detail::détaillé","supervision"]}
+//🏷{"id": "20dff012-aa85-465f-ba2e-272d7580dd0b", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé","supervision"]}
 ##### Supervision boite noire
 
 [TIP]
@@ -1775,7 +1775,7 @@ Exemple :
 * Des analyses de performances plus poussées seront mises en œuvre par **Glowroot**, selon les besoins.
 ====
 
-//🏷{"id": "53b2f98c-11d9-4aa0-b762-b8f31db0c30f", "labels": ["niveau::intermédaire"]}
+//🏷{"id": "53b2f98c-11d9-4aa0-b762-b8f31db0c30f", "labels": ["niveau::intermédiaire"]}
 ### Décommissionnement
 
 [TIP]

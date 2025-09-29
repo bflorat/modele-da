@@ -431,7 +431,7 @@ Exemple 5 : En application de la directive européenne « paquet telecom », 
 Exemple 6 : En application du RGPD, un consentement explicite des utilisateurs dans la conservation de leurs données personnelles de santé sera proposé.
 ====
 
-//🏷{"id": "fcad5990-c241-4c88-b2c5-646602f8935a", "labels": ["niveau::intermédaire"]}
+//🏷{"id": "fcad5990-c241-4c88-b2c5-646602f8935a", "labels": ["niveau::intermédiaire"]}
 ### Exigences sur les autorisations
 
 [TIP]
@@ -505,7 +505,7 @@ Le détail des autorisations sera documenté dans les **SFD (Spécifications Fon
 | X
 |===
 
-//🏷{"id": "e72e5ea5-5711-4665-8a91-76c63cbca2bc", "labels": ["niveau::intermédaire"]}
+//🏷{"id": "e72e5ea5-5711-4665-8a91-76c63cbca2bc", "labels": ["niveau::intermédiaire"]}
 ### Exigences de traçabilité et d'auditabilité
 
 [TIP]
@@ -849,7 +849,7 @@ Les **colonnes sensibles seront exclues** de la réplication vers la zone publiq
 Exemple 3 : Un **bandeau de consentement aux cookies** sera mis en place sur toutes les pages de l’application **Angular** via le module `angular-cookie-law`.
 ====
 
-//🏷{"id": "e6d0ad26-40b7-412e-b861-1f8e6e2299ca", "labels": ["niveau::intermédaire"],"link_to":["fcad5990-c241-4c88-b2c5-646602f8935a"]}
+//🏷{"id": "e6d0ad26-40b7-412e-b861-1f8e6e2299ca", "labels": ["niveau::intermédiaire"],"link_to":["fcad5990-c241-4c88-b2c5-646602f8935a"]}
 ### Habilitations
 
 ====
@@ -861,7 +861,7 @@ Exemple 2 : L’accès aux **carnets d’adresses** sera contrôlé via **OAuth
 L’API utilisée sera **Google OAuth2 en Java**.
 ====
 
-//🏷{"id": "3819b8cc-d9c4-4d29-9ca1-adae300a79e2", "labels": ["niveau::intermédaire"],"link_to":["e72e5ea5-5711-4665-8a91-76c63cbca2bc"]}
+//🏷{"id": "3819b8cc-d9c4-4d29-9ca1-adae300a79e2", "labels": ["niveau::intermédiaire"],"link_to":["e72e5ea5-5711-4665-8a91-76c63cbca2bc"]}
 ### Traçabilité et auditabilité
 
 ====
@@ -886,7 +886,7 @@ Exemple 5 : Les journaux **contenant le tag `[PREUVE]`** et issus de **tous les
 - **Indexés quotidiennement** dans l’index **Elastic `preuves`** pour faciliter les recherches et la conformité.
 ====
 
-//🏷{"id": "5e00eeef-1d5b-4a21-ac19-116ae376d999", "labels": ["niveau::intermédaire"]}
+//🏷{"id": "5e00eeef-1d5b-4a21-ac19-116ae376d999", "labels": ["niveau::intermédiaire"]}
 ### Lutte contre les cybermenaces
 
 Les cybermenaces incluent : malwares, phishing, attaques DOS/DDOS, exploitation de vulnérabilités (connues ou zero-day), ingénierie sociale, escroqueries en ligne, fuites de données sensibles, etc.
@@ -980,7 +980,7 @@ Exemple 2 : Utilisation de **CrowdSec Threat Intelligence** pour anticiper les t
 //🏷{"id": "d4d0f075-dff9-4d81-aebc-bbd0cc45bb55", "labels": ["annexe"]}
 ## Annexes
 
-//🏷{"id": "b2f76b28-83da-478b-bc94-f1bc29dc6084", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
+//🏷{"id": "b2f76b28-83da-478b-bc94-f1bc29dc6084", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### RACI & Gouvernance de la Sécurité
 
 [NOTE]
@@ -1048,7 +1048,7 @@ Example:
 
 ====
 
-//🏷{"id": "7d8dff71-3acd-450b-bc68-d2e2efee2fbb", "labels": ["niveau::intermédaire","niveau_detail::détaillé"]}
+//🏷{"id": "7d8dff71-3acd-450b-bc68-d2e2efee2fbb", "labels": ["niveau::intermédiaire","niveau_detail::détaillé"]}
 ### Auto-contrôles de sécurité
 
 //🏷{"id": "68556bb6-b10d-4fe3-b956-ae9c5f926f4a", "labels": []}

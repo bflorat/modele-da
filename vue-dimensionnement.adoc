@@ -97,7 +97,7 @@ TIP: Lister ici les éventuelles contraintes liées au stockage persistant.
 Exemple : L'espace disque maximal allouable à une VM est de 2 To.
 ====
 
-//🏷{"id": "1d3ec06e-d63d-4a61-bb4e-437358064687", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
+//🏷{"id": "1d3ec06e-d63d-4a61-bb4e-437358064687", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Contraintes CPU
 
 TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul
@@ -110,7 +110,7 @@ Exemple 1 : Une VM sera dotée au maximum de 10 VCPU
 Exemple 2 : L'ensemble des pods de l'application ne devra pas demander plus de 1 CPU par node.
 ====
 
-//🏷{"id": "ec6a420b-c284-442a-93fd-edc3d45ed00a", "labels": ["niveau::intermédaire", "niveau_detail::détaillé"]}
+//🏷{"id": "ec6a420b-c284-442a-93fd-edc3d45ed00a", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Contraintes mémoire
 
 TIP: Lister ici les éventuelles contraintes liées à la mémoire
