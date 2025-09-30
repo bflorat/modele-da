@@ -25,7 +25,7 @@ files_imported_into_blank_templates:
       - README.adoc
       - export
       - glossaire.adoc
-  - base_dir: modele-vierge/resources
+  - base_dir: modele-vierge/ressources
     files:  
       - vues.png
 files_imported_into_templates:
@@ -34,13 +34,13 @@ files_imported_into_templates:
       - README.adoc
       - export
       - glossaire.adoc
-  - base_dir: modele-vierge/resources
+  - base_dir: modele-vierge/ressources
     files:  
       - vues.png
   - base_dir: .
     files:
       - LICENSE.md
-  - base_dir: diagrams
+  - base_dir: diagrammes
     files:
     - archi-applicative-detaillee-dynamique.puml
     - archi-applicative-detaillee-inventaire.puml
