@@ -40,7 +40,7 @@ TIP: https://www.emerald.com/insight/content/doi/10.1108/ACI-12-2020-0159/full/h
 * De plus, il est volontairement riche en *explications et exemples* car il a également une (modeste) prétention éducative à destination des étudiants et jeunes architectes.
 * Le texte en italique contient des exemples ;
 * Chaque chapitre dispose de notes aidant à le remplir ;
-* Si besoin, vous pouvez réduire la taille de ce modèle en utilisant l'outil https://document-template-customizer.florat.net/[Document-Template-Customizer] (utiliser l'URL : `https://raw.githubusercontent.com/bflorat/modele-da/refs/heads/master/`);
+* Si besoin, vous pouvez réduire la taille de ce modèle en utilisant l'outil https://document-template-customizer.florat.net/?base_template_url=https%3A%2F%2Fraw.githubusercontent.com%2Fbflorat%2Fmodele-da%2Frefs%2Fheads%2Fmaster%2F[Document-Template-Customizer];
 * Des link:modeles-vierges[modèles vierges] (sans exemples) sont fournis pour votre confort. *Il est fortement préconisé de partir des modèles vierges tout en ayant sous les yeux, dans une autre fenêtre, le modèle avec exemples et explications* ;
 * Le script `export` joint permet de produire une archive de votre dossier complet au format HTML, PDF ou ODT.
 * Comme précisé dans le modèle vierge, nous recommandons de préciser la version de ce modèle (hash Git) en haut du fichier `README.adoc` afin de déterminer plus facilement les écarts avec de nouvelles versions du modèle. Exemple: `Version du modèle utilisé : b523b6a`.

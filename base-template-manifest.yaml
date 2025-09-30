@@ -28,4 +28,28 @@ files_imported_into_blank_templates:
   - base_dir: modele-vierge/resources
     files:  
       - vues.png
+files_imported_into_templates:
+  - base_dir: modele-vierge
+    files:  
+      - README.adoc
+      - export
+      - glossaire.adoc
+  - base_dir: modele-vierge/resources
+    files:  
+      - vues.png
+  - base_dir: .
+    files:
+      - LICENSE.md
+  - base_dir: diagrams
+    files:
+    - archi-applicative-detaillee-dynamique.puml
+    - archi-applicative-detaillee-inventaire.puml
+    - archi-applicative-generale.puml
+    - infrastructure.puml
+    - roles.svg
+    - archi-applicative-detaillee-dynamique.svg
+    - archi-applicative-detaillee-inventaire.svg
+    - archi-applicative-generale.svg
+    - infrastructure.svg
+
 

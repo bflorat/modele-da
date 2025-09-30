@@ -1049,7 +1049,7 @@ Identifier clairement le matériel dédié à l’application (et éventuellemen
 ====
 Exemple :
 
-image::diagrammes/archi-infra.svg[Diagramme de déploiement MIEL]
+image::diagrammes/infrastructure.svg[Diagramme de déploiement MIEL]
 ====
 
 //🏷{"id": "28ba010e-1c33-41b9-8061-9596710563bc", "labels": ["niveau_detail::détaillé"]}
