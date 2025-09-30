@@ -42,14 +42,14 @@ files_imported_into_templates:
       - LICENSE.md
   - base_dir: diagrammes
     files:
-    - archi-applicative-detaillee-dynamique.puml
-    - archi-applicative-detaillee-inventaire.puml
-    - archi-applicative-generale.puml
-    - infrastructure.puml
-    - roles.svg
-    - archi-applicative-detaillee-dynamique.svg
-    - archi-applicative-detaillee-inventaire.svg
-    - archi-applicative-generale.svg
-    - infrastructure.svg
+    - diagrammes/archi-applicative-detaillee-dynamique.puml
+    - diagrammes/archi-applicative-detaillee-inventaire.puml
+    - diagrammes/archi-applicative-generale.puml
+    - diagrammes/infrastructure.puml
+    - diagrammes/roles.svg
+    - diagrammes/archi-applicative-detaillee-dynamique.svg
+    - diagrammes/archi-applicative-detaillee-inventaire.svg
+    - diagrammes/archi-applicative-generale.svg
+    - diagrammes/infrastructure.svg
 
 
