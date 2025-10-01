@@ -572,7 +572,7 @@ En utilisant la formule SCI (voir plus haut), et pour une consommation totale du
 //🏷{"id": "bb5d8145-8519-4516-98a9-fc089f758d9c", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Gestion de la robustesse
 
-//🏷{"id": "a7bacacc-de70-48e5-8563-6a0b6d7b31a2", "labels": ["niveau:avancé"]}
+//🏷{"id": "a7bacacc-de70-48e5-8563-6a0b6d7b31a2", "labels": ["niveau::avancé"]}
 #### Gestion des transactions
 
 [TIP]
@@ -680,7 +680,7 @@ Exemple (application déployées dans Kubernetes) :
 La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le descripteur de déploiement Kubernetes.
 ====
 
-//🏷{"id": "01a81b2c-1dc0-4563-a2e2-5c5248086499", "labels": ["niveau:avancé", "niveau_detail::approfondi"]}
+//🏷{"id": "01a81b2c-1dc0-4563-a2e2-5c5248086499", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
 ### Politique de gestion des branches
 
 [TIP]
