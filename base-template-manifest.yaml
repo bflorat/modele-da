@@ -26,7 +26,7 @@ files_imported_into_blank_templates:
       - README.adoc
       - export
       - glossaire.adoc
-  - base_dir: ressources
+  - src_dir: ressources
     dest_dir: ressources
     files:  
       - vues.png
