@@ -27,7 +27,7 @@ files_imported_into_blank_templates:
       - export
       - glossaire.adoc
   - src_dir: ressources
-    dest_dir: ressources
+    dest_dir: modele-vierge/ressources
     files:  
       - vues.png
 files_imported_into_templates:
