@@ -20,36 +20,41 @@ multi_values_labels:
   - name: niveau_detail
     available_values: [général, détaillé, approfondi]
 files_imported_into_blank_templates:
-  - base_dir: modele-vierge
+  - src_dir: modele-vierge
+    dest_dir: .
     files:  
       - README.adoc
       - export
       - glossaire.adoc
-  - base_dir: modele-vierge/ressources
+  - base_dir: ressources
+    dest_dir: ressources
     files:  
       - vues.png
 files_imported_into_templates:
-  - base_dir: modele-vierge
+  - src_dir: modele-vierge
     files:  
       - README.adoc
       - export
       - glossaire.adoc
-  - base_dir: modele-vierge/ressources
+  - src_dir: modele-vierge/ressources
+    dest_dir: ressources
     files:  
       - vues.png
-  - base_dir: .
+  - src_dir: .
+    dest_dir: .
     files:
       - LICENSE.md
-  - base_dir: diagrammes
+  - src_dir: diagrammes
+    dest_dir: diagrammes
     files:
-    - diagrammes/archi-applicative-detaillee-dynamique.puml
-    - diagrammes/archi-applicative-detaillee-inventaire.puml
-    - diagrammes/archi-applicative-generale.puml
-    - diagrammes/infrastructure.puml
-    - diagrammes/roles.svg
-    - diagrammes/archi-applicative-detaillee-dynamique.svg
-    - diagrammes/archi-applicative-detaillee-inventaire.svg
-    - diagrammes/archi-applicative-generale.svg
-    - diagrammes/infrastructure.svg
+    - archi-applicative-detaillee-dynamique.puml
+    - archi-applicative-detaillee-inventaire.puml
+    - archi-applicative-generale.puml
+    - infrastructure.puml
+    - roles.svg
+    - archi-applicative-detaillee-dynamique.svg
+    - archi-applicative-detaillee-inventaire.svg
+    - archi-applicative-generale.svg
+    - infrastructure.svg
 
 
