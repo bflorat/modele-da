@@ -421,7 +421,7 @@ Exemple 2 : vue inventaire du projet MIEL :
 image:diagrammes/archi-applicative-detaillee-inventaire.svg[Diagramme d'Architecture applicative détaillée (vue inventaire)] 
 ====
 
-//🏷{"id": "123e4567-e89b-42d3-a456-426614174001", "labels": ["taille_projet::grand","niveau_detail::détaillé"]}
+//🏷{"labels": ["taille_projet::grand","niveau_detail::détaillé"]}
 #### Liens entre modules
 
 [TIP]
