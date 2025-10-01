@@ -24,7 +24,7 @@ Chaque vue expose les contraintes, exigences puis solutions mises en oeuvre.
 ====
 A lire en priorité en fonction de votre rôle :
 
-image:./resources/vues.png[à lire en priorité]
+image:./ressources/vues.png[à lire en priorité]
 ====
 
 
