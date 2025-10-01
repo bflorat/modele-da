@@ -32,6 +32,7 @@ files_imported_into_blank_templates:
       - vues.png
 files_imported_into_templates:
   - src_dir: modele-vierge
+    dest_dir: .
     files:  
       - README.adoc
       - export
