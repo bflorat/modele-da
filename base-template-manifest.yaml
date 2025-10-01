@@ -26,8 +26,8 @@ files_imported_into_blank_templates:
       - README.adoc
       - export
       - glossaire.adoc
-  - src_dir: ressources
-    dest_dir: modele-vierge/ressources
+  - src_dir: modele-vierge/ressources
+    dest_dir: ressources
     files:  
       - vues.png
 files_imported_into_templates:
