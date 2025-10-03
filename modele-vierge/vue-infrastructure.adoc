@@ -102,9 +102,6 @@
 ### Exigences de disponibilité
 TIP: Voir aussi <<cc4a17a8-d68b-43cf-8b4e-c64829d950fc,Contraintes sur la disponibilité>>.
 
-[#afdd573d-d1f8-4958-99c1-e404592396d0]
-### Modes dégradés
-
 [#231768e7-6a9d-429e-b200-2febdd91a0e3]
 ### Exigences de robustesse
 

@@ -81,6 +81,9 @@
 [#9efde825-9508-4669-918c-7cfb0d45c21f]
 ### Exigences de gestion de la concurrence
 
+[#afdd573d-d1f8-4958-99c1-e404592396d0]
+### Modes dégradés
+
 [#4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f]
 ### Archivage
 
