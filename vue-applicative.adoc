@@ -296,6 +296,20 @@ Exemple 1  : Tous les modules de cette application doivent pouvoir fonctionner e
 Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé correctement sous peine de corruption de données.
 ====
 
+//🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["niveau::avancé","niveau_detail::détaillé"]}
+### Modes dégradés
+[TIP]
+====
+Préciser les modes dégradés applicatifs envisagés.
+====
+
+====
+Exemple 1 : Le site `monsite.com` devra pouvoir continuer à accepter les commandes en l’absence du service de logistique.
+====
+====
+Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de données puis soumis à nouveau suite à une opération manuelle des exploitants.
+====
+
 //🏷{"id": "4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f", "labels": ["niveau_detail::détaillé","archivage"]}
 ### Archivage
 

@@ -558,19 +558,6 @@ La disponibilité exigée ici devra être en cohérence avec les Contraintes de 
 |4h, 8 fois dans l'année
 |====
 
-//🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["niveau::avancé","niveau_detail::détaillé"]}
-### Modes dégradés
-[TIP]
-====
-Préciser les modes dégradés applicatifs envisagés.
-====
-
-====
-Exemple 1 : Le site `monsite.com` devra pouvoir continuer à accepter les commandes en l’absence du service de logistique.
-====
-====
-Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de données puis soumis à nouveau suite à une opération manuelle des exploitants.
-====
 
 //🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Exigences de robustesse
