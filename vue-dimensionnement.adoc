@@ -26,8 +26,7 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 [PRE-FILLED]
 ====
-.Références documentaires
-[cols="1e,1e,4e,4e"]
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
@@ -45,7 +44,6 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 //🏷{"id": "c5db3e60-e70c-4ebb-9848-44a0cecc4c6e", "labels": []}
 ### Points nécessitant une étude complémentaire
 
-.Points nécessitant une étude complémentaire
 [cols="1e,1e,1e,2e,2e"]
 |===
 |ID| Détail |Statut |Porteur du sujet  | Échéance
@@ -54,23 +52,47 @@ Le glossaire du projet est disponible link:glossaire.adoc[ici]. Nous ne reprendr
 
 |===
 
+[PRE-FILLED]
+====
+[cols="1,1,1,1,1"]
+|===
+|ID|Détail|Statut|Porteur du sujet  | Échéance
+
+|
+|
+|
+|
+|
+|===
+====
+
 //🏷{"id": "577c9b37-77a2-4568-9fb5-2804d6f9bc70", "labels": []}
 ### Hypothèses
 
 [TIP]
 ====
 Fournir ici les hypothèses structurantes prises pour le dimensionnement
-====
 
-====
 Exemple: 
 
-.Hypothèses
-[cols="1e,4e"]
+[cols="1e,6e"]
 |===
 |ID|Détail
 
 |1|Nous estimons que 10 millions de personnes téléchargeront l'application XYZ
+
+|===
+====
+
+[PRE-FILLED]
+====
+
+[cols="1,6"]
+|===
+|ID|Détail
+
+|
+|
 
 |===
 
@@ -155,7 +177,10 @@ TIP: Il s'agit des métriques permettant de déterminer le volume de stockage *c
 //🏷{"id": "1736e661-2c68-4aa6-a157-9e4444d5a374", "labels": ["niveau_detail::détaillé"]}
 #### Métriques
 
+====
 TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entrants au calcul des besoins techniques de stockage.
+
+Exemple : 
 
 [cols="e,e,e,e,e,e,e"]
 |===
@@ -164,6 +189,23 @@ TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entra
 |S1 |Nombre d'entreprises éligibles | Estimé |  4M | +1% |  INSEE [2]  | On considère que MIEL ne concerne pas les auto-entrepreneurs
 |S2 |Taille moyenne d'un PDF composé| Mesurée | 40Ko  | 0%| Exploitants | 
 |===
+====
+
+[PRE-FILLED]
+====
+[cols="1,1,1,1,1,1,1"]
+|===
+|Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) |  Source| Détail/hypothèses
+
+| 
+| 
+| 
+| 
+| 
+| 
+|===
+
+====
 
 //🏷{"id": "9968c2e6-46b9-4005-89d4-6a9114246a4c", "labels": ["niveau_detail::détaillé"]}
 #### Estimation besoins de stockage
@@ -197,7 +239,9 @@ Ne prendre en compte que les données dont la taille est significative (au moins
 ====
 
 ====
-. Exemple de volumétrie statique du module C :
+Exemple de volumétrie statique :
+
+[cols='e,e,e,e,e,e']
 |===
 |Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
 
@@ -224,6 +268,22 @@ Ne prendre en compte que les données dont la taille est significative (au moins
 |===
 ====
 
+[PRE-FILLED]
+====
+[cols='1,1,1,1,1,1']
+|===
+|Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
+
+| 
+| 
+| 
+| 
+| 
+| 
+|===
+
+====
+
 //🏷{"id": "b22cadba-e5a7-4c3a-b4b8-f9ea32a2a0be", "labels": []}
 ### Volumétrie dynamique
 
@@ -232,6 +292,7 @@ TIP: Il s'agit des métriques par durée (année, mois, heure…) et permettant 
 //🏷{"id": "910fc171-30ed-47cd-b03c-3ca918b3103e", "labels": ["niveau_detail::détaillé"]}
 #### Métriques
 
+====
 TIP: Ce sont les données métier mesurées ou estimées qui serviront d'entrants au calcul de la charge.
 
 [cols="e,e,e,e,e,e,e,e"]
@@ -247,6 +308,24 @@ a|
  | Service communication, rapport du 01/01/2040
  | Les utilisateurs sont des professionnels utilisant l'application depuis la France métropolitaine aux heures de bureau standards
 |===
+====
+
+[PRE-FILLED]
+====
+[cols="1,1,1,1,1,1,1,1"]
+|===
+|Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) | Saisonnalité|  Source| Détail/hypothèses 
+
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|===
+====
 
 //🏷{"id": "3d09511c-17b2-43c3-bcba-0a62ead057b4", "labels": ["niveau_detail::détaillé"]}
 #### Estimation de la charge
@@ -338,12 +417,11 @@ Dans le cas d’accès LAN, il est préférable d’intégrer le temps réseau, 
 Les objectifs de TR sont toujours donnés avec une tolérance statistique (90e centile par exemple) car la réalité montre que le TR est très fluctuant car affecté par un grand nombre de facteurs.
 
 Inutile de multiplier les types de sollicitations (en fonction de la complexité de l’écran par exemple) car ce type de critère n’a plus grand sens aujourd'hui, particulièrement pour une application SPA).
-====
-====
-.Exemple de types de sollicitation :
+
+Exemple de profils de sollicitation :
 [cols='3e,1e,1e,1e']
 |===
-|Type de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
+|Profil de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
 
 |Chargement d’une page
 |< 0,5 s
@@ -374,6 +452,20 @@ Acceptable si :
 * Au plus 5 % des temps de réponse sont insuffisants.
       
 En dehors de ces valeurs, l’application devra être optimisée et repasser en recette puis être soumise à nouveau aux tests de charge.
+====
+
+[PRE-FILLED]
+====
+[cols='3,1,1,1']
+|===
+|Profil de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
+
+| 
+| 
+| 
+| 
+
+|===
 ====
 
 //🏷{"id": "88645b89-d407-4107-93b2-48003fd8688a", "labels": ["niveau_detail::détaillé", "batch"]}
@@ -409,11 +501,9 @@ Nous donnons un dimensionnement final qui doit supporter la volumétrie statique
 [TIP]
 ====
 Fournir ici RAM, disque et CPU par instance d'unité déployable (à affiner après campagne de performance ou MEP).
-====
-====
+
 Exemple : 
 
-.Estimation des besoins en ressources par unité déployable
 [cols="2e,1e,1e,3e,2e"]
 |===
 | Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires
@@ -438,6 +528,20 @@ Exemple :
 |===
 ====
 
+[PRE-FILLED]
+====
+[cols="2,1,1,3,2"]
+|===
+| Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires
+
+| 
+| 
+| 
+| 
+| 
+|===
+====
+
 //🏷{"id": "6e9675d7-5d8c-4cf8-989a-13640cd28ef3", "labels": []}
 ### Dimensionnement des machines
 
@@ -451,10 +555,7 @@ Cette section fournit le dimensionnement final des machines nécessaires
 * Pour les VM, attention à vérifier qu'un vCPU (Virtual CPU) = 1 cœur physique (et non un thread si hyperthreading activé) ;
 * Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NVMe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique exécutant la VM ou d'un SAN ;
 * Le disque distant concerne du stockage sur une baie de disque (SAN) ;
-* Le stockage externe hors SAN concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, …) ou un stockage objet (Swift, S3, etc.).
-====
 
-.Dimensionnement des machines
 [cols='1e,3e,1e,1e,1e,1e,1e']
 |===
 |Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque distant SAN (Gio)
@@ -476,8 +577,33 @@ Cette section fournit le dimensionnement final des machines nécessaires
 |1024
 
 |===
+====
 
-.Dimensionnement du stockage externe hors SAN
+[PRE-FILLED]
+====
+[cols='1,3,1,1,1,1,1']
+|===
+|Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque distant SAN (Gio)
+
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|===
+====
+
+//🏷{"id": "e30801f9-af5b-49f3-bdca-214aae776336", "labels": ["niveau_detail::détaillé"]}
+### Dimensionnement du stockage externe hors SAN
+
+[TIP]
+====
+Le stockage externe hors SAN concerne du stockage fichier sur un système de fichier distribué (NFS, CIFS, WebDav, …) ou un stockage objet (Swift, S3, etc.).
+
+Exemple:
+
 [cols='1e,3e,3e']
 |===
 |Nature|Taille (Gio)|Type(s) de machine utilisant ce partage
@@ -491,3 +617,16 @@ Cette section fournit le dimensionnement final des machines nécessaires
 |VM serveur applicatif
 
 |===
+====
+
+[PRE-FILLED]
+====
+[cols='1,3,3']
+|===
+|Nature|Taille (Gio)|Type(s) de machine utilisant ce partage
+
+| 
+| 
+| 
+|===
+====

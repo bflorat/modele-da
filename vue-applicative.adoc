@@ -28,8 +28,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 
 [PRE-FILLED]
 ====
-.Références documentaires
-[cols="1e,1e,4e,4e"]
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
@@ -47,7 +46,9 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 //🏷{"id": "0f9d2e4a-3c71-4b9e-8f3b-2b8c7d1e9a60", "labels": []}
 ### Points nécessitant une étude complémentaire
 
-.Points nécessitant une étude complémentaire
+====
+Exemple:
+
 [cols="1e,6e,1e,1e,1e"]
 |===
 |Sujet| Détail | Statut| Porteur du sujet  | Échéance
@@ -59,17 +60,52 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 |Avant 2040
 |===
 
+====
+
+[PRE-FILLED]
+====
+[cols="1,6,1,1,1"]
+|===
+|Sujet| Détail | Statut| Porteur du sujet  | Échéance
+
+|
+|
+|
+|
+|
+|===
+====
+
+
 //🏷{"id": "7a1cdb2e-4f52-42a1-9c3e-6e0f2d3a8b91", "labels": []}
 ### Hypothèses
 
-.Hypothèses
+[TIP]
+====
+Donner ici les éventuelles hypothèses structurantes
+
+Exemple :
+
 [cols="1e,6e"]
-|====
+|===
 |ID| Détail
 
 |HA1
 |Même si la décision de généralisation de l'annuaire centralisé n'est pas totalement entérinée, l’application s’appuiera sur celui-ci et non sur un annuaire local..
-|====
+|===
+====
+
+
+[PRE-FILLED]
+====
+[cols="1,6"]
+|===
+|ID| Détail
+
+|
+|
+|===
+====
 
 //🏷{"id": "382fd086-f48e-4ad5-9911-07e3de281971", "labels": ["niveau_detail::général"]}
 ## Contexte général
@@ -114,9 +150,10 @@ Si le SI est urbanisé, reprendre le plan d’occupation au sol et préciser le 
 #### Acteurs internes 
 
 [TIP]
+====
 Par ‘internes’, on entend les acteurs appartenant à l’organisation, qu’il s’agisse d’humains ou de modules applicatifs.
 
-.Liste des acteurs internes
+Exemple:
 [cols="2e,3e,2e,2e"]
 |===
 |Acteur|Description|Population|Localisation
@@ -132,10 +169,26 @@ Par ‘internes’, on entend les acteurs appartenant à l’organisation, qu’
 |Site de Paris
 
 |===
+====
+
+[PRE-FILLED]
+====
+[cols="2,3,2,2"]
+|===
+|Acteur|Description|Population|Localisation
+
+|
+|
+|
+|
+
+|===
+====
 
 #### Acteurs externes
 
-.Liste acteurs externes
+====
+Exemple:
 [cols="2e,3e,2e,2e"]
 |===
 |Acteur| Description| Population| Localisation
@@ -151,18 +204,63 @@ Par ‘internes’, on entend les acteurs appartenant à l’organisation, qu’
 |Monde entier
 |===
 
+====
+
+[PRE-FILLED]
+====
+[cols="2,3,2,2"]
+|===
+|Acteur| Description| Population| Localisation
+
+|
+|
+|
+|
+|===
+====
+
+
 //🏷{"id": "deafbeef-dead-4bed-8ace-0b0b0b0b0b0b", "labels": []}
 #### Nature et sensibilité des données et traitements
 
+[TIP]
+====
 Donner une synthèse des traitements et processus métier et les natures de données qu'ils manipulent pour aider à la conception de la solution.
 
 WARNING: Ne pas reprendre l'AIPD mais y faire référence s'il existe. 
+
+Exemple:
+
+[%header,cols="2e,3e,3e,2e,1e,1e,1e,1e"]
+|===
+| Processus métier | Finalité | Catégories de données manipulées | Classification interne | D | I | C | T
+
+| Délivrance d’acte | _Produire un acte authentique_ | _identité, état civil, logs techniques_ | _élevée_ |_élevée_ | _Diffusion restreinte_ |  _moyenne_ | _moyenne_
+|===
+
+[cols="1e,5e"]
+|===
+| Légende | (D)isponibilité (I)ntégrité \(C)onfidentialité (T)race ou preuve : besoins de sécurité (faible, moyen, élevé)
+| Classification | Public, Interne, Diffusion restreinte, Confidentiel
+|===
+
+====
+
+[PRE-FILLED]
+====
 
 [%header,cols="2,3,3,2,1,1,1,1"]
 |===
 | Processus métier | Finalité | Catégories de données manipulées | Classification interne | D | I | C | T
 
-| _Ex. Délivrance d’acte_ | _Produire un acte authentique_ | _identité, état civil, logs techniques_ | _élevée_ |_élevée_ | _Diffusion restreinte_ |  _moyenne_ | _moyenne_
+| 
+|
+|
+|
+|
+|
+|
+|
 |===
 
 [cols="1,5"]
@@ -170,6 +268,8 @@ WARNING: Ne pas reprendre l'AIPD mais y faire référence s'il existe.
 | Légende | (D)isponibilité (I)ntégrité \(C)onfidentialité (T)race ou preuve : besoins de sécurité (faible, moyen, élevé)
 | Classification | Public, Interne, Diffusion restreinte, Confidentiel
 |===
+
+====
 
 //🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["niveau_detail::général","contrainte"]}
 ## Contraintes
@@ -339,10 +439,9 @@ TIP: Ne pas oublier de mentionner les données techniques (comme les journaux ou
 ====
 Exemple :
 
-.Durée de rétention des données et documents
 [cols="1e,1e"]
-|====
-| Donnée | Durée maximale de rétention
+|===
+| Nature de la Donnée | Durée maximale de rétention
 
 | Données de paiement (CB)
 | 2 mois
@@ -356,7 +455,19 @@ Exemple :
 | Archives des données comptables
 | 30 ans
 
-|====
+|===
+====
+
+[PRE-FILLED]
+====
+[cols="1,1"]
+|===
+| Nature de la Donnée | Durée maximale de rétention
+
+| 
+| 
+
+|===
 ====
 
 //🏷{"id": "b269e65b-a8c7-4518-a861-5c6c17802869", "labels": ["solution","niveau_detail::général"]}
@@ -377,7 +488,6 @@ Rappeler :
  
 Si l'application est prévue pour être implémentée en plusieurs étapes, décrire succinctement la trajectoire cible.
 ====
-
 
 [TIP]
 ====
@@ -518,13 +628,34 @@ Exemple 2: Chaque API est responsable de la purge des données qu'elle expose. P
 Lister ici les flux principaux de l'application. 
 
 Ne pas détailler les flux techniques, notamment ceux liés à la supervision ou au clustering.
-====
 
-.Exemple partiel de matrice de flux applicatifs
+Exemple :
+
 [cols='1e,3e,1e,1e,1e']
-|====
+|===
 |Source|Destination|Type de réseau|Protocole| Mode.footnote:[(L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)]
 
 |Entreprise|PC/tablette/mobile externe |WAN| ihm-miel | LE
 |batch-traiter-demandes | service-compo-pdf |LAN | HTTP | A
-|====
+|===
+====
+
+[PRE-FILLED]
+====
+[cols='1,3,1,1,1']
+|===
+|Source|Destination|Type de réseau|Protocole| Mode.footnote:[(L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)]
+
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|===
+====

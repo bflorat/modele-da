@@ -35,8 +35,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 [PRE-FILLED]
 ====
-.Références documentaires
-[cols="1e,1e,4e,4e"]
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
@@ -53,9 +52,12 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 //🏷{"id": "87385297-c5c3-44f6-b9e8-7599576dda0a", "labels": []}
 ### Points nécessitant une étude complémentaire
-.Points nécessitant une étude complémentaire
+
+====
+Exemple: 
+
 [cols="1e,5e,2e,2e,2e"]
-|====
+|===
 |ID|Détail|Statut|Porteur du sujet | Échéance
 
 |EI1
@@ -64,19 +66,53 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Équipe Archi Technique
 |AVANT 2040
 
-|====
+|===
+====
+
+[PRE-FILLED]
+====
+[cols="1,5,2,2,2"]
+|===
+|ID|Détail|Statut|Porteur du sujet | Échéance
+
+|
+|
+|
+|
+|
+|===
+====
+
 
 //🏷{"id": "30d20b83-e35d-464b-8286-3ff230fb1471", "labels": []}
 ### Hypothèses
 
-.Hypothèses
-[cols="1e,5e"]
-|====
+[TIP]
+====
+Donner ici les éventuelles hypothèses structurantes
+
+Exemple :
+
+[cols="1e,6e"]
+|===
 |ID|Détail
 
 |HI1
 |Nous prenons l'hypothèse que d'ici à la MEP du projet, PostgreSQL 17 sera validé en interne.
-|====
+|===
+
+====
+
+[PRE-FILLED]
+====
+[cols="1,6"]
+|===
+|ID|Détail
+
+| 
+| 
+|===
+====
 
 //🏷{"id": "82a207de-bc6f-4a62-a586-96a2b4c9f4dc", "labels": ["niveau_detail::général", "contrainte"]}
 ## Contraintes
@@ -217,7 +253,7 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 
 .Niveaux Tier des datacenters (source : Wikipedia)
 [cols="1,5,2,2,2,2"]
-|====
+|===
 |Niveau Tier|Caractéristiques|Taux de disponibilité|Indisponibilité statistique annuelle| Maintenance à chaud possible ?| Tolérance aux pannes ?
 
 |Tier 1
@@ -248,7 +284,7 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 |Oui
 |Oui
 
-|====
+|===
 ====
 
 ====
@@ -495,12 +531,11 @@ On liste ici les plages de fonctionnement principales (ne pas trop détailler, c
 Penser aux utilisateurs situés dans d'autres fuseaux horaires.
 
 Les informations données ici serviront d'entrants au SLA de l’application.
-====
 
-====
-.Exemple plages de fonctionnement
+Exemple : 
+
 [cols="1e,5e,2e"]
-|====
+|===
 |No plage| Heures | Détail
 
 |1
@@ -518,7 +553,19 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 |4
 |De 5h30-8h30 heure de Paris, 5J/7 jours ouvrés
 |Ouverture Intranet aux employés de Nouvelle Calédonie
-|====
+|===
+====
+
+[PRE-FILLED]
+====
+[cols="1,5,2"]
+|===
+|No plage| Heures | Détail
+
+| 
+| 
+| 
+|===
 ====
 
 //🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["disponibilité"],"link_to":["cc4a17a8-d68b-43cf-8b4e-c64829d950fc"]}
@@ -528,7 +575,10 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 ====
 Nous listons ici les exigences de disponibilité. Les mesures techniques permettant de les atteindre seront données dans l’architecture technique de la solution. 
 
+l’indisponibilité maximale ici décrite doit suivre le niveau 
+
 Les informations données ici serviront d'entrants au SLA de l’application.
+
 
 Attention à bien cadrer ces exigences car un porteur de projet a souvent tendance à demander une disponibilité très élevée sans toujours se rendre compte des implications. Le coût et la complexité de la solution augmente exponentiellement avec le niveau de disponibilité exigé. 
 
@@ -541,11 +591,12 @@ On estime en général que la haute disponibilité (HA) commence à deux neufs (
 Détailler la disponibilité demandée par plage.
 
 La disponibilité exigée ici devra être en cohérence avec les Contraintes de disponibilité du SI.
-====
+
+Exemple : 
 
 .Durée d’indisponibilité maximale admissible par plage
 [cols="1e,5e"]
-|====
+|===
 |No Plage| Indisponibilité maximale
 
 |1 
@@ -556,8 +607,20 @@ La disponibilité exigée ici devra être en cohérence avec les Contraintes de 
 
 |3
 |4h, 8 fois dans l'année
-|====
+|===
+====
 
+[PRE-FILLED]
+====
+.Durée d’indisponibilité maximale admissible par plage
+[cols="1e,5e"]
+|===
+|No Plage| Indisponibilité maximale
+
+| 
+| 
+|===
+====
 
 //🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Exigences de robustesse
@@ -903,11 +966,9 @@ Un système HA repose généralement sur :
 
 La Tolérance de Panne (FT) inclut toujours la Haute Disponibilité (HA), mais la HA ne garantit pas nécessairement la FT.
 
-==== 
-
-
-.Quelques solutions de disponibilité
-|====
+.Exemples de solutions de disponibilité
+[cols="1e,1e,1e,1e"]
+|===
 | Solution | Coût | Complexité de mise en œuvre | Amélioration de la disponibilité
 
 | Disques en RAID 1
@@ -994,7 +1055,8 @@ La Tolérance de Panne (FT) inclut toujours la Haute Disponibilité (HA), mais l
 | XX
 | XX
 | XX
-|====
+|===
+====
 
 ====
 Exemple 1 : Pour atteindre la disponibilité requise de 98 % :
@@ -1040,16 +1102,15 @@ image::diagrammes/infrastructure.svg[Diagramme de déploiement MIEL]
 ====
 
 //🏷{"id": "28ba010e-1c33-41b9-8061-9596710563bc", "labels": ["niveau_detail::détaillé"]}
-### Versions des composants d'infrastructure
+### Composants d'infrastructure
 
 [TIP]
 ====
 Lister ici OS, bases de données, MOM, serveurs d'application, etc. Ne détailler la version précise (le `y` ou le `z` de la version que si cette information est pertinente)
 
-====
 .Exemple de composants d'infrastructure
 [cols="1e,2e,1e,2e"]
-|====
+|===
 |Composant d'infrastructure|Rôle|Version |Environnement technique
 
 |Express.js
@@ -1077,7 +1138,22 @@ Lister ici OS, bases de données, MOM, serveurs d'application, etc. Ne détaille
 |17.x
 |AlmaLinux 9.x 
 
-|====
+|===
+====
+
+[PRE-FILLED]
+====
+[cols="1,2,1,2"]
+|===
+|Composant d'infrastructure|Rôle|Version |Environnement technique
+
+| 
+| 
+| 
+| 
+|===
+
+====
 
 //🏷{"id": "3ff53ea7-2e7f-4d71-8848-6819ba23c930", "labels": ["niveau_detail::approfondi"]}
 ### Matrice des flux techniques
@@ -1092,18 +1168,37 @@ Il n'est pas nécessaire de faire référence aux flux applicatifs car les lecte
 
 Les types de réseaux incluent les informations utiles sur le réseau utilisé afin d'apprécier les performances (TR, latence) et la sécurité: LAN, VLAN, Internet, LS, WAN…)
 
-====
+Exemple : 
 
-.Exemple partiel de matrice de flux techniques
 [cols="1e,2e,2e,2e,1e,1e,1e"]
-|====
+|===
 |ID|Source|Destination|Type de réseau|Protocole|Port d'écoute | Chiffrement ?
 
 |1|lb2|IP multicast 224.0.0.18|LAN|VRRP sur UDP|3222 | Non
 |2|lb1|host1, host2|LAN|HTTPS|80 | Oui (TLS)
 |3|host3, host4, host5|bdd1|LAN|PG|5432 |Oui (via VPN)
 |4|sup1|host[1-6]|LAN|SNMP|199 | Non mais utilisation du VLAN d'admin
-|====
+|===
+
+====
+
+[PRE-FILLED]
+====
+[cols="1e,2e,2e,2e,1e,1e,1e"]
+|===
+|ID|Source|Destination|Type de réseau|Protocole|Port d'écoute | Chiffrement ?
+
+|
+|
+|
+|
+|
+|
+| 
+
+|===
+====
+
 
 //🏷{"id": "93947744-e0ec-4bc3-af30-cc60473b7caf", "labels": ["taille_projet::moyen","taille_projet::grand", "niveau_detail::détaillé"]}
 ### Environnements
@@ -1114,9 +1209,8 @@ Fournir ici une vision générale des environnements utilisés par l'application
 
 Dans les grands systèmes d'information, il est souvent utile de segmenter les environnements en 'plateformes' (ou 'couloirs') constituées d'un ensemble de machines isolées les unes des autres (même s'ils peuvent partager des ressources communes, selon la politique de l'organisation). Par exemple, un environnement de recette peut être constitué des plateformes `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
 
-.Environnements
 [cols='1,2,2,2']
-|====
+|===
 |Environnement| Rôle| Contenu | Plateforme
 
 |Développement
@@ -1128,7 +1222,20 @@ Dans les grands systèmes d'information, il est souvent utile de segmenter les e
 |Recette fonctionnelle effectuée par les testeurs
 |Tag déployé à la fin de chaque Sprint
 |UAT1 et UAT2
-|====
+|===
+====
+
+[PRE-FILLED]
+====
+[cols='1,2,2,2']
+|===
+|Environnement| Rôle| Contenu | Plateforme
+
+| 
+| 
+| 
+| 
+|===
 ====
 
 //🏷{"id": "0bbc320c-6291-4a89-b263-66abf1906ab0", "labels": ["niveau::intermédiaire"], "link_to":["da0d11fe-0dc9-478e-a984-7a80ea1be482"]}
@@ -1215,13 +1322,13 @@ Un **système de jetons** régulera l'accès à la ressource `DetailArticle` ave
 Au-delà de cette limite, les requêtes obtiendront une **erreur 429 Too Many Requests** et devront appliquer un rejeu avec **backoff exponentiel**.
 
 .Exemple : Répartition des jetons par type d'opération
-|====
+|===
 |Opération sur `DetailArticle`|Proportion des jetons
 
 |GET | 80%
 |POST | 5%
 |PUT | 15%
-|====
+|===
 
 ====
 

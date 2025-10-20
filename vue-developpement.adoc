@@ -29,8 +29,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 [PRE-FILLED]
 ====
-.Références documentaires
-[cols="1e,1e,4e,4e"]
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
@@ -48,9 +47,11 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 //🏷{"id": "b3592a4d-d0df-4f87-8416-97cfb287cd08", "labels": []}
 ### Points nécessitant une étude complémentaire
 
-.Points nécessitant une étude complémentaire
+====
+Exemple :
+
 [cols="e,e,e,e,e"]
-|====
+|===
 |ID|Détail|Statut|Porteur du sujet  | Échéance
 
 |ED1
@@ -59,20 +60,52 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Equipe méthodes et outils
 |AVANT 2040
 
-|====
+|=== 
+====
+
+[PRE-FILLED]
+====
+[cols="1,1,1,1,1"]
+|===
+|ID|Détail|Statut|Porteur du sujet  | Échéance
+
+|
+|
+|
+|
+|
+|===
+====
 
 //🏷{"id": "fb0b1a28-1c08-4c0b-bb38-1cae99a46818", "labels": []}
 ### Hypothèses
 
-.Hypothèses
-[cols="1e,4e"]
-|====
+[TIP]
+====
+Donner ici les éventuelles hypothèses structurantes
+
+Exemple :
+
+[cols="1e,6e"]
+|===
 |ID|Détail
 
 |HD1
 |Même si ce point n’est pas encore totalement validé, l’application nécessitera un JRE 21+ pour tirer partie de librairies et frameworks Java indispensables au projet.
-|====
+|===
 
+====
+
+[PRE-FILLED]
+====
+[cols="1,6"]
+|===
+|ID|Détail
+
+|
+|
+|===
+====
 
 //🏷{"id": "84cd4aed-36c0-4564-8354-29a7de004923", "labels": ["niveau_detail::général", "contrainte"]}
 ## Contraintes
@@ -298,13 +331,10 @@ Exemple : Utilisation de Rust à titre expérimental au sein de l'organisation. 
 [TIP]
 ====
 Lister ici pour chaque module les principales librairies et frameworks utilisés ainsi que leur version. Ne pas lister les librairies fournies au runtime par les serveurs d'application ou les frameworks. Inutile de trop détailler, donner uniquement les dépendances structurantes.
-====
-====
-Exemple :
 
-.Exemple de pile logicielle
+Exemple de pile logicielle :
 [cols="1e,4e,1e"]
-|====
+|===
 |Dépendance|Rôle|Version 
 
 |Framework React.js
@@ -314,8 +344,21 @@ Exemple :
 |JasperReport
 |Éditique transactionnelle, composition des factures au format PDF
 |7.0.0
-|====
+|===
 ====
+
+[PRE-FILLED]
+====
+[cols="1,4,1"]
+|===
+|Dépendance|Rôle|Version 
+
+|
+|
+|
+|===
+====
+
 
 //🏷{"id": "ec64dc5b-cdc1-4ab3-ae41-ac3c1c3ad9e7", "labels": ["niveau::intermédiaire"], "link_to":["d6e3eb12-371b-4c26-b538-9fea2051bfed"]}
 ### Performances
@@ -422,6 +465,9 @@ Exemple 1 : pour traiter l'explosion combinatoire des contrats possibles et évi
 [TIP] 
 ==== 
 Une méthodologie ou une technologie particulière est-elle en jeu dans ce projet ? Quelle est la stratégie de tests ? 
+
+Pour un projet d'envergure, la stratégie de test fait en général l'objet d'un document propre. Une stratégie standard peut également être définie au niveau du SI. 
+
 ==== 
 ==== 
 Exemple 1 : ce projet sera couvert en plus des TU et tests d’intégration car des tests d'acceptance BDD (Behavioral Driven Development) en technologie Spock. 
@@ -430,12 +476,10 @@ Exemple 1 : ce projet sera couvert en plus des TU et tests d’intégration car 
 Exemple 2 : ce projet sera développé en TDD (test first) 
 ==== 
 ==== 
-
 Exemple 3 : Types de tests 
 
-.Types de tests 
-[cols='2s,1,1,1,1,4a'] 
-|==== 
+[cols='2se,1e,1e,1e,1e,4ea'] 
+|=== 
 |Type de test | Temps à investir | Manuel ou automatisé ? | Type de module ciblé | Taux de Couverture visée | Détail 
 
 |TU 
@@ -516,10 +560,24 @@ détecter un maximum de bugs avant les tests d'UAT.
 |UI, batchs lancé à la main 
 |de 30% à 80% selon le nombre de scénarios prévus  
 |Tests menés en recette par des utilisateurs finaux sur environnement non bouchonné avec des cahiers de tests. Tests d'acceptance de bout n bout (on suit un cahier de tests avec les cas nominaux), Tests exploratoires (on tente toutes les combinatoires possibles avec un guidage minimal dans le cahier de test). Utilisation de l'outil Squash pour le suivi.
-|==== 
+|=== 
+
 ==== 
 
-NOTE: Pour un projet d'envergure, la stratégie de test fait en général l'objet d'un document propre. Une stratégie standard peut également être définie au niveau du SI. 
+[PRE-FILLED]
+====
+[cols='2s,1,1,1,1,4a'] 
+|=== 
+|Type de test | Temps à investir | Manuel ou automatisé ? | Type de module ciblé | Taux de Couverture visée | Détail 
+
+|
+|
+|
+|
+|
+|
+|===
+====
 
 //🏷{"id": "6ff8aacb-5020-4ade-a10d-3dce3898276b", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"],"link_to": ["c8e58371-6bea-48e2-ab0e-989fec63e0ee"]}
 === Éco-conception
@@ -798,15 +856,12 @@ log.info("Problème sur le dossier {} de l'utilisateur {}",dossier.getId(), util
 [TIP]
 ====
 Expliquer quand et quoi loguer de sorte à produire des journaux exploitables en production.
-====
 
-====
 Exemple :   
 
-.Niveaux journaux
-[cols='1,3,1,1']
-|====
-|Niveau de gravité |Contexte d'utilisation | Volume indicatif | Environnement 
+[cols='1e,3e,1e,1e']
+|===
+|Niveau de gravité |Contexte d'utilisation | Volume indicatif | Par environnement 
 
 |DEBUG
 |En environnement de développement, il permet d'afficher les valeurs de variables, E/S de méthodes etc.. 
@@ -832,9 +887,24 @@ Exemple :
 |Toutes les erreurs bloquantes pour l'application (problème d'accès BDD, HTTP  404 ou 500). Positionner un maximum de détail de contexte. Penser à bien logger ces erreurs sur un appender console au cas où l'écriture sur FS serait impossible (disque plein). Penser que lors d'une erreur fatale, l'écriture même du log est sujette à caution (par exemple en cas de dépassement mémoire).
 |Pas de limites. 
 |Tous
-|====
+|===
 
 ====
+
+[PRE-FILLED]
+====
+[cols='1,3,1,1']
+|===
+|Niveau de gravité |Contexte d'utilisation | Volume indicatif | Par environnement 
+
+|
+|
+|
+|
+|===
+
+====
+
  
 //🏷{"id": "f2e9066c-18d9-4234-b37c-27d342b1c99e", "labels": ["niveau::intermédiaire", "taille_projet::grand", "niveau_detail::détaillé"]} 
 ### Outils d'administration

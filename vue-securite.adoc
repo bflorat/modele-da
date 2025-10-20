@@ -34,8 +34,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 
 [PRE-FILLED]
 ====
-.Références documentaires
-[cols="1e,1e,4e,4e"]
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
@@ -53,9 +52,11 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 //🏷{"id": "a058d388-72e1-4136-8659-7a9db1c1a340", "labels": []}
 ### Points nécessitant une étude complémentaire
 
-.Points nécessitant une étude complémentaire
+=====
+Exemple : 
+
 [cols="1e,3e,1e,1e,2e"]
-|====
+|===
 |ID|Détail|Statut|Porteur du sujet | Échéance
 
 |ES1
@@ -64,19 +65,52 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |Équipe sécurité
 |AVANT 2040
 
-|====
+|===
+=====
+
+[PRE-FILLED]
+====
+[cols="1,3,1,1,2"]
+|===
+|ID|Détail|Statut|Porteur du sujet | Échéance
+
+| 
+| 
+| 
+| 
+| 
+|===
+====
+
 
 //🏷{"id": "68a4f41c-1139-4cdd-bb9e-e15667f47fd9", "labels": []}
 ### Hypothèses
 
-.Hypothèses
-[cols="e,e"]
-|====
+[TIP]
+====
+Donner ici les éventuelles hypothèses structurantes
+
+Exemple:
+
+[cols="e,6e"]
+|===
 |ID|Détail
 
 |HS1
 |La solution SAML actuellement en place dans l’organisation ne permet pas de répondre aux besoins d’authentification exprimés pour cette application Internet. Une solution OpenID Connect sera proposée. 
-|====
+|===
+====
+
+[PRE-FILLED]
+====
+[cols="1,6"]
+|===
+|ID|Détail
+
+| 
+| 
+|===
+====
 
 //🏷{"id": "53ae9c06-1846-4dd2-ab55-f4a784c6a676", "labels": ["niveau_detail::général", "contrainte"]}
 ## Contraintes
@@ -121,11 +155,11 @@ L’intégrité concerne la **justesse, la durabilité et le niveau de confiance
 Garantir l’intégrité des données signifie s’assurer qu’elles **ne peuvent être altérées ou supprimées** de manière involontaire (_ex. : crash disque, corruption logicielle, bug applicatif_) ou volontaire (_ex. : attaque "man-in-the-middle", élévation de privilèges, sabotage interne_).
 
 ⚠ **Ne pas multiplier inutilement les classes de données**. Une unique classification pour toute l’application est souvent suffisante.
-====
 
-.Niveau d'intégrité exigé par classe de données (exemple)
+Exemple : 
+
 [cols='2e,1e,1e,1e,1e']
-|====
+|===
 |Classe de données |Non intègre [small]#(Les erreurs d'intégrité sont tolérées)# |Détectable [small]#(Les erreurs sont identifiées rapidement)# |Maîtrisé [small]#(Les erreurs sont corrigées)# |Intègre [small]#(Aucune altération n’est tolérée)#
 
 |**Données de la base métier** | | | | X
@@ -134,16 +168,30 @@ Garantir l’intégrité des données signifie s’assurer qu’elles **ne peuve
 |**Silo NoSQL des données Big Data (avant consolidation)** | X | | |
 |**Code source de l’application** | | | | X
 |**Documents officiels générés (ex. : avis d’imposition PDF)** | | | | X
-|====
+|===
 
-[TIP]
-====
 Exemples de dispositifs associés selon le niveau d’intégrité requis :
 
 - **Détectable** → Logs d’accès et vérification des empreintes numériques (hashes).
 - **Maîtrisé** → Rétention des versions, auditabilité, correction automatique des erreurs détectées.
 - **Intègre** → Chiffrement, signatures numériques, réplication synchrone, stockage immuable (WORM).
 ====
+
+[PRE-FILLED]
+====
+[cols='2,1,1,1,1']
+|===
+|Classe de données |Non intègre [small]#(Les erreurs d'intégrité sont tolérées)# |Détectable [small]#(Les erreurs sont identifiées rapidement)# |Maîtrisé [small]#(Les erreurs sont corrigées)# |Intègre [small]#(Aucune altération n’est tolérée)#
+
+| 
+| 
+| 
+| 
+| 
+
+|===
+====
+
 
 //🏷{"id": "acfa846e-0ed7-4f41-a593-f4ee29e94efd", "labels": []}
 ### Exigences de confidentialité
@@ -156,11 +204,11 @@ La confidentialité est la garantie que l’information **n’est accessible qu�
 
 - Ne pas multiplier inutilement les classes de données. Une seule classification peut suffire pour l’ensemble de l’application.
 - S’assurer que les niveaux de confidentialité sont **cohérents avec les exigences légales et contractuelles**.
-====
 
-.Niveau de confidentialité exigé par classe de données
+Exemple : 
+
 [cols="e,e,e,e,e"]
-|====
+|===
 |Classe de données |Public [small]#(Donnée accessible à tous sans restriction)# |Limité [small]#(Accessible uniquement aux personnes habilitées)# |Réservé [small]#(Restreint au personnel interne autorisé)# |Privé [small]#(Accès strictement individuel)#
 
 |**Contenu éditorial**  
@@ -177,16 +225,29 @@ La confidentialité est la garantie que l’information **n’est accessible qu�
 
 |**Données RH (ex. : aides sociales aux employés)**  
 | | | | X
-|====
+|===
 
-[TIP]
-====
 **Exemples d’applications des niveaux de confidentialité** :
 
 - **Public** → Pages web accessibles sans connexion.
 - **Limité** → Informations réservées aux utilisateurs authentifiés (ex : tableau de bord d’un SaaS).
 - **Réservé** → Données internes sensibles (ex : logs système non accessibles aux clients).
 - **Privé** → Données personnelles visibles uniquement par l’utilisateur concerné (ex : fiche de paie).
+====
+
+[PRE-FILLED]
+====
+[cols="1,1,1,1,1"]
+|===
+|Classe de données |Public [small]#(Donnée accessible à tous sans restriction)# |Limité [small]#(Accessible uniquement aux personnes habilitées)# |Réservé [small]#(Restreint au personnel interne autorisé)# |Privé [small]#(Accès strictement individuel)#
+
+| 
+| 
+|
+|
+|
+|===
+
 ====
 
 //🏷{"id": "94c138c1-3e8b-4eaf-8926-b5b9bfa6a86b", "labels": []}
@@ -197,11 +258,11 @@ La confidentialité est la garantie que l’information **n’est accessible qu�
 L’identification permet d'**attribuer un identifiant unique** à chaque utilisateur, afin de le différencier des autres.  
 
 **Attention :**  L’identification **ne garantit pas** que l’utilisateur est bien celui qu’il prétend être. C’est le rôle de l’authentification (exemple : mot de passe, MFA…).
-====
 
-.Exigences d'identification
+Exemple : 
+
 [cols="1e,3e"]
-|====
+|===
 |Exigence |Description
 
 |**Identifiant unique**  
@@ -212,16 +273,27 @@ L’identification permet d'**attribuer un identifiant unique** à chaque utilis
 
 |**Pérennité de l’identifiant**  
 | Un identifiant ne doit **jamais être supprimé, modifié ou réutilisé**, même après la suppression d’un compte utilisateur.
-|====
+|===
 
-[TIP]
-====
 **Bonnes pratiques** :  
 
 - **Privilégier des identifiants stables et uniques** (e-mail, numéro de client, UUID…).
 - **Éviter les identifiants réattribuables** (exemple : ID numérique incrémental risquant d’être réutilisé après suppression d’un compte).
 - **S'assurer que l'identifiant est cohérent dans tous les systèmes** où il est utilisé.
 ====
+
+[PRE-FILLED]
+====
+[cols="1,3"]
+|===
+|Exigence |Description
+
+|
+| 
+
+|===
+====
+
 
 //🏷{"id": "9d0646cd-3e3f-4878-96de-f215c9f20bdc", "labels": []}
 ### Exigences d'authentification
@@ -239,30 +311,148 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 - L’**authentification initiale** (lors de l'inscription) est souvent plus stricte que les authentifications ultérieures.
 - Une **authentification fédérée** permet de déléguer l’authentification à un fournisseur d’identité (SSO, OAuth2, SAML, etc.), voir la section suivante.
 
-====
+**Catégories de Facteurs d'Authentification**
+[cols="1,3"]
+|===
+| Catégorie | Description
 
-//🏷{"id": "500d6ef3-3b9b-4820-9178-39127920a247", "labels": ["niveau::avancé", "niveau_detail::détaillé"]}
-#### Facteurs d’authentification
-L’authentification peut être basée sur **un seul facteur** ou être **multi-facteurs (MFA)** pour plus de sécurité.  
-Les principaux types de facteurs sont :
+| Connaissance
+| Quelque chose que l'utilisateur **connaît** (ex. : mot de passe, PIN).
 
-* **Ce que l'on *connaît*** → Mot de passe, phrase secrète, PIN, donnée métier.
-* **Ce que l'on *est*** → Biométrie (empreinte digitale, reconnaissance faciale, ADN, signature…).
-* **Ce que l'on *possède*** → Clé privée, token OTP (TOTP, FIDO2, carte à puce), e-mail de validation.
+| Possession
+| Quelque chose que l'utilisateur **possède** (ex. : token, clé SSH, téléphone).
 
-//🏷{"id": "58bf95ee-2fc4-4972-ac2b-7e2f775a4eb9", "labels": ["niveau_detail::détaillé"]}
-#### Exigences d'authentification par cas d'utilisation
-Le tableau ci-dessous indique les **facteurs d’authentification requis** selon le contexte d’utilisation :  
+| Inhérence
+| Quelque chose que l'utilisateur **est** (ex. : biométrie).
+
+| Localisation
+| Quelque chose lié à l'**emplacement** de l'utilisateur (ex. : IP, GPS).
+
+| Comportement
+| Quelque chose lié au **comportement** de l'utilisateur (ex. : rythme de frappe).
+|===
+
+**Facteurs d'Authentification : Tableau Comparatif**
+[cols="1,1,1,2,2,1,1"]
+|===
+| Facteur d'authentification       | Catégorie       | Force | Description                                                                 | Faiblesses / Risques                                      | Cas d'usage recommandé                     | Norme associée
+
+| Mot de passe                     | Connaissance   | Moyenne | Chaîne de caractères secrète connue de l'utilisateur.         | Vulnérable aux attaques par brute force, phishing, réutilisation. | Authentification de base (comptes personnels). | NIST SP 800-63B
+
+| Phrase de passe                  | Connaissance   | Forte   | Série de mots faciles à retenir (ex: CorrectHorseBatteryStaple). | Moins vulnérable au brute force, mais nécessite une bonne mémorisation. | Comptes sensibles (banques, emails). | NIST SP 800-63B
+
+| Clé publique SSH                 | Possession      | Forte   | Paire de clés asymétriques (publique/privée) pour l'authentification. | Perte/vol de la clé privée = accès compromis. Gestion complexe. | Accès aux serveurs (SSH, Git). | RFC 4251
+
+| OTP par Token                    | Possession      | Forte   | Code à usage unique généré par un appareil physique (ex: RSA SecurID). | Dépendance matérielle (perte/vol). Coût. | Connexions sensibles (admin, VPN). | RFC 6238
+
+| OTP par application (TOTP)       | Possession      | Forte   | Code temporaire généré par une app (Google Authenticator, Authy). | Dépend de l'appareil mobile. Risque si téléphone perdu. | Comptes en ligne (Google, AWS, banques). | RFC 6238
+
+| Clé matérielle (YubiKey)         | Possession      | Très forte | Clé physique (USB/NFC) pour une authentification forte (FIDO2). | Coût (~50€). Nécessite un appareil compatible. | Accès admin, comptes sensibles, crypto-monnaies. | FIDO2
+
+| Certificat numérique              | Possession      | Très forte | Certificat X.509 stocké sur une carte à puce ou un appareil. | Complexité de gestion (PKI). Coût. | Accès aux réseaux d'entreprise, VPN. | RFC 5280
+
+| Biométrie                        | Inhérence       | Forte   | Empreinte digitale, reconnaissance faciale/voix/iris. | Faux positifs/négatifs. Problèmes de vie privée. | Déverrouillage d'appareils mobiles, accès physiques. | ISO/IEC 30107
+
+| Reconnaissance comportementale    | Inhérence       | Moyenne | Analyse du rythme de frappe ou des mouvements de souris. | Peu fiable seul. Nécessite un apprentissage. | Détection de fraude (banques), accès internes. | ISO/IEC 24741
+
+| Connaissance de données métier   | Connaissance   | Moyenne | Question basée sur des connaissances internes (ex: "Quel était le CA 2023 ?"). | Difficile à mémoriser. Peut être partagé. | Accès interne (RH, finance). | (Interne)
+
+| E-mail avec lien de vérification | Possession      | Faible  | Lien envoyé par email pour vérifier l'identité. | Vulnérable au phishing et aux interceptations. | Réinitialisation de mot de passe. | (Aucune norme spécifique)
+
+| Notification push                 | Possession      | Forte   | Notification envoyée à un appareil de confiance (ex: Duo Security, Okta Verify). | Dépend de la connexion réseau/mobile. | Applications mobiles (banques, réseaux sociaux). | (Propriétaire)
+
+| Question secrète                   | Connaissance   | Faible  | Question personnelle (ex: "Nom de votre premier animal ?"). | Vulnérable aux devinettes et aux fuites. | Réinitialisation de compte. | (Déconseillé par NIST)
+
+| Code PIN                          | Connaissance   | Faible  | Code numérique court (4-6 chiffres). | Limité et vulnérable au brute force. | Déverrouillage d'appareils (téléphone, carte bancaire). | PCI DSS
+
+| Géolocalisation                   | Localisation    | Moyenne | Vérification de l'emplacement via IP/GPS. | Peut être contournée par VPN/proxy. | Accès à distance (VPN), restrictions géographiques. | (Aucune norme spécifique)
+
+| Authentification par réseau      | Localisation    | Moyenne | Restriction aux IP/réseaux autorisés. | Restrictif (ex: seulement depuis le bureau). | Accès interne aux entreprises. | ISO/IEC 27001
+
+| Authentification par appareil    | Possession      | Forte   | Appareil enregistré (ex: téléphone ou ordinateur de confiance). | Dépend de la possession de l'appareil. | Comptes Apple/Google, appareils mobiles. | (Propriétaire)
+
+| Authentification continue        | Comportement    | Forte   | Vérification périodique (ex: biométrie toutes les 4h). | Complexité de mise en œuvre. | Environnements hautement sécurisés (banques, gouvernement). | NIST SP 800-63B
+|===
+
+**Recommandations par Cas d'Usage : **
+
+**Accès Basique** (ex. : Site Web Public)
+[cols="1,2"]
+|===
+| Facteur | Exemple
+
+| Mot de passe
+| `Tr0pF0rt!2024` (12+ caractères).
+
+| OTP par email
+| Lien de vérification envoyé par email.
+|===
+
+**Accès Sensible** (ex. : Compte Bancaire)
+[cols="1,2"]
+|===
+| Facteur | Exemple
+
+| Mot de passe
+| Phrase de passe longue (`CorrectHorseBatteryStaple`).
+
+| OTP par application (TOTP)
+| Google Authenticator ou Authy.
+
+| Biométrie
+| Empreinte digitale ou reconnaissance faciale.
+|===
+
+**Accès Administrateur** (ex. : Serveur Cloud)
+[cols="1,2"]
+|===
+| Facteur | Exemple
+
+| Clé SSH + mot de passe
+| Clé RSA 4096 bits + phrase de passe.
+
+| OTP par token physique (YubiKey)
+| YubiKey OTP ou FIDO2.
+
+| Géolocalisation
+| Restriction aux IP de l'entreprise.
+|===
+
+**Accès Interne** (ex. : Données RH)
+[cols="1,2"]
+|===
+| Facteur | Exemple
+
+| Certificat numérique
+| Smart card ou certificat X.509.
+
+| Connaissance de données métier
+| "Quel était le chiffre d'affaires 2023 ?"
+
+| Notification push
+| Duo Security ou Microsoft Authenticator.
+|===
+
+**Accès à Distance** (ex. : VPN)
+[cols="1,2"]
+|===
+| Facteur | Exemple
+
+| OTP par application (TOTP)
+| Authy ou FreeOTP.
+
+| Géolocalisation
+| Restriction aux pays autorisés.
+
+| Clé matérielle (YubiKey)
+| YubiKey + PIN.
+|===
+
+Le tableau ci-dessous indique les **facteurs d’authentification requis** selon le contexte d’utilisation (exemple) :  
 
 [cols="e,e,e,e,e,e,e"]
-|====
-|Cas d’authentification  
-|Mot de passe respectant la politique de sécurité  
-|Clé publique SSH connue  
-|OTP par Token  
-|Biométrie  
-|Connaissance de données métier  
-|E-mail avec lien de vérification  
+|===
+|Cas d'utilisation  |Mot de passe respectant la politique de sécurité  |Clé publique SSH connue  |OTP par Token  |Biométrie  |Connaissance de données métier  |E-mail avec lien de vérification  
 
 |Utilisateur déjà inscrit  
 |X|||||  
@@ -281,16 +471,45 @@ Le tableau ci-dessous indique les **facteurs d’authentification requis** selon
 
 |Connexion à l’application mobile Y  
 ||||X|||  
-|====
+|===
 
-[TIP]
-====
 **Bonnes pratiques** :  
 
-- **Éviter l’authentification unique par mot de passe** → privilégier au minimum un second facteur (OTP, biométrie…).  
-- **Utiliser des normes éprouvées** → FIDO2, WebAuthn, TOTP, SAML, OpenID Connect.  
-- **Sécuriser les comptes de service** → éviter les mots de passe statiques et privilégier les clés SSH, certificats ou tokens JWT.  
-- **Gérer la révocation et le renouvellement** → prévoir des mécanismes pour régénérer un facteur perdu ou compromis.  
+* **MFA (Multi-Factor Authentication)** → éviter l’authentification uniquement par mot de passe.  
+  Exiger **au minimum un second facteur** (OTP, clé FIDO2, biométrie, etc.).
+
+* **Utiliser des standards éprouvés** → privilégier des protocoles reconnus tels que  
+  **FIDO2**, **WebAuthn**, **TOTP**, **SAML 2.0**, **OpenID Connect**.
+
+* **Sécuriser les comptes de service** → éviter les **mots de passe statiques**.  
+  Préférer les **clés SSH**, **certificats client** ou **tokens JWT** à **durée de vie limitée**.
+
+* **Prévoir la révocation et le renouvellement** → mettre en place des mécanismes pour  
+  **révoquer et régénérer rapidement** un facteur d’authentification perdu, volé ou compromis.
+
+* **Limiter les tentatives d’authentification** → bloquer temporairement le compte ou le sujet  
+  lorsque le **seuil maximal d’échecs** est atteint, et **ajouter un délai croissant** entre les tentatives  
+  pour limiter les attaques par **brute force**.
+
+* **Mettre en place une rotation régulière des secrets** → renouveler périodiquement les clés, certificats  
+  et tokens afin de réduire l’impact potentiel d’une compromission.
+
+* **Utiliser une politique de mot de passe moderne** →  privilégier des phrases longues et faciles à retenir (plutôt que complexes), sans rotation forcée, sans caractères spéciaux forcés, vérifiées contre les mots de passe compromis (haveibeenpwned), avec copier/coller possibles (pour facilité l'utilisation de gestionnaires de mot de passe) et complétées par une authentification multifacteur (MFA). Référence: ANSSI, NIST SP 800-63B.
+
+====
+
+[PRE-FILLED]
+====
+[cols="1,1,1,1"]
+|===
+|Cas d'utilisation  | Facteur 1 | Facteur 2 | ...
+
+| 
+| 
+| 
+| 
+|===
+
 ====
 
 //🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["niveau::avancé", "niveau::avancé", "niveau_detail::détaillé"]}
@@ -482,7 +701,7 @@ Le détail des autorisations sera documenté dans les **SFD (Spécifications Fon
 **Exemple de matrice de rôles :**  
 [cols="e,e,e,e"]
 |===
-| _Groupe ou utilisateur_ | _Rôle_ `suppression` | _Rôle_ `administration` | _Rôle_ `consultation données de base`
+| Groupe ou utilisateur | Rôle `suppression` | Rôle `administration` | Rôle `consultation données de base`
 
 | Groupe `g_usagers`
 |
@@ -549,7 +768,11 @@ Lister ici les besoins en **traçabilité et auditabilité** pour détecter et a
 **Exemple 3** : Il doit être possible de **reconstituer l’historique** complet d’un dossier patient à **n’importe quelle date**.
 ====
 
-=== **Données à conserver pour preuves**  
+### Données à conserver pour preuves
+[TIP]
+====
+Exemple : 
+
 [cols="e,e,e"]
 |===
 | Donnée | Objectif | Durée de rétention
@@ -571,13 +794,32 @@ Lister ici les besoins en **traçabilité et auditabilité** pour détecter et a
 | 5 ans
 |===
 
+====
+
+[PRE-FILLED]
+====
+[cols="1,1,1"]
+|===
+| Donnée | Objectif | Durée de rétention
+
+| 
+| 
+| 
+|===
+====
+
 //🏷{"id": "d1f16239-18f7-4a4a-875e-34a587eb88b4", "labels": ["solution"]}
 ## Mesures de sécurité
 
 //🏷{"id": "e60500e8-b4a3-471c-941c-8fd8c02c4da9", "labels": [], "link_to": ["323d4c77-810a-4015-bc1a-11da07e24f3b"]}
 ### Intégrité
 
-.Mesures pour assurer le niveau d'intégrité demandé
+[TIP]
+====
+Lister ici les mesures assurant le niveau d'intégrité demandé
+
+Exemple: 
+
 [cols="e,e,e"]
 |===
 | Classe de données | Niveau exigé | Mesures
@@ -617,13 +859,32 @@ a|
 * Inclusion de la signature hexadécimale en **pied de page** du PDF pour vérification ultérieure.
 |===
 
+====
+
+[PRE-FILLED]
+====
+[cols="1,1,1"]
+|===
+| Classe de données | Niveau exigé | Mesures
+
+| 
+| 
+|
+|===
+====
+
 //🏷{"id": "a64b5e5d-e4d4-4ed2-b425-19cd542fa58e", "labels": [], "link_to": ["acfa846e-0ed7-4f41-a593-f4ee29e94efd"]}
 ### Confidentialité
 
-.Mesures pour assurer le niveau de confidentialité demandé
+[TIP]
+====
+Lister ici les mesures assurant le niveau de confidentialité demandé.
+
+Exemple:
+
 [cols="e,e,e"]
 |===
-| _Classe de données_ | _Niveau exigé_ | _Mesures_
+| Classe de données | Niveau exigé | Mesures
 
 | Contenu éditorial
 | Public
@@ -659,9 +920,6 @@ a|
 * Les données modifiées sur le client sont **chiffrées avant envoi** et enregistrées dans le BLOB via le service REST X.
 |===
 
-
-[TIP]
-====
 ⚠ **Confidentialité des données dérivées** :  
 
 ✔ **Chiffrement des backups** :  
@@ -674,6 +932,18 @@ a|
 - **Chiffrement matériel** avec **SED (Self-Encrypting Drive)**.  
 - **Chiffrement logiciel de partition** avec **LUKS (dm-crypt)** ou **BitLocker**.  
 - **Chiffrement au niveau fichier** avec **dm-crypt**, **encfs** ou **Cryptomator**.
+====
+
+[PRE-FILLED]
+====
+[cols="1,1,1"]
+|===
+| Classe de données | Niveau exigé | Mesures
+
+| 
+| 
+| 
+|===
 ====
 
 //🏷{"id": "3779a946-fc73-455b-8bab-3d5398ce0311", "labels": [], "link_to": ["94c138c1-3e8b-4eaf-8926-b5b9bfa6a86b"]}
@@ -803,13 +1073,13 @@ Les **comptes de service** sont utilisés pour authentifier une application ou u
 
 .Comptes de service
 [cols='1,2,2']
-|====
+|===
 |Compte | Ressource requérant authentification | Mode de stockage des credentials
 
 |`jdbc_app` | Base de données PostgreSQL et SQL Server | **Stockage comme secret Kubernetes** (monté en volume uniquement sur les pods concernés)
 |`api_backend` | API REST X | **Authentification via JWT signé et stocké dans un coffre-fort numérique sécurisé**
 |`ci_cd_runner` | Serveur CI/CD | **Stockage en HashiCorp Vault avec rotation automatique des secrets**
-|====
+|===
 
 //🏷{"id": "9f09dacf-d151-45af-a5f6-209823e7a401", "labels": ["niveau::avancé"],"link_to":["01404b83-f96f-4649-ace0-e5611601b830"]}
 ### Non-répudiation et horodatage
@@ -889,6 +1159,8 @@ Exemple 5 : Les journaux **contenant le tag `[PREUVE]`** et issus de **tous les
 //🏷{"id": "5e00eeef-1d5b-4a21-ac19-116ae376d999", "labels": ["niveau::intermédiaire"]}
 ### Lutte contre les cybermenaces
 
+[TIP]
+====
 Les cybermenaces incluent : malwares, phishing, attaques DOS/DDOS, exploitation de vulnérabilités (connues ou zero-day), ingénierie sociale, escroqueries en ligne, fuites de données sensibles, etc.
 
 Le cadre de réponse aux menaces peut être aligné sur le **NIST Cybersecurity Framework**, qui définit 5 fonctions clés :
@@ -917,7 +1189,7 @@ Ces solutions permettent d’**anticiper** les menaces avant qu'elles ne survien
 * **Solutions DLP (Data Loss Prevention)** pour surveiller et empêcher les fuites de données sensibles.
 * **Blocage des vecteurs d'attaque** (ex. désactivation des ports USB).
 * **Mises à jour automatiques des patches de sécurité**.
-
+====
 ====
 Exemple 1 : Sensibilisation des utilisateurs via https://cyber.gouv.fr/bonnes-pratiques-protegez-vous[les recommandations de l'ANSSI].
 ====
@@ -928,7 +1200,8 @@ Exemple 2 : Mise en place de l'IPS OpenSource **CrowdSec**, basé sur le partage
 
 //🏷{"id": "ac7dde83-27c9-4916-9020-73efaab5fcb1", "labels": []}
 #### Solutions de détection
-
+[TIP]
+====
 Ces solutions permettent d’**identifier** les attaques en cours.
 
 * **Antivirus nouvelle génération** (basés sur IA et heuristiques, et non uniquement sur des signatures).
@@ -939,14 +1212,15 @@ Ces solutions permettent d’**identifier** les attaques en cours.
   - SAST : Analyse du **code source** pour identifier les vulnérabilités connues.
   - DAST : Analyse des **comportements en exécution**.
 * **SCA (Software Composition Analysis)** : Analyse des dépendances logicielles pour détecter les **CVE (Common Vulnerabilities and Exposures)**.
-
+====
 ====
 Exemple 1 : Intégration de **OWASP Dependency-Check** dans la CI/CD pour détecter les librairies contenant des CVE.
 ====
 
 //🏷{"id": "d4498522-32aa-4987-aaec-2d9cf01130da", "labels": []}
 #### Solutions de correction
-
+[TIP]
+====
 Ces solutions permettent de **réagir** et **corriger** après la détection d’une menace.
 
 * **Solutions anti-malware** pour supprimer les logiciels malveillants.
@@ -955,20 +1229,21 @@ Ces solutions permettent de **réagir** et **corriger** après la détection d�
 * **Gestion de parc logiciel** pour **bloquer** les logiciels non autorisés.
 * **Analyse forensique** pour comprendre les chemins d'attaque et identifier la source d’une compromission.
 * **Procédures de réponse à incident**, en se basant sur le standard **NIST SP 800-61**.
-
+====
 ====
 Exemple 1 : Déploiement d’un **plan de secours** basé sur les recommandations du https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/cyberattaque-que-faire-guide-dirigeants[NIST SP 800-61].
 ====
 
 //🏷{"id": "a69b42f5-4f4e-42bf-b4bc-c6093941600f", "labels": ["niveau::avancé"]}
 #### Solutions de prédiction
-
+[TIP]
+====
 Ces solutions récentes reposent sur **l’analyse comportementale** et le **Machine Learning**.
 
 * **UEBA (User and Entity Behavior Analytics)** : Détection des comportements anormaux d’utilisateurs ou de systèmes.
 * **Simulations d'attaques complexes** pour tester la résilience du SI.
 * **Threat Intelligence** : Intégration de flux de renseignement sur les menaces en temps réel.
-
+====
 ====
 Exemple 1 : Surveillance des comportements suspects via **AWS GuardDuty** sur une application cloud AWS.
 ====
@@ -983,7 +1258,7 @@ Exemple 2 : Utilisation de **CrowdSec Threat Intelligence** pour anticiper les t
 //🏷{"id": "b2f76b28-83da-478b-bc94-f1bc29dc6084", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### RACI & Gouvernance de la Sécurité
 
-[NOTE]
+[TIP]
 ====
 Ce RACI permet de définir clairement les rôles et responsabilités des équipes en matière de **gestion de la sécurité informatique**.
 
@@ -1001,7 +1276,7 @@ Ce RACI permet de définir clairement les rôles et responsabilités des équipe
 
 Dans un bon RACI, il ne doit **jamais** y avoir plus d'un {a} pour chaque ligne.
 
-Example: 
+Exemple: 
 
 .Gestion des services Cloud AWS
 [cols="6,^1,^1,^1"]
@@ -1048,6 +1323,23 @@ Example:
 
 ====
 
+[PRE-FILLED]
+====
+Ce RACI permet de définir clairement les rôles et responsabilités des équipes en matière de **gestion de la sécurité informatique**.
+
+:r: pass:quotes[[.green]#R#]
+:a: pass:quotes[[.red]#A#]
+:c: pass:quotes[[.blue]#C#]
+:i: pass:quotes[[.orange]#I#]
+:na: pass:quotes[[.grey]#N/A#]
+:et: pass:quotes[[.grey]#&amp;#]
+
+* {r} : *Responsible* (exécute l'action).
+* {a} : *Accountable* (valide l'action et en est responsable devant l'organisation).
+* {c} : *Consulted* (doit être consulté pour expertise).
+* {i} : *Informed* (doit être informé après réalisation).
+====
+
 //🏷{"id": "7d8dff71-3acd-450b-bc68-d2e2efee2fbb", "labels": ["niveau::intermédiaire","niveau_detail::détaillé"]}
 ### Auto-contrôles de sécurité
 
@@ -1059,14 +1351,12 @@ Example:
 La gestion des vulnérabilités suit les standards **OWASP Top 10**, **MITRE ATT&CK** et **NIST 800-53**.
 
 Objectif : Vérifier que les mesures de **protection, détection et correction** sont bien appliquées pour réduire les risques d'attaques (ex: ransomware, attaques supply-chain, injections...).
-====
 
-.Checklist d'auto-contrôle des vulnérabilités
+Exemple : 
+
 [cols="e,e,3e"]
 |===
-|Vulnérabilité
-|Prise en compte ?
-|Mesures techniques entreprises
+|Vulnérabilité |Prise en compte ? |Mesures techniques entreprises
 
 |Exposition de ports inutiles
 |✅
@@ -1111,7 +1401,21 @@ a|
 * Mises à jour **PostgreSQL** appliquées dans un délai de **7 jours** après publication d'un CVE.
 |===
 
----
+====
+
+[PRE-FILLED]
+====
+
+[cols="1,1,3"]
+|===
+|Vulnérabilité |Prise en compte ? |Mesures techniques entreprises
+
+| 
+| ✅
+| 
+|===
+====
+
 //🏷{"id": "f40cd11b-8d1f-4223-944d-3cad1a1a9f15", "labels": ["juridique"]}
 #### Auto-contrôle RGPD
 
@@ -1120,14 +1424,12 @@ a|
 Le RGPD impose des exigences fortes sur les données personnelles des individus. Ces points sont basés sur les recommandations de la **CNIL** et de l'**EDPB**.
 
 A noter que le RGPD **ne concerne que les personnes physiques**, pas les entreprises.
-====
 
-.Checklist d'auto-contrôle RGPD
+Exemple :
+
 [cols="e,e,e"]
 |===
-|Exigence RGPD
-|Prise en compte ?
-|Mesures techniques entreprises
+|Exigence RGPD |Prise en compte ? |Mesures techniques entreprises
 
 |Registre des traitements
 |✅
@@ -1147,4 +1449,17 @@ a|
 * Chiffrement des backups en **AES-256**.
 * Stockage des mots de passe en **bcrypt**.
 |===
+====
 
+[PRE-FILLED]
+====
+[cols="1,1,1"]
+|===
+|Exigence RGPD |Prise en compte ? |Mesures techniques entreprises
+
+| 
+| ✅
+| 
+|===
+
+====
