@@ -11,7 +11,7 @@ Nous avons découpé l'architecture du projet en cinq vues (applicative, sécuri
 
 Le principe de base est de proposer un *ensemble de vues d'architecture alignées sur les rôles que l'on trouve le plus fréquemment dans les organisations et sur leurs préoccupations respectives*. Par exemple, un architecte d'infrastructure ou un ingénieur DevOps a rarement besoin de connaître le détail de l'architecture logicielle (le détail des frameworks utilisés ou la façon de gérer les erreurs). De même, un PO ou un architecte d'entreprise va s'intéresser à la vision macroscopique des modules applicatifs et de leurs interactions principales ("le batch B appelle le service S")  mais rarement du détail de l'infrastructure sous-jacente (choix de la base de données du service, dimensionnement des machines, …).
 
-image:modele-vierge/ressources/metiers.png[à lire en priorité]
+image:modele-vierge/ressources/vues.png[Vues]
 
 Un dossier suivant ce modèle sera ainsi constitué :
 
