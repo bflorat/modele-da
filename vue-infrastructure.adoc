@@ -6,11 +6,19 @@
 :icons: font
 :toc-title: Sommaire
 
-*Dernière modification* : {docdate} 
+[PRE-FILLED]
+====
+*Dernière modification* : _{docdate}_
 
-*Date de la dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date de la dernière revue globale* : 
 
-*Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+*Statut du document* :  
+
+====
+
+TIP: Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici
+
+TIP: Indiquer le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...
 
 //🏷{"id": "e3208a9c-8d35-46a1-9399-aacea9817e0a", "labels": ["contexte"]}
 ## Introduction
