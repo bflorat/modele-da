@@ -599,7 +599,7 @@ Exemple 2 : En cas de problème sur le nouveau module, un retour arrière est pr
 * Les nouvelles données créées après la bascule seront retraitées via le script `S1` pour assurer leur réintégration.  
 ====
 
-//🏷{"id": "5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f", "labels": ["niveau_detail::détaillé","archivage"]","link_to": ["4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f"]}
+//🏷{"id": "5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f", "labels": ["niveau_detail::détaillé","archivage"],"link_to": ["4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f"]}
 ### Archivage
 
 [TIP]
