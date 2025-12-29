@@ -72,6 +72,7 @@ Rel("batch1", "mail1", "SMTP / envoi des mails")
 Rel("api1","gw1","SOAP/HTTPS")
 Rel("gw1","api_b","SOAP/HTTPS")
 Rel("ha1","api1","REST / HTTP")
+Rel(serveur_sup1, tous_serveurs,SNMP)
 
 @enduml
 

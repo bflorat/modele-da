@@ -5,8 +5,8 @@ header Vue applicative détaillée dynamique\nL: Lecture, E: Écriture, X: Exéc
 AddRelTag("async", $lineStyle = DashedLine())
 
 Rel(entreprise,resources_statiques,"Visite https://mesinfos.gouv.fr", "HTTPS, L")
-Rel(entreprise,spa,"Récupère ses informations via")
-Rel(entreprise,mobile,"Récupère ses informations via")
+Rel(entreprise,spa,"[1] Récupère ses informations via")
+Rel(entreprise,mobile,"[1] Récupère ses informations via")
 Rel(resources_statiques,spa,"Fournit au navigateur Web du client","HTTPS, L")
 Rel(spa, sm, "[1.1] Demande d'information","HTTPS, L")
 Rel(mobile, sm, "[1.1] Demande d'information","HTTPS, L")

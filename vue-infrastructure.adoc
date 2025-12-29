@@ -6,11 +6,19 @@
 :icons: font
 :toc-title: Sommaire
 
-*Dernière modification* : {docdate} 
+[PRE-FILLED]
+====
+*Dernière modification* : _{docdate}_
 
-*Date de la dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date de la dernière revue globale* : 
 
-*Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+*Statut du document* :  
+
+====
+
+TIP: Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mettre à jour la date plus haut.
+
+TIP: Indiquer le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...
 
 //🏷{"id": "e3208a9c-8d35-46a1-9399-aacea9817e0a", "labels": ["contexte"]}
 ## Introduction
@@ -136,7 +144,7 @@ Ce chapitre a une vocation pédagogique car il rappelle la disponibilité plafon
 ====
 
 //🏷{"id": "a18eb613-e522-4bf5-a1fd-742b9d754ce1", "labels": ["niveau_detail::détaillé","supervision"]}
-#### MTTD
+#### Contraintes de MTTD
 
 [TIP]
 ====
@@ -149,7 +157,7 @@ Exemple 2 : Le service support production est disponible durant les heures de bu
 ====
 
 //🏷{"id": "dc11b031-5685-4972-9832-138fa74cd30b", "labels": ["niveau_detail::détaillé","supervision"]}
-#### Outils et normes de supervision
+#### Contraintes sur les outils et normes de supervision
 
 [TIP]
 ====
@@ -157,14 +165,15 @@ Fournir ici les outils et normes de supervisions imposés au niveau du SI et les
 ====
 ====
 Exemple 1 : L'application sera supervisée avec Zabbix.
-
-Exemple 2 : Les batchs doivent pouvoir se lancer via un endpoint REST.
-
-Exemple 3 : un batch en erreur ne doit pas pouvoir se relancer sans un acquittement humain.
 ====
 
+====
+Exemple 2 : L'alerting se fera depuis les journaux via des alertes Grafana.
+====
+
+
 //🏷{"id": "6903a99e-8b8e-464b-909c-d40da5a808d1", "labels": ["niveau_detail::détaillé"]}
-#### MTTR
+#### Contraintes de MTTR
 
 [TIP]
 ====
@@ -189,7 +198,7 @@ Exemple 1 : Cinq serveurs physiques de spare sont disponibles à tout moment.
 
 Exemple 2 : Le contrat de support Hitashi prévoit une intervention sur les baies SAN en moins de 24h.
 
-Exemple 3 : le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
+Exemple 3 : Le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
 ====
 
 //🏷{"id": "96cd73f1-0dca-447e-8fc8-2d9c03399e1c", "labels": ["niveau_detail::approfondi"]}
@@ -223,12 +232,12 @@ TIP: Lister ici les éléments permettant d'évaluer la durée de restauration d
 
 ====
 Exemple 1 : Le temps de restauration Barman d'une base PostgreSQL est d'environ `x/V + y*T/P` heures avec `x`, la taille de la base en Gio, `V` la vitesse de lecture/écriture (Go/h), `y` le nombre de jours de journaux à rejouer, `T` le temps moyen pour rejouer un 1 jour de WAL et `P` le niveau de parallélisme de la restauration. 
-
+62
 Exemple 2 : La restauration d'une sauvegarde offline (sur bandes) nécessite au minimum 4H de préparation supplémentaire.
 ====
 
 //🏷{"id": "421860fb-b6b3-461a-b149-57c6ba6dae41", "labels": ["niveau_detail::approfondi"]}
-#### Interruptions programmées
+#### Contraintes sur les interruptions programmées
 
 [TIP]
 ====
@@ -238,12 +247,12 @@ Fournir ici la liste et la durée des interruptions programmées standards dans 
 ====
 Exemple 1 : On estime l'interruption de chaque serveur à 5 mins par mois. Le taux de disponibilité effectif des serveurs en prenant en compte les interruptions programmées système est donc de 99.99 %.
 
-Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (kernel, libc…), les serveurs RHEL sont redémarrés automatiquement la nuit du mercredi suivant la mise à jour. Ceci entraînera une indisponibilité de 5 mins en moyenne 4 fois par an.
+Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (kernel, libc…), les serveurs RHEL sont redémarrés automatiquement la nuit du mercredi suivant la mise à jour. Ceci entraînera une indisponibilité de 5 mins en moyenne 10 fois par an.
 
 ====
 
 //🏷{"id": "21d704f6-f740-40f9-986c-36274643a711", "labels": ["niveau_detail::détaillé"]}
-#### Niveau de service du datacenter
+#### Contraintes liées au niveau de service du datacenter
 
 [TIP]
 ====
@@ -288,17 +297,17 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 ====
 
 ====
-Exemple : Le datacenter de Paris est de niveau Tier III et celui de Toulouse Tier II.
+Exemple : Le datacenter de Paris est de niveau Tier 3 et celui de Toulouse Tier 2.
 ====
 
 //🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["niveau_detail::général"]}
-#### Plafond de disponibilité (borne supérieure)
+#### Plafond de disponibilité
 
 [TIP]
 ====
 Expliquez clairement aux parties prenantes que, même avec de la HA au niveau applicatif, la **disponibilité de bout en bout maximale** est plafonnée par la disponibilité des dépendances sous-jacentes (datacenter, réseau, plateforme).
 Ce **plafond de disponibilité** est le produit de leurs SLA et est toujours
-≤ à la dépendance la moins disponible.
+< à la dépendance la moins disponible.
 
 `A_plafond = ∏(A_SLA de chaque dépendance en série)  ≤  min(A_SLA)`
 
@@ -323,7 +332,7 @@ ne peut pas dépasser ~**99,75 %** sur cette infrastructure.
 
 
 //🏷{"id": "4860fb1c-98e9-4c2c-adfc-09ea8149235d", "labels": ["niveau_detail::général"]}
-#### Gestion des catastrophes
+#### Contraintes liées à la gestion des catastrophes
 
 [TIP]
 ====
@@ -334,7 +343,7 @@ Les catastrophes peuvent être classées en trois catégories :
 * Infrastructurelles (accidentelles comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, erreurs critiques d’administrateurs ou intentionnelles : militaires, terroristes, sabotage, etc.) ;
 * Cyber (DDoS, virus, ransomware, etc.).
 
-**Disaster Recovery (DR)** est l’ensemble des stratégies et solutions mises en place pour **restaurer un système informatique après une catastrophe**, minimisant ainsi les pertes de données et le temps d’arrêt. Le DR peut inclure des solutions comme :
+Le **Disaster Recovery (DR)** est l’ensemble des stratégies et solutions mises en place pour **restaurer un système informatique après une catastrophe**, minimisant ainsi les pertes de données et le temps d’arrêt. Le DR peut inclure des solutions comme :
 
 * **Cold site** : centre de secours prêt à être activé mais sans infrastructure active ;
 * **Warm site** : infrastructure préinstallée mais nécessitant une mise en production manuelle ;
@@ -391,7 +400,7 @@ Exemple 3 - PCA avec élasticité : les applications s’exécutent sous forme d
 ====
 
 //🏷{"id": "c7c4fce5-c971-4ec8-bef7-006381492aff", "labels": ["niveau_detail::général"]}
-### Hébergement
+### Contraintes d'hébergement
 
 * Où sera hébergée cette application ? DC "on premises" ? Cloud interne ? Cloud IaaS ? PaaS ? autre ?
 * Qui administrera cette application ? en interne ? Sous-traité ? Pas d’administration (PaaS) … ?
@@ -407,18 +416,15 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel `PERSONNE`, elle sera colocalisée avec le module `COMPTA-API` dans le VLAN `XYZ`.
 ====
 
-//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["niveau_detail::détaillé"]}
+//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["niveau_detail::détaillé"], "link_to":["8d948872-15f9-49b6-9527-f511a2f7597d"]}
 ### Contraintes réseau
 
 [TIP]
 ====
-Lister les contraintes liées au réseau, en particulier le débit maximum théorique et les découpages en zones de sécurité.
+Lister les contraintes liées au réseau, en particulier les découpages en zones de sécurité. Les aspects débit sont listées dans la vue dimensionnement.
 ====
 ====
-Exemple 1 : Le LAN dispose d'un débit maximal de 10 Gbps.
-====
-====
-Exemple 2 : Les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
+Exemple : Les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
 ====
 
 //🏷{"id": "86a3082e-7069-4120-b86f-f886ef919986", "labels": ["niveau_detail::détaillé"]}
@@ -496,7 +502,7 @@ Exemple 3 : Compter 1 min / Gio pour une restauration NetBackup.
 ====
 
 //🏷{"id": "22e6cfa3-bc3d-466c-a902-9854540258b7", "labels": ["niveau_detail::détaillé"]}
-### Coûts
+### Contraintes budgétaires
 
 [TIP]
 ====
@@ -505,6 +511,7 @@ Lister les limites budgétaires.
 ====
 Exemple 1 : les frais de services Cloud AWS ne devront pas dépasser 5 K€/ an pour ce projet.
 ====
+
 
 //🏷{"id": "f9ed2469-e3e5-48a1-8b69-4b9c9492c6cb", "labels": ["niveau_detail::général", "contrainte"]}
 ## Exigences
@@ -582,11 +589,11 @@ Les informations données ici serviront d'entrants au SLA de l’application.
 
 Attention à bien cadrer ces exigences car un porteur de projet a souvent tendance à demander une disponibilité très élevée sans toujours se rendre compte des implications. Le coût et la complexité de la solution augmente exponentiellement avec le niveau de disponibilité exigé. 
 
-L’architecture physique, technique voire logicielle change complètement en fonction du besoin de disponibilité (clusters d’intergiciels ou de bases de données, redondances matériels coûteuses, architecture asynchrone, caches de session, failover, etc.). 
+L’architecture physique, technique voire logicielle peut changer complètement en fonction du besoin de disponibilité (clusters d’intergiciels ou de bases de données, redondances matériels coûteuses, architecture asynchrone, caches de session, failover, etc.). 
 
-Ne pas oublier également les coûts d’astreinte très importants si les exigences sont très élevées. De la pédagogie et un devis permettent en général de modérer les exigences.
+Ne pas oublier également les coûts d’astreinte souvent importants si les exigences sont très élevées. De la pédagogie et un devis permettent en général de modérer les exigences.
 
-On estime en général que la haute disponibilité (HA) commence à deux neufs (99%), soit environ 90h d'indisponibilité par an.
+On estime en général que la haute disponibilité (HA) commence à trois neufs (99%), soit environ 8h45 d'indisponibilité par an.
 
 Détailler la disponibilité demandée par plage.
 
@@ -603,7 +610,7 @@ Exemple :
 |24h, maximum 7 fois par an
 
 |2
-|4h, 8 fois dans l'année
+|1h, 8 fois dans l'année
 
 |3
 |4h, 8 fois dans l'année
@@ -637,7 +644,7 @@ Attention à ne pas être trop exigeant sur ce point car une grande robustesse p
 Exemple 1 : Pas plus de 0.001% de requêtes en erreur.
 ====
 ====
-Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de panne (attention, ce type d'exigence impacte l'architecture en profondeur).
+Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de panne [attention, ce type d'exigence impacte l'architecture en profondeur].
 ====
 ====
 Exemple 3 : Le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95e centile.
@@ -662,7 +669,7 @@ Fournir ici le Recovery Point Objective (RPO) de l’application (en heures). Il
 Exemple : On ne doit pas pouvoir perdre plus d'une journée de données applicatives.
 ====
 
-//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédiaire", "taille_projet::moyen", "taille_projet::grand", "niveau_detail::général"]}
+//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédiaire", "taille_projet::moyen", "taille_projet::grand", "niveau_detail::général"],"link_to": ["6903a99e-8b8e-464b-909c-d40da5a808d1"]}
 ### Exigences de RTO
 
 [TIP]
@@ -690,7 +697,7 @@ Préciser ici comment l’application devra être déployée coté serveur.
 
 Par exemple :
 
-* L'installation est-elle manuelle ? scriptées avec des outils d'IT Automation comme Ansible ou SaltStack ? via des images Docker ?
+* L'installation est-elle manuelle ? scriptées avec des outils d'IT Automation comme Ansible ou Terraform ? via des images Docker/OCI ?
 * Comment sont déployées les unités déployables (modules ou composants d'infrastructure) ? Sous forme de paquets ? Utilise-t-on un dépôt de paquets (type yum ou apt) ? Utilise-t-on des conteneurs ?
 * Comment sont appliquées les mises à jour ?
 ====
@@ -705,10 +712,6 @@ Préciser ici comment l’application devra être déployée coté client :
 * Si l’application est volumineuse (beaucoup de JS ou d’images par exemple), risque-t-on un impact sur le réseau ?
 * Une mise en cache de proxy locaux est-elle à prévoir ?
 * Des règles de firewall ou QoS sont-elles à prévoir ?
-
-Coté client, pour une application Java :
-
-* Quel version du JRE est nécessaire sur les clients ?
 
 Coté client, pour une application client lourd :
 
@@ -799,7 +802,7 @@ Nous regroupons ici les dispositifs de disponibilité en cinq grandes catégorie
 
 ** La qualité de la gestion des incidents (voir les bonnes pratiques ITIL), par exemple un workflow de résolution d'incident est-il prévu ? si oui, quel est sa complexité ? sa durée de mise en œuvre ? des validations hiérarchiques (affectant donc le MTTR) sont-elles prévues ? 
 
-* Dispositifs de *haute disponibilité (HA)* (clusters, load balancers, failover automatique, etc.) qu'il ne faut pas surestimer si les dispositifs précédents sont insuffisants. 
+* Dispositifs de *haute disponibilité (HA)* (clusters, load balancers, failover automatique, etc.) qu'il ne faut pas surestimer si les dispositifs organisationnels sont insuffisants. 
 
 * Dispositifs de *restauration de données* : La procédure de restauration est-elle bien définie et testée régulièrement ? L’isolement des sauvegardes est-il assuré pour éviter toute compromission (ex: ransomware, corruption) ? Le temps de restauration est-il compatible avec le RTO défini ? En cas de perte de données causée par une fausse manipulation ou bug dans le code, il faut alors arrêter l'application et dans cette situation, pouvoir restaurer rapidement la dernière sauvegarde améliore grandement le MTTR. 
 
@@ -855,7 +858,6 @@ Quelques mots sur les *répartiteurs de charge* :
 
 * Il existe aussi des "LB as-a-service" comme Cloudflare Load Balancing pour les services web. 
 
-
 ==== 
 [TIP] 
 ====  
@@ -871,7 +873,7 @@ Quelques mots sur les *répartiteurs de charge* :
 
 ** *passif en mode «warm standby»* : le nœud est démarré et l'application est installée mais n'est pas démarrée (exemple : un serveur avec une instance Tomcat éteinte hébergeant notre application). En cas de panne, notre application est démarrée automatiquement. MTTR : de l'ordre de la minute (temps de la détection de la panne et d'activation de l'application) ; 
 
-** passif en mode «cold standby» : le nœud est un simple spare. Pour l'utiliser, il faut installer l'application et la démarrer. MTTR : de plusieurs dizaines de minutes (si l'application et son environnement sont préconfigurés) à une journée si une installation complète est requise. La virtualisation et les conteneurs (Docker, Kubernetes) peuvent accélérer la remise en service si les images sont préchargées.
+** *passif en mode «cold standby»* : le nœud est un simple spare. Pour l'utiliser, il faut installer l'application et la démarrer. MTTR : de plusieurs dizaines de minutes (si l'application et son environnement sont préconfigurés) à une journée si une installation complète est requise. La virtualisation et les conteneurs (Docker, Kubernetes) peuvent accélérer la remise en service si les images sont préchargées.
 
 * On peut classer les architectures de clusters actif/actif en deux catégories :  
 
@@ -1164,7 +1166,7 @@ Lister ici l'intégralité des flux techniques utilisés par l'application. Les 
 
 Dans certaines organisations, cette matrice sera trop détaillée pour un dossier d'architecture et sera maintenue dans un document géré par les intégrateurs ou les exploitants.
 
-Il n'est pas nécessaire de faire référence aux flux applicatifs car les lecteurs ne recherchent pas les mêmes informations. Ici, les exploitants ou les intégrateurs recherchent l’exhaustivité des flux à fin d'installation et de configuration des pare-feu par exemple.
+Il n'est pas nécessaire de faire référence aux flux applicatifs entre modules mais aux flux entre machines car les lecteurs ne recherchent pas les mêmes informations. Ici, les exploitants ou les intégrateurs recherchent l’exhaustivité des flux à fin d'installation et de configuration des pare-feu par exemple.
 
 Les types de réseaux incluent les informations utiles sur le réseau utilisé afin d'apprécier les performances (TR, latence) et la sécurité: LAN, VLAN, Internet, LS, WAN…)
 
@@ -1207,7 +1209,7 @@ Exemple :
 ====
 Fournir ici une vision générale des environnements utilisés par l'application. Les environnements les plus communs sont : développement, recette, pré-production/benchmarks, production, formation.
 
-Dans les grands systèmes d'information, il est souvent utile de segmenter les environnements en 'plateformes' (ou 'couloirs') constituées d'un ensemble de machines isolées les unes des autres (même s'ils peuvent partager des ressources communes, selon la politique de l'organisation). Par exemple, un environnement de recette peut être constitué des plateformes `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
+Dans les grands systèmes d'information, il est souvent utile de segmenter les environnements en "plateformes" (ou "couloirs") constituées d'un ensemble de machines isolées les unes des autres (même s'ils peuvent partager des ressources communes, selon la politique de l'organisation). Par exemple, un environnement de recette peut être constitué des plateformes `UAT1` et `UAT2` permettant à deux testeurs de travailler en isolation.
 
 [cols='1,2,2,2']
 |===
@@ -1216,7 +1218,7 @@ Dans les grands systèmes d'information, il est souvent utile de segmenter les e
 |Développement
 |Déploiement continu (CD) pour les développeurs
 |Branche `develop` déployée à chaque commit
-|Un seul
+|Unique
 
 |Recette 
 |Recette fonctionnelle effectuée par les testeurs
@@ -1251,7 +1253,7 @@ Cependant, certaines pratiques sont **spécifiquement liées à l’écoconcepti
 
 #### Optimisation énergétique et infrastructure
 * **Mesure et suivi de la consommation électrique** :  
-  - Utiliser des sondes d’analyse de la consommation comme http://www.powerapi.org/[PowerAPI] (développé par l'INRIA et l'université Lille 1).  
+  - Utiliser des sondes d’analyse de la consommation comme http://www.powerapi.org/[PowerAPI] (développé par l'INRIA et l'université Lille 1) ou Scaphandre.  
   - Intégrer des solutions de monitoring énergétique dans les systèmes de supervision (ex : Prometheus avec métriques spécifiques).  
 
 * **Gestion des ressources et mutualisation** :  
@@ -1261,7 +1263,7 @@ Cependant, certaines pratiques sont **spécifiquement liées à l’écoconcepti
 * **Efficacité des datacenters** :  
   - Héberger ses serveurs dans un **datacenter à haut rendement énergétique**. Le PUE (**Power Usage Effectiveness**) est l'indicateur clé.  
   - **Exemples de PUE**: OVHcloud atteint un PUE moyen de 1.29 en 2023 avec des optimisations avancées (refroidissement liquide) ; Certains datacenters hyperscale comme Google Cloud peuvent atteindre 1.1 grâce à l’IA et aux optimisations thermiques.  
-  - **Attention :** L'efficacité énergétique ne se limite pas au PUE, il faut aussi considérer **l'origine de l'énergie** (renouvelable ou fossile).
+  - **Attention :** L'efficacité énergétique ne se limite pas au PUE, il faut aussi considérer **l'origine de l'énergie** (renouvelable ou fossile). Par exemple en 2024, l'intensité carbone de la France est de 21,7 gCO₂e/kWh contre 352 gCO₂e/kWh en moyenne aux USA.
 
 #### **Impact énergétique global**
 * **Évaluer l’impact complet de l’application** :  
@@ -1313,7 +1315,7 @@ Il est également utile de prévoir des systèmes de régulation dynamiques, par
 
 * **Throttling** : régulation du débit des requêtes (exemple : si un client dépasse **1000 appels par minute**, ses requêtes sont mises en attente ou ralenties artificiellement).
 * **Rate Limiting** : limitation stricte du nombre d'appels qu'un client peut effectuer sur un endpoint (exemple : chaque client est limité à **100 appels/minute sur le endpoint E**. Toute requête excédentaire retourne une **erreur 429 Too Many Requests**).
-* **Systèmes de jetons** : chaque client dispose d'un quota de jetons qui limite ses appels. Ce système permet d’accorder des **priorités différenciées** en attribuant plus de jetons à certains clients stratégiques.
+* **Systèmes de jetons** (pour les intranets dont on maitrise les machines) : chaque client dispose d'un quota de jetons qui limite ses appels. Ce système permet d’accorder des **priorités différenciées** en attribuant plus de jetons à certains clients stratégiques.
 ====
 
 ====
@@ -1428,7 +1430,7 @@ Préciser d'éventuelles contraintes en cas de démarrage partiel (exemple : le 
 
 [TIP]
 ====
-Décrire ici l’ensemble des opérations programmées et leur suivi, y compris :
+Décrire ici les principes portant sur les opérations programmées et leur suivi, y compris quand pertinent :
 
 * Les jobs et leurs éventuelles interdépendances (ordre d'exécution, contraintes, fréquence).
 * Les traitements internes (tâches de nettoyage, maintenance) qui remplissent uniquement des rôles techniques (purges, reconstruction d'index, suppression de données temporaires…).
@@ -1492,11 +1494,13 @@ Quel est le périmètre de la sauvegarde  ?
 * les journaux ? les traces ?
 ====
 
+====
 Exemple de périmètre : 
 
 * Sauvegarde système des VM ;
 * Sauvegarde des bases PostgreSQL ;
 * Sauvegardes des documents Ceph.
+====
 
 //🏷{"id": "ef7922e8-8122-4120-86f9-c5fed0676811", "labels": [], "link_to":["f0e94586-876d-46ca-b060-b5dcde468734","3e07d851-b2dc-422f-9cba-1b4447a5c956"]}
 ##### Stratégie de sauvegarde
@@ -1510,7 +1514,7 @@ Fournir la politique générale de sauvegarde. Elle doit répondre aux exigences
 * Quelle est la périodicité de chaque type de sauvegarde ? (ne pas trop détailler ici, ceci sera dans le DEX)
 
 * Quelle est la stratégie de sauvegarde ?
-** complètes ? incrémentales ? différentielles ? (prendre en compte les exigences en disponibilité. La restauration d'une sauvegarde incrémentale sera plus longue qu'une restauration de sauvegarde différentielle, elle-même plus longue qu'une restauration de sauvegarde complète) ;
+** complètes ? incrémentales ? différentielles ? (prendre en compte les exigences de RTO. La restauration d'une sauvegarde incrémentale sera plus longue qu'une restauration de sauvegarde différentielle, elle-même plus longue qu'une restauration de sauvegarde complète) ;
 ** quel roulement ? (si les supports de sauvegarde sont écrasés périodiquement).
 
 * Comment se fait le bilan de la sauvegarde ? par courriel ? où sont les journaux ? Sont-ils facilement accessibles ? Contiennent-ils des informations sensibles ?
@@ -1540,7 +1544,7 @@ Quel outillage est mis en œuvre ?
 * Outil de sauvegarde dédupliquée type Restic, Borg, Kopia...)
 * Outil orienté imaging de VM comme Veeam ou FSArchiver ? 
 * Outil orienté Cloud comme « Duplicity » ou « Restic » ?, etc.
-* Outil de sauvegarde spécifique de base de données (comme MySqlDump, Barman...)
+* Outil de sauvegarde spécifique de base de données (comme MySqlDump, Barman...) ?
 
 ====
 
@@ -1631,7 +1635,7 @@ Exemple 2: Pour la sauvegarde des données d'imposition, chaque transaction vers
 Toujours garder à l'esprit que ce que nous voulons _vraiment_, ce sont des restaurations, pas des sauvegardes. Il est crucial de s'assurer que la restauration sera fonctionnelle :
 
 * Les sauvegardes sont-elles correctes et complètes ? 
-* Quels tests de restauration sont prévus ? à quelle fréquence (une fois par an est un minium) ?
+* Quels tests de restauration sont prévus ? à quelle fréquence [un test annuel est un minimum] ?
 * Combien de temps une restauration prendra-t-elle  ? Est-ce compatible avec le RTO ?
 * Comment sont gérées les erreurs ? (rejeux, timeouts, journaux, alertes, etc.)
 
@@ -1643,7 +1647,7 @@ Toujours garder à l'esprit que ce que nous voulons _vraiment_, ce sont des rest
   ** Quel formalisme de bilan / suivi ?
   ** Où se trouvent les journaux ? 
   ** Risque-t-on d'écraser par erreur les données de production pendant les tests de restauration ? (si oui, tester sur une autre plateforme)
-  ** Les données restaurées lors du test sont-elles bien chiffrées (le test de restauration ne doit pas faire courir un risque de perte de confidantialité massive) ?
+  ** Les données restaurées lors du test sont-elles bien chiffrées (le test de restauration ne doit pas faire courir un risque de perte de confidentialité massive) ?
   ** ...
 
 ====
@@ -1700,12 +1704,12 @@ Les journaux seront protégés contre les injections via la méthode `StringEsca
 Les logs d’accès seront envoyés sur un serveur distant en plus d’une conservation locale sur 7 jours maximum.
 ====
 
-//🏷{"id": "2c3d502d-d67c-417b-88f4-d610e158e930", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé","supervision"]}
+//🏷{"id": "2c3d502d-d67c-417b-88f4-d610e158e930", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé","supervision"],"link_to":["a18eb613-e522-4bf5-a1fd-742b9d754ce1"]}
 ### Supervision
 
 [TIP]
 ====
-La supervision est un **pilier central de la disponibilité** en permettant de réduire drastiquement le **MTTD (Mean Time to Detect, temps moyen de détection d’une panne)**.  
+La supervision est un **pilier de la disponibilité** en permettant de réduire drastiquement le **MTTD (Mean Time to Detect, temps moyen de détection d’une panne)**.  
 Une supervision efficace ne doit pas être **uniquement réactive** (alerte en cas de panne) mais aussi **proactive** en détectant les signaux faibles avant qu’une défaillance ne survienne.
 
 - **Métriques** : données brutes collectées (% CPU, taille FS, nombre de requêtes, etc.), issues de sondes système, middleware ou applicatives.
@@ -1776,14 +1780,14 @@ Les outils Open Source les plus courants sont :
 - **Collecte des métriques** :  
   * **Prometheus** (scraping métriques en HTTP).
   * **Telegraf** (agent pour collecter CPU, mémoire, réseau, etc.).
-  * **SNMP, JMX** pour monitoring système et JVM.
+  * Protocoles **SNMP, JMX** pour monitoring système et JVM.
 
 - **Stockage des métriques** (bases de données de séries temporelles) :  
   * **InfluxDB, Prometheus TSDB, TimescaleDB**.
   * **ElasticSearch** (si besoin de logs en plus des métriques).
 
 - **Visualisation et alerte** :  
-  * **Grafana** (tableaux de bord interactifs).
+  * **Grafana** (tableaux de bord interactifs), *Kibana*.
   * **Zabbix, Netdata, Nagios** (supervision système classique).
 
 Les indicateurs sont ensuite affichés via **tableaux de bord dynamiques** et des **seuils d’alerte** sont définis pour notifier les équipes.
@@ -1809,9 +1813,9 @@ Définir les **conditions de déclenchement des alertes** et les **canaux de not
   * **Slack, Mattermost, Microsoft Teams** (suivi opérationnel).
   * **SMS ou PagerDuty** (urgence, astreintes 24/7).
 
-- **Règles de déclenchement** :  
+- **Règles de déclenchement et d'arrêt** :  
   * Répétition sur une période avant alerte (éviter le bruit).
-  * **Corrélation d’événements** pour éviter des faux positifs.
+  * Conditions de fin d'alerte...
 ====
 ====
 **Exemple** :  
@@ -1822,29 +1826,29 @@ Une **alerte SMS** sera envoyée si :
 ====
 
 //🏷{"id": "20dff012-aa85-465f-ba2e-272d7580dd0b", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé","supervision"]}
-##### Supervision boite noire
+#### Supervision boite noire
 
 [TIP]
 ====
-Il est également fortement souhaitable et peu coûteux de prévoir un système de tests de supervision boite-noire (via des scénarios déroulés automatiquement). L'idée est ici de tester un système dans son ensemble et avec une vue end-user la plus externe possible (à l'inverse d'une supervision whitebox pour laquelle on supervise des modules bien précis avec un comportement attendu).
+Il est également fortement souhaitable et peu coûteux de prévoir un système de **tests de supervision boite-noire** (via des scénarios déroulés automatiquement). L'idée est ici de tester un système dans son ensemble et avec une vue end-user la plus externe possible (à l'inverse d'une supervision whitebox pour laquelle on supervise des modules bien précis avec un comportement attendu).
 
 En général, ces tests sont simples (requêtes HTTP depuis un curl croné par exemple). Ils doivent être lancés depuis un ou plusieurs sites distants pour détecter les coupures réseaux. 
 
-Il est rarement nécessaire qu'ils effectuent des actions de mise à jour. Si tel est le cas, il faudra être en mesure d'identifier dans tous les modules les données issues de ce type de requêtes pour ne pas polluer les données métier et les systèmes décisionnels.
+Il est rarement nécessaire qu'ils effectuent des actions en mise à jour. Si tel est le cas, il faudra être en mesure d'identifier dans tous les modules les données issues de ce type de requêtes pour ne pas polluer les données métier et les systèmes décisionnels.
 ====
 ====
 Exemple pour un site Internet : des tests de supervision boite noire seront mis en œuvre via des requêtes HTTP lancées via Netvigie. En cas de panne, un mail est envoyé aux exploitants.
 ====
 
 //🏷{"id": "f455e87e-47f0-422a-a80b-0ec65517ad53", "labels": ["niveau::avancé", "niveau_detail::détaillé","supervision"]}
-##### Métrologie
+#### Mesure et suivi des performances
 
 [TIP]
 ====
 Le suivi des performances de l'application en production est essentiel pour :
 
 * Disposer d'un retour factuel sur les performances _in vivo_, permettant d'améliorer la qualité des décisions pour un éventuel redimensionnement de la plate-forme matérielle.
-* Détecter les pannes de manière proactive (exemple : une chute brutale du nombre de requêtes).
+* Aider à la correction de problèmes en production.
 * Réaliser des analyses statistiques sur l’utilisation des modules pour guider la prise de décision (exemple : décommissionnement d'une application peu utilisée).
 
 Trois grandes familles de solutions existent :

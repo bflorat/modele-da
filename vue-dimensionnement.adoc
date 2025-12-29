@@ -6,11 +6,19 @@
 :icons: font
 :toc-title: Sommaire
 
-*Dernière modification* : {docdate} 
+[PRE-FILLED]
+====
+*Dernière modification* : _{docdate}_
 
-*Date de la dernière revue globale* :  _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date de la dernière revue globale* : 
 
-*Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+*Statut du document* :  
+
+====
+
+TIP: Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mettre à jour la date plus haut.
+
+TIP: Indiquer le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...
 
 //🏷{"id": "32c8942e-443f-429d-a411-43869a720224", "labels": ["contexte"]}
 ## Introduction
@@ -110,7 +118,7 @@ Il est important de les expliciter pour obtenir des exigences réalistes. Par ex
 ====
 
 //🏷{"id": "646fc728-6cef-4e75-9fa9-646b4ec2159d", "labels": []}
-### Contraintes stockage
+### Contraintes de stockage
 
 TIP: Lister ici les éventuelles contraintes liées au stockage persistant.
 
@@ -120,29 +128,33 @@ Exemple : L'espace disque maximal allouable à une VM est de 2 To.
 ====
 
 //🏷{"id": "1d3ec06e-d63d-4a61-bb4e-437358064687", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
-### Contraintes CPU
+### Contraintes de puissance de calcul
 
-TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul
+TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul (CPU, GPU, TPU)
 [Exemple]
 ====
-Exemple 1 : Une VM sera dotée au maximum de 10 VCPU
+Exemple 1 : Une VM sera dotée au maximum de 10 VCPU.
 ====
 
 ====
 Exemple 2 : L'ensemble des pods de l'application ne devra pas demander plus de 1 CPU par node.
 ====
 
-//🏷{"id": "ec6a420b-c284-442a-93fd-edc3d45ed00a", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
-### Contraintes mémoire
+====
+Exemple 3 : Sur TPU v5e, un modèle d’inférence reçoit une slice dédiée de 8 chips (≈128 GB HBM total). Une slice n’héberge pas plus de 1 modèle ‘latency critical’.
+====
 
-TIP: Lister ici les éventuelles contraintes liées à la mémoire
+//🏷{"id": "ec6a420b-c284-442a-93fd-edc3d45ed00a", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
+### Contraintes sur la mémoire
+
+TIP: Lister ici les éventuelles contraintes liées à la mémoire.
 [Exemple]
 ====
-Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM
+Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM.
 ====
 
 //🏷{"id": "8d948872-15f9-49b6-9527-f511a2f7597d", "labels": []}
-### Contraintes réseau
+### Contraintes sur le réseau
 
 TIP: Lister ici les éventuelles contraintes de volume réseau utilisé
 [Exemple]
@@ -160,7 +172,7 @@ Exemple 2 : Le cœur de réseau du datacenter dispose d'une bande passante de 40
 
 [TIP]
 ====
-Il est crucial de privilégier les données issues de la production plutôt que des estimations, car ces dernières sont souvent éloignées de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Il est alors recommandé de prévoir une marge importante. Les informations données ici pourront servir d'entrants au SLO (objectif de niveau de service fixé par les exploitants).
+Il est crucial de privilégier les données issues de la production plutôt que des estimations, car ces dernières sont souvent éloignées de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Il est alors recommandé de prévoir une marge importante. Les informations données ici pourront servir d'entrants au SLO (Service Level Objective) fixé par les exploitants.
 ====
 
 [TIP]
@@ -170,7 +182,7 @@ Les sections suivantes portant sur les calculs de volumétrie statiques et dynam
 ====
 
 //🏷{"id": "962347a4-c3c8-4f0c-bcac-774a6ef617a4", "labels": []}
-### Volumétrie statique
+### Exigences sur la volumétrie statique
 
 TIP: Il s'agit des métriques permettant de déterminer le volume de stockage *cumulé* du projet. Penser à bien préciser les hypothèses prises pour les métriques estimées. Il sera ainsi possible de les revoir si de nouveaux éléments métier apparaissent.
 
@@ -212,7 +224,7 @@ Exemple :
 
 [TIP]
 ====
-Lister ici les besoins en stockage de chaque module une fois l’application arrivée à pleine charge (volumétrie à deux ans par exemple).
+Lister ici les besoins en stockage de chaque module une fois l’application arrivée à pleine charge (volumétrie à cinq ans par exemple).
 
 Prendre en compte :
 
@@ -243,7 +255,7 @@ Exemple de volumétrie statique :
 
 [cols='e,e,e,e,e,e']
 |===
-|Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
+|Donnée|Description|Taille unitaire|Nombre d'éléments à 5 ans|Taille totale|Augmentation annuelle
 
 |Table Article
 |Les articles du catalogue
@@ -272,7 +284,7 @@ Exemple de volumétrie statique :
 ====
 [cols='1,1,1,1,1,1']
 |===
-|Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
+|Donnée|Description|Taille unitaire|Nombre d'éléments à 5 ans|Taille totale|Augmentation annuelle
 
 | 
 | 
@@ -285,7 +297,7 @@ Exemple de volumétrie statique :
 ====
 
 //🏷{"id": "b22cadba-e5a7-4c3a-b4b8-f9ea32a2a0be", "labels": []}
-### Volumétrie dynamique
+### Exigences sur la volumétrie dynamique
 
 TIP: Il s'agit des métriques par durée (année, mois, heure…) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
 
@@ -343,12 +355,12 @@ Ne pas considérer la charge comme constante mais prendre en compte :
 
 Si le calcul du pic pour un module en bout de chaîne de liaison est complexe (par exemple, un service central du SI exposant des données référentiel et  appelé par de nombreux modules qui ont chacun leur pic), on tronçonnera la journée en intervalles de temps suffisamment fins (une heure par exemple) et on calculera sur chaque intervalle la somme mesurée ou estimée des appels de chaque appelant (batch ou transactionnel) pour ainsi déterminer la sollicitation cumulée la plus élevée.
 
-Si l'application est déployée sur un cloud de type PaaS, la charge sera absorbée dynamiquement. Il convient néanmoins d'estimer le surcoût et de fixer des limites de consommation pour concilier budget et qualité de service.
+Si l'application est déployée sur un cloud de type serverless, la charge sera absorbée dynamiquement. Il convient néanmoins d'estimer le surcoût et de fixer des limites de consommation pour concilier budget et qualité de service.
 ====
 
 .Exemple : estimation volumétrie dynamique de l'opération REST `GET Detail` de l'application MIEL
 |===
-|Taux maximal d’utilisateurs connectés en même temps en pic annuel | S1 x F1 x 0.2 = 8K /H  
+|Taux maximal d’utilisateurs connectés en même temps en pic annuel | S1 x F1 x 0.2 = 8K sur 1h
 |Durée moyenne d'une session utilisateur
 |15 mins
 |Nombre d'appel moyen du service par session
@@ -364,7 +376,7 @@ Pour un service d'infrastructure (comme une instance de base de données) en bou
 
 Le niveau de détail de l'estimation dépend de l'avancement de la conception de l’application et de la fiabilité des hypothèses. 
 
-Dans l'exemple plus bas, nous avons déjà une idée du nombre de requêtes pour chaque opération. Dans d’autres cas, on devra se contenter d'une estimation très large sur le nombre de requêtes total à la base de données et un ratio lecture /écriture basée sur des abaques d'applications similaires. Inutile de détailler plus à ce stade.
+Dans l'exemple plus bas, nous avons déjà une idée du nombre de requêtes pour chaque opération. Dans d’autres cas, on devra se contenter d'une estimation très large sur le nombre de requêtes total à la base de données et un ratio lecture / écriture basée sur des abaques d'applications similaires. Inutile de détailler plus à ce stade.
 
 Enfin, garder en tête qu'il s'agit simplement d'estimation à valider lors de campagnes de performances puis en production. Prévoir un ajustement du dimensionnement peu après la MEP.
 ====
@@ -406,7 +418,7 @@ Exemple : la base de données Oracle BD01 est utilisée en lecture par les appel
 ### Exigences de temps de réponse
 
 //🏷{"id": "24f70acd-5f7c-49b3-bd75-d594e5af8917", "labels": ["niveau_detail::détaillé", "ihm"]}
-#### Temps de Réponse des IHM
+#### Exigences de temps de Réponse des IHM
 
 [TIP]
 ====
@@ -469,7 +481,7 @@ En dehors de ces valeurs, l’application devra être optimisée et repasser en 
 ====
 
 //🏷{"id": "88645b89-d407-4107-93b2-48003fd8688a", "labels": ["niveau_detail::détaillé", "batch"]}
-#### Durée d’exécution des batchs
+#### Exigences sur la durée d’exécution des batchs
 
 [TIP]
 ====

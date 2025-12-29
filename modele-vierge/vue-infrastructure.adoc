@@ -6,13 +6,18 @@
 :icons: font
 :toc-title: Sommaire
 
+*Dernière modification* : _{docdate}_
+
+*Date de la dernière revue globale* : 
+
+*Statut du document* :  
+
 [#e3208a9c-8d35-46a1-9399-aacea9817e0a]
 ## Introduction
 
 [#06fd3383-f875-4a44-a1f8-d135f9050038]
 ### Documentation de Référence
-.Références documentaires
-[cols="1e,1e,4e,4e"]
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
@@ -28,9 +33,26 @@
 
 [#87385297-c5c3-44f6-b9e8-7599576dda0a]
 ### Points nécessitant une étude complémentaire
+[cols="1,5,2,2,2"]
+|===
+|ID|Détail|Statut|Porteur du sujet | Échéance
+
+|
+|
+|
+|
+|
+|===
 
 [#30d20b83-e35d-464b-8286-3ff230fb1471]
 ### Hypothèses
+[cols="1,6"]
+|===
+|ID|Détail
+
+| 
+| 
+|===
 
 [#82a207de-bc6f-4a62-a586-96a2b4c9f4dc]
 ## Contraintes
@@ -39,13 +61,13 @@
 ### Contraintes sur la disponibilité
 
 [#a18eb613-e522-4bf5-a1fd-742b9d754ce1]
-#### MTTD
+#### Contraintes de MTTD
 
 [#dc11b031-5685-4972-9832-138fa74cd30b]
-#### Outils et normes de supervision
+#### Contraintes sur les outils et normes de supervision
 
 [#6903a99e-8b8e-464b-909c-d40da5a808d1]
-#### MTTR
+#### Contraintes de MTTR
 
 [#e7470aba-8588-4792-bc94-28e4bf186b63]
 ##### Matériel
@@ -60,22 +82,23 @@
 ##### Restauration de données
 
 [#421860fb-b6b3-461a-b149-57c6ba6dae41]
-#### Interruptions programmées
+#### Contraintes sur les interruptions programmées
 
 [#21d704f6-f740-40f9-986c-36274643a711]
-#### Niveau de service du datacenter
+#### Contraintes liées au niveau de service du datacenter
 
 [#7c1d0446-34df-4572-92b0-19baaba54183]
-#### Plafond de disponibilité (borne supérieure)
+#### Plafond de disponibilité
 
 [#4860fb1c-98e9-4c2c-adfc-09ea8149235d]
-#### Gestion des catastrophes
+#### Contraintes liées à la gestion des catastrophes
 
 [#c7c4fce5-c971-4ec8-bef7-006381492aff]
-### Hébergement
+### Contraintes d'hébergement
 
 [#6f7d74be-7024-4a6e-af4d-d084d49109ae]
 ### Contraintes réseau
+TIP: Voir aussi xref:vue-dimensionnement.adoc#8d948872-15f9-49b6-9527-f511a2f7597d[Contraintes sur le réseau].
 
 [#86a3082e-7069-4120-b86f-f886ef919986]
 ### Contraintes de déploiement
@@ -90,17 +113,34 @@
 ### Contraintes de sauvegardes et restaurations
 
 [#22e6cfa3-bc3d-466c-a902-9854540258b7]
-### Coûts
+### Contraintes budgétaires
 
 [#f9ed2469-e3e5-48a1-8b69-4b9c9492c6cb]
 ## Exigences
 
 [#332c967b-3729-4a5f-984e-fc2f301b0329]
 ### Plages de fonctionnement
+[cols="1,5,2"]
+|===
+|No plage| Heures | Détail
+
+| 
+| 
+| 
+|===
 
 [#08cb1019-20c4-42ef-9bf2-4adf72936c1c]
 ### Exigences de disponibilité
 TIP: Voir aussi <<cc4a17a8-d68b-43cf-8b4e-c64829d950fc,Contraintes sur la disponibilité>>.
+
+.Durée d’indisponibilité maximale admissible par plage
+[cols="1e,5e"]
+|===
+|No Plage| Indisponibilité maximale
+
+| 
+| 
+|===
 
 [#231768e7-6a9d-429e-b200-2febdd91a0e3]
 ### Exigences de robustesse
@@ -110,6 +150,7 @@ TIP: Voir aussi <<cc4a17a8-d68b-43cf-8b4e-c64829d950fc,Contraintes sur la dispon
 
 [#3e07d851-b2dc-422f-9cba-1b4447a5c956]
 ### Exigences de RTO
+TIP: Voir aussi <<6903a99e-8b8e-464b-909c-d40da5a808d1,Contraintes de MTTR>>.
 
 [#cdb68f23-d2c5-4373-9f7d-e358191f0ebf]
 ### Exigences de déploiements et de mises à jour
@@ -140,13 +181,44 @@ TIP: Voir aussi <<08cb1019-20c4-42ef-9bf2-4adf72936c1c,Exigences de disponibilit
 ### Déploiement en production
 
 [#28ba010e-1c33-41b9-8061-9596710563bc]
-### Versions des composants d'infrastructure
+### Composants d'infrastructure
+[cols="1,2,1,2"]
+|===
+|Composant d'infrastructure|Rôle|Version |Environnement technique
+
+| 
+| 
+| 
+| 
+|===
 
 [#3ff53ea7-2e7f-4d71-8848-6819ba23c930]
 ### Matrice des flux techniques
+[cols="1e,2e,2e,2e,1e,1e,1e"]
+|===
+|ID|Source|Destination|Type de réseau|Protocole|Port d'écoute | Chiffrement ?
+
+|
+|
+|
+|
+|
+|
+| 
+
+|===
 
 [#93947744-e0ec-4bc3-af30-cc60473b7caf]
 ### Environnements
+[cols='1,2,2,2']
+|===
+|Environnement| Rôle| Contenu | Plateforme
+
+| 
+| 
+| 
+| 
+|===
 
 [#0bbc320c-6291-4a89-b263-66abf1906ab0]
 ### Écoconception
@@ -207,6 +279,7 @@ TIP: Voir aussi <<f0e94586-876d-46ca-b060-b5dcde468734,Exigences de RPO>>, <<3e0
 
 [#2c3d502d-d67c-417b-88f4-d610e158e930]
 ### Supervision
+TIP: Voir aussi <<a18eb613-e522-4bf5-a1fd-742b9d754ce1,Contraintes de MTTD>>.
 
 [#f31e9b70-8bf9-41b5-bbb0-c6b3f6de9347]
 #### Supervision technique
@@ -221,10 +294,10 @@ TIP: Voir aussi <<f0e94586-876d-46ca-b060-b5dcde468734,Exigences de RPO>>, <<3e0
 #### Alerting & notifications
 
 [#20dff012-aa85-465f-ba2e-272d7580dd0b]
-##### Supervision boite noire
+#### Supervision boite noire
 
 [#f455e87e-47f0-422a-a80b-0ec65517ad53]
-##### Métrologie
+#### Mesure et suivi des performances
 
 [#53b2f98c-11d9-4aa0-b762-b8f31db0c30f]
 ### Décommissionnement

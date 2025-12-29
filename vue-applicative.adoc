@@ -6,11 +6,20 @@
 :icons: font
 :toc-title: Sommaire
 
+[PRE-FILLED]
+====
 *Dernière modification* : _{docdate}_
 
-*Date de la dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date de la dernière revue globale* : 
 
-*Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+*Statut du document* :  
+
+====
+
+TIP: Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mettre à jour la date plus haut.
+
+TIP: Indiquer le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...
+
 
 //🏷{"id": "74c82505-5f47-4342-8f1b-f6951d603062", "labels": ["contexte"]}
 ## Introduction
@@ -42,6 +51,8 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce dos
 
 //🏷{"id": "946b3119-a878-47ca-86f2-4c9e22ef0c89", "labels": ["contexte","incertitude"]}
 ## Non statué
+
+TIP: En architecture, l'incertitude doit être affichée clairement pour aider à la comprehension des choix et de la situation courante.
 
 //🏷{"id": "0f9d2e4a-3c71-4b9e-8f3b-2b8c7d1e9a60", "labels": []}
 ### Points nécessitant une étude complémentaire
@@ -159,7 +170,7 @@ Exemple:
 |Acteur|Description|Population|Localisation
 
 |Système de l'administration B
-|fournit les données comptables des entreprises
+|Fournit les données comptables des entreprises
 |N/A
 |Site de Berlin
 
@@ -233,15 +244,9 @@ Exemple:
 
 [%header,cols="2e,3e,3e,2e,1e,1e,1e,1e"]
 |===
-| Processus métier | Finalité | Catégories de données manipulées | Classification interne | D | I | C | T
+| Processus métier | Finalité | Catégories de données manipulées | Classification | D | I | C | T
 
 | Délivrance d’acte | _Produire un acte authentique_ | _identité, état civil, logs techniques_ | _élevée_ |_élevée_ | _Diffusion restreinte_ |  _moyenne_ | _moyenne_
-|===
-
-[cols="1e,5e"]
-|===
-| Légende | (D)isponibilité (I)ntégrité \(C)onfidentialité (T)race ou preuve : besoins de sécurité (faible, moyen, élevé)
-| Classification | Public, Interne, Diffusion restreinte, Confidentiel
 |===
 
 ====
@@ -251,7 +256,7 @@ Exemple:
 
 [%header,cols="2,3,3,2,1,1,1,1"]
 |===
-| Processus métier | Finalité | Catégories de données manipulées | Classification interne | D | I | C | T
+| Processus métier | Finalité | Catégories de données manipulées | Classification | D | I | C | T
 
 | 
 |
@@ -265,7 +270,7 @@ Exemple:
 
 [cols="1,5"]
 |===
-| Légende | (D)isponibilité (I)ntégrité \(C)onfidentialité (T)race ou preuve : besoins de sécurité (faible, moyen, élevé)
+| Légende | (D)isponibilité (I)ntégrité \(C)onfidentialité (T)race ou preuve. Donner le niveau requis : faible, moyen ou élevé
 | Classification | Public, Interne, Diffusion restreinte, Confidentiel
 |===
 
@@ -274,10 +279,10 @@ Exemple:
 //🏷{"id": "3b714287-891e-4ea3-a7a4-17672caaf945", "labels": ["niveau_detail::général","contrainte"]}
 ## Contraintes
 
-TIP: Limites / choix imposés sur la façon de concevoir ou de réaliser : technologies, processus, organisation, budget, réglementation. Elles rétrécissent l’espace de conception.
+TIP: Limites / choix imposés sur la façon de concevoir ou de réaliser : technologies, processus, organisation, budget, réglementation.
 
 //🏷{"id": "58897e87-0c12-4139-b5da-daec9cae21c6", "labels": []}
-### Budget
+### Contraintes budgetaires
 
 TIP: Donner un ordre de grandeur des contraintes budgétaires du projet (ou donner un lien vers un document pertinent).
 ====
@@ -288,7 +293,7 @@ Exemple 2: Coûts d'infrastructure cloud inférieurs à 20 K€ par mois.
 ====
 
 //🏷{"id": "ac5b1f28-bfcb-4543-a90b-abcff2b41822", "labels": []}
-### Planning
+### Contraintes planning
 
 TIP: Sans reprendre dans le détail les plannings du projet, donner les éléments pertinents pour l'architecture.
 ====
@@ -324,14 +329,14 @@ Exemple 4 : Tous les batchs doivent pouvoir fonctionner en parallèle des IHM sa
 Exemple 5 : Les services ne peuvent être appelés directement. Les appels se feront obligatoirement via une route exposée au niveau du bus d'entreprise qui appellera à son tour le service. Il est alors possible de contrôler, prioriser, orchestrer ou piloter les appels.
 ====
 ====
-Exemple 6 : Les modules de cette application suivent l'architecture SOA telle que définie dans le document de référence X.
+Exemple 6 : Les modules de cette application suivent l'architecture microservices telle que définie dans le document de référence X.
 ====
 ====
 Exemple 7 : Les modules en zone Internet ne peuvent appeler les modules en zone Intranet pour des raisons de sécurité.
 ====
 
 //🏷{"id": "abafa462-262f-429e-aad8-d2cdc0cf15a3", "labels": []}
-### Juridique
+### Contraintes juridiques
 
 Lister ici (sans détailler) les éventuelles contraintes juridiques liées au projet.
 
@@ -370,7 +375,7 @@ Exemple 2 (projet de migration) : Les modules legacy devront faire l'objet d'aus
 ====
 
 //🏷{"id": "38fd6aa0-2354-4d0d-9812-10ed917eae5e", "labels": []}
-### Interopérabilité
+### Exigences d'interopérabilité
 
 TIP: Décrire ici les exigences portant sur les protocoles, formats et sémantiques à respecter afin de favoriser les échanges avec des organismes ou tiers.
 
@@ -383,7 +388,7 @@ Exemple 2 (pour une administration): Le projet devra respecter le https://www.nu
 ====
 
 //🏷{"id": "9efde825-9508-4669-918c-7cfb0d45c21f", "labels": ["niveau_detail::détaillé"]}
-### Exigences de gestion de la concurrence
+### Exigences sur la gestion de la concurrence
 
 [TIP]
 ====
@@ -393,11 +398,14 @@ Préciser ici les modules internes ou externes pouvant interférer avec l’appl
 Exemple 1  : Tous les modules de cette application doivent pouvoir fonctionner en concurrence. En particulier, la concurrence batch/IHM doit toujours être possible car les batchs devront pouvoir tourner de jour en cas de besoin de rattrapage
 ====
 ====
-Exemple 2 : le batch X ne devra être lancé que si le batch Y s’est terminé correctement sous peine de corruption de données.
+Exemple 2 : Le job X ne devra être lancé que si le job Y s’est terminé correctement sous peine de corruption de données.
+====
+====
+Exemple 3 : Aucune autre instance du job X ne devra être lancée en parallèle sous peine de corruption de données.
 ====
 
 //🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["niveau::avancé","niveau_detail::détaillé"]}
-### Modes dégradés
+### Exigences sur les modes dégradés
 [TIP]
 ====
 Préciser les modes dégradés applicatifs envisagés.
@@ -407,11 +415,11 @@ Préciser les modes dégradés applicatifs envisagés.
 Exemple 1 : Le site `monsite.com` devra pouvoir continuer à accepter les commandes en l’absence du service de logistique.
 ====
 ====
-Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails seront stockés en base de données puis soumis à nouveau suite à une opération manuelle des exploitants.
+Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails devront être persistés puis renvoyés automatiquement dès que le service est de nouveau disponible.
 ====
 
 //🏷{"id": "4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f", "labels": ["niveau_detail::détaillé","archivage"]}
-### Archivage
+### Exigences d'archivage
 
 [TIP]
 ====
@@ -426,11 +434,12 @@ Précisez si des dispositifs spécifiques de protection de l'intégrité (pour p
 Exemple 1: comme exigé par l'article L.123-22 du code de commerce, les données comptables devront être conservées au moins dix ans.
 ====
 ====
-Exemple 2 : Les pièces comptables doivent être conservées en ligne (en base) au moins deux ans puis peuvent être archivées pour conservation au moins dix ans de plus. Une empreinte SHA-512 sera calculée au moment de l'archivage et stockée séparément pour vérification de l'intégrité des documents au besoin.
+Exemple 2 : Les documents comptables doivent être conservés en ligne pendant une durée minimale définie, puis archivés à long terme, tout en garantissant que leur intégrité puisse être vérifiée de manière cryptographique dans le temps.
 ====
 
+
 //🏷{"id": "fedcba98-7654-4321-8abc-0def12345678", "labels": ["niveau_detail::détaillé"]}
-### Durées de rétention
+### Exigences sur les durées de rétention
 
 TIP: Précisez ici combien de temps doivent être conservées les données et documents stockés par vos modules applicatifs. À noter que ces durées peuvent être contraintes par le droit (voir contraintes juridiques plus haut), par exemple dans le cadre du droit à l'oubli du RGPD.
 
@@ -494,11 +503,11 @@ Si l'application est prévue pour être implémentée en plusieurs étapes, déc
 
 Le choix de la représentation est libre mais un diagramme https://c4model.com/diagrams/system-landscape[C4 System Landscape] semble le plus adapté. Nous fournissons des patterns et des détails à ce sujet dans https://florat.net/architecture-as-code-with-c4-and-plantuml/[cet article].
 
-Ne pas faire figurer les nombreux systèmes d'infrastructure (serveur SMTP, dispositif de sécurité, reverse proxy, annuaires LDAP, …) qui sont du domaine de l’infrastructure. Mentionner en revanche les éventuels bus d'entreprise qui ont un rôle applicatif (orchestration de service par exemple).
+Ne pas faire figurer les systèmes d'infrastructure (serveur SMTP, dispositif de sécurité, reverse proxy, annuaires LDAP, …) qui sont du domaine de l’infrastructure. Mentionner en revanche les éventuels bus d'entreprise qui ont un rôle applicatif (orchestration de service par exemple).
 ====
 
 ====
-Exemple : MesInfosEnLigne (MIEL) permet à une entreprise de récupérer par mail un document récapitulant toutes les informations dont l’administration dispose sur elle. L'administration peut compléter ses données par celles d'une autre administration. Elle  est constituée de plusieurs modules indépendants (modules IHM, batchs ou services REST).
+Exemple : MesInfosEnLigne (MIEL) permet à une entreprise de récupérer par mail un document récapitulant toutes les informations que l’administration dispose sur elle. L'administration peut compléter ses données par celles d'une autre administration. Elle  est constituée de plusieurs modules indépendants (modules IHM, batchs ou services REST).
 
 image::diagrammes/archi-applicative-generale.svg[Diagramme architecture applicative générale]
 ====
@@ -556,7 +565,7 @@ Si (et seulement si) la complexité de l'application le justifie, proposer en pl
 
 Utiliser comme ID des flux une simple séquence non signifiante et hiérarchique  (`1`, `2.1`, `2.2.3`, …, `n`).
 
-Pour chaque flux, donner le protocole, un attribut lecture/écriture/exécution et une description pour que le schéma soit auto-porteur. Si le flux est asynchrone, le spécifier (dans l'exemple plus bas, l'appel est en pointillés).
+Pour chaque flux, donner le protocole, un attribut lecture/écriture/exécution et une description. Si le flux est asynchrone, le spécifier (dans l'exemple plus bas, l'appel est en pointillés).
 
 Chaque chaîne de liaison décrit une fonctionnalité majeure. Dans les cas d'enchaînements complexes, il est préconisé de découper la fonctionnalité en plusieurs chaines de liaison comprenant uniquement des appels synchrones (voir https://florat.net/architecture-as-code-with-c4-and-plantuml/[cet article]). 
 
@@ -590,7 +599,7 @@ Exemple 2 : En cas de problème sur le nouveau module, un retour arrière est pr
 * Les nouvelles données créées après la bascule seront retraitées via le script `S1` pour assurer leur réintégration.  
 ====
 
-//🏷{"id": "5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f", "labels": ["niveau_detail::détaillé","archivage"]}
+//🏷{"id": "5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f", "labels": ["niveau_detail::détaillé","archivage"],"link_to":["4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f"]}
 ### Archivage
 
 [TIP]
@@ -604,7 +613,7 @@ Décrire ici les dispositifs permettant de répondre aux exigences d'archivage. 
 Exemple : les relevés bancaires de plus de 10 ans seront archivés sur bande LTO et disque dur. Un jeu de chacun des deux supports sera stocké en coffre dans deux banques différentes.
 ====
 
-//🏷{"id": "0a1b2c3d-4e5f-4061-82a3-b4c5d6e7f809", "labels": ["niveau_detail::détaillé"]}
+//🏷{"id": "0a1b2c3d-4e5f-4061-82a3-b4c5d6e7f809", "labels": ["niveau_detail::détaillé"],"link_to": ["fedcba98-7654-4321-8abc-0def12345678"]}
 ### Purges
 
 [TIP]
@@ -633,7 +642,7 @@ Exemple :
 
 [cols='1e,3e,1e,1e,1e']
 |===
-|Source|Destination|Type de réseau|Protocole| Mode.footnote:[(L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)]
+|Source|Destination|Type de réseau|Protocole| Mode
 
 |Entreprise|PC/tablette/mobile externe |WAN| ihm-miel | LE
 |batch-traiter-demandes | service-compo-pdf |LAN | HTTP | A
@@ -644,7 +653,7 @@ Exemple :
 ====
 [cols='1,3,1,1,1']
 |===
-|Source|Destination|Type de réseau|Protocole| Mode.footnote:[(L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)]
+|Source|Destination|Type de réseau|Protocole| Mode
 
 |
 |
@@ -658,4 +667,7 @@ Exemple :
 |
 
 |===
+
+_Mode: (L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)_
+
 ====

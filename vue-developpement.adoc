@@ -6,11 +6,19 @@
 :icons: font
 :toc-title: Sommaire
 
-*Dernière modification* : {docdate} 
+[PRE-FILLED]
+====
+*Dernière modification* : _{docdate}_
 
-*Date de la dernière revue globale* : _<Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici>_
+*Date de la dernière revue globale* : 
 
-*Statut du document* :  _<Indiquer ici le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...>_
+*Statut du document* :  
+
+====
+
+TIP: Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mettre à jour la date plus haut.
+
+TIP: Indiquer le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...
 
 //🏷{"id": "84c5d434-ea70-41fc-92bc-53a40ab29025", "labels": ["contexte"]}
 ## Introduction
@@ -33,7 +41,7 @@ Mentionner ici les documents d'architecture de référence (mutualisés). Ce doc
 |===
 |N°|Version|Titre/URL du document| Détail
 
-|1
+|
 |
 |
 |
@@ -129,7 +137,7 @@ Exemple 1 : La couverture de code devra être d'au moins 60%.
 Exemple 2 : Le module devra se baser sur le framework Hibernate pour la persistance.
 ====
 ====
-Exemple 3 : l'application sera construite, testée et déployée en continu à chaque push via la plateforme Gitlab-CI.
+Exemple 3 : L'application sera construite, testée et déployée en continu à chaque push via la plateforme Gitlab-CI.
 ====
 
 //🏷{"id": "8d79cc07-e094-4863-8bb8-0a3ca317743d", "labels": ["niveau_detail::général","exigence"]}
@@ -141,7 +149,7 @@ Contrairement aux contraintes qui fixent le cadre auquel toute application devai
 ====
 
 //🏷{"id": "48bb8b97-2e97-4515-bf3b-95864f85e4e9", "labels": ["ihm"]}
-### Accessibilité
+### Exigences d'accessibilité
 
 [TIP]
 ====
@@ -150,21 +158,29 @@ Cette application doit-elle être accessible aux non/mal voyants ? malentendant
 Si oui, quel niveau d’accessibilité ? 
 Se référer de préférence au Référentiel Général d’Accessibilité (https://references.modernisation.gouv.fr/rgaa-accessibilite/#menu[RGAA]) qui préconise un niveau WCAG 2.0 AA : 
 
-Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb, etc.) . Attention à correctement évaluer le niveau visé (ni sur-qualité, ni sous-qualité) :
+Il existe d’autres normes d’accessibilité (WCAG, AccessiWeb, RGAA, etc.) . Attention à correctement évaluer le niveau visé (ni sur-qualité, ni sous-qualité) :
 
 * Atteindre un niveau d’accessibilité très élevé peut être coûteux et contraignant technologiquement. Il demande également de bonnes compétences (accessibilité, HTML5/CSS3 en particulier) et des profils rares.
 * La loi est de plus en plus stricte pour les administrations qui doivent respecter un niveau d’accessibilité suffisant (loi  n°2005-102 du 11 février 2005 pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées). « Tous les sites publics européens doivent atteindre le double A (AA) du W3C/WAI ».
 ====
 
+====
+Exemple: Toutes les fonctionnalités doivent être utilisables **au clavier seul**.
+====
+
 //🏷{"id": "b098d142-655e-4521-9d4f-2c2ea8eceb45", "labels": ["ihm"]}
-### Ergonomie
+### Exigences d'ergonomie
 
 //🏷{"id": "3c031334-5598-4817-87b4-dec34ce8389b", "labels": ["niveau_detail::détaillé"]}
-#### Charte ergonomique
+#### Spécificités d'UX
 
 [TIP]
 ====
 En général, on se réfère ici à la charte ergonomique de l’organisme. Lister néanmoins d’éventuelles spécificités. Ne pas reprendre les contraintes d’accessibilité listées plus haut.
+====
+
+====
+Exemple: Les validations doivent être **progressives et immédiates** (au champ), sans attendre la soumission finale.
 ====
  
 //🏷{"id": "90b4af62-df5b-485e-87c4-7dd0b21d0464", "labels": ["niveau_detail::approfondi"]}
@@ -172,17 +188,17 @@ En général, on se réfère ici à la charte ergonomique de l’organisme. List
 
 [TIP]
 ====
-Des comportements ergonomiques très précis peuvent impacter assez fortement l’architecture et imposer une librairie de composants graphiques ou une autre. Il est fortement déconseillé de personnaliser des librairies existantes (coût de maintenance très élevé, grande complexité). Bien choisir sa librairie ou restreindre ses besoins.
+Des comportements ergonomiques très précis peuvent impacter assez fortement l’architecture et imposer une librairie de composants graphiques ou une autre. Il est fortement déconseillé de personnaliser des librairies existantes (coût de maintenance très élevé, grande complexité). Bien choisir sa librairie ou restreindre ses besoins. Éviter d'introduite de nouveaux "concepts" ergonomiques pour ne pas perdre l'utilisateur (principe de moindre surprise).
 ====
 ====
-Exemple 1 : les tableaux devront être triables suivant plusieurs colonnes.
+Exemple 1 : Les tableaux devront être triables suivant plusieurs colonnes.
 ====
 ====
-Exemple 2 : de nombreux écrans seront pourvus d’accordéons
+Exemple 2 : De nombreux écrans seront pourvus d’accordéons
 ====
 
 //🏷{"id": "1cacea74-bede-43b3-93a5-804fd60ff4fb", "labels": ["niveau_detail::approfondi"]}
-#### Polices de caractère
+#### Exigences sur les polices de caractère
 
 [TIP]
 ====
@@ -195,8 +211,12 @@ Voir par exemple la police https://www.gouvernement.fr/charte/charte-graphique-l
 Redhat propose quatre familles de polices https://fr.wikipedia.org/wiki/Liberation_(police_d%27%C3%A9criture)[Liberation Mono] en licence Open Source sécurisante sur un plan juridique et compatible métriquement avec le Monotype, le Courrier New, l'Arial et le Times New Roman. 
 ====
 
+====
+Example: Le texte doit rester lisible en cas de **zoom navigateur jusqu’à 200 %** sans perte de contenu ou de fonctionnalité.
+====
+
 //🏷{"id": "cfd3435f-d888-43e3-a634-35c3d5d92cb4", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi"]}
-#### Site Web adaptatif
+#### Exigences de site Web adaptatif
 
 [TIP]
 ====
@@ -210,8 +230,13 @@ Lister les contraintes d’affichage multi-support. Utiliser quand c'est possibl
 WARNING: Un design responsive vient avec ses contraintes (duplication de code CSS, augmentation du volume du site à télécharger par le client, complexité, plus de tests end-to-end à prévoir, etc.). 
 ====
 
+====
+Exemple : Sur les écrans de smartphone, la navigation principale doit se replier dans un menu unique accessible, et toutes les fonctionnalités essentielles doivent rester utilisables sans défilement horizontal.
+====
+
+
 //🏷{"id": "30cc6226-2213-4351-83aa-a4905c5d4baa", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
-#### Progressive Web Apps (PWA)
+#### Exigences de progressive Web Apps (PWA)
 
 [TIP]
 ====
@@ -222,7 +247,7 @@ Exemple : L'application X sera totalement PWA. Des tests devront démonter que l
 ====
 
 //🏷{"id": "67ff8381-8145-4dc4-bd15-cfec867dc8b5", "labels": []}
-#### Navigateurs supportés
+#### Exigences sur les navigateurs supportés
 
 [TIP]
 ====
@@ -231,26 +256,26 @@ Préciser quels sont les navigateurs supportés si votre projet contient une IHM
 Lorsqu'on s'adresse à un public dont on ne gère pas le parc de navigateurs (comme un site Web sur Internet), la meilleure option pour rendre les choses intelligibles et expliciter les enjeux est de négocier avec les parties prenantes du projet un pourcentage de public supporté en se basant sur des https://gs.statcounter.com/[statistiques]. Par exemple : "Support de 95 % des navigateurs à date d'aujourd'hui".
 ====
 
-WARNING: Supporter d’anciens navigateur (IE en particulier) peut engendrer des surcoûts rédhibitoires et des risques sur la sécurité. Dans tous les cas, il convient d’évaluer les surcoûts de tester sur plusieurs plate-formes. Il existe de bons outils (payants) comme Litmus ou EmailOnAcid permettant de générer un rendu des sites Web et des courriels HTML sur une combinatoire d’OS / type de lecteur (PC/tablette/mobile) /navigateur très vaste (de l’ordre de 50).  Ce type de site est incontournable pour une application grand public.
+WARNING: Supporter d’anciens navigateur (IE en particulier) peut engendrer des surcoûts rédhibitoires et des risques sur la sécurité. Dans tous les cas, il convient d’évaluer les surcoûts de tester sur plusieurs plate-formes. Il existe de bons outils (payants) comme Litmus ou EmailOnAcid permettant de générer un rendu des sites Web et des courriels HTML sur une combinatoire d’OS / type de lecteur (PC/tablette/mobile) /navigateur très vaste.  Ce type de site est incontournable pour tester une application grand public.
 
 ====
 Exemple 1 : L’application intranet X devra fonctionner sur les navigateurs qualifiés en interne (cf norme xyz)
 ====
 ====
-Exemple 2 : L’application Y étant une application internet visant le public le plus large possible, y compris des terminaux de pays en voie de développement. Il devra supporter Firefox 3+, Chrome 49+, IE 8+, Opera 6+.
+Exemple 2 : L’application Y étant une application internet visant le public le plus large possible, y compris des terminaux de pays en voie de développement. Il devra être testé sur les navigateurs correspondant au 95ᵉ percentile des usages.
 ====
 ====
 Exemple 3 : L’application Z vise le public le plus large et doté de systèmes raisonnablement anciens et devra donc supporter : Firefox 135+, Chrome 126+, Safari 5+, Opera 20+, Edge.
 ====
 
 //🏷{"id": "39318743-8131-4d46-9354-c64804066ae8", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
-#### Mode déconnecté
+#### Exigences de mode déconnecté
 
 [TIP]
 ====
 Préciser si l'application doit pouvoir continuer à fonctionner sans accès à Internet ou au LAN (courant pour les applications utilisées par les professionnels en déplacement par exemple). 
 
-Il peut s’agir de clients lourds classiques (Java, Kotlin, JS, C++, etc.) possédant leur base locale pouvant être synchronisée de retour au bureau. Il peut aussi s'agir d'applications PWA (voir plus haut) utilisant un service worker pour les resources statiques et du stockage navigateur (local storage, base de données IndexedDB).
+Il peut s’agir de clients lourds classiques (Java, Kotlin, JS, C++, etc.) possédant leur base locale pouvant être synchronisée de retour au bureau. Il peut aussi s'agir d'applications PWA (voir plus haut) utilisant un service worker pour les resources statiques et du stockage navigateur (local storage, base de données IndexedDB, ...).
 ====
 ====
 Exemple 1 : L'application sera développée en Kotlin Jetpack Compose avec stockage local basé sur une base H2 synchronisées avec la base commune par appels REST.
@@ -260,7 +285,7 @@ Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5
 ====
 
 //🏷{"id": "fbe627e5-be3f-41ec-9a2a-c43bd3587c6e", "labels": []}
-#### Internationalisation (i18n)
+#### Exigences d'internationalisation (i18n)
 
 [TIP]
 ====
@@ -272,8 +297,6 @@ Exemple 1 : L’IHM X sera traduite en 25 langues dont certaines langues asiati
 ====
 Exemple 2 : les formats de dates et autres champs de saisie devront être parfaitement localisés pour un confort maximal de l’utilisateur. 
 ====
-
-
 
 //🏷{"id": "8c3bc449-1b44-44cf-82a1-f26cdbf258af", "labels": ["ihm"]}
 ### Exigences de SEO
@@ -330,7 +353,7 @@ Exemple : Utilisation de Rust à titre expérimental au sein de l'organisation. 
 
 [TIP]
 ====
-Lister ici pour chaque module les principales librairies et frameworks utilisés ainsi que leur version. Ne pas lister les librairies fournies au runtime par les serveurs d'application ou les frameworks. Inutile de trop détailler, donner uniquement les dépendances structurantes.
+Lister ici pour chaque module les principales librairies et frameworks utilisés ainsi que leur version majeure. Ne pas lister les librairies fournies au runtime par les serveurs d'application ou les frameworks. Inutile de trop détailler, donner uniquement les dépendances structurantes.
 
 Exemple de pile logicielle :
 [cols="1e,4e,1e"]
@@ -343,7 +366,7 @@ Exemple de pile logicielle :
 
 |JasperReport
 |Éditique transactionnelle, composition des factures au format PDF
-|7.0.0
+|7
 |===
 ====
 
@@ -365,20 +388,12 @@ Exemple de pile logicielle :
 
 [TIP]
 ====
-Même si des campagnes de performance sont prévues, l'expérience montre que la plupart des problèmes de performance peuvent être détectés dès le développement.
+Même si des campagnes de performance sont prévues, une grande partie des problèmes de performance peuvent être détectés dès le développement.
 Il est donc important que les développeurs profilent leur code, dès leur poste de travail (à prévoir dans le Definition Of Done du projet). Il ne sera pas possible de détecter tous les problèmes (scalabilité, concurrence, robustesse, tuning des caches, etc.) mais c'est le cas de la plupart des problèmes de temps de réponse. Il est également souvent possible de simuler de la concurrence et de la charge. Nous présentons ici quelques pistes très basiques et à la portée de tout développeur.
-
-Coté Frontend :
-
-* Limiter la complexité des CSS (sélecteurs ou fonctions en particulier) ;
-* Utiliser un profiler (comme celui de Chrome ou Firefox) ;
-* Privilégier les appels asynchrones quand c'est possible.
-* …
 
 Coté Backend :
 
 * S'assurer que la pagination serveur va bien jusqu'à la base de donnée (en PostgreSQL, utiliser `FETCH FIRST x ROWS ONLY`.
-* Ne pas mettre en place de contraintes inutiles en base de données.
 * Limiter le nombre de jointures et les relations many-to-many.
 * Dans des cas de grosses volumétries, étudier les solutions de partitionnement de tables.
 * Ne pas oublier d'ajouter tous les index nécessaires, utiliser l'analyse du plan d'exécution pour vérifier qu'il n'y a pas de full scans.
@@ -391,18 +406,25 @@ Coté Backend :
 * Traquer les IO (des milliers de fois plus lents que des accès mémoire).
 * …
 
+Coté Frontend :
+
+* Limiter la complexité des CSS (sélecteurs ou fonctions en particulier) ;
+* Utiliser un profiler (comme celui de Chrome ou Firefox) ;
+* Privilégier les appels asynchrones.
+* …
+
 Frontend et backend : 
 
 * Toute ressource (taille de chaîne, nombre d'appel sur une durée, etc.) doit systématiquement être bornée par une limite (pas d'« open bar »).
 * Vérifier que la taille des requêtes HTTP reste en dessous de quelques dizaines de Kio (hors GET sur fichiers). Utiliser la pagination cliente et serveur.
 * Traquer le bavardage réseau : grouper les requêtes quand possible (il faut trouver un compromis avec la règle précédente). S'aider de la règle ‘I’ de SOLID (Interface Segregation).
-* Prévoir des endpoints multivalués (exemple: `GET /personnes?list=id1,id2,…`) pour récupérer plusieurs éléments à la fois
+* Prévoir des endpoints multivalués pour récupérer plusieurs éléments à la fois
 (doit se concrétiser par un seul `SELECT WHERE .. IN` dans la requête finale, pas une boucle dans le code !)
 
 ====
 
 WARNING: Ne pas tomber à l'inverse dans l'optimisation prématurée "source de tous les problèmes" selon Donald Knuth. Écrire le code le plus simple possible et suivre un bon design, ne l'optimiser qu’ensuite. 
-N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimisations les plus significatives (top 10) et ne pas perdre son temps à grappiller des microsecondes voire nanosecondes.
+N'optimiser que si cela vaut le coût (loi de Pareto). Commencer par les optimisations les plus significatives (top 10) et ne pas perdre son temps à grappiller des microsecondes.
 
 //🏷{"id": "cacf4bd8-9e8a-449c-af31-1fd27169a685", "labels": ["niveau::intermédiaire",  "niveau_detail::détaillé"]}
 ### Spécificités d’usine logicielle
@@ -478,9 +500,9 @@ Exemple 2 : ce projet sera développé en TDD (test first)
 ==== 
 Exemple 3 : Types de tests 
 
-[cols='2se,1e,1e,1e,1e,4ea'] 
+[cols = '2s, 1,1,1,1,4a']
 |=== 
-|Type de test | Temps à investir | Manuel ou automatisé ? | Type de module ciblé | Taux de Couverture visée | Détail 
+|Type de test | Temps à investir préconisé | Manuel ou automatisé ? | Type de module ciblé | Taux de Couverture visée | Détail 
 
 |TU 
 |Très élevé 
@@ -522,7 +544,7 @@ Exemple 3 : Types de tests
 |Automatisé 
 |UI 
 |30%, cas nominaux (happy path) 
-|Ecrits en Playright, Cypress ou technologie similaire. Ils seront limités à un rôle de smoke tests (détection de problèmes grossiers). Ces tests ne seront pas bouchonnés mais seront effectués sur chaîne de liaison instanciée de bout en bout. Pour éviter le travail inutile, ces tests seront faits au niveau de features entières, pas forcément à chaque sprint. Ces tests feront office également de tests système puisqu'ils solliciteront un maximum de modules débouchonnés. 
+|Ecrits en Playright, Cypress ou technologie similaire. Ils seront limités à un rôle de smoke tests (détection de problèmes grossiers). Ces tests ne seront pas bouchonnés mais seront effectués sur chaîne de liaison instanciée de bout en bout. Pour éviter le travail inutile, ces tests seront faits au niveau de features entières. Ces tests feront office également de tests système puisqu'ils solliciteront un maximum de modules débouchonnés. 
 
 |Tests de performance 
 |Faible (hors campagnes de performance dédiées) 
@@ -559,7 +581,7 @@ détecter un maximum de bugs avant les tests d'UAT.
 |Manuels 
 |UI, batchs lancé à la main 
 |de 30% à 80% selon le nombre de scénarios prévus  
-|Tests menés en recette par des utilisateurs finaux sur environnement non bouchonné avec des cahiers de tests. Tests d'acceptance de bout n bout (on suit un cahier de tests avec les cas nominaux), Tests exploratoires (on tente toutes les combinatoires possibles avec un guidage minimal dans le cahier de test). Utilisation de l'outil Squash pour le suivi.
+|Tests menés en recette par des utilisateurs finaux sur environnement non bouchonné avec des cahiers de tests. Tests d'acceptance de bout en bout (on suit un cahier de tests avec les cas nominaux), Tests exploratoires (on tente toutes les combinatoires possibles avec un guidage minimal dans le cahier de test). Utilisation de l'outil Squash pour le suivi.
 |=== 
 
 ==== 
@@ -594,38 +616,86 @@ SCI = ((E * I)) + M) par R
 
 Avec: 
 
-* E (kWh) : L'énergie totale consommé par le logiciel ; 
-* I (gCO2/kWh), la quantité de carbone émis par kwH ;
-* M (gCO2) : l'empreinte carbone du hardware ;
-* R: la quantité de référence (ex: par utilisateur, par appareil, ...)
+* E	Énergie consommée (kWh)
+* I	Intensité carbone de l’électricité (gCO₂e/kWh)
+* M	Empreinte carbone du matériel (gCO₂e), amortie sur sa durée de vie
+* R	Unité fonctionnelle (requêtes, utilisateurs, transactions, etc.)
+* SCI : gCO₂e (grammes équivalent CO₂) par unité fonctionnelle
 
-Quelques pistes d’amélioration énergétique du projet :
+Quelques pistes d’amélioration énergétique du projet (état de l’art) :
 
-* Utiliser des profilers ou des outils de développement intégrés dans les navigateurs (comme Google Dev Tools) pour analyser la consommation de ressources (nombre, durée et taille des requêtes).
-* Pour les apps, utiliser des outils de supervision de la consommation de batterie comme Battery Historian.
-* Utiliser la suite d'analyse spécialisée Greenspector.
-* Mesurer la consommation électrique des systèmes avec les sondes PowerAPI2 (développé par l'INRIA et l'université Lille 1).
-* Mesurer la taille des images et les réduire (sans perte) avec des outils comme pngcrush, OptiPNG, pngrewrite ou ImageMagick.
-* Optimiser la consommation mémoire et CPU des applications, tuner le GC pour une application Java.
-* Faire du lazy loading pour le chargement des ressources occasionnelles.
-* Limiter les résultats retournés de la base de données (pagination).
-* Grouper les traitements de masse dans des batchs qui seront plus efficaces (lots).
-====
-====
-Exemple 1 : le processus Vite de construction de l'application appliquera une réduction de taille des images via le plugin vite-imagetools.
-====
-====
-Exemple 2 : des tests de robustesse courant sur plusieurs jours seront effectués sur l’application mobile après chaque optimisation pour évaluer la consommation énergétique de l'application.
-====
-====
-Exemple 3 : Les campagnes de performance intégreront une analyse fine de la consommation de bande passante et en cycles CPU même si les exigences en temps de réponses sont couvertes, ceci pour identifier des optimisations permettant de répondre aux exigences d'éco-conception si elles ne sont pas atteintes.
-====
-====
-Exemple 4 : Pour une exigence de 100 KgCO2/an maximum emit par le service en ligne A : on utilise 20% d'un serveur physique. On estime l'intensité carbone du serveur hors fonctionnement à 1.5TCO2 sur tout son cycle de vie de 10 ans (donc 30 kgCO2/an au prorata du service A).
+* Utiliser les **outils de profilage intégrés aux navigateurs modernes**
+  (Chrome DevTools, Firefox Profiler, Safari Web Inspector) ainsi que
+  **Lighthouse** et **WebPageTest** pour analyser :
+  - le nombre de requêtes,
+  - leur taille,
+  - leur durée,
+  - le temps CPU et l’impact réseau.
 
-En utilisant la formule SCI (voir plus haut), et pour une consommation totale du serveur de 800W et 20K appels par heure en moyenne, et une électricité française d'intensité carbone de 63g/KWH, on ne doit pas dépasser E=1111 KWH/an, soit 6.34 mWH/appel.
+* Pour les applications mobiles :
+  - Android : **Battery Historian**, **Android Studio Energy Profiler** ;
+  - iOS : **Xcode Instruments – Energy Log** ;
+  afin d’identifier les phases de consommation excessive de batterie.
+
+* Utiliser des **outils spécialisés d’éco-conception logicielle** :
+  - **Greenspector** (analyse énergétique applicative) ;
+  - **Scaphandre**, **Kepler** ou **PowerAPI / RAPL** pour l’estimation de la consommation énergétique côté serveurs et conteneurs ;
+  - **Cloud Carbon Footprint** pour les environnements cloud.
+
+* Optimiser les médias :
+  - utiliser des formats modernes (**AVIF**, **WebP**) ;
+  - compresser sans perte lorsque possible ;
+  - adapter dynamiquement la taille des images au terminal (responsive images).
+
+* Optimiser l’usage CPU et mémoire :
+  - réduire les traitements inutiles ;
+  - profiler régulièrement ;
+  - pour Java : optimiser l’allocation mémoire et configurer le **GC moderne**
+    (G1, ZGC, Shenandoah selon les cas).
+
+* Mettre en œuvre des stratégies de **chargement différé** :
+  - lazy loading des ressources non critiques ;
+  - chargement progressif des données.
+
+* Réduire les volumes de données :
+  - pagination ou curseurs côté API ;
+  - filtrage serveur strict ;
+  - éviter le sur-fetching (batching raisonné).
+
+* Grouper les traitements intensifs dans des **batchs planifiés**
+  afin de mutualiser les coûts énergétiques.
 
 ====
+====
+Exemple 1 : Le processus de build de l’application (Vite) applique automatiquement
+une optimisation des images via un plugin spécialisé (ex. génération AVIF/WebP),
+afin de réduire le poids réseau et la consommation énergétique côté client.
+====
+====
+Exemple 2 : Des tests d’endurance et de robustesse sur plusieurs jours sont exécutés
+sur l’application mobile après chaque optimisation afin d’évaluer l’évolution de la
+consommation énergétique et de la batterie.
+====
+====
+Exemple 3 : Les campagnes de performance intègrent une analyse fine de la
+consommation de bande passante et de cycles CPU, même lorsque les exigences de
+temps de réponse sont respectées, afin d’identifier des optimisations liées à
+l’éco-conception.
+====
+====
+Exemple 4 : Pour une exigence maximale de **100 kgCO2/an** pour le service en ligne A :
+
+- le service utilise **20 %** d’un serveur physique ;
+- l’empreinte carbone hors exploitation du serveur est estimée à **1,5 tCO2**
+  sur un cycle de vie de 10 ans ;
+- soit **30 kgCO2/an** imputables au service A.
+
+En utilisant l’indicateur **SCI**, pour une consommation moyenne du serveur de
+**800 W**, **20 000 appels/heure**, et une électricité française à
+**63 gCO2/kWh**, la consommation annuelle ne doit pas dépasser **1 111 kWh/an**,
+soit **6,34 mWh par appel** maximum.
+====
+
 
 //🏷{"id": "bb5d8145-8519-4516-98a9-fc089f758d9c", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Gestion de la robustesse
@@ -645,7 +715,7 @@ Lister ici les décisions prises concernant la gestion des transactions. Ceci es
 
 ====
 ====
-Exemple : nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file de messages pour effectuer des mises à jour au fil de l'eau.
+Exemple : Nos ressources n'étant pas transactionnelles (services REST), et voulant éviter de faire des transactions compensatoires, il est interdit d'appeler deux services en mise à jour de façon synchrone. Au besoin, nous utiliserons une file de messages pour effectuer des mises à jour au fil de l'eau.
 ====
 
 //🏷{"id": "8bd70b17-0223-4aaf-97ac-a7284efe721f", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi"]}
@@ -666,7 +736,7 @@ Exemples de points à traiter :
 
 ====
 ====
-Exemple : notre application JSF stockera en session HTTP uniquement son panier d'achat, pas les références produits
+Exemple : Notre application PHP stockera en session HTTP uniquement son panier d'achat, pas les références produits
 ====
 
 //🏷{"id": "4ffcfd1b-87c9-48d0-96d6-f3b3b817a869", "labels": []}
@@ -689,7 +759,7 @@ Comment gère-t-on les erreurs ? Exemples de points à traiter :
 
 ====
 ====
-Exemple : les erreurs techniques (imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un ErrorHandler). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
+Exemple : Les erreurs techniques (donc imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un `ErrorHandler`). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
 ====
 
 //🏷{"id": "7a33eb60-882d-4095-bde2-9a477cc27433", "labels": ["ihm"]}
@@ -732,10 +802,9 @@ Comment configure-t-on l'application ? Exemples de points à traiter :
 * Décrire le système de configuration
 
 ====
-====
-Exemple (application déployées dans Kubernetes) : 
 
-La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans le descripteur de déploiement Kubernetes.
+====
+Exemple (application déployées dans Kubernetes) : La configuration sera injectée au lancement (non modifiable à chaud) via des variables d'environnements fournies dans un `ConfigMap`.
 ====
 
 //🏷{"id": "01a81b2c-1dc0-4563-a2e2-5c5248086499", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
@@ -743,7 +812,7 @@ La configuration sera injectée au lancement (non modifiable à chaud) via des v
 
 [TIP]
 ====
-Quels sont les workflows de branche à prévoir ? git-flow ? TBD (Trunked-based Development) ? autre ?
+Quels sont les workflows de branche à prévoir ? git-flow ? TBD (Trunked-Based Development) ? autre ?
 ====
 
 ====
@@ -770,11 +839,11 @@ Exemple:
 * D'une façon générale, toute ressource non dérivée (source, outil, script de ci-cd, template, DDL de base de données, etc.) doit être versionnée.
 * Les modules seront versionnés suivant la numérotation `x.y.z` (`<majeur).<évolution>.<fix>`)
 * Les librairies seront versionnées suivant la même numérotation que les modules mais la valeur `x` sera incrémentée lors de toute montée de version cassant la compatibilité ascendante (principe du Semantic Versioning).
-* La version logique globale du projet sera : `<lot>.<no sprint>.<déploiement>`
+* La version globale du projet sera : `<lot>.<no sprint>.<déploiement>`
 
 ====
 
-//🏷{"id": "79682de3-09b7-46f1-8354-9371295d18a8", "labels": ["niveau::intermédiaire",  "niveau_detail::approfondi"]}
+//🏷{"id": "79682de3-09b7-46f1-8354-9371295d18a8", "labels": ["niveau::intermédiaire",  "niveau_detail::approfondi"], "link_to":["9efde825-9508-4669-918c-7cfb0d45c21f"]}
 ### Gestion de la concurrence
 
 [TIP]
@@ -800,7 +869,7 @@ Quelles sont les règles concernant l'encodage des chaînes de caractères ? Cec
 ==== 
 
 ==== 
-Exemple 1 : Le seul encodage autorisé dans tous les modules et composants d'infrastructure est l'`UTF-8`. L'utilisation des encodages `ISO-8859-1`, `CP-1252` ou de tout autre est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat, etc.), des sources, des fichiers de configuration, des bases de données et des fichiers. 
+Exemple 1 : Le seul encodage autorisé dans tous les modules et composants d'infrastructure est l'UTF-8. L'utilisation des encodages `ISO-8859-1`, `CP-1252` ou de tout autre est formellement proscrit. Ceci comprend le paramétrage des serveurs d'application (Node, Tomcat, etc.), des sources (y compris fichiers `.properties`), des fichiers de configuration, des bases de données et des fichiers. 
 
 NOTE: Dans certains cas, nous n’avons pas la main sur la lecture des `.properties` (depuis un framework par exemple), il n’est alors pas possible de forcer un encodage en `UTF-8`. Il faut alors s'assurer qu'on spécifie l'encodage effectif dans l'outil ou le code qui le lit.
 
@@ -814,17 +883,17 @@ Exemple 2 : Si un système externe impose d'envoyer ou de recevoir des chaînes 
 
 [TIP] 
 ==== 
-Comment gère-t-on le stockage des dates ? Ceci, comme la gestion de l'encodage est un problème récurrent (décalage d'un jour, bugs lors des changements d'heure d'été/hiver, etc.). Pour éviter les problèmes, suivre la norme https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] ("Time zones in ISO 8601 are represented as local time (with the location unspecified), as UTC, or as an offset from UTC." [Wikipedia]). 
+Comment gère-t-on le stockage des dates et des heures ? Ceci, comme la gestion de l'encodage est un problème récurrent (décalage d'un jour, bugs lors des changements d'heure d'été/hiver, etc.). Pour éviter les problèmes, suivre la norme https://en.wikipedia.org/wiki/ISO_8601[ISO 8601] ("Time zones in ISO 8601 are represented as local time (with the location unspecified), as UTC, or as an offset from UTC." [Wikipedia]). 
 ==== 
 
 ==== 
 Exemple 1 : Les heures ne seront jamais stockées sans fuseau horaire. En base, on utilisera des timestamps avec timezone (`timestamptz`) et en Java ou JS, des objets intégrant le fuseau horaire de façon explicite (ex: `Instant` et pas `LocalDateTime` en java) ou des epochs. La précision sera au moins de la milliseconde. 
 ==== 
 ==== 
-Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera l'epoch millis à `12:00 UTC` (et pas `00:00`, trop proche du jour précédent, risque de bug). 
+Exemple 2 : Les dates et date-heures seront stockées en base de données comme epoch millis au format entier long. Dans le cas des dates, on stockera la date au format ISO-8601 `YYYY-MM-DD` sans (fausse) précision de l'heure. 
 ==== 
 
-//🏷{"id": "96ec879c-3ce3-4e48-a3f9-84590c281fd4", "labels": ["niveau_detail::détaillé"]}
+//🏷{"id": "96ec879c-3ce3-4e48-a3f9-84590c281fd4", "labels": ["niveau_detail::détaillé"],"link_to":["0a25770c-6a02-4fa3-82cc-bf5152d3cba6"]}
 ### Gestion des journaux
 
 NOTE: Les aspects d'infrastructure de journaux sont détaillés dans link:./vue-infrastructure.adoc#_journaux[la vue infrastructure].
@@ -843,8 +912,9 @@ Exemple 1 :
 
 * Ne pas laisser de journaux de développement dans le code (exemple : `console.out("entrée dans méthode x")` ou `e.printStackTrace()`)
 * Penser à utiliser des chaînes de caractère discriminantes (exemple : code erreur) pour faciliter le filtrage dans l'outil de recherche de journaux.
-* Toujours fournir des identifiants d'entités permettant de retrouver l'objet concerné 
-* Utiliser des identifiant de corrélation entre tiers (exemple : id de traitement générée coté client en JS, passée au serveur)
+* Toujours fournir des identifiants d'entités permettant de retrouver l'objet concerné.
+* Ne jamais découper un log sur plusieurs lignes.
+* Utiliser des identifiant de corrélation entre tiers (exemple : id de traitement générée coté client en JS, passée au serveur).
 * Eviter les calculs coûteux (exemple: beaucoup de concaténations) en utilisant des placeholders (La chaine de caractère à loguer finale n'est effectivement construite que si le niveau de prolixité requis est utilisé). Exemple Logback : 
 ```
 log.info("Problème sur le dossier {} de l'utilisateur {}",dossier.getId(), utilisateur.getId());
@@ -963,7 +1033,7 @@ Exemple : Nous utiliserons Liquibase embarqué dans les livrables pour créer et
 ### Gestion de l'internationalisation
 [TIP]
 ====
-Décrire comment vous répondez aux exigences d'internationalisation exprimées plus haut.
+Décrire comment vous répondez aux exigences d'i18n exprimées plus haut.
 ====
 
 ====
