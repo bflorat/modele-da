@@ -118,7 +118,7 @@ Il est important de les expliciter pour obtenir des exigences réalistes. Par ex
 ====
 
 //🏷{"id": "646fc728-6cef-4e75-9fa9-646b4ec2159d", "labels": []}
-### Contraintes stockage
+### Contraintes de stockage
 
 TIP: Lister ici les éventuelles contraintes liées au stockage persistant.
 
@@ -128,25 +128,29 @@ Exemple : L'espace disque maximal allouable à une VM est de 2 To.
 ====
 
 //🏷{"id": "1d3ec06e-d63d-4a61-bb4e-437358064687", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
-### Contraintes CPU
+### Contraintes puissance de calcul
 
-TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul
+TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul (CPU, GPU, TPU)
 [Exemple]
 ====
-Exemple 1 : Une VM sera dotée au maximum de 10 VCPU
+Exemple 1 : Une VM sera dotée au maximum de 10 VCPU.
 ====
 
 ====
 Exemple 2 : L'ensemble des pods de l'application ne devra pas demander plus de 1 CPU par node.
 ====
 
+====
+Exemple 3 : Sur TPU v5e, un modèle d’inférence reçoit une slice dédiée de 8 chips (≈128 GB HBM total). Une slice n’héberge pas plus de 1 modèle ‘latency critical’.
+====
+
 //🏷{"id": "ec6a420b-c284-442a-93fd-edc3d45ed00a", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Contraintes mémoire
 
-TIP: Lister ici les éventuelles contraintes liées à la mémoire
+TIP: Lister ici les éventuelles contraintes liées à la mémoire.
 [Exemple]
 ====
-Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM
+Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM.
 ====
 
 //🏷{"id": "8d948872-15f9-49b6-9527-f511a2f7597d", "labels": []}
@@ -168,7 +172,7 @@ Exemple 2 : Le cœur de réseau du datacenter dispose d'une bande passante de 40
 
 [TIP]
 ====
-Il est crucial de privilégier les données issues de la production plutôt que des estimations, car ces dernières sont souvent éloignées de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Il est alors recommandé de prévoir une marge importante. Les informations données ici pourront servir d'entrants au SLO (objectif de niveau de service fixé par les exploitants).
+Il est crucial de privilégier les données issues de la production plutôt que des estimations, car ces dernières sont souvent éloignées de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Il est alors recommandé de prévoir une marge importante. Les informations données ici pourront servir d'entrants au SLO (Service Level Objective) fixé par les exploitants.
 ====
 
 [TIP]
@@ -220,7 +224,7 @@ Exemple :
 
 [TIP]
 ====
-Lister ici les besoins en stockage de chaque module une fois l’application arrivée à pleine charge (volumétrie à deux ans par exemple).
+Lister ici les besoins en stockage de chaque module une fois l’application arrivée à pleine charge (volumétrie à cinq ans par exemple).
 
 Prendre en compte :
 
@@ -251,7 +255,7 @@ Exemple de volumétrie statique :
 
 [cols='e,e,e,e,e,e']
 |===
-|Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
+|Donnée|Description|Taille unitaire|Nombre d'éléments à 5 ans|Taille totale|Augmentation annuelle
 
 |Table Article
 |Les articles du catalogue
@@ -280,7 +284,7 @@ Exemple de volumétrie statique :
 ====
 [cols='1,1,1,1,1,1']
 |===
-|Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
+|Donnée|Description|Taille unitaire|Nombre d'éléments à 5 ans|Taille totale|Augmentation annuelle
 
 | 
 | 
@@ -351,12 +355,12 @@ Ne pas considérer la charge comme constante mais prendre en compte :
 
 Si le calcul du pic pour un module en bout de chaîne de liaison est complexe (par exemple, un service central du SI exposant des données référentiel et  appelé par de nombreux modules qui ont chacun leur pic), on tronçonnera la journée en intervalles de temps suffisamment fins (une heure par exemple) et on calculera sur chaque intervalle la somme mesurée ou estimée des appels de chaque appelant (batch ou transactionnel) pour ainsi déterminer la sollicitation cumulée la plus élevée.
 
-Si l'application est déployée sur un cloud de type PaaS, la charge sera absorbée dynamiquement. Il convient néanmoins d'estimer le surcoût et de fixer des limites de consommation pour concilier budget et qualité de service.
+Si l'application est déployée sur un cloud de type serverless, la charge sera absorbée dynamiquement. Il convient néanmoins d'estimer le surcoût et de fixer des limites de consommation pour concilier budget et qualité de service.
 ====
 
 .Exemple : estimation volumétrie dynamique de l'opération REST `GET Detail` de l'application MIEL
 |===
-|Taux maximal d’utilisateurs connectés en même temps en pic annuel | S1 x F1 x 0.2 = 8K /H  
+|Taux maximal d’utilisateurs connectés en même temps en pic annuel | S1 x F1 x 0.2 = 8K sur 1h
 |Durée moyenne d'une session utilisateur
 |15 mins
 |Nombre d'appel moyen du service par session
