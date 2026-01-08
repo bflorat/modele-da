@@ -16,7 +16,7 @@
 
 ====
 
-TIP: Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mentionner la date ici
+TIP: Faire régulièrement des revues complètes de la vue (au moins une fois par an tant que le projet est actif) et mettre à jour la date plus haut.
 
 TIP: Indiquer le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...
 
@@ -165,11 +165,12 @@ Fournir ici les outils et normes de supervisions imposés au niveau du SI et les
 ====
 ====
 Exemple 1 : L'application sera supervisée avec Zabbix.
-
-Exemple 2 : Les batchs doivent pouvoir se lancer via un endpoint REST.
-
-Exemple 3 : un batch en erreur ne doit pas pouvoir se relancer sans un acquittement humain.
 ====
+
+====
+Exemple 2 : L'alerting se fera depuis les journaux via des alertes Grafana.
+====
+
 
 //🏷{"id": "6903a99e-8b8e-464b-909c-d40da5a808d1", "labels": ["niveau_detail::détaillé"]}
 #### MTTR
@@ -197,7 +198,7 @@ Exemple 1 : Cinq serveurs physiques de spare sont disponibles à tout moment.
 
 Exemple 2 : Le contrat de support Hitashi prévoit une intervention sur les baies SAN en moins de 24h.
 
-Exemple 3 : le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
+Exemple 3 : Le remplacement de support matériel IBM sur les lames BladeCenter est assuré en 4h de 8h à 17h, jours ouvrés uniquement.
 ====
 
 //🏷{"id": "96cd73f1-0dca-447e-8fc8-2d9c03399e1c", "labels": ["niveau_detail::approfondi"]}
@@ -231,7 +232,7 @@ TIP: Lister ici les éléments permettant d'évaluer la durée de restauration d
 
 ====
 Exemple 1 : Le temps de restauration Barman d'une base PostgreSQL est d'environ `x/V + y*T/P` heures avec `x`, la taille de la base en Gio, `V` la vitesse de lecture/écriture (Go/h), `y` le nombre de jours de journaux à rejouer, `T` le temps moyen pour rejouer un 1 jour de WAL et `P` le niveau de parallélisme de la restauration. 
-
+62
 Exemple 2 : La restauration d'une sauvegarde offline (sur bandes) nécessite au minimum 4H de préparation supplémentaire.
 ====
 
@@ -246,7 +247,7 @@ Fournir ici la liste et la durée des interruptions programmées standards dans 
 ====
 Exemple 1 : On estime l'interruption de chaque serveur à 5 mins par mois. Le taux de disponibilité effectif des serveurs en prenant en compte les interruptions programmées système est donc de 99.99 %.
 
-Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (kernel, libc…), les serveurs RHEL sont redémarrés automatiquement la nuit du mercredi suivant la mise à jour. Ceci entraînera une indisponibilité de 5 mins en moyenne 4 fois par an.
+Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (kernel, libc…), les serveurs RHEL sont redémarrés automatiquement la nuit du mercredi suivant la mise à jour. Ceci entraînera une indisponibilité de 5 mins en moyenne 10 fois par an.
 
 ====
 
@@ -296,7 +297,7 @@ TIP: A noter que les architectures Cloud modernes privilégient la redondance de
 ====
 
 ====
-Exemple : Le datacenter de Paris est de niveau Tier III et celui de Toulouse Tier II.
+Exemple : Le datacenter de Paris est de niveau Tier 3 et celui de Toulouse Tier 2.
 ====
 
 //🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["niveau_detail::général"]}
@@ -306,7 +307,7 @@ Exemple : Le datacenter de Paris est de niveau Tier III et celui de Toulouse Ti
 ====
 Expliquez clairement aux parties prenantes que, même avec de la HA au niveau applicatif, la **disponibilité de bout en bout maximale** est plafonnée par la disponibilité des dépendances sous-jacentes (datacenter, réseau, plateforme).
 Ce **plafond de disponibilité** est le produit de leurs SLA et est toujours
-≤ à la dépendance la moins disponible.
+< à la dépendance la moins disponible.
 
 `A_plafond = ∏(A_SLA de chaque dépendance en série)  ≤  min(A_SLA)`
 
@@ -342,7 +343,7 @@ Les catastrophes peuvent être classées en trois catégories :
 * Infrastructurelles (accidentelles comme les accidents industriels, incendies, pannes électriques majeures, pannes majeures du réseau / stockage / serveurs, erreurs critiques d’administrateurs ou intentionnelles : militaires, terroristes, sabotage, etc.) ;
 * Cyber (DDoS, virus, ransomware, etc.).
 
-**Disaster Recovery (DR)** est l’ensemble des stratégies et solutions mises en place pour **restaurer un système informatique après une catastrophe**, minimisant ainsi les pertes de données et le temps d’arrêt. Le DR peut inclure des solutions comme :
+Le **Disaster Recovery (DR)** est l’ensemble des stratégies et solutions mises en place pour **restaurer un système informatique après une catastrophe**, minimisant ainsi les pertes de données et le temps d’arrêt. Le DR peut inclure des solutions comme :
 
 * **Cold site** : centre de secours prêt à être activé mais sans infrastructure active ;
 * **Warm site** : infrastructure préinstallée mais nécessitant une mise en production manuelle ;
@@ -415,18 +416,15 @@ Exemple 2 : Étant donné le niveau de sécurité très élevé de l’applicat
 Exemple 3 : Étant donné le nombre d’appels très important de cette application vers le référentiel `PERSONNE`, elle sera colocalisée avec le module `COMPTA-API` dans le VLAN `XYZ`.
 ====
 
-//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["niveau_detail::détaillé"]}
+//🏷{"id": "6f7d74be-7024-4a6e-af4d-d084d49109ae", "labels": ["niveau_detail::détaillé"], "link_to":["8d948872-15f9-49b6-9527-f511a2f7597d"]}
 ### Contraintes réseau
 
 [TIP]
 ====
-Lister les contraintes liées au réseau, en particulier le débit maximum théorique et les découpages en zones de sécurité.
+Lister les contraintes liées au réseau, en particulier les découpages en zones de sécurité. Les aspects débit sont listées dans la vue dimensionnement.
 ====
 ====
-Exemple 1 : Le LAN dispose d'un débit maximal de 10 Gbps.
-====
-====
-Exemple 2 : Les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
+Exemple : Les modules applicatifs intranet doivent se trouver dans une zone de confiance inaccessible d'Internet.
 ====
 
 //🏷{"id": "86a3082e-7069-4120-b86f-f886ef919986", "labels": ["niveau_detail::détaillé"]}
