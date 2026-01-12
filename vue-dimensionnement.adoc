@@ -128,7 +128,7 @@ Exemple : L'espace disque maximal allouable à une VM est de 2 To.
 ====
 
 //🏷{"id": "1d3ec06e-d63d-4a61-bb4e-437358064687", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
-### Contraintes puissance de calcul
+### Contraintes de puissance de calcul
 
 TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul (CPU, GPU, TPU)
 [Exemple]
@@ -145,7 +145,7 @@ Exemple 3 : Sur TPU v5e, un modèle d’inférence reçoit une slice dédiée de
 ====
 
 //🏷{"id": "ec6a420b-c284-442a-93fd-edc3d45ed00a", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
-### Contraintes mémoire
+### Contraintes sur la mémoire
 
 TIP: Lister ici les éventuelles contraintes liées à la mémoire.
 [Exemple]
@@ -154,7 +154,7 @@ Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM.
 ====
 
 //🏷{"id": "8d948872-15f9-49b6-9527-f511a2f7597d", "labels": []}
-### Contraintes réseau
+### Contraintes sur le réseau
 
 TIP: Lister ici les éventuelles contraintes de volume réseau utilisé
 [Exemple]
@@ -182,7 +182,7 @@ Les sections suivantes portant sur les calculs de volumétrie statiques et dynam
 ====
 
 //🏷{"id": "962347a4-c3c8-4f0c-bcac-774a6ef617a4", "labels": []}
-### Volumétrie statique
+### Exigences sur la volumétrie statique
 
 TIP: Il s'agit des métriques permettant de déterminer le volume de stockage *cumulé* du projet. Penser à bien préciser les hypothèses prises pour les métriques estimées. Il sera ainsi possible de les revoir si de nouveaux éléments métier apparaissent.
 
@@ -297,7 +297,7 @@ Exemple de volumétrie statique :
 ====
 
 //🏷{"id": "b22cadba-e5a7-4c3a-b4b8-f9ea32a2a0be", "labels": []}
-### Volumétrie dynamique
+### Exigences sur la volumétrie dynamique
 
 TIP: Il s'agit des métriques par durée (année, mois, heure…) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.  
 
@@ -418,7 +418,7 @@ Exemple : la base de données Oracle BD01 est utilisée en lecture par les appel
 ### Exigences de temps de réponse
 
 //🏷{"id": "24f70acd-5f7c-49b3-bd75-d594e5af8917", "labels": ["niveau_detail::détaillé", "ihm"]}
-#### Temps de Réponse des IHM
+#### Exigences de temps de Réponse des IHM
 
 [TIP]
 ====
@@ -481,7 +481,7 @@ En dehors de ces valeurs, l’application devra être optimisée et repasser en 
 ====
 
 //🏷{"id": "88645b89-d407-4107-93b2-48003fd8688a", "labels": ["niveau_detail::détaillé", "batch"]}
-#### Durée d’exécution des batchs
+#### Exigences sur la durée d’exécution des batchs
 
 [TIP]
 ====

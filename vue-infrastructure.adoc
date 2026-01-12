@@ -144,7 +144,7 @@ Ce chapitre a une vocation pédagogique car il rappelle la disponibilité plafon
 ====
 
 //🏷{"id": "a18eb613-e522-4bf5-a1fd-742b9d754ce1", "labels": ["niveau_detail::détaillé","supervision"]}
-#### MTTD
+#### Contraintes de MTTD
 
 [TIP]
 ====
@@ -157,7 +157,7 @@ Exemple 2 : Le service support production est disponible durant les heures de bu
 ====
 
 //🏷{"id": "dc11b031-5685-4972-9832-138fa74cd30b", "labels": ["niveau_detail::détaillé","supervision"]}
-#### Outils et normes de supervision
+#### Contraintes sur les outils et normes de supervision
 
 [TIP]
 ====
@@ -173,7 +173,7 @@ Exemple 2 : L'alerting se fera depuis les journaux via des alertes Grafana.
 
 
 //🏷{"id": "6903a99e-8b8e-464b-909c-d40da5a808d1", "labels": ["niveau_detail::détaillé"]}
-#### MTTR
+#### Contraintes de MTTR
 
 [TIP]
 ====
@@ -237,7 +237,7 @@ Exemple 2 : La restauration d'une sauvegarde offline (sur bandes) nécessite au 
 ====
 
 //🏷{"id": "421860fb-b6b3-461a-b149-57c6ba6dae41", "labels": ["niveau_detail::approfondi"]}
-#### Interruptions programmées
+#### Contraintes sur les interruptions programmées
 
 [TIP]
 ====
@@ -252,7 +252,7 @@ Exemple 2 : suite aux mises à jour de sécurité de certains packages RPM (ker
 ====
 
 //🏷{"id": "21d704f6-f740-40f9-986c-36274643a711", "labels": ["niveau_detail::détaillé"]}
-#### Niveau de service du datacenter
+#### Contraintes liées au niveau de service du datacenter
 
 [TIP]
 ====
@@ -301,7 +301,7 @@ Exemple : Le datacenter de Paris est de niveau Tier 3 et celui de Toulouse Tier
 ====
 
 //🏷{"id": "7c1d0446-34df-4572-92b0-19baaba54183", "labels": ["niveau_detail::général"]}
-#### Plafond de disponibilité (borne supérieure)
+#### Plafond de disponibilité
 
 [TIP]
 ====
@@ -332,7 +332,7 @@ ne peut pas dépasser ~**99,75 %** sur cette infrastructure.
 
 
 //🏷{"id": "4860fb1c-98e9-4c2c-adfc-09ea8149235d", "labels": ["niveau_detail::général"]}
-#### Gestion des catastrophes
+#### Contraintes liées à la gestion des catastrophes
 
 [TIP]
 ====
@@ -400,7 +400,7 @@ Exemple 3 - PCA avec élasticité : les applications s’exécutent sous forme d
 ====
 
 //🏷{"id": "c7c4fce5-c971-4ec8-bef7-006381492aff", "labels": ["niveau_detail::général"]}
-### Hébergement
+### Contraintes d'hébergement
 
 * Où sera hébergée cette application ? DC "on premises" ? Cloud interne ? Cloud IaaS ? PaaS ? autre ?
 * Qui administrera cette application ? en interne ? Sous-traité ? Pas d’administration (PaaS) … ?
@@ -502,7 +502,7 @@ Exemple 3 : Compter 1 min / Gio pour une restauration NetBackup.
 ====
 
 //🏷{"id": "22e6cfa3-bc3d-466c-a902-9854540258b7", "labels": ["niveau_detail::détaillé"]}
-### Coûts
+### Contraintes budgétaires
 
 [TIP]
 ====
@@ -1826,7 +1826,7 @@ Une **alerte SMS** sera envoyée si :
 ====
 
 //🏷{"id": "20dff012-aa85-465f-ba2e-272d7580dd0b", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé","supervision"]}
-##### Supervision boite noire
+#### Supervision boite noire
 
 [TIP]
 ====
@@ -1841,7 +1841,7 @@ Exemple pour un site Internet : des tests de supervision boite noire seront mis 
 ====
 
 //🏷{"id": "f455e87e-47f0-422a-a80b-0ec65517ad53", "labels": ["niveau::avancé", "niveau_detail::détaillé","supervision"]}
-##### Métrologie
+#### Mesure et suivi des performances
 
 [TIP]
 ====

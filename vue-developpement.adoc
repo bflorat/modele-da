@@ -149,7 +149,7 @@ Contrairement aux contraintes qui fixent le cadre auquel toute application devai
 ====
 
 //🏷{"id": "48bb8b97-2e97-4515-bf3b-95864f85e4e9", "labels": ["ihm"]}
-### Accessibilité
+### Exigences d'accessibilité
 
 [TIP]
 ====
@@ -169,7 +169,7 @@ Exemple: Toutes les fonctionnalités doivent être utilisables **au clavier seul
 ====
 
 //🏷{"id": "b098d142-655e-4521-9d4f-2c2ea8eceb45", "labels": ["ihm"]}
-### Ergonomie
+### Exigences d'ergonomie
 
 //🏷{"id": "3c031334-5598-4817-87b4-dec34ce8389b", "labels": ["niveau_detail::détaillé"]}
 #### Spécificités d'UX
@@ -198,7 +198,7 @@ Exemple 2 : De nombreux écrans seront pourvus d’accordéons
 ====
 
 //🏷{"id": "1cacea74-bede-43b3-93a5-804fd60ff4fb", "labels": ["niveau_detail::approfondi"]}
-#### Polices de caractère
+#### Exigences sur les polices de caractère
 
 [TIP]
 ====
@@ -216,7 +216,7 @@ Example: Le texte doit rester lisible en cas de **zoom navigateur jusqu’à 200
 ====
 
 //🏷{"id": "cfd3435f-d888-43e3-a634-35c3d5d92cb4", "labels": ["niveau::intermédiaire", "niveau_detail::approfondi"]}
-#### Site Web adaptatif
+#### Exigences de site Web adaptatif
 
 [TIP]
 ====
@@ -236,7 +236,7 @@ Exemple : Sur les écrans de smartphone, la navigation principale doit se replie
 
 
 //🏷{"id": "30cc6226-2213-4351-83aa-a4905c5d4baa", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
-#### Progressive Web Apps (PWA)
+#### Exigences de progressive Web Apps (PWA)
 
 [TIP]
 ====
@@ -247,7 +247,7 @@ Exemple : L'application X sera totalement PWA. Des tests devront démonter que l
 ====
 
 //🏷{"id": "67ff8381-8145-4dc4-bd15-cfec867dc8b5", "labels": []}
-#### Navigateurs supportés
+#### Exigences sur les navigateurs supportés
 
 [TIP]
 ====
@@ -269,7 +269,7 @@ Exemple 3 : L’application Z vise le public le plus large et doté de système
 ====
 
 //🏷{"id": "39318743-8131-4d46-9354-c64804066ae8", "labels": ["niveau::avancé", "niveau_detail::approfondi"]}
-#### Mode déconnecté
+#### Exigences de mode déconnecté
 
 [TIP]
 ====
@@ -285,7 +285,7 @@ Exemple 2 : L'application mobile sera en mode PWA, entièrement écrite en HTML5
 ====
 
 //🏷{"id": "fbe627e5-be3f-41ec-9a2a-c43bd3587c6e", "labels": []}
-#### Internationalisation (i18n)
+#### Exigences d'internationalisation (i18n)
 
 [TIP]
 ====
@@ -297,8 +297,6 @@ Exemple 1 : L’IHM X sera traduite en 25 langues dont certaines langues asiati
 ====
 Exemple 2 : les formats de dates et autres champs de saisie devront être parfaitement localisés pour un confort maximal de l’utilisateur. 
 ====
-
-
 
 //🏷{"id": "8c3bc449-1b44-44cf-82a1-f26cdbf258af", "labels": ["ihm"]}
 ### Exigences de SEO

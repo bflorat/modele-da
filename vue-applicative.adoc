@@ -282,7 +282,7 @@ Exemple:
 TIP: Limites / choix imposés sur la façon de concevoir ou de réaliser : technologies, processus, organisation, budget, réglementation.
 
 //🏷{"id": "58897e87-0c12-4139-b5da-daec9cae21c6", "labels": []}
-### Budget
+### Contraintes budgetaires
 
 TIP: Donner un ordre de grandeur des contraintes budgétaires du projet (ou donner un lien vers un document pertinent).
 ====
@@ -293,7 +293,7 @@ Exemple 2: Coûts d'infrastructure cloud inférieurs à 20 K€ par mois.
 ====
 
 //🏷{"id": "ac5b1f28-bfcb-4543-a90b-abcff2b41822", "labels": []}
-### Planning
+### Contraintes planning
 
 TIP: Sans reprendre dans le détail les plannings du projet, donner les éléments pertinents pour l'architecture.
 ====
@@ -336,7 +336,7 @@ Exemple 7 : Les modules en zone Internet ne peuvent appeler les modules en zone 
 ====
 
 //🏷{"id": "abafa462-262f-429e-aad8-d2cdc0cf15a3", "labels": []}
-### Juridique
+### Contraintes juridiques
 
 Lister ici (sans détailler) les éventuelles contraintes juridiques liées au projet.
 
@@ -375,7 +375,7 @@ Exemple 2 (projet de migration) : Les modules legacy devront faire l'objet d'aus
 ====
 
 //🏷{"id": "38fd6aa0-2354-4d0d-9812-10ed917eae5e", "labels": []}
-### Interopérabilité
+### Exigences d'interopérabilité
 
 TIP: Décrire ici les exigences portant sur les protocoles, formats et sémantiques à respecter afin de favoriser les échanges avec des organismes ou tiers.
 
@@ -388,7 +388,7 @@ Exemple 2 (pour une administration): Le projet devra respecter le https://www.nu
 ====
 
 //🏷{"id": "9efde825-9508-4669-918c-7cfb0d45c21f", "labels": ["niveau_detail::détaillé"]}
-### Exigences de gestion de la concurrence
+### Exigences sur la gestion de la concurrence
 
 [TIP]
 ====
@@ -405,7 +405,7 @@ Exemple 3 : Aucune autre instance du job X ne devra être lancée en parallèle 
 ====
 
 //🏷{"id": "afdd573d-d1f8-4958-99c1-e404592396d0", "labels": ["niveau::avancé","niveau_detail::détaillé"]}
-### Modes dégradés
+### Exigences sur les modes dégradés
 [TIP]
 ====
 Préciser les modes dégradés applicatifs envisagés.
@@ -419,7 +419,7 @@ Exemple 2 : Si le serveur SMTP ne fonctionne plus, les mails devront être persi
 ====
 
 //🏷{"id": "4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f", "labels": ["niveau_detail::détaillé","archivage"]}
-### Archivage
+### Exigences d'archivage
 
 [TIP]
 ====
@@ -439,7 +439,7 @@ Exemple 2 : Les documents comptables doivent être conservés en ligne pendant u
 
 
 //🏷{"id": "fedcba98-7654-4321-8abc-0def12345678", "labels": ["niveau_detail::détaillé"]}
-### Durées de rétention
+### Exigences sur les durées de rétention
 
 TIP: Précisez ici combien de temps doivent être conservées les données et documents stockés par vos modules applicatifs. À noter que ces durées peuvent être contraintes par le droit (voir contraintes juridiques plus haut), par exemple dans le cadre du droit à l'oubli du RGPD.
 

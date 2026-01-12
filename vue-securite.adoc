@@ -23,7 +23,7 @@ TIP: Indiquer le statut de la vue, par exemple 'DRAFT', 'FINALISÉ',...
 //🏷{"id": "a08e807e-1e9b-4752-a5b8-372a40665c49", "labels": ["contexte"]}
 ## Introduction
 
-La vue sécurité décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement des modules applicatifs.
+La vue sécurité décrit l'ensemble des dispositifs mis en œuvre pour empêcher l'utilisation non-autorisée, le mauvais usage, la modification illégitime ou le détournement du SI.
 
 Les autres vues du dossier sont accessibles link:./README.adoc[d'ici].
 
@@ -178,11 +178,7 @@ Exemple :
 |**Documents officiels générés (ex. : avis d’imposition PDF)** | | | | X
 |===
 
-Exemples de dispositifs associés selon le niveau d’intégrité requis :
 
-- **Détectable** → Logs d’accès et vérification des empreintes numériques (hashes).
-- **Maîtrisé** → Rétention des versions, auditabilité, correction automatique des erreurs détectées.
-- **Intègre** → Chiffrement, signatures numériques, réplication synchrone, stockage immuable (WORM).
 ====
 
 [PRE-FILLED]
@@ -349,13 +345,13 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 
 | Phrase de passe                  | Connaissance   | Forte   | Série de mots faciles à retenir (ex: CorrectHorseBatteryStaple). | Moins vulnérable au brute force, mais nécessite une bonne mémorisation. | Comptes sensibles (banques, emails). | NIST SP 800-63B
 
-| Clé publique SSH                 | Possession      | Forte   | Paire de clés asymétriques (publique/privée) pour l'authentification. | Perte/vol de la clé privée = accès compromis. Gestion complexe. | Accès aux serveurs (SSH, Git). | RFC 4251
+| Clé SSH                 | Possession      | Forte   | Paire de clés asymétriques (publique/privée) pour l'authentification. | Perte/vol de la clé privée = accès compromis. Gestion complexe. | Accès aux serveurs (SSH, Git). | RFC 4251
 
 | OTP par Token                    | Possession      | Forte   | Code à usage unique généré par un appareil physique (ex: RSA SecurID). | Dépendance matérielle (perte/vol). Coût. | Connexions sensibles (admin, VPN). | RFC 6238
 
 | OTP par application (TOTP)       | Possession      | Forte   | Code temporaire généré par une app (Google Authenticator, Authy). | Dépend de l'appareil mobile. Risque si téléphone perdu. | Comptes en ligne (Google, AWS, banques). | RFC 6238
 
-| Clé matérielle (YubiKey)         | Possession      | Très forte | Clé physique (USB/NFC) pour une authentification forte (FIDO2). | Coût (~50€). Nécessite un appareil compatible. | Accès admin, comptes sensibles, crypto-monnaies. | FIDO2
+| Clé matérielle (ex: YubiKey)         | Possession      | Très forte | Clé physique (USB/NFC) pour une authentification forte (FIDO2). | Coût (~50€). Nécessite un appareil compatible. | Accès admin, comptes sensibles, crypto-monnaies. | FIDO2
 
 | Certificat numérique              | Possession      | Très forte | Certificat X.509 stocké sur une carte à puce ou un appareil. | Complexité de gestion (PKI). Coût. | Accès aux réseaux d'entreprise, VPN. | RFC 5280
 
@@ -598,7 +594,7 @@ L’application fonctionne de manière autonome et ne partage pas d’authentifi
 [TIP]
 ====
 La **non-répudiation** garantit qu’un utilisateur ou une organisation ne peut **nier** avoir réalisé une action donnée (signature, validation, transaction…).  
-Elle repose généralement sur des mécanismes cryptographiques, notamment la **signature électronique** et l’horodatage sécurisé.
+Dans les systèmes d’information modernes, la non-répudiation repose quasi systématiquement sur des mécanismes cryptographiques.
 
 La signature numérique est reconnue légalement par **le texte n°2000-230 du 13 mars 2000 du code civil**, ainsi que par le **règlement eIDAS (UE 910/2014)** définissant plusieurs niveaux de signature :  
 - **Simple** : Vérifie uniquement l’identité de l’émetteur.  
@@ -679,7 +675,7 @@ Une autorisation ("droit d'accès" ou "habilitation") permet de **contrôler l�
 - **Associer** une liste de **fonctions** à un **rôle** (ex: `R_Administrateur`, `R_banquier_niv1`, `R_chef_service`).
 - **Attribuer** les rôles aux **utilisateurs ou groupes** pour une meilleure factorisation.
 
-**Modèle classique de gestion des autorisations :**  
+**Modèle classique de gestion des autorisations de type RBAC :**  
 
 image::diagrammes/roles.svg[Gestion classique des rôles]
 
@@ -731,6 +727,84 @@ Le détail des autorisations sera documenté dans les **SFD (Spécifications Fon
 |
 | X
 |===
+
+**Modèles de contrôle d’accès**
+
+Les principaux modèles de gestion des autorisations sont les suivants :
+
+- **RBAC (Role-Based Access Control)** :  
+  Les droits sont attribués via des rôles.  
+  Modèle simple, lisible et largement utilisé, mais peu expressif sans extensions.
+
+- **RBAC étendu par contraintes** :  
+  Le RBAC est complété par des règles conditionnelles (temps, localisation, périmètre).  
+  C’est le **compromis le plus fréquent** entre sécurité et complexité.
+
+- **ABAC (Attribute-Based Access Control)** :  
+  Les décisions d’autorisation reposent sur l’évaluation d’attributs  
+  (utilisateur, ressource, action, environnement).  
+  Modèle très flexible, mais **plus complexe à gouverner et auditer**.
+
+- **PBAC (Policy-Based Access Control)** :  
+  Terme générique plus large, souvent construit sur l’ABAC, permettant de définir des règles d’autorisation complexes sous forme de **politiques** et de les évaluer via des **moteurs de politiques**  
+  (ex. : **OPA – Open Policy Agent**).
+
+NOTE:  
+Au milieu des années 2020, de nombreuses organisations adoptent un **modèle de contrôle d’accès hybride**, dans lequel :
+
+- le **RBAC** est utilisé pour gérer les **rôles et responsabilités de base** ;
+- l’**ABAC / PBAC** est exploité pour appliquer des **règles d’autorisation fines et contextuelles**  
+  (localisation, temps, attributs de la ressource, posture de sécurité, etc.).
+- le choix du modèle doit rester **proportionné aux enjeux de sécurité**.  
+  Dans la majorité des systèmes d’information, un **RBAC enrichi de contraintes contextuelles** offre un excellent équilibre entre sécurité, lisibilité et maintenabilité.
+
+
+NOTE:  
+Le choix du modèle doit rester proportionné aux enjeux de sécurité.  
+Dans la majorité des systèmes d’information, un **RBAC enrichi de contraintes contextuelles** offre un excellent équilibre entre sécurité, lisibilité et maintenabilité.
+
+
+**Autorisations contextuelles (RBAC étendu / ABAC)**
+
+====
+Dans de nombreux systèmes d’information, les autorisations ne dépendent pas uniquement des rôles attribués, mais également de **facteurs contextuels**.  
+Ces mécanismes permettent d’affiner les contrôles d’accès en fonction de la situation d’exécution réelle.
+
+**Exemples de facteurs contextuels couramment utilisés :**
+
+- **Localisation** :
+  * zone géographique (pays, région),
+  * réseau d’origine (intranet, VPN, Internet),
+  * plage d’adresses IP autorisées.
+- **Temps** :
+  * plage horaire (heures ouvrées),
+  * jours ouvrés / week-end,
+  * durée de validité d’une habilitation.
+- **Contexte technique** :
+  * type de terminal (poste métier, mobile, bastion),
+  * niveau de sécurité du poste (poste conforme, MFA actif),
+  * canal d’accès (API, interface d’administration).
+- **Contexte métier ou de la donnée** :
+  * état de la ressource (brouillon, validée, archivée),
+  * périmètre fonctionnel ou organisationnel (ex: X a le droit de consulter sur l'Asie uniquement),
+  * classification ou sensibilité de la donnée.
+
+====
+
+====
+**Exemples d’autorisations conditionnelles :**
+
+Exemple 1 : Un utilisateur disposant du rôle `R_Administrateur` peut supprimer des données  
+  **uniquement depuis le réseau interne**.
+
+Exemple 2 : Un chef de service peut valider des dossiers  
+  **uniquement pour sa région de rattachement**.
+
+Exemple 3 : Un accès sensible est autorisé  
+  **uniquement pendant les heures ouvrées** et avec **authentification forte**.
+
+====
+
 
 //🏷{"id": "e72e5ea5-5711-4665-8a91-76c63cbca2bc", "labels": ["niveau::intermédiaire"]}
 ### Exigences de traçabilité et d'auditabilité
@@ -826,7 +900,16 @@ Exemple :
 ====
 Lister ici les mesures assurant le niveau d'intégrité demandé
 
-Exemple: 
+**Exemples de dispositifs associés selon le niveau d’intégrité requis :**
+
+- **Détectable** →  
+  Logs d’accès, contrôles d’intégrité par empreintes numériques (hashes), détection a posteriori des altérations.
+
+- **Maîtrisé** →  
+  Rétention des versions, auditabilité des modifications, mécanismes de correction automatique ou de recalcul en cas d’erreur détectée.
+
+- **Intègre** →  
+  Chiffrement, signatures numériques, réplication synchrone, stockage immuable (WORM), horodatage et preuves d’intégrité fortes.
 
 [cols="e,e,e"]
 |===
@@ -836,36 +919,37 @@ Exemple:
 | Intègre
 a|
 * Utilisation du SGBDR **PostgreSQL** avec un niveau d’isolation transactionnelle **SERIALIZABLE**.
-* Les entités seront référencées uniquement par des **ID techniques** issues de séquences PostgreSQL.
-* Activation de la **journaling WAL** pour assurer la reprise en cas de crash.
+* Les entités seront référencées uniquement par des **ID techniques** issus de séquences PostgreSQL.
+* Activation du **journaling WAL** pour assurer la reprise en cas de crash.
 * Vérification d'intégrité périodique avec `pg_checksums`.
 
 | Données archivées
-| Détecté
-| Génération de checksums **SHA-256** des backups et validation lors des restaurations.
+| Détectable
+| Génération de checksums **SHA-256** des sauvegardes et validation systématique lors des restaurations.
 
 | Données calculées D1
 | Maîtrisé
-| Stockage d’un checksum **SHA1**, relance automatique du calcul par batch en cas de divergence dans un délai de **24h**.
+| Stockage d’un checksum **SHA-1**, relance automatique du calcul par batch en cas de divergence dans un délai maximal de **24 h**.
 
 | Silo NoSQL des données Big Data avant consolidation
 | Non intègre
-| Pas de mesure particulière, **pas de backup**, ces données sont temporaires et recalculables.
+| Pas de mesure particulière, **pas de sauvegarde** : données temporaires, non critiques et recalculables.
 
 | Sources de l'application
 | Intègre
 a|
-* Utilisation du **SCM Git** avec contrôle d’intégrité natif (hash SHA-1/SHA-256).
-* Vérification des commits avec **GPG signing**.
-* Stratégie de merge stricte (fast-forward only).
+* Utilisation du **SCM Git** avec contrôle d’intégrité natif (hash SHA-1 / SHA-256).
+* Vérification des commits par **signature GPG**.
+* Stratégie de merge stricte (**fast-forward only**).
 
 | Avis d’imposition PDF
 | Intègre
 a|
 * **Signature numérique** du montant net, de la date et du nom via **PKCS#7 (RSA, SHA-256)**.
-* **Horodatage qualifié** intégré à la signature (PAdES).
-* Inclusion de la signature hexadécimale en **pied de page** du PDF pour vérification ultérieure.
+* **Horodatage qualifié** intégré à la signature (**PAdES**).
+* Inclusion de l’empreinte de signature hexadécimale en **pied de page** du PDF pour vérification ultérieure.
 |===
+
 
 ====
 
