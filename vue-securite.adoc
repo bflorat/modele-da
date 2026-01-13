@@ -629,6 +629,47 @@ La signature numérique est reconnue légalement par **le texte n°2000-230 du 1
 |PKI du fournisseur de paiement (ex. : Visa, Mastercard)
 |===
 
+**Données à conserver pour preuves**
+[TIP]
+====
+Exemple : 
+
+[cols="e,e,e"]
+|===
+| Donnée | Objectif | Durée de rétention
+
+| Log complet (IP, heure GMT, détail) des commandes passées sur le site
+| Prouver que la commande a bien été passée
+| 1 an 
+
+| Date et contenu du mail de confirmation
+| Prouver que le mail de confirmation a bien été envoyé 
+| 2 ans
+
+| Contrat d’assurance signé et numérisé en PDF
+| Prouver que le contrat a bien été signé
+| 5 ans
+
+| Avis d’imposition primitif avec signature numérique
+| Conserver le montant et la validation de l’impôt
+| 5 ans
+|===
+
+====
+
+[PRE-FILLED]
+====
+[cols="1,1,1"]
+|===
+| Donnée | Objectif | Durée de rétention
+
+| 
+| 
+| 
+|===
+====
+
+
 //🏷{"id": "958fcccc-60cb-4158-940f-279cd1d12c9b", "labels": []}
 ### Exigences d'anonymat et de respect de la vie privée
 
@@ -805,13 +846,12 @@ Exemple 3 : Un accès sensible est autorisé
 
 ====
 
-
 //🏷{"id": "e72e5ea5-5711-4665-8a91-76c63cbca2bc", "labels": ["niveau::intermédiaire"]}
 ### Exigences de traçabilité et d'auditabilité
 
 [TIP]
 ====
-Lister ici les besoins en **traçabilité et auditabilité** pour détecter et analyser :
+Lister ici les besoins en **traçabilité et auditabilité** pour détecter et analyser par exemple :
 
 * **Un usage abusif** des applications Back Office par des employés.
 * **Des intrusions informatiques** ou tentatives de compromission.
@@ -831,7 +871,8 @@ Lister ici les besoins en **traçabilité et auditabilité** pour détecter et a
 
 - Pour les **données sensibles**, prévoir **une traçabilité à deux niveaux** (tracer aussi l’accès aux traces) pour limiter les abus hiérarchiques.  
 - La **traçabilité des référentiels** (ex: base des personnes) doit inclure **une historisation complète**.  
-- Concevoir un **MCD** (Modèle Conceptuel de Données) permettant de conserver **chaque modification** avec sa date de modification et sa date d’effet.  
+- Conserver **chaque modification** avec sa date de modification et sa date d’effet.  
+- Ne pas oublier les **purges** de ces traces.
 ====
 
 ====
@@ -843,51 +884,11 @@ Lister ici les besoins en **traçabilité et auditabilité** pour détecter et a
 ====
 
 ====
-**Exemple 2** : Toute **intrusion dans le SI** devra être détectée dans la mesure du possible et remontée aux équipes de sécurité.
+**Exemple 2** : Tout accès VPN sera tracé.
 ====
 
 ====
 **Exemple 3** : Il doit être possible de **reconstituer l’historique** complet d’un dossier patient à **n’importe quelle date**.
-====
-
-### Données à conserver pour preuves
-[TIP]
-====
-Exemple : 
-
-[cols="e,e,e"]
-|===
-| Donnée | Objectif | Durée de rétention
-
-| Log complet (IP, heure GMT, détail) des commandes passées sur le site
-| Prouver que la commande a bien été passée
-| 1 an 
-
-| Date et contenu du mail de confirmation
-| Prouver que le mail de confirmation a bien été envoyé 
-| 2 ans
-
-| Contrat d’assurance signé et numérisé en PDF
-| Prouver que le contrat a bien été signé
-| 5 ans
-
-| Avis d’imposition primitif avec signature numérique
-| Conserver le montant et la validation de l’impôt
-| 5 ans
-|===
-
-====
-
-[PRE-FILLED]
-====
-[cols="1,1,1"]
-|===
-| Donnée | Objectif | Durée de rétention
-
-| 
-| 
-| 
-|===
 ====
 
 //🏷{"id": "d1f16239-18f7-4a4a-875e-34a587eb88b4", "labels": ["solution"]}
@@ -949,7 +950,6 @@ a|
 * **Horodatage qualifié** intégré à la signature (**PAdES**).
 * Inclusion de l’empreinte de signature hexadécimale en **pied de page** du PDF pour vérification ultérieure.
 |===
-
 
 ====
 
@@ -1064,7 +1064,8 @@ Exemple 3 : Les comptes de service seront identifiés via une clé API unique st
 [TIP]
 ====
 Décrire ici les mécanismes d’authentification mis en place, y compris :  
-- Le mode de stockage et de vérification des mots de passe.  
+
+- Le mode de stockage et de vérification des secrets d'authentification.  
 - Les éventuels facteurs d’authentification supplémentaires.  
 - La gestion du cycle de vie des identifiants (création, mise à jour, suppression).  
 ====
@@ -1086,8 +1087,9 @@ Exemple 3 : Pour permettre la récupération de compte, les utilisateurs pourro
 
 ====
 Exemple 4 : Lors de l’ajout d’un nouveau bénéficiaire de virement dans l’espace internet, l’utilisateur devra fournir :  
-  - Son mot de passe habituel.  
-  - Un **OTP** généré via une application TOTP (Google Authenticator, FreeOTP…).  
+
+ - Son mot de passe habituel.  
+ - Un **OTP** généré via une application TOTP (Google Authenticator, FreeOTP…).  
 ====
 ====
 Exemple 5 : L'accès aux API REST critiques nécessitera une **authentification par clé API + JWT signé**.  
@@ -1154,7 +1156,7 @@ Exemple 3 : Le SSO sera mis en œuvre via **Keycloak** en tant que fournisseur 
 
 [TIP]
 ====
-Les **comptes de service** sont utilisés pour authentifier une application ou un batch lorsqu’ils accèdent à un service d’infrastructure (base de données, API…).
+Les **comptes de service** sont utilisés pour authentifier une application ou un job lorsqu’ils accèdent à un service d’infrastructure (base de données, API…).
 
 **Bonnes pratiques :**
 
@@ -1172,6 +1174,7 @@ Les **comptes de service** sont utilisés pour authentifier une application ou u
 |`api_backend` | API REST X | **Authentification via JWT signé et stocké dans un coffre-fort numérique sécurisé**
 |`ci_cd_runner` | Serveur CI/CD | **Stockage en HashiCorp Vault avec rotation automatique des secrets**
 |===
+
 
 //🏷{"id": "9f09dacf-d151-45af-a5f6-209823e7a401", "labels": ["niveau::avancé"],"link_to":["01404b83-f96f-4649-ace0-e5611601b830"]}
 ### Non-répudiation et horodatage
@@ -1212,7 +1215,7 @@ Exemple 3 : Un **bandeau de consentement aux cookies** sera mis en place sur to
 ====
 
 //🏷{"id": "e6d0ad26-40b7-412e-b861-1f8e6e2299ca", "labels": ["niveau::intermédiaire"],"link_to":["fcad5990-c241-4c88-b2c5-646602f8935a"]}
-### Habilitations
+### Autorisations
 
 ====
 Exemple 1 : La gestion des **autorisations** sera intégrée **applicativement** et stockée dans la **base PostgreSQL**.  
@@ -1255,17 +1258,21 @@ Exemple 5 : Les journaux **contenant le tag `[PREUVE]`** et issus de **tous les
 ====
 Les cybermenaces incluent : malwares, phishing, attaques DOS/DDOS, exploitation de vulnérabilités (connues ou zero-day), ingénierie sociale, escroqueries en ligne, fuites de données sensibles, etc.
 
-Le cadre de réponse aux menaces peut être aligné sur le **NIST Cybersecurity Framework**, qui définit 5 fonctions clés :
+Le cadre de réponse aux menaces peut être aligné sur le **NIST Cybersecurity Framework**, qui définit six fonctions clés :
 
-1. **Identifier** : Comprendre et prioriser les risques.
-2. **Protéger** : Mettre en place des mécanismes de défense.
-3. **Détecter** : Identifier une attaque en cours.
-4. **Réagir** : Contenir et neutraliser la menace.
-5. **Récupérer** : Restaurer les services après une attaque.
+1. **Gouverner** : Définir la gouvernance de la cybersécurité, les rôles et responsabilités, la stratégie, la gestion des risques, la conformité et la prise de décision au niveau organisationnel.
+2. **Identifier** : Comprendre et prioriser les risques.
+3. **Protéger** : Mettre en place des mécanismes de défense.
+4. **Détecter** : Identifier une attaque en cours.
+5. **Réagir** : Contenir et neutraliser la menace.
+6. **Récupérer** : Restaurer les services après une attaque.
+====
 
 //🏷{"id": "d13f2885-ab5c-4543-9432-f53002c01c2c", "labels": []}
 #### Solutions de prévention
 
+[TIP]
+====
 Ces solutions permettent d’**anticiper** les menaces avant qu'elles ne surviennent.
 
 * **Formations et sensibilisations** des utilisateurs et des équipes IT.
@@ -1296,6 +1303,8 @@ Exemple 2 : Mise en place de l'IPS OpenSource **CrowdSec**, basé sur le partage
 ====
 Ces solutions permettent d’**identifier** les attaques en cours.
 
+Exemples :
+
 * **Antivirus nouvelle génération** (basés sur IA et heuristiques, et non uniquement sur des signatures).
 * **WAF (Web Application Firewall)** pour analyser et bloquer les attaques applicatives.
 * **SIEM (Security Information and Event Management)** pour corréler et analyser les journaux issus de multiples sources.
@@ -1304,9 +1313,14 @@ Ces solutions permettent d’**identifier** les attaques en cours.
   - SAST : Analyse du **code source** pour identifier les vulnérabilités connues.
   - DAST : Analyse des **comportements en exécution**.
 * **SCA (Software Composition Analysis)** : Analyse des dépendances logicielles pour détecter les **CVE (Common Vulnerabilities and Exposures)**.
+* **SBOM (Software Bill of Materials)** :  
+  inventaire structuré des composants logiciels et de leurs dépendances, permettant :
+  - d’**identifier rapidement l’exposition** à une vulnérabilité nouvellement publiée,
+  - de renforcer la **sécurité de la chaîne d’approvisionnement logicielle**,
+  - de faciliter les analyses de conformité et de risque.
 ====
 ====
-Exemple 1 : Intégration de **OWASP Dependency-Check** dans la CI/CD pour détecter les librairies contenant des CVE.
+Exemple 1 : [Solution SCA] Intégration de **OWASP Dependency-Check** dans la CI/CD pour détecter les librairies contenant des CVE.
 ====
 
 //🏷{"id": "d4498522-32aa-4987-aaec-2d9cf01130da", "labels": []}
