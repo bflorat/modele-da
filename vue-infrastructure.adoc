@@ -1265,7 +1265,7 @@ Cependant, certaines pratiques sont **spécifiquement liées à l’écoconcepti
   - **Exemples de PUE**: OVHcloud atteint un PUE moyen de 1.29 en 2023 avec des optimisations avancées (refroidissement liquide) ; Certains datacenters hyperscale comme Google Cloud peuvent atteindre 1.1 grâce à l’IA et aux optimisations thermiques.  
   - **Attention :** L'efficacité énergétique ne se limite pas au PUE, il faut aussi considérer **l'origine de l'énergie** (renouvelable ou fossile). Par exemple en 2024, l'intensité carbone de la France est de 21,7 gCO₂e/kWh contre 352 gCO₂e/kWh en moyenne aux USA.
 
-#### **Impact énergétique global**
+#### Impact énergétique global
 * **Évaluer l’impact complet de l’application** :  
   - L’énergie consommée **du côté des terminaux client et du réseau** est souvent bien plus élevée que celle du serveur.  
   - **Allonger la durée de vie des équipements** (terminaux et serveurs) est une approche efficace pour limiter l'empreinte carbone.  

@@ -226,7 +226,7 @@ TIP: Voir aussi <<da0d11fe-0dc9-478e-a984-7a80ea1be482,Exigences d'écoconceptio
 
 #### Optimisation énergétique et infrastructure
 
-#### **Impact énergétique global**
+#### Impact énergétique global
 
 [#46e9c057-75cb-4bc0-9c8d-9af81f737c61]
 ### Régulation de la charge
