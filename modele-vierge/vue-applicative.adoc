@@ -6,13 +6,18 @@
 :icons: font
 :toc-title: Sommaire
 
+*Dernière modification* : _{docdate}_
+
+*Date de la dernière revue globale* : 
+
+*Statut du document* :  
+
 [#74c82505-5f47-4342-8f1b-f6951d603062]
 ## Introduction
 
 [#c182158d-40af-4840-b8f2-3a2a030c95af]
 ### Documentation de Référence
-.Références documentaires
-[cols="1e,1e,4e,4e"]
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
@@ -28,9 +33,26 @@
 
 [#0f9d2e4a-3c71-4b9e-8f3b-2b8c7d1e9a60]
 ### Points nécessitant une étude complémentaire
+[cols="1,6,1,1,1"]
+|===
+|Sujet| Détail | Statut| Porteur du sujet  | Échéance
+
+|
+|
+|
+|
+|
+|===
 
 [#7a1cdb2e-4f52-42a1-9c3e-6e0f2d3a8b91]
 ### Hypothèses
+[cols="1,6"]
+|===
+|ID| Détail
+
+|
+|
+|===
 
 [#382fd086-f48e-4ad5-9911-07e3de281971]
 ## Contexte général
@@ -48,26 +70,65 @@
 ### Acteurs
 
 #### Acteurs internes 
+[cols="2,3,2,2"]
+|===
+|Acteur|Description|Population|Localisation
+
+|
+|
+|
+|
+
+|===
 
 #### Acteurs externes
+[cols="2,3,2,2"]
+|===
+|Acteur| Description| Population| Localisation
+
+|
+|
+|
+|
+|===
 
 [#deafbeef-dead-4bed-8ace-0b0b0b0b0b0b]
 #### Nature et sensibilité des données et traitements
+
+[%header,cols="2,3,3,2,1,1,1,1"]
+|===
+| Processus métier | Finalité | Catégories de données manipulées | Classification | D | I | C | T
+
+| 
+|
+|
+|
+|
+|
+|
+|
+|===
+
+[cols="1,5"]
+|===
+| Légende | (D)isponibilité (I)ntégrité \(C)onfidentialité (T)race ou preuve. Donner le niveau requis : faible, moyen ou élevé
+| Classification | Public, Interne, Diffusion restreinte, Confidentiel
+|===
 
 [#3b714287-891e-4ea3-a7a4-17672caaf945]
 ## Contraintes
 
 [#58897e87-0c12-4139-b5da-daec9cae21c6]
-### Budget
+### Contraintes budgetaires
 
 [#ac5b1f28-bfcb-4543-a90b-abcff2b41822]
-### Planning
+### Contraintes planning
 
 [#5837249a-8fcc-4e42-9dd9-384c4fa32afc]
 ### Urbanisation
 
 [#abafa462-262f-429e-aad8-d2cdc0cf15a3]
-### Juridique
+### Contraintes juridiques
 
 [#9352a89a-3f8b-4028-98d5-58fb970e01ef]
 ## Exigences
@@ -76,19 +137,27 @@
 ### Exigences stratégiques
 
 [#38fd6aa0-2354-4d0d-9812-10ed917eae5e]
-### Interopérabilité
+### Exigences d'interopérabilité
 
 [#9efde825-9508-4669-918c-7cfb0d45c21f]
-### Exigences de gestion de la concurrence
+### Exigences sur la gestion de la concurrence
 
 [#afdd573d-d1f8-4958-99c1-e404592396d0]
-### Modes dégradés
+### Exigences sur les modes dégradés
 
 [#4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f]
-### Archivage
+### Exigences d'archivage
 
 [#fedcba98-7654-4321-8abc-0def12345678]
-### Durées de rétention
+### Exigences sur les durées de rétention
+[cols="1,1"]
+|===
+| Nature de la Donnée | Durée maximale de rétention
+
+| 
+| 
+
+|===
 
 [#b269e65b-a8c7-4518-a861-5c6c17802869]
 ## Architecture cible
@@ -113,9 +182,29 @@
 
 [#5f6e7d8c-9b0a-4f3e-8d7c-6b5a4e3d2c1f]
 ### Archivage
+TIP: Voir aussi <<4a3b2c1d-0e9f-4d8c-8b7a-6a5b4c3d2e1f,Exigences d'archivage>>.
 
 [#0a1b2c3d-4e5f-4061-82a3-b4c5d6e7f809]
 ### Purges
+TIP: Voir aussi <<fedcba98-7654-4321-8abc-0def12345678,Exigences sur les durées de rétention>>.
 
 [#9f8e7d6c-5b4a-49a8-9c7d-6e5f4d3c2b1a]
 ### Matrice des flux applicatifs
+[cols='1,3,1,1,1']
+|===
+|Source|Destination|Type de réseau|Protocole| Mode
+
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+|===
+
+_Mode: (L)ecture, (E)criture ou Lecture/Ecriture (LE), (A)ppel (vers un système stateless)_

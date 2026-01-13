@@ -6,13 +6,18 @@
 :icons: font
 :toc-title: Sommaire
 
+*Dernière modification* : _{docdate}_
+
+*Date de la dernière revue globale* : 
+
+*Statut du document* :  
+
 [#32c8942e-443f-429d-a411-43869a720224]
 ## Introduction
 
 [#c443e562-398d-49ab-92bd-8031f3e91bec]
 ### Documentation de Référence
-.Références documentaires
-[cols="1e,1e,4e,4e"]
+[cols="1,1,4,4"]
 |===
 |N°|Version|Titre/URL du document| Détail
 
@@ -28,42 +33,96 @@
 
 [#c5db3e60-e70c-4ebb-9848-44a0cecc4c6e]
 ### Points nécessitant une étude complémentaire
+[cols="1,1,1,1,1"]
+|===
+|ID|Détail|Statut|Porteur du sujet  | Échéance
+
+|
+|
+|
+|
+|
+|===
 
 [#577c9b37-77a2-4568-9fb5-2804d6f9bc70]
 ### Hypothèses
+
+[cols="1,6"]
+|===
+|ID|Détail
+
+|
+|
+
+|===
 
 [#69811b17-b947-4562-90ba-a97160421965]
 ## Contraintes
 
 [#646fc728-6cef-4e75-9fa9-646b4ec2159d]
-### Contraintes stockage
+### Contraintes de stockage
 
 [#1d3ec06e-d63d-4a61-bb4e-437358064687]
-### Contraintes CPU
+### Contraintes de puissance de calcul
 
 [#ec6a420b-c284-442a-93fd-edc3d45ed00a]
-### Contraintes mémoire
+### Contraintes sur la mémoire
 
 [#8d948872-15f9-49b6-9527-f511a2f7597d]
-### Contraintes réseau
+### Contraintes sur le réseau
 
 [#d6e3eb12-371b-4c26-b538-9fea2051bfed]
 ## Exigences
 
 [#962347a4-c3c8-4f0c-bcac-774a6ef617a4]
-### Volumétrie statique
+### Exigences sur la volumétrie statique
 
 [#1736e661-2c68-4aa6-a157-9e4444d5a374]
 #### Métriques
+[cols="1,1,1,1,1,1,1"]
+|===
+|Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) |  Source| Détail/hypothèses
+
+| 
+| 
+| 
+| 
+| 
+| 
+|===
 
 [#9968c2e6-46b9-4005-89d4-6a9114246a4c]
 #### Estimation besoins de stockage
+[cols='1,1,1,1,1,1']
+|===
+|Donnée|Description|Taille unitaire|Nombre d'éléments à 5 ans|Taille totale|Augmentation annuelle
+
+| 
+| 
+| 
+| 
+| 
+| 
+|===
 
 [#b22cadba-e5a7-4c3a-b4b8-f9ea32a2a0be]
-### Volumétrie dynamique
+### Exigences sur la volumétrie dynamique
 
 [#910fc171-30ed-47cd-b03c-3ca918b3103e]
 #### Métriques
+[cols="1,1,1,1,1,1,1,1"]
+|===
+|Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) | Saisonnalité|  Source| Détail/hypothèses 
+
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|===
 
 [#3d09511c-17b2-43c3-bcba-0a62ead057b4]
 #### Estimation de la charge
@@ -72,16 +131,59 @@
 ### Exigences de temps de réponse
 
 [#24f70acd-5f7c-49b3-bd75-d594e5af8917]
-#### Temps de Réponse des IHM
+#### Exigences de temps de Réponse des IHM
+[cols='3,1,1,1']
+|===
+|Profil de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
+
+| 
+| 
+| 
+| 
+
+|===
 
 [#88645b89-d407-4107-93b2-48003fd8688a]
-#### Durée d’exécution des batchs
+#### Exigences sur la durée d’exécution des batchs
 
 [#fb740b6a-bd23-4401-a7e0-b01610a01b9b]
 ## Dimensionnement cible
 
 [#63214041-3461-4019-a685-fac68fdb4d74]
 ### Estimation des besoins en ressources par unité déployable
+[cols="2,1,1,3,2"]
+|===
+| Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires
+
+| 
+| 
+| 
+| 
+| 
+|===
 
 [#6e9675d7-5d8c-4cf8-989a-13640cd28ef3]
 ### Dimensionnement des machines
+[cols='1,3,1,1,1,1,1']
+|===
+|Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque distant SAN (Gio)
+
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|===
+
+[#e30801f9-af5b-49f3-bdca-214aae776336]
+### Dimensionnement du stockage externe hors SAN
+[cols='1,3,3']
+|===
+|Nature|Taille (Gio)|Type(s) de machine utilisant ce partage
+
+| 
+| 
+| 
+|===
