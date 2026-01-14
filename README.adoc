@@ -4,8 +4,6 @@ Ce modèle de Dossier d'Architecture (DA) est applicable à la plupart des proje
 
 Autres langues : https://github.com/bflorat/architecture-document-template[Anglais].
 
-Dernière revue globale: février 2025.
-
 ## Principes du modèle
 Nous avons découpé l'architecture du projet en cinq vues (applicative, sécurité, dimensionnement, infrastructure et développement), *chaque vue étant auto-porteuse*. 
 
