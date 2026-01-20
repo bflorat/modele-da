@@ -887,13 +887,13 @@ Quelques mots sur les *répartiteurs de charge* :
 ==== 
 *Failover (basculement automatique)* :
 
-Le failover  est la capacité d'un cluster de s'assurer qu'en cas de panne, les requêtes ne sont plus envoyées vers le nœud défectueux mais vers un nœud opérationnel. Ce *processus est automatique*. 
+Le failover est la capacité d'un cluster de s'assurer qu'en cas de panne, les requêtes ne sont plus envoyées vers le nœud défectueux mais vers un nœud opérationnel. Ce *processus est automatique*. 
 
-Sans failover, c'est au client de détecter la panne et de se reconfigurer pour rejouer sa requête vers un nœud actif. Dans les faits, ceci est rarement praticable et les *clusters disposent presque toujours de capacités de failover*. 
+Sans failover, c'est au client de détecter la panne et de se reconfigurer pour rejouer sa requête vers un nœud actif. Dans les faits, ceci est rarement praticable et les *clusters disposent presque toujours de mécanismes de failover*. 
 
 Une solution de failover peut être décrite par les attributs suivants : 
 
-* Quelle *stratégie de failback* (retour à la normale) ? Exemples :
+* Quelle *stratégie de failover* ? Exemples :
   **  Fail Fast : un nœud est marqué comme défectueux dès le premier échec détecté.
   **  Fail Soft : plusieurs échecs consécutifs sont nécessaires avant de déclarer un nœud en panne.
   **  Retry on Next Node : la requête est renvoyée à un autre nœud après un échec.
@@ -915,7 +915,7 @@ Une solution de failover peut être décrite par les attributs suivants :
 
 ** dans un cluster N-to-N (architecture en voie de démocratisation avec les solutions PaaS comme AWS Lambda ou CaaS comme Kubernetes) : la charge est automatiquement redistribuée entre les nœuds restants, et un autoscaler peut ajouter de nouvelles instances si nécessaire. 
 
-* *Transparent via à vis de l’appelant* ou pas ? La transparence du failover dépend de l’architecture. En HTTP, un répartiteur de charge peut masquer la panne en redirigeant immédiatement les requêtes vers un autre nœud. Dans le cas de bases de données, le client doit souvent gérer un retry. Les systèmes événementiels comme Kafka peuvent assurer un failover quasi-transparente.
+* *Transparent via à vis de l’appelant* ou pas ? La transparence du failover dépend de l’architecture. En HTTP, un répartiteur de charge peut masquer la panne en redirigeant immédiatement les requêtes vers un autre nœud. Dans le cas de bases de données, le client doit souvent gérer un retry. Les systèmes événementiels comme Kafka peuvent assurer un failover largement transparent coté producteurs, tandis que les clients doivent souvent gérer des rééquilibrages de partitions.
 
 
 ==== 
