@@ -762,6 +762,43 @@ Comment gère-t-on les erreurs ? Exemples de points à traiter :
 Exemple : Les erreurs techniques (donc imprévues) comme le timeout à un appel de service REST sont catchées au plus haut niveau de l'application (via un `ErrorHandler`). Toutes ses informations sont loguées avec la stack-trace complète mais l'appelant ne doit recupérer que le code erreur générique XYZ sans la stack-trace (pour raison de sécurité).
 ====
 
+//🏷{"id": "ce3486d9-0d31-4f13-85a9-e940f213ae31", "labels": []}
+#### Contrôles
+
+[TIP]
+====
+Lister ici les patterns et les solutions techniques mis en œuvre pour contrôler toutes les données entrant dans le service.
+
+Il est fondamental de ne jamais faire confiance à l'appelant et de vérifier systématiquement les données reçues. Prévoir notamment des couches d'anti-corruption dans les services exposés ainsi que dans les jobs consommant des données provenant de systèmes tiers.
+
+Une fois la donnée persistée dans votre système, il vous appartient de la gérer. Cela peut notamment nécessiter de faire évoluer le code afin de prendre en charge des contenus inattendus ou issus d'anciennes versions du modèle.
+
+Pour un système automatisé, la meilleure stratégie consiste généralement à appliquer les contrôles les plus stricts possible au moment de l'entrée des données.
+
+Il est également important de ne pas se limiter aux contrôles réalisés côté frontend, qui constituent principalement des contrôles de surface. Les contrôles doivent être systématiquement reproduits côté backend, où ils jouent un rôle de durcissement et garantissent l'intégrité du système.
+
+Rejet des flux invalides : il faut prévoir ce que signifie « rejeter » : erreur fonctionnelle en réponse ou simplement journalisée, quarantaine, métriques, alertes, possibilités de rejeu et absence de boucle infinie qui finirait par engorger votre système si les flux invalides n'étaient pas rejetés. Pour les gestions par lot, préciser si le lot entier est rejeté ou seulement les éléments invalides.
+
+Exemples de contrôles courants :
+
+* appartenance d'une valeur à une liste finie, représentée par exemple par une énumération ;
+* cohérence d'une date, par exemple l'interdiction du 31 février ;
+* respect d'un format attendu : adresse électronique, numéro de téléphone, code postal, date, etc. ;
+* respect d'une longueur maximale, par exemple 255 caractères pour un champ ;
+* respect de bornes minimales et maximales pour les valeurs numériques, par exemple `0 < âge < 150` ;
+* conformité du contenu d'une pièce jointe au format attendu : PDF, PNG, JPEG, etc. Il ne faut pas se baser uniquement sur le type MIME ou sur l'extension du fichier, mais également vérifier son contenu, par exemple à l'aide de la signature magique du format ;
+* présence, absence ou nullité d'une valeur, par exemple lorsqu'une adresse électronique est obligatoire. Penser néanmoins à conserver la compatibilité si vous exposez plusieurs versions de votre service.
+====
+
+====
+Exemple 1 : Avec Spring, utiliser les annotations JSpecify pour expliciter les contrats de nullabilité des paramètres d'entrée des contrôleurs (ex: `@Nullable`). En cas de violation de ce contrat, Spring renverra une erreur 400 (Bad Request) à l'appelant.
+====
+
+====
+Exemple 2 : Le job récupérant un flux JSON auprès du partenaire XYZ valide le document à l'aide du schéma JSON correspondant à la version attendue du modèle. Tout flux JSON non conforme est rejeté dans son entièreté même si certains éléments sont valides. Le flux rejeté est journalisé et une alerte est envoyée à l'équipe de support. 
+====
+
+
 //🏷{"id": "7a33eb60-882d-4095-bde2-9a477cc27433", "labels": ["ihm"]}
 #### Gestion de la robustesse coté frontend
 

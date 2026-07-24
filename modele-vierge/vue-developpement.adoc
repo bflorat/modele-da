@@ -162,6 +162,9 @@ TIP: Voir aussi <<c8e58371-6bea-48e2-ab0e-989fec63e0ee,Exigences d'écoconceptio
 [#4ffcfd1b-87c9-48d0-96d6-f3b3b817a869]
 #### Gestion des erreurs
 
+[#ce3486d9-0d31-4f13-85a9-e940f213ae31]
+#### Contrôles
+
 [#7a33eb60-882d-4095-bde2-9a477cc27433]
 #### Gestion de la robustesse coté frontend
 
