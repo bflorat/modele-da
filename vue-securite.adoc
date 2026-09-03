@@ -588,87 +588,181 @@ L’application fonctionne de manière autonome et ne partage pas d’authentifi
 - Le protocole choisi sera **OIDC avec un Identity Provider interne**.
 ====
 
-//🏷{"id": "01404b83-f96f-4649-ace0-e5611601b830", "labels": ["niveau::avancé"]}
-### Exigences de non-répudiation
+//🏷{"id": "01404b83-f96f-4649-ace0-e5611601b830", "labels": ["niveau::avancé"], "link_to":["e72e5ea5-5711-4665-8a91-76c63cbca2bc"]}
+### Exigences de non-répudiation et de valeur probante
+
+La *non-répudiation* garantit qu'un acteur ne peut nier avoir réalisé une action
+donnée (signature, validation, transaction). La *valeur probante* étend cette
+garantie dans le temps : elle porte sur la capacité à établir, plusieurs années
+plus tard et devant un tiers, ce qui s'est produit.
 
 [TIP]
 ====
-La **non-répudiation** garantit qu’un utilisateur ou une organisation ne peut **nier** avoir réalisé une action donnée (signature, validation, transaction…).  
-Dans les systèmes d’information modernes, la non-répudiation repose quasi systématiquement sur des mécanismes cryptographiques.
+Le critère discriminant est *l'identité de l'adversaire de la trace*.
 
-La signature numérique est reconnue légalement par **le texte n°2000-230 du 13 mars 2000 du code civil**, ainsi que par le **règlement eIDAS (UE 910/2014)** définissant plusieurs niveaux de signature :  
-- **Simple** : Vérifie uniquement l’identité de l’émetteur.  
-- **Avancée (AES)** : Liée de manière unique au signataire et protégée contre toute modification.  
-- **Qualifiée (QES)** : Conforme aux normes les plus strictes, avec certificat qualifié et dispositif sécurisé.
+Si l'adversaire est un attaquant externe ou un incident, des journaux suffisent :
+on cherche à comprendre et à investiguer, et le sujet relève des  de traçabilité.
 
-**Cas d’usage typiques :**  
+Si l'adversaire est *l'une des parties, y compris l'organisation qui exploite le
+système*, les journaux ne suffisent plus : ils sont produits par celui-là même à
+qui on voudrait les opposer. C'est la raison pour laquelle la non-répudiation
+repose sur de la cryptographie asymétrique et non sur de la journalisation — la
+signature déplace la production de la preuve chez le signataire.
 
-- Signature des **contrats et engagements légaux**.  
-- Validation des **transactions financières sensibles**.  
-- Soumission de **documents officiels** (déclarations fiscales, actes notariés…).
+Poser la question « qui contestera, et à qui devrai-je le démontrer ? » suffit en
+général à trancher si un besoin relève de cette section ou de la traçabilité.
 ====
 
-**Besoins de non-répudiation par cas d'usage**
-[cols="e,e,e,e"]
+[WARNING]
+====
+Prouver qu'un événement *a eu lieu* ne demande qu'un élément isolé. Prouver qu'un
+événement *n'a jamais eu lieu* (« cet agent n'a jamais consulté ce dossier »,
+« je n'ai jamais donné mon consentement ») exige l'*exhaustivité* de la trace sur
+toute la période concernée, sans trou ni purge non tracée. Si de tels besoins
+existent, ils doivent être identifiés ici car ils contraignent fortement la
+politique de rétention et de purge définie en exigences de traçabilité.
+====
+
+[NOTE]
+====
+La signature numérique est reconnue par la loi n° 2000-230 du 13 mars 2000 et par
+le règlement eIDAS (UE 910/2014), qui distingue trois niveaux :
+
+Simple:: Vérifie l'identité de l'émetteur.
+Avancée (AdES):: Liée de manière unique au signataire et protégée contre toute
+modification ultérieure.
+Qualifiée (QES):: Conforme aux exigences les plus strictes, avec certificat
+qualifié et dispositif de création de signature qualifié. Seule à bénéficier de
+la présomption de fiabilité et de l'équivalence avec la signature manuscrite.
+====
+
+[NOTE]
+====
+Le niveau exigé est *rarement déduit de l'analyse de risque*. Il est le plus
+souvent imposé de l'extérieur : délais de prescription applicables, obligations
+sectorielles, niveau eIDAS requis par un texte. Recueillir ces contraintes
+auprès du service juridique avant de coter ce critère.
+
+.Exemple
+[cols="2,1,1,1", options="header"]
 |===
-|Action ou document signé|Niveau de signature exigé|Origine du certificat client|Origine du certificat serveur
+| Action ou document signé | Niveau de signature exigé | Origine du certificat client | Origine du certificat serveur
 
-|Déclaration d’impôt sur le revenu (données X, Y et Z)
-|Signature eIDAS qualifiée 
-|PKI de l’administration fiscale
-|Autorité de certification Verisign
+| _Déclaration d'impôt sur le revenu (données X, Y et Z)_
+| _Signature eIDAS qualifiée_
+| _PKI de l'administration fiscale_
+| _Autorité de certification Verisign_
 
-|Contrat d’embauche électronique
-|Signature eIDAS avancée
-|PKI interne de l’entreprise
-|PKI externe certifiée eIDAS
+| _Contrat d'embauche électronique_
+| _Signature eIDAS avancée_
+| _PKI interne de l'entreprise_
+| _PKI externe certifiée eIDAS_
 
-|Validation d’un paiement électronique
-|Signature eIDAS avancée
-|Certificat bancaire du client
-|PKI du fournisseur de paiement (ex. : Visa, Mastercard)
+| _Validation d'un paiement électronique_
+| _Signature eIDAS avancée_
+| _Certificat bancaire du client_
+| _PKI du fournisseur de paiement (ex. : Visa, Mastercard)_
+|===
+====
+
+[cols="2,1,1,1", options="header"]
+|===
+| Action ou document signé | Niveau de signature exigé | Origine du certificat client | Origine du certificat serveur
+
+|
+|
+|
+|
 |===
 
-**Données à conserver pour preuves**
+*Éléments à conserver et durée de rétention*
+
 [TIP]
 ====
-Exemple : 
-
-[cols="e,e,e"]
+.Exemple
+[cols="3,2,1", options="header"]
 |===
 | Donnée | Objectif | Durée de rétention
 
-| Log complet (IP, heure GMT, détail) des commandes passées sur le site
-| Prouver que la commande a bien été passée
-| 1 an 
+| _Log complet (IP, heure GMT, détail) des commandes passées sur le site_
+| _Prouver que la commande a bien été passée_
+| _1 an_
 
-| Date et contenu du mail de confirmation
-| Prouver que le mail de confirmation a bien été envoyé 
-| 2 ans
+| _Contrat d'assurance signé et numérisé en PDF_
+| _Prouver que le contrat a bien été signé_
+| _5 ans_
 
-| Contrat d’assurance signé et numérisé en PDF
-| Prouver que le contrat a bien été signé
-| 5 ans
-
-| Avis d’imposition primitif avec signature numérique
-| Conserver le montant et la validation de l’impôt
-| 5 ans
+| _Avis d'imposition primitif avec signature numérique_
+| _Conserver le montant et la validation de l'impôt_
+| _5 ans_
 |===
-
 ====
 
-[PRE-FILLED]
-====
-[cols="1,1,1"]
+[cols="3,2,1", options="header"]
 |===
 | Donnée | Objectif | Durée de rétention
 
-| 
-| 
-| 
+|
+|
+|
 |===
+
+==== Intégrité des éléments de preuve dans la durée
+
+L'intégrité traitée en <<exigences-integrite,exigences d'intégrité>> porte sur
+les données métier. Elle ne couvre pas les éléments de preuve eux-mêmes, dont le
+besoin est distinct et souvent plus élevé : une trace altérable ne prouve rien.
+
+Trois exigences sont à statuer :
+
+Inaltérabilité:: Les éléments de preuve doivent-ils être protégés contre toute
+modification ou suppression, y compris par un administrateur du système ?
+Mécanismes possibles : stockage immuable (WORM), chaînage cryptographique des
+enregistrements, scellement périodique, archivage sur un système tiers hors du
+périmètre d'administration de l'application.
+
+Pérennité cryptographique:: Les algorithmes de signature et de condensation
+s'affaiblissent avec le temps. Une signature apposée aujourd'hui peut ne plus
+être opposable dans dix ans. Si la durée de rétention excède quelques années,
+prévoir un dispositif de conservation à long terme : formats de signature avec
+horodatage et données de validation (ex. : *PAdES-LTA*, *XAdES-LTA*),
+resignature périodique, ou archivage conforme à la norme *NF Z42-013*.
+
+Restituabilité:: Un élément de preuve que l'on ne sait pas extraire et présenter
+sous une forme exploitable ne remplit pas son office. Préciser le format de
+restitution attendu et prévoir des tests périodiques de restitution, au même
+titre que les tests de restauration de sauvegardes.
+
+[CAUTION]
+====
+Les traces stockées dans un puits de logs administrable par l'exploitant (ELK,
+Loki, SIEM) conviennent à l'investigation mais *ne constituent pas des éléments
+de preuve opposables à l'organisation qui les exploite*. Si un besoin de preuve
+existe contre l'organisation elle-même, prévoir un dispositif distinct.
 ====
 
+.Exemple
+[cols="2,1,2", options="header"]
+|===
+| Élément de preuve | Rétention | Dispositif de conservation
+
+| _Journaux marqués `[PREUVE]`_
+| _1 an_
+| _Chaînage par condensat SHA-256 et scellement quotidien horodaté_
+
+| _Avis d'imposition signés_
+| _5 ans_
+| _Signature PAdES-LTA, archivage en coffre-fort numérique NF Z42-013_
+|===
+
+[cols="2,1,2", options="header"]
+|===
+| Élément de preuve | Rétention | Dispositif de conservation
+
+|
+|
+|
+|===
 
 //🏷{"id": "958fcccc-60cb-4158-940f-279cd1d12c9b", "labels": []}
 ### Exigences d'anonymat et de respect de la vie privée
