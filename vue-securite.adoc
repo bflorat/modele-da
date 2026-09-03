@@ -315,68 +315,249 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 - L’**authentification initiale** (lors de l'inscription) est souvent plus stricte que les authentifications ultérieures.
 - Une **authentification fédérée** permet de déléguer l’authentification à un fournisseur d’identité (SSO, OAuth2, SAML, etc.), voir la section suivante.
 
-**Catégories de Facteurs d'Authentification**
-[cols="1,3"]
+*Facteurs d'authentification : tableau comparatif*
+ 
+Ce tableau couvre les trois catégories reconnues comme facteurs :
+connaissance, possession, inhérence.
+ 
+[cols="2,1,1,1,3,3,2", options="header"]
 |===
-| Catégorie | Description
-
+| Facteur | Catégorie | Force | Résistance au phishing | Description | Faiblesses / Risques | Norme
+ 
+| Mot de passe
 | Connaissance
-| Quelque chose que l'utilisateur **connaît** (ex. : mot de passe, PIN).
-
+| Faible
+| Non
+| Chaîne de caractères secrète connue de l'utilisateur.
+| Réutilisation entre services, fuite par bases compromises, hameçonnage, force brute. Insuffisant seul.
+| NIST SP 800-63B
+ 
+| Phrase de passe
+| Connaissance
+| Moyenne
+| Non
+| Suite de mots facile à mémoriser (ex. : `CorrectHorseBatteryStaple`).
+| Meilleure entropie qu'un mot de passe court, mais aussi vulnérable au hameçonnage et au rejeu.
+| NIST SP 800-63B
+ 
+| Question secrète
+| Connaissance
+| Très faible
+| Non
+| Question personnelle (ex. : nom du premier animal).
+| Réponses devinables ou publiquement accessibles. Déconseillé.
+| Déconseillé par NIST SP 800-63B
+ 
+| Code PIN
+| Connaissance
+| Faible seul
+| Non
+| Code numérique court (4 à 8 chiffres).
+| Espace de recherche réduit. N'a de valeur que combiné à un dispositif limitant les tentatives (carte, TPM, élément sécurisé).
+| —
+ 
+| Connaissance de données métier
+| Connaissance
+| Faible
+| Non
+| Question portant sur une information interne (ex. : montant de la dernière facture).
+| Partageable, mémorisation difficile, souvent accessible à des tiers légitimes.
+| —
+ 
+| Lien de vérification par e-mail
 | Possession
-| Quelque chose que l'utilisateur **possède** (ex. : token, clé SSH, téléphone).
-
+| Faible
+| Non
+| Lien à usage unique envoyé sur l'adresse déclarée.
+| Sécurité entièrement dérivée de celle de la boîte mail. Interception, transfert, hameçonnage.
+| —
+ 
+| OTP par SMS
+| Possession
+| Faible
+| Non
+| Code à usage unique envoyé par message texte.
+| Détournement de carte SIM (_SIM swapping_), interception SS7, transfert automatique. Déconseillé pour les usages sensibles.
+| —
+ 
+| OTP par application (TOTP)
+| Possession
+| Forte
+| Non
+| Code temporaire calculé à partir d'un secret partagé et de l'heure.
+| Rejeu possible par proxy d'interception en temps réel. Perte du terminal. Secret extractible si le terminal est compromis.
+| RFC 6238
+ 
+| OTP par jeton matériel
+| Possession
+| Forte
+| Non
+| Code généré par un dispositif physique dédié.
+| Mêmes limites que le TOTP face au proxy d'interception. Coût, logistique, perte.
+| RFC 4226 (HOTP), RFC 6238 (TOTP) ou protocole propriétaire
+ 
+| Notification push
+| Possession
+| Moyenne
+| Partielle
+| Demande de validation envoyée à un terminal enrôlé.
+| Vulnérable au harcèlement de notifications (_MFA fatigue_) si l'utilisateur peut valider sans contexte. La correspondance de nombre affiché réduit fortement ce risque.
+| Propriétaire
+ 
+| Clé SSH
+| Possession
+| Forte
+| Partielle
+| Paire de clés asymétriques, la clé privée restant sur le poste client.
+| Clé privée souvent stockée en clair sur le disque. Absence fréquente de phrase de passe. Gestion du cycle de vie et de la révocation.
+| RFC 4252
+ 
+| Certificat logiciel
+| Possession
+| Moyenne
+| Oui
+| Certificat X.509 et clé privée conservés dans un magasin logiciel (navigateur, système, fichier PKCS#12).
+| Clé privée exportable et copiable. Exfiltration par code malveillant. La possession exclusive ne peut être démontrée.
+| RFC 5280
+ 
+| Carte à puce / élément sécurisé
+| Possession + Connaissance (PIN)
+| Très forte
+| Oui
+| Clé privée générée dans un composant sécurisé et non extractible ; les opérations cryptographiques sont réalisées dans le composant, débloqué par un code PIN.
+| Coût. Lecteur et intergiciel requis. PKI à exploiter (révocation, renouvellement). Blocage du PIN, perte de la carte.
+| ISO/IEC 7816, PKCS#11, eIDAS (QSCD)
+ 
+| Clé matérielle FIDO2 / WebAuthn
+| Possession (+ PIN ou biométrie)
+| Très forte
+| Oui
+| Authentification par défi-réponse asymétrique, la signature étant liée à l'origine du site.
+| Coût. Nécessite un enrôlement et une clé de secours. Support applicatif encore inégal.
+| FIDO2, W3C WebAuthn
+ 
+| Passkey synchronisée
+| Possession
+| Forte
+| Oui
+| Justificatif WebAuthn synchronisé entre les appareils de l'utilisateur via son compte plateforme.
+| La sécurité est reportée sur le compte de synchronisation. Récupération de compte souvent plus faible que le facteur lui-même.
+| W3C WebAuthn
+ 
+| Terminal enrôlé
+| Possession
+| Moyenne
+| Non
+| Terminal préalablement déclaré et porteur d'une clé ou d'un certificat le liant au compte.
+| Ne vaut que si la liaison est cryptographique. À distinguer de la simple empreinte de terminal, qui est un signal de contexte (voir tableau suivant).
+| Propriétaire
+ 
+| Biométrie
 | Inhérence
-| Quelque chose que l'utilisateur **est** (ex. : biométrie).
+| Variable
+| Sans objet
+| Empreinte digitale, reconnaissance faciale, iris, voix.
+| Non révocable en cas de compromission. Taux d'erreur et attaques par présentation. Enjeux de vie privée et de conformité RGPD.
+| ISO/IEC 30107
+|===
 
+====
+ 
+[IMPORTANT]
+====
+*Force et résistance au phishing sont deux axes indépendants.*
+ 
+La colonne _Force_ traduit la difficulté à compromettre le facteur (deviner,
+voler, dupliquer). La colonne _Résistance au phishing_ traduit la capacité à
+résister à un attaquant qui s'interpose en temps réel entre l'utilisateur et le
+service légitime (_adversary-in-the-middle_).
+ 
+Un TOTP est fort mais se rejoue : l'utilisateur saisit son code sur un site
+contrefait qui le relaie immédiatement au vrai service. À l'inverse, un
+certificat logiciel est moyennement fort — la clé est copiable — mais résistant
+au phishing, car la preuve est liée cryptographiquement à l'origine.
+ 
+Seuls deux mécanismes cumulent aujourd'hui les deux propriétés : *WebAuthn /
+FIDO2* et l'*authentification par certificat sur élément sécurisé* (carte à
+puce). Pour tout accès réellement sensible, c'est de ce côté qu'il faut
+regarder.
+====
+ 
+[NOTE]
+====
+La *biométrie* est rarement un facteur transmis au service : dans les usages
+courants (téléphone, ordinateur portable), elle déverrouille localement un
+élément sécurisé qui porte le véritable facteur. La force et la résistance au
+phishing sont alors celles du dispositif déverrouillé, pas celles de la mesure
+biométrique.
+====
+ 
+*Signaux de contexte : tableau comparatif*
+ 
+Les éléments ci-dessous ne prouvent pas une identité et ne constituent donc pas
+des facteurs d'authentification. Ils servent à *moduler* l'exigence
+d'authentification en fonction de la situation d'exécution — démarche appelée
+authentification adaptative ou _risk-based_.
+ 
+[cols="2,1,3,3,3", options="header"]
+|===
+| Signal | Catégorie | Ce qu'il permet de détecter | Modulation typique | Limites
+ 
+| Adresse IP ou plage réseau
 | Localisation
-| Quelque chose lié à l'**emplacement** de l'utilisateur (ex. : IP, GPS).
-
+| Accès depuis un réseau non prévu (Internet public au lieu de l'intranet ou du VPN).
+| Exiger un facteur supplémentaire hors du réseau de confiance ; restreindre certaines opérations sensibles au réseau interne.
+| Usurpation d'adresse. Ne distingue pas les utilisateurs d'un même réseau. Contraignant en mobilité et en télétravail.
+ 
+| Géolocalisation
+| Localisation
+| Connexion depuis un pays ou une région inhabituelle pour l'utilisateur.
+| Élever le niveau d'authentification ; bloquer les pays hors périmètre d'activité.
+| Contournable par VPN ou relais. Précision faible sur IP. Faux positifs fréquents.
+ 
+| Voyage impossible
+| Localisation
+| Deux connexions géographiquement incompatibles avec le temps écoulé entre elles.
+| Réauthentifier, invalider la session en cours, alerter le SOC.
+| Faux positifs liés aux VPN d'entreprise et aux relais de confidentialité.
+ 
+| Empreinte de terminal
+| Localisation
+| Accès depuis un terminal jamais observé pour ce compte.
+| Exiger une vérification supplémentaire lors du premier usage d'un terminal.
+| Facilement falsifiable. Se dégrade en simple identifiant persistant. Enjeux RGPD liés au traçage.
+ 
+| Plage horaire d'activité
 | Comportement
-| Quelque chose lié au **comportement** de l'utilisateur (ex. : rythme de frappe).
+| Connexion en dehors des horaires habituels de l'utilisateur ou du service.
+| Élever l'exigence ; restreindre les opérations irréversibles aux heures ouvrées.
+| Faux positifs en astreinte, en horaires décalés ou sur plusieurs fuseaux.
+ 
+| Dynamique de saisie
+| Comportement
+| Écart entre le rythme de frappe observé et le profil appris.
+| Alimenter un score de risque ; déclencher une réauthentification au-delà d'un seuil.
+| Nécessite une phase d'apprentissage. Peu fiable isolément. Sensible au changement de clavier ou de terminal.
+ 
+| Habitudes d'usage
+| Comportement
+| Séquence d'actions, volumétrie ou vitesse de navigation inhabituelles.
+| Alimenter un score de risque ; limiter le débit ; alerter.
+| Dérive du profil dans le temps. Difficulté à expliquer une décision de blocage à l'utilisateur.
 |===
-
-**Facteurs d'Authentification : Tableau Comparatif**
-[cols="1,1,1,2,2,1,1"]
-|===
-| Facteur d'authentification       | Catégorie       | Force | Description                                                                 | Faiblesses / Risques                                      | Cas d'usage recommandé                     | Norme associée
-
-| Mot de passe                     | Connaissance   | Moyenne | Chaîne de caractères secrète connue de l'utilisateur.         | Vulnérable aux attaques par brute force, phishing, réutilisation. | Authentification de base (comptes personnels). | NIST SP 800-63B
-
-| Phrase de passe                  | Connaissance   | Forte   | Série de mots faciles à retenir (ex: CorrectHorseBatteryStaple). | Moins vulnérable au brute force, mais nécessite une bonne mémorisation. | Comptes sensibles (banques, emails). | NIST SP 800-63B
-
-| Clé SSH                 | Possession      | Forte   | Paire de clés asymétriques (publique/privée) pour l'authentification. | Perte/vol de la clé privée = accès compromis. Gestion complexe. | Accès aux serveurs (SSH, Git). | RFC 4251
-
-| OTP par Token                    | Possession      | Forte   | Code à usage unique généré par un appareil physique (ex: RSA SecurID). | Dépendance matérielle (perte/vol). Coût. | Connexions sensibles (admin, VPN). | RFC 6238
-
-| OTP par application (TOTP)       | Possession      | Forte   | Code temporaire généré par une app (Google Authenticator, Authy). | Dépend de l'appareil mobile. Risque si téléphone perdu. | Comptes en ligne (Google, AWS, banques). | RFC 6238
-
-| Clé matérielle (ex: YubiKey)         | Possession      | Très forte | Clé physique (USB/NFC) pour une authentification forte (FIDO2). | Coût (~50€). Nécessite un appareil compatible. | Accès admin, comptes sensibles, crypto-monnaies. | FIDO2
-
-| Certificat numérique              | Possession      | Très forte | Certificat X.509 stocké sur une carte à puce ou un appareil. | Complexité de gestion (PKI). Coût. | Accès aux réseaux d'entreprise, VPN. | RFC 5280
-
-| Biométrie                        | Inhérence       | Forte   | Empreinte digitale, reconnaissance faciale/voix/iris. | Faux positifs/négatifs. Problèmes de vie privée. | Déverrouillage d'appareils mobiles, accès physiques. | ISO/IEC 30107
-
-| Reconnaissance comportementale    | Inhérence       | Moyenne | Analyse du rythme de frappe ou des mouvements de souris. | Peu fiable seul. Nécessite un apprentissage. | Détection de fraude (banques), accès internes. | ISO/IEC 24741
-
-| Connaissance de données métier   | Connaissance   | Moyenne | Question basée sur des connaissances internes (ex: "Quel était le CA 2023 ?"). | Difficile à mémoriser. Peut être partagé. | Accès interne (RH, finance). | (Interne)
-
-| E-mail avec lien de vérification | Possession      | Faible  | Lien envoyé par email pour vérifier l'identité. | Vulnérable au phishing et aux interceptations. | Réinitialisation de mot de passe. | (Aucune norme spécifique)
-
-| Notification push                 | Possession      | Forte   | Notification envoyée à un appareil de confiance (ex: Duo Security, Okta Verify). | Dépend de la connexion réseau/mobile. | Applications mobiles (banques, réseaux sociaux). | (Propriétaire)
-
-| Question secrète                   | Connaissance   | Faible  | Question personnelle (ex: "Nom de votre premier animal ?"). | Vulnérable aux devinettes et aux fuites. | Réinitialisation de compte. | (Déconseillé par NIST)
-
-| Code PIN                          | Connaissance   | Faible  | Code numérique court (4-6 chiffres). | Limité et vulnérable au brute force. | Déverrouillage d'appareils (téléphone, carte bancaire). | PCI DSS
-
-| Géolocalisation                   | Localisation    | Moyenne | Vérification de l'emplacement via IP/GPS. | Peut être contournée par VPN/proxy. | Accès à distance (VPN), restrictions géographiques. | (Aucune norme spécifique)
-
-| Authentification par réseau      | Localisation    | Moyenne | Restriction aux IP/réseaux autorisés. | Restrictif (ex: seulement depuis le bureau). | Accès interne aux entreprises. | ISO/IEC 27001
-
-| Authentification par appareil    | Possession      | Forte   | Appareil enregistré (ex: téléphone ou ordinateur de confiance). | Dépend de la possession de l'appareil. | Comptes Apple/Google, appareils mobiles. | (Propriétaire)
-
-| Authentification continue        | Comportement    | Forte   | Vérification périodique (ex: biométrie toutes les 4h). | Complexité de mise en œuvre. | Environnements hautement sécurisés (banques, gouvernement). | NIST SP 800-63B
-|===
+ 
+[WARNING]
+====
+Un signal de contexte ne compte *jamais* comme second facteur. Une
+authentification multifacteur doit combiner des éléments d'au moins deux des
+trois catégories reconnues (connaissance, possession, inhérence). Un mot de
+passe complété d'une restriction d'adresse IP reste une authentification à un
+seul facteur.
+ 
+Corollaire : ces signaux peuvent *élever* l'exigence d'authentification, jamais
+l'abaisser en deçà du minimum requis pour l'opération concernée.
+====
+ 
 
 **Recommandations par Cas d'Usage : **
 
