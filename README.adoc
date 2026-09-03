@@ -64,6 +64,27 @@ TIP : L'utilisation de textes et de diagrammes textuels peut également servir d
 ** l'*architecture physique* (détails des serveurs et datacenters, architecture réseau, architecture de stockage, provisioning…). Il s'agit de sujets très spécifiques et en général traités par les architectes d'infrastructure à un niveau SI ;
 ** le détail des *environnements* autres que la production (recette, développement…). Ces derniers sont en général trop fluctuants pour figurer dans ce dossier et gagneront à être documentés par l'intégrateur dans d'autres dossiers, fiches, wikis ou outils de CMDB.
 
+### Cotation de sécurité
+ 
+La cotation de sécurité est renseigné dans le tableau de synthèse du dossier en haut de la link:modele-vierge.adoc[page de garde du dossier]. Il est important qu'elle soit immédiatement accessible, notamment pour pouvoir comparer facilement les exigences de produits différents.
+
+Elle s'écrit sous la forme `<grille> <niveaux>`, par exemple `DICP 4-3-3-3`.
+ 
+*Faire figurer la grille employée.* Plusieurs coexistent en France et ne se recouvrent pas. On trouve principalement :
+ 
+* *DIC* — Disponibilité, Intégrité, Confidentialité. Socle minimal, aligné ISO/IEC 27001 et équivalent à la triade _CIA_ anglophone.
+* *DICT* — DIC + Traçabilité. Formulation historique, encore très répandue.
+* *DICP* — DIC + Preuve. Formulation retenue par les travaux récents de l'ANSSI.
+La preuve est plus large que la traçabilité : elle porte sur la capacité à établir de façon opposable, devant un tiers, les circonstances dans lesquelles un bien a évolué.
+ 
+Une valeur telle que `4-3-3-3` ne se lit pas sans sa grille, en particulier lorsque le lecteur compare des dossiers issus d'organisations différentes.
+ 
+TIP: Séparer les niveaux par des tirets. La forme collée `4333` devient ambiguë dès qu'un niveau dépasse 9 ou qu'une grille compte cinq critères.
+
+*La cotation retient toujours l'exigence la plus forte.* Un dossier couvre généralement plusieurs modules et plusieurs classes de données, dont les besoins diffèrent. La cotation est alors, critère par critère, le maximum des niveaux exigés. Exemple : un portail de consultation publique coté `C2` et un back-office manipulant des données RH coté `C4` donnent une confidentialité de `4` pour l'ensemble du dossier. 
+ 
+*Les critères ne vivent pas tous dans la même vue.* La disponibilité relève de la vue infrastructure (durée d'indisponibilité admissible, RPO, RTO) ; les autres critères relèvent de la vue sécurité. La grille retenue de chaque critère est explicitée dans la partie  _Exigences_ des vues Sécurité et Infrastructure (pour la disponibilité) : ne pas les reproduire dans le README.
+
 ## FAQ
 * **A partir de quelle taille de projet ce modèle est-il éligible ?** Ce modèle a été utilisé avec succès sur un projet de huit mois doté d'une seule personne comme par plusieurs grands projets faisant intervenir des équipes importantes sur plusieurs années. Un grand projet détaillera probablement davantage les rubriques mais la plupart sont applicables quelque soit la taille du projet. Par exemple, les questions de disponibilité ou d’internationalisation ne sont pas liées à la taille d'un projet nous semble-il.
 * **Ce modèle peut-il servir de base à un référentiel d'architecture ?** Même si de nombreuses idées peuvent être reprises, non, ce n'est pas l'objet de ce modèle.

@@ -4,11 +4,16 @@
 
 # Dossier d'architecture 
 
-Dernière modification : {localdate} {localtime}
+[cols="1,2"]
+|===
+| Statut | _En cours_
 
-Version du modèle utilisé : #<https://github.com/bflorat/modele-da/commits/master[id du commit] du projet modèle de dossier d'architecture>, ex: `b523b6a`>#
+| Dernière modification | {localdate} {localtime}
+| Application | 
+| Cotation de sécurité | 
+|Version du modèle utilisé | #<https://github.com/bflorat/modele-da/commits/master[id du commit] du projet modèle de dossier d'architecture>, ex: `b523b6a`>#
+|===
 
-*Etat* : _En cours_
 
 Ce dossier est constitué : 
 
