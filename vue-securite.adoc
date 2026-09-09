@@ -315,28 +315,30 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 - L’**authentification initiale** (lors de l'inscription) est souvent plus stricte que les authentifications ultérieures.
 - Une **authentification fédérée** permet de déléguer l’authentification à un fournisseur d’identité (SSO, OAuth2, SAML, etc.), voir la section suivante.
 
+====
+
 *Facteurs d'authentification : tableau comparatif*
  
 Ce tableau couvre les trois catégories reconnues comme facteurs :
 connaissance, possession, inhérence.
  
-[cols="2,1,1,1,3,3,2", options="header"]
+[cols="1,1,1,1,5,5,1", options="header"]
 |===
-| Facteur | Catégorie | Force | Résistance au phishing | Description | Faiblesses / Risques | Norme
+| Facteur | Catégorie | Force | Résistance au phishing | Description | Faiblesses / Risques | Normes
 
 | Mot de passe
 | Connaissance
 | Faible
 | Non
 | Chaîne de caractères secrète connue de l'utilisateur.
-| Réutilisation entre services, fuite par bases compromises, hameçonnage, force brute. Insuffisant seul.
+| Réutilisation entre services. Fuite par bases compromises. Hameçonnage, force brute. Insuffisant seul.
 | NIST SP 800-63B
 
 | Phrase de passe
 | Connaissance
 | Moyenne
 | Non
-| Suite de mots facile à mémoriser (ex. : `CorrectHorseBatteryStaple`).
+| Suite de mots facile à mémoriser (ex. : `cheval juste pile agrafe`).
 | Meilleure entropie qu'un mot de passe court, mais aussi vulnérable au hameçonnage et au rejeu.
 | NIST SP 800-63B
 
@@ -361,9 +363,7 @@ connaissance, possession, inhérence.
 | Faible
 | Non
 | Question portant sur une information interne (ex. : montant de la dernière facture).
-| Partageable, mémorisation difficile, souvent accessible à des tiers légitimes. *Déconseillée comme facteur d'authentification* ; son usage légitime est
-l'appariement lors de l'enrôlement initial, quand aucun autre élément partagé
-n'existe.
+| Partageable, mémorisation difficile, souvent accessible à des tiers légitimes. *Déconseillée comme facteur.* Usage légitime : l'appariement lors de l'enrôlement initial, quand aucun élément partagé n'existe.
 | —
 
 | Lien de vérification par e-mail
@@ -379,14 +379,14 @@ n'existe.
 | Faible
 | Non
 | Code à usage unique envoyé par message texte.
-| Détournement de carte SIM (_SIM swapping_), interception au niveau de la signalisation inter-opérateurs (SS7, Diameter), dépourvue d'authentification entre réseaux, transfert automatique. Déconseillé pour les usages sensibles.
+| Détournement de carte SIM (_SIM swapping_). Interception de la signalisation entre opérateurs (SS7, Diameter), dépourvue d'authentification entre réseaux. Transfert automatique vers un terminal tiers. Déconseillé pour les usages sensibles.
 | —
 
 | OTP par application (TOTP)
 | Possession
 | Forte
 | Non
-| Code temporaire calculé à partir d'un secret partagé et de l'heure.
+| Code temporaire calculé à partir d'un secret partagé et de l'heure courante.
 | Rejeu possible par proxy d'interception en temps réel. Perte du terminal. Secret extractible si le terminal est compromis.
 | RFC 6238
 
@@ -418,19 +418,15 @@ n'existe.
 | Possession
 | Moyenne
 | Oui
-| Certificat X.509 et clé privée conservés dans un magasin logiciel (navigateur,
-système, fichier PKCS#12). Souvent déployé automatiquement sur les terminaux
-gérés (MDM, jonction au domaine) pour authentifier le poste en plus de
-l'utilisateur.
-| Clé privée exportable et copiable. Exfiltration par code malveillant. La
-possession exclusive ne peut être démontrée.
+| Certificat X.509 et clé privée conservés dans un magasin logiciel (navigateur, système, fichier PKCS#12). Souvent déployé sur les terminaux gérés (MDM, domaine) pour authentifier le poste en plus de l'utilisateur.
+| Clé privée exportable et copiable. Exfiltration par code malveillant. Possession exclusive non démontrable.
 | RFC 5280
 
-| Carte à puce / élément sécurisé
+| Carte à puce
 | Possession + Connaissance (PIN)
 | Très forte
 | Oui
-| Certificat X.509 dont la clé privée est générée dans un composant sécurisé et non extractible ; les opérations cryptographiques sont réalisées dans le composant, débloqué par un code PIN.
+| Certificat X.509 dont la clé privée est générée dans un composant sécurisé et non extractible. Les opérations sont réalisées dans le composant, débloqué par un code PIN.
 | Coût. Lecteur et intergiciel requis. PKI à exploiter (révocation, renouvellement). Blocage du PIN, perte de la carte.
 | ISO/IEC 7816, PKCS#11, eIDAS (QSCD)
 
@@ -438,24 +434,24 @@ possession exclusive ne peut être démontrée.
 | Possession (+ PIN ou biométrie)
 | Très forte
 | Oui
-| Défi-réponse asymétrique, la signature étant liée à l'origine du site. La clé privée est confinée dans un composant externe dédié, indépendant du poste et transportable d'une machine à l'autre.
-| Coût unitaire (~20 à 50€) et logistique de distribution. Impose l'enrôlement d'une clé de secours. Support applicatif encore inégal.
+| Défi-réponse asymétrique, la signature étant liée à l'origine du site. Clé privée confinée dans un composant externe dédié, transportable entre machines.
+| Coût unitaire (20 à 50 €) et logistique de distribution. Impose l'enrôlement d'une clé de secours. Support applicatif encore inégal.
 | W3C WebAuthn, FIDO CTAP2
 
 | Passkey liée à l'appareil
 | Possession (+ PIN ou biométrie)
 | Très forte
 | Oui
-| Même protocole que la clé matérielle, mais la clé privée est confinée dans l'élément sécurisé de l'appareil lui-même (Secure Enclave, TPM).
-| Aucun matériel à distribuer, mais la clé disparaît avec l'appareil : impose l'enrôlement d'un second dispositif. Dépendance à la plateforme.
+| Même protocole que la clé matérielle. Clé privée confinée dans l'élément sécurisé de l'appareil (Secure Enclave, TPM).
+| Aucun matériel à distribuer. La clé disparaît avec l'appareil. Impose un second dispositif enrôlé. Dépendance à la plateforme.
 | W3C WebAuthn
 
 | Passkey synchronisée
 | Possession
 | Forte
 | Oui
-| Clé privée WebAuthn générée sur un appareil puis répliquée, chiffrée, vers les autres appareils de l'utilisateur via son gestionnaire de justificatifs (Apple, Google, Microsoft ou gestionnaire tiers).
-| La clé quitte l'appareil : la possession n'est plus exclusive. La sécurité effective devient celle du compte de synchronisation et surtout de sa procédure de récupération, souvent ramenée à un code SMS ou à un lien par e-mail. Portabilité limitée entre écosystèmes.
+| Clé privée WebAuthn générée sur un appareil, puis répliquée chiffrée vers ses autres appareils. La réplication passe par son gestionnaire de justificatifs (Apple, Google, Microsoft ou tiers).
+| La clé quitte l'appareil : possession non exclusive. La sécurité devient celle du compte de synchronisation, et de sa procédure de récupération, souvent un code SMS ou un lien e-mail. Portabilité limitée entre écosystèmes.
 | W3C WebAuthn
 
 | Biométrie
@@ -463,12 +459,11 @@ possession exclusive ne peut être démontrée.
 | Variable
 | Sans objet
 | Empreinte digitale, reconnaissance faciale, iris, voix.
-| Non révocable en cas de compromission. Taux d'erreur et attaques par présentation. Enjeux de vie privée et de conformité RGPD.
+| Non révocable si compromise. Taux d'erreur et attaques par présentation. Enjeux de vie privée et de conformité RGPD.
 | ISO/IEC 30107
 |===
 
-====
- 
+
 [IMPORTANT]
 ====
 *Force et résistance au phishing sont deux axes indépendants.*
