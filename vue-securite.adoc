@@ -323,7 +323,7 @@ connaissance, possession, inhérence.
 [cols="2,1,1,1,3,3,2", options="header"]
 |===
 | Facteur | Catégorie | Force | Résistance au phishing | Description | Faiblesses / Risques | Norme
- 
+
 | Mot de passe
 | Connaissance
 | Faible
@@ -331,7 +331,7 @@ connaissance, possession, inhérence.
 | Chaîne de caractères secrète connue de l'utilisateur.
 | Réutilisation entre services, fuite par bases compromises, hameçonnage, force brute. Insuffisant seul.
 | NIST SP 800-63B
- 
+
 | Phrase de passe
 | Connaissance
 | Moyenne
@@ -339,7 +339,7 @@ connaissance, possession, inhérence.
 | Suite de mots facile à mémoriser (ex. : `CorrectHorseBatteryStaple`).
 | Meilleure entropie qu'un mot de passe court, mais aussi vulnérable au hameçonnage et au rejeu.
 | NIST SP 800-63B
- 
+
 | Question secrète
 | Connaissance
 | Très faible
@@ -347,7 +347,7 @@ connaissance, possession, inhérence.
 | Question personnelle (ex. : nom du premier animal).
 | Réponses devinables ou publiquement accessibles. Déconseillé.
 | Déconseillé par NIST SP 800-63B
- 
+
 | Code PIN
 | Connaissance
 | Faible seul
@@ -355,15 +355,17 @@ connaissance, possession, inhérence.
 | Code numérique court (4 à 8 chiffres).
 | Espace de recherche réduit. N'a de valeur que combiné à un dispositif limitant les tentatives (carte, TPM, élément sécurisé).
 | —
- 
+
 | Connaissance de données métier
 | Connaissance
 | Faible
 | Non
 | Question portant sur une information interne (ex. : montant de la dernière facture).
-| Partageable, mémorisation difficile, souvent accessible à des tiers légitimes.
+| Partageable, mémorisation difficile, souvent accessible à des tiers légitimes. *Déconseillée comme facteur d'authentification* ; son usage légitime est
+l'appariement lors de l'enrôlement initial, quand aucun autre élément partagé
+n'existe.
 | —
- 
+
 | Lien de vérification par e-mail
 | Possession
 | Faible
@@ -371,15 +373,15 @@ connaissance, possession, inhérence.
 | Lien à usage unique envoyé sur l'adresse déclarée.
 | Sécurité entièrement dérivée de celle de la boîte mail. Interception, transfert, hameçonnage.
 | —
- 
+
 | OTP par SMS
 | Possession
 | Faible
 | Non
 | Code à usage unique envoyé par message texte.
-| Détournement de carte SIM (_SIM swapping_), interception SS7, transfert automatique. Déconseillé pour les usages sensibles.
+| Détournement de carte SIM (_SIM swapping_), interception au niveau de la signalisation inter-opérateurs (SS7, Diameter), dépourvue d'authentification entre réseaux, transfert automatique. Déconseillé pour les usages sensibles.
 | —
- 
+
 | OTP par application (TOTP)
 | Possession
 | Forte
@@ -387,7 +389,7 @@ connaissance, possession, inhérence.
 | Code temporaire calculé à partir d'un secret partagé et de l'heure.
 | Rejeu possible par proxy d'interception en temps réel. Perte du terminal. Secret extractible si le terminal est compromis.
 | RFC 6238
- 
+
 | OTP par jeton matériel
 | Possession
 | Forte
@@ -395,7 +397,7 @@ connaissance, possession, inhérence.
 | Code généré par un dispositif physique dédié.
 | Mêmes limites que le TOTP face au proxy d'interception. Coût, logistique, perte.
 | RFC 4226 (HOTP), RFC 6238 (TOTP) ou protocole propriétaire
- 
+
 | Notification push
 | Possession
 | Moyenne
@@ -403,7 +405,7 @@ connaissance, possession, inhérence.
 | Demande de validation envoyée à un terminal enrôlé.
 | Vulnérable au harcèlement de notifications (_MFA fatigue_) si l'utilisateur peut valider sans contexte. La correspondance de nombre affiché réduit fortement ce risque.
 | Propriétaire
- 
+
 | Clé SSH
 | Possession
 | Forte
@@ -411,47 +413,51 @@ connaissance, possession, inhérence.
 | Paire de clés asymétriques, la clé privée restant sur le poste client.
 | Clé privée souvent stockée en clair sur le disque. Absence fréquente de phrase de passe. Gestion du cycle de vie et de la révocation.
 | RFC 4252
- 
+
 | Certificat logiciel
 | Possession
 | Moyenne
 | Oui
-| Certificat X.509 et clé privée conservés dans un magasin logiciel (navigateur, système, fichier PKCS#12).
-| Clé privée exportable et copiable. Exfiltration par code malveillant. La possession exclusive ne peut être démontrée.
+| Certificat X.509 et clé privée conservés dans un magasin logiciel (navigateur,
+système, fichier PKCS#12). Souvent déployé automatiquement sur les terminaux
+gérés (MDM, jonction au domaine) pour authentifier le poste en plus de
+l'utilisateur.
+| Clé privée exportable et copiable. Exfiltration par code malveillant. La
+possession exclusive ne peut être démontrée.
 | RFC 5280
- 
+
 | Carte à puce / élément sécurisé
 | Possession + Connaissance (PIN)
 | Très forte
 | Oui
-| Clé privée générée dans un composant sécurisé et non extractible ; les opérations cryptographiques sont réalisées dans le composant, débloqué par un code PIN.
+| Certificat X.509 dont la clé privée est générée dans un composant sécurisé et non extractible ; les opérations cryptographiques sont réalisées dans le composant, débloqué par un code PIN.
 | Coût. Lecteur et intergiciel requis. PKI à exploiter (révocation, renouvellement). Blocage du PIN, perte de la carte.
 | ISO/IEC 7816, PKCS#11, eIDAS (QSCD)
- 
-| Clé matérielle FIDO2 / WebAuthn
+
+| Clé matérielle FIDO2
 | Possession (+ PIN ou biométrie)
 | Très forte
 | Oui
-| Authentification par défi-réponse asymétrique, la signature étant liée à l'origine du site.
-| Coût. Nécessite un enrôlement et une clé de secours. Support applicatif encore inégal.
-| FIDO2, W3C WebAuthn
- 
+| Défi-réponse asymétrique, la signature étant liée à l'origine du site. La clé privée est confinée dans un composant externe dédié, indépendant du poste et transportable d'une machine à l'autre.
+| Coût unitaire (~20 à 50€) et logistique de distribution. Impose l'enrôlement d'une clé de secours. Support applicatif encore inégal.
+| W3C WebAuthn, FIDO CTAP2
+
+| Passkey liée à l'appareil
+| Possession (+ PIN ou biométrie)
+| Très forte
+| Oui
+| Même protocole que la clé matérielle, mais la clé privée est confinée dans l'élément sécurisé de l'appareil lui-même (Secure Enclave, TPM).
+| Aucun matériel à distribuer, mais la clé disparaît avec l'appareil : impose l'enrôlement d'un second dispositif. Dépendance à la plateforme.
+| W3C WebAuthn
+
 | Passkey synchronisée
 | Possession
 | Forte
 | Oui
-| Justificatif WebAuthn synchronisé entre les appareils de l'utilisateur via son compte plateforme.
-| La sécurité est reportée sur le compte de synchronisation. Récupération de compte souvent plus faible que le facteur lui-même.
+| Clé privée WebAuthn générée sur un appareil puis répliquée, chiffrée, vers les autres appareils de l'utilisateur via son gestionnaire de justificatifs (Apple, Google, Microsoft ou gestionnaire tiers).
+| La clé quitte l'appareil : la possession n'est plus exclusive. La sécurité effective devient celle du compte de synchronisation et surtout de sa procédure de récupération, souvent ramenée à un code SMS ou à un lien par e-mail. Portabilité limitée entre écosystèmes.
 | W3C WebAuthn
- 
-| Terminal enrôlé
-| Possession
-| Moyenne
-| Non
-| Terminal préalablement déclaré et porteur d'une clé ou d'un certificat le liant au compte.
-| Ne vaut que si la liaison est cryptographique. À distinguer de la simple empreinte de terminal, qui est un signal de contexte (voir tableau suivant).
-| Propriétaire
- 
+
 | Biométrie
 | Inhérence
 | Variable
@@ -477,10 +483,9 @@ contrefait qui le relaie immédiatement au vrai service. À l'inverse, un
 certificat logiciel est moyennement fort — la clé est copiable — mais résistant
 au phishing, car la preuve est liée cryptographiquement à l'origine.
  
-Seuls deux mécanismes cumulent aujourd'hui les deux propriétés : *WebAuthn /
-FIDO2* et l'*authentification par certificat sur élément sécurisé* (carte à
-puce). Pour tout accès réellement sensible, c'est de ce côté qu'il faut
-regarder.
+Trois mécanismes cumulent aujourd'hui les deux propriétés au plus haut niveau : la clé matérielle FIDO2, la passkey liée à l'appareil (non synchronisée) et l'authentification par certificat sur élément sécurisé (carte à puce). Ils partagent le même principe — la clé privée ne quitte jamais un composant sécurisé. 
+
+Pour tout accès réellement sensible, c'est de ce côté qu'il faut regarder.
 ====
  
 [NOTE]
@@ -557,142 +562,110 @@ seul facteur.
 Corollaire : ces signaux peuvent *élever* l'exigence d'authentification, jamais
 l'abaisser en deçà du minimum requis pour l'opération concernée.
 ====
+
+*Recommandations par cas d'usage*
  
-
-**Recommandations par Cas d'Usage : **
-
-**Accès Basique** (ex. : Site Web Public)
-[cols="1,2"]
+[cols="1,2,3,1,2", options="header"]
 |===
-| Facteur | Exemple
-
-| Mot de passe
-| `Tr0pF0rt!2024` (12+ caractères).
-
-| OTP par email
-| Lien de vérification envoyé par email.
+| Niveau d'accès | Exemple | Combinaison minimale exigée | Facteur anti-phishing | Signaux de contexte
+ 
+| Accès public
+| Compte sur un site d'information, forum, newsletter.
+| Un facteur : phrase de passe, ou lien à usage unique par e-mail.
+| Non
+| <aucun>
+ 
+| Accès personnel sensible
+| Compte bancaire, espace assuré, portail usager, dossier médical.
+| Deux facteurs de deux catégories distinctes, dont *au moins un résistant au phishing* : phrase de passe *et* passkey (synchronisée acceptée).
+| Oui
+| Terminal inconnu, voyage impossible : exiger une réauthentification.
+ 
+| Accès interne
+| Application métier, données RH, intranet d'un agent.
+| Certificat sur carte à puce *ou* passkey liée à l'appareil, déverrouillé par code PIN ou biométrie.
+| Oui
+| Réseau d'origine, posture de conformité du poste.
+ 
+| Accès distant
+| VPN, bureau à distance, bastion.
+| Idem accès interne, *et* authentification du poste par certificat déployé sur la flotte gérée.
+| Oui
+| Géolocalisation, plage horaire, terminal non géré : refuser.
+ 
+| Accès à privilèges
+| Compte `root`, administration d'un hyperviseur, console cloud.
+| Clé matérielle FIDO2 *ou* carte à puce, avec code PIN, depuis un poste d'administration dédié. Accès via bastion et élévation limitée dans le temps.
+| Oui
+| Plage horaire, voyage impossible. Session enregistrée et double validation pour les opérations irréversibles.
 |===
+ 
+[WARNING]
+====
+Dès que la compromission d'un compte a des conséquences financières, juridiques
+ou opérationnelles, au moins un facteur résistant au phishing est nécessaire :
+WebAuthn (clé matérielle ou passkey) ou certificat sur élément sécurisé.
+====
 
-**Accès Sensible** (ex. : Compte Bancaire)
-[cols="1,2"]
-|===
-| Facteur | Exemple
-
-| Mot de passe
-| Phrase de passe longue (`CorrectHorseBatteryStaple`).
-
-| OTP par application (TOTP)
-| Google Authenticator ou Authy.
-
-| Biométrie
-| Empreinte digitale ou reconnaissance faciale.
-|===
-
-**Accès Administrateur** (ex. : Serveur Cloud)
-[cols="1,2"]
-|===
-| Facteur | Exemple
-
-| Clé SSH + mot de passe
-| Clé RSA 4096 bits + phrase de passe.
-
-| OTP par token physique (YubiKey)
-| YubiKey OTP ou FIDO2.
-
-| Géolocalisation
-| Restriction aux IP de l'entreprise.
-|===
-
-**Accès Interne** (ex. : Données RH)
-[cols="1,2"]
-|===
-| Facteur | Exemple
-
-| Certificat numérique
-| Smart card ou certificat X.509.
-
-| Connaissance de données métier
-| "Quel était le chiffre d'affaires 2023 ?"
-
-| Notification push
-| Duo Security ou Microsoft Authenticator.
-|===
-
-**Accès à Distance** (ex. : VPN)
-[cols="1,2"]
-|===
-| Facteur | Exemple
-
-| OTP par application (TOTP)
-| Authy ou FreeOTP.
-
-| Géolocalisation
-| Restriction aux pays autorisés.
-
-| Clé matérielle (YubiKey)
-| YubiKey + PIN.
-|===
-
+[TIP]
+====
 Le tableau ci-dessous indique les **facteurs d’authentification requis** selon le contexte d’utilisation (exemple) :  
 
-[cols="e,e,e,e,e,e,e"]
+.Exemple
+[cols="2,3,1,2", options="header"]
 |===
-|Cas d'utilisation  |Mot de passe respectant la politique de sécurité  |Clé publique SSH connue  |OTP par Token  |Biométrie  |Connaissance de données métier  |E-mail avec lien de vérification  
+| Cas d'utilisation | Facteurs exigés | Facteur résistant au phishing | Signaux de contexte
 
-|Utilisateur déjà inscrit  
-|X|||||  
+| _Création de l'espace usager et appariement au dossier existant_
+| _Phrase de passe, et vérification du numéro de dossier accompagné du montant
+de la dernière notification._
+| _Non_
+| _Aucun. Blocage après 3 tentatives d'appariement infructueuses._
 
-|Création d’un compte  
-|||||XX|X  
+| _Consultation de son dossier par l'usager_
+| _Phrase de passe et passkey (variante synchronisée acceptée)._
+| _Oui_
+| _Terminal inconnu ou voyage impossible : réauthentification complète._
 
-|Modification du mot de passe  
-|X|||||X  
+| _Instruction d'un dossier par un agent_
+| _Carte agent (certificat sur carte à puce) déverrouillée par code PIN._
+| _Oui_
+| _Poste non conforme au référentiel de la flotte gérée : accès refusé._
 
-|Accès aux journaux sécurisés  
-||X||||  
+| _Accès d'un agent en télétravail_
+| _Carte agent et code PIN, et certificat de poste déployé par le MDM._
+| _Oui_
+| _Connexion hors des pays autorisés : accès refusé. Hors plage 7h-20h :
+notification au responsable._
 
-|Ajout d’un bénéficiaire de virement  
-|X||X|||  
+| _Administration des serveurs applicatifs_
+| _Clé matérielle FIDO2 avec code PIN, depuis un poste d'administration dédié.
+Accès via bastion et élévation de privilèges limitée à 4 heures._
+| _Oui_
+| _Hors plage ouvrée : double validation par un second administrateur. Session
+enregistrée._
 
-|Connexion à l’application mobile Y  
-||||X|||  
+| _Échange automatisé avec l'organisme partenaire (API)_
+| _Authentification mutuelle TLS par certificat client délivré par la PKI
+interne, renouvellement annuel._
+| _Sans objet_
+| _Restriction aux plages d'adresses déclarées par le partenaire._
 |===
-
-**Bonnes pratiques** :  
-
-* **MFA (Multi-Factor Authentication)** → éviter l’authentification uniquement par mot de passe.  
-  Exiger **au minimum un second facteur** (OTP, clé FIDO2, biométrie, etc.).
-
-* **Utiliser des standards éprouvés** → privilégier des protocoles reconnus tels que  
-  **FIDO2**, **WebAuthn**, **TOTP**, **SAML 2.0**, **OpenID Connect**.
-
-* **Sécuriser les comptes de service** → éviter les **mots de passe statiques**.  
-  Préférer les **clés SSH**, **certificats client** ou **tokens JWT** à **durée de vie limitée**.
-
-* **Prévoir la révocation et le renouvellement** → mettre en place des mécanismes pour  
-  **révoquer et régénérer rapidement** un facteur d’authentification perdu, volé ou compromis.
-
-* **Limiter les tentatives d’authentification** → bloquer temporairement le compte ou le sujet  
-  lorsque le **seuil maximal d’échecs** est atteint, et **ajouter un délai croissant** entre les tentatives  
-  pour limiter les attaques par **brute force**.
-
-* **Mettre en place une rotation régulière des secrets** → renouveler périodiquement les clés, certificats  
-  et tokens afin de réduire l’impact potentiel d’une compromission.
-
-* **Utiliser une politique de mot de passe moderne** →  privilégier des phrases longues et faciles à retenir (plutôt que complexes), sans rotation forcée, sans caractères spéciaux forcés, vérifiées contre les mots de passe compromis (haveibeenpwned), avec copier/coller possibles (pour facilité l'utilisation de gestionnaires de mot de passe) et complétées par une authentification multifacteur (MFA). Référence: ANSSI, NIST SP 800-63B.
-
 ====
 
 [PRE-FILLED]
 ====
-[cols="1,1,1,1"]
-|===
-|Cas d'utilisation  | Facteur 1 | Facteur 2 | ...
+Le tableau ci-dessous indique les *facteurs d'authentification requis* selon le
+contexte d'utilisation.
 
-| 
-| 
-| 
-| 
+[cols="2,3,1,2", options="header"]
+|===
+| Cas d'utilisation | Facteurs exigés | Facteur résistant au phishing | Signaux de contexte
+
+|
+|
+|
+|
 |===
 
 ====
