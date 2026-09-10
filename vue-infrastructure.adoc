@@ -576,58 +576,190 @@ Exemple :
 ====
 
 //🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["disponibilité"],"link_to":["cc4a17a8-d68b-43cf-8b4e-c64829d950fc"]}
-### Exigences de disponibilité
-
+=== Exigences de disponibilité
+ 
 [TIP]
 ====
-Nous listons ici les exigences de disponibilité. Les mesures techniques permettant de les atteindre seront données dans l’architecture technique de la solution. 
-
-l’indisponibilité maximale ici décrite doit suivre le niveau 
-
-Les informations données ici serviront d'entrants au SLA de l’application.
-
-
-Attention à bien cadrer ces exigences car un porteur de projet a souvent tendance à demander une disponibilité très élevée sans toujours se rendre compte des implications. Le coût et la complexité de la solution augmente exponentiellement avec le niveau de disponibilité exigé. 
-
-L’architecture physique, technique voire logicielle peut changer complètement en fonction du besoin de disponibilité (clusters d’intergiciels ou de bases de données, redondances matériels coûteuses, architecture asynchrone, caches de session, failover, etc.). 
-
-Ne pas oublier également les coûts d’astreinte souvent importants si les exigences sont très élevées. De la pédagogie et un devis permettent en général de modérer les exigences.
-
-On estime en général que la haute disponibilité (HA) commence à trois neufs (99%), soit environ 8h45 d'indisponibilité par an.
-
-Détailler la disponibilité demandée par plage.
-
-La disponibilité exigée ici devra être en cohérence avec les Contraintes de disponibilité du SI.
-
-Exemple : 
-
-.Durée d’indisponibilité maximale admissible par plage
+Nous listons ici les *exigences* de disponibilité. Les mesures techniques
+permettant de les atteindre seront données dans l'architecture technique de la
+solution. Les informations données ici serviront d'entrants au SLA de
+l'application.
+ 
+*Attention à bien cadrer ces exigences* : un porteur de projet a souvent
+tendance à demander une disponibilité très élevée sans toujours se rendre compte
+des implications. Le coût et la complexité de la solution augmentent
+exponentiellement avec le niveau exigé.
+ 
+L'architecture physique, technique voire logicielle peut changer complètement en
+fonction du besoin : clusters d'intergiciels ou de bases de données, redondances
+matérielles coûteuses, architecture asynchrone, caches de session, failover.
+Ne pas oublier les coûts d'astreinte, souvent importants dès que les exigences
+sont élevées. De la pédagogie et un devis permettent en général de modérer les
+exigences.
+ 
+On estime généralement que la haute disponibilité commence à trois neufs
+(99,9 %), soit environ 8 h 45 d'indisponibilité par an.
+ 
+La disponibilité exigée ici devra être cohérente avec les contraintes de
+disponibilité du SI données plus haut.
+====
+ 
+*Plages de fonctionnement*
+ 
+Détailler la disponibilité demandée par plage. L'indisponibilité maximale
+admissible doit être cohérente avec le niveau retenu dans l'échelle ci-dessous.
+ 
+.Exemple — Durée d'indisponibilité maximale admissible par plage
 [cols="1e,5e"]
 |===
-|No Plage| Indisponibilité maximale
-
-|1 
-|24h, maximum 7 fois par an
-
-|2
-|1h, 8 fois dans l'année
-
-|3
-|4h, 8 fois dans l'année
+| N° Plage | Indisponibilité maximale
+ 
+| 1
+| 24 h, maximum 7 fois par an
+ 
+| 2
+| 1 h, 8 fois dans l'année
+ 
+| 3
+| 4 h, 8 fois dans l'année
 |===
-====
-
+ 
 [PRE-FILLED]
 ====
-.Durée d’indisponibilité maximale admissible par plage
+.Durée d'indisponibilité maximale admissible par plage
 [cols="1e,5e"]
 |===
-|No Plage| Indisponibilité maximale
-
-| 
-| 
+| N° Plage | Indisponibilité maximale
+ 
+|
+|
 |===
 ====
+ 
+*Échelle de disponibilité*
+ 
+Le niveau de disponibilité croise deux grandeurs :
+ 
+RTO (_Recovery Time Objective_):: Temps maximal autorisé pour la réouverture du
+service après un incident.
+RPO (_Recovery Point Objective_):: Volume de données, exprimé en durée, que l'on
+accepte de perdre.
+ 
+.Échelle de cotation de la disponibilité (exemple)
+[cols="1,2,2,3", options="header"]
+|===
+| Niveau | Interruption tolérée (RTO) | Perte de données tolérée (RPO) | Conséquences et dispositif attendu
+ 
+| *D1*
+| `] 5 jours ; 15 jours ]`
+| `] 24 h ; 7 jours ]`
+| Interruption acceptable au-delà de 5 jours. +
+Pas de remise en cause des services essentiels. +
+Reconstruction depuis sauvegarde, sans engagement de délai.
+
+| *D2*
+| `] 24 h ; 5 jours ]`
+| `] 4 h ; 24 h ]`
+| L'interruption a des conséquences importantes sur les services essentiels. +
+Sauvegarde quotidienne, procédure de restauration documentée.
+
+| *D3*
+| `] 4 h ; 24 h ]`
+| `] 15 min ; 4 h ]`
+| L'interruption a des conséquences graves sur les services essentiels. +
+Redondance des composants critiques, PRA documenté et testé.
+
+| *D4*
+| `[ 0 ; 4 h ]`
+| `[ 0 ; 15 min ]`
+| Le service doit toujours être fourni. +
+Haute disponibilité requise : redondance active, bascule automatisée. +
+En deçà d'une heure, une architecture actif-actif multi-site et une réplication synchrone sont généralement nécessaires.
+|===
+ 
+[IMPORTANT]
+====
+*Convention de mesure.* Sauf mention contraire, les durées s'entendent :
+ 
+* *par incident*, et non cumulées sur l'année ;
+* *dans la plage de fonctionnement* concernée. Une interruption hors plage n'est
+pas décomptée.
+ 
+Ces deux conventions changent radicalement le sens d'un même chiffre : quatre
+heures par incident relèvent d'une exploitation ordinaire, quatre heures
+cumulées par an imposent une architecture redondée. Si un engagement de
+disponibilité annuelle existe par ailleurs (99,9 %, 99,95 %…), il se cumule avec
+le RTO et ne le remplace pas.
+ 
+*Le RTO retenu doit être supérieur ou égal au MTTR* constaté par les exploitants
+et donné en contrainte plus haut. Il est vain d'exiger un RTO d'une heure quand
+le MTTR effectif est de deux heures : l'engagement serait intenable dès le
+premier incident. Si aucun objectif de restauration précis n'est nécessaire, ne
+pas surspécifier et renvoyer simplement à la contrainte de MTTR.
+====
+ 
+[TIP]
+====
+*Choisir le cran RPO en partant des scénarios de restauration*, et non du seul
+volume de données. Une restauration peut être nécessaire après :
+ 
+* une perte matérielle — peu probable avec des systèmes redondés ;
+* une fausse manipulation d'un utilisateur avancé ou d'un administrateur —
+assez courant ;
+* un bug applicatif ayant corrompu des données ;
+* une destruction volontaire (rançongiciel, sabotage interne).
+ 
+Les deux derniers cas sont dimensionnants : ils supposent de pouvoir remonter à
+un point *antérieur à la corruption*, ce qu'une simple réplication synchrone ne
+permet pas. Un RPO court ne dispense donc jamais d'un historique de sauvegardes.
+====
+ 
+[TIP]
+====
+*RTO et RPO ne se déduisent pas l'un de l'autre.* Un service rétabli en trois
+heures mais ayant perdu vingt-quatre heures de données est souvent plus
+pénalisant qu'une interruption longue sans perte. Coter les deux axes
+séparément ; le niveau retenu est le plus élevé des deux.
+ 
+Si les deux axes divergent fortement et durablement, préférer une cotation en
+deux valeurs (ex. : `RTO D3 / RPO D4`) plutôt qu'un chiffre unique qui masquerait
+l'écart.
+====
+ 
+*Niveau retenu*
+ 
+.Exemple
+[cols="1,1,2,2,3", options="header"]
+|===
+| Périmètre | Niveau | RTO | RPO | Justification
+ 
+| _Application complète_
+| _D3_
+| _4 h en plage ouvrée_
+| _1 h_
+| _L'interruption bloque l'instruction des dossiers. Perte d'une heure de saisie acceptable, les agents pouvant ressaisir._
+ 
+| _Module de consultation publique_
+| _D2_
+| _2 jours_
+| _24 h_
+| _Service d'information sans engagement contractuel. Contenu régénérable depuis le référentiel._
+|===
+ 
+[PRE-FILLED]
+====
+[cols="1,1,2,2,3", options="header"]
+|===
+| Périmètre | Niveau | RTO | RPO | Justification
+ 
+|
+|
+|
+|
+|
+|===
+====
+
 
 //🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Exigences de robustesse
@@ -648,41 +780,6 @@ Exemple 2 : L'utilisateur ne devra pas perdre son panier d'achat même en cas de
 ====
 ====
 Exemple 3 : Le système devra pouvoir tenir une charge trois fois supérieure à la charge moyenne avec un temps de réponse de moins de 10 secondes au 95e centile.
-====
-
-//🏷{"id": "f0e94586-876d-46ca-b060-b5dcde468734", "labels": ["niveau::intermédiaire"]}
-### Exigences de RPO
-
-[TIP]
-====
-La sauvegarde (ou backup) consiste à recopier les données d'une système sur un support dédié en vue d'une restauration en cas de perte. Ces données sont nécessaires au système pour fonctionner.
-
-Fournir ici le Recovery Point Objective (RPO) de l’application (en heures). Il peut être utile de restaurer suite à :
-
-* Une perte de données matérielle (peu probable avec des systèmes de redondance) ;
-* Une fausse manipulation d'un power-user ou d'un administrateur (assez courant) ;
-* Un bug applicatif ;
-* Une destruction de donnée volontaire (attaque de type ransomware, etc.).
-
-====
-====
-Exemple : On ne doit pas pouvoir perdre plus d'une journée de données applicatives.
-====
-
-//🏷{"id": "3e07d851-b2dc-422f-9cba-1b4447a5c956", "labels": ["niveau::intermédiaire", "taille_projet::moyen", "taille_projet::grand", "niveau_detail::général"],"link_to": ["6903a99e-8b8e-464b-909c-d40da5a808d1"]}
-### Exigences de RTO
-
-[TIP]
-====
-Le Recovery Time Objective (en heures) est l'objectif de temps maximal autorisé pour la réouverture du service suite à un incident.
-
-Cette exigence doit être compatible (inférieure ou égale) au MTTR donné en contrainte plus haut. Il est en effet inutile d'exiger un RTO de 1H si les exploitants on mesuré un MTTR effectif de 2H. Elle doit également être compatible avec l'exigence de disponibilité.
-
-Ne préciser cette valeur que pour expliciter un objectif de restauration précis, sinon, ne pas remplir cette rubrique et faire référence à la contrainte de MTTR plus haut.
-====
-
-====
-Exemple : On doit pouvoir restaurer et remettre en ligne les 3 Tio de la base XYZ en 1h maximum.
 ====
 
 //🏷{"id": "cdb68f23-d2c5-4373-9f7d-e358191f0ebf", "labels": ["niveau::intermédiaire","niveau_detail::détaillé"]}
@@ -1502,7 +1599,7 @@ Exemple de périmètre :
 * Sauvegardes des documents Ceph.
 ====
 
-//🏷{"id": "ef7922e8-8122-4120-86f9-c5fed0676811", "labels": [], "link_to":["f0e94586-876d-46ca-b060-b5dcde468734","3e07d851-b2dc-422f-9cba-1b4447a5c956"]}
+//🏷{"id": "ef7922e8-8122-4120-86f9-c5fed0676811", "labels": [], "link_to":["08cb1019-20c4-42ef-9bf2-4adf72936c1c","3e07d851-b2dc-422f-9cba-1b4447a5c956"]}
 ##### Stratégie de sauvegarde
 
 [TIP]

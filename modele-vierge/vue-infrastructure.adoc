@@ -145,13 +145,6 @@ TIP: Voir aussi <<cc4a17a8-d68b-43cf-8b4e-c64829d950fc,Contraintes sur la dispon
 [#231768e7-6a9d-429e-b200-2febdd91a0e3]
 ### Exigences de robustesse
 
-[#f0e94586-876d-46ca-b060-b5dcde468734]
-### Exigences de RPO
-
-[#3e07d851-b2dc-422f-9cba-1b4447a5c956]
-### Exigences de RTO
-TIP: Voir aussi <<6903a99e-8b8e-464b-909c-d40da5a808d1,Contraintes de MTTR>>.
-
 [#cdb68f23-d2c5-4373-9f7d-e358191f0ebf]
 ### Exigences de déploiements et de mises à jour
 
@@ -260,7 +253,7 @@ TIP: Voir aussi <<da0d11fe-0dc9-478e-a984-7a80ea1be482,Exigences d'écoconceptio
 
 [#ef7922e8-8122-4120-86f9-c5fed0676811]
 ##### Stratégie de sauvegarde
-TIP: Voir aussi <<f0e94586-876d-46ca-b060-b5dcde468734,Exigences de RPO>>, <<3e07d851-b2dc-422f-9cba-1b4447a5c956,Exigences de RTO>>.
+TIP: Voir aussi <<08cb1019-20c4-42ef-9bf2-4adf72936c1c,Exigences de disponibilité>>.
 
 [#93b244a6-976c-465a-80fc-9665a81adeb9]
 ##### Outillage
