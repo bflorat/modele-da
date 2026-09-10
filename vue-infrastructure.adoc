@@ -577,79 +577,47 @@ Exemple :
 
 //🏷{"id": "08cb1019-20c4-42ef-9bf2-4adf72936c1c", "labels": ["disponibilité"],"link_to":["cc4a17a8-d68b-43cf-8b4e-c64829d950fc"]}
 === Exigences de disponibilité
- 
+
 [TIP]
 ====
 Nous listons ici les *exigences* de disponibilité. Les mesures techniques
 permettant de les atteindre seront données dans l'architecture technique de la
 solution. Les informations données ici serviront d'entrants au SLA de
 l'application.
- 
+
 *Attention à bien cadrer ces exigences* : un porteur de projet a souvent
 tendance à demander une disponibilité très élevée sans toujours se rendre compte
 des implications. Le coût et la complexité de la solution augmentent
 exponentiellement avec le niveau exigé.
- 
+
 L'architecture physique, technique voire logicielle peut changer complètement en
 fonction du besoin : clusters d'intergiciels ou de bases de données, redondances
 matérielles coûteuses, architecture asynchrone, caches de session, failover.
 Ne pas oublier les coûts d'astreinte, souvent importants dès que les exigences
 sont élevées. De la pédagogie et un devis permettent en général de modérer les
 exigences.
- 
+
 On estime généralement que la haute disponibilité commence à trois neufs
 (99,9 %), soit environ 8 h 45 d'indisponibilité par an.
- 
+
 La disponibilité exigée ici devra être cohérente avec les contraintes de
 disponibilité du SI données plus haut.
 ====
- 
-*Plages de fonctionnement*
- 
-Détailler la disponibilité demandée par plage. L'indisponibilité maximale
-admissible doit être cohérente avec le niveau retenu dans l'échelle ci-dessous.
- 
-.Exemple — Durée d'indisponibilité maximale admissible par plage
-[cols="1e,5e"]
-|===
-| N° Plage | Indisponibilité maximale
- 
-| 1
-| 24 h, maximum 7 fois par an
- 
-| 2
-| 1 h, 8 fois dans l'année
- 
-| 3
-| 4 h, 8 fois dans l'année
-|===
- 
-[PRE-FILLED]
-====
-.Durée d'indisponibilité maximale admissible par plage
-[cols="1e,5e"]
-|===
-| N° Plage | Indisponibilité maximale
- 
-|
-|
-|===
-====
- 
+
 *Échelle de disponibilité*
- 
+
 Le niveau de disponibilité croise deux grandeurs :
- 
+
 RTO (_Recovery Time Objective_):: Temps maximal autorisé pour la réouverture du
 service après un incident.
 RPO (_Recovery Point Objective_):: Volume de données, exprimé en durée, que l'on
 accepte de perdre.
- 
+
 .Échelle de cotation de la disponibilité (exemple)
 [cols="1,2,2,3", options="header"]
 |===
 | Niveau | Interruption tolérée (RTO) | Perte de données tolérée (RPO) | Conséquences et dispositif attendu
- 
+
 | *D1*
 | `] 5 jours ; 15 jours ]`
 | `] 24 h ; 7 jours ]`
@@ -676,83 +644,42 @@ Redondance des composants critiques, PRA documenté et testé.
 Haute disponibilité requise : redondance active, bascule automatisée. +
 En deçà d'une heure, une architecture actif-actif multi-site et une réplication synchrone sont généralement nécessaires.
 |===
- 
-[IMPORTANT]
-====
-*Convention de mesure.* Sauf mention contraire, les durées s'entendent :
- 
-* *par incident*, et non cumulées sur l'année ;
-* *dans la plage de fonctionnement* concernée. Une interruption hors plage n'est
-pas décomptée.
- 
-Ces deux conventions changent radicalement le sens d'un même chiffre : quatre
-heures par incident relèvent d'une exploitation ordinaire, quatre heures
-cumulées par an imposent une architecture redondée. Si un engagement de
-disponibilité annuelle existe par ailleurs (99,9 %, 99,95 %…), il se cumule avec
-le RTO et ne le remplace pas.
- 
-*Le RTO retenu doit être supérieur ou égal au MTTR* constaté par les exploitants
-et donné en contrainte plus haut. Il est vain d'exiger un RTO d'une heure quand
-le MTTR effectif est de deux heures : l'engagement serait intenable dès le
-premier incident. Si aucun objectif de restauration précis n'est nécessaire, ne
-pas surspécifier et renvoyer simplement à la contrainte de MTTR.
-====
- 
-[TIP]
-====
-*Choisir le cran RPO en partant des scénarios de restauration*, et non du seul
-volume de données. Une restauration peut être nécessaire après :
- 
-* une perte matérielle — peu probable avec des systèmes redondés ;
-* une fausse manipulation d'un utilisateur avancé ou d'un administrateur —
-assez courant ;
-* un bug applicatif ayant corrompu des données ;
-* une destruction volontaire (rançongiciel, sabotage interne).
- 
-Les deux derniers cas sont dimensionnants : ils supposent de pouvoir remonter à
-un point *antérieur à la corruption*, ce qu'une simple réplication synchrone ne
-permet pas. Un RPO court ne dispense donc jamais d'un historique de sauvegardes.
-====
- 
-[TIP]
-====
-*RTO et RPO ne se déduisent pas l'un de l'autre.* Un service rétabli en trois
-heures mais ayant perdu vingt-quatre heures de données est souvent plus
-pénalisant qu'une interruption longue sans perte. Coter les deux axes
-séparément ; le niveau retenu est le plus élevé des deux.
- 
-Si les deux axes divergent fortement et durablement, préférer une cotation en
-deux valeurs (ex. : `RTO D3 / RPO D4`) plutôt qu'un chiffre unique qui masquerait
-l'écart.
-====
- 
-*Niveau retenu*
- 
+
+*Disponibilité exigée par plage de fonctionnement*
+
+La disponibilité ne s'exige pas uniformément : une interruption de nuit et la
+même interruption en heures ouvrées n'ont pas les mêmes conséquences. Le niveau
+se cote donc *par plage*, chaque plage renvoyant à celles définies dans les
+contraintes de disponibilité du SI.
+
 .Exemple
-[cols="1,1,2,2,3", options="header"]
+[cols="1e,2,1,3", options="header"]
 |===
-| Périmètre | Niveau | RTO | RPO | Justification
- 
-| _Application complète_
-| _D3_
-| _4 h en plage ouvrée_
-| _1 h_
-| _L'interruption bloque l'instruction des dossiers. Perte d'une heure de saisie acceptable, les agents pouvant ressaisir._
- 
-| _Module de consultation publique_
+| N° Plage | Indisponibilité maximale admissible | Niveau | Justification
+
+| _1_
+| _24 h, maximum 7 fois par an_
 | _D2_
-| _2 jours_
-| _24 h_
-| _Service d'information sans engagement contractuel. Contenu régénérable depuis le référentiel._
+| _Nuits et week-ends. Aucune instruction en cours, aucun accès usager attendu._
+
+| _2_
+| _1 h, 8 fois dans l'année_
+| _D4_
+| _Heures ouvrées. L'interruption bloque l'accueil au guichet et l'instruction des dossiers._
+
+| _3_
+| _4 h, 8 fois dans l'année_
+| _D3_
+| _Samedi matin. Activité réduite, mais service ouvert au public._
 |===
- 
+
 [PRE-FILLED]
 ====
-[cols="1,1,2,2,3", options="header"]
+.Disponibilité exigée par plage
+[cols="1e,2,1,3", options="header"]
 |===
-| Périmètre | Niveau | RTO | RPO | Justification
- 
-|
+| N° Plage | Indisponibilité maximale admissible | Niveau | Justification
+
 |
 |
 |
@@ -760,6 +687,89 @@ l'écart.
 |===
 ====
 
+[TIP]
+====
+*La colonne « Justification » est la plus utile du tableau.* Devoir écrire
+pourquoi une plage exige tel niveau conduit souvent le porteur de projet à
+constater que la nuit et le week-end ne réclament pas ce qu'il avait demandé.
+C'est un outil de modération plus efficace que n'importe quel avertissement sur
+les coûts.
+
+Si toutes les plages portent le même niveau, c'est le signe qu'il n'y a en
+réalité qu'une seule plage : simplifier plutôt que de dupliquer des lignes
+identiques.
+====
+
+*Perte de données tolérée*
+
+Le RPO se cote *une seule fois pour l'ensemble du système* : la tolérance à la
+perte est une propriété des données, non de l'horaire. Un RPO variant au cours
+de la journée serait au demeurant ingérable techniquement.
+
+.Exemple
+[cols="2,1,3", options="header"]
+|===
+| RPO exigé | Niveau | Justification
+
+| _1 h_
+| _D3_
+| _Une heure de saisie perdue reste ressaisissable par les agents. Au-delà, les dossiers déposés par les usagers seraient définitivement perdus._
+|===
+
+[PRE-FILLED]
+====
+[cols="2,1,3", options="header"]
+|===
+| RPO exigé | Niveau | Justification
+
+|
+|
+|
+|===
+====
+
+*Niveau retenu pour le système*
+
+Le niveau de disponibilité du système est *le plus élevé* entre le maximum des
+plages et le niveau issu du RPO. Dans l'exemple ci-dessus : maximum des plages
+D4, RPO D3, donc *D4*.
+
+[IMPORTANT]
+====
+*Le RTO retenu doit être supérieur ou égal au MTTR* constaté par les exploitants
+et donné en contrainte plus haut. Il est vain d'exiger un RTO d'une heure quand
+le MTTR effectif est de deux heures : l'engagement serait intenable dès le
+premier incident. Si aucun objectif de restauration précis n'est nécessaire, ne
+pas surspécifier et renvoyer simplement à la contrainte de MTTR.
+====
+
+[TIP]
+====
+*Choisir le niveau RPO en partant des scénarios de restauration*, et non du seul
+volume de données. Une restauration peut être nécessaire après :
+
+* une perte matérielle — peu probable avec des systèmes redondés ;
+* une fausse manipulation d'un utilisateur avancé ou d'un administrateur —
+assez courant ;
+* un bug applicatif ayant corrompu des données ;
+* une destruction volontaire (rançongiciel, sabotage interne).
+
+Les deux derniers cas sont dimensionnants : ils supposent de pouvoir remonter à
+un point *antérieur à la corruption*, ce qu'une simple réplication synchrone ne
+permet pas. Un RPO court ne dispense donc jamais d'un historique de sauvegardes.
+====
+
+[TIP]
+====
+*RTO et RPO ne se déduisent pas l'un de l'autre.* Un service rétabli en trois
+heures mais ayant perdu vingt-quatre heures de données est souvent plus
+pénalisant qu'une interruption longue sans perte. C'est la raison pour laquelle
+les deux sont cotés séparément ci-dessus.
+
+Si les deux axes divergent fortement et durablement, préférer une cotation en
+deux valeurs (ex. : `RTO D4 / RPO D3`) plutôt qu'un chiffre unique qui masquerait
+l'écart.
+====
 
 //🏷{"id": "231768e7-6a9d-429e-b200-2febdd91a0e3", "labels": ["niveau::intermédiaire", "niveau_detail::détaillé"]}
 ### Exigences de robustesse
