@@ -300,7 +300,7 @@ Exemple :
 
 
 //🏷{"id": "9d0646cd-3e3f-4878-96de-f215c9f20bdc", "labels": []}
-### Exigences d'authentification
+=== Exigences d’authentification
 
 [TIP]
 ====
@@ -308,361 +308,629 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 
 ⚠ **À ne pas confondre avec l’identification**, qui ne fait que distinguer un utilisateur d’un autre sans valider son identité.
 
-**Cas particuliers :** 
+**Cas particuliers :**
 
-- Les **comptes techniques** (ex: batchs, applications, API) nécessitent également une authentification (ex: comptes de service avec certificats ou clés SSH).
-- Les **comptes à privilèges** (ex: `root` sur les serveurs, compte administrateur applicatif...). Ils peuvent être humains ou techniques mais peuvent lire/écrire/supprimer beaucoup de données ou réaliser des opérations irréversibles (blast radius large).
-- L’**authentification initiale** (lors de l'inscription) est souvent plus stricte que les authentifications ultérieures.
-- Une **authentification fédérée** permet de déléguer l’authentification à un fournisseur d’identité (SSO, OAuth2, SAML, etc.), voir la section suivante.
+- Les **comptes techniques** (ex. : batchs, applications, API) nécessitent également une authentification. Les exigences les concernant sont traitées dans un tableau dédié ci-dessous ; les dispositifs correspondants relèvent de la section « Comptes de service » du chapitre Mesures de sécurité.
 
+- Les **comptes à privilèges** (ex. : `root` sur les serveurs, compte administrateur applicatif...). Ils peuvent être humains ou techniques, mais disposent de droits permettant de lire, modifier ou supprimer de nombreuses données, ou de réaliser des opérations irréversibles (_blast radius_ important).
+
+- L’**enrôlement initial** et, lorsqu’elle est nécessaire, la **vérification d’identité** permettant de rattacher un compte à une personne constituent une étape distincte de l’authentification ultérieure. Cette étape peut nécessiter des contrôles plus stricts que ceux utilisés lors des connexions suivantes.
+
+- Une **authentification fédérée** permet de déléguer l’authentification à un fournisseur d’identité. Les exigences correspondantes sont traitées dans les sections « Exigences de fédération d’identité » et « Exigences de SSO et SLO ». La présente section reste néanmoins à renseigner : elle définit le **niveau d’authentification exigé**, que celui-ci soit obtenu localement ou délégué à un fournisseur d’identité.
 ====
 
-*Facteurs d'authentification : tableau comparatif*
- 
-Ce tableau couvre les trois catégories reconnues comme facteurs :
-connaissance, possession, inhérence.
- 
-[cols="1,1,1,1,5,5,1", options="header"]
+
+*Facteurs et mécanismes d’authentification : tableau comparatif*
+
+Les trois catégories de facteurs d’authentification sont :
+
+- **connaissance** : quelque chose que l’utilisateur connaît ;
+- **possession** : quelque chose que l’utilisateur possède ;
+- **inhérence** : quelque chose que l’utilisateur est.
+
+Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d’authentification. Certains mécanismes courants, comme un lien envoyé par e-mail, ne constituent pas nécessairement à eux seuls un authentificateur reconnu par tous les référentiels.
+
+[cols="2,1,1,1,4,4", options="header"]
 |===
-| Facteur | Catégorie | Force | Résistance au phishing | Description | Faiblesses / Risques | Normes
+
+| Mécanisme
+| Catégorie
+| Force typique
+| Résistance au phishing
+| Description
+| Faiblesses / Risques
 
 | Mot de passe
 | Connaissance
-| Faible
+| Faible à moyenne
 | Non
-| Chaîne de caractères secrète connue de l'utilisateur.
-| Réutilisation entre services. Fuite par bases compromises. Hameçonnage, force brute. Insuffisant seul.
-| NIST SP 800-63B
+| Chaîne de caractères secrète connue de l’utilisateur.
+| Réutilisation entre services. Fuite par bases compromises. Hameçonnage, force brute. Sa robustesse dépend fortement de sa longueur, de son caractère unique et des protections mises en œuvre côté serveur.
 
 | Phrase de passe
 | Connaissance
 | Moyenne
 | Non
-| Suite de mots facile à mémoriser (ex. : `cheval juste pile agrafe`).
-| Meilleure entropie qu'un mot de passe court, mais aussi vulnérable au hameçonnage et au rejeu.
-| NIST SP 800-63B
+| Suite de mots suffisamment longue et mémorisable par l’utilisateur (ex. : `cheval juste pile agrafe`).
+| Peut offrir une meilleure mémorisation et une meilleure entropie qu’un mot de passe court, mais reste vulnérable au hameçonnage, au rejeu et à la réutilisation.
 
 | Question secrète
 | Connaissance
 | Très faible
 | Non
-| Question personnelle (ex. : nom du premier animal).
-| Réponses devinables ou publiquement accessibles. Déconseillé.
-| Déconseillé par NIST SP 800-63B
+| Question portant sur une information personnelle (ex. : nom du premier animal).
+| Réponse souvent devinable, stable dans le temps ou publiquement accessible. Ne constitue pas une preuve d’identité robuste. **Déconseillée comme authentificateur.**
 
 | Code PIN
 | Connaissance
 | Faible seul
 | Non
-| Code numérique court (4 à 8 chiffres).
-| Espace de recherche réduit. N'a de valeur que combiné à un dispositif limitant les tentatives (carte, TPM, élément sécurisé).
-| —
+| Code court servant généralement à déverrouiller localement un authentificateur ou un composant sécurisé.
+| Espace de recherche réduit. Sa sécurité repose sur un dispositif limitant les tentatives et protégeant le secret ou la clé associée : carte à puce, TPM, élément sécurisé, clé FIDO2, etc.
 
 | Connaissance de données métier
 | Connaissance
 | Faible
 | Non
-| Question portant sur une information interne (ex. : montant de la dernière facture).
-| Partageable, mémorisation difficile, souvent accessible à des tiers légitimes. *Déconseillée comme facteur.* Usage légitime : l'appariement lors de l'enrôlement initial, quand aucun élément partagé n'existe.
-| —
+| Question portant sur une information liée au dossier de l’utilisateur (ex. : montant de la dernière facture).
+| Information partageable, parfois connue de tiers légitimes ou récupérable par ingénierie sociale. **Déconseillée comme facteur d’authentification.** Peut néanmoins être utile lors d’un appariement initial entre un compte et un dossier lorsqu’aucun authentificateur partagé n’existe encore.
 
-| Lien de vérification par e-mail
-| Possession
+| Lien à usage unique par e-mail
+| Hors catégorie (canal de transmission)
 | Faible
 | Non
-| Lien à usage unique envoyé sur l'adresse déclarée.
-| Sécurité entièrement dérivée de celle de la boîte mail. Interception, transfert, hameçonnage.
-| —
+| Lien temporaire envoyé à l’adresse e-mail déclarée afin de permettre ou de confirmer un accès. Parfois assimilé à une possession indirecte, sans en offrir les garanties.
+| La sécurité dépend entièrement de celle de la boîte mail, de ses mécanismes de récupération et des terminaux qui y accèdent. Transfert, compromission de la messagerie et hameçonnage restent possibles.
 
 | OTP par SMS
-| Possession
+| Possession (indirecte)
 | Faible
 | Non
-| Code à usage unique envoyé par message texte.
-| Détournement de carte SIM (_SIM swapping_). Interception de la signalisation entre opérateurs (SS7, Diameter), dépourvue d'authentification entre réseaux. Transfert automatique vers un terminal tiers. Déconseillé pour les usages sensibles.
-| —
+| Code à usage unique envoyé au numéro de téléphone préalablement enregistré.
+| Détournement de carte SIM (_SIM swapping_), interception ou redirection des messages, compromission du terminal. Le réseau téléphonique ne fournit pas les mêmes garanties qu’un authentificateur cryptographique.
 
 | OTP par application (TOTP)
 | Possession
-| Forte
+| Moyenne
 | Non
-| Code temporaire calculé à partir d'un secret partagé et de l'heure courante.
-| Rejeu possible par proxy d'interception en temps réel. Perte du terminal. Secret extractible si le terminal est compromis.
-| RFC 6238
+| Code temporaire calculé à partir d’un secret partagé et de l’heure courante.
+| Le code peut être capturé par un site contrefait puis relayé immédiatement vers le service légitime. Secret partagé, donc connu du vérificateur et souvent extractible d’une sauvegarde du terminal ou d’un poste compromis. Perte du terminal.
 
 | OTP par jeton matériel
 | Possession
-| Forte
+| Moyenne à forte
 | Non
 | Code généré par un dispositif physique dédié.
-| Mêmes limites que le TOTP face au proxy d'interception. Coût, logistique, perte.
-| RFC 4226 (HOTP), RFC 6238 (TOTP) ou protocole propriétaire
+| Même vulnérabilité au relais en temps réel que le TOTP, mais secret non extractible du dispositif. Coût, logistique de distribution, perte ou remplacement du jeton.
 
 | Notification push
 | Possession
 | Moyenne
+| Non
+| Demande de validation envoyée à un terminal préalablement enrôlé.
+| Vulnérable au harcèlement de notifications (_MFA fatigue_) et aux attaques par relais. La correspondance de nombre (_number matching_) et l’affichage du contexte réduisent fortement les validations accidentelles mais ne rendent pas, à eux seuls, le mécanisme résistant au phishing.
+
+| SSO intégré au domaine (Kerberos, SPNEGO)
+| Dérivé de l’authentification initiale
+| Variable : celle du facteur initial
 | Partielle
-| Demande de validation envoyée à un terminal enrôlé.
-| Vulnérable au harcèlement de notifications (_MFA fatigue_) si l'utilisateur peut valider sans contexte. La correspondance de nombre affiché réduit fortement ce risque.
-| Propriétaire
+| Le poste joint au domaine obtient un ticket lors de l’ouverture de session et le présente à l’application sans nouvelle saisie de secret.
+| N’apporte aucun facteur propre : le niveau réel est celui de l’ouverture de session sur le poste. Vol ou rejeu de tickets, délégation mal configurée, repli sur des protocoles plus faibles. Limité aux postes gérés et joints au domaine.
 
 | Clé SSH
 | Possession
 | Forte
 | Partielle
-| Paire de clés asymétriques, la clé privée restant sur le poste client.
-| Clé privée souvent stockée en clair sur le disque. Absence fréquente de phrase de passe. Gestion du cycle de vie et de la révocation.
-| RFC 4252
+| Paire de clés asymétriques, la clé privée restant sur le poste client ou dans un dispositif cryptographique. La signature est liée à la session, ce qui interdit son rejeu vers une autre destination.
+| La vérification de la clé hôte reposant souvent sur une confiance au premier usage, un serveur interposé peut être accepté par l’utilisateur. Clé privée parfois stockée sans protection suffisante. Vol de fichier, compromission du poste, abus de l’agent SSH et de son transfert.
 
 | Certificat logiciel
 | Possession
 | Moyenne
-| Oui
-| Certificat X.509 et clé privée conservés dans un magasin logiciel (navigateur, système, fichier PKCS#12). Souvent déployé sur les terminaux gérés (MDM, domaine) pour authentifier le poste en plus de l'utilisateur.
-| Clé privée exportable et copiable. Exfiltration par code malveillant. Possession exclusive non démontrable.
-| RFC 5280
+| Oui en TLS client mutuel
+| Certificat X.509 et clé privée conservés dans un magasin logiciel, un navigateur, le système ou un fichier PKCS#12. En authentification TLS cliente, la preuve porte sur le déroulé de la négociation et est donc liée au canal.
+| Clé privée potentiellement exportable et copiable. Exfiltration possible par code malveillant. La possession exclusive de la clé n’est pas garantie.
 
 | Carte à puce
-| Possession + Connaissance (PIN)
+| Possession + connaissance (PIN)
 | Très forte
 | Oui
-| Certificat X.509 dont la clé privée est générée dans un composant sécurisé et non extractible. Les opérations sont réalisées dans le composant, débloqué par un code PIN.
-| Coût. Lecteur et intergiciel requis. PKI à exploiter (révocation, renouvellement). Blocage du PIN, perte de la carte.
-| ISO/IEC 7816, PKCS#11, eIDAS (QSCD)
+| Certificat ou clé cryptographique dont la clé privée est générée et utilisée dans un composant sécurisé. Les opérations cryptographiques sont réalisées par la carte après déverrouillage par code PIN.
+| Coût. Lecteur et intergiciel requis. PKI à exploiter : émission, révocation, renouvellement. Gestion du blocage du PIN et de la perte de la carte.
 
 | Clé matérielle FIDO2
-| Possession (+ PIN ou biométrie)
+| Possession + connaissance ou inhérence si vérification utilisateur
 | Très forte
 | Oui
-| Défi-réponse asymétrique, la signature étant liée à l'origine du site. Clé privée confinée dans un composant externe dédié, transportable entre machines.
-| Coût unitaire (20 à 50 €) et logistique de distribution. Impose l'enrôlement d'une clé de secours. Support applicatif encore inégal.
-| W3C WebAuthn, FIDO CTAP2
+| Authentification asymétrique par défi-réponse. La preuve est liée cryptographiquement à l’origine du service. La clé privée est confinée dans un dispositif externe et généralement non exportable.
+| Coût et logistique de distribution. Nécessite une stratégie de récupération ou l’enrôlement d’un second authentificateur. Support dépendant des applications.
 
-| Passkey liée à l'appareil
-| Possession (+ PIN ou biométrie)
+| Passkey liée à l’appareil
+| Possession + connaissance ou inhérence si vérification utilisateur
 | Très forte
 | Oui
-| Même protocole que la clé matérielle. Clé privée confinée dans l'élément sécurisé de l'appareil (Secure Enclave, TPM).
-| Aucun matériel à distribuer. La clé disparaît avec l'appareil. Impose un second dispositif enrôlé. Dépendance à la plateforme.
-| W3C WebAuthn
+| Authentificateur WebAuthn non synchronisé. La clé privée reste liée à l’appareil et est généralement protégée par les mécanismes de sécurité de la plateforme, par exemple TPM, Secure Enclave ou magasin cryptographique équivalent.
+| Perte ou destruction de l’appareil. Nécessite un mécanisme de récupération ou un second authentificateur enrôlé. Le niveau de protection matérielle dépend de la plateforme.
 
 | Passkey synchronisée
-| Possession
+| Possession + connaissance ou inhérence si vérification utilisateur
 | Forte
 | Oui
-| Clé privée WebAuthn générée sur un appareil, puis répliquée chiffrée vers ses autres appareils. La réplication passe par son gestionnaire de justificatifs (Apple, Google, Microsoft ou tiers).
-| La clé quitte l'appareil : possession non exclusive. La sécurité devient celle du compte de synchronisation, et de sa procédure de récupération, souvent un code SMS ou un lien e-mail. Portabilité limitée entre écosystèmes.
-| W3C WebAuthn
+| Authentificateur WebAuthn dont la clé privée peut être répliquée de manière chiffrée entre plusieurs appareils par l’intermédiaire d’un gestionnaire de justificatifs.
+| La clé n’est plus strictement liée à un appareil unique. La sécurité dépend également du service de synchronisation, du compte qui le protège et de ses mécanismes de récupération. Non adaptée aux niveaux exigeant une clé non exportable.
 
 | Biométrie
 | Inhérence
 | Variable
-| Sans objet
-| Empreinte digitale, reconnaissance faciale, iris, voix.
-| Non révocable si compromise. Taux d'erreur et attaques par présentation. Enjeux de vie privée et de conformité RGPD.
-| ISO/IEC 30107
+| Sans objet lorsqu’elle est utilisée seule
+| Empreinte digitale, reconnaissance faciale, iris, voix, etc.
+| Caractéristique difficilement révocable en cas de compromission. Taux d’erreur, attaques par présentation, enjeux de vie privée et de conformité.
+
 |===
+
+.Références normatives associées
+[%collapsible]
+====
+- **Mot de passe, phrase de passe, OTP, passkey synchronisée** : NIST SP 800-63B-4 ; recommandations ANSSI relatives à l’authentification multifacteur et aux mots de passe.
+- **Lien à usage unique par e-mail** : non admis comme authentificateur _out-of-band_ par NIST SP 800-63B-4.
+- **OTP par SMS** : usage restreint selon NIST SP 800-63B-4.
+- **TOTP / HOTP** : RFC 6238, RFC 4226.
+- **Kerberos** : RFC 4120, RFC 4559 (SPNEGO/HTTP).
+- **Clé SSH** : RFC 4252.
+- **Certificat X.509 et TLS client** : RFC 5280, RFC 8446.
+- **Carte à puce** : ISO/IEC 7816, PKCS#11, règlement eIDAS selon l’usage.
+- **FIDO2 / passkeys** : W3C WebAuthn, FIDO CTAP2.
+- **Biométrie** : ISO/IEC 30107 (détection d’attaques par présentation).
+- **Référentiels applicables au secteur public français** : RGS, référentiel d’exigences PVID pour la vérification d’identité à distance, règlement eIDAS pour les niveaux de garantie.
+====
 
 
 [IMPORTANT]
 ====
-*Force et résistance au phishing sont deux axes indépendants.*
- 
-La colonne _Force_ traduit la difficulté à compromettre le facteur (deviner,
-voler, dupliquer). La colonne _Résistance au phishing_ traduit la capacité à
-résister à un attaquant qui s'interpose en temps réel entre l'utilisateur et le
-service légitime (_adversary-in-the-middle_).
- 
-Un TOTP est fort mais se rejoue : l'utilisateur saisit son code sur un site
-contrefait qui le relaie immédiatement au vrai service. À l'inverse, un
-certificat logiciel est moyennement fort — la clé est copiable — mais résistant
-au phishing, car la preuve est liée cryptographiquement à l'origine.
- 
-Trois mécanismes cumulent aujourd'hui les deux propriétés au plus haut niveau : la clé matérielle FIDO2, la passkey liée à l'appareil (non synchronisée) et l'authentification par certificat sur élément sécurisé (carte à puce). Ils partagent le même principe — la clé privée ne quitte jamais un composant sécurisé. 
+**Force et résistance au phishing sont deux axes indépendants.**
 
-Pour tout accès réellement sensible, c'est de ce côté qu'il faut regarder.
+La colonne _Force typique_ traduit la difficulté à compromettre l’authentificateur : deviner le secret, voler le dispositif, copier une clé, extraire un secret, contourner la protection locale, etc.
+
+La colonne _Résistance au phishing_ traduit la capacité à résister à un attaquant qui interpose un service contrefait ou un proxy en temps réel entre l’utilisateur et le service légitime (_adversary-in-the-middle_).
+
+Un TOTP peut ainsi constituer un facteur robuste contre le simple vol de mot de passe tout en restant vulnérable au phishing : l’utilisateur saisit son code sur un site contrefait, qui le transmet immédiatement au véritable service.
+
+À l’inverse, une authentification cryptographique peut être résistante au phishing parce que la preuve produite est liée cryptographiquement au service ou au canal de communication et ne peut pas être rejouée vers une autre destination.
+
+Les mécanismes les plus robustes combinent donc deux propriétés distinctes :
+
+- une clé privée difficile ou impossible à extraire, qui protège contre le vol ou le clonage de l’authentificateur ;
+- une preuve cryptographiquement liée au vérificateur, à l’origine ou au canal, qui protège contre le phishing et le relais.
+
+Les clés matérielles FIDO2, les passkeys liées à l’appareil et les certificats portés par un élément sécurisé sont des exemples de mécanismes pouvant cumuler ces propriétés. Pour les accès réellement sensibles, ces mécanismes doivent être privilégiés.
 ====
- 
+
+
 [NOTE]
 ====
-La *biométrie* est rarement un facteur transmis au service : dans les usages
-courants (téléphone, ordinateur portable), elle déverrouille localement un
-élément sécurisé qui porte le véritable facteur. La force et la résistance au
-phishing sont alors celles du dispositif déverrouillé, pas celles de la mesure
-biométrique.
-====
- 
-*Signaux de contexte : tableau comparatif*
- 
-Les éléments ci-dessous ne prouvent pas une identité et ne constituent donc pas
-des facteurs d'authentification. Ils servent à *moduler* l'exigence
-d'authentification en fonction de la situation d'exécution — démarche appelée
-authentification adaptative ou _risk-based_.
- 
-[cols="2,1,3,3,3", options="header"]
-|===
-| Signal | Catégorie | Ce qu'il permet de détecter | Modulation typique | Limites
- 
-| Adresse IP ou plage réseau
-| Localisation
-| Accès depuis un réseau non prévu (Internet public au lieu de l'intranet ou du VPN).
-| Exiger un facteur supplémentaire hors du réseau de confiance ; restreindre certaines opérations sensibles au réseau interne.
-| Usurpation d'adresse. Ne distingue pas les utilisateurs d'un même réseau. Contraignant en mobilité et en télétravail.
- 
-| Géolocalisation
-| Localisation
-| Connexion depuis un pays ou une région inhabituelle pour l'utilisateur.
-| Élever le niveau d'authentification ; bloquer les pays hors périmètre d'activité.
-| Contournable par VPN ou relais. Précision faible sur IP. Faux positifs fréquents.
- 
-| Voyage impossible
-| Localisation
-| Deux connexions géographiquement incompatibles avec le temps écoulé entre elles.
-| Réauthentifier, invalider la session en cours, alerter le SOC.
-| Faux positifs liés aux VPN d'entreprise et aux relais de confidentialité.
- 
-| Empreinte de terminal
-| Localisation
-| Accès depuis un terminal jamais observé pour ce compte.
-| Exiger une vérification supplémentaire lors du premier usage d'un terminal.
-| Facilement falsifiable. Se dégrade en simple identifiant persistant. Enjeux RGPD liés au traçage.
- 
-| Plage horaire d'activité
-| Comportement
-| Connexion en dehors des horaires habituels de l'utilisateur ou du service.
-| Élever l'exigence ; restreindre les opérations irréversibles aux heures ouvrées.
-| Faux positifs en astreinte, en horaires décalés ou sur plusieurs fuseaux.
- 
-| Dynamique de saisie
-| Comportement
-| Écart entre le rythme de frappe observé et le profil appris.
-| Alimenter un score de risque ; déclencher une réauthentification au-delà d'un seuil.
-| Nécessite une phase d'apprentissage. Peu fiable isolément. Sensible au changement de clavier ou de terminal.
- 
-| Habitudes d'usage
-| Comportement
-| Séquence d'actions, volumétrie ou vitesse de navigation inhabituelles.
-| Alimenter un score de risque ; limiter le débit ; alerter.
-| Dérive du profil dans le temps. Difficulté à expliquer une décision de blocage à l'utilisateur.
-|===
- 
-[WARNING]
-====
-Un signal de contexte ne compte *jamais* comme second facteur. Une
-authentification multifacteur doit combiner des éléments d'au moins deux des
-trois catégories reconnues (connaissance, possession, inhérence). Un mot de
-passe complété d'une restriction d'adresse IP reste une authentification à un
-seul facteur.
- 
-Corollaire : ces signaux peuvent *élever* l'exigence d'authentification, jamais
-l'abaisser en deçà du minimum requis pour l'opération concernée.
+La **biométrie** est rarement transmise au service distant comme preuve d’authentification.
+
+Dans les usages courants, elle sert à effectuer localement une _vérification utilisateur_ et à déverrouiller un authentificateur cryptographique protégé par le terminal.
+
+La résistance au phishing et une grande partie de la robustesse de l’authentification proviennent alors de l’authentificateur cryptographique déverrouillé, et non du caractère biométrique lui-même.
 ====
 
-*Recommandations par cas d'usage*
- 
-[cols="1,2,3,1,2", options="header"]
+
+*Niveaux de garantie*
+
+Afin de rendre les exigences traçables et comparables entre projets, chaque cas d’utilisation doit être rattaché à un niveau de garantie. La correspondance ci-dessous est indicative : les référentiels cités n’ont ni le même périmètre ni la même portée juridique.
+
+[cols="1,1,1,4", options="header"]
 |===
-| Niveau d'accès | Exemple | Combinaison minimale exigée | Facteur anti-phishing | Signaux de contexte
- 
-| Accès public
-| Compte sur un site d'information, forum, newsletter.
-| Un facteur : phrase de passe, ou lien à usage unique par e-mail.
-| Non
-| <aucun>
- 
-| Accès personnel sensible
-| Compte bancaire, espace assuré, portail usager, dossier médical.
-| Deux facteurs de deux catégories distinctes, dont *au moins un résistant au phishing* : phrase de passe *et* passkey (synchronisée acceptée).
-| Oui
-| Terminal inconnu, voyage impossible : exiger une réauthentification.
- 
-| Accès interne
-| Application métier, données RH, intranet d'un agent.
-| Certificat sur carte à puce *ou* passkey liée à l'appareil, déverrouillé par code PIN ou biométrie.
-| Oui
-| Réseau d'origine, posture de conformité du poste.
- 
-| Accès distant
-| VPN, bureau à distance, bastion.
-| Idem accès interne, *et* authentification du poste par certificat déployé sur la flotte gérée.
-| Oui
-| Géolocalisation, plage horaire, terminal non géré : refuser.
- 
-| Accès à privilèges
-| Compte `root`, administration d'un hyperviseur, console cloud.
-| Clé matérielle FIDO2 *ou* carte à puce, avec code PIN, depuis un poste d'administration dédié. Accès via bastion et élévation limitée dans le temps.
-| Oui
-| Plage horaire, voyage impossible. Session enregistrée et double validation pour les opérations irréversibles.
+
+| Niveau retenu dans le présent dossier
+| Ordre de grandeur NIST SP 800-63B-4
+| Ordre de grandeur eIDAS
+| Caractéristiques attendues
+
+| Standard
+| AAL1
+| Faible
+| Un seul facteur admis. Pas d’exigence de résistance au phishing.
+
+| Renforcé
+| AAL2
+| Substantiel
+| Deux catégories de facteurs distinctes, ou un authentificateur multifacteur unique. Résistance au phishing attendue par défaut.
+
+| Élevé
+| AAL3
+| Élevé
+| Authentificateur multifacteur résistant au phishing reposant sur une clé privée non exportable, portée par un dispositif matériel ou un composant sécurisé.
+
 |===
- 
+
+[NOTE]
+====
+Les niveaux eIDAS qualifient un **moyen d’identification électronique notifié**, et non un mécanisme d’authentification isolé. La colonne correspondante ne vaut donc que comme repère de dimensionnement, notamment lorsque le service doit être raccordé à un fournisseur d’identité étatique.
+====
+
+Préciser ici le niveau de garantie visé par cas d’utilisation, et indiquer si ce niveau doit être **prouvé à l’application** — par exemple par une revendication `acr` ou `amr` transmise par le fournisseur d’identité — ou s’il est simplement garanti par configuration. Les modalités de la fédération elle-même relèvent de la section « Exigences de fédération d’identité ».
+
+
+*Signaux de contexte*
+
+Les éléments ci-dessous ne prouvent pas une identité et ne constituent donc pas des facteurs d’authentification.
+
+Ils servent à **moduler** l’exigence d’authentification ou la décision d’accès en fonction de la situation d’exécution. Cette démarche est généralement qualifiée d’authentification adaptative, d’authentification fondée sur le risque (_risk-based authentication_) ou participe à une politique d’accès conditionnel.
+
+[cols="2,1,3,3,3", options="header"]
+|===
+
+| Signal
+| Catégorie
+| Ce qu’il permet de détecter
+| Modulation typique
+| Limites
+
+| Adresse IP ou plage réseau
+| Réseau
+| Accès depuis un réseau non prévu : Internet public au lieu de l’intranet, du VPN ou d’un réseau partenaire déclaré.
+| Exiger une authentification renforcée hors du réseau de confiance ; réserver certaines opérations à des réseaux déterminés.
+| VPN, proxy, relais, NAT et postes compromis sur un réseau autorisé. Une adresse IP identifie rarement un utilisateur ou un terminal de manière fiable.
+
+| Géolocalisation
+| Localisation
+| Connexion depuis un pays ou une région inhabituelle pour l’utilisateur.
+| Élever le niveau d’authentification ; bloquer certains pays ne faisant pas partie du périmètre d’activité.
+| Contournable par VPN ou relais. Géolocalisation IP imprécise. Faux positifs possibles.
+
+| Voyage impossible
+| Localisation
+| Deux authentifications géographiquement incompatibles avec le temps écoulé entre elles.
+| Réauthentifier, invalider une session, augmenter le score de risque ou alerter le SOC.
+| Faux positifs liés aux VPN d’entreprise, relais de confidentialité, infrastructures cloud et variations de géolocalisation IP.
+
+| Empreinte de terminal
+| Terminal
+| Accès depuis un terminal jamais observé ou présentant des caractéristiques différentes pour ce compte.
+| Exiger une vérification supplémentaire lors du premier usage d’un terminal.
+| Empreinte falsifiable et instable. Peut devenir un identifiant de traçage persistant. Enjeux de vie privée et de conformité RGPD.
+
+| État de conformité du terminal
+| Terminal
+| Terminal non géré, système obsolète, chiffrement absent, protection de sécurité désactivée ou configuration non conforme.
+| Exiger un terminal géré ; limiter les opérations ; refuser l’accès aux ressources sensibles.
+| Nécessite une solution de gestion ou d’attestation du terminal. Un terminal déclaré conforme peut néanmoins être compromis.
+
+| Plage horaire d’activité
+| Comportement
+| Connexion en dehors des horaires habituels de l’utilisateur ou du service.
+| Élever l’exigence ; restreindre certaines opérations irréversibles aux périodes autorisées ; alerter.
+| Faux positifs en astreinte, en horaires décalés ou lors de déplacements sur plusieurs fuseaux horaires.
+
+| Dynamique de saisie
+| Comportement
+| Écart entre le rythme de frappe observé et le profil précédemment appris.
+| Alimenter un score de risque ; déclencher une réauthentification au-delà d’un seuil.
+| Nécessite une phase d’apprentissage. Peu fiable isolément. Sensible au changement de clavier, de terminal ou aux variations physiques de l’utilisateur.
+
+| Habitudes d’usage
+| Comportement
+| Séquence d’actions, volumétrie, fréquence ou vitesse de navigation inhabituelles.
+| Alimenter un score de risque ; limiter le débit ; demander une réauthentification ; alerter.
+| Dérive du profil dans le temps. Risque de faux positifs. Difficulté à expliquer certaines décisions automatiques.
+
+|===
+
+
 [WARNING]
 ====
-Dès que la compromission d'un compte a des conséquences financières, juridiques
-ou opérationnelles, au moins un facteur résistant au phishing est nécessaire :
-WebAuthn (clé matérielle ou passkey) ou certificat sur élément sécurisé.
+Un signal de contexte ne compte **jamais** comme second facteur.
+
+Une authentification multifacteur doit reposer sur au moins deux catégories distinctes parmi connaissance, possession et inhérence.
+
+Ces facteurs peuvent être fournis :
+
+- par plusieurs authentificateurs distincts, par exemple mot de passe + clé matérielle ;
+- ou par un **authentificateur multifacteur unique**, par exemple une carte à puce protégée par PIN ou une passkey utilisant une vérification utilisateur par PIN ou biométrie.
+
+Un mot de passe complété d’une restriction d’adresse IP reste donc une authentification à un seul facteur.
+
+De même, reconnaître un terminal déjà utilisé, constater que l’utilisateur se trouve dans son pays habituel ou vérifier un certificat de poste ne constitue pas un facteur supplémentaire pour l’utilisateur.
+
+Les signaux de contexte peuvent **élever** l’exigence d’authentification ou entraîner une restriction d’accès. Ils ne doivent pas permettre de descendre en dessous du niveau minimal imposé pour l’opération concernée.
+
+Ces signaux permettent notamment la mise en œuvre de l’accès conditionnel décrit ci-dessous.
 ====
+
+
+*Accès conditionnel*
+
+Plutôt que d’appliquer les mêmes conditions d’accès en toutes circonstances, ce dispositif consiste à faire varier la décision en fonction du contexte de la tentative : niveau d’authentification déjà atteint, terminal inconnu, connexion depuis une localisation inhabituelle, horaire atypique, niveau de risque, sensibilité de l’opération demandée, etc.
+
+La décision peut notamment être :
+
+- d’autoriser l’accès ;
+- de refuser l’accès ;
+- de limiter certaines opérations ;
+- d’exiger une élévation du niveau d’authentification avant de poursuivre.
+
+Ainsi, la consultation d’un dossier peut rester possible alors qu’une opération sensible, telle que sa validation, impose une réauthentification renforcée.
+
+Cette décision suppose un point de décision capable d’évaluer les signaux disponibles au moment de l’accès. Il peut être porté par le fournisseur d’identité, par l’application, par une passerelle ou par un composant spécialisé de contrôle d’accès.
+
+_Exemple : pour un usager authentifié, si le terminal n’a jamais été utilisé avec ce compte, ou si la localisation apparente et l’horodatage sont incompatibles avec la session précédente, toute opération modifiant le dossier exige une réauthentification renforcée. La consultation seule demeure autorisée._
+
+Préciser ici si un dispositif d’accès conditionnel est exigé, quels signaux il doit pouvoir exploiter et quelles décisions il doit pouvoir rendre.
+
+Les règles déterminant quelles opérations sont accessibles à quels utilisateurs relèvent des exigences sur les autorisations. Les règles d’audit, d’enregistrement de session et d’alerte relèvent quant à elles des exigences de traçabilité et de supervision.
+
+
+*Enrôlement, récupération et cycle de vie des authentificateurs*
+
+[IMPORTANT]
+====
+Le niveau réel d’un compte est celui de **son chemin d’accès le plus faible**. Une passkey résistante au phishing dont la réinitialisation s’effectue par un simple lien envoyé par e-mail protège en pratique un compte au niveau de la boîte mail associée.
+
+Le chemin de récupération ne doit donc **jamais** offrir un niveau de garantie inférieur au chemin nominal.
+====
+
+Les points ci-dessous doivent être tranchés dans le présent dossier, indépendamment des dispositifs techniques qui y répondront :
+
+- **Vérification d’identité à l’enrôlement** : auto-déclaratif, appariement sur données métier, vérification d’identité à distance, remise en présentiel, ou délégation à un fournisseur d’identité déjà qualifié.
+- **Redondance** : nombre minimal d’authentificateurs à enrôler par compte, ou existence de codes de récupération à usage unique, pour les niveaux renforcé et élevé.
+- **Récupération** : chemins autorisés, niveau de garantie exigé sur chacun, existence d’un canal hors ligne (guichet, courrier, rappel sortant) et délai applicable.
+- **Notification** : information de l’utilisateur lors de tout ajout, remplacement ou suppression d’un authentificateur, et lors de toute réinitialisation.
+- **Révocation** : délai maximal de révocation d’un authentificateur perdu, volé ou compromis, et effet de cette révocation sur les sessions en cours.
+- **Fin de vie** : désenrôlement au départ d’un agent, à la fin d’un mandat ou à la clôture d’un compte ; durée de validité et renouvellement des certificats.
+- **Résistance aux abus** : temporisation croissante et blocage après échecs répétés, aussi bien sur l’authentification que sur l’appariement et la récupération ; absence de divulgation de l’existence d’un compte.
+
+
+*Sessions et réauthentification*
+
+Préciser les exigences portant sur la durée de validité d’une authentification réussie :
+
+- durée maximale absolue d’une session et délai d’expiration sur inactivité, par niveau de garantie ;
+- opérations exigeant une **réauthentification** même au sein d’une session valide, et fraîcheur maximale admise pour celle-ci (ex. : authentification datant de moins de cinq minutes) ;
+- possibilité ou interdiction d’une persistance de session de type « se souvenir de moi », et durée associée ;
+- invalidation obligatoire des sessions en cours lors d’un changement d’authentificateur, d’une révocation ou d’un incident de sécurité ;
+- sessions concurrentes : autorisées, limitées ou visibles par l’utilisateur ;
+- révocabilité côté serveur, y compris lorsque des jetons d’accès de courte durée sont utilisés.
+
+Les modalités de propagation de la déconnexion entre applications relèvent de la section « Exigences de SSO et SLO ».
+
+
+*Comptes techniques et charges de travail*
+
+Les comptes techniques ne peuvent pas bénéficier d’un second facteur détenu par une personne. Leur sécurité repose donc sur la nature du secret, sur son cycle de vie et sur sa durée de validité.
+
+[cols="2,1,4,4", options="header"]
+|===
+
+| Mécanisme
+| Force typique
+| Description
+| Faiblesses / Risques
+
+| Secret statique en configuration
+| Très faible
+| Mot de passe ou clé d’API inscrit dans un fichier de configuration, une variable d’environnement ou une image de conteneur.
+| Fuite par dépôt de code, journal, image ou sauvegarde. Rarement renouvelé. Souvent partagé entre environnements. **À proscrire.**
+
+| Clé d’API ou secret client OAuth2
+| Faible à moyenne
+| Secret partagé présenté par le client lors de l’obtention d’un jeton.
+| Le vérificateur connaît le secret. Rejouable s’il est intercepté. Impose une rotation et un stockage en coffre-fort.
+
+| Clé SSH de compte technique
+| Moyenne
+| Paire de clés utilisée par un batch ou un automate.
+| Souvent partagée entre plusieurs traitements, rarement renouvelée, difficilement imputable à un traitement précis.
+
+| Authentification par assertion signée (`private_key_jwt`, JWT bearer)
+| Forte
+| Le client prouve la détention d’une clé privée sans jamais la transmettre, et obtient un jeton d’accès de courte durée.
+| Nécessite une gestion de clés et une horloge fiable. La protection de la clé privée reste déterminante.
+
+| Authentification mutuelle TLS par certificat client
+| Forte
+| Preuve cryptographique liée au canal TLS, délivrée par une PKI reconnue.
+| PKI à exploiter : émission, révocation, renouvellement, supervision des expirations. Clé privée exportable si elle n’est pas portée par un composant sécurisé.
+
+| Identité de charge de travail sans secret durable
+| Très forte
+| Identité attestée par la plateforme d’exécution puis échangée contre un jeton de courte durée : jeton de compte de service projeté, fédération d’identité vers un fournisseur cloud, certificat de charge de travail à durée de vie courte.
+| Suppose une plateforme d’exécution de confiance et correctement cloisonnée. Le périmètre d’attestation doit être restreint au strict nécessaire.
+
+| Certificat de poste ou de machine
+| Sans objet comme facteur utilisateur
+| Authentifie le **terminal**, non la personne qui l’utilise.
+| Ne constitue jamais un facteur d’authentification de l’utilisateur. S’emploie comme condition d’accès complémentaire.
+
+|===
+
+Préciser ici, pour chaque compte technique ou flux automatisé : le mécanisme exigé, la durée de validité maximale du secret ou du jeton, la fréquence de rotation attendue et l’imputabilité recherchée. Les dispositifs de stockage correspondants relèvent de la section « Comptes de service » du chapitre Mesures de sécurité.
+
+
+*Recommandations par cas d’usage*
+
+[cols="1,2,3,1,2", options="header"]
+|===
+
+| Niveau d’accès
+| Exemple
+| Authentification minimale recommandée
+| Facteur résistant au phishing
+| Signaux de contexte
+
+| Accès à faible sensibilité
+| Compte sur un site d’information, forum ou service ne manipulant pas de données sensibles.
+| Un facteur : mot de passe ou phrase de passe correctement dimensionnée. Un lien à usage unique par e-mail peut être admis lorsque le niveau de risque le permet, sans être assimilé à une authentification forte.
+| Non
+| Aucun signal obligatoire.
+
+| Accès personnel sensible
+| Compte bancaire, espace assuré, portail usager, dossier médical.
+| Authentificateur multifacteur résistant au phishing, par exemple passkey avec vérification utilisateur, **ou** combinaison de deux facteurs appartenant à des catégories différentes dont au moins un résistant au phishing. Pour un téléservice public, l’authentification peut être déléguée à un fournisseur d’identité étatique offrant le niveau de garantie requis.
+| Oui
+| Terminal inconnu, voyage impossible ou risque élevé : réauthentification renforcée.
+
+| Accès interne
+| Application métier, données RH, intranet d’un agent.
+| Carte à puce + PIN, ou passkey liée à l’appareil avec vérification utilisateur. Éventuellement délégué au fournisseur d’identité interne de l’organisation ou au fournisseur d’identité interministériel pour les agents publics.
+| Oui
+| Réseau d’origine, terminal géré, état de conformité du poste.
+
+| Accès distant
+| VPN, bureau à distance, bastion.
+| Authentification équivalente à l’accès interne et authentification du terminal géré lorsque nécessaire, par exemple au moyen d’un certificat de poste.
+| Oui
+| Géolocalisation, état de conformité du terminal, terminal non géré : élévation ou refus selon le niveau de risque.
+
+| Accès à privilèges
+| Compte `root`, administration d’un hyperviseur, console cloud.
+| Clé matérielle FIDO2 + PIN ou carte à puce + PIN, depuis un poste d’administration dédié. Comptes nominatifs, élévation des privilèges limitée dans le temps.
+| Oui
+| Plage horaire, terminal d’administration, localisation, voyage impossible.
+
+|===
+
+
+[WARNING]
+====
+Dès que la compromission d’un compte peut avoir des conséquences financières, juridiques ou opérationnelles importantes, une authentification résistante au phishing doit être privilégiée.
+
+Les mécanismes adaptés reposent notamment sur WebAuthn/FIDO2 — clé matérielle ou passkey — ou sur une authentification par certificat lorsque la clé privée est suffisamment protégée.
+
+La résistance au phishing ne dispense pas des autres mesures de sécurité : protection du terminal, récupération de compte robuste, gestion du cycle de vie des authentificateurs, journalisation et contrôle des autorisations.
+====
+
 
 [TIP]
 ====
-Le tableau ci-dessous indique les **facteurs d’authentification requis** selon le contexte d’utilisation (exemple) :  
+[Exemple] **Exigences d’authentification requises** selon le contexte d’utilisation :
 
 .Exemple
-[cols="2,3,1,2", options="header"]
+[cols="2,1,3,1,2", options="header"]
 |===
-| Cas d'utilisation | Facteurs exigés | Facteur résistant au phishing | Signaux de contexte
 
-| _Création de l'espace usager et appariement au dossier existant_
-| _Phrase de passe, et vérification du numéro de dossier accompagné du montant
-de la dernière notification._
-| _Non_
-| _Aucun. Blocage après 3 tentatives d'appariement infructueuses._
+| Cas d’utilisation
+| Niveau visé
+| Authentificateurs ou mécanismes exigés
+| Résistance au phishing
+| Signaux de contexte
 
-| _Consultation de son dossier par l'usager_
-| _Phrase de passe et passkey (variante synchronisée acceptée)._
+| _Création de l’espace usager et appariement au dossier existant_
+| _Sans objet_
+| _Étape d’enrôlement : création de l’authentificateur et appariement au dossier au moyen du numéro de dossier accompagné, par exemple, du montant de la dernière notification. Ces données métier servent à l’appariement et ne sont pas considérées comme un facteur d’authentification durable._
+| _Sans objet à ce stade_
+| _Blocage ou temporisation après plusieurs tentatives d’appariement infructueuses._
+
+| _Consultation de son dossier par l’usager_
+| _Renforcé_
+| _Passkey avec vérification utilisateur par PIN ou biométrie. Une variante synchronisée peut être acceptée si le niveau de risque le permet. Une phrase de passe supplémentaire peut être imposée par la politique de sécurité sans être nécessaire au caractère multifacteur de la passkey._
 | _Oui_
-| _Terminal inconnu ou voyage impossible : réauthentification complète._
+| _Terminal inconnu, voyage impossible ou score de risque élevé : réauthentification renforcée._
 
-| _Instruction d'un dossier par un agent_
-| _Carte agent (certificat sur carte à puce) déverrouillée par code PIN._
+| _Instruction d’un dossier par un agent_
+| _Élevé_
+| _Carte agent portant un certificat et déverrouillée par code PIN, ou authentificateur équivalent résistant au phishing._
 | _Oui_
-| _Poste non conforme au référentiel de la flotte gérée : accès refusé._
+| _Poste non conforme au référentiel de la flotte gérée : accès refusé ou limité._
 
-| _Accès d'un agent en télétravail_
-| _Carte agent et code PIN, et certificat de poste déployé par le MDM._
+| _Accès d’un agent en télétravail_
+| _Élevé_
+| _Carte agent + PIN ou authentificateur équivalent, et authentification du poste par certificat ou mécanisme d’attestation lorsqu’elle est exigée._
 | _Oui_
-| _Connexion hors des pays autorisés : accès refusé. Hors plage 7h-20h :
-notification au responsable._
+| _Connexion hors des pays autorisés : accès refusé. Hors plage 7 h - 20 h : élévation du niveau de contrôle ou notification selon la politique définie._
 
 | _Administration des serveurs applicatifs_
-| _Clé matérielle FIDO2 avec code PIN, depuis un poste d'administration dédié.
-Accès via bastion et élévation de privilèges limitée à 4 heures._
+| _Élevé_
+| _Clé matérielle FIDO2 avec PIN, depuis un poste d’administration dédié. Accès via bastion et élévation des privilèges limitée dans le temps._
 | _Oui_
-| _Hors plage ouvrée : double validation par un second administrateur. Session
-enregistrée._
+| _Hors plage ouvrée : élévation supplémentaire ou procédure de double validation selon la sensibilité de l’opération._
 
-| _Échange automatisé avec l'organisme partenaire (API)_
-| _Authentification mutuelle TLS par certificat client délivré par la PKI
-interne, renouvellement annuel._
-| _Sans objet_
-| _Restriction aux plages d'adresses déclarées par le partenaire._
+| _Échange automatisé avec l’organisme partenaire (API)_
+| _Élevé_
+| _Authentification mutuelle TLS par certificat client délivré par une PKI reconnue. Clé privée protégée et cycle de vie du certificat maîtrisé._
+| _Oui — preuve cryptographique liée au canal TLS_
+| _Restriction éventuelle aux plages d’adresses déclarées par le partenaire, sans considérer cette restriction comme un facteur d’authentification._
+
+|===
+
+.Exemple d’exigences transverses
+[cols="2,4", options="header"]
+|===
+
+| Exigence
+| Valeur retenue
+
+| _Durée maximale de session_
+| _12 h pour un agent, 30 min d’inactivité pour un usager._
+
+| _Opérations exigeant une réauthentification_
+| _Validation d’un dossier, ajout d’un authentificateur, modification des coordonnées bancaires. Fraîcheur maximale : 5 minutes._
+
+| _Authentificateurs par compte_
+| _Deux authentificateurs distincts enrôlés obligatoires pour les niveaux renforcé et élevé._
+
+| _Chemins de récupération_
+| _Usager : second authentificateur enrôlé, ou reprise de l’enrôlement complet avec appariement au dossier. Agent : réémission de la carte par le service de proximité, en présentiel. Aucune réinitialisation par simple lien e-mail._
+
+| _Délai maximal de révocation_
+| _1 h en heures ouvrées, 4 h sinon. Invalidation immédiate de toutes les sessions en cours._
+
+| _Résistance aux abus_
+| _Temporisation croissante dès le 3e échec, blocage temporaire au 10e, sur l’authentification comme sur la récupération. Aucune réponse ne révèle l’existence d’un compte._
+
 |===
 ====
+
 
 [PRE-FILLED]
 ====
-Le tableau ci-dessous indique les *facteurs d'authentification requis* selon le
-contexte d'utilisation.
+Le tableau ci-dessous indique les **exigences d’authentification** selon le contexte d’utilisation.
 
-[cols="2,3,1,2", options="header"]
-|===
-| Cas d'utilisation | Facteurs exigés | Facteur résistant au phishing | Signaux de contexte
-
-|
-|
-|
-|
+[cols="2,1,3,1,2", options="header"]
 |===
 
+| Cas d’utilisation
+| Niveau visé
+| Authentificateurs ou mécanismes exigés
+| Résistance au phishing
+| Signaux de contexte
+
+|
+|
+|
+|
+|
+
+|===
+
+Le tableau ci-dessous complète le précédent par les **exigences transverses** applicables aux sessions, à la récupération et au cycle de vie des authentificateurs.
+
+[cols="2,4", options="header"]
+|===
+
+| Exigence
+| Valeur retenue
+
+| Durée maximale de session
+|
+
+| Opérations exigeant une réauthentification
+|
+
+| Authentificateurs par compte
+|
+
+| Chemins de récupération
+|
+
+| Délai maximal de révocation
+|
+
+| Résistance aux abus
+|
+
+|===
 ====
 
 //🏷{"id": "f552f1e6-9aea-4866-8da1-e7ed676fd228", "labels": ["niveau::avancé", "niveau::avancé", "niveau_detail::détaillé"]}
