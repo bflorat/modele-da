@@ -345,7 +345,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Faible
 | Non
 | Chaîne de caractères secrète connue de l’utilisateur. La passphrase est une suite de mots suffisamment longue et mémorisable par l’utilisateur (ex. : `cheval juste pile agrafe`).
-| Réutilisation entre services. Fuite par bases compromises. Hameçonnage, force brute. Sa robustesse dépend fortement de sa longueur, de son caractère unique et des protections mises en œuvre côté serveur et coté utilisateur (vault...).
+| Réutilisation entre services. Fuite par bases compromises. Hameçonnage, force brute. Sa robustesse dépend fortement de sa longueur, de son caractère unique et des protections mises en œuvre côté serveur et côté utilisateur (vault...).
 
 | Question secrète
 | Connaissance
@@ -359,7 +359,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Faible seul
 | Non
 | Code court servant généralement à déverrouiller localement un authentificateur ou un composant sécurisé.
-| Espace de recherche réduit. Sa sécurité repose sur un dispositif limitant les tentatives ou bloquant l'appareil et protégeant le secret ou la clé associée : carte à puce, TPM, élément sécurisé, clé FIDO2, etc.
+| Espace de recherche réduit. Sa sécurité repose sur un dispositif limitant les tentatives ou bloquant l’appareil et protégeant le secret ou la clé associée : carte à puce, TPM, élément sécurisé, clé FIDO2, etc.
 
 | Connaissance de données métier
 | Connaissance
@@ -380,14 +380,14 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Faible à moyenne
 | Non
 | Code à usage unique envoyé au numéro de téléphone préalablement enregistré.
-| Détournement de carte SIM (_SIM swapping_), interception ou redirection des messages, compromission du terminal. Le réseau téléphonique ne fournit pas les mêmes garanties qu’un authentificateur cryptographique.
+| Détournement de carte SIM (_SIM swapping_), interception ou redirection des messages, compromission du terminal. Le réseau téléphonique ne fournit pas les mêmes garanties qu’un authentificateur cryptographique : le facteur n’est pas considéré comme cryptographiquement fort.
 
 | OTP par application (TOTP)
 | Possession
 | Moyenne
 | Non
 | Code temporaire calculé à partir d’un secret partagé et de l’heure courante.
-| Le code peut être capturé par un site contrefait puis relayé immédiatement vers le service légitime. Secret partagé, donc connu du vérificateur et souvent extractible d’une sauvegarde du terminal ou d’un poste compromis. 
+| Le code peut être capturé par un site contrefait puis relayé immédiatement vers le service légitime. Secret partagé, donc connu du vérificateur et souvent extractible d’une sauvegarde du terminal ou d’un poste compromis : le contrôle exclusif par l’utilisateur n’est que présumé.
 
 | OTP par jeton matériel
 | Possession
@@ -400,8 +400,8 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Possession
 | Moyenne
 | Non
-| Demande de validation envoyée sur l'application d'un terminal préalablement enrôlé.
-| Vulnérable au harcèlement de notifications (_MFA fatigue_) et aux attaques par relais. La correspondance de nombre (_number matching_) et l’affichage du contexte réduisent fortement les validations accidentelles mais ne rendent pas, à eux seuls, le mécanisme résistant au phishing.
+| Demande de validation envoyée sur l’application d’un terminal préalablement enrôlé.
+| Vulnérable au harcèlement de notifications (_MFA fatigue_) et aux attaques par relais. La correspondance de nombre (_number matching_) et l’affichage du contexte réduisent fortement les validations accidentelles mais ne rendent pas, à eux seuls, le mécanisme résistant au phishing. Dépend de la sécurité de l’appareil et du compte associé dans le cloud.
 
 | SSO intégré au domaine (Kerberos, NTLM, SPNEGO)
 | Dérivé de l’authentification initiale
@@ -422,7 +422,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Moyenne
 | Oui en TLS client mutuel
 | Certificat X.509 et clé privée conservés dans un magasin logiciel, un navigateur, le système ou un fichier PKCS#12. En authentification TLS cliente, la preuve porte sur le déroulé de la négociation et est donc liée au canal.
-| Clé privée potentiellement exportable et copiable. Exfiltration possible par code malveillant. La possession exclusive de la clé n’est pas garantie. PKI à exploiter : émission, révocation, renouvellement. 
+| Clé privée potentiellement exportable et copiable, donc contrôle exclusif seulement présumé. Exfiltration possible par code malveillant. PKI à exploiter : émission, révocation, renouvellement.
 
 | Carte à puce
 | Possession + connaissance (PIN)
@@ -443,14 +443,14 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Très forte
 | Oui
 | Authentificateur WebAuthn non synchronisé. La clé privée reste liée à l’appareil et est généralement protégée par les mécanismes de sécurité de la plateforme, par exemple TPM, Secure Enclave ou magasin cryptographique équivalent.
-| Perte ou destruction de l’appareil. Nécessite un mécanisme de récupération ou un second authentificateur enrôlé. Le niveau de protection matérielle dépend de la plateforme.
+| Perte ou destruction de l’appareil. Nécessite un mécanisme de récupération ou un second authentificateur enrôlé. Le niveau de protection matérielle dépend de la plateforme : la clé n’est réellement inextractible que si elle est ancrée dans un composant de sécurité.
 
 | Passkey synchronisée
 | Possession + connaissance ou inhérence si vérification utilisateur
 | Forte
 | Oui
 | Authentificateur WebAuthn dont la clé privée peut être répliquée de manière chiffrée entre plusieurs appareils par l’intermédiaire d’un gestionnaire de justificatifs.
-| La clé n’est plus strictement liée à un appareil unique. La sécurité dépend également du service de synchronisation, du compte qui le protège et de ses mécanismes de récupération. Non adaptée aux niveaux exigeant une clé non exportable.
+| La clé n’est plus strictement liée à un appareil unique, donc contrôle exclusif seulement présumé. La sécurité dépend également du service de synchronisation, du compte qui le protège et de ses mécanismes de récupération. Non adaptée aux niveaux exigeant une clé non exportable.
 
 | Biométrie
 | Inhérence
@@ -474,7 +474,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 - **Carte à puce** : ISO/IEC 7816, PKCS#11, règlement eIDAS selon l’usage.
 - **FIDO2 / passkeys** : W3C WebAuthn, FIDO CTAP2.
 - **Biométrie** : ISO/IEC 30107 (détection d’attaques par présentation).
-- **Référentiels applicables au secteur public français** : RGS, référentiel d’exigences PVID pour la vérification d’identité à distance, règlement eIDAS pour les niveaux de garantie.
+- **Référentiels applicables au secteur public français** : RGS, référentiel d’exigences PVID pour la vérification d’identité à distance, règlement d’exécution (UE) 2015/1502 pour les niveaux de garantie eIDAS, documentation ProConnect pour les valeurs d’`acr` (https://partenaires.proconnect.gouv.fr/docs/ressources/norme_eidas).
 ====
 
 
@@ -508,90 +508,103 @@ Dans les usages courants, elle sert à effectuer localement une _vérification u
 La résistance au phishing et une grande partie de la robustesse de l’authentification proviennent alors de l’authentificateur cryptographique déverrouillé, et non du caractère biométrique lui-même.
 ====
 
+*Niveau de confiance*
 
-*Niveaux de garantie*
- 
-Afin de rendre les exigences traçables et comparables entre projets, chaque cas d’utilisation est rattaché à un niveau de garantie. Celui-ci se décompose en **deux axes indépendants** :
- 
-- le niveau de **vérification d’identité**, atteint une fois pour toutes lors de l’enrôlement : quelle confiance accorde-t-on au lien entre le compte et une personne réelle ?
-- le niveau d’**authentification**, exigé à chaque connexion : quelle difficulté y a-t-il à usurper ce compte une fois qu’il existe ?
- 
-Ces deux axes ne se déduisent pas l’un de l’autre et doivent donc être fixés séparément. Un compte créé sans aucune vérification d’identité peut parfaitement être protégé par une clé FIDO2 ; à l’inverse, un compte ouvert en présentiel sur présentation d’une pièce d’identité peut rester protégé par un facteur d'authentification plus léger
+TIP: Voir aussi https://partenaires.proconnect.gouv.fr/docs/ressources/norme_eidas[le niveau de confiance défini par la DINUM].
 
-.Niveau d’authentification exigé à chaque connexion
-[cols="1,4,1", options="header"]
+Le niveau de confiance d’une authentification ne se résume pas au mécanisme employé. Il résulte de **trois piliers indépendants**, et vaut celui du **pilier le plus faible** :
+
+- la **qualité de la preuve d’identité** : avec quel degré de certitude le compte a-t-il été rattaché à une personne réelle ? Ce pilier est traité dans la section « Exigences d’identification » ;
+- la **méthode d’authentification** : que prouve l’utilisateur à chaque connexion ? C’est l’objet de la présente section ;
+- le **lien avec l’organisation**, lorsque l’utilisateur agit en tant qu’agent ou représentant : ce rattachement est-il auto-déclaré, validé par un tiers, ou certifié auprès d’une source faisant autorité ?
+
+Cette règle du maillon faible a une conséquence directe : un dispositif d’enrôlement exigeant ne relève pas le niveau si l’authentification quotidienne reste un mot de passe, et réciproquement. Un fournisseur d’identité ayant vérifié l’identité de ses agents en présentiel, avec un rattachement certifié par le processus RH, retournera malgré tout le niveau le plus bas si la connexion s’effectue par simple mot de passe.
+
+.Niveau de confiance du pilier « méthode d’authentification »
+[cols="1,4", options="header"]
 |===
- 
-| Niveau retenu dans le présent dossier
+
+| Niveau
 | Exigence
-| Repère NIST SP 800-63B-4
- 
-| Standard
-| Un seul facteur admis. Pas d’exigence de résistance au phishing.
-| AAL1
- 
-| Renforcé
-| Deux catégories de facteurs distinctes, ou un authentificateur multifacteur unique. Résistance au phishing attendue par défaut.
-| AAL2
- 
-| Élevé
-| Authentificateur multifacteur résistant au phishing reposant sur une clé privée non exportable, portée par un dispositif matériel ou un composant sécurisé.
-| AAL3
- 
+
+| Simple
+| Un seul facteur d’authentification.
+
+| MFA faible
+| Deux facteurs de catégories différentes, dont aucun ne repose sur un mécanisme cryptographique fort. Le second facteur est géré par l’utilisateur.
+
+| MFA forte
+| Deux facteurs de catégories différentes, dont au moins un cryptographiquement fort — TOTP, FIDO2, certificat. Le contrôle exclusif du facteur par son titulaire est _présumé_ : la clé ou le secret peuvent être sauvegardés, synchronisés ou exportés.
+
+| MFA forte matérielle
+| Deux facteurs de catégories différentes, le second étant physique et sa clé ancrée dans un composant de sécurité dont elle ne peut être extraite. Le contrôle exclusif est _fiable_ et non plus seulement présumé.
+
 |===
- 
-.Niveau de vérification d’identité atteint à l’enrôlement
-[cols="1,4,1", options="header"]
-|===
- 
-| Niveau retenu dans le présent dossier
-| Exigence
-| Repère NIST SP 800-63A-4
- 
-| Déclaratif
-| Aucune preuve d’identité. Le compte n’est rattaché à aucune personne physique identifiée ; tout au plus une adresse e-mail ou un numéro de téléphone est-il vérifié.
-| IAL1
- 
-| Vérifié à distance
-| Appariement à un dossier existant au moyen de données non publiques, contrôle à distance d’une pièce d’identité, ou reprise d’une identité déjà vérifiée par un fournisseur d’identité tiers.
-| IAL2
- 
-| Vérifié en présentiel
-| Contrôle d’une pièce d’identité par un agent habilité, ou remise en main propre de l’authentificateur.
-| IAL3
- 
-|===
- 
-Préciser ici les deux niveaux visés par cas d’utilisation, et indiquer si le niveau d’authentification doit être **prouvé à l’application** — par exemple par une revendication (claim OIDC) `acr` ou `amr` transmise par le fournisseur d’identité — ou s’il est simplement garanti par configuration. Les modalités de la fédération elle-même relèvent de la section « Exigences de fédération d’identité ».
 
 [NOTE]
 ====
-**Où se situe eIDAS ? (réglementation européenne).**
+Cette échelle reprend la distinction posée par le guide ANSSI sur l’authentification multifacteur et les mots de passe : **une MFA n’est pas nécessairement une authentification forte**. Une MFA faible combine plusieurs facteurs sans qu’aucun ne repose sur un mécanisme cryptographique robuste.
 
-Les niveaux eIDAS — faible, substantiel, élevé — ne correspondent ni à l'échelle de vérification d'identité seule, ni à celle des niveaux d'authentification. Ils qualifient un **moyen d'identification électronique pris dans son ensemble** : preuve d'identité à l'enregistrement, gestion du moyen tout au long de sa vie, mécanismes d'authentification, et exigences organisationnelles portant sur l'organisme émetteur. Ils s'inscrivent de plus dans une procédure de notification au niveau européen.
+Le passage de _MFA forte_ à _MFA forte matérielle_ ne tient pas à la force de l’algorithme, mais au caractère _présumé_ ou _fiable_ du contrôle exclusif du facteur, et à la résistance attendue face à un attaquant à potentiel modéré ou élevé.
+====
 
-La correspondance se fait donc avec des **couples** de niveaux, et non ligne à ligne :
+[IMPORTANT]
+====
+**La résistance au phishing n’est pas portée par cette échelle.**
 
-[cols="1,2,2", options="header"]
+Un TOTP relève de la _MFA forte_ tout en restant vulnérable à l’interposition d’un service contrefait : le protocole est cryptographiquement fort, mais la preuve produite n’est liée ni à l’origine du service, ni au canal.
+
+Le niveau de confiance et la résistance au phishing doivent donc être exigés **séparément**. Pour tout accès dont la compromission emporte des conséquences financières, juridiques ou opérationnelles importantes, exiger explicitement un mécanisme résistant au phishing en plus du niveau de confiance visé.
+====
+
+
+*Correspondance avec les référentiels*
+
+[cols="2,2,2", options="header"]
 |===
 
-| Niveau eIDAS
-| Vérification d'identité correspondante
-| Niveau d'authentification correspondant
+| Niveau retenu dans le présent dossier
+| Valeur `acr` ProConnect
+| Repère NIST SP 800-63B-4
 
-| Faible
-| Déclaratif, ou vérification sommaire à distance.
-| Standard — un seul facteur admis.
+| Simple
+| `eidas0` ou `eidas1` selon les deux autres piliers
+| AAL1
 
-| Substantiel
-| Vérifié à distance.
-| Renforcé — deux catégories de facteurs, ou authentificateur multifacteur unique.
+| MFA faible
+| `eidas0-mfa` ou `eidas1-mfa` selon les deux autres piliers
+| AAL2 avec authentificateur restreint
 
-| Élevé
-| Vérifié en présentiel, ou par un procédé reconnu équivalent.
-| Élevé — clé privée non exportable, protection contre la duplication.
+| MFA forte
+| `eidas2`
+| AAL2
+
+| MFA forte matérielle
+| `eidas3`
+| AAL3
 
 |===
+
+[NOTE]
+====
+**Où se situe eIDAS.**
+
+Les niveaux du règlement d’exécution (UE) 2015/1502 — faible, substantiel, élevé — ne qualifient pas une méthode d’authentification isolée mais un **moyen d’identification électronique pris dans son ensemble** : preuve d’identité à l’enregistrement, gestion du moyen, mécanismes d’authentification, et exigences organisationnelles portant sur l’organisme émetteur, le tout dans le cadre d’une notification au niveau européen.
+
+Les valeurs `acr` de ProConnect en reprennent le vocabulaire et l’étendent : elles agrègent les trois piliers ci-dessus et ajoutent des paliers intermédiaires — `eidas0` pour les cas où l’identité ou le rattachement organisationnel restent déclaratifs, et les variantes `-mfa` pour une authentification multifacteur faible. Une valeur `acr` n’est donc pas un niveau eIDAS au sens du règlement.
+
+En ordre de grandeur, un niveau _substantiel_ suppose une identité vérifiée **et** une MFA forte ; un niveau _élevé_ suppose une identité vérifiée en présentiel ou par un procédé reconnu équivalent **et** une MFA forte matérielle, complétées par des exigences sur l’émetteur qui dépassent le périmètre d’un dossier d’architecture applicative.
+====
+
+
+*À préciser dans le présent dossier*
+
+- Le **niveau de confiance visé** par cas d’utilisation, et séparément l’exigence ou non de **résistance au phishing**.
+- Si le niveau est **prouvé à l’application** ou seulement garanti par configuration. En authentification fédérée, indiquer la valeur demandée dans `acr_values` et la revendication attendue en retour — `acr`, complétée le cas échéant par `amr` pour connaître les mécanismes effectivement employés.
+- Le **comportement attendu lorsque le niveau obtenu est inférieur au niveau requis** : refus, accès en consultation seule, ou demande d’élévation auprès du fournisseur d’identité. Ce point est souvent omis et constitue la principale cause d’écart entre le niveau annoncé et le niveau réellement appliqué.
+- Les **exigences portant sur les deux autres piliers**, renseignées dans la section « Exigences d’identification » pour la preuve d’identité, et ici pour le rattachement organisationnel lorsque l’application sert des agents.
+
+Les modalités de la fédération elle-même — protocole, fournisseur d’identité retenu, cinématique — relèvent de la section « Exigences de fédération d’identité ».
 
 *Signaux de contexte*
 
