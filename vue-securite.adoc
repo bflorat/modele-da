@@ -300,7 +300,7 @@ Exemple :
 
 
 //🏷{"id": "9d0646cd-3e3f-4878-96de-f215c9f20bdc", "labels": []}
-=== Exigences d’authentification
+### Exigences d’authentification
 
 [TIP]
 ====
@@ -314,7 +314,7 @@ L’authentification vérifie qu’un utilisateur est bien celui qu’il préten
 
 - Les **comptes à privilèges** (ex. : `root` sur les serveurs, compte administrateur applicatif...). Ils peuvent être humains ou techniques, mais disposent de droits permettant de lire, modifier ou supprimer de nombreuses données, ou de réaliser des opérations irréversibles (_blast radius_ important).
 
-- L’**enrôlement initial** et, lorsqu’elle est nécessaire, la **vérification d’identité** permettant de rattacher un compte à une personne constituent une étape distincte de l’authentification ultérieure. Cette étape peut nécessiter des contrôles plus stricts que ceux utilisés lors des connexions suivantes.
+- L’**enrôlement initial** et, lorsqu’elle est nécessaire, la **vérification d’identité** permettant de rattacher un compte à une personne constituent une étape distincte de l’authentification ultérieure. Cette étape peut nécessiter des contrôles plus stricts que ceux utilisés lors des connexions suivantes ou selon des facteurs d'authentification différents (comme la demande d'information métier, voir plus bas).
 
 - Une **authentification fédérée** permet de déléguer l’authentification à un fournisseur d’identité. Les exigences correspondantes sont traitées dans les sections « Exigences de fédération d’identité » et « Exigences de SSO et SLO ». La présente section reste néanmoins à renseigner : elle définit le **niveau d’authentification exigé**, que celui-ci soit obtenu localement ou délégué à un fournisseur d’identité.
 ====
@@ -340,40 +340,33 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Description
 | Faiblesses / Risques
 
-| Mot de passe
+| Mot de passe ou passphrase
 | Connaissance
-| Faible à moyenne
+| Faible
 | Non
-| Chaîne de caractères secrète connue de l’utilisateur.
-| Réutilisation entre services. Fuite par bases compromises. Hameçonnage, force brute. Sa robustesse dépend fortement de sa longueur, de son caractère unique et des protections mises en œuvre côté serveur.
-
-| Phrase de passe
-| Connaissance
-| Moyenne
-| Non
-| Suite de mots suffisamment longue et mémorisable par l’utilisateur (ex. : `cheval juste pile agrafe`).
-| Peut offrir une meilleure mémorisation et une meilleure entropie qu’un mot de passe court, mais reste vulnérable au hameçonnage, au rejeu et à la réutilisation.
+| Chaîne de caractères secrète connue de l’utilisateur. La passphrase est une suite de mots suffisamment longue et mémorisable par l’utilisateur (ex. : `cheval juste pile agrafe`).
+| Réutilisation entre services. Fuite par bases compromises. Hameçonnage, force brute. Sa robustesse dépend fortement de sa longueur, de son caractère unique et des protections mises en œuvre côté serveur et coté utilisateur (vault...).
 
 | Question secrète
 | Connaissance
 | Très faible
 | Non
 | Question portant sur une information personnelle (ex. : nom du premier animal).
-| Réponse souvent devinable, stable dans le temps ou publiquement accessible. Ne constitue pas une preuve d’identité robuste. **Déconseillée comme authentificateur.**
+| Réponse souvent devinable, stable dans le temps ou publiquement accessible en OSINT ou ingénierie sociale. Ne constitue pas une preuve d’identité robuste et peut offrir un faux sentiment de sécurité. **Déconseillée comme authentificateur.**
 
 | Code PIN
 | Connaissance
 | Faible seul
 | Non
 | Code court servant généralement à déverrouiller localement un authentificateur ou un composant sécurisé.
-| Espace de recherche réduit. Sa sécurité repose sur un dispositif limitant les tentatives et protégeant le secret ou la clé associée : carte à puce, TPM, élément sécurisé, clé FIDO2, etc.
+| Espace de recherche réduit. Sa sécurité repose sur un dispositif limitant les tentatives ou bloquant l'appareil et protégeant le secret ou la clé associée : carte à puce, TPM, élément sécurisé, clé FIDO2, etc.
 
 | Connaissance de données métier
 | Connaissance
 | Faible
 | Non
 | Question portant sur une information liée au dossier de l’utilisateur (ex. : montant de la dernière facture).
-| Information partageable, parfois connue de tiers légitimes ou récupérable par ingénierie sociale. **Déconseillée comme facteur d’authentification.** Peut néanmoins être utile lors d’un appariement initial entre un compte et un dossier lorsqu’aucun authentificateur partagé n’existe encore.
+| Information partageable, parfois connue de tiers légitimes ou récupérable par OSINT, ingénierie sociale ou fuite de données. **Déconseillée comme facteur d’authentification.** Peut néanmoins être utile lors d’un appariement initial entre un compte et un dossier lorsqu’aucun authentificateur partagé n’existe encore.
 
 | Lien à usage unique par e-mail
 | Hors catégorie (canal de transmission)
@@ -384,7 +377,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 
 | OTP par SMS
 | Possession (indirecte)
-| Faible
+| Faible à moyenne
 | Non
 | Code à usage unique envoyé au numéro de téléphone préalablement enregistré.
 | Détournement de carte SIM (_SIM swapping_), interception ou redirection des messages, compromission du terminal. Le réseau téléphonique ne fournit pas les mêmes garanties qu’un authentificateur cryptographique.
@@ -394,7 +387,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Moyenne
 | Non
 | Code temporaire calculé à partir d’un secret partagé et de l’heure courante.
-| Le code peut être capturé par un site contrefait puis relayé immédiatement vers le service légitime. Secret partagé, donc connu du vérificateur et souvent extractible d’une sauvegarde du terminal ou d’un poste compromis. Perte du terminal.
+| Le code peut être capturé par un site contrefait puis relayé immédiatement vers le service légitime. Secret partagé, donc connu du vérificateur et souvent extractible d’une sauvegarde du terminal ou d’un poste compromis. 
 
 | OTP par jeton matériel
 | Possession
@@ -407,15 +400,15 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Possession
 | Moyenne
 | Non
-| Demande de validation envoyée à un terminal préalablement enrôlé.
+| Demande de validation envoyée sur l'application d'un terminal préalablement enrôlé.
 | Vulnérable au harcèlement de notifications (_MFA fatigue_) et aux attaques par relais. La correspondance de nombre (_number matching_) et l’affichage du contexte réduisent fortement les validations accidentelles mais ne rendent pas, à eux seuls, le mécanisme résistant au phishing.
 
-| SSO intégré au domaine (Kerberos, SPNEGO)
+| SSO intégré au domaine (Kerberos, NTLM, SPNEGO)
 | Dérivé de l’authentification initiale
 | Variable : celle du facteur initial
 | Partielle
 | Le poste joint au domaine obtient un ticket lors de l’ouverture de session et le présente à l’application sans nouvelle saisie de secret.
-| N’apporte aucun facteur propre : le niveau réel est celui de l’ouverture de session sur le poste. Vol ou rejeu de tickets, délégation mal configurée, repli sur des protocoles plus faibles. Limité aux postes gérés et joints au domaine.
+| N’apporte aucun facteur propre : le niveau réel est celui de l’ouverture de session sur le poste. Vol ou rejeu de tickets, délégation mal configurée, repli sur des protocoles plus faibles (NTLM). Limité aux postes gérés et joints au domaine.
 
 | Clé SSH
 | Possession
@@ -429,7 +422,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Moyenne
 | Oui en TLS client mutuel
 | Certificat X.509 et clé privée conservés dans un magasin logiciel, un navigateur, le système ou un fichier PKCS#12. En authentification TLS cliente, la preuve porte sur le déroulé de la négociation et est donc liée au canal.
-| Clé privée potentiellement exportable et copiable. Exfiltration possible par code malveillant. La possession exclusive de la clé n’est pas garantie.
+| Clé privée potentiellement exportable et copiable. Exfiltration possible par code malveillant. La possession exclusive de la clé n’est pas garantie. PKI à exploiter : émission, révocation, renouvellement. 
 
 | Carte à puce
 | Possession + connaissance (PIN)
@@ -439,7 +432,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Coût. Lecteur et intergiciel requis. PKI à exploiter : émission, révocation, renouvellement. Gestion du blocage du PIN et de la perte de la carte.
 
 | Clé matérielle FIDO2
-| Possession + connaissance ou inhérence si vérification utilisateur
+| Possession + connaissance ou inhérence si vérification par code PIN
 | Très forte
 | Oui
 | Authentification asymétrique par défi-réponse. La preuve est liée cryptographiquement à l’origine du service. La clé privée est confinée dans un dispositif externe et généralement non exportable.
@@ -464,7 +457,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Variable
 | Sans objet lorsqu’elle est utilisée seule
 | Empreinte digitale, reconnaissance faciale, iris, voix, etc.
-| Caractéristique difficilement révocable en cas de compromission. Taux d’erreur, attaques par présentation, enjeux de vie privée et de conformité.
+| Caractéristique non révocable en cas de compromission. Taux d’erreur, attaques par présentation, enjeux de vie privée et de conformité.
 
 |===
 
@@ -517,41 +510,88 @@ La résistance au phishing et une grande partie de la robustesse de l’authenti
 
 
 *Niveaux de garantie*
+ 
+Afin de rendre les exigences traçables et comparables entre projets, chaque cas d’utilisation est rattaché à un niveau de garantie. Celui-ci se décompose en **deux axes indépendants** :
+ 
+- le niveau de **vérification d’identité**, atteint une fois pour toutes lors de l’enrôlement : quelle confiance accorde-t-on au lien entre le compte et une personne réelle ?
+- le niveau d’**authentification**, exigé à chaque connexion : quelle difficulté y a-t-il à usurper ce compte une fois qu’il existe ?
+ 
+Ces deux axes ne se déduisent pas l’un de l’autre et doivent donc être fixés séparément. Un compte créé sans aucune vérification d’identité peut parfaitement être protégé par une clé FIDO2 ; à l’inverse, un compte ouvert en présentiel sur présentation d’une pièce d’identité peut rester protégé par un facteur d'authentification plus léger
 
-Afin de rendre les exigences traçables et comparables entre projets, chaque cas d’utilisation doit être rattaché à un niveau de garantie. La correspondance ci-dessous est indicative : les référentiels cités n’ont ni le même périmètre ni la même portée juridique.
-
-[cols="1,1,1,4", options="header"]
+.Niveau d’authentification exigé à chaque connexion
+[cols="1,4,1", options="header"]
 |===
-
+ 
 | Niveau retenu dans le présent dossier
-| Ordre de grandeur NIST SP 800-63B-4
-| Ordre de grandeur eIDAS
-| Caractéristiques attendues
-
+| Exigence
+| Repère NIST SP 800-63B-4
+ 
 | Standard
-| AAL1
-| Faible
 | Un seul facteur admis. Pas d’exigence de résistance au phishing.
-
+| AAL1
+ 
 | Renforcé
-| AAL2
-| Substantiel
 | Deux catégories de facteurs distinctes, ou un authentificateur multifacteur unique. Résistance au phishing attendue par défaut.
-
-| Élevé
-| AAL3
+| AAL2
+ 
 | Élevé
 | Authentificateur multifacteur résistant au phishing reposant sur une clé privée non exportable, portée par un dispositif matériel ou un composant sécurisé.
-
+| AAL3
+ 
 |===
+ 
+.Niveau de vérification d’identité atteint à l’enrôlement
+[cols="1,4,1", options="header"]
+|===
+ 
+| Niveau retenu dans le présent dossier
+| Exigence
+| Repère NIST SP 800-63A-4
+ 
+| Déclaratif
+| Aucune preuve d’identité. Le compte n’est rattaché à aucune personne physique identifiée ; tout au plus une adresse e-mail ou un numéro de téléphone est-il vérifié.
+| IAL1
+ 
+| Vérifié à distance
+| Appariement à un dossier existant au moyen de données non publiques, contrôle à distance d’une pièce d’identité, ou reprise d’une identité déjà vérifiée par un fournisseur d’identité tiers.
+| IAL2
+ 
+| Vérifié en présentiel
+| Contrôle d’une pièce d’identité par un agent habilité, ou remise en main propre de l’authentificateur.
+| IAL3
+ 
+|===
+ 
+Préciser ici les deux niveaux visés par cas d’utilisation, et indiquer si le niveau d’authentification doit être **prouvé à l’application** — par exemple par une revendication (claim OIDC) `acr` ou `amr` transmise par le fournisseur d’identité — ou s’il est simplement garanti par configuration. Les modalités de la fédération elle-même relèvent de la section « Exigences de fédération d’identité ».
 
 [NOTE]
 ====
-Les niveaux eIDAS qualifient un **moyen d’identification électronique notifié**, et non un mécanisme d’authentification isolé. La colonne correspondante ne vaut donc que comme repère de dimensionnement, notamment lorsque le service doit être raccordé à un fournisseur d’identité étatique.
-====
+**Où se situe eIDAS ? (réglementation européenne).**
 
-Préciser ici le niveau de garantie visé par cas d’utilisation, et indiquer si ce niveau doit être **prouvé à l’application** — par exemple par une revendication `acr` ou `amr` transmise par le fournisseur d’identité — ou s’il est simplement garanti par configuration. Les modalités de la fédération elle-même relèvent de la section « Exigences de fédération d’identité ».
+Les niveaux eIDAS — faible, substantiel, élevé — ne correspondent ni à l'échelle de vérification d'identité seule, ni à celle des niveaux d'authentification. Ils qualifient un **moyen d'identification électronique pris dans son ensemble** : preuve d'identité à l'enregistrement, gestion du moyen tout au long de sa vie, mécanismes d'authentification, et exigences organisationnelles portant sur l'organisme émetteur. Ils s'inscrivent de plus dans une procédure de notification au niveau européen.
 
+La correspondance se fait donc avec des **couples** de niveaux, et non ligne à ligne :
+
+[cols="1,2,2", options="header"]
+|===
+
+| Niveau eIDAS
+| Vérification d'identité correspondante
+| Niveau d'authentification correspondant
+
+| Faible
+| Déclaratif, ou vérification sommaire à distance.
+| Standard — un seul facteur admis.
+
+| Substantiel
+| Vérifié à distance.
+| Renforcé — deux catégories de facteurs, ou authentificateur multifacteur unique.
+
+| Élevé
+| Vérifié en présentiel, ou par un procédé reconnu équivalent.
+| Élevé — clé privée non exportable, protection contre la duplication.
+
+|===
 
 *Signaux de contexte*
 
