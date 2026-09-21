@@ -256,47 +256,148 @@ Exemple :
 
 //🏷{"id": "94c138c1-3e8b-4eaf-8926-b5b9bfa6a86b", "labels": []}
 ### Exigences d'identification
-
 [TIP]
 ====
-L’identification permet d'**attribuer un identifiant unique** à chaque utilisateur, afin de le différencier des autres.  
-
-**Attention :**  L’identification **ne garantit pas** que l’utilisateur est bien celui qu’il prétend être. C’est le rôle de l’authentification (exemple : mot de passe, MFA…).
-
-Exemple : 
-
+L'identification permet d'*attribuer un identifiant unique* à chaque
+utilisateur, afin de le différencier des autres.
+ 
+*Attention :* l'identification *ne garantit pas* que l'utilisateur est bien
+celui qu'il prétend être. C'est le rôle de l'authentification, traitée dans la
+section suivante.
+ 
+*Bonnes pratiques :*
+ 
+* privilégier des identifiants stables et uniques (adresse électronique,
+numéro de client, UUID) ;
+* éviter les identifiants réattribuables, par exemple un entier incrémental
+risquant d'être réutilisé après suppression d'un compte ;
+* s'assurer que l'identifiant est cohérent dans tous les systèmes où il est
+utilisé.
+====
+ 
+*Exigences sur l'identifiant*
+ 
+.Exemple
 [cols="1e,3e"]
 |===
-|Exigence |Description
-
-|**Identifiant unique**  
-| Chaque utilisateur doit avoir un identifiant **unique et non partageable**. Une adresse e-mail personnelle est un bon identifiant.
-
-|**Validation de l'identité**  
-| L'existence de l'identité d'un internaute doit être vérifiée avant tout appel de service.
-
-|**Pérennité de l’identifiant**  
-| Un identifiant ne doit **jamais être supprimé, modifié ou réutilisé**, même après la suppression d’un compte utilisateur.
+| Exigence | Description
+ 
+| *Identifiant unique*
+| Chaque utilisateur doit avoir un identifiant unique et non partageable. Une adresse électronique personnelle est un bon identifiant.
+ 
+| *Validation de l'identité*
+| L'existence de l'identité doit être vérifiée avant tout appel de service.
+ 
+| *Pérennité de l'identifiant*
+| Un identifiant ne doit jamais être supprimé, modifié ou réutilisé, même après la suppression d'un compte utilisateur.
 |===
-
-**Bonnes pratiques** :  
-
-- **Privilégier des identifiants stables et uniques** (e-mail, numéro de client, UUID…).
-- **Éviter les identifiants réattribuables** (exemple : ID numérique incrémental risquant d’être réutilisé après suppression d’un compte).
-- **S'assurer que l'identifiant est cohérent dans tous les systèmes** où il est utilisé.
-====
-
+ 
 [PRE-FILLED]
 ====
 [cols="1,3"]
 |===
-|Exigence |Description
-
+| Exigence | Description
+ 
 |
-| 
-
+|
 |===
 ====
+ 
+*Niveau de garantie de l'identité*
+ 
+Attribuer un identifiant ne dit rien de la *confiance* que l'on peut accorder à
+l'identité qu'il désigne. Le règlement d'exécution eIDAS 2015/1502 définit trois
+niveaux de garantie, qui décrivent dans quelle mesure l'identité a été vérifiée
+avant d'être attribuée. Un quatrième cran, déclaratif, est couramment ajouté
+en-dessous pour couvrir les comptes créés sans aucune vérification.
+ 
+.Niveaux de garantie de l'identité
+[cols="1,3,2", options="header"]
+|===
+| Niveau | Vérification réalisée | Exemple
+ 
+| *Déclaratif* +
+_(hors eIDAS)_
+| L'utilisateur renseigne lui-même ses informations, sans aucune vérification externe.
+| Compte créé par auto-inscription, sans contrôle.
+ 
+| *Faible*
+| L'existence de l'identité est présumée à partir d'une source faisant autorité. Aucune vérification active n'est requise.
+| Identification via FranceConnect.
+ 
+| *Substantiel*
+| Il a été vérifié que la personne détient un document d'identité reconnu, dont l'authenticité a été contrôlée. Des mesures limitent le risque d'usurpation (perte, vol, expiration, révocation).
+| Identification via FranceConnect+ avec L'Identité Numérique La Poste.
+ 
+| *Élevé*
+| Niveau substantiel, complété d'une identification par comparaison de caractéristiques physiques (biométrie ou photographie) auprès d'une source faisant autorité.
+| Embarquement par un processus RH ou par huissier en présentiel ; identification via FranceConnect+ avec France Identité.
+|===
+ 
+[IMPORTANT]
+====
+*Qualité de l'identité et force de l'authentification sont deux axes
+indépendants.* Le niveau de garantie décrit ce qui a été vérifié *une fois*,
+à l'enrôlement. La force de l'authentification décrit ce qui est exigé *à chaque
+connexion*.
+ 
+Les deux peuvent diverger dans les deux sens, et c'est fréquent :
+ 
+* une identité vérifiée au niveau élevé, protégée par un simple mot de passe :
+on sait qui est la personne, mais n'importe qui peut usurper son compte ;
+* un compte purement déclaratif, protégé par une clé FIDO2 : le compte est
+inviolable, mais rien ne garantit à qui il appartient.
+ 
+Préciser les deux séparément. Un seul des deux ne suffit jamais à caractériser
+le besoin.
+====
+ 
+[TIP]
+====
+*Le niveau de garantie se subit plus qu'il ne se choisit.* Il dépend du
+fournisseur d'identité retenu, et une application ne peut pas l'élever
+elle-même : si la source d'identité délivre du faible, aucune mesure applicative
+ne produira du substantiel. Vérifier donc, dès la conception, que le niveau
+atteignable correspond au niveau exigé.
+ 
+En France, l'ANSSI établit le référentiel national des exigences de sécurité
+applicables à chaque niveau et certifie les moyens d'identification électronique
+aux niveaux substantiel et élevé. Le niveau faible ne fait pas l'objet d'une
+certification.
+====
+ 
+*Niveau de garantie exigé*
+ 
+.Exemple
+[cols="2,1,3", options="header"]
+|===
+| Population | Niveau exigé | Source d'identité
+ 
+| _Usagers du portail_
+| _Substantiel_
+| _FranceConnect+ (L'Identité Numérique La Poste ou France Identité)._
+ 
+| _Agents instructeurs_
+| _Élevé_
+| _Enrôlement RH en présentiel, sur présentation d'une pièce d'identité._
+ 
+| _Comptes techniques (API partenaires)_
+| _Sans objet_
+| _Convention d'échange et certificat délivré par la PKI interne._
+|===
+ 
+[PRE-FILLED]
+====
+[cols="2,1,3", options="header"]
+|===
+| Population | Niveau exigé | Source d'identité
+ 
+|
+|
+|
+|===
+====
+
 
 
 //🏷{"id": "9d0646cd-3e3f-4878-96de-f215c9f20bdc", "labels": []}
@@ -328,7 +429,9 @@ Les trois catégories de facteurs d’authentification sont :
 - **possession** : quelque chose que l’utilisateur possède ;
 - **inhérence** : quelque chose que l’utilisateur est.
 
-Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d’authentification. Certains mécanismes courants, comme un lien envoyé par e-mail, ne constituent pas nécessairement à eux seuls un authentificateur reconnu par tous les référentiels.
+Une authentification multifacteur doit reposer sur *au moins deux catégories distinctes* parmi connaissance, possession et inhérence.
+
+Principaux mécanismes utilisés :
 
 [cols="2,1,1,1,4,4", options="header"]
 |===
@@ -359,20 +462,20 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Faible seul
 | Non
 | Code court servant généralement à déverrouiller localement un authentificateur ou un composant sécurisé.
-| Espace de recherche réduit. Sa sécurité repose sur un dispositif limitant les tentatives ou bloquant l’appareil et protégeant le secret ou la clé associée : carte à puce, TPM, élément sécurisé, clé FIDO2, etc.
+| Espace de recherche réduit. Sa sécurité repose sur un dispositif limitant les tentatives ou bloquant l’appareil et protégeant le secret ou la clé associée : carte à puce, TPM, clé FIDO2, etc.
 
 | Connaissance de données métier
 | Connaissance
 | Faible
 | Non
 | Question portant sur une information liée au dossier de l’utilisateur (ex. : montant de la dernière facture).
-| Information partageable, parfois connue de tiers légitimes ou récupérable par OSINT, ingénierie sociale ou fuite de données. **Déconseillée comme facteur d’authentification.** Peut néanmoins être utile lors d’un appariement initial entre un compte et un dossier lorsqu’aucun authentificateur partagé n’existe encore.
+| Information parfois connue de tiers légitimes ou récupérable par OSINT, ingénierie sociale ou fuite de données. **Déconseillée comme facteur d’authentification.** Peut néanmoins être utile lors d’un appariement initial entre un compte et un dossier lorsqu’aucun authentificateur partagé n’existe encore.
 
 | Lien à usage unique par e-mail
 | Hors catégorie (canal de transmission)
 | Faible
 | Non
-| Lien temporaire envoyé à l’adresse e-mail déclarée afin de permettre ou de confirmer un accès. Parfois assimilé à une possession indirecte, sans en offrir les garanties.
+| Lien temporaire envoyé à l’adresse e-mail déclarée afin de permettre ou de confirmer un accès. 
 | La sécurité dépend entièrement de celle de la boîte mail, de ses mécanismes de récupération et des terminaux qui y accèdent. Transfert, compromission de la messagerie et hameçonnage restent possibles.
 
 | OTP par SMS
@@ -380,14 +483,14 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Faible à moyenne
 | Non
 | Code à usage unique envoyé au numéro de téléphone préalablement enregistré.
-| Détournement de carte SIM (_SIM swapping_), interception ou redirection des messages, compromission du terminal. Le réseau téléphonique ne fournit pas les mêmes garanties qu’un authentificateur cryptographique : le facteur n’est pas considéré comme cryptographiquement fort.
+| Détournement de carte SIM (_SIM swapping_), interception ou redirection des messages, compromission du terminal. Le réseau téléphonique ne fournit pas les mêmes garanties qu’un authentificateur cryptographique.
 
 | OTP par application (TOTP)
 | Possession
 | Moyenne
 | Non
 | Code temporaire calculé à partir d’un secret partagé et de l’heure courante.
-| Le code peut être capturé par un site contrefait puis relayé immédiatement vers le service légitime. Secret partagé, donc connu du vérificateur et souvent extractible d’une sauvegarde du terminal ou d’un poste compromis : le contrôle exclusif par l’utilisateur n’est que présumé.
+| Le code peut être capturé par un site contrefait puis relayé immédiatement vers le service légitime. Extractible d’une sauvegarde du terminal ou d’un poste compromis : le contrôle exclusif par l’utilisateur n’est que présumé.
 
 | OTP par jeton matériel
 | Possession
@@ -398,29 +501,29 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 
 | Notification push
 | Possession
-| Moyenne
+| Moyenne, Forte avec correspondance de nombre
 | Non
-| Demande de validation envoyée sur l’application d’un terminal préalablement enrôlé.
-| Vulnérable au harcèlement de notifications (_MFA fatigue_) et aux attaques par relais. La correspondance de nombre (_number matching_) et l’affichage du contexte réduisent fortement les validations accidentelles mais ne rendent pas, à eux seuls, le mécanisme résistant au phishing. Dépend de la sécurité de l’appareil et du compte associé dans le cloud.
+| Demande de validation envoyée sur l’application d’un terminal préalablement enrôlé. Si la correspondance de nombre est utilisée, l'utilisateur doit saisir un code affiché sur le service pour confirmer la demande. L'application peut également afficher le contexte de la demande (nom du service, action demandée, localisation/IP du demandeur, etc.).
+| Vulnérable au harcèlement de notifications (_MFA fatigue_) et aux attaques par relais. La correspondance de nombre (_number matching_) et l’affichage du contexte réduisent fortement les validations accidentelles mais ne rendent pas, à eux seuls, le mécanisme résistant au phishing.
 
 | SSO intégré au domaine (Kerberos, NTLM, SPNEGO)
 | Dérivé de l’authentification initiale
 | Variable : celle du facteur initial
 | Partielle
-| Le poste joint au domaine obtient un ticket lors de l’ouverture de session et le présente à l’application sans nouvelle saisie de secret.
+| Technologies Microsoft. Le poste joint au domaine obtient un ticket lors de l’ouverture de session Windows et le présente à l’application sans nouvelle saisie de secret.
 | N’apporte aucun facteur propre : le niveau réel est celui de l’ouverture de session sur le poste. Vol ou rejeu de tickets, délégation mal configurée, repli sur des protocoles plus faibles (NTLM). Limité aux postes gérés et joints au domaine.
 
 | Clé SSH
 | Possession
-| Forte
-| Partielle
-| Paire de clés asymétriques, la clé privée restant sur le poste client ou dans un dispositif cryptographique. La signature est liée à la session, ce qui interdit son rejeu vers une autre destination.
+| Moyenne
+| Non
+| Paire de clés asymétriques, la clé privée restant sur le poste client ou dans un dispositif cryptographique. 
 | La vérification de la clé hôte reposant souvent sur une confiance au premier usage, un serveur interposé peut être accepté par l’utilisateur. Clé privée parfois stockée sans protection suffisante. Vol de fichier, compromission du poste, abus de l’agent SSH et de son transfert.
 
 | Certificat logiciel
 | Possession
 | Moyenne
-| Oui en TLS client mutuel
+| Oui en TLS client mutuel (mTLS)
 | Certificat X.509 et clé privée conservés dans un magasin logiciel, un navigateur, le système ou un fichier PKCS#12. En authentification TLS cliente, la preuve porte sur le déroulé de la négociation et est donc liée au canal.
 | Clé privée potentiellement exportable et copiable, donc contrôle exclusif seulement présumé. Exfiltration possible par code malveillant. PKI à exploiter : émission, révocation, renouvellement.
 
@@ -429,28 +532,28 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 | Très forte
 | Oui
 | Certificat ou clé cryptographique dont la clé privée est générée et utilisée dans un composant sécurisé. Les opérations cryptographiques sont réalisées par la carte après déverrouillage par code PIN.
-| Coût. Lecteur et intergiciel requis. PKI à exploiter : émission, révocation, renouvellement. Gestion du blocage du PIN et de la perte de la carte.
+| Coût et logistique de distribution. Lecteur et intergiciel requis. PKI à exploiter : émission, révocation, renouvellement. Gestion du blocage du PIN et de la perte de la carte.
 
 | Clé matérielle FIDO2
-| Possession + connaissance ou inhérence si vérification par code PIN
+| Possession (+ PIN ou biométrie)
 | Très forte
 | Oui
 | Authentification asymétrique par défi-réponse. La preuve est liée cryptographiquement à l’origine du service. La clé privée est confinée dans un dispositif externe et généralement non exportable.
 | Coût et logistique de distribution. Nécessite une stratégie de récupération ou l’enrôlement d’un second authentificateur. Support dépendant des applications.
 
 | Passkey liée à l’appareil
-| Possession + connaissance ou inhérence si vérification utilisateur
+| Possession (+ PIN ou biométrie)
 | Très forte
 | Oui
-| Authentificateur WebAuthn non synchronisé. La clé privée reste liée à l’appareil et est généralement protégée par les mécanismes de sécurité de la plateforme, par exemple TPM, Secure Enclave ou magasin cryptographique équivalent.
+| Justificatif WebAuthn dont la clé privée reste confinée dans l'appareil, sans réplication vers d'autres terminaux. Elle est généralement protégée par le composant de sécurité de la plateforme (TPM, Secure Enclave ou équivalent).
 | Perte ou destruction de l’appareil. Nécessite un mécanisme de récupération ou un second authentificateur enrôlé. Le niveau de protection matérielle dépend de la plateforme : la clé n’est réellement inextractible que si elle est ancrée dans un composant de sécurité.
 
 | Passkey synchronisée
-| Possession + connaissance ou inhérence si vérification utilisateur
+| Possession (+ PIN ou biométrie)
 | Forte
 | Oui
 | Authentificateur WebAuthn dont la clé privée peut être répliquée de manière chiffrée entre plusieurs appareils par l’intermédiaire d’un gestionnaire de justificatifs.
-| La clé n’est plus strictement liée à un appareil unique, donc contrôle exclusif seulement présumé. La sécurité dépend également du service de synchronisation, du compte qui le protège et de ses mécanismes de récupération. Non adaptée aux niveaux exigeant une clé non exportable.
+| La clé n’est plus strictement liée à un appareil unique, donc contrôle exclusif seulement présumé. La sécurité dépend également du service de synchronisation, du compte qui le protège et de ses mécanismes de récupération. 
 
 | Biométrie
 | Inhérence
@@ -464,7 +567,7 @@ Le tableau ci-dessous compare les principaux mécanismes utilisés à des fins d
 .Références normatives associées
 [%collapsible]
 ====
-- **Mot de passe, phrase de passe, OTP, passkey synchronisée** : NIST SP 800-63B-4 ; recommandations ANSSI relatives à l’authentification multifacteur et aux mots de passe.
+- **Mot de passe, phrase de passe, OTP, passkey synchronisée** : NIST SP 800-63B-4 ; https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-authentification_multifacteur_et_mots_de_passe.pdf[recommandations ANSSI relatives à l’authentification multifacteur et aux mots de passe].
 - **Lien à usage unique par e-mail** : non admis comme authentificateur _out-of-band_ par NIST SP 800-63B-4.
 - **OTP par SMS** : usage restreint selon NIST SP 800-63B-4.
 - **TOTP / HOTP** : RFC 6238, RFC 4226.
@@ -488,7 +591,7 @@ La colonne _Résistance au phishing_ traduit la capacité à résister à un att
 
 Un TOTP peut ainsi constituer un facteur robuste contre le simple vol de mot de passe tout en restant vulnérable au phishing : l’utilisateur saisit son code sur un site contrefait, qui le transmet immédiatement au véritable service.
 
-À l’inverse, une authentification cryptographique peut être résistante au phishing parce que la preuve produite est liée cryptographiquement au service ou au canal de communication et ne peut pas être rejouée vers une autre destination.
+À l’inverse, une authentification FIDO2 par exemple peut être résistante au phishing parce que la preuve produite est liée cryptographiquement au service ou au canal de communication et ne peut pas être rejouée vers une autre destination.
 
 Les mécanismes les plus robustes combinent donc deux propriétés distinctes :
 
@@ -508,103 +611,66 @@ Dans les usages courants, elle sert à effectuer localement une _vérification u
 La résistance au phishing et une grande partie de la robustesse de l’authentification proviennent alors de l’authentificateur cryptographique déverrouillé, et non du caractère biométrique lui-même.
 ====
 
-*Niveau de confiance*
+*Niveau de confiance d'authentification*
 
-TIP: Voir aussi https://partenaires.proconnect.gouv.fr/docs/ressources/norme_eidas[le niveau de confiance défini par la DINUM].
+Le niveau de confiance ne se résume pas au mécanisme d'authentification. Le
+règlement d'exécution eIDAS 2015/1502 exprime ses exigences par phases, et le
+niveau atteint est celui du maillon le plus faible. Trois piliers le
+déterminent :
 
-Le niveau de confiance d’une authentification ne se résume pas au mécanisme employé. Il résulte de **trois piliers indépendants**, et vaut celui du **pilier le plus faible** :
+* la *qualité de la preuve d'identité* — avec quelle certitude le compte a-t-il
+été rattaché à une personne réelle ? Voir
+<<exigences-didentification,Exigences d'identification>> ;
+* la *méthode d'authentification* — que prouve l'utilisateur à chaque
+connexion ? Objet de la présente section ;
+* le *lien avec l'organisation*, pour un agent ou un représentant — rattachement
+auto-déclaré, validé par un tiers, ou certifié auprès d'une source faisant
+autorité.
 
-- la **qualité de la preuve d’identité** : avec quel degré de certitude le compte a-t-il été rattaché à une personne réelle ? Ce pilier est traité dans la section « Exigences d’identification » ;
-- la **méthode d’authentification** : que prouve l’utilisateur à chaque connexion ? C’est l’objet de la présente section ;
-- le **lien avec l’organisation**, lorsque l’utilisateur agit en tant qu’agent ou représentant : ce rattachement est-il auto-déclaré, validé par un tiers, ou certifié auprès d’une source faisant autorité ?
+Conséquence directe : une identité vérifiée en présentiel, avec un rattachement
+certifié par le SIRH, retombe au niveau le plus bas si la connexion s'effectue
+par simple mot de passe.
 
-Cette règle du maillon faible a une conséquence directe : un dispositif d’enrôlement exigeant ne relève pas le niveau si l’authentification quotidienne reste un mot de passe, et réciproquement. Un fournisseur d’identité ayant vérifié l’identité de ses agents en présentiel, avec un rattachement certifié par le processus RH, retournera malgré tout le niveau le plus bas si la connexion s’effectue par simple mot de passe.
+.Niveau de confiance du pilier « méthode d'authentification »
+[cols="1,3,2", options="header"]
+|===
+| Niveau | Exigence | Exemples 
 
-.Niveau de confiance du pilier « méthode d’authentification »
-[cols="1,4", options="header"]
+| *Simple*
+| Un seul facteur.
+| Mot de passe seul.
+
+| *MFA faible*
+| Deux facteurs de catégories différentes, mais le second repose sur un canal non maîtrisé.
+| Mot de passe et code par SMS ou courriel.
+
+| *MFA forte*
+| Deux facteurs, dont un secret cryptographique. Contrôle exclusif *présumé* : le secret peut être sauvegardé, synchronisé ou exporté.
+| Mot de passe et TOTP. Certificat logiciel. Passkey synchronisée.
+
+| *MFA matérielle*
+| Deux facteurs, dont une clé confinée dans un composant de sécurité et non extractible. Contrôle exclusif *démontré*.
+| Carte à puce et PIN. Clé FIDO2. Passkey liée à l'appareil.
 |===
 
-| Niveau
-| Exigence
-
-| Simple
-| Un seul facteur d’authentification.
-
-| MFA faible
-| Deux facteurs de catégories différentes, dont aucun ne repose sur un mécanisme cryptographique fort. Le second facteur est géré par l’utilisateur.
-
-| MFA forte
-| Deux facteurs de catégories différentes, dont au moins un cryptographiquement fort — TOTP, FIDO2, certificat. Le contrôle exclusif du facteur par son titulaire est _présumé_ : la clé ou le secret peuvent être sauvegardés, synchronisés ou exportés.
-
-| MFA forte matérielle
-| Deux facteurs de catégories différentes, le second étant physique et sa clé ancrée dans un composant de sécurité dont elle ne peut être extraite. Le contrôle exclusif est _fiable_ et non plus seulement présumé.
-
-|===
-
-[NOTE]
-====
-Cette échelle reprend la distinction posée par le guide ANSSI sur l’authentification multifacteur et les mots de passe : **une MFA n’est pas nécessairement une authentification forte**. Une MFA faible combine plusieurs facteurs sans qu’aucun ne repose sur un mécanisme cryptographique robuste.
-
-Le passage de _MFA forte_ à _MFA forte matérielle_ ne tient pas à la force de l’algorithme, mais au caractère _présumé_ ou _fiable_ du contrôle exclusif du facteur, et à la résistance attendue face à un attaquant à potentiel modéré ou élevé.
-====
 
 [IMPORTANT]
 ====
-**La résistance au phishing n’est pas portée par cette échelle.**
-
-Un TOTP relève de la _MFA forte_ tout en restant vulnérable à l’interposition d’un service contrefait : le protocole est cryptographiquement fort, mais la preuve produite n’est liée ni à l’origine du service, ni au canal.
-
-Le niveau de confiance et la résistance au phishing doivent donc être exigés **séparément**. Pour tout accès dont la compromission emporte des conséquences financières, juridiques ou opérationnelles importantes, exiger explicitement un mécanisme résistant au phishing en plus du niveau de confiance visé.
+*La résistance au phishing n'est pas portée par cette échelle.* Un TOTP relève
+de la _MFA forte_ et tombe pourtant devant un service contrefait qui relaie le
+code en temps réel : la preuve produite n'est liée ni à l'origine ni au canal.
+ 
+Les deux s'exigent donc séparément. Dès que la compromission emporte des
+conséquences financières, juridiques ou opérationnelles, exiger explicitement un
+mécanisme résistant au phishing en plus du niveau visé.
 ====
-
-
-*Correspondance avec les référentiels*
-
-[cols="2,2,2", options="header"]
-|===
-
-| Niveau retenu dans le présent dossier
-| Valeur `acr` ProConnect
-| Repère NIST SP 800-63B-4
-
-| Simple
-| `eidas0` ou `eidas1` selon les deux autres piliers
-| AAL1
-
-| MFA faible
-| `eidas0-mfa` ou `eidas1-mfa` selon les deux autres piliers
-| AAL2 avec authentificateur restreint
-
-| MFA forte
-| `eidas2`
-| AAL2
-
-| MFA forte matérielle
-| `eidas3`
-| AAL3
-
-|===
-
+ 
 [NOTE]
 ====
-**Où se situe eIDAS.**
-
-Les niveaux du règlement d’exécution (UE) 2015/1502 — faible, substantiel, élevé — ne qualifient pas une méthode d’authentification isolée mais un **moyen d’identification électronique pris dans son ensemble** : preuve d’identité à l’enregistrement, gestion du moyen, mécanismes d’authentification, et exigences organisationnelles portant sur l’organisme émetteur, le tout dans le cadre d’une notification au niveau européen.
-
-Les valeurs `acr` de ProConnect en reprennent le vocabulaire et l’étendent : elles agrègent les trois piliers ci-dessus et ajoutent des paliers intermédiaires — `eidas0` pour les cas où l’identité ou le rattachement organisationnel restent déclaratifs, et les variantes `-mfa` pour une authentification multifacteur faible. Une valeur `acr` n’est donc pas un niveau eIDAS au sens du règlement.
-
-En ordre de grandeur, un niveau _substantiel_ suppose une identité vérifiée **et** une MFA forte ; un niveau _élevé_ suppose une identité vérifiée en présentiel ou par un procédé reconnu équivalent **et** une MFA forte matérielle, complétées par des exigences sur l’émetteur qui dépassent le périmètre d’un dossier d’architecture applicative.
+Cette échelle reprend la distinction posée par le guide de l'ANSSI relatif à
+l'authentification multifacteur et aux mots de passe : *une MFA n'est pas
+nécessairement une authentification forte*.
 ====
-
-
-*À préciser dans le présent dossier*
-
-- Le **niveau de confiance visé** par cas d’utilisation, et séparément l’exigence ou non de **résistance au phishing**.
-- Si le niveau est **prouvé à l’application** ou seulement garanti par configuration. En authentification fédérée, indiquer la valeur demandée dans `acr_values` et la revendication attendue en retour — `acr`, complétée le cas échéant par `amr` pour connaître les mécanismes effectivement employés.
-- Le **comportement attendu lorsque le niveau obtenu est inférieur au niveau requis** : refus, accès en consultation seule, ou demande d’élévation auprès du fournisseur d’identité. Ce point est souvent omis et constitue la principale cause d’écart entre le niveau annoncé et le niveau réellement appliqué.
-- Les **exigences portant sur les deux autres piliers**, renseignées dans la section « Exigences d’identification » pour la preuve d’identité, et ici pour le rattachement organisationnel lorsque l’application sert des agents.
-
-Les modalités de la fédération elle-même — protocole, fournisseur d’identité retenu, cinématique — relèvent de la section « Exigences de fédération d’identité ».
 
 *Signaux de contexte*
 
@@ -676,16 +742,7 @@ Ils servent à **moduler** l’exigence d’authentification ou la décision d�
 ====
 Un signal de contexte ne compte **jamais** comme second facteur.
 
-Une authentification multifacteur doit reposer sur au moins deux catégories distinctes parmi connaissance, possession et inhérence.
-
-Ces facteurs peuvent être fournis :
-
-- par plusieurs authentificateurs distincts, par exemple mot de passe + clé matérielle ;
-- ou par un **authentificateur multifacteur unique**, par exemple une carte à puce protégée par PIN ou une passkey utilisant une vérification utilisateur par PIN ou biométrie.
-
-Un mot de passe complété d’une restriction d’adresse IP reste donc une authentification à un seul facteur.
-
-De même, reconnaître un terminal déjà utilisé, constater que l’utilisateur se trouve dans son pays habituel ou vérifier un certificat de poste ne constitue pas un facteur supplémentaire pour l’utilisateur.
+Reconnaître un terminal déjà utilisé, constater que l’utilisateur se trouve dans son pays habituel ou vérifier un certificat de poste ne constitue pas un facteur supplémentaire pour l’utilisateur.
 
 Les signaux de contexte peuvent **élever** l’exigence d’authentification ou entraîner une restriction d’accès. Ils ne doivent pas permettre de descendre en dessous du niveau minimal imposé pour l’opération concernée.
 
@@ -694,6 +751,8 @@ Ces signaux permettent notamment la mise en œuvre de l’accès conditionnel d�
 
 
 *Accès conditionnel*
+
+TIP: Il s'agit de fonctionnalités avancées et complexes à ne considérer que dans les situations les plus sensibles. 
 
 Plutôt que d’appliquer les mêmes conditions d’accès en toutes circonstances, ce dispositif consiste à faire varier la décision en fonction du contexte de la tentative : niveau d’authentification déjà atteint, terminal inconnu, connexion depuis une localisation inhabituelle, horaire atypique, niveau de risque, sensibilité de l’opération demandée, etc.
 
@@ -740,7 +799,8 @@ Les points ci-dessous doivent être tranchés dans le présent dossier, indépen
 Préciser les exigences portant sur la durée de validité d’une authentification réussie :
 
 - durée maximale absolue d’une session et délai d’expiration sur inactivité, par niveau de garantie ;
-- opérations exigeant une **réauthentification** même au sein d’une session valide, et fraîcheur maximale admise pour celle-ci (ex. : authentification datant de moins de cinq minutes) ;
+- déconnexion automatique ou manuelle, et propagation de la déconnexion entre applications ;
+- opérations exigeant une **réauthentification** même au sein d’une session valide, en cas d'inactivité, et fraîcheur maximale admise pour celle-ci (ex. : authentification datant de moins de cinq minutes) ;
 - possibilité ou interdiction d’une persistance de session de type « se souvenir de moi », et durée associée ;
 - invalidation obligatoire des sessions en cours lors d’un changement d’authentificateur, d’une révocation ou d’un incident de sécurité ;
 - sessions concurrentes : autorisées, limitées ou visibles par l’utilisateur ;
@@ -769,7 +829,7 @@ Les comptes techniques ne peuvent pas bénéficier d’un second facteur détenu
 | Clé d’API ou secret client OAuth2
 | Faible à moyenne
 | Secret partagé présenté par le client lors de l’obtention d’un jeton.
-| Le vérificateur connaît le secret. Rejouable s’il est intercepté. Impose une rotation et un stockage en coffre-fort.
+| Le vérificateur connaît le secret. Rejouable s’il est intercepté. Impose une rotation et un stockage en coffre-fort électronique.
 
 | Clé SSH de compte technique
 | Moyenne
@@ -788,7 +848,7 @@ Les comptes techniques ne peuvent pas bénéficier d’un second facteur détenu
 
 | Identité de charge de travail sans secret durable
 | Très forte
-| Identité attestée par la plateforme d’exécution puis échangée contre un jeton de courte durée : jeton de compte de service projeté, fédération d’identité vers un fournisseur cloud, certificat de charge de travail à durée de vie courte.
+| Identité attestée par la plateforme d’exécution puis échangée contre un jeton de courte durée : jeton de compte de service projeté (ex: JWT injecté par Kubernetes dans le POD), fédération d’identité vers un fournisseur cloud, certificat de charge de travail à durée de vie courte.
 | Suppose une plateforme d’exécution de confiance et correctement cloisonnée. Le périmètre d’attestation doit être restreint au strict nécessaire.
 
 | Certificat de poste ou de machine
