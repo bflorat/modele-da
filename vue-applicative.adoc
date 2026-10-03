@@ -479,6 +479,15 @@ Exemple :
 |===
 ====
 
+//🏷{"id": "909951ce-7390-4795-bd12-f193a724299e", "labels": ["niveau_detail::détaillé"]}
+### Identifiants fonctionnels
+
+TIP: Décrire ici les identifiants fonctionnels utilisés par le projet pour référencer les entités principales et exposées aux humains. Voir aussi https://florat.net/designing-human-targeted-random-ids/[cet article].
+
+====
+Exemple: les dossiers seront identifiés par numéro aléatoire unique sur 8 caractères alphabétiques majuscules et numériques, simple à prononcer et saisir et limitant les risques de confusion (comme `o` et `0` ou `l` et `1`), exemple : `AF5M-9SAB`.
+====
+
 //🏷{"id": "b269e65b-a8c7-4518-a861-5c6c17802869", "labels": ["solution","niveau_detail::général"]}
 ## Architecture cible
 
